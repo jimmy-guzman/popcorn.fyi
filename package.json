@@ -1,0 +1,29 @@
+{
+  "name": "popcorn.fyi",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "check": "turbo typecheck lint build",
+    "dev": "turbo dev",
+    "format": "prettier --write .",
+    "postinstall": "lefthook install",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck"
+  },
+  "prettier": "@jimmy.codes/prettier-config",
+  "devDependencies": {
+    "@jimmy.codes/prettier-config": "1.3.0",
+    "eslint": "9.16.0",
+    "gitzy": "5.7.1",
+    "jiti": "2.4.1",
+    "knip": "5.39.2",
+    "lefthook": "1.9.0",
+    "prettier": "3.4.2",
+    "turbo": "2.3.3",
+    "typescript": "5.7.2"
+  },
+  "packageManager": "pnpm@9.14.4",
+  "engines": {
+    "node": ">= 22"
+  }
+}

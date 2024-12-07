@@ -1,0 +1,20 @@
+{
+  "name": "@popcorn.fyi/tailwind",
+  "private": true,
+  "exports": {
+    ".": "./tailwind.config.ts"
+  },
+  "scripts": {
+    "lint": "eslint --flag unstable_ts_config --cache .",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "0.5.15",
+    "daisyui": "4.12.14"
+  },
+  "devDependencies": {
+    "@popcorn.fyi/eslint": "workspace:*",
+    "@popcorn.fyi/ts": "workspace:*",
+    "tailwindcss": "3.4.16"
+  }
+}
