@@ -1,0 +1,36 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  code_check:
+    name: "Code Check"
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_CACHE: remote:rw
+
+    steps:
+      - name: 🏗 Setup Repository
+        uses: actions/checkout@v4
+
+      - name: 🏗 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: 🏗 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: pnpm
+
+      - name: 📦 Install Dependencies
+        run: pnpm install
+
+      - name: 🎨 Format
+        run: pnpm format
+
+      - name: ✔️ Check
+        run: pnpm check

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/lefthook.json",
+  "extends": [
+    "configs/*/.lefthook.json",
+    "apps/*/.lefthook.json",
+    "libs/*/.lefthook.json"
+  ],
+  "pre-commit": {
+    "parallel": true,
+    "commands": {
+      "format": {
+        "glob": "*.{js,ts,mjs,jsx,tsx,json,md,yaml,yml}",
+        "run": "pnpm exec prettier --write --cache --log-level silent . {staged_files}",
+        "stage_fixed": true
+      },
+      "sort-package-json": {
+        "glob": "{,**/}package.json",
+        "run": "pnpm dlx sort-package-json {staged_files}",
+        "stage_fixed": true
+      },
+      "knip": {
+        "run": "pnpm exec knip",
+        "stage_fixed": true
+      }
+    }
+  }
+}

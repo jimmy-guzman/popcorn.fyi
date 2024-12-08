@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/lefthook.json",
+  "pre-commit": {
+    "commands": {
+      "lint": {
+        "root": "configs/tailwind",
+        "run": "pnpm eslint --flag unstable_ts_config --cache --quiet {staged_files}",
+        "stage_fixed": true
+      }
+    }
+  }
+}

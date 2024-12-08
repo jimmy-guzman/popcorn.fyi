@@ -1,0 +1,17 @@
+{
+  "name": "@popcorn.fyi/eslint",
+  "private": true,
+  "exports": {
+    ".": "./eslint.config.ts"
+  },
+  "scripts": {
+    "lint": "eslint --flag unstable_ts_config --cache .",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@jimmy.codes/eslint-config": "3.28.0"
+  },
+  "devDependencies": {
+    "@popcorn.fyi/ts": "workspace:*"
+  }
+}
