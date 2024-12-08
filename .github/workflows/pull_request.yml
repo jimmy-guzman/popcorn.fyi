@@ -5,6 +5,10 @@ on: [pull_request]
 jobs:
   code_check:
     runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_CACHE: remote:rw
 
     steps:
       - name: 🏗 Setup Repository
