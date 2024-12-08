@@ -10,7 +10,7 @@
     "commands": {
       "format": {
         "glob": "*.{js,ts,mjs,jsx,tsx,json,md,yaml,yml}",
-        "run": "pnpm exec prettier --write --cache . {staged_files}",
+        "run": "pnpm exec prettier --write --cache --log-level silent . {staged_files}",
         "stage_fixed": true
       },
       "sort-package-json": {
