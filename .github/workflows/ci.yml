@@ -1,9 +1,10 @@
-name: pull_request
+name: CI
 
 on: [pull_request]
 
 jobs:
   code_check:
+    name: "Code Check"
     runs-on: ubuntu-latest
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
@@ -25,7 +26,7 @@ jobs:
           node-version-file: ".nvmrc"
           cache: pnpm
 
-      - name: 📦 Install Deps
+      - name: 📦 Install Dependencies
         run: pnpm install
 
       - name: 🎨 Format
