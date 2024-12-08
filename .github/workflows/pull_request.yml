@@ -1,0 +1,31 @@
+name: pull_request
+
+on: [pull_request]
+
+jobs:
+  code_check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🏗 Setup Repository
+        uses: actions/checkout@v4
+
+      - name: 🏗 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: 🏗 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: pnpm
+
+      - name: 📦 Install Deps
+        run: pnpm install
+
+      - name: 🎨 Format
+        run: pnpm format
+
+      - name: ✔️ Check
+        run: pnpm check

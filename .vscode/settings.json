@@ -4,7 +4,14 @@
       "mode": "auto"
     }
   ],
-  "cSpell.words": ["eslintcache", "gitzy", "knip", "lefthook", "vercel"],
+  "cSpell.words": [
+    "eslintcache",
+    "gitzy",
+    "knip",
+    "lefthook",
+    "nvmrc",
+    "vercel"
+  ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "eslint.validate": [

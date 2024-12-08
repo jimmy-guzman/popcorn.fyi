@@ -5,7 +5,8 @@
     "build": "turbo build",
     "check": "turbo typecheck lint build",
     "dev": "turbo dev",
-    "format": "prettier --write .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "postinstall": "lefthook install",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck"
