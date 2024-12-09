@@ -9,6 +9,10 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@iconify-json/carbon": "1.2.4",
+    "@iconify-json/devicon-plain": "1.2.7",
+    "@iconify-json/simple-icons": "1.2.15",
+    "@iconify/tailwind": "1.2.0",
     "@tailwindcss/typography": "0.5.15",
     "daisyui": "4.12.20"
   },
