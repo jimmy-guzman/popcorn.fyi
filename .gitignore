@@ -39,3 +39,12 @@ yarn-error.log*
 
 # eslint
 .eslintcache
+
+# vinxi
+.vercel
+.vinxi
+.output
+
+# tanstack start
+app.config.timestamp_*.js
+

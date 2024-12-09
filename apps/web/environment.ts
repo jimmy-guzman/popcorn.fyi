@@ -1,0 +1,33 @@
+import { config } from "@dotenvx/dotenvx";
+import pc from "picocolors";
+import * as v from "valibot";
+
+const schema = v.object({
+  CLERK_SECRET_KEY: v.string(),
+  COMPATIBILITY_DATE: v.string(),
+  VITE_CLERK_PUBLISHABLE_KEY: v.string(),
+});
+
+const validate = () => {
+  config();
+
+  if (process.env["CI"]) {
+    return process.env;
+  }
+
+  const parsed = v.safeParse(schema, process.env);
+
+  if (!parsed.success) {
+    // eslint-disable-next-line no-console -- This is ok.
+    console.error(
+      pc.red("Invalid environment variables:"),
+      v.flatten(parsed.issues).nested,
+    );
+
+    process.exit(1);
+  }
+
+  return parsed.output;
+};
+
+export default validate();

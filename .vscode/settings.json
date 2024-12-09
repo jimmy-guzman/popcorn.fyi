@@ -5,12 +5,17 @@
     }
   ],
   "cSpell.words": [
+    "devicon",
+    "dotenvx",
     "eslintcache",
     "gitzy",
+    "iconify",
     "knip",
     "lefthook",
     "nvmrc",
-    "vercel"
+    "valibot",
+    "vercel",
+    "vinxi"
   ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
