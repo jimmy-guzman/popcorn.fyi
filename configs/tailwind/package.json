@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "0.5.15",
-    "daisyui": "4.12.14"
+    "daisyui": "4.12.20"
   },
   "devDependencies": {
     "@popcorn.fyi/eslint": "workspace:*",

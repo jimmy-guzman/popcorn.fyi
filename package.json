@@ -4,11 +4,13 @@
   "scripts": {
     "build": "turbo build",
     "check": "turbo typecheck lint coverage build",
+    "coverage": "turbo coverage",
     "dev": "turbo dev",
     "format": "prettier --check --cache .",
     "format:fix": "prettier --write --cache .",
     "postinstall": "lefthook install",
     "lint": "turbo lint",
+    "test": "turbo test",
     "typecheck": "turbo typecheck"
   },
   "prettier": "@jimmy.codes/prettier-config",
@@ -23,7 +25,7 @@
     "turbo": "2.3.3",
     "typescript": "5.7.2"
   },
-  "packageManager": "pnpm@9.14.4",
+  "packageManager": "pnpm@9.15.0",
   "engines": {
     "node": ">= 22"
   }
