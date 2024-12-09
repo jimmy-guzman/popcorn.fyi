@@ -4,17 +4,19 @@
   "eslint": {
     "entry": ["eslint.config.ts"]
   },
-
+  "playwright": {
+    "config": ["playwright.config.ts"],
+    "entry": ["e2e/**/*.spec.ts", "playwright.setup.ts"]
+  },
   "workspaces": {
     "apps/web": {
       "entry": ["app/{ssr,client}.tsx", "app.config.ts"],
       "project": "**/*.{ts,tsx}",
       "ignore": ["app/routeTree.gen.ts"],
-      "ignoreDependencies": ["@iconify-json/*", "autoprefixer"],
-      "playwright": {
-        "config": ["playwright.config.ts"],
-        "entry": ["e2e/**/*.spec.ts", "playwright.setup.ts"]
-      }
+      "ignoreDependencies": ["autoprefixer"]
+    },
+    "configs/tailwind": {
+      "ignoreDependencies": ["@iconify-json/*"]
     }
   }
 }
