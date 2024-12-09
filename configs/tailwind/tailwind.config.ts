@@ -5,7 +5,8 @@ import daisyui from "daisyui";
 
 const config = {
   daisyui: {
-    themes: ["coffee"],
+    prefix: "dsy-",
+    themes: ["night"],
   },
   plugins: [typography, daisyui],
   theme: {

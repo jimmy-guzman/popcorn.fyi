@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "check": "turbo typecheck lint build",
+    "check": "turbo typecheck lint coverage build",
     "dev": "turbo dev",
     "format": "prettier --check --cache .",
     "format:fix": "prettier --write --cache .",
