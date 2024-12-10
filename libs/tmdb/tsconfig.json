@@ -1,0 +1,4 @@
+{
+  "extends": "@popcorn.fyi/ts/lib.json",
+  "include": ["*.config.ts", "src"]
+}

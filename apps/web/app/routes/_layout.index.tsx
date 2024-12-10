@@ -1,6 +1,25 @@
+import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
+import { createServerFn, useServerFn } from "@tanstack/start";
+
+import { client } from "@/lib/tmdb";
+
+const latestMovieFn = createServerFn({ method: "GET" }).handler(async () => {
+  const { data } = await client.GET("/3/movie/latest");
+
+  return data?.original_title;
+});
 
 function Home() {
+  const getTime = useServerFn(latestMovieFn);
+
+  const { data } = useQuery({
+    queryFn: () => {
+      return getTime();
+    },
+    queryKey: ["movie/latest"],
+  });
+
   return (
     <div className="grid min-h-[calc(100vh-8rem)] place-content-center">
       <div className="dsy-hero">
@@ -19,6 +38,9 @@ function Home() {
             <h1 className="text-7xl">
               <span className="font-bold">🍿 popcorn.fyi</span>
             </h1>
+            <p>
+              <strong>{data}</strong> is the latest movie.
+            </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 text-3xl md:text-5xl">
             <span className="icon-[devicon-plain--playwright]" />

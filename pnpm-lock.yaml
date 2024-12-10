@@ -44,12 +44,18 @@ importers:
       '@clerk/themes':
         specifier: 2.1.54
         version: 2.1.54
+      '@popcorn.fyi/tmdb':
+        specifier: workspace:*
+        version: link:../../libs/tmdb
       '@tanstack/react-query':
         specifier: 5.62.3
         version: 5.62.3(react@18.3.1)
       '@tanstack/react-router':
         specifier: 1.87.2
         version: 1.87.2(@tanstack/router-generator@1.86.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@tanstack/react-router-with-query':
+        specifier: 1.87.2
+        version: 1.87.2(@tanstack/react-query@5.62.3(react@18.3.1))(@tanstack/react-router@1.87.2(@tanstack/router-generator@1.86.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/start':
         specifier: 1.87.2
         version: 1.87.2(@types/node@22.10.1)(ioredis@5.4.1)(jiti@2.4.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1)
@@ -178,6 +184,22 @@ importers:
         version: 3.4.16
 
   configs/ts: {}
+
+  libs/tmdb:
+    dependencies:
+      openapi-fetch:
+        specifier: 0.13.3
+        version: 0.13.3
+    devDependencies:
+      '@popcorn.fyi/eslint':
+        specifier: workspace:*
+        version: link:../../configs/eslint
+      '@popcorn.fyi/ts':
+        specifier: workspace:*
+        version: link:../../configs/ts
+      openapi-typescript:
+        specifier: 7.4.4
+        version: 7.4.4(typescript@5.7.2)
 
 packages:
 
@@ -1368,6 +1390,15 @@ packages:
     resolution: {integrity: sha512-y2zDNKuhgiuMgsKkqd4AcsLIBiCfEO8U11AdrtAUihmLbRNztPrlcZqx2lH1GacZsx+y1qRRbCcJLYTtF1vKsw==}
     peerDependencies:
       react: ^18 || ^19
+
+  '@tanstack/react-router-with-query@1.87.2':
+    resolution: {integrity: sha512-P1Mh8Qn9Gx0eeelGIdZYYQZThD9UotqIrRu3iTWNHCjv+yq7PaFmqs/3Q6qx7iWXdBt9fUo1jnY1QENOI0vwMw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      '@tanstack/react-query': '>=5.49.2'
+      '@tanstack/react-router': '>=1.43.2'
+      react: '>=18'
+      react-dom: '>=18'
 
   '@tanstack/react-router@1.87.2':
     resolution: {integrity: sha512-8AkduIiVdt0Ofh5H514AZfEorPMU7ht01xZc0Qwz1X4izrA6gDxtYmMzDhLhjxj0bG6x+nKcCHQqdgmPyxqFWg==}
@@ -3714,6 +3745,12 @@ packages:
   open@8.4.2:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
+
+  openapi-fetch@0.13.3:
+    resolution: {integrity: sha512-M1THnPkNOXUPsQKZfqunhW/wqH8l3/W3Vlj4lemQynf4mTaTwBTvL2pgjBe0zerL/GFT5ttCHu9fYvanUI3tOw==}
+
+  openapi-typescript-helpers@0.0.15:
+    resolution: {integrity: sha512-opyTPaunsklCBpTK8JGef6mfPhLSnyy5a0IN9vKtx3+4aExf+KxEqYwIy3hqkedXIB97u357uLMJsOnm3GVjsw==}
 
   openapi-typescript@7.4.4:
     resolution: {integrity: sha512-7j3nktnRzlQdlHnHsrcr6Gqz8f80/RhfA2I8s1clPI+jkY0hLNmnYVKBfuUEli5EEgK1B6M+ibdS5REasPlsUw==}
@@ -6064,6 +6101,13 @@ snapshots:
     dependencies:
       '@tanstack/query-core': 5.62.3
       react: 18.3.1
+
+  '@tanstack/react-router-with-query@1.87.2(@tanstack/react-query@5.62.3(react@18.3.1))(@tanstack/react-router@1.87.2(@tanstack/router-generator@1.86.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@tanstack/react-query': 5.62.3(react@18.3.1)
+      '@tanstack/react-router': 1.87.2(@tanstack/router-generator@1.86.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   '@tanstack/react-router@1.87.2(@tanstack/router-generator@1.86.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -8882,6 +8926,12 @@ snapshots:
       define-lazy-prop: 2.0.0
       is-docker: 2.2.1
       is-wsl: 2.2.0
+
+  openapi-fetch@0.13.3:
+    dependencies:
+      openapi-typescript-helpers: 0.0.15
+
+  openapi-typescript-helpers@0.0.15: {}
 
   openapi-typescript@7.4.4(typescript@5.7.2):
     dependencies:

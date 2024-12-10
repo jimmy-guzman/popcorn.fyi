@@ -1,9 +1,10 @@
+import type { QueryClient } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 
 import { ClerkProvider } from "@clerk/tanstack-start";
 import { dark } from "@clerk/themes";
 import {
-  createRootRoute,
+  createRootRouteWithContext,
   Outlet,
   ScrollRestoration,
 } from "@tanstack/react-router";
@@ -39,7 +40,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   );
 }
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient;
+}>()({
   component: RootComponent,
   head: () => {
     return {
