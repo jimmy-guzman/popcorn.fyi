@@ -5,6 +5,8 @@ import * as v from "valibot";
 const schema = v.object({
   CLERK_SECRET_KEY: v.string(),
   COMPATIBILITY_DATE: v.string(),
+  TMDB_API_KEY: v.string(),
+  TMDB_API_TOKEN: v.string(),
   VITE_CLERK_PUBLISHABLE_KEY: v.string(),
 });
 
@@ -12,7 +14,7 @@ const validate = () => {
   config();
 
   if (process.env["CI"]) {
-    return process.env;
+    return process.env as v.InferInput<typeof schema>;
   }
 
   const parsed = v.safeParse(schema, process.env);

@@ -1,0 +1,20 @@
+{
+  "name": "@popcorn.fyi/tmdb",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "npx openapi-typescript https://developer.themoviedb.org/openapi/64542913e1f86100738e227f -o ./src/schema.gen.d.ts",
+    "lint": "eslint --flag unstable_ts_config --cache .",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "openapi-fetch": "0.13.3"
+  },
+  "devDependencies": {
+    "@popcorn.fyi/eslint": "workspace:*",
+    "@popcorn.fyi/ts": "workspace:*",
+    "openapi-typescript": "7.4.4"
+  }
+}
