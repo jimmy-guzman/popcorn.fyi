@@ -2,7 +2,7 @@ import { render, screen } from "@/testing/utils";
 
 import { TvShowHero } from "./tv-show-hero";
 
-describe("TvShowHero", () => {
+describe("TVShowHero", () => {
   it("should render image when it exists", async () => {
     const tvShow = {
       backdrop_path: "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",

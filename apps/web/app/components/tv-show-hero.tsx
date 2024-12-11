@@ -20,13 +20,13 @@ export const TvShowHero = ({ tvShow }: TvHeroProps) => {
         <div>
           <div className="flex gap-2">
             <span className="dsy-badge dsy-badge-accent">Trending</span>
-            <span className="dsy-badge dsy-badge-accent">Tv Show</span>
+            <span className="dsy-badge dsy-badge-accent">TV Show</span>
           </div>
 
           <h1 className="text-5xl font-bold">{tvShow.name}</h1>
           <p className="py-6">{tvShow.overview}</p>
           <button className="dsy-btn dsy-btn-primary" type="button">
-            Details <span className="icon-[carbon--arrow-right] h-6 w-6" />
+            Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
           </button>
         </div>
       </div>

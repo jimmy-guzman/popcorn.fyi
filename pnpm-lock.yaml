@@ -154,12 +154,12 @@ importers:
 
   configs/tailwind:
     dependencies:
-      '@iconify-json/carbon':
-        specifier: 1.2.4
-        version: 1.2.4
       '@iconify-json/devicon-plain':
         specifier: 1.2.7
         version: 1.2.7
+      '@iconify-json/lucide':
+        specifier: 1.2.18
+        version: 1.2.18
       '@iconify-json/simple-icons':
         specifier: 1.2.15
         version: 1.2.15
@@ -924,11 +924,11 @@ packages:
     resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
     engines: {node: '>=18.18'}
 
-  '@iconify-json/carbon@1.2.4':
-    resolution: {integrity: sha512-DhW2jjMVGwV0DLHc0cmDYohdtGxMra8UuwgjHrryPy+rQX4gXhJwCBBVP2h2UG/92AoRCTn7zUJve4WvY5MLYg==}
-
   '@iconify-json/devicon-plain@1.2.7':
     resolution: {integrity: sha512-O2b7dEpzVHLCbAMeVxQd+RSwRX5dnZxDyHSBM/tHU7VVBgC1VC84uO4lKUl8ZDEIdBXQfu9qxNcjWuLic/EA5A==}
+
+  '@iconify-json/lucide@1.2.18':
+    resolution: {integrity: sha512-SFBoHBSULntem84iWxGM9NzlP6QY/dwjxC5t4c1lC7+xq31Fous8JkppoJih0/ICJ3CsbppRZeb11y3iLcwwug==}
 
   '@iconify-json/simple-icons@1.2.15':
     resolution: {integrity: sha512-4vxMQwkjsbjVIVGsPjKBnLMqAXu4wSlHmeN35KaJLK0UJNUj/ef6ES5c4bT/U4bSZjD2oZqOjOWTPD+HCrSUkg==}
@@ -5619,11 +5619,11 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.1': {}
 
-  '@iconify-json/carbon@1.2.4':
+  '@iconify-json/devicon-plain@1.2.7':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/devicon-plain@1.2.7':
+  '@iconify-json/lucide@1.2.18':
     dependencies:
       '@iconify/types': 2.0.0
 
