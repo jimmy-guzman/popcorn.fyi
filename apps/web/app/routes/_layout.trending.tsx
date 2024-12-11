@@ -5,5 +5,13 @@ export const Route = createFileRoute("/_layout/trending")({
 });
 
 function RouteComponent() {
-  return <h1>Trending</h1>;
+  return (
+    <div className="grid min-h-[calc(100vh-8rem)] place-content-center">
+      <div className="prose dsy-prose">
+        <h1>
+          <span className="icon-[lucide--construction] h-7 w-7" /> Trending
+        </h1>
+      </div>
+    </div>
+  );
 }
