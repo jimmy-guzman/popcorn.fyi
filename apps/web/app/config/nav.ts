@@ -8,10 +8,10 @@ interface NavItem {
 
 export const nav = {
   items: [
-    { icon: "home", title: "Home", to: "/" },
-    { icon: "clapperboard", title: "Movies", to: "/movies" },
-    { icon: "tv", title: "TV Shows", to: "/tv-shows" },
-    { icon: "person-standing", title: "People", to: "/people" },
-    { icon: "trending-up", title: "Trending", to: "/trending" },
+    { icon: "icon-[lucide--home]", title: "Home", to: "/" },
+    { icon: "icon-[lucide--clapperboard]", title: "Movies", to: "/movies" },
+    { icon: "icon-[lucide--tv]", title: "TV Shows", to: "/tv-shows" },
+    { icon: "icon-[lucide--person-standing]", title: "People", to: "/people" },
+    { icon: "icon-[lucide--trending-up]", title: "Trending", to: "/trending" },
   ] satisfies NavItem[],
 };
