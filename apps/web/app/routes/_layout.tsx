@@ -1,12 +1,12 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-import { Navigation } from "@/components/navigation";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteNav } from "@/components/site-nav";
 
 function LayoutComponent() {
   return (
     <main>
-      <Navigation />
+      <SiteNav />
       <Outlet />
       <SiteFooter />
     </main>

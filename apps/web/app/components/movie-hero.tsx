@@ -26,7 +26,7 @@ export const MovieHero = ({ movie }: MovieHeroProps) => {
           <h1 className="text-5xl font-bold">{movie.title}</h1>
           <p className="py-6">{movie.overview}</p>
           <button className="dsy-btn dsy-btn-primary" type="button">
-            Details <span className="icon-[carbon--arrow-right] h-6 w-6" />
+            Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
           </button>
         </div>
       </div>
