@@ -1,6 +1,14 @@
 # 🍿 popcorn.fyi
 
-## What's Inside?
+## 🎁 What's Inside?
+
+### 🚀 Apps
+
+- [web](./apps/web/README.md) a [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview) web app.
+
+### 📦 Libs
+
+- [@popcorn.fyi/tmdb](./libs/tmdb/README.md): a [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) api client.
 
 ### ⚙️ Configs
 
