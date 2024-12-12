@@ -1,3 +1,5 @@
+import { tmdbImageUrl } from "@/lib/url";
+
 interface MovieHeroProps {
   movie: {
     backdrop_path?: string;
@@ -14,7 +16,7 @@ export const MovieHero = ({ movie }: MovieHeroProps) => {
           <img
             alt={movie.title}
             className="max-w-xl rounded-lg shadow-2xl"
-            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+            src={tmdbImageUrl(movie.backdrop_path)}
           />
         ) : null}
         <div>
