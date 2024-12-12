@@ -1,5 +1,5 @@
-import { formatDateAsYearOnly } from "@/lib/date";
-import { tmdbImageUrl } from "@/lib/url";
+import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { formatDateAsYearOnly } from "@popcorn.fyi/utils";
 
 interface TVShowCardProps {
   tvShow: {

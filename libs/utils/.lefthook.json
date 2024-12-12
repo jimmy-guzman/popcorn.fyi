@@ -3,7 +3,7 @@
   "pre-commit": {
     "commands": {
       "lint": {
-        "root": "libs/tmdb",
+        "root": "libs/utils",
         "run": "pnpm eslint --flag unstable_ts_config --cache --quiet {staged_files}",
         "stage_fixed": true
       }
