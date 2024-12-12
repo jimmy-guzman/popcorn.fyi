@@ -9,6 +9,7 @@
 ### 📦 Libs
 
 - [@popcorn.fyi/tmdb](./libs/tmdb/README.md): a [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) api client.
+- [@popcorn.fyi/utils](./libs/utils/README.md): a toolkit full of utility functions.
 
 ### ⚙️ Configs
 

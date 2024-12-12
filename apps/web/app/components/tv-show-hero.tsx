@@ -1,4 +1,4 @@
-import { tmdbImageUrl } from "@/lib/url";
+import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 
 interface TVShowHeroProps {
   tvShow: {

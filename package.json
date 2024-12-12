@@ -10,6 +10,7 @@
     "format:fix": "prettier --write --cache .",
     "postinstall": "lefthook install",
     "lint": "turbo lint",
+    "lint:fix": "turbo lint -- --fix",
     "test": "turbo test",
     "typecheck": "turbo typecheck"
   },

@@ -1,10 +1,10 @@
+import { random } from "@popcorn.fyi/utils";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/start";
 
 import { MovieHero } from "@/components/movie-hero";
 import { TvShowHero } from "@/components/tv-show-hero";
-import { random } from "@/lib/random";
 import { trendingMovieFn, trendingTvFn } from "@/server/fn";
 
 function Home() {
