@@ -21,3 +21,11 @@ export const trendingTvFn = createServerFn({ method: "GET" }).handler(
     return data;
   },
 );
+
+export const popularTvFn = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const { data } = await client.GET("/3/tv/popular");
+
+    return data;
+  },
+);

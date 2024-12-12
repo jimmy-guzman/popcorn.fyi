@@ -1,4 +1,6 @@
-interface TvHeroProps {
+import { tmdbImageUrl } from "@/lib/url";
+
+interface TVShowHeroProps {
   tvShow: {
     backdrop_path?: string;
     name?: string;
@@ -6,7 +8,7 @@ interface TvHeroProps {
   };
 }
 
-export const TvShowHero = ({ tvShow }: TvHeroProps) => {
+export const TvShowHero = ({ tvShow }: TVShowHeroProps) => {
   return (
     <div className="dsy-hero bg-base-200">
       <div className="dsy-hero-content flex-col lg:flex-row">
@@ -14,7 +16,7 @@ export const TvShowHero = ({ tvShow }: TvHeroProps) => {
           <img
             alt={tvShow.name}
             className="max-w-xl rounded-lg shadow-2xl"
-            src={`https://image.tmdb.org/t/p/original/${tvShow.backdrop_path}`}
+            src={tmdbImageUrl(tvShow.backdrop_path)}
           />
         ) : null}
         <div>
