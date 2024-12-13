@@ -7,9 +7,9 @@ import {
 import { Link } from "@tanstack/react-router";
 
 import { nav } from "@/config/nav";
-import { cn } from "@/lib/cn";
 
 import { GitHubLink } from "./github-link";
+import { SiteNavMenuItem } from "./site-nav-menu-item";
 
 export const SiteNav = () => {
   return (
@@ -22,13 +22,7 @@ export const SiteNav = () => {
       <div className="dsy-navbar-center">
         <ul className="dsy-menu dsy-menu-horizontal gap-2">
           {nav.items.map((item) => {
-            return (
-              <li key={item.title}>
-                <Link activeProps={{ className: "dsy-active" }} to={item.to}>
-                  <span className={cn(item.icon, "h-5 w-5")} /> {item.title}
-                </Link>
-              </li>
-            );
+            return <SiteNavMenuItem item={item} key={item.title} />;
           })}
         </ul>
       </div>

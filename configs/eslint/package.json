@@ -9,7 +9,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@jimmy.codes/eslint-config": "3.28.0"
+    "@jimmy.codes/eslint-config": "3.28.2"
   },
   "devDependencies": {
     "@popcorn.fyi/ts": "workspace:*"
