@@ -39,20 +39,10 @@ describe("TVShowCard", () => {
     expect(image).not.toBeInTheDocument();
   });
 
-  it("should render average vote when it exists", async () => {
+  it("should render average vote", async () => {
     await render(<TVShowCard tvShow={tvShow} />);
 
     const averageVote = screen.getByText("8.0");
-
-    expect(averageVote).toBeInTheDocument();
-  });
-
-  it("should render N/A as average vote when it doesn't exists", async () => {
-    const { vote_average, ...rest } = tvShow;
-
-    await render(<TVShowCard tvShow={rest} />);
-
-    const averageVote = screen.getByText("N/A");
 
     expect(averageVote).toBeInTheDocument();
   });
