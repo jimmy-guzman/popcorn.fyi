@@ -12,6 +12,22 @@ export const trendingMovieFn = createServerFn({ method: "GET" }).handler(
   },
 );
 
+export const popularMoviesFn = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const { data } = await client.GET("/3/movie/popular");
+
+    return data;
+  },
+);
+
+export const topRatedMoviesFn = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const { data } = await client.GET("/3/movie/top_rated");
+
+    return data;
+  },
+);
+
 export const trendingTvFn = createServerFn({ method: "GET" }).handler(
   async () => {
     const { data } = await client.GET("/3/trending/tv/{time_window}", {

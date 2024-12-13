@@ -11,11 +11,11 @@ export const Route = createFileRoute("/_layout/tv-shows/top-rated")({
 });
 
 function RouteComponent() {
-  const getPopularTv = useServerFn(topRatedTvFn);
+  const getTopRatedTvShows = useServerFn(topRatedTvFn);
 
   const { data: tvShows } = useQuery({
     queryFn: () => {
-      return getPopularTv();
+      return getTopRatedTvShows();
     },
     queryKey: ["tv/top-rated"],
   });

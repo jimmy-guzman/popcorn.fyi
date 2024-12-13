@@ -1,35 +1,35 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { formatDateAsYearOnly } from "@popcorn.fyi/utils";
 
-interface TVShowCardProps {
-  tvShow: {
-    first_air_date?: string;
-    name?: string;
+interface MovieCardProps {
+  movie: {
     poster_path?: string;
+    release_date?: string;
+    title?: string;
     vote_average: number;
   };
 }
 
-export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
+export const MovieCard = ({ movie }: MovieCardProps) => {
   return (
     <div className="dsy-card bg-base-100 shadow-xl">
-      {tvShow.poster_path ? (
+      {movie.poster_path ? (
         <figure>
           <img
-            alt={tvShow.name}
-            src={tmdbImageUrl(tvShow.poster_path, "w500")}
+            alt={movie.title}
+            src={tmdbImageUrl(movie.poster_path, "w500")}
           />
         </figure>
       ) : null}
       <div className="dsy-card-body">
         <div className="flex">
           <div className="dsy-badge dsy-badge-accent">
-            {tvShow.vote_average.toFixed(1)}
+            {movie.vote_average.toFixed(1)}
           </div>
         </div>
-        <h2 className="dsy-card-title">{tvShow.name}</h2>
-        {tvShow.first_air_date ? (
-          <p>{formatDateAsYearOnly(tvShow.first_air_date)}</p>
+        <h2 className="dsy-card-title">{movie.title}</h2>
+        {movie.release_date ? (
+          <p>{formatDateAsYearOnly(movie.release_date)}</p>
         ) : null}
         <div className="dsy-card-actions justify-end">
           <button

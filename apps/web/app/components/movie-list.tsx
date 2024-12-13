@@ -1,22 +1,18 @@
-import { TVShowCard } from "./tv-show-card";
+import { MovieCard } from "./movie-card";
 
-interface TVShowListProps {
+interface MovieListProps {
   description: string;
-  title: string;
-  tvShows: {
-    first_air_date?: string;
+  movies: {
     id: number;
-    name?: string;
     poster_path?: string;
+    release_date?: string;
+    title?: string;
     vote_average: number;
   }[];
+  title: string;
 }
 
-export const TVShowList = ({
-  description,
-  title,
-  tvShows,
-}: TVShowListProps) => {
+export const MovieList = ({ description, movies, title }: MovieListProps) => {
   return (
     <div className="grid grid-cols-1 gap-8">
       <div className="prose dsy-prose">
@@ -24,8 +20,8 @@ export const TVShowList = ({
         <p>{description}</p>
       </div>
       <div className="grid min-h-[calc(100vh-8rem)] grid-cols-5 place-content-center content-center justify-center gap-4">
-        {tvShows.map((tvShow) => {
-          return <TVShowCard key={tvShow.id} tvShow={tvShow} />;
+        {movies.map((movie) => {
+          return <MovieCard key={movie.id} movie={movie} />;
         })}
       </div>
     </div>
