@@ -29,3 +29,11 @@ export const popularTvFn = createServerFn({ method: "GET" }).handler(
     return data;
   },
 );
+
+export const topRatedTvFn = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const { data } = await client.GET("/3/tv/top_rated");
+
+    return data;
+  },
+);
