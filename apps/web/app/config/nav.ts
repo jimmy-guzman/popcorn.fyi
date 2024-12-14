@@ -63,6 +63,18 @@ export const nav = {
     },
     {
       icon: "icon-[lucide--trending-up]",
+      items: [
+        {
+          icon: "icon-[lucide--clapperboard]",
+          title: "Movies",
+          to: "/trending/movies",
+        },
+        {
+          icon: "icon-[lucide--tv]",
+          title: "TV Shows",
+          to: "/trending/tv-shows",
+        },
+      ],
       title: "Trending",
       to: "/trending",
     },
