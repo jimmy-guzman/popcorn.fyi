@@ -58,6 +58,13 @@ export const nav = {
     },
     {
       icon: "icon-[lucide--person-standing]",
+      items: [
+        {
+          icon: "icon-[lucide--heart]",
+          title: "Popular",
+          to: "/people/popular",
+        },
+      ],
       title: "People",
       to: "/people",
     },

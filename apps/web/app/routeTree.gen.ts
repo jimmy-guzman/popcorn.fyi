@@ -13,11 +13,11 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout.index'
-import { Route as LayoutPeopleImport } from './routes/_layout.people'
 import { Route as LayoutTvShowsTopRatedImport } from './routes/_layout.tv-shows.top-rated'
 import { Route as LayoutTvShowsPopularImport } from './routes/_layout.tv-shows.popular'
 import { Route as LayoutTrendingTvShowsImport } from './routes/_layout.trending.tv-shows'
 import { Route as LayoutTrendingMoviesImport } from './routes/_layout.trending.movies'
+import { Route as LayoutPeoplePopularImport } from './routes/_layout.people.popular'
 import { Route as LayoutMoviesTopRatedImport } from './routes/_layout.movies.top-rated'
 import { Route as LayoutMoviesPopularImport } from './routes/_layout.movies.popular'
 
@@ -31,12 +31,6 @@ const LayoutRoute = LayoutImport.update({
 const LayoutIndexRoute = LayoutIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => LayoutRoute,
-} as any)
-
-const LayoutPeopleRoute = LayoutPeopleImport.update({
-  id: '/people',
-  path: '/people',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -64,6 +58,12 @@ const LayoutTrendingMoviesRoute = LayoutTrendingMoviesImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
+const LayoutPeoplePopularRoute = LayoutPeoplePopularImport.update({
+  id: '/people/popular',
+  path: '/people/popular',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
 const LayoutMoviesTopRatedRoute = LayoutMoviesTopRatedImport.update({
   id: '/movies/top-rated',
   path: '/movies/top-rated',
@@ -87,13 +87,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
-    '/_layout/people': {
-      id: '/_layout/people'
-      path: '/people'
-      fullPath: '/people'
-      preLoaderRoute: typeof LayoutPeopleImport
-      parentRoute: typeof LayoutImport
-    }
     '/_layout/': {
       id: '/_layout/'
       path: '/'
@@ -113,6 +106,13 @@ declare module '@tanstack/react-router' {
       path: '/movies/top-rated'
       fullPath: '/movies/top-rated'
       preLoaderRoute: typeof LayoutMoviesTopRatedImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/people/popular': {
+      id: '/_layout/people/popular'
+      path: '/people/popular'
+      fullPath: '/people/popular'
+      preLoaderRoute: typeof LayoutPeoplePopularImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/trending/movies': {
@@ -149,10 +149,10 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface LayoutRouteChildren {
-  LayoutPeopleRoute: typeof LayoutPeopleRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutMoviesPopularRoute: typeof LayoutMoviesPopularRoute
   LayoutMoviesTopRatedRoute: typeof LayoutMoviesTopRatedRoute
+  LayoutPeoplePopularRoute: typeof LayoutPeoplePopularRoute
   LayoutTrendingMoviesRoute: typeof LayoutTrendingMoviesRoute
   LayoutTrendingTvShowsRoute: typeof LayoutTrendingTvShowsRoute
   LayoutTvShowsPopularRoute: typeof LayoutTvShowsPopularRoute
@@ -160,10 +160,10 @@ interface LayoutRouteChildren {
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
-  LayoutPeopleRoute: LayoutPeopleRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutMoviesPopularRoute: LayoutMoviesPopularRoute,
   LayoutMoviesTopRatedRoute: LayoutMoviesTopRatedRoute,
+  LayoutPeoplePopularRoute: LayoutPeoplePopularRoute,
   LayoutTrendingMoviesRoute: LayoutTrendingMoviesRoute,
   LayoutTrendingTvShowsRoute: LayoutTrendingTvShowsRoute,
   LayoutTvShowsPopularRoute: LayoutTvShowsPopularRoute,
@@ -175,10 +175,10 @@ const LayoutRouteWithChildren =
 
 export interface FileRoutesByFullPath {
   '': typeof LayoutRouteWithChildren
-  '/people': typeof LayoutPeopleRoute
   '/': typeof LayoutIndexRoute
   '/movies/popular': typeof LayoutMoviesPopularRoute
   '/movies/top-rated': typeof LayoutMoviesTopRatedRoute
+  '/people/popular': typeof LayoutPeoplePopularRoute
   '/trending/movies': typeof LayoutTrendingMoviesRoute
   '/trending/tv-shows': typeof LayoutTrendingTvShowsRoute
   '/tv-shows/popular': typeof LayoutTvShowsPopularRoute
@@ -186,10 +186,10 @@ export interface FileRoutesByFullPath {
 }
 
 export interface FileRoutesByTo {
-  '/people': typeof LayoutPeopleRoute
   '/': typeof LayoutIndexRoute
   '/movies/popular': typeof LayoutMoviesPopularRoute
   '/movies/top-rated': typeof LayoutMoviesTopRatedRoute
+  '/people/popular': typeof LayoutPeoplePopularRoute
   '/trending/movies': typeof LayoutTrendingMoviesRoute
   '/trending/tv-shows': typeof LayoutTrendingTvShowsRoute
   '/tv-shows/popular': typeof LayoutTvShowsPopularRoute
@@ -199,10 +199,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/_layout': typeof LayoutRouteWithChildren
-  '/_layout/people': typeof LayoutPeopleRoute
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/movies/popular': typeof LayoutMoviesPopularRoute
   '/_layout/movies/top-rated': typeof LayoutMoviesTopRatedRoute
+  '/_layout/people/popular': typeof LayoutPeoplePopularRoute
   '/_layout/trending/movies': typeof LayoutTrendingMoviesRoute
   '/_layout/trending/tv-shows': typeof LayoutTrendingTvShowsRoute
   '/_layout/tv-shows/popular': typeof LayoutTvShowsPopularRoute
@@ -213,20 +213,20 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | ''
-    | '/people'
     | '/'
     | '/movies/popular'
     | '/movies/top-rated'
+    | '/people/popular'
     | '/trending/movies'
     | '/trending/tv-shows'
     | '/tv-shows/popular'
     | '/tv-shows/top-rated'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/people'
     | '/'
     | '/movies/popular'
     | '/movies/top-rated'
+    | '/people/popular'
     | '/trending/movies'
     | '/trending/tv-shows'
     | '/tv-shows/popular'
@@ -234,10 +234,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/_layout'
-    | '/_layout/people'
     | '/_layout/'
     | '/_layout/movies/popular'
     | '/_layout/movies/top-rated'
+    | '/_layout/people/popular'
     | '/_layout/trending/movies'
     | '/_layout/trending/tv-shows'
     | '/_layout/tv-shows/popular'
@@ -269,19 +269,15 @@ export const routeTree = rootRoute
     "/_layout": {
       "filePath": "_layout.tsx",
       "children": [
-        "/_layout/people",
         "/_layout/",
         "/_layout/movies/popular",
         "/_layout/movies/top-rated",
+        "/_layout/people/popular",
         "/_layout/trending/movies",
         "/_layout/trending/tv-shows",
         "/_layout/tv-shows/popular",
         "/_layout/tv-shows/top-rated"
       ]
-    },
-    "/_layout/people": {
-      "filePath": "_layout.people.tsx",
-      "parent": "/_layout"
     },
     "/_layout/": {
       "filePath": "_layout.index.tsx",
@@ -293,6 +289,10 @@ export const routeTree = rootRoute
     },
     "/_layout/movies/top-rated": {
       "filePath": "_layout.movies.top-rated.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/people/popular": {
+      "filePath": "_layout.people.popular.tsx",
       "parent": "/_layout"
     },
     "/_layout/trending/movies": {
