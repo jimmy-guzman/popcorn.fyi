@@ -6,7 +6,7 @@ export interface SingleNavItem {
   to: keyof FileRoutesByTo;
 }
 
-interface MultipleNavItem {
+export interface MultipleNavItem {
   icon: string;
   items: SingleNavItem[];
   title: string;
