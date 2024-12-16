@@ -28,17 +28,11 @@ function Home() {
   const movie = movies?.results?.[random(0, movies.results.length)];
   const tvShow = tvShows?.results?.[random(0, tvShows.results.length)];
 
-  return (
-    <div className="grid min-h-[calc(100vh-8rem)] place-content-center">
-      <div className="grid grid-cols-1 gap-8">
-        {movie && random(0, 1) === 0 ? (
-          <MovieHero movie={movie} />
-        ) : tvShow ? (
-          <TvShowHero tvShow={tvShow} />
-        ) : null}
-      </div>
-    </div>
-  );
+  return movie && random(0, 1) === 0 ? (
+    <MovieHero movie={movie} />
+  ) : tvShow ? (
+    <TvShowHero tvShow={tvShow} />
+  ) : null;
 }
 
 export const Route = createFileRoute("/_layout/")({
