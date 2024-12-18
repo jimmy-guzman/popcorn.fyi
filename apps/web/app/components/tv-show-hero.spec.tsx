@@ -6,6 +6,7 @@ describe("TVShowHero", () => {
   it("should render image when it exists", async () => {
     const tvShow = {
       backdrop_path: "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
+      id: 1,
       name: "Venom: The Last Dance",
       overview:
         "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",
@@ -20,6 +21,7 @@ describe("TVShowHero", () => {
 
   it("should render NOT image when it doesn't exists", async () => {
     const tvShow = {
+      id: 1,
       name: "Venom: The Last Dance",
       overview:
         "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",
@@ -35,6 +37,7 @@ describe("TVShowHero", () => {
   it("should render name", async () => {
     const tvShow = {
       backdrop_path: "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
+      id: 1,
       name: "Venom: The Last Dance",
       overview:
         "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",
@@ -53,6 +56,7 @@ describe("TVShowHero", () => {
   it("should render overview", async () => {
     const tvShow = {
       backdrop_path: "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
+      id: 1,
       name: "Venom: The Last Dance",
       overview:
         "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",

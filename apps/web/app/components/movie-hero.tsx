@@ -1,8 +1,10 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { Link } from "@tanstack/react-router";
 
 interface MovieHeroProps {
   movie: {
     backdrop_path?: string;
+    id: number;
     overview?: string;
     title?: string;
   };
@@ -29,9 +31,13 @@ export const MovieHero = ({ movie }: MovieHeroProps) => {
           </div>
           <h1 className="mb-5 text-8xl font-bold">{movie.title}</h1>
           <p className="mb-5">{movie.overview}</p>
-          <button className="dsy-btn dsy-btn-primary" disabled type="button">
+          <Link
+            className="dsy-btn dsy-btn-primary"
+            params={{ id: movie.id.toString() }}
+            to="/movies/$id"
+          >
             Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
