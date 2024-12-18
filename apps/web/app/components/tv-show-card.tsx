@@ -1,9 +1,13 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { formatDateAsYearOnly } from "@popcorn.fyi/utils";
+import { Link } from "@tanstack/react-router";
+
+import { MediaRating } from "./media-rating";
 
 interface TVShowCardProps {
   tvShow: {
     first_air_date?: string;
+    id: number;
     name?: string;
     poster_path?: string;
     vote_average: number;
@@ -23,21 +27,20 @@ export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
       ) : null}
       <div className="dsy-card-body">
         <div className="flex">
-          <div className="dsy-badge dsy-badge-accent">
-            {tvShow.vote_average.toFixed(1)}
-          </div>
+          <MediaRating average={tvShow.vote_average} />
         </div>
         <h2 className="dsy-card-title">{tvShow.name}</h2>
         {tvShow.first_air_date ? (
           <p>{formatDateAsYearOnly(tvShow.first_air_date)}</p>
         ) : null}
         <div className="dsy-card-actions justify-end">
-          <button
+          <Link
             className="dsy-btn dsy-btn-secondary dsy-btn-sm"
-            type="button"
+            params={{ id: tvShow.id.toString() }}
+            to="/tv-shows/$id"
           >
             Details <span className="icon-[lucide--arrow-right] h-4 w-4" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>

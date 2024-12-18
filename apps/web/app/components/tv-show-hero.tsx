@@ -1,8 +1,10 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { Link } from "@tanstack/react-router";
 
 interface TVShowHeroProps {
   tvShow: {
     backdrop_path?: string;
+    id: number;
     name?: string;
     overview?: string;
   };
@@ -29,9 +31,13 @@ export const TvShowHero = ({ tvShow }: TVShowHeroProps) => {
           </div>
           <h1 className="mb-5 text-8xl font-bold">{tvShow.name}</h1>
           <p className="mb-5">{tvShow.overview}</p>
-          <button className="dsy-btn dsy-btn-primary" disabled type="button">
+          <Link
+            className="dsy-btn dsy-btn-primary"
+            params={{ id: tvShow.id.toString() }}
+            to="/tv-shows/$id"
+          >
             Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
