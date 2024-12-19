@@ -23,7 +23,7 @@ export const TVShowList = ({
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
-      <div className="grid min-h-[calc(100vh-8rem)] grid-cols-5 place-content-center content-center justify-center gap-4">
+      <div className="grid min-h-[calc(100vh-8rem)] place-content-center content-center justify-center md:grid-cols-2 md:gap-2 lg:grid-cols-5 lg:gap-4">
         {tvShows.map((tvShow) => {
           return <TVShowCard key={tvShow.id} tvShow={tvShow} />;
         })}
