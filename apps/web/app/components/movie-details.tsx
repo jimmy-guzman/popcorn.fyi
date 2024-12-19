@@ -20,7 +20,7 @@ interface MovieDetailsProps {
 export const MovieDetails = ({ movie }: MovieDetailsProps) => {
   return (
     <div className="flex min-h-screen flex-col gap-4 p-8">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto hidden max-w-7xl md:block">
         {movie.backdrop_path ? (
           <img
             alt={movie.title}
@@ -34,7 +34,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           {movie.poster_path ? (
             <img
               alt={movie.title}
-              className="max-w-xl rounded-lg shadow-2xl"
+              className="max-w-xl rounded-lg shadow-2xl md:hidden lg:block"
               src={tmdbImageUrl(movie.poster_path, "w300")}
             />
           ) : null}
