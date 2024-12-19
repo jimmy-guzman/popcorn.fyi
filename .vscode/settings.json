@@ -14,9 +14,11 @@
     "lefthook",
     "nvmrc",
     "TMDB",
+    "TURSO",
     "valibot",
     "vercel",
-    "vinxi"
+    "vinxi",
+    "VITE"
   ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
