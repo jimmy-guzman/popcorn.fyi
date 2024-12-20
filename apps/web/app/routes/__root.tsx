@@ -11,6 +11,8 @@ import {
 import { Meta, Scripts } from "@tanstack/start";
 
 import { ThemeScript } from "@/components/theme-script";
+import { site } from "@/config/site";
+import { seo } from "@/lib/seo";
 
 import rootCSS from "./__root.css?url";
 
@@ -55,9 +57,7 @@ export const Route = createRootRouteWithContext<{
           content: "width=device-width, initial-scale=1",
           name: "viewport",
         },
-        {
-          title: "Popcorn FYI",
-        },
+        ...seo(site),
       ],
     };
   },

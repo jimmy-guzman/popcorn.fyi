@@ -4,10 +4,19 @@ import { useServerFn } from "@tanstack/start";
 
 import { MovieList } from "@/components/movie-list";
 import { topRatedMovies } from "@/config/lists";
+import { site } from "@/config/site";
+import { seo } from "@/lib/seo";
 import { topRatedMoviesFn } from "@/server/fn";
 
 export const Route = createFileRoute("/_layout/movies/top-rated")({
   component: RouteComponent,
+  head: () => {
+    return {
+      meta: seo({
+        title: `${topRatedMovies.title} | ${site.title}`,
+      }),
+    };
+  },
 });
 
 function RouteComponent() {
