@@ -4,10 +4,19 @@ import { useServerFn } from "@tanstack/start";
 
 import { TVShowList } from "@/components/tv-show-list";
 import { popularTVShows } from "@/config/lists";
+import { site } from "@/config/site";
+import { seo } from "@/lib/seo";
 import { popularTvFn } from "@/server/fn";
 
 export const Route = createFileRoute("/_layout/tv-shows/popular")({
   component: RouteComponent,
+  head: () => {
+    return {
+      meta: seo({
+        title: `${popularTVShows.title} | ${site.title}`,
+      }),
+    };
+  },
 });
 
 function RouteComponent() {

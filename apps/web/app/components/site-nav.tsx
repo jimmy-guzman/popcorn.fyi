@@ -7,6 +7,7 @@ import {
 import { Link } from "@tanstack/react-router";
 
 import { nav } from "@/config/nav";
+import { site } from "@/config/site";
 
 import { GitHubLink } from "./github-link";
 import { SiteNavMenuItem } from "./site-nav-menu-item";
@@ -18,7 +19,7 @@ export const SiteNav = () => {
       <div className="dsy-navbar-start">
         <SiteNavMobileMenu items={nav.items} />
         <Link className="dsy-btn dsy-btn-ghost text-lg" to="/">
-          <span className="font-bold">🍿 popcorn.fyi</span>
+          <span className="font-bold">🍿 {site.title}</span>
         </Link>
       </div>
       <div className="dsy-navbar-center hidden lg:flex">
