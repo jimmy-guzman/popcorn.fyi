@@ -29,7 +29,9 @@ export const TvShowHero = ({ tvShow }: TVShowHeroProps) => {
             <span className="dsy-badge dsy-badge-accent">Trending</span>
             <span className="dsy-badge dsy-badge-accent">TV Show</span>
           </div>
-          <h1 className="mb-5 text-8xl font-bold">{tvShow.name}</h1>
+          <h1 className="mb-5 text-pretty text-6xl font-bold lg:text-8xl">
+            {tvShow.name}
+          </h1>
           <p className="mb-5">{tvShow.overview}</p>
           <Link
             className="dsy-btn dsy-btn-primary"

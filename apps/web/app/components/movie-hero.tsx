@@ -29,7 +29,9 @@ export const MovieHero = ({ movie }: MovieHeroProps) => {
             <span className="dsy-badge dsy-badge-accent">Trending</span>
             <span className="dsy-badge dsy-badge-accent">Movie</span>
           </div>
-          <h1 className="mb-5 text-8xl font-bold">{movie.title}</h1>
+          <h1 className="mb-5 text-pretty text-6xl font-bold lg:text-8xl">
+            {movie.title}
+          </h1>
           <p className="mb-5">{movie.overview}</p>
           <Link
             className="dsy-btn dsy-btn-primary"
