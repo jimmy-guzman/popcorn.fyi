@@ -1,4 +1,4 @@
-import { popularMovies } from "@/config/lists";
+import { site } from "@/config/site";
 import { render, screen } from "@/testing/utils";
 
 import { MovieList } from "./movie-list";
@@ -25,15 +25,15 @@ describe("MovieList", () => {
   it("should render with title", async () => {
     await render(
       <MovieList
-        description={popularMovies.description}
+        description={site.pages.popularMovies.description}
         movies={[]}
-        title={popularMovies.title}
+        title={site.pages.popularMovies.title}
       />,
     );
 
     const title = screen.getByRole("heading", {
       level: 1,
-      name: popularMovies.title,
+      name: site.pages.popularMovies.title,
     });
 
     expect(title).toBeInTheDocument();
@@ -42,13 +42,13 @@ describe("MovieList", () => {
   it("should render with description", async () => {
     await render(
       <MovieList
-        description={popularMovies.description}
+        description={site.pages.popularMovies.description}
         movies={[]}
-        title={popularMovies.title}
+        title={site.pages.popularMovies.title}
       />,
     );
 
-    const description = screen.getByText(popularMovies.description);
+    const description = screen.getByText(site.pages.popularMovies.description);
 
     expect(description).toBeInTheDocument();
   });
@@ -56,9 +56,9 @@ describe("MovieList", () => {
   it("should render with movie card", async () => {
     await render(
       <MovieList
-        description={popularMovies.description}
+        description={site.pages.popularMovies.description}
         movies={[movie]}
-        title={popularMovies.title}
+        title={site.pages.popularMovies.title}
       />,
     );
 

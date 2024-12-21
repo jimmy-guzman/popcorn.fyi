@@ -1,4 +1,4 @@
-import { popularPeople } from "@/config/lists";
+import { site } from "@/config/site";
 import { render, screen } from "@/testing/utils";
 
 import { PeopleList } from "./people-list";
@@ -74,15 +74,15 @@ describe("PeopleList", () => {
   it("should render with title", async () => {
     await render(
       <PeopleList
-        description={popularPeople.description}
+        description={site.pages.popularPeople.description}
         people={[]}
-        title={popularPeople.title}
+        title={site.pages.popularPeople.title}
       />,
     );
 
     const title = screen.getByRole("heading", {
       level: 1,
-      name: popularPeople.title,
+      name: site.pages.popularPeople.title,
     });
 
     expect(title).toBeInTheDocument();
@@ -91,13 +91,13 @@ describe("PeopleList", () => {
   it("should render with description", async () => {
     await render(
       <PeopleList
-        description={popularPeople.description}
+        description={site.pages.popularPeople.description}
         people={[]}
-        title={popularPeople.title}
+        title={site.pages.popularPeople.title}
       />,
     );
 
-    const description = screen.getByText(popularPeople.description);
+    const description = screen.getByText(site.pages.popularPeople.description);
 
     expect(description).toBeInTheDocument();
   });
@@ -105,9 +105,9 @@ describe("PeopleList", () => {
   it("should render with movie card", async () => {
     await render(
       <PeopleList
-        description={popularPeople.description}
+        description={site.pages.popularPeople.description}
         people={[person]}
-        title={popularPeople.title}
+        title={site.pages.popularPeople.title}
       />,
     );
 

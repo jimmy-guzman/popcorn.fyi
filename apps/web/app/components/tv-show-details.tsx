@@ -39,7 +39,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
             />
           ) : null}
           <div>
-            <div className="flex justify-end gap-2">
+            <div className="flex flex-wrap gap-2 lg:flex-nowrap lg:justify-end">
               <MediaRating average={tvShow.vote_average} />
               <MediaGenres genres={tvShow.genres} />
             </div>

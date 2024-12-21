@@ -1,11 +1,14 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/start";
+import * as v from "valibot";
 
 import { client } from "@/lib/tmdb";
 
+const IdSchema = v.number();
+
 const tvDetailsFn = createServerFn({ method: "GET" })
-  .validator((data: number) => {
-    return data;
+  .validator((data: unknown) => {
+    return v.parse(IdSchema, data);
   })
   .handler(async (context) => {
     const {

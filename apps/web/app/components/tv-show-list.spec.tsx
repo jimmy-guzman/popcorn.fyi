@@ -1,4 +1,4 @@
-import { popularTVShows } from "@/config/lists";
+import { site } from "@/config/site";
 import { render, screen } from "@/testing/utils";
 
 import { TVShowList } from "./tv-show-list";
@@ -25,15 +25,15 @@ describe("TVShowList", () => {
   it("should render with title", async () => {
     await render(
       <TVShowList
-        description={popularTVShows.description}
-        title={popularTVShows.title}
+        description={site.pages.popularTVShows.description}
+        title={site.pages.popularTVShows.title}
         tvShows={[]}
       />,
     );
 
     const title = screen.getByRole("heading", {
       level: 1,
-      name: popularTVShows.title,
+      name: site.pages.popularTVShows.title,
     });
 
     expect(title).toBeInTheDocument();
@@ -42,13 +42,13 @@ describe("TVShowList", () => {
   it("should render with description", async () => {
     await render(
       <TVShowList
-        description={popularTVShows.description}
-        title={popularTVShows.title}
+        description={site.pages.popularTVShows.description}
+        title={site.pages.popularTVShows.title}
         tvShows={[]}
       />,
     );
 
-    const description = screen.getByText(popularTVShows.description);
+    const description = screen.getByText(site.pages.popularTVShows.description);
 
     expect(description).toBeInTheDocument();
   });
@@ -56,8 +56,8 @@ describe("TVShowList", () => {
   it("should render with tv show card", async () => {
     await render(
       <TVShowList
-        description={popularTVShows.description}
-        title={popularTVShows.title}
+        description={site.pages.popularTVShows.description}
+        title={site.pages.popularTVShows.title}
         tvShows={[tvShow]}
       />,
     );

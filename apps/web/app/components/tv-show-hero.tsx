@@ -26,8 +26,8 @@ export const TvShowHero = ({ tvShow }: TVShowHeroProps) => {
       <div className="dsy-hero-content text-neutral-content text-center">
         <div>
           <div className="flex justify-end gap-2">
-            <span className="dsy-badge dsy-badge-accent">Trending</span>
-            <span className="dsy-badge dsy-badge-accent">TV Show</span>
+            <span className="dsy-badge dsy-badge-neutral">Trending</span>
+            <span className="dsy-badge dsy-badge-neutral">TV Show</span>
           </div>
           <h1 className="mb-5 text-pretty text-6xl font-bold lg:text-8xl">
             {tvShow.name}
