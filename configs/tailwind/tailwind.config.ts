@@ -4,11 +4,13 @@ import { addDynamicIconSelectors } from "@iconify/tailwind";
 import typography from "@tailwindcss/typography";
 import daisyui from "daisyui";
 
+import { theme } from "./theme";
+
 const config = {
   daisyui: {
     logs: false,
     prefix: "dsy-",
-    themes: ["night"],
+    themes: [theme.dark, theme.light],
   },
   plugins: [typography, daisyui, addDynamicIconSelectors()],
   theme: {

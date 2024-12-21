@@ -2,7 +2,8 @@
   "name": "@popcorn.fyi/tailwind",
   "private": true,
   "exports": {
-    ".": "./tailwind.config.ts"
+    ".": "./tailwind.config.ts",
+    "./theme": "./theme.ts"
   },
   "scripts": {
     "lint": "eslint --flag unstable_ts_config --cache .",

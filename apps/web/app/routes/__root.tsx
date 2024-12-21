@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { ClerkProvider } from "@clerk/tanstack-start";
 import { dark } from "@clerk/themes";
+import { theme } from "@popcorn.fyi/tailwind/theme";
 import {
   createRootRouteWithContext,
   Outlet,
@@ -28,7 +29,7 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html data-theme="dark" lang="en" suppressHydrationWarning>
+    <html data-theme={theme.dark} lang="en" suppressHydrationWarning>
       <head>
         <Meta />
       </head>
