@@ -1,5 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/start";
+import * as v from "valibot";
 
 import { client } from "@/lib/tmdb";
 
@@ -33,9 +34,11 @@ export const moviesTopRatedOptions = () => {
   });
 };
 
+const IdSchema = v.number();
+
 const movieDetailsFn = createServerFn({ method: "GET" })
-  .validator((data: number) => {
-    return data;
+  .validator((data: unknown) => {
+    return v.parse(IdSchema, data);
   })
   .handler(async (context) => {
     const {

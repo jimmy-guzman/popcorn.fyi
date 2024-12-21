@@ -2,7 +2,6 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { TVShowList } from "@/components/tv-show-list";
-import { popularTVShows } from "@/config/lists";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 import { tvPopularOptions } from "@/lib/tv-shows";
@@ -12,7 +11,7 @@ export const Route = createFileRoute("/_layout/tv-shows/popular")({
   head: () => {
     return {
       meta: seo({
-        title: `${popularTVShows.title} | ${site.title}`,
+        title: `${site.pages.popularTVShows.title} | ${site.title}`,
       }),
     };
   },
@@ -27,8 +26,8 @@ function RouteComponent() {
   return (
     <div className="p-8">
       <TVShowList
-        description={popularTVShows.description}
-        title={popularTVShows.title}
+        description={site.pages.popularTVShows.description}
+        title={site.pages.popularTVShows.title}
         tvShows={tvShows?.results ?? []}
       />
     </div>

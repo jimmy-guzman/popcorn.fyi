@@ -26,8 +26,8 @@ export const MovieHero = ({ movie }: MovieHeroProps) => {
       <div className="dsy-hero-content text-neutral-content text-center">
         <div>
           <div className="flex justify-end gap-2">
-            <span className="dsy-badge dsy-badge-accent">Trending</span>
-            <span className="dsy-badge dsy-badge-accent">Movie</span>
+            <span className="dsy-badge dsy-badge-neutral">Trending</span>
+            <span className="dsy-badge dsy-badge-neutral">Movie</span>
           </div>
           <h1 className="mb-5 text-pretty text-6xl font-bold lg:text-8xl">
             {movie.title}
