@@ -30,7 +30,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
         ) : null}
       </div>
       <div className="dsy-hero">
-        <div className="dsy-hero-content flex-col lg:flex-row">
+        <div className="dsy-hero-content flex-col gap-4 lg:flex-row">
           {tvShow.poster_path ? (
             <img
               alt={tvShow.name}
@@ -38,7 +38,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
               src={tmdbImageUrl(tvShow.poster_path, "w300")}
             />
           ) : null}
-          <div>
+          <div className="flex flex-col gap-2">
             <div className="flex flex-wrap gap-2 lg:flex-nowrap lg:justify-end">
               <MediaRating average={tvShow.vote_average} />
               <MediaGenres genres={tvShow.genres} />
