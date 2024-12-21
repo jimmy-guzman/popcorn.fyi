@@ -1,12 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/start";
 
 import { PeopleList } from "@/components/people-list";
 import { popularPeople } from "@/config/lists";
 import { site } from "@/config/site";
+import { peoplePopularOptions } from "@/lib/people";
 import { seo } from "@/lib/seo";
-import { popularPeopleFn } from "@/server/fn";
 
 export const Route = createFileRoute("/_layout/people/popular")({
   component: RouteComponent,
@@ -17,17 +16,13 @@ export const Route = createFileRoute("/_layout/people/popular")({
       }),
     };
   },
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData(peoplePopularOptions());
+  },
 });
 
 function RouteComponent() {
-  const getPopularPeople = useServerFn(popularPeopleFn);
-
-  const { data: people } = useQuery({
-    queryFn: () => {
-      return getPopularPeople();
-    },
-    queryKey: ["people/popular"],
-  });
+  const { data: people } = useSuspenseQuery(peoplePopularOptions());
 
   return (
     <div className="p-8">

@@ -1,12 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/start";
 
 import { MovieList } from "@/components/movie-list";
 import { popularMovies } from "@/config/lists";
 import { site } from "@/config/site";
+import { moviesPopularOptions } from "@/lib/movies";
 import { seo } from "@/lib/seo";
-import { popularMoviesFn } from "@/server/fn";
 
 export const Route = createFileRoute("/_layout/movies/popular")({
   component: RouteComponent,
@@ -17,17 +16,13 @@ export const Route = createFileRoute("/_layout/movies/popular")({
       }),
     };
   },
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData(moviesPopularOptions());
+  },
 });
 
 function RouteComponent() {
-  const getPopularMovies = useServerFn(popularMoviesFn);
-
-  const { data: movies } = useQuery({
-    queryFn: () => {
-      return getPopularMovies();
-    },
-    queryKey: ["movie/popular"],
-  });
+  const { data: movies } = useSuspenseQuery(moviesPopularOptions());
 
   return (
     <div className="p-8">

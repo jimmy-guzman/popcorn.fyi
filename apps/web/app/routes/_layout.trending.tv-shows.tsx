@@ -1,12 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/start";
 
 import { TVShowList } from "@/components/tv-show-list";
 import { trendingTVShows } from "@/config/lists";
 import { site } from "@/config/site";
+import { moviesTopRatedOptions } from "@/lib/movies";
 import { seo } from "@/lib/seo";
-import { trendingTvFn } from "@/server/fn";
+import { trendingTVOptions } from "@/lib/trending";
 
 export const Route = createFileRoute("/_layout/trending/tv-shows")({
   component: RouteComponent,
@@ -17,17 +17,13 @@ export const Route = createFileRoute("/_layout/trending/tv-shows")({
       }),
     };
   },
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData(trendingTVOptions());
+  },
 });
 
 function RouteComponent() {
-  const getTrendingTvShows = useServerFn(trendingTvFn);
-
-  const { data: tvShows } = useQuery({
-    queryFn: () => {
-      return getTrendingTvShows();
-    },
-    queryKey: ["trending/tv"],
-  });
+  const { data: tvShows } = useSuspenseQuery(moviesTopRatedOptions());
 
   return (
     <div className="p-8">

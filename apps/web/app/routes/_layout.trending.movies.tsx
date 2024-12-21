@@ -1,12 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/start";
 
 import { MovieList } from "@/components/movie-list";
 import { trendingMovies } from "@/config/lists";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
-import { trendingMovieFn } from "@/server/fn";
+import { trendingMoviesOptions } from "@/lib/trending";
 
 export const Route = createFileRoute("/_layout/trending/movies")({
   component: RouteComponent,
@@ -17,17 +16,13 @@ export const Route = createFileRoute("/_layout/trending/movies")({
       }),
     };
   },
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData(trendingMoviesOptions());
+  },
 });
 
 function RouteComponent() {
-  const getTrendingMovies = useServerFn(trendingMovieFn);
-
-  const { data: movies } = useQuery({
-    queryFn: () => {
-      return getTrendingMovies();
-    },
-    queryKey: ["trending/movie"],
-  });
+  const { data: movies } = useSuspenseQuery(trendingMoviesOptions());
 
   return (
     <div className="p-8">
