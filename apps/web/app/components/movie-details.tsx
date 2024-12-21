@@ -30,7 +30,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
         ) : null}
       </div>
       <div className="dsy-hero">
-        <div className="dsy-hero-content flex-col lg:flex-row">
+        <div className="dsy-hero-content flex-col gap-4 lg:flex-row">
           {movie.poster_path ? (
             <img
               alt={movie.title}
@@ -38,7 +38,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
               src={tmdbImageUrl(movie.poster_path, "w300")}
             />
           ) : null}
-          <div>
+          <div className="flex flex-col gap-2">
             <div className="flex flex-wrap gap-2 lg:flex-nowrap lg:justify-end">
               <MediaRating average={movie.vote_average} />
               <MediaGenres genres={movie.genres} />
