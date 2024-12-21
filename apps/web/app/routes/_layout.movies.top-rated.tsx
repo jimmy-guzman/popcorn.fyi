@@ -1,12 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/start";
 
 import { MovieList } from "@/components/movie-list";
 import { topRatedMovies } from "@/config/lists";
 import { site } from "@/config/site";
+import { moviesTopRatedOptions } from "@/lib/movies";
 import { seo } from "@/lib/seo";
-import { topRatedMoviesFn } from "@/server/fn";
 
 export const Route = createFileRoute("/_layout/movies/top-rated")({
   component: RouteComponent,
@@ -17,17 +16,13 @@ export const Route = createFileRoute("/_layout/movies/top-rated")({
       }),
     };
   },
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData(moviesTopRatedOptions());
+  },
 });
 
 function RouteComponent() {
-  const getTopRatedMovies = useServerFn(topRatedMoviesFn);
-
-  const { data: movies } = useQuery({
-    queryFn: () => {
-      return getTopRatedMovies();
-    },
-    queryKey: ["movie/top-rated"],
-  });
+  const { data: movies } = useSuspenseQuery(moviesTopRatedOptions());
 
   return (
     <div className="p-8">

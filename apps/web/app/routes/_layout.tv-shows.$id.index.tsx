@@ -1,9 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/start";
 
 import { MediaOverviewList } from "@/components/media-overview-list";
-import { tvDetailsFn } from "@/server/fn";
+import { tvDetailsOptions } from "@/lib/tv-shows";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id/")({
   component: RouteComponent,
@@ -11,20 +10,14 @@ export const Route = createFileRoute("/_layout/tv-shows/$id/")({
 
 function RouteComponent() {
   const { id } = Route.useParams();
-
-  const getTVDetails = useServerFn(tvDetailsFn);
-
-  const { data: tvShow } = useQuery({
-    queryFn: () => {
-      return getTVDetails({ data: Number.parseInt(id) });
-    },
-    queryKey: ["tv", id],
-  });
+  const { data: tvShow } = useSuspenseQuery(
+    tvDetailsOptions(Number.parseInt(id)),
+  );
 
   const overview = [
     {
       title: "Created By",
-      value: tvShow?.created_by?.length
+      value: tvShow.created_by?.length
         ? tvShow.created_by
             .map((creator) => {
               return creator.name;
@@ -34,35 +27,35 @@ function RouteComponent() {
     },
     {
       title: "Status",
-      value: tvShow?.status,
+      value: tvShow.status,
     },
     {
       title: "Original Name",
-      value: tvShow?.original_name,
+      value: tvShow.original_name,
     },
     {
       title: "First Air Date",
-      value: tvShow?.first_air_date,
+      value: tvShow.first_air_date,
     },
     {
       title: "Last Air Date",
-      value: tvShow?.last_air_date,
+      value: tvShow.last_air_date,
     },
     {
       title: "Seasons",
-      value: tvShow?.seasons?.length,
+      value: tvShow.seasons?.length,
     },
     {
       title: "Episodes",
-      value: tvShow?.number_of_episodes,
+      value: tvShow.number_of_episodes,
     },
     {
       title: "Language",
-      value: tvShow?.languages?.join(", "),
+      value: tvShow.languages?.join(", "),
     },
     {
       title: "Production Companies",
-      value: tvShow?.production_companies
+      value: tvShow.production_companies
         ?.map((productionCompany) => {
           return productionCompany.name;
         })
@@ -70,7 +63,7 @@ function RouteComponent() {
     },
     {
       title: "Networks",
-      value: tvShow?.networks
+      value: tvShow.networks
         ?.map((network) => {
           return network.name;
         })

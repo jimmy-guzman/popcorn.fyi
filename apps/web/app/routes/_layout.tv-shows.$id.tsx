@@ -1,25 +1,40 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/start";
 
 import { TVShowDetails } from "@/components/tv-show-details";
-import { tvDetailsFn } from "@/server/fn";
+import { site } from "@/config/site";
+import { seo } from "@/lib/seo";
+import { tvDetailsOptions } from "@/lib/tv-shows";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id")({
   component: RouteComponent,
+  head: ({ loaderData }) => {
+    return {
+      meta: loaderData
+        ? seo({
+            title:
+              // @ts-expect-error TODO: look into why title is undefined
+              `${loaderData.title} | TV Shows | ${site.title}`,
+          })
+        : undefined,
+    };
+  },
+  loader: async ({ context, params: { id } }) => {
+    const data = await context.queryClient.ensureQueryData(
+      tvDetailsOptions(Number.parseInt(id)),
+    );
+
+    return {
+      title: data.name,
+    };
+  },
 });
 
 function RouteComponent() {
   const { id } = Route.useParams();
+  const { data: tvShow } = useSuspenseQuery(
+    tvDetailsOptions(Number.parseInt(id)),
+  );
 
-  const getTVDetails = useServerFn(tvDetailsFn);
-
-  const { data: tvShow } = useQuery({
-    queryFn: () => {
-      return getTVDetails({ data: Number.parseInt(id) });
-    },
-    queryKey: ["tv", id],
-  });
-
-  return <div>{tvShow ? <TVShowDetails tvShow={tvShow} /> : null}</div>;
+  return <TVShowDetails tvShow={tvShow} />;
 }

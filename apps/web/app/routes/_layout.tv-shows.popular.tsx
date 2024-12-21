@@ -1,12 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/start";
 
 import { TVShowList } from "@/components/tv-show-list";
 import { popularTVShows } from "@/config/lists";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
-import { popularTvFn } from "@/server/fn";
+import { tvPopularOptions } from "@/lib/tv-shows";
 
 export const Route = createFileRoute("/_layout/tv-shows/popular")({
   component: RouteComponent,
@@ -17,17 +16,13 @@ export const Route = createFileRoute("/_layout/tv-shows/popular")({
       }),
     };
   },
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData(tvPopularOptions());
+  },
 });
 
 function RouteComponent() {
-  const getPopularTv = useServerFn(popularTvFn);
-
-  const { data: tvShows } = useQuery({
-    queryFn: () => {
-      return getPopularTv();
-    },
-    queryKey: ["tv/popular"],
-  });
+  const { data: tvShows } = useSuspenseQuery(tvPopularOptions());
 
   return (
     <div className="p-8">
