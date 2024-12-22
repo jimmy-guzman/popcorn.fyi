@@ -1,15 +1,11 @@
-const yearOnlyFormatter = new Intl.DateTimeFormat("en-US", { year: "numeric" });
-
-export const formatDateAsYearOnly = (date: string) => {
-  return yearOnlyFormatter.format(new Date(date));
-};
-
-const longMonthFormatter = new Intl.DateTimeFormat("en-US", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
+const dateFormatter = new Intl.DateTimeFormat(undefined, {
+  dateStyle: "medium",
 });
 
-export const formatDateAsLongMonth = (date: string) => {
-  return longMonthFormatter.format(new Date(date));
+export const date = (date: string) => {
+  return dateFormatter.format(new Date(date));
+};
+
+export const year = (date: string) => {
+  return new Date(date).getFullYear();
 };

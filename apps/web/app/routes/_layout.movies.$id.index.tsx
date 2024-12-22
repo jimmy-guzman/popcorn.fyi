@@ -1,4 +1,4 @@
-import { formatDateAsLongMonth } from "@popcorn.fyi/utils";
+import { date } from "@popcorn.fyi/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -18,9 +18,7 @@ function RouteComponent() {
   const overview = [
     {
       title: "Release Date",
-      value: movie.release_date
-        ? formatDateAsLongMonth(movie.release_date)
-        : "N/A",
+      value: movie.release_date ? date(movie.release_date) : "N/A",
     },
     {
       title: "Status",

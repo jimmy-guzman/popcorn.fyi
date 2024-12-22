@@ -1,5 +1,5 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
-import { formatDateAsYearOnly } from "@popcorn.fyi/utils";
+import { year } from "@popcorn.fyi/utils";
 import { Link } from "@tanstack/react-router";
 
 import { MediaRating } from "./media-rating";
@@ -30,9 +30,7 @@ export const MovieCard = ({ movie }: MovieCardProps) => {
           <MediaRating average={movie.vote_average} />
         </div>
         <h2 className="dsy-card-title">{movie.title}</h2>
-        {movie.release_date ? (
-          <p>{formatDateAsYearOnly(movie.release_date)}</p>
-        ) : null}
+        {movie.release_date ? <p>{year(movie.release_date)}</p> : "N/A"}
         <div className="dsy-card-actions justify-end">
           <Link
             className="dsy-btn dsy-btn-secondary dsy-btn-sm"

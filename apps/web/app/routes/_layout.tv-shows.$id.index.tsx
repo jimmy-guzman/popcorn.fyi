@@ -1,4 +1,4 @@
-import { formatDateAsLongMonth } from "@popcorn.fyi/utils";
+import { date } from "@popcorn.fyi/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -36,15 +36,11 @@ function RouteComponent() {
     },
     {
       title: "First Air Date",
-      value: tvShow.first_air_date
-        ? formatDateAsLongMonth(tvShow.first_air_date)
-        : "N/A",
+      value: tvShow.first_air_date ? date(tvShow.first_air_date) : "N/A",
     },
     {
       title: "Last Air Date",
-      value: tvShow.last_air_date
-        ? formatDateAsLongMonth(tvShow.last_air_date)
-        : "N/A",
+      value: tvShow.last_air_date ? date(tvShow.last_air_date) : "N/A",
     },
     {
       title: "Seasons",
