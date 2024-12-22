@@ -19,7 +19,7 @@ interface TVShowDetailsProps {
 
 export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
   return (
-    <div className="flex min-h-screen flex-col gap-4 p-8">
+    <div className="flex min-h-screen flex-col gap-4 md:p-4 lg:p-8">
       <div className="mx-auto hidden max-w-7xl md:block">
         {tvShow.backdrop_path ? (
           <img
@@ -34,7 +34,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
           {tvShow.poster_path ? (
             <img
               alt={tvShow.name}
-              className="max-w-xl rounded-lg shadow-2xl md:hidden lg:block"
+              className="w-full rounded-lg shadow-2xl md:hidden md:max-w-xl lg:block"
               src={tmdbImageUrl(tvShow.poster_path, "w300")}
             />
           ) : null}

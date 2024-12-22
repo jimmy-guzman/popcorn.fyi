@@ -1,2 +1,2 @@
-export { formatDateAsLongMonth, formatDateAsYearOnly } from "./date";
+export { date, year } from "./date";
 export { random } from "./random";

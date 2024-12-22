@@ -13,7 +13,7 @@ export const MediaOverviewList = ({
   )[];
 }) => {
   return (
-    <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+    <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:gap-8">
       {items.map((item) => {
         return (
           <div className="dsy-card" key={item.title}>
