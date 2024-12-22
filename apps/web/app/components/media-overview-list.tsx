@@ -1,17 +1,11 @@
-export const MediaOverviewList = ({
-  items,
-}: {
-  items: (
-    | {
-        title: string;
-        value: number | undefined;
-      }
-    | {
-        title: string;
-        value: string | undefined;
-      }
-  )[];
-}) => {
+interface MediaOverviewListProps {
+  items: {
+    title: string;
+    value: number | React.JSX.Element[] | string | undefined;
+  }[];
+}
+
+export const MediaOverviewList = ({ items }: MediaOverviewListProps) => {
   return (
     <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:gap-8">
       {items.map((item) => {

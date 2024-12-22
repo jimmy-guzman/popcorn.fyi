@@ -1,4 +1,5 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { Link } from "@tanstack/react-router";
 
 export const PersonCard = ({
   person,
@@ -23,6 +24,15 @@ export const PersonCard = ({
       <div className="dsy-card-body">
         <h2 className="dsy-card-title">{person.name}</h2>
         <p>Known for {person.known_for_department}</p>
+        <div className="dsy-card-actions justify-end">
+          <Link
+            className="dsy-btn dsy-btn-secondary dsy-btn-sm"
+            params={{ id: person.id.toString() }}
+            to="/people/$id"
+          >
+            Details <span className="icon-[lucide--arrow-right] h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </div>
   );
