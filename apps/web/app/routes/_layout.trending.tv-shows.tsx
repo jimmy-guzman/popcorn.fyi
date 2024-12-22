@@ -3,7 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { TVShowList } from "@/components/tv-show-list";
 import { site } from "@/config/site";
-import { moviesTopRatedOptions } from "@/lib/movies";
 import { seo } from "@/lib/seo";
 import { trendingTVOptions } from "@/lib/trending";
 
@@ -22,7 +21,7 @@ export const Route = createFileRoute("/_layout/trending/tv-shows")({
 });
 
 function RouteComponent() {
-  const { data: tvShows } = useSuspenseQuery(moviesTopRatedOptions());
+  const { data: tvShows } = useSuspenseQuery(trendingTVOptions());
 
   return (
     <div className="p-8">

@@ -34,7 +34,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           {movie.poster_path ? (
             <img
               alt={movie.title}
-              className="w-full rounded-lg shadow-2xl md:hidden md:max-w-xl lg:block"
+              className="w-full rounded-lg shadow-2xl md:hidden md:w-auto md:max-w-xl lg:block"
               src={tmdbImageUrl(movie.poster_path, "w300")}
             />
           ) : null}

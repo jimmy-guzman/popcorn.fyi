@@ -34,7 +34,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
           {tvShow.poster_path ? (
             <img
               alt={tvShow.name}
-              className="w-full rounded-lg shadow-2xl md:hidden md:max-w-xl lg:block"
+              className="w-full rounded-lg shadow-2xl md:hidden md:w-auto md:max-w-xl lg:block"
               src={tmdbImageUrl(tvShow.poster_path, "w300")}
             />
           ) : null}
