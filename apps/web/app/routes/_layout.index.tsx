@@ -14,17 +14,17 @@ export const Route = createFileRoute("/_layout/")({
       context.queryClient.ensureQueryData(trendingTVOptions()),
     ]);
 
-    return [random(0, 1), random(0, 24)];
+    return [random(0, 1), random(0, 19)];
   },
 });
 
 function Home() {
-  const [shouldShowMovie, randomTrending] = Route.useLoaderData();
+  const [shouldShowMovie, randomTrending = 0] = Route.useLoaderData();
   const { movie, tvShow } = useSuspenseQueries({
     combine: ([{ data: tvShows }, { data: movies }]) => {
       return {
-        movie: movies?.results?.[randomTrending ?? 0],
-        tvShow: tvShows?.results?.[randomTrending ?? 0],
+        movie: movies?.results?.[randomTrending],
+        tvShow: tvShows?.results?.[randomTrending],
       };
     },
     queries: [trendingTVOptions(), trendingMoviesOptions()],
