@@ -1,6 +1,6 @@
 import { date } from "@popcorn.fyi/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { MediaOverviewList } from "@/components/media-overview-list";
 import { tvDetailsOptions } from "@/lib/tv-shows";
@@ -19,11 +19,21 @@ function RouteComponent() {
     {
       title: "Created By",
       value: tvShow.created_by?.length
-        ? tvShow.created_by
-            .map((creator) => {
-              return creator.name;
-            })
-            .join(", ")
+        ? tvShow.created_by.map((creator, index, array) => {
+            return (
+              <>
+                <Link
+                  className="dsy-link"
+                  key={creator.id}
+                  params={{ id: creator.id.toString() }}
+                  to="/people/$id"
+                >
+                  {creator.name}
+                </Link>
+                {array.length - 1 === index ? " " : ", "}
+              </>
+            );
+          })
         : "N/A",
     },
     {
