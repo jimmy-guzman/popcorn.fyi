@@ -19,4 +19,37 @@ A [Turborepo](https://turbo.build/repo) of [apps](#-apps), [libs](#-libs) and [c
 - [@popcorn.fyi/ts](./configs/ts/README.md): a shareable [TypeScript](https://www.typescriptlang.org) configs.
 - [@popcorn.fyi/eslint](./configs/eslint/README.md): a shareable [ESLint](https://eslint.org) config powered by [@jimmy.codes/eslint-config](https://github.com/jimmy-guzman/eslint-config).
 
-## Getting Started
+## 🏁 Getting Started
+
+> [!NOTE]
+> This project uses [pnpm](https://pnpm.io) so please [install](https://pnpm.io/installation) it to get started.
+
+Then you can install dependencies, by running the following:
+
+```
+pnpm install
+```
+
+And to download new browsers for [Playwright](https://playwright.dev), run the following command:
+
+```
+pnpm --filter web exec playwright install
+```
+
+Then setup environment variables, by running the following:
+
+```
+cp apps/web/.env.example apps/web/.env
+```
+
+| Environment Variable         | Source                                                                  |
+| ---------------------------- | ----------------------------------------------------------------------- |
+| `TMDB_API_TOKEN`             | [TMDB API Keys](https://www.themoviedb.org/settings/api)                |
+| `VITE_CLERK_PUBLISHABLE_KEY` | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys) |
+| `CLERK_SECRET_KEY`           | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys) |
+
+Then you start running things, by running the following:
+
+```
+pnpm dev
+```
