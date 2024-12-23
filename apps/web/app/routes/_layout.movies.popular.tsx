@@ -1,10 +1,12 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { ListPagination } from "@/components/list-pagination";
 import { MovieList } from "@/components/movie-list";
 import { site } from "@/config/site";
 import { moviesPopularOptions } from "@/lib/movies";
 import { seo } from "@/lib/seo";
+import { PaginationSchema } from "@/schemas/lists";
 
 export const Route = createFileRoute("/_layout/movies/popular")({
   component: RouteComponent,
@@ -15,21 +17,29 @@ export const Route = createFileRoute("/_layout/movies/popular")({
       }),
     };
   },
-  loader: async ({ context }) => {
-    await context.queryClient.ensureQueryData(moviesPopularOptions());
+  loaderDeps: ({ search: { page } }) => {
+    return { page };
   },
+  loader: async ({ context, deps }) => {
+    await context.queryClient.ensureQueryData(moviesPopularOptions(deps));
+  },
+  validateSearch: PaginationSchema,
 });
 
 function RouteComponent() {
-  const { data: movies } = useSuspenseQuery(moviesPopularOptions());
+  const search = Route.useSearch();
+  const { data: movies } = useSuspenseQuery(moviesPopularOptions(search));
 
   return (
-    <div className="p-8">
+    <div className="flex flex-col gap-4 p-8">
       <MovieList
         description={site.pages.popularMovies.description}
         movies={movies?.results ?? []}
         title={site.pages.popularMovies.title}
       />
+      {movies ? (
+        <ListPagination page={movies.page} totalPages={movies.total_pages} />
+      ) : null}
     </div>
   );
 }
