@@ -8,17 +8,7 @@ import { tvDetailsOptions } from "@/lib/tv-shows";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id")({
   component: RouteComponent,
-  head: ({ loaderData }) => {
-    return {
-      meta: loaderData
-        ? seo({
-            title:
-              // @ts-expect-error TODO: look into why title is undefined
-              `${loaderData.title} | TV Shows | ${site.title}`,
-          })
-        : undefined,
-    };
-  },
+
   loader: async ({ context, params: { id } }) => {
     const data = await context.queryClient.ensureQueryData(
       tvDetailsOptions(Number.parseInt(id)),
@@ -26,6 +16,16 @@ export const Route = createFileRoute("/_layout/tv-shows/$id")({
 
     return {
       title: data.name,
+    };
+  },
+  // eslint-disable-next-line perfectionist/sort-objects -- head is not inferred correctly when above loader.
+  head: ({ loaderData }) => {
+    return {
+      meta: loaderData
+        ? seo({
+            title: `${loaderData.title} | TV Shows | ${site.title}`,
+          })
+        : undefined,
     };
   },
 });
