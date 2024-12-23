@@ -1,5 +1,5 @@
 interface MediaRatingProps {
-  average?: number;
+  average?: number | undefined;
 }
 
 export const MediaRating = ({ average }: MediaRatingProps) => {

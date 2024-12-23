@@ -10,7 +10,7 @@ interface TVShowCardProps {
     id: number;
     name?: string;
     poster_path?: string;
-    vote_average: number;
+    vote_average?: number;
   };
 }
 

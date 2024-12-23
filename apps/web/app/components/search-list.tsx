@@ -7,7 +7,7 @@ interface SearchListProps {
   results: {
     id: number;
     media_type?: string;
-    vote_average: number;
+    vote_average?: number;
   }[];
 }
 
@@ -27,7 +27,7 @@ export const SearchList = ({ query, results }: SearchListProps) => {
             return <TVShowCard key={result.id} tvShow={result} />;
           }
 
-          if (result.media_type === "people") {
+          if (result.media_type === "person") {
             return <PersonCard key={result.id} person={result} />;
           }
 
