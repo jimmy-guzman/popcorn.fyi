@@ -1,4 +1,4 @@
-import { date } from "@popcorn.fyi/utils";
+import { currency, date, time } from "@popcorn.fyi/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -30,15 +30,15 @@ function RouteComponent() {
     },
     {
       title: "Runtime",
-      value: movie.runtime,
+      value: time(movie.runtime * 60 * 1000),
     },
     {
       title: "Budget",
-      value: movie.budget,
+      value: currency(movie.budget),
     },
     {
       title: "Revenue",
-      value: movie.revenue,
+      value: currency(movie.revenue),
     },
     {
       title: "Language",
