@@ -1,10 +1,12 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { ListPagination } from "@/components/list-pagination";
 import { TVShowList } from "@/components/tv-show-list";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 import { tvPopularOptions } from "@/lib/tv-shows";
+import { PaginationSchema } from "@/schemas/lists";
 
 export const Route = createFileRoute("/_layout/tv-shows/popular")({
   component: RouteComponent,
@@ -15,21 +17,29 @@ export const Route = createFileRoute("/_layout/tv-shows/popular")({
       }),
     };
   },
-  loader: async ({ context }) => {
-    await context.queryClient.ensureQueryData(tvPopularOptions());
+  loaderDeps: ({ search: { page } }) => {
+    return { page };
   },
+  loader: async ({ context, deps }) => {
+    await context.queryClient.ensureQueryData(tvPopularOptions(deps));
+  },
+  validateSearch: PaginationSchema,
 });
 
 function RouteComponent() {
-  const { data: tvShows } = useSuspenseQuery(tvPopularOptions());
+  const search = Route.useSearch();
+  const { data: tvShows } = useSuspenseQuery(tvPopularOptions(search));
 
   return (
-    <div className="p-8">
+    <div className="flex flex-col gap-4 p-8">
       <TVShowList
         description={site.pages.popularTVShows.description}
         title={site.pages.popularTVShows.title}
         tvShows={tvShows?.results ?? []}
       />
+      {tvShows ? (
+        <ListPagination page={tvShows.page} totalPages={tvShows.total_pages} />
+      ) : null}
     </div>
   );
 }

@@ -17,7 +17,7 @@ export const Route = createFileRoute("/_layout/people/$id")({
       title: data.name,
     };
   },
-  // eslint-disable-next-line perfectionist/sort-objects -- head is not inferred correctly when above loader.
+
   head: ({ loaderData }) => {
     return {
       meta: loaderData

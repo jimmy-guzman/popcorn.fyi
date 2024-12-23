@@ -10,9 +10,9 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@iconify-json/devicon-plain": "1.2.8",
+    "@iconify-json/devicon-plain": "1.2.9",
     "@iconify-json/lucide": "1.2.20",
-    "@iconify-json/simple-icons": "1.2.16",
+    "@iconify-json/simple-icons": "1.2.17",
     "@iconify/tailwind": "1.2.0",
     "@tailwindcss/typography": "0.5.15",
     "daisyui": "4.12.22"

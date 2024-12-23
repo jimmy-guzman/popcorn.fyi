@@ -2,35 +2,54 @@ import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/start";
 import * as v from "valibot";
 
+import type { Pagination } from "@/schemas/lists";
+
 import { client } from "@/lib/tmdb";
+import { PaginationSchema } from "@/schemas/lists";
 
-const popularMoviesFn = createServerFn({ method: "GET" }).handler(async () => {
-  const { data } = await client.GET("/3/movie/popular");
+const popularMoviesFn = createServerFn({ method: "GET" })
+  .validator((data: unknown) => {
+    return v.parse(PaginationSchema, data);
+  })
+  .handler(async (context) => {
+    const { data } = await client.GET("/3/movie/popular", {
+      params: {
+        query: context.data,
+      },
+    });
 
-  return data;
-});
+    return data;
+  });
 
-export const moviesPopularOptions = () => {
+export const moviesPopularOptions = (query: Pagination) => {
   return queryOptions({
     queryFn: () => {
-      return popularMoviesFn();
+      return popularMoviesFn({ data: query });
     },
-    queryKey: ["movies", "popular"],
+    queryKey: ["movies", "popular", query],
   });
 };
 
-const topRatedMoviesFn = createServerFn({ method: "GET" }).handler(async () => {
-  const { data } = await client.GET("/3/movie/top_rated");
+const topRatedMoviesFn = createServerFn({ method: "GET" })
+  .validator((data: unknown) => {
+    return v.parse(PaginationSchema, data);
+  })
+  .handler(async (context) => {
+    const { data } = await client.GET("/3/movie/top_rated", {
+      params: {
+        query: context.data,
+      },
+    });
 
-  return data;
-});
+    return data;
+  });
 
-export const moviesTopRatedOptions = () => {
+export const moviesTopRatedOptions = (query: Pagination) => {
   return queryOptions({
     queryFn: () => {
-      return topRatedMoviesFn();
+      return topRatedMoviesFn({ data: query });
     },
-    queryKey: ["movies", "top-rated"],
+    queryKey: ["movies", "top-rated", query],
   });
 };
 

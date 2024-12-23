@@ -5,6 +5,7 @@ import * as v from "valibot";
 import { client } from "./tmdb";
 
 const SearchQuerySchema = v.object({
+  page: v.number(),
   q: v.string(),
 });
 
@@ -16,6 +17,7 @@ const searchFn = createServerFn({ method: "GET" })
     const { data } = await client.GET("/3/search/multi", {
       params: {
         query: {
+          page: context.data.page,
           query: context.data.q,
         },
       },
@@ -24,11 +26,13 @@ const searchFn = createServerFn({ method: "GET" })
     return data;
   });
 
-export const searchOptions = (q: string) => {
+export const searchOptions = (
+  search: v.InferInput<typeof SearchQuerySchema>,
+) => {
   return queryOptions({
     queryFn: () => {
-      return searchFn({ data: { q } });
+      return searchFn({ data: search });
     },
-    queryKey: ["search", q],
+    queryKey: ["search", search],
   });
 };
