@@ -1,7 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { PersonDetails } from "@/components/person-detail";
+import { PersonDetails } from "@/components/person-details";
 import { site } from "@/config/site";
 import { personDetailsOptions } from "@/lib/people";
 import { seo } from "@/lib/seo";

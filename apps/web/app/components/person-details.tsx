@@ -1,4 +1,4 @@
-import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { date } from "@popcorn.fyi/utils";
 import { Outlet } from "@tanstack/react-router";
 
@@ -16,18 +16,6 @@ interface PersonDetailsProps {
     profile_path?: string;
   };
 }
-
-const content = (string: string) => {
-  return string
-    .split("\n")
-    .filter((section) => {
-      return section !== "";
-    })
-    .map((section) => {
-      return `<p>${section}</p>`;
-    })
-    .join("");
-};
 
 export const PersonDetails = ({ person }: PersonDetailsProps) => {
   return (
@@ -54,14 +42,18 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
                 <p>
                   {date(person.birthday)} - {person.place_of_birth}
                 </p>
-              ) : null}
+              ) : (
+                <p>No birthday available.</p>
+              )}
               {person.biography ? (
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: content(person.biography),
+                    __html: tmdbContent(person.biography),
                   }}
                 />
-              ) : null}
+              ) : (
+                <p>No biography available.</p>
+              )}
             </div>
           </div>
         </div>

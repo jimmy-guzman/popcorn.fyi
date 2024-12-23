@@ -6,7 +6,9 @@
   },
   "scripts": {
     "build": "npx openapi-typescript https://developer.themoviedb.org/openapi/64542913e1f86100738e227f --root-types -o ./src/schema.gen.d.ts",
+    "coverage": "vitest run --coverage",
     "lint": "eslint --flag unstable_ts_config --cache .",
+    "test": "vitest",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -15,6 +17,8 @@
   "devDependencies": {
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
-    "openapi-typescript": "7.4.4"
+    "@vitest/coverage-v8": "3.0.0-beta.3",
+    "openapi-typescript": "7.4.4",
+    "vitest": "3.0.0-beta.3"
   }
 }

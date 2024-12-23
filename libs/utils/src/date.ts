@@ -5,7 +5,3 @@ const dateFormatter = new Intl.DateTimeFormat(undefined, {
 export const date = (date: string) => {
   return dateFormatter.format(new Date(date));
 };
-
-export const year = (date: string) => {
-  return new Date(date).getFullYear();
-};

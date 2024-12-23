@@ -1,4 +1,7 @@
 {
   "extends": "@popcorn.fyi/ts/lib.json",
+  "compilerOptions": {
+    "types": ["vitest/globals"]
+  },
   "include": ["*.config.ts", "src"]
 }
