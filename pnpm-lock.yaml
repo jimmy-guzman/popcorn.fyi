@@ -40,7 +40,7 @@ importers:
     dependencies:
       '@clerk/tanstack-start':
         specifier: 0.8.5
-        version: 0.8.5(@tanstack/react-router@1.92.1(@tanstack/router-generator@1.87.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@tanstack/start@1.92.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 0.8.5(@tanstack/react-router@1.92.1(@tanstack/router-generator@1.87.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@tanstack/start@1.92.2(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@clerk/themes':
         specifier: 2.2.3
         version: 2.2.3
@@ -60,8 +60,8 @@ importers:
         specifier: 1.92.1
         version: 1.92.1(@tanstack/react-query@5.62.8(react@18.3.1))(@tanstack/react-router@1.92.1(@tanstack/router-generator@1.87.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/start':
-        specifier: 1.92.1
-        version: 1.92.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1)
+        specifier: 1.92.2
+        version: 1.92.2(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -209,9 +209,15 @@ importers:
       '@popcorn.fyi/ts':
         specifier: workspace:*
         version: link:../../configs/ts
+      '@vitest/coverage-v8':
+        specifier: 3.0.0-beta.3
+        version: 3.0.0-beta.3(vitest@3.0.0-beta.3(@types/node@22.10.2)(happy-dom@15.11.7)(jiti@2.4.2)(msw@2.7.0(@types/node@22.10.2)(typescript@5.7.2))(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))
       openapi-typescript:
         specifier: 7.4.4
         version: 7.4.4(typescript@5.7.2)
+      vitest:
+        specifier: 3.0.0-beta.3
+        version: 3.0.0-beta.3(@types/node@22.10.2)(happy-dom@15.11.7)(jiti@2.4.2)(msw@2.7.0(@types/node@22.10.2)(typescript@5.7.2))(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1)
 
   libs/utils:
     devDependencies:
@@ -1472,8 +1478,8 @@ packages:
     resolution: {integrity: sha512-dwfMgjPBszAc8sE0qBGx4VW/cwQ849KX3XgSb/hlwv/z4k+Ll2UpIkUxcpCxMSox423ZvIc6N+rByIU0xmP1zA==}
     engines: {node: '>=12'}
 
-  '@tanstack/start@1.92.1':
-    resolution: {integrity: sha512-6OhS1l1Ie6F9eSOxxGOBCCMfm00NJRsr9IeNs+qBP5D70RS+CzB1crWLO7ypl3h8QxQr/FzDoaK2hQX8XuZ4YQ==}
+  '@tanstack/start@1.92.2':
+    resolution: {integrity: sha512-zdMGmWBp6Td2nckbDOfUiG+2UmA/eab6GLT1fwqRm0wEawZTnKEFsQlkx4SN3HcC2dyok/bFljVHFIInBRzJRw==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
@@ -5322,14 +5328,14 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@clerk/tanstack-start@0.8.5(@tanstack/react-router@1.92.1(@tanstack/router-generator@1.87.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@tanstack/start@1.92.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@clerk/tanstack-start@0.8.5(@tanstack/react-router@1.92.1(@tanstack/router-generator@1.87.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@tanstack/start@1.92.2(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@clerk/backend': 1.21.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@clerk/clerk-react': 5.21.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@clerk/shared': 2.20.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@clerk/types': 4.40.0
       '@tanstack/react-router': 1.92.1(@tanstack/router-generator@1.87.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@tanstack/start': 1.92.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1)
+      '@tanstack/start': 1.92.2(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       tslib: 2.4.1
@@ -6225,7 +6231,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@tanstack/start@1.92.1(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1)':
+  '@tanstack/start@1.92.2(@types/node@22.10.2)(ioredis@5.4.1)(jiti@2.4.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(terser@5.37.0)(tsx@4.19.2)(typescript@5.7.2)(vite@6.0.5(@types/node@22.10.2)(jiti@2.4.2)(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))(yaml@2.6.1)':
     dependencies:
       '@tanstack/react-cross-context': 1.87.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-router': 1.92.1(@tanstack/router-generator@1.87.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

@@ -2,11 +2,11 @@ export const site = {
   description: "Discover your favorite TV Shows and Movies.",
   pages: {
     popularMovies: {
-      description: "Discover tv shows with a collection of popular movies.",
+      description: "Discover movies with a collection of popular movies.",
       title: "Popular Movies",
     },
     popularPeople: {
-      description: "Discover tv shows with a collection of popular people.",
+      description: "Discover people with a collection of popular people.",
       title: "Popular People",
     },
     popularTVShows: {
@@ -14,7 +14,7 @@ export const site = {
       title: "Popular TV Shows",
     },
     topRatedMovies: {
-      description: "Discover tv shows with a collection of top rated movies.",
+      description: "Discover movies with a collection of top rated movies.",
       title: "Top Rated Movies",
     },
     topRatedTVShows: {
@@ -22,7 +22,7 @@ export const site = {
       title: "Top Rated TV Shows",
     },
     trendingMovies: {
-      description: "Discover tv shows with a collection of trending movies.",
+      description: "Discover movies with a collection of trending movies.",
       title: "Trending Movies",
     },
     trendingTVShows: {
