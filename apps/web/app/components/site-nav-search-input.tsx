@@ -1,9 +1,10 @@
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
 export const SiteNavSearchInput = () => {
-  const [term, setTerm] = useState("");
+  const search = useSearch({ strict: false });
+  const [term, setTerm] = useState(search.q ?? "");
   const [value] = useDebounce(term, 500);
   const navigate = useNavigate();
 
