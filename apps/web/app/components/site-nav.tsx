@@ -12,15 +12,23 @@ import { site } from "@/config/site";
 import { GitHubLink } from "./github-link";
 import { SiteNavMenuItem } from "./site-nav-menu-item";
 import { SiteNavMobileMenu } from "./site-nav-mobile-menu";
+import { SiteNavSearchInput } from "./site-nav-search-input";
 
 export const SiteNav = () => {
   return (
     <nav className="dsy-navbar static w-full lg:sticky lg:top-0 lg:z-30 lg:backdrop-blur">
       <div className="dsy-navbar-start">
         <SiteNavMobileMenu items={nav.items} />
-        <Link className="dsy-btn dsy-btn-ghost text-lg" to="/">
-          <span className="font-bold">🍿 {site.title}</span>
+        <Link
+          className="dsy-btn dsy-btn-ghost dsy-btn-circle lg:dsy-btn-square text-lg"
+          to="/"
+        >
+          <span>🍿</span>{" "}
+          <span className="hidden font-bold lg:block">{site.title}</span>
         </Link>
+        <div className="lg:hidden">
+          <SiteNavSearchInput />
+        </div>
       </div>
       <div className="dsy-navbar-center hidden lg:flex">
         <ul className="dsy-menu dsy-menu-horizontal gap-2">
@@ -30,6 +38,7 @@ export const SiteNav = () => {
         </ul>
       </div>
       <div className="dsy-navbar-end hidden lg:flex">
+        <SiteNavSearchInput />
         <GitHubLink />
         <SignedIn>
           <UserButton

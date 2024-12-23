@@ -8,17 +8,6 @@ import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/people/$id")({
   component: RouteComponent,
-  head: ({ loaderData }) => {
-    return {
-      meta: loaderData
-        ? seo({
-            title:
-              // @ts-expect-error TODO: look into why title is undefined
-              `${loaderData.title} | People | ${site.title}`,
-          })
-        : undefined,
-    };
-  },
   loader: async ({ context, params: { id } }) => {
     const data = await context.queryClient.ensureQueryData(
       personDetailsOptions(Number.parseInt(id)),
@@ -26,6 +15,16 @@ export const Route = createFileRoute("/_layout/people/$id")({
 
     return {
       title: data.name,
+    };
+  },
+  // eslint-disable-next-line perfectionist/sort-objects -- head is not inferred correctly when above loader.
+  head: ({ loaderData }) => {
+    return {
+      meta: loaderData
+        ? seo({
+            title: `${loaderData.title} | People | ${site.title}`,
+          })
+        : undefined,
     };
   },
 });
