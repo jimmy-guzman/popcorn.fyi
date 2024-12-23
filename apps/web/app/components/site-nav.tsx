@@ -19,10 +19,7 @@ export const SiteNav = () => {
     <nav className="dsy-navbar static w-full lg:sticky lg:top-0 lg:z-30 lg:backdrop-blur">
       <div className="dsy-navbar-start">
         <SiteNavMobileMenu items={nav.items} />
-        <Link
-          className="dsy-btn dsy-btn-ghost dsy-btn-circle lg:dsy-btn-square text-lg"
-          to="/"
-        >
+        <Link className="dsy-btn dsy-btn-ghost text-lg" to="/">
           <span>🍿</span>{" "}
           <span className="hidden font-bold lg:block">{site.title}</span>
         </Link>
