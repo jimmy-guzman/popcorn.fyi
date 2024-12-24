@@ -28,4 +28,10 @@ describe("composePageNumbers", () => {
 
     expect(pageNumbers).toStrictEqual([1, "ellipsis-before", 8, 9, 10]);
   });
+
+  it("should not show duplicate page numbers", () => {
+    const pageNumbers = composePageNumbers(1, 1);
+
+    expect(pageNumbers).toStrictEqual([1]);
+  });
 });
