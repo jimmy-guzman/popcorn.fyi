@@ -24,7 +24,7 @@ const SiteNavCollapsibleMenuItem = ({ item }: { item: MultipleNavItem }) => {
 
   return (
     <details onBlur={handleBlur} ref={ref}>
-      <summary className={cn(isActive && "dsy-btn-active")}>
+      <summary className={cn(isActive && "dsy-btn-active")} role="button">
         <span className={cn(item.icon, "h-5 w-5")} /> {item.title}
       </summary>
       <ul className="bg-base-100 rounded-t-none">
