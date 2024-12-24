@@ -1,12 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const baseURL = process.env["BASE_URL"] ?? "http://localhost:3000";
-const isCI = Boolean(process.env["CI"]);
-const vercelAutomationBypassSecret =
-  process.env["VERCEL_AUTOMATION_BYPASS_SECRET"];
-
 export default defineConfig({
-  forbidOnly: isCI,
+  forbidOnly: true,
   fullyParallel: true,
   projects: [
     {
@@ -18,13 +13,11 @@ export default defineConfig({
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
-
     {
       dependencies: ["setup"],
       name: "firefox",
       use: { ...devices["Desktop Firefox"] },
     },
-
     {
       dependencies: ["setup"],
       name: "webkit",
@@ -32,18 +25,9 @@ export default defineConfig({
     },
   ],
   reporter: "html",
-  retries: isCI ? 2 : 0,
   testDir: "./e2e",
-  use: {
-    baseURL,
-    trace: "on-first-retry",
-    ...(isCI &&
-      vercelAutomationBypassSecret && {
-        extraHTTPHeaders: {
-          "x-vercel-protection-bypass": vercelAutomationBypassSecret,
-          "x-vercel-set-bypass-cookie": "true",
-        },
-      }),
+  webServer: {
+    command: "pnpm build --preset node-server && pnpm preview",
+    port: 3000,
   },
-  ...(isCI && { workers: 1 }),
 });

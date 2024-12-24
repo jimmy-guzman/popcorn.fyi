@@ -20,6 +20,15 @@
       "dependsOn": ["^coverage"],
       "outputs": ["coverage/**"]
     },
+    "e2e": {
+      "passThroughEnv": [
+        "TMDB_API_TOKEN",
+        "CLERK_SECRET_KEY",
+        "COMPATIBILITY_DATE"
+      ],
+      "outputs": ["playwright-report/**", "test-results/**"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+    },
     "dev": {
       "cache": false,
       "persistent": true
