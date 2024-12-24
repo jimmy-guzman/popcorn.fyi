@@ -1,3 +1,4 @@
+import { ListContent } from "./list-content";
 import { PersonCard } from "./person-card";
 
 export const PeopleList = ({
@@ -20,11 +21,11 @@ export const PeopleList = ({
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
-      <div className="grid min-h-[calc(100vh-8rem)] place-content-center content-center justify-center md:grid-cols-2 md:gap-2 lg:grid-cols-5 lg:gap-4">
+      <ListContent>
         {people.map((person) => {
           return <PersonCard key={person.id} person={person} />;
         })}
-      </div>
+      </ListContent>
     </div>
   );
 };

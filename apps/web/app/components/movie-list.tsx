@@ -1,3 +1,4 @@
+import { ListContent } from "./list-content";
 import { MovieCard } from "./movie-card";
 
 interface MovieListProps {
@@ -19,11 +20,11 @@ export const MovieList = ({ description, movies, title }: MovieListProps) => {
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
-      <div className="grid min-h-[calc(100vh-8rem)] place-content-center content-center justify-center md:grid-cols-2 md:gap-2 lg:grid-cols-5 lg:gap-4">
+      <ListContent>
         {movies.map((movie) => {
           return <MovieCard key={movie.id} movie={movie} />;
         })}
-      </div>
+      </ListContent>
     </div>
   );
 };
