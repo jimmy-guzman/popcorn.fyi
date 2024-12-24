@@ -1,3 +1,4 @@
+import { ListContent } from "./list-content";
 import { MovieCard } from "./movie-card";
 import { PersonCard } from "./person-card";
 import { TVShowCard } from "./tv-show-card";
@@ -17,7 +18,7 @@ export const SearchList = ({ query, results }: SearchListProps) => {
       <div className="prose dsy-prose">
         <h1>Search results for &quot;{query}&quot;</h1>
       </div>
-      <div className="grid min-h-[calc(100vh-8rem)] place-content-center content-center justify-center md:grid-cols-2 md:gap-2 lg:grid-cols-5 lg:gap-4">
+      <ListContent>
         {results.map((result) => {
           if (result.media_type === "movie") {
             return <MovieCard key={result.id} movie={result} />;
@@ -33,7 +34,7 @@ export const SearchList = ({ query, results }: SearchListProps) => {
 
           return null;
         })}
-      </div>
+      </ListContent>
     </div>
   );
 };
