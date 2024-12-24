@@ -1,26 +1,32 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
+    "gen": {
+      "dependsOn": ["^gen"],
+      "outputs": ["**/*.gen.*"]
+    },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "^gen"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },
     "lint": {
-      "dependsOn": ["^lint"],
+      "dependsOn": ["^lint", "^gen"],
       "outputs": [".eslintcache"]
     },
     "typecheck": {
-      "dependsOn": ["^typecheck"]
+      "dependsOn": ["^typecheck", "^gen"]
     },
     "test": {
+      "dependsOn": ["^gen"],
       "cache": false,
       "persistent": true
     },
     "coverage": {
-      "dependsOn": ["^coverage"],
+      "dependsOn": ["^coverage", "^gen"],
       "outputs": ["coverage/**"]
     },
     "e2e": {
+      "dependsOn": ["^gen"],
       "passThroughEnv": [
         "TMDB_API_TOKEN",
         "CLERK_SECRET_KEY",
@@ -30,6 +36,7 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },
     "dev": {
+      "dependsOn": ["^gen"],
       "cache": false,
       "persistent": true
     }

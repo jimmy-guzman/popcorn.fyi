@@ -9,6 +9,7 @@
     "e2e": "turbo e2e",
     "format": "prettier --check --cache .",
     "format:fix": "prettier --write --cache .",
+    "gen": "turbo run gen",
     "postinstall": "lefthook install",
     "lint": "turbo lint",
     "lint:fix": "turbo lint -- --fix",
