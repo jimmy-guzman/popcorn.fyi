@@ -99,6 +99,9 @@ importers:
       '@popcorn.fyi/tailwind':
         specifier: workspace:*
         version: link:../../configs/tailwind
+      '@popcorn.fyi/ts':
+        specifier: workspace:*
+        version: link:../../configs/ts
       '@testing-library/dom':
         specifier: 10.4.0
         version: 10.4.0

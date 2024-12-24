@@ -82,8 +82,9 @@ test.describe("Trending", () => {
 test("should search", async ({ page }) => {
   await page.goto("/");
 
-  await page.getByRole("textbox", { name: "Search" }).fill("Marvel");
-  await page.getByRole("textbox", { name: "Search" }).press("Enter");
+  await page
+    .getByRole("textbox", { name: "Search" })
+    .pressSequentially("Marvel");
 
   await expect(page).toHaveTitle('Search results for "Marvel" | popcorn.fyi');
 });
