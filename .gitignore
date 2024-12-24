@@ -48,3 +48,6 @@ yarn-error.log*
 # tanstack start
 app.config.timestamp_*.js
 
+# playwright
+playwright-report
+test-results

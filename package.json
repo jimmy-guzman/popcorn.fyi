@@ -6,6 +6,7 @@
     "check": "turbo typecheck lint coverage build",
     "coverage": "turbo coverage",
     "dev": "turbo dev",
+    "e2e": "turbo e2e",
     "format": "prettier --check --cache .",
     "format:fix": "prettier --write --cache .",
     "postinstall": "lefthook install",

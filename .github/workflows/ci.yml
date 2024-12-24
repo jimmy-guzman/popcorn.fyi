@@ -1,6 +1,8 @@
 name: CI
 
-on: [pull_request]
+on:
+  pull_request:
+    branches: [main]
 
 jobs:
   code_check:
@@ -34,3 +36,48 @@ jobs:
 
       - name: ✔️ Check
         run: pnpm check
+
+  e2e:
+    name: "End-to-End"
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_CACHE: remote:rw
+
+    steps:
+      - name: 🏗 Setup Repository
+        uses: actions/checkout@v4
+
+      - name: 🏗 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: 🏗 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: pnpm
+
+      - name: 📦 Install Dependencies
+        run: pnpm install
+
+      - name: 📦 Install Playwright Browsers
+        run: pnpx playwright install --with-deps
+
+      - name: 🧪 Run End-to-End Tests
+        run: pnpm e2e
+        env:
+          COMPATIBILITY_DATE: 2024-11-14
+          TMDB_API_TOKEN: ${{ secrets.TMDB_API_TOKEN }}
+          VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
+          CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+
+      - name: 🗃️ Upload Playwright Report
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: apps/web/playwright-report/
+          retention-days: 30
