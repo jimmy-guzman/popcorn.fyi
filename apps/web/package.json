@@ -19,7 +19,7 @@
     "@clerk/themes": "2.2.3",
     "@popcorn.fyi/tmdb": "workspace:*",
     "@popcorn.fyi/utils": "workspace:*",
-    "@tanstack/react-query": "5.62.9",
+    "@tanstack/react-query": "5.62.10",
     "@tanstack/react-router": "1.92.3",
     "@tanstack/react-router-with-query": "1.92.3",
     "@tanstack/start": "1.92.4",
