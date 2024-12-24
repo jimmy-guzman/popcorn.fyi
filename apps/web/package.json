@@ -37,6 +37,7 @@
     "@playwright/test": "1.49.1",
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/tailwind": "workspace:*",
+    "@popcorn.fyi/ts": "workspace:*",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.1.0",

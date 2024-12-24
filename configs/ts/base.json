@@ -14,10 +14,9 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
 
-    "forceConsistentCasingInFileNames": true,
-
+    "module": "preserve",
     "noEmit": true,
 
-    "lib": ["dom", "dom.iterable", "esnext"]
+    "lib": ["es2022", "dom", "dom.iterable"]
   }
 }

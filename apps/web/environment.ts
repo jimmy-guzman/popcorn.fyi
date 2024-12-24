@@ -12,7 +12,7 @@ const schema = v.object({
 const validate = () => {
   config({ ignore: ["MISSING_ENV_FILE"], quiet: true });
 
-  if (process.env["CI"] && !process.env["PLAYWRIGHT"]) {
+  if (process.env.CI && !process.env.PLAYWRIGHT) {
     return process.env as v.InferInput<typeof schema>;
   }
 

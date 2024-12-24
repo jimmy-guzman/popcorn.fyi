@@ -1,5 +1,5 @@
 {
-  "extends": "@popcorn.fyi/ts/lib.json",
+  "extends": "@popcorn.fyi/ts/base.json",
   "compilerOptions": {
     "types": ["vitest/globals"]
   },
