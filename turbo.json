@@ -20,6 +20,10 @@
       "dependsOn": ["^coverage"],
       "outputs": ["coverage/**"]
     },
+    "e2e": {
+      "outputs": ["playwright-report/**", "test-results/**"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+    },
     "dev": {
       "cache": false,
       "persistent": true

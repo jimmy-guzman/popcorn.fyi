@@ -3,7 +3,7 @@
   "extends": ["//"],
   "tasks": {
     "build": {
-      "outputs": [".vercel/**", ".vinxi/**"]
+      "outputs": [".vercel/**", ".vinxi/**", ".output/**"]
     }
   }
 }
