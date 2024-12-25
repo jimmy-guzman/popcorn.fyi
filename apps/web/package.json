@@ -38,6 +38,8 @@
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/tailwind": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
+    "@tanstack/react-query-devtools": "5.62.10",
+    "@tanstack/router-devtools": "1.92.3",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.1.0",
