@@ -15,6 +15,7 @@ export function createRouter() {
       defaultErrorComponent: ErrorPage,
       defaultNotFoundComponent: NotFound,
       defaultPreload: "intent",
+      defaultStructuralSharing: true,
       routeTree,
     }),
     queryClient,

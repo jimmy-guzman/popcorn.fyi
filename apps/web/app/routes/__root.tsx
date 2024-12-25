@@ -4,18 +4,33 @@ import type { ReactNode } from "react";
 import { ClerkProvider } from "@clerk/tanstack-start";
 import { dark } from "@clerk/themes";
 import { theme } from "@popcorn.fyi/tailwind/theme";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
   createRootRouteWithContext,
   Outlet,
   ScrollRestoration,
 } from "@tanstack/react-router";
 import { Meta, Scripts } from "@tanstack/start";
+import { lazy } from "react";
 
 import { ThemeScript } from "@/components/theme-script";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 
 import rootCSS from "./__root.css?url";
+
+const TanStackRouterDevtools =
+  process.env.NODE_ENV === "production"
+    ? () => {
+        return null;
+      }
+    : lazy(async () => {
+        const res = await import("@tanstack/router-devtools");
+
+        return {
+          default: res.TanStackRouterDevtools,
+        };
+      });
 
 function RootComponent() {
   return (
@@ -36,6 +51,8 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <body>
         {children}
         <ScrollRestoration />
+        <TanStackRouterDevtools position="bottom-right" />
+        <ReactQueryDevtools buttonPosition="bottom-left" />
         <Scripts />
         <ThemeScript />
       </body>
