@@ -19,7 +19,7 @@ interface TVShowCardProps {
 export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
   return (
     <Link
-      className="dsy-card hover:bg-base-300 shadow-xl hover:mix-blend-plus-lighter"
+      className="dsy-card hover:bg-base-300 shadow-xl delay-150 hover:scale-105"
       params={{ id: tvShow.id.toString() }}
       to="/tv-shows/$id"
     >

@@ -16,7 +16,7 @@ interface PersonCardProps {
 export const PersonCard = ({ person }: PersonCardProps) => {
   return (
     <Link
-      className="dsy-card hover:bg-base-300 shadow-xl hover:mix-blend-plus-lighter"
+      className="dsy-card hover:bg-base-300 shadow-xl delay-150 hover:scale-105"
       key={person.id}
       params={{ id: person.id.toString() }}
       to="/people/$id"
