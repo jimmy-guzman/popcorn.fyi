@@ -10,7 +10,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@iconify-json/devicon-plain": "1.2.9",
+    "@iconify-json/devicon-plain": "1.2.10",
     "@iconify-json/lucide": "1.2.20",
     "@iconify-json/simple-icons": "1.2.17",
     "@iconify/tailwind": "1.2.0",
