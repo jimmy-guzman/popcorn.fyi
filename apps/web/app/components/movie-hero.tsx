@@ -1,10 +1,13 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Link } from "@tanstack/react-router";
 
+import { MediaType } from "./media-type";
+
 interface MovieHeroProps {
   movie: {
     backdrop_path?: string;
     id: number;
+    media_type?: string;
     overview?: string;
     title?: string;
   };
@@ -26,8 +29,7 @@ export const MovieHero = ({ movie }: MovieHeroProps) => {
       <div className="dsy-hero-content text-neutral-content text-center">
         <div>
           <div className="flex justify-end gap-2">
-            <span className="dsy-badge dsy-badge-neutral">Trending</span>
-            <span className="dsy-badge dsy-badge-neutral">Movie</span>
+            <MediaType mediaType={movie.media_type} />
           </div>
           <h1 className="mb-5 text-pretty text-6xl font-bold lg:text-8xl">
             {movie.title}
