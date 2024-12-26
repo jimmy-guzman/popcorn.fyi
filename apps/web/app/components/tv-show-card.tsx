@@ -3,11 +3,13 @@ import { year } from "@popcorn.fyi/utils";
 import { Link } from "@tanstack/react-router";
 
 import { MediaRating } from "./media-rating";
+import { MediaType } from "./media-type";
 
 interface TVShowCardProps {
   tvShow: {
     first_air_date?: string;
     id: number;
+    media_type?: string;
     name?: string;
     poster_path?: string;
     vote_average?: number;
@@ -16,7 +18,11 @@ interface TVShowCardProps {
 
 export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
   return (
-    <div className="dsy-card bg-base-100 shadow-xl">
+    <Link
+      className="dsy-card hover:bg-base-300 shadow-xl hover:mix-blend-plus-lighter"
+      params={{ id: tvShow.id.toString() }}
+      to="/tv-shows/$id"
+    >
       {tvShow.poster_path ? (
         <figure>
           <img
@@ -26,21 +32,13 @@ export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
         </figure>
       ) : null}
       <div className="dsy-card-body">
-        <div className="flex">
+        <div className="flex justify-end gap-2">
           <MediaRating average={tvShow.vote_average} />
+          <MediaType mediaType={tvShow.media_type} />
         </div>
         <h2 className="dsy-card-title">{tvShow.name}</h2>
         {tvShow.first_air_date ? <p>{year(tvShow.first_air_date)}</p> : "N/A"}
-        <div className="dsy-card-actions justify-end">
-          <Link
-            className="dsy-btn dsy-btn-secondary dsy-btn-sm"
-            params={{ id: tvShow.id.toString() }}
-            to="/tv-shows/$id"
-          >
-            Details <span className="icon-[lucide--arrow-right] h-4 w-4" />
-          </Link>
-        </div>
       </div>
-    </div>
+    </Link>
   );
 };
