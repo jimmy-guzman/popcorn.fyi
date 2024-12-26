@@ -1,7 +1,7 @@
 interface MediaOverviewListProps {
   items: {
     title: string;
-    value: number | React.JSX.Element[] | string | undefined;
+    value?: number | React.JSX.Element[] | string;
   }[];
 }
 

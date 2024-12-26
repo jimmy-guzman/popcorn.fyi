@@ -1,5 +1,5 @@
 interface MediaGenresProps {
-  genres?: undefined | { id: number; name?: string }[];
+  genres?: { id: number; name?: string }[];
 }
 
 export const MediaGenres = ({ genres = [] }: MediaGenresProps) => {

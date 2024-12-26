@@ -15,7 +15,7 @@
     "@iconify-json/simple-icons": "1.2.17",
     "@iconify/tailwind": "1.2.0",
     "@tailwindcss/typography": "0.5.15",
-    "daisyui": "4.12.22"
+    "daisyui": "4.12.23"
   },
   "devDependencies": {
     "@popcorn.fyi/eslint": "workspace:*",
