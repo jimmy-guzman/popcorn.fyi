@@ -3,10 +3,12 @@ import { year } from "@popcorn.fyi/utils";
 import { Link } from "@tanstack/react-router";
 
 import { MediaRating } from "./media-rating";
+import { MediaType } from "./media-type";
 
 interface MovieCardProps {
   movie: {
     id: number;
+    media_type?: string;
     poster_path?: string;
     release_date?: string;
     title?: string;
@@ -16,7 +18,11 @@ interface MovieCardProps {
 
 export const MovieCard = ({ movie }: MovieCardProps) => {
   return (
-    <div className="dsy-card bg-base-100 shadow-xl">
+    <Link
+      className="dsy-card hover:bg-base-300 shadow-xl hover:mix-blend-plus-lighter"
+      params={{ id: movie.id.toString() }}
+      to="/movies/$id"
+    >
       {movie.poster_path ? (
         <figure>
           <img
@@ -26,21 +32,13 @@ export const MovieCard = ({ movie }: MovieCardProps) => {
         </figure>
       ) : null}
       <div className="dsy-card-body">
-        <div className="flex">
+        <div className="flex justify-end gap-2">
           <MediaRating average={movie.vote_average} />
+          <MediaType mediaType={movie.media_type} />
         </div>
         <h2 className="dsy-card-title">{movie.title}</h2>
         {movie.release_date ? <p>{year(movie.release_date)}</p> : "N/A"}
-        <div className="dsy-card-actions justify-end">
-          <Link
-            className="dsy-btn dsy-btn-secondary dsy-btn-sm"
-            params={{ id: movie.id.toString() }}
-            to="/movies/$id"
-          >
-            Details <span className="icon-[lucide--arrow-right] h-4 w-4" />
-          </Link>
-        </div>
       </div>
-    </div>
+    </Link>
   );
 };
