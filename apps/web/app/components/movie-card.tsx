@@ -19,7 +19,7 @@ interface MovieCardProps {
 export const MovieCard = ({ movie }: MovieCardProps) => {
   return (
     <Link
-      className="dsy-card hover:bg-base-300 shadow-xl hover:mix-blend-plus-lighter"
+      className="dsy-card hover:bg-base-300 shadow-xl delay-150 hover:scale-105"
       params={{ id: movie.id.toString() }}
       to="/movies/$id"
     >

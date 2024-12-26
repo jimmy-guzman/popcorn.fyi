@@ -1,4 +1,6 @@
-import { utils } from "@/config/urls";
+import { urls } from "@/config/urls";
+
+import { TMDBLogo } from "./tmdb-logo";
 
 export const SiteFooter = () => {
   return (
@@ -9,7 +11,7 @@ export const SiteFooter = () => {
           © 2024{" "}
           <a
             className="dsy-link"
-            href={utils.author}
+            href={urls.author}
             rel="noreferrer"
             target="_blank"
           >
@@ -21,7 +23,7 @@ export const SiteFooter = () => {
           Built with{" "}
           <a
             className="dsy-link"
-            href={utils.tanstackStart}
+            href={urls.tanstackStart}
             rel="noreferrer"
             target="_blank"
           >
@@ -30,7 +32,7 @@ export const SiteFooter = () => {
           and{" "}
           <a
             className="dsy-link"
-            href={utils.daisyUI}
+            href={urls.daisyUI}
             rel="noreferrer"
             target="_blank"
           >
@@ -39,25 +41,41 @@ export const SiteFooter = () => {
           . Powered by{" "}
           <a
             className="dsy-link"
-            href={utils.vercel}
+            href={urls.vercel}
             rel="noreferrer"
             target="_blank"
           >
             Vercel
           </a>
-          .
-        </p>
-        <p className="mt-8">
-          Data provided by{" "}
+          ,{" "}
           <a
             className="dsy-link"
-            href={utils.tmdb}
+            href={urls.clerk}
             rel="noreferrer"
             target="_blank"
           >
-            TMDB
+            Clerk
+          </a>{" "}
+          and{" "}
+          <a
+            className="dsy-link"
+            href={urls.neon}
+            rel="noreferrer"
+            target="_blank"
+          >
+            Neon
           </a>
           .
+        </p>
+        <p>
+          Data provided by{" "}
+          <a href={urls.tmdb} rel="noreferrer" target="_blank">
+            <TMDBLogo />
+          </a>
+        </p>
+        <p className="mt-8">
+          This product uses the TMDB API but is not endorsed or certified by
+          TMDB.
         </p>
       </aside>
     </footer>
