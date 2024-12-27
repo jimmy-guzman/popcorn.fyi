@@ -7,6 +7,8 @@ import type { Pagination } from "@/schemas/lists";
 import { client } from "@/lib/tmdb";
 import { PaginationSchema } from "@/schemas/lists";
 
+const IdSchema = v.number();
+
 const popularMoviesFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
     return v.parse(PaginationSchema, data);
@@ -53,8 +55,6 @@ export const moviesTopRatedOptions = (query: Pagination) => {
   });
 };
 
-const IdSchema = v.number();
-
 const movieDetailsFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
     return v.parse(IdSchema, data);
@@ -81,5 +81,28 @@ export const movieDetailsOptions = (id: number) => {
       return movieDetailsFn({ data: id });
     },
     queryKey: ["movies", "details", id],
+  });
+};
+
+const movieCreditsFn = createServerFn({ method: "GET" })
+  .validator((data: unknown) => {
+    return v.parse(IdSchema, data);
+  })
+  .handler(async (context) => {
+    const { data } = await client.GET("/3/movie/{movie_id}/credits", {
+      params: {
+        path: { movie_id: context.data },
+      },
+    });
+
+    return data;
+  });
+
+export const movieCreditsOptions = (id: number) => {
+  return queryOptions({
+    queryFn: () => {
+      return movieCreditsFn({ data: id });
+    },
+    queryKey: ["movies", "details", id, "credits"],
   });
 };
