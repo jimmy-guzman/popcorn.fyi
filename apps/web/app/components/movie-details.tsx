@@ -56,6 +56,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           activeOptions={{ exact: true }}
           activeProps={{ className: "dsy-tab-active" }}
           className="dsy-tab"
+          hash="overview"
           params={{ id: movie.id.toString() }}
           role="tab"
           to="/movies/$id"
@@ -65,11 +66,22 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
         <Link
           activeProps={{ className: "dsy-tab-active" }}
           className="dsy-tab"
+          hash="cast"
           params={{ id: movie.id.toString() }}
           role="tab"
           to="/movies/$id/credits"
         >
           Credits
+        </Link>
+        <Link
+          activeProps={{ className: "dsy-tab-active" }}
+          className="dsy-tab"
+          hash="providers"
+          params={{ id: movie.id.toString() }}
+          role="tab"
+          to="/movies/$id/watch"
+        >
+          Watch
         </Link>
       </div>
       <Outlet />

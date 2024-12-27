@@ -56,6 +56,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
           activeOptions={{ exact: true }}
           activeProps={{ className: "dsy-tab-active" }}
           className="dsy-tab"
+          hash="overview"
           params={{ id: tvShow.id.toString() }}
           role="tab"
           to="/tv-shows/$id"
@@ -65,11 +66,22 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
         <Link
           activeProps={{ className: "dsy-tab-active" }}
           className="dsy-tab"
+          hash="cast"
           params={{ id: tvShow.id.toString() }}
           role="tab"
           to="/tv-shows/$id/credits"
         >
           Credits
+        </Link>
+        <Link
+          activeProps={{ className: "dsy-tab-active" }}
+          className="dsy-tab"
+          hash="providers"
+          params={{ id: tvShow.id.toString() }}
+          role="tab"
+          to="/tv-shows/$id/watch"
+        >
+          Watch
         </Link>
       </div>
       <Outlet />

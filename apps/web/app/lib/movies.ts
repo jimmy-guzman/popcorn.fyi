@@ -106,3 +106,26 @@ export const movieCreditsOptions = (id: number) => {
     queryKey: ["movies", "details", id, "credits"],
   });
 };
+
+const movieWatchFn = createServerFn({ method: "GET" })
+  .validator((data: unknown) => {
+    return v.parse(IdSchema, data);
+  })
+  .handler(async (context) => {
+    const { data } = await client.GET("/3/movie/{movie_id}/watch/providers", {
+      params: {
+        path: { movie_id: context.data },
+      },
+    });
+
+    return data;
+  });
+
+export const movieWatchOptions = (id: number) => {
+  return queryOptions({
+    queryFn: () => {
+      return movieWatchFn({ data: id });
+    },
+    queryKey: ["movies", "details", id, "watch"],
+  });
+};
