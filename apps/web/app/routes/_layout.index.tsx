@@ -1,38 +1,52 @@
-import { random } from "@popcorn.fyi/utils";
-import { useSuspenseQueries } from "@tanstack/react-query";
+import { shuffle } from "@popcorn.fyi/utils";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { MovieHero } from "@/components/movie-hero";
+import { PersonHero } from "@/components/person-hero";
 import { TvShowHero } from "@/components/tv-show-hero";
-import { trendingMoviesOptions, trendingTVOptions } from "@/lib/trending";
+import { trendingAllFn } from "@/lib/trending";
 
 export const Route = createFileRoute("/_layout/")({
   component: Home,
-  loader: async ({ context }) => {
-    await Promise.all([
-      context.queryClient.ensureQueryData(trendingMoviesOptions()),
-      context.queryClient.ensureQueryData(trendingTVOptions()),
-    ]);
+  loader: async () => {
+    const data = await trendingAllFn();
 
-    return [random(0, 1), random(0, 19)];
+    return shuffle(data?.results ?? []);
   },
 });
 
 function Home() {
-  const [shouldShowMovie, randomTrending = 0] = Route.useLoaderData();
-  const { movie, tvShow } = useSuspenseQueries({
-    combine: ([{ data: tvShows }, { data: movies }]) => {
-      return {
-        movie: movies?.results?.[randomTrending],
-        tvShow: tvShows?.results?.[randomTrending],
-      };
-    },
-    queries: [trendingTVOptions(), trendingMoviesOptions()],
-  });
+  const trending = Route.useLoaderData();
 
-  if (movie && shouldShowMovie) {
-    return <MovieHero movie={movie} />;
-  }
+  return (
+    <div className="dsy-carousel w-full">
+      {trending.map((result) => {
+        if (result.media_type === "tv") {
+          return (
+            <div className="dsy-carousel-item w-full" key={result.id}>
+              <TvShowHero tvShow={result} />
+            </div>
+          );
+        }
 
-  return tvShow ? <TvShowHero tvShow={tvShow} /> : null;
+        if (result.media_type === "movie") {
+          return (
+            <div className="dsy-carousel-item w-full" key={result.id}>
+              <MovieHero movie={result} />
+            </div>
+          );
+        }
+
+        if (result.media_type === "person") {
+          return (
+            <div className="dsy-carousel-item w-full" key={result.id}>
+              <PersonHero person={result} />
+            </div>
+          );
+        }
+
+        return null;
+      })}
+    </div>
+  );
 }
