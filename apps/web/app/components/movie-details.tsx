@@ -1,5 +1,5 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
-import { Outlet } from "@tanstack/react-router";
+import { Link, Outlet } from "@tanstack/react-router";
 
 import { MediaGenres } from "./media-genres";
 import { MediaRating } from "./media-rating";
@@ -19,7 +19,7 @@ interface MovieDetailsProps {
 
 export const MovieDetails = ({ movie }: MovieDetailsProps) => {
   return (
-    <div className="flex min-h-screen flex-col gap-4 md:p-4 lg:p-8">
+    <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 md:p-4 lg:p-8">
       <div className="mx-auto hidden max-w-7xl md:block">
         {movie.backdrop_path ? (
           <img
@@ -50,6 +50,27 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="dsy-tabs dsy-tabs-boxed w-full md:w-auto" role="tablist">
+        <Link
+          activeOptions={{ exact: true }}
+          activeProps={{ className: "dsy-tab-active" }}
+          className="dsy-tab"
+          params={{ id: movie.id.toString() }}
+          role="tab"
+          to="/movies/$id"
+        >
+          Overview
+        </Link>
+        <Link
+          activeProps={{ className: "dsy-tab-active" }}
+          className="dsy-tab"
+          params={{ id: movie.id.toString() }}
+          role="tab"
+          to="/movies/$id/credits"
+        >
+          Credits
+        </Link>
       </div>
       <Outlet />
     </div>

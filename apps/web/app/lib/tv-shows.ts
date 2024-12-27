@@ -38,6 +38,29 @@ export const tvDetailsOptions = (id: number) => {
   });
 };
 
+const tvCreditsFn = createServerFn({ method: "GET" })
+  .validator((data: unknown) => {
+    return v.parse(IdSchema, data);
+  })
+  .handler(async (context) => {
+    const { data } = await client.GET("/3/tv/{series_id}/credits", {
+      params: {
+        path: { series_id: context.data },
+      },
+    });
+
+    return data;
+  });
+
+export const tvCreditsOptions = (id: number) => {
+  return queryOptions({
+    queryFn: () => {
+      return tvCreditsFn({ data: id });
+    },
+    queryKey: ["tv", "details", id, "credits"],
+  });
+};
+
 const tvPopularFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
     return v.parse(PaginationSchema, data);
