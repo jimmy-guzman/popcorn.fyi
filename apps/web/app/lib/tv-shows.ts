@@ -61,6 +61,29 @@ export const tvCreditsOptions = (id: number) => {
   });
 };
 
+const tvWatchProvidersFn = createServerFn({ method: "GET" })
+  .validator((data: unknown) => {
+    return v.parse(IdSchema, data);
+  })
+  .handler(async (context) => {
+    const { data } = await client.GET("/3/tv/{series_id}/watch/providers", {
+      params: {
+        path: { series_id: context.data },
+      },
+    });
+
+    return data;
+  });
+
+export const tvWatchProvidersOptions = (id: number) => {
+  return queryOptions({
+    queryFn: () => {
+      return tvWatchProvidersFn({ data: id });
+    },
+    queryKey: ["tv", "details", id, "watch"],
+  });
+};
+
 const tvPopularFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
     return v.parse(PaginationSchema, data);

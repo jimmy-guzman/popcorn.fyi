@@ -24,7 +24,7 @@ export const MediaCredits = ({ credits }: MediaCreditsProps) => {
   return (
     <div className="flex flex-col gap-4 p-4 md:p-0">
       <div className="prose dsy-prose">
-        <h2>Cast</h2>
+        <h2 id="cast">Cast</h2>
       </div>
       <ListContent>
         {credits.cast?.map((person) => {
@@ -53,7 +53,7 @@ export const MediaCredits = ({ credits }: MediaCreditsProps) => {
       </ListContent>
       <div className="dsy-divider" />
       <div className="prose dsy-prose">
-        <h2>Crew</h2>
+        <h2 id="crew">Crew</h2>
       </div>
       <ListContent>
         {credits.crew?.map((person) => {
