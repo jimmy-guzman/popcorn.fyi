@@ -10,6 +10,7 @@ import { nav } from "@/config/nav";
 import { site } from "@/config/site";
 
 import { GitHubLink } from "./github-link";
+import { SiteLogo } from "./site-logo";
 import { SiteNavMenuItem } from "./site-nav-menu-item";
 import { SiteNavMobileMenu } from "./site-nav-mobile-menu";
 import { SiteNavSearchInput } from "./site-nav-search-input";
@@ -20,7 +21,7 @@ export const SiteNav = () => {
       <div className="dsy-navbar-start">
         <SiteNavMobileMenu items={nav.items} />
         <Link className="dsy-btn dsy-btn-ghost text-lg" to="/">
-          <span>🍿</span>{" "}
+          <SiteLogo classname="w-8 h-8" />
           <span className="hidden font-bold lg:block">{site.title}</span>
         </Link>
         <div className="lg:hidden">

@@ -1,12 +1,15 @@
 import { urls } from "@/config/urls";
 
+import { SiteLogo } from "./site-logo";
 import { TMDBLogo } from "./tmdb-logo";
 
 export const SiteFooter = () => {
   return (
     <footer className="dsy-footer bg-base-200 text-base-content p-10">
       <aside>
-        <span className="text-4xl">🍿</span>
+        <span className="text-4xl">
+          <SiteLogo classname="h-12 w-12" />
+        </span>
         <p>
           © 2024{" "}
           <a
