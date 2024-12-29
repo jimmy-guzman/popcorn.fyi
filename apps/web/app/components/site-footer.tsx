@@ -7,9 +7,7 @@ export const SiteFooter = () => {
   return (
     <footer className="dsy-footer bg-base-200 text-base-content p-10">
       <aside>
-        <span className="text-4xl">
-          <SiteLogo classname="h-12 w-12" />
-        </span>
+        <SiteLogo classname="h-12 w-12" />
         <p>
           © 2024{" "}
           <a

@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const IS_CI = process.env.CI;
+
 export default defineConfig({
   forbidOnly: true,
   fullyParallel: true,
@@ -25,6 +27,7 @@ export default defineConfig({
     },
   ],
   reporter: "html",
+  retries: IS_CI ? 3 : 0,
   testDir: "./e2e",
   webServer: {
     command: "pnpm build --preset node-server && pnpm preview",
