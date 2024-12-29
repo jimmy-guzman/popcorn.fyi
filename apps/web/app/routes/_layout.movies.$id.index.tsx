@@ -56,7 +56,7 @@ function RouteComponent() {
   ];
 
   return (
-    <section className="mx-auto mt-8 max-w-7xl">
+    <section className="mx-auto mt-8 max-w-7xl p-4 md:p-0">
       <div className="prose dsy-prose">
         <h2 id="overview">Overview</h2>
       </div>

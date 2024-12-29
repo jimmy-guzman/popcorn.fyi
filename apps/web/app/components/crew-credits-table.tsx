@@ -7,7 +7,6 @@ import { Table } from "./table";
 
 interface Credit {
   department?: string;
-  episode_count?: number;
   first_air_date?: string;
   id: number;
   job?: string;
@@ -35,7 +34,7 @@ const columns = [
     },
     enableSorting: false,
     header: () => {
-      return null;
+      return <span className="sr-only">Media</span>;
     },
   }),
   columnHelper.accessor(
@@ -58,13 +57,16 @@ const columns = [
     (originalRow) => {
       return originalRow.title ?? originalRow.name;
     },
-
     {
       cell: (info) => {
         const credit = info.row.original;
 
         return (
-          <div className="flex items-center gap-3">
+          <Link
+            className="dsy-link dsy-link-hover flex items-center gap-3"
+            params={{ id: credit.id.toString() }}
+            to={credit.media_type === "movie" ? "/movies/$id" : "/tv-shows/$id"}
+          >
             {credit.poster_path ? (
               <div className="dsy-avatar">
                 <div className="h-12 w-12 rounded">
@@ -75,29 +77,25 @@ const columns = [
                 </div>
               </div>
             ) : null}
-            <div>
-              <div className="font-bold">
-                <Link
-                  className="dsy-link"
-                  params={{ id: credit.id.toString() }}
-                  to={
-                    credit.media_type === "movie"
-                      ? "/movies/$id"
-                      : "/tv-shows/$id"
-                  }
-                >
-                  {info.getValue()}
-                </Link>
-              </div>
-              <div className="text-sm opacity-50">{credit.job}</div>
-            </div>
-          </div>
+            {info.getValue()}
+          </Link>
         );
       },
       enableColumnFilter: false,
-      id: "Details",
+      id: "Title/Name",
     },
   ),
+  columnHelper.accessor("job", {
+    cell: (info) => {
+      return info.getValue();
+    },
+    enableColumnFilter: false,
+  }),
+  columnHelper.accessor("department", {
+    cell: (info) => {
+      return info.getValue();
+    },
+  }),
 ];
 
 interface CrewCreditsTableProps {

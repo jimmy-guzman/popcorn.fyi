@@ -91,24 +91,34 @@ export const Table = <TData,>({
                   ];
 
                   return header.column.getCanFilter() ? (
-                    <select
-                      className="dsy-select grow"
-                      key={header.id}
-                      onChange={(e) => {
-                        header.column.setFilterValue(e.target.value);
-                      }}
-                      value={columnFilterValue?.toString()}
-                    >
-                      <option value="">All</option>
-                      {sortedUniqueValues.map((value) => {
-                        return (
-                          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- typed as any
-                          <option key={value} value={value}>
-                            {value}
-                          </option>
-                        );
-                      })}
-                    </select>
+                    <label className="dsy-form-control w-full">
+                      <div className="dsy-label">
+                        <span className="dsy-label-text capitalize">
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
+                        </span>
+                      </div>
+                      <select
+                        className="dsy-select grow"
+                        key={header.id}
+                        onChange={(e) => {
+                          header.column.setFilterValue(e.target.value);
+                        }}
+                        value={columnFilterValue?.toString()}
+                      >
+                        <option value="">All</option>
+                        {sortedUniqueValues.map((value) => {
+                          return (
+                            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- typed as any
+                            <option key={value} value={value}>
+                              {value}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </label>
                   ) : null;
                 })}
               </Fragment>
@@ -117,7 +127,9 @@ export const Table = <TData,>({
         </div>
       </div>
       <div className="overflow-x-auto">
-        <table className={cn("dsy-table", className)}>
+        <table
+          className={cn("dsy-table dsy-table-xs md:dsy-table-md", className)}
+        >
           <thead>
             {table.getHeaderGroups().map((headerGroup) => {
               return (

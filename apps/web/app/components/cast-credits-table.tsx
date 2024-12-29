@@ -1,9 +1,9 @@
+import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { year } from "@popcorn.fyi/utils";
+import { Link } from "@tanstack/react-router";
 import { createColumnHelper } from "@tanstack/react-table";
 
-import { MovieCreditDetails } from "./movie-credit-details";
 import { Table } from "./table";
-import { TVCreditDetails } from "./tv-show-credit-details";
 
 interface Credit {
   character?: string;
@@ -12,6 +12,7 @@ interface Credit {
   id: number;
   media_type?: string;
   name?: string;
+  poster_path?: string;
   release_date?: string;
   title?: string;
 }
@@ -33,7 +34,7 @@ const columns = [
     },
     enableSorting: false,
     header: () => {
-      return null;
+      return <span className="sr-only">Media</span>;
     },
   }),
   columnHelper.accessor(
@@ -58,18 +59,46 @@ const columns = [
     },
     {
       cell: (info) => {
-        const mediaType = info.row.original.media_type;
+        const credit = info.row.original;
 
-        return mediaType === "tv" ? (
-          <TVCreditDetails credit={info.row.original} />
-        ) : (
-          <MovieCreditDetails credit={info.row.original} />
+        return (
+          <Link
+            className="dsy-link dsy-link-hover flex items-center gap-3"
+            params={{ id: credit.id.toString() }}
+            to={credit.media_type === "movie" ? "/movies/$id" : "/tv-shows/$id"}
+          >
+            {credit.poster_path ? (
+              <div className="dsy-avatar">
+                <div className="h-12 w-12 rounded">
+                  <img
+                    alt={credit.title}
+                    src={tmdbImageUrl(credit.poster_path)}
+                  />
+                </div>
+              </div>
+            ) : null}
+            {info.getValue()}
+          </Link>
         );
       },
       enableColumnFilter: false,
-      header: "Details",
+      header: "Title/Name",
     },
   ),
+  columnHelper.accessor("character", {
+    cell: (info) => {
+      return info.getValue();
+    },
+    enableColumnFilter: false,
+  }),
+  columnHelper.accessor("episode_count", {
+    cell: (info) => {
+      return info.getValue();
+    },
+    enableColumnFilter: false,
+    header: "Episodes",
+    sortUndefined: "last",
+  }),
 ];
 
 interface CastCreditsTableProps {
