@@ -24,11 +24,13 @@ const columns = [
     cell: (info) => {
       return info.getValue() === "tv" ? (
         <>
-          <span className="icon-[lucide--tv]" /> TV Show
+          <span className="icon-[lucide--tv]" />{" "}
+          <span className="sr-only md:not-sr-only">TV Show</span>
         </>
       ) : (
         <>
-          <span className="icon-[lucide--clapperboard]" /> Movie
+          <span className="icon-[lucide--clapperboard]" />{" "}
+          <span className="sr-only md:not-sr-only">Movie</span>
         </>
       );
     },
@@ -68,7 +70,7 @@ const columns = [
             to={credit.media_type === "movie" ? "/movies/$id" : "/tv-shows/$id"}
           >
             {credit.poster_path ? (
-              <div className="dsy-avatar">
+              <div className="dsy-avatar hidden md:block">
                 <div className="h-12 w-12 rounded">
                   <img
                     alt={credit.title}

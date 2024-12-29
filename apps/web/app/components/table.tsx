@@ -91,7 +91,7 @@ export const Table = <TData,>({
                   ];
 
                   return header.column.getCanFilter() ? (
-                    <label className="dsy-form-control w-full">
+                    <label className="dsy-form-control w-full" key={header.id}>
                       <div className="dsy-label">
                         <span className="dsy-label-text capitalize">
                           {flexRender(
@@ -102,7 +102,6 @@ export const Table = <TData,>({
                       </div>
                       <select
                         className="dsy-select grow"
-                        key={header.id}
                         onChange={(e) => {
                           header.column.setFilterValue(e.target.value);
                         }}
