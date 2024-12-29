@@ -7,6 +7,8 @@ import type { Pagination } from "@/schemas/lists";
 import { client } from "@/lib/tmdb";
 import { PaginationSchema } from "@/schemas/lists";
 
+const IdSchema = v.number();
+
 const popularPeopleFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
     return v.parse(PaginationSchema, data);
@@ -29,8 +31,6 @@ export const peoplePopularOptions = (query: Pagination) => {
     queryKey: ["people", "popular", query],
   });
 };
-
-const IdSchema = v.number();
 
 const personDetailsFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
@@ -60,5 +60,33 @@ export const personDetailsOptions = (id: number) => {
       return personDetailsFn({ data: id });
     },
     queryKey: ["people", "details", id],
+  });
+};
+
+const CreditIdSchema = v.string();
+
+const personCreditsFn = createServerFn({ method: "GET" })
+  .validator((data: unknown) => {
+    return v.parse(CreditIdSchema, data);
+  })
+  .handler(async (context) => {
+    const { data } = await client.GET(
+      "/3/person/{person_id}/combined_credits",
+      {
+        params: {
+          path: { person_id: context.data },
+        },
+      },
+    );
+
+    return data;
+  });
+
+export const personCreditsOptions = (id: string) => {
+  return queryOptions({
+    queryFn: () => {
+      return personCreditsFn({ data: id });
+    },
+    queryKey: ["people", "details", id, "credits"],
   });
 };
