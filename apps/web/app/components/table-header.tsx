@@ -7,14 +7,12 @@ import { TableColumnFilter } from "./table-column-filter";
 export const TableHeader = <T,>({ header }: { header: Header<T, unknown> }) => {
   return (
     <th className="capitalize" colSpan={header.colSpan} key={header.id}>
-      <div className="flex flex-col gap-2">
-        {header.isPlaceholder ? null : (
-          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- TODO: refactor
-          <div
-            className={
-              header.column.getCanSort() ? "cursor-pointer select-none" : ""
-            }
+      <div className="flex flex-col items-start gap-2">
+        {header.isPlaceholder ? null : header.column.getCanSort() ? (
+          <button
+            className="capitalize"
             onClick={header.column.getToggleSortingHandler()}
+            type="button"
           >
             {flexRender(header.column.columnDef.header, header.getContext())}
             {{
@@ -27,7 +25,11 @@ export const TableHeader = <T,>({ header }: { header: Header<T, unknown> }) => {
             }[header.column.getIsSorted() as string] ?? (
               <span className="ml-2 h-4 w-4 align-bottom">&nbsp;</span>
             )}
-          </div>
+          </button>
+        ) : (
+          <span>
+            {flexRender(header.column.columnDef.header, header.getContext())}
+          </span>
         )}
         <TableColumnFilter header={header} />
       </div>

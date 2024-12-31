@@ -77,6 +77,15 @@ test.describe("Trending", () => {
 
     await expect(page).toHaveTitle("Trending TV Shows | popcorn.fyi");
   });
+
+  test("should navigate to Trending > People", async ({ page }) => {
+    await page.goto("/");
+
+    await page.getByRole("button", { name: "Trending" }).click();
+    await page.getByRole("link", { name: "People" }).click();
+
+    await expect(page).toHaveTitle("Trending People | popcorn.fyi");
+  });
 });
 
 test("should search", async ({ page }) => {

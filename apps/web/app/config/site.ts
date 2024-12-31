@@ -6,7 +6,8 @@ export const site = {
       title: "Popular Movies",
     },
     popularPeople: {
-      description: "Discover people with a collection of popular people.",
+      description:
+        "Discover people in movies and tv shows with a collection of popular people.",
       title: "Popular People",
     },
     popularTVShows: {
@@ -25,8 +26,14 @@ export const site = {
       description: "Discover movies with a collection of trending movies.",
       title: "Trending Movies",
     },
+    trendingPeople: {
+      description:
+        "Discover people in movies and tv shows with a collection of trending people.",
+      title: "Trending People",
+    },
     trendingTVShows: {
-      description: "Discover tv shows with a collection of trending tv shows.",
+      description:
+        "Discover people in movies and tv shows with a collection of trending tv shows.",
       title: "Trending TV Shows",
     },
   },

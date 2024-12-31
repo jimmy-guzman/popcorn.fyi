@@ -81,6 +81,11 @@ export const nav = {
           title: "TV Shows",
           to: "/trending/tv-shows",
         },
+        {
+          icon: "icon-[lucide--person-standing]",
+          title: "People",
+          to: "/trending/people",
+        },
       ],
       title: "Trending",
       to: "/trending",
