@@ -3,6 +3,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { MediaOverviewList } from "@/components/media-overview-list";
+import { Prose } from "@/components/prose";
 import { movieDetailsOptions } from "@/lib/movies";
 
 export const Route = createFileRoute("/_layout/movies/$id/")({
@@ -56,10 +57,10 @@ function RouteComponent() {
   ];
 
   return (
-    <section className="mx-auto mt-8 max-w-7xl p-4 md:p-0">
-      <div className="prose dsy-prose">
+    <section className="mx-auto mt-8 max-w-7xl">
+      <Prose>
         <h2 id="overview">Overview</h2>
-      </div>
+      </Prose>
       <MediaOverviewList items={overview} />
     </section>
   );

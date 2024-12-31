@@ -2,6 +2,7 @@ import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Link } from "@tanstack/react-router";
 
 import { ListContent } from "./list-content";
+import { Prose } from "./prose";
 
 interface MediaCreditsProps {
   credits: {
@@ -22,10 +23,10 @@ interface MediaCreditsProps {
 
 export const MediaCredits = ({ credits }: MediaCreditsProps) => {
   return (
-    <div className="flex flex-col gap-4 p-4 md:p-0">
-      <div className="prose dsy-prose">
+    <div className="flex flex-col gap-4">
+      <Prose>
         <h2 id="cast">Cast</h2>
-      </div>
+      </Prose>
       <ListContent>
         {credits.cast?.map((person) => {
           return (
@@ -52,9 +53,9 @@ export const MediaCredits = ({ credits }: MediaCreditsProps) => {
         })}
       </ListContent>
       <div className="dsy-divider" />
-      <div className="prose dsy-prose">
+      <Prose>
         <h2 id="crew">Crew</h2>
-      </div>
+      </Prose>
       <ListContent>
         {credits.crew?.map((person) => {
           return (

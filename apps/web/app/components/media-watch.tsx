@@ -1,6 +1,7 @@
 import { urls } from "@/config/urls";
 
 import { MediaProviders } from "./media-providers";
+import { Prose } from "./prose";
 
 interface MediaWatchProps {
   watchProviders: {
@@ -27,10 +28,10 @@ interface MediaWatchProps {
 
 export const MediaWatch = ({ watchProviders }: MediaWatchProps) => {
   return (
-    <div className="flex w-full flex-col items-start gap-4 p-4 md:p-0">
-      <div className="prose dsy-prose">
+    <div className="flex w-full flex-col items-start gap-4">
+      <Prose>
         <h2 id="providers">Providers</h2>
-      </div>
+      </Prose>
 
       {watchProviders.US ? (
         <div className="flex flex-col gap-4 md:flex-row">
@@ -53,17 +54,19 @@ export const MediaWatch = ({ watchProviders }: MediaWatchProps) => {
         <p>No providers available.</p>
       )}
 
-      <aside className="prose dsy-prose">
-        <p>
-          Data provided by{" "}
-          <a href={urls.JustWatch} rel="noreferrer" target="_blank">
-            <img
-              alt="JustWatch"
-              className="inline h-[10px] w-[70px] align-middle"
-              src="https://widget.justwatch.com/assets/JW_logo_color_10px.svg"
-            />
-          </a>
-        </p>
+      <aside>
+        <Prose>
+          <p>
+            Data provided by{" "}
+            <a href={urls.JustWatch} rel="noreferrer" target="_blank">
+              <img
+                alt="JustWatch"
+                className="inline h-[10px] w-[70px] align-middle"
+                src="https://widget.justwatch.com/assets/JW_logo_color_10px.svg"
+              />
+            </a>
+          </p>
+        </Prose>
       </aside>
     </div>
   );
