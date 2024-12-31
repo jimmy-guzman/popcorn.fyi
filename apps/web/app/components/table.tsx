@@ -13,11 +13,12 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 import { cn } from "@/lib/cn";
 import { fuzzyFilter } from "@/lib/fuzzy-filter";
 
+import { TableGlobalFilter } from "./table-global-filter";
 import { TableHeader } from "./table-header";
 
 export const Table = <TData,>({
@@ -50,80 +51,13 @@ export const Table = <TData,>({
   });
 
   return (
-    <div>
-      <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-3">
-        <div className="col-span-2 flex w-full items-end gap-2">
-          <label className="dsy-input flex w-full items-center">
-            <span className="sr-only">Search</span>
-            <input
-              className="w-full"
-              onChange={(event) => {
-                setGlobalFilter(String(event.target.value));
-              }}
-              placeholder="Search..."
-              type="text"
-              value={globalFilter}
-            />
-            <span className="icon-[lucide--search]" />
-          </label>
-          {globalFilter ? (
-            <button
-              className="dsy-btn dsy-btn-neutral dsy-btn-sm"
-              onClick={() => {
-                table.resetGlobalFilter();
-              }}
-              type="button"
-            >
-              Reset <span className="icon-[lucide--list-restart]" />
-            </button>
-          ) : null}
-        </div>
-
-        <div className="flex w-full items-end">
-          {table.getHeaderGroups().map((headerGroup) => {
-            return (
-              <Fragment key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  const columnFilterValue = header.column.getFilterValue();
-
-                  const sortedUniqueValues = [
-                    ...header.column.getFacetedUniqueValues().keys(),
-                  ];
-
-                  return header.column.getCanFilter() ? (
-                    <label className="dsy-form-control w-full" key={header.id}>
-                      <div className="dsy-label">
-                        <span className="dsy-label-text capitalize">
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
-                        </span>
-                      </div>
-                      <select
-                        className="dsy-select grow"
-                        onChange={(e) => {
-                          header.column.setFilterValue(e.target.value);
-                        }}
-                        value={columnFilterValue?.toString()}
-                      >
-                        <option value="">All</option>
-                        {sortedUniqueValues.map((value) => {
-                          return (
-                            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- typed as any
-                            <option key={value} value={value}>
-                              {value}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </label>
-                  ) : null;
-                })}
-              </Fragment>
-            );
-          })}
-        </div>
+    <div className="flex flex-col gap-4">
+      <div className="grid w-full grid-cols-1 items-center md:w-3/4 lg:w-1/2">
+        <TableGlobalFilter
+          globalFilter={globalFilter}
+          resetGlobalFilter={table.resetGlobalFilter}
+          setGlobalFilter={setGlobalFilter}
+        />
       </div>
       <div className="overflow-x-auto">
         <table className={cn("dsy-table", className)}>
