@@ -52,7 +52,7 @@ export const Table = <TData,>({
   return (
     <div>
       <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-3">
-        <div className="col-span-2 flex w-full items-center gap-2">
+        <div className="col-span-2 flex w-full items-end gap-2">
           <label className="dsy-input flex w-full items-center">
             <span className="sr-only">Search</span>
             <input
@@ -79,7 +79,7 @@ export const Table = <TData,>({
           ) : null}
         </div>
 
-        <div className="flex w-full">
+        <div className="flex w-full items-end">
           {table.getHeaderGroups().map((headerGroup) => {
             return (
               <Fragment key={headerGroup.id}>
@@ -126,9 +126,7 @@ export const Table = <TData,>({
         </div>
       </div>
       <div className="overflow-x-auto">
-        <table
-          className={cn("dsy-table dsy-table-xs md:dsy-table-md", className)}
-        >
+        <table className={cn("dsy-table", className)}>
           <thead>
             {table.getHeaderGroups().map((headerGroup) => {
               return (

@@ -3,6 +3,7 @@ import { date } from "@popcorn.fyi/utils";
 import { Outlet } from "@tanstack/react-router";
 
 import { MediaRating } from "./media-rating";
+import { Prose } from "./prose";
 
 interface PersonDetailsProps {
   person: {
@@ -19,7 +20,7 @@ interface PersonDetailsProps {
 
 export const PersonDetails = ({ person }: PersonDetailsProps) => {
   return (
-    <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 md:p-4 lg:p-8">
+    <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 p-4 lg:p-8">
       <div className="dsy-hero">
         <div className="dsy-hero-content flex-col items-start gap-4 lg:flex-row">
           {person.profile_path ? (
@@ -36,7 +37,7 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
                 {person.known_for_department ?? "N/A"}
               </span>
             </div>
-            <div className="prose dsy-prose prose-lg">
+            <Prose size="lg">
               <h1>{person.name}</h1>
               {person.birthday ? (
                 <p>
@@ -54,7 +55,7 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
               ) : (
                 <p>No biography available.</p>
               )}
-            </div>
+            </Prose>
           </div>
         </div>
       </div>

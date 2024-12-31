@@ -1,4 +1,5 @@
 import { ListContent } from "./list-content";
+import { Prose } from "./prose";
 import { TVShowCard } from "./tv-show-card";
 
 interface TVShowListProps {
@@ -20,10 +21,10 @@ export const TVShowList = ({
 }: TVShowListProps) => {
   return (
     <div className="grid grid-cols-1 gap-8">
-      <div className="prose dsy-prose">
+      <Prose>
         <h1>{title}</h1>
         <p>{description}</p>
-      </div>
+      </Prose>
       <ListContent>
         {tvShows.map((tvShow) => {
           return <TVShowCard key={tvShow.id} tvShow={tvShow} />;

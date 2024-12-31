@@ -1,6 +1,7 @@
 import { ListContent } from "./list-content";
 import { MovieCard } from "./movie-card";
 import { PersonCard } from "./person-card";
+import { Prose } from "./prose";
 import { TVShowCard } from "./tv-show-card";
 
 interface SearchListProps {
@@ -15,9 +16,9 @@ interface SearchListProps {
 export const SearchList = ({ query, results }: SearchListProps) => {
   return (
     <div className="grid grid-cols-1 gap-8">
-      <div className="prose dsy-prose">
+      <Prose>
         <h1>Search results for &quot;{query}&quot;</h1>
-      </div>
+      </Prose>
       <ListContent>
         {results.map((result) => {
           if (result.media_type === "movie") {

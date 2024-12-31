@@ -3,6 +3,7 @@ import { Link, Outlet } from "@tanstack/react-router";
 
 import { MediaGenres } from "./media-genres";
 import { MediaRating } from "./media-rating";
+import { Prose } from "./prose";
 
 interface MovieDetailsProps {
   movie: {
@@ -19,7 +20,7 @@ interface MovieDetailsProps {
 
 export const MovieDetails = ({ movie }: MovieDetailsProps) => {
   return (
-    <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 md:p-4 lg:p-8">
+    <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 p-4 lg:p-8">
       <div className="mx-auto hidden max-w-7xl md:block">
         {movie.backdrop_path ? (
           <img
@@ -43,11 +44,11 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
               <MediaRating average={movie.vote_average} />
               <MediaGenres genres={movie.genres} />
             </div>
-            <div className="prose dsy-prose prose-lg">
+            <Prose size="lg">
               <h1>{movie.title}</h1>
               {movie.tagline ? <p>&quot;{movie.tagline}&quot;</p> : null}
               <p>{movie.overview}</p>
-            </div>
+            </Prose>
           </div>
         </div>
       </div>

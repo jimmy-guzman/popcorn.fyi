@@ -3,6 +3,7 @@ import { Link, Outlet } from "@tanstack/react-router";
 
 import { MediaGenres } from "./media-genres";
 import { MediaRating } from "./media-rating";
+import { Prose } from "./prose";
 
 interface TVShowDetailsProps {
   tvShow: {
@@ -19,7 +20,7 @@ interface TVShowDetailsProps {
 
 export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
   return (
-    <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 md:p-4 lg:p-8">
+    <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 p-4 lg:p-8">
       <div className="mx-auto hidden max-w-7xl md:block">
         {tvShow.backdrop_path ? (
           <img
@@ -43,11 +44,11 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
               <MediaRating average={tvShow.vote_average} />
               <MediaGenres genres={tvShow.genres} />
             </div>
-            <div className="prose dsy-prose prose-lg">
+            <Prose size="lg">
               <h1>{tvShow.name}</h1>
               {tvShow.tagline ? <p>&quot;{tvShow.tagline}&quot;</p> : null}
               <p>{tvShow.overview}</p>
-            </div>
+            </Prose>
           </div>
         </div>
       </div>

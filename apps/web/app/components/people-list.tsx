@@ -1,5 +1,6 @@
 import { ListContent } from "./list-content";
 import { PersonCard } from "./person-card";
+import { Prose } from "./prose";
 
 export const PeopleList = ({
   description,
@@ -17,10 +18,10 @@ export const PeopleList = ({
 }) => {
   return (
     <div className="grid grid-cols-1 gap-8">
-      <div className="prose dsy-prose">
+      <Prose>
         <h1>{title}</h1>
         <p>{description}</p>
-      </div>
+      </Prose>
       <ListContent>
         {people.map((person) => {
           return <PersonCard key={person.id} person={person} />;
