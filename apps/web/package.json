@@ -31,6 +31,7 @@
     "tailwind-merge": "2.6.0",
     "use-debounce": "10.0.4",
     "valibot": "1.0.0-beta.9",
+    "vaul": "1.1.2",
     "vinxi": "0.5.1"
   },
   "devDependencies": {
