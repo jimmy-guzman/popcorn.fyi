@@ -9,5 +9,6 @@
     },
 
     "types": ["vitest/globals"]
-  }
+  },
+  "exclude": ["coverage/**"]
 }

@@ -35,9 +35,7 @@ const columns = [
       );
     },
     enableSorting: false,
-    header: () => {
-      return <span className="sr-only">Media</span>;
-    },
+    header: "Media",
   }),
   columnHelper.accessor(
     (originalRow) => {
