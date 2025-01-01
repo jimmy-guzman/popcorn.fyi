@@ -2,12 +2,12 @@ import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/start";
 import * as v from "valibot";
 
-import type { Pagination } from "@/schemas/lists";
+import type { Id } from "@/schemas/id";
+import type { Pagination } from "@/schemas/pagination";
 
 import { client } from "@/lib/tmdb";
-import { PaginationSchema } from "@/schemas/lists";
-
-const IdSchema = v.number();
+import { IdSchema } from "@/schemas/id";
+import { PaginationSchema } from "@/schemas/pagination";
 
 const tvDetailsFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
@@ -29,7 +29,7 @@ const tvDetailsFn = createServerFn({ method: "GET" })
     return rest;
   });
 
-export const tvDetailsOptions = (id: number) => {
+export const tvDetailsOptions = (id: Id) => {
   return queryOptions({
     queryFn: () => {
       return tvDetailsFn({ data: id });
@@ -52,7 +52,7 @@ const tvCreditsFn = createServerFn({ method: "GET" })
     return data;
   });
 
-export const tvCreditsOptions = (id: number) => {
+export const tvCreditsOptions = (id: Id) => {
   return queryOptions({
     queryFn: () => {
       return tvCreditsFn({ data: id });
@@ -75,7 +75,7 @@ const tvWatchProvidersFn = createServerFn({ method: "GET" })
     return data;
   });
 
-export const tvWatchProvidersOptions = (id: number) => {
+export const tvWatchProvidersOptions = (id: Id) => {
   return queryOptions({
     queryFn: () => {
       return tvWatchProvidersFn({ data: id });

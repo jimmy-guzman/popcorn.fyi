@@ -6,7 +6,7 @@ import { MovieList } from "@/components/movie-list";
 import { site } from "@/config/site";
 import { moviesPopularOptions } from "@/lib/movies";
 import { seo } from "@/lib/seo";
-import { PaginationSchema } from "@/schemas/lists";
+import { PaginationSchema } from "@/schemas/pagination";
 
 export const Route = createFileRoute("/_layout/movies/popular")({
   component: RouteComponent,
@@ -17,13 +17,13 @@ export const Route = createFileRoute("/_layout/movies/popular")({
       }),
     };
   },
+  validateSearch: PaginationSchema,
   loaderDeps: ({ search: { page } }) => {
     return { page };
   },
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(moviesPopularOptions(deps));
   },
-  validateSearch: PaginationSchema,
 });
 
 function RouteComponent() {

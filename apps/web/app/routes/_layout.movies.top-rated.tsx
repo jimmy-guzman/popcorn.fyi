@@ -6,7 +6,7 @@ import { MovieList } from "@/components/movie-list";
 import { site } from "@/config/site";
 import { moviesTopRatedOptions } from "@/lib/movies";
 import { seo } from "@/lib/seo";
-import { PaginationSchema } from "@/schemas/lists";
+import { PaginationSchema } from "@/schemas/pagination";
 
 export const Route = createFileRoute("/_layout/movies/top-rated")({
   component: RouteComponent,
@@ -17,13 +17,13 @@ export const Route = createFileRoute("/_layout/movies/top-rated")({
       }),
     };
   },
+  validateSearch: PaginationSchema,
   loaderDeps: ({ search: { page } }) => {
     return { page };
   },
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(moviesTopRatedOptions(deps));
   },
-  validateSearch: PaginationSchema,
 });
 
 function RouteComponent() {

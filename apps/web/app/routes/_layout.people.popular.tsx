@@ -6,7 +6,7 @@ import { PeopleList } from "@/components/people-list";
 import { site } from "@/config/site";
 import { peoplePopularOptions } from "@/lib/people";
 import { seo } from "@/lib/seo";
-import { PaginationSchema } from "@/schemas/lists";
+import { PaginationSchema } from "@/schemas/pagination";
 
 export const Route = createFileRoute("/_layout/people/popular")({
   component: RouteComponent,
@@ -17,13 +17,13 @@ export const Route = createFileRoute("/_layout/people/popular")({
       }),
     };
   },
+  validateSearch: PaginationSchema,
   loaderDeps: ({ search: { page } }) => {
     return { page };
   },
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(peoplePopularOptions(deps));
   },
-  validateSearch: PaginationSchema,
 });
 
 function RouteComponent() {

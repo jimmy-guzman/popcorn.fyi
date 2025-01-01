@@ -2,12 +2,12 @@ import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/start";
 import * as v from "valibot";
 
-import type { Pagination } from "@/schemas/lists";
+import type { Id } from "@/schemas/id";
+import type { Pagination } from "@/schemas/pagination";
 
 import { client } from "@/lib/tmdb";
-import { PaginationSchema } from "@/schemas/lists";
-
-const IdSchema = v.number();
+import { IdSchema } from "@/schemas/id";
+import { PaginationSchema } from "@/schemas/pagination";
 
 const popularPeopleFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
@@ -54,7 +54,7 @@ const personDetailsFn = createServerFn({ method: "GET" })
     return rest;
   });
 
-export const personDetailsOptions = (id: number) => {
+export const personDetailsOptions = (id: Id) => {
   return queryOptions({
     queryFn: () => {
       return personDetailsFn({ data: id });
@@ -63,18 +63,16 @@ export const personDetailsOptions = (id: number) => {
   });
 };
 
-const CreditIdSchema = v.string();
-
 const personCreditsFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
-    return v.parse(CreditIdSchema, data);
+    return v.parse(IdSchema, data);
   })
   .handler(async (context) => {
     const { data } = await client.GET(
       "/3/person/{person_id}/combined_credits",
       {
         params: {
-          path: { person_id: context.data },
+          path: { person_id: context.data.toString() },
         },
       },
     );
@@ -82,7 +80,7 @@ const personCreditsFn = createServerFn({ method: "GET" })
     return data;
   });
 
-export const personCreditsOptions = (id: string) => {
+export const personCreditsOptions = (id: Id) => {
   return queryOptions({
     queryFn: () => {
       return personCreditsFn({ data: id });

@@ -2,12 +2,12 @@ import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/start";
 import * as v from "valibot";
 
-import type { Pagination } from "@/schemas/lists";
+import type { Id } from "@/schemas/id";
+import type { Pagination } from "@/schemas/pagination";
 
 import { client } from "@/lib/tmdb";
-import { PaginationSchema } from "@/schemas/lists";
-
-const IdSchema = v.number();
+import { IdSchema } from "@/schemas/id";
+import { PaginationSchema } from "@/schemas/pagination";
 
 const popularMoviesFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
@@ -75,7 +75,7 @@ const movieDetailsFn = createServerFn({ method: "GET" })
     return rest;
   });
 
-export const movieDetailsOptions = (id: number) => {
+export const movieDetailsOptions = (id: Id) => {
   return queryOptions({
     queryFn: () => {
       return movieDetailsFn({ data: id });
@@ -98,7 +98,7 @@ const movieCreditsFn = createServerFn({ method: "GET" })
     return data;
   });
 
-export const movieCreditsOptions = (id: number) => {
+export const movieCreditsOptions = (id: Id) => {
   return queryOptions({
     queryFn: () => {
       return movieCreditsFn({ data: id });
@@ -121,7 +121,7 @@ const movieWatchFn = createServerFn({ method: "GET" })
     return data;
   });
 
-export const movieWatchOptions = (id: number) => {
+export const movieWatchOptions = (id: Id) => {
   return queryOptions({
     queryFn: () => {
       return movieWatchFn({ data: id });

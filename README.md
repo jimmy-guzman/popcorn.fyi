@@ -17,7 +17,7 @@ A [Turborepo](https://turbo.build/repo) of [apps](#-apps), [libs](#-libs) and [c
 
 - [@popcorn.fyi/tailwind](./configs/tailwind/README.md): a shareable [Tailwind CSS](https://tailwindcss.com) config that includes [daisyUI](https://daisyui.com), [Tailwind CSS Typography](https://tailwindcss-typography.vercel.app) and [Iconify for Tailwind CSS](https://iconify.design/docs/usage/css/tailwind).
 - [@popcorn.fyi/ts](./configs/ts/README.md): a shareable [TypeScript](https://www.typescriptlang.org) configs.
-- [@popcorn.fyi/eslint](./configs/eslint/README.md): a shareable [ESLint](https://eslint.org) config powered by [@jimmy.codes/eslint-config](https://github.com/jimmy-guzman/eslint-config).
+- [@popcorn.fyi/eslint](./configs/eslint/README.md): a shareable [ESLint](https://eslint.org) config powered by [@jimmy.codes/eslint-config](https://github.com/jimmy-guzman/eslint-config) and a dash of [ESLint Plugin Router](https://tanstack.com/router/latest/docs/eslint/eslint-plugin-router).
 
 ## 🏁 Getting Started
 
