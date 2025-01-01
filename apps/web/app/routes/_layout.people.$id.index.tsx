@@ -9,13 +9,17 @@ import { personCreditsOptions } from "@/lib/people";
 export const Route = createFileRoute("/_layout/people/$id/")({
   component: RouteComponent,
   loader: async ({ context, params }) => {
-    await context.queryClient.ensureQueryData(personCreditsOptions(params.id));
+    await context.queryClient.ensureQueryData(
+      personCreditsOptions(Number.parseInt(params.id)),
+    );
   },
 });
 
 function RouteComponent() {
   const params = Route.useParams();
-  const { data: credits } = useSuspenseQuery(personCreditsOptions(params.id));
+  const { data: credits } = useSuspenseQuery(
+    personCreditsOptions(Number.parseInt(params.id)),
+  );
 
   return (
     <div className="flex w-full flex-col gap-4">

@@ -9,7 +9,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@jimmy.codes/eslint-config": "3.28.2"
+    "@jimmy.codes/eslint-config": "3.28.2",
+    "@tanstack/eslint-plugin-router": "1.92.7"
   },
   "devDependencies": {
     "@popcorn.fyi/ts": "workspace:*"

@@ -8,7 +8,6 @@ import { tvDetailsOptions } from "@/lib/tv-shows";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id")({
   component: RouteComponent,
-
   loader: async ({ context, params: { id } }) => {
     const data = await context.queryClient.ensureQueryData(
       tvDetailsOptions(Number.parseInt(id)),
@@ -18,7 +17,6 @@ export const Route = createFileRoute("/_layout/tv-shows/$id")({
       title: data.name,
     };
   },
-
   head: ({ loaderData }) => {
     return {
       meta: loaderData

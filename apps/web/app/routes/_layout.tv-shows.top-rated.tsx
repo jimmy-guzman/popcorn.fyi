@@ -6,7 +6,7 @@ import { TVShowList } from "@/components/tv-show-list";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 import { tvTopRatedOptions } from "@/lib/tv-shows";
-import { PaginationSchema } from "@/schemas/lists";
+import { PaginationSchema } from "@/schemas/pagination";
 
 export const Route = createFileRoute("/_layout/tv-shows/top-rated")({
   component: RouteComponent,
@@ -17,13 +17,13 @@ export const Route = createFileRoute("/_layout/tv-shows/top-rated")({
       }),
     };
   },
+  validateSearch: PaginationSchema,
   loaderDeps: ({ search: { page } }) => {
     return { page };
   },
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(tvTopRatedOptions(deps));
   },
-  validateSearch: PaginationSchema,
 });
 
 function RouteComponent() {

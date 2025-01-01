@@ -17,7 +17,6 @@ export const Route = createFileRoute("/_layout/people/$id")({
       title: data.name,
     };
   },
-
   head: ({ loaderData }) => {
     return {
       meta: loaderData

@@ -2,16 +2,15 @@ import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/start";
 import * as v from "valibot";
 
-import { client } from "./tmdb";
+import type { Search } from "@/schemas/search";
 
-const SearchQuerySchema = v.object({
-  page: v.number(),
-  q: v.string(),
-});
+import { SearchSchema } from "@/schemas/search";
+
+import { client } from "./tmdb";
 
 const searchFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
-    return v.parse(SearchQuerySchema, data);
+    return v.parse(SearchSchema, data);
   })
   .handler(async (context) => {
     const { data } = await client.GET("/3/search/multi", {
@@ -26,9 +25,7 @@ const searchFn = createServerFn({ method: "GET" })
     return data;
   });
 
-export const searchOptions = (
-  search: v.InferInput<typeof SearchQuerySchema>,
-) => {
+export const searchOptions = (search: Search) => {
   return queryOptions({
     queryFn: () => {
       return searchFn({ data: search });

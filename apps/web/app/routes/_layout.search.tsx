@@ -1,26 +1,18 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import * as v from "valibot";
 
 import { ListPagination } from "@/components/list-pagination";
 import { SearchList } from "@/components/search-list";
 import { site } from "@/config/site";
 import { searchOptions } from "@/lib/search";
 import { seo } from "@/lib/seo";
-import { PaginationSchema } from "@/schemas/lists";
-
-const searchSchema = v.intersect([
-  PaginationSchema,
-  v.object({ q: v.optional(v.fallback(v.string(), ""), "") }),
-]);
+import { SearchSchema } from "@/schemas/search";
 
 export const Route = createFileRoute("/_layout/search")({
   component: RouteComponent,
+  validateSearch: SearchSchema,
   loaderDeps: ({ search: { page, q } }) => {
     return { page, q };
-  },
-  loader: async ({ context, deps }) => {
-    await context.queryClient.ensureQueryData(searchOptions(deps));
   },
   head: ({ match }) => {
     return {
@@ -31,7 +23,9 @@ export const Route = createFileRoute("/_layout/search")({
       }),
     };
   },
-  validateSearch: searchSchema,
+  loader: async ({ context, deps }) => {
+    await context.queryClient.ensureQueryData(searchOptions(deps));
+  },
 });
 
 function RouteComponent() {
