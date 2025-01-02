@@ -1,0 +1,30 @@
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+index e3e91b80587a093dbf641c966a9dba43c54d619d..a96fd5d856d886c604c138895fff8ce9bbce8218 100644
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -100,17 +100,14 @@ export type RequestBodyOption<T> = OperationRequestBodyContent<T> extends never
+ 
+ export type FetchOptions<T> = RequestOptions<T> & Omit<RequestInit, "body" | "headers">;
+ 
+-export type FetchResponse<T extends Record<string | number, any>, Options, Media extends MediaType> =
+-  | {
+-      data: ParseAsResponse<SuccessResponse<ResponseObjectMap<T>, Media>, Options>;
+-      error?: never;
+-      response: Response;
+-    }
+-  | {
+-      data?: never;
+-      error: ErrorResponse<ResponseObjectMap<T>, Media>;
+-      response: Response;
+-    };
++export type FetchResponse<
++  T extends Record<string | number, any>,
++  Options,
++  Media extends MediaType,
++> = {
++  data: ParseAsResponse<SuccessResponse<ResponseObjectMap<T>, Media>, Options>;
++  response: Response;
++};
+ 
+ export type RequestOptions<T> = ParamsOption<T> &
+   RequestBodyOption<T> & {

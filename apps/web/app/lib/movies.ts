@@ -61,11 +61,7 @@ const movieDetailsFn = createServerFn({ method: "GET" })
   })
   .handler(async (context) => {
     const {
-      data: {
-        // @ts-expect-error something is wrong
-        belongs_to_collection,
-        ...rest
-      },
+      data: { belongs_to_collection, ...rest },
     } = await client.GET("/3/movie/{movie_id}", {
       params: {
         path: { movie_id: context.data },

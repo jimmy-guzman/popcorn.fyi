@@ -34,12 +34,10 @@ function RouteComponent() {
     <div className="flex flex-col gap-4 p-8">
       <PeopleList
         description={site.pages.popularPeople.description}
-        people={people?.results ?? []}
+        people={people.results ?? []}
         title={site.pages.popularPeople.title}
       />
-      {people ? (
-        <ListPagination page={people.page} totalPages={people.total_pages} />
-      ) : null}
+      <ListPagination page={people.page} totalPages={people.total_pages} />
     </div>
   );
 }

@@ -19,5 +19,5 @@ function RouteComponent() {
     movieCreditsOptions(Number.parseInt(id)),
   );
 
-  return credits ? <MediaCredits credits={credits} /> : null;
+  return <MediaCredits credits={credits} />;
 }

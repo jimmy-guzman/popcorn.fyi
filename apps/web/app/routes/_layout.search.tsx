@@ -34,10 +34,8 @@ function RouteComponent() {
 
   return (
     <div className="flex flex-col gap-4 p-8">
-      <SearchList query={search.q} results={data?.results ?? []} />
-      {data ? (
-        <ListPagination page={data.page} totalPages={data.total_pages} />
-      ) : null}
+      <SearchList query={search.q} results={data.results ?? []} />
+      <ListPagination page={data.page} totalPages={data.total_pages} />
     </div>
   );
 }

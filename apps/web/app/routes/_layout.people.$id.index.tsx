@@ -29,7 +29,7 @@ function RouteComponent() {
       <Prose>
         <h3 id="acting">Cast</h3>
       </Prose>
-      {credits?.cast?.length ? (
+      {credits.cast?.length ? (
         <CastCreditsTable credits={credits.cast} />
       ) : (
         <Prose>
@@ -39,7 +39,7 @@ function RouteComponent() {
       <Prose>
         <h3 id="acting">Crew</h3>
       </Prose>
-      {credits?.crew?.length ? (
+      {credits.crew?.length ? (
         <CrewCreditsTable credits={credits.crew} />
       ) : (
         <Prose>

@@ -38,13 +38,7 @@ const personDetailsFn = createServerFn({ method: "GET" })
   })
   .handler(async (context) => {
     const {
-      data: {
-        // @ts-expect-error something is wrong
-        deathday,
-        // @ts-expect-error something is wrong
-        homepage,
-        ...rest
-      },
+      data: { deathday, homepage, ...rest },
     } = await client.GET("/3/person/{person_id}", {
       params: {
         path: { person_id: context.data },

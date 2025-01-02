@@ -35,11 +35,9 @@ function RouteComponent() {
       <TVShowList
         description={site.pages.popularTVShows.description}
         title={site.pages.popularTVShows.title}
-        tvShows={tvShows?.results ?? []}
+        tvShows={tvShows.results ?? []}
       />
-      {tvShows ? (
-        <ListPagination page={tvShows.page} totalPages={tvShows.total_pages} />
-      ) : null}
+      <ListPagination page={tvShows.page} totalPages={tvShows.total_pages} />
     </div>
   );
 }
