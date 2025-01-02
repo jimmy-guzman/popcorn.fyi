@@ -9,7 +9,7 @@ export const Route = createFileRoute("/_layout/")({
   loader: async () => {
     const data = await trendingAllFn();
 
-    return shuffle(data?.results ?? []);
+    return shuffle(data.results ?? []);
   },
 });
 

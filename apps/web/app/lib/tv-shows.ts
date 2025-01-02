@@ -15,11 +15,7 @@ const tvDetailsFn = createServerFn({ method: "GET" })
   })
   .handler(async (context) => {
     const {
-      data: {
-        // @ts-expect-error something is wrong
-        next_episode_to_air,
-        ...rest
-      },
+      data: { next_episode_to_air, ...rest },
     } = await client.GET("/3/tv/{series_id}", {
       params: {
         path: { series_id: context.data },

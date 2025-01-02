@@ -19,7 +19,7 @@ function RouteComponent() {
     tvWatchProvidersOptions(Number.parseInt(id)),
   );
 
-  return watchProviders?.results ? (
+  return watchProviders.results ? (
     <MediaWatch watchProviders={watchProviders.results} />
   ) : null;
 }
