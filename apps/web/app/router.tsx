@@ -2,8 +2,8 @@ import { QueryClient } from "@tanstack/react-query";
 import { createRouter as createTanStackRouter } from "@tanstack/react-router";
 import { routerWithQueryClient } from "@tanstack/react-router-with-query";
 
-import { ErrorPage } from "./pages/error";
-import { NotFound } from "./pages/not-found";
+import { Error } from "./components/error";
+import { NotFound } from "./components/not-found";
 import { routeTree } from "./routeTree.gen";
 
 export function createRouter() {
@@ -12,7 +12,7 @@ export function createRouter() {
   const router = routerWithQueryClient(
     createTanStackRouter({
       context: { queryClient },
-      defaultErrorComponent: ErrorPage,
+      defaultErrorComponent: Error,
       defaultNotFoundComponent: NotFound,
       defaultPreload: "intent",
       defaultStructuralSharing: true,

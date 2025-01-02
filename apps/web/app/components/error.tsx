@@ -2,7 +2,7 @@ import type { ErrorComponentProps } from "@tanstack/react-router";
 
 import { Link } from "@tanstack/react-router";
 
-export const ErrorPage = ({ error }: ErrorComponentProps) => {
+export const Error = ({ error }: ErrorComponentProps) => {
   return (
     <main className="grid min-h-screen place-content-center">
       <div className="dsy-hero">
@@ -12,7 +12,7 @@ export const ErrorPage = ({ error }: ErrorComponentProps) => {
               Error
             </h1>
             <p className="text-error mb-5">{error.message}</p>
-            <Link className="dsy-btn dsy-btn-outline" to="/">
+            <Link className="dsy-btn dsy-btn-outline" to="..">
               Go back
             </Link>
           </div>
