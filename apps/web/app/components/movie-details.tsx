@@ -52,6 +52,16 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
               {movie.tagline ? <p>&quot;{movie.tagline}&quot;</p> : null}
               <p>{movie.overview}</p>
             </Prose>
+            <div>
+              <Link
+                className="dsy-btn dsy-btn-secondary"
+                params={{ id: movie.id.toString() }}
+                to="/movies/$id/trailer"
+              >
+                Watch Trailer{" "}
+                <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { date } from "@popcorn.fyi/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Fragment } from "react/jsx-runtime";
 
 import { MediaOverviewList } from "@/components/media-overview-list";
 import { Prose } from "@/components/prose";
@@ -22,17 +23,16 @@ function RouteComponent() {
       value: tvShow.created_by?.length
         ? tvShow.created_by.map((creator, index, array) => {
             return (
-              <>
+              <Fragment key={creator.id}>
                 <Link
                   className="dsy-link"
-                  key={creator.id}
                   params={{ id: creator.id.toString() }}
                   to="/people/$id"
                 >
                   {creator.name}
                 </Link>
                 {array.length - 1 === index ? " " : ", "}
-              </>
+              </Fragment>
             );
           })
         : "N/A",
