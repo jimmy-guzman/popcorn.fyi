@@ -53,3 +53,7 @@ Then you start running things, by running the following:
 ```
 pnpm dev
 ```
+
+## ❤️ Thanks
+
+- Design inspiration came from [oktay](https://github.com/oktay)'s [movies](https://github.com/oktay/movies).
