@@ -52,6 +52,16 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
               {tvShow.tagline ? <p>&quot;{tvShow.tagline}&quot;</p> : null}
               <p>{tvShow.overview}</p>
             </Prose>
+            <div>
+              <Link
+                className="dsy-btn dsy-btn-secondary"
+                params={{ id: tvShow.id.toString() }}
+                to="/tv-shows/$id/trailer"
+              >
+                Watch Trailer{" "}
+                <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
