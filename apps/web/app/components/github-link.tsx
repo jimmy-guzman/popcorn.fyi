@@ -9,7 +9,7 @@ export const GitHubLink = () => {
       target="_blank"
     >
       <span className="sr-only">GitHub</span>
-      <span className="icon-[lucide--github] h-7 w-7" />
+      <span className="icon-[lucide--github] h-5 w-5" />
     </a>
   );
 };

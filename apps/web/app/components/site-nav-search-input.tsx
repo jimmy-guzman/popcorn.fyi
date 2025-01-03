@@ -38,7 +38,7 @@ export const SiteNavSearchInput = () => {
         type="text"
         value={term}
       />
-      <span className="icon-[lucide--search] h-4 w-4" />
+      <span className="icon-[lucide--search] h-4 w-4 md:h-5 md:w-5" />
     </label>
   );
 };

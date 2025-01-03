@@ -3,6 +3,7 @@ import { Link, Outlet } from "@tanstack/react-router";
 
 import { MediaGenres } from "./media-genres";
 import { MediaRating } from "./media-rating";
+import { MediaStatus } from "./media-status";
 import { Prose } from "./prose";
 
 interface MovieDetailsProps {
@@ -12,6 +13,7 @@ interface MovieDetailsProps {
     id: number;
     overview?: string;
     poster_path?: string;
+    status?: string;
     tagline?: string;
     title?: string;
     vote_average: number;
@@ -42,6 +44,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           <div className="flex flex-col gap-2">
             <div className="flex flex-wrap gap-2 lg:flex-nowrap lg:justify-end">
               <MediaRating average={movie.vote_average} />
+              <MediaStatus status={movie.status} />
               <MediaGenres genres={movie.genres} />
             </div>
             <Prose size="lg">

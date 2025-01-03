@@ -62,7 +62,7 @@ export const MediaWatch = ({ watchProviders }: MediaWatchProps) => {
               <img
                 alt="JustWatch"
                 className="inline h-[10px] w-[70px] align-middle"
-                src="https://widget.justwatch.com/assets/JW_logo_color_10px.svg"
+                src={urls.JustWatchLogo}
               />
             </a>
           </p>

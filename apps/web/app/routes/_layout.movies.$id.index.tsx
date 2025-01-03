@@ -21,10 +21,7 @@ function RouteComponent() {
       title: "Release Date",
       value: movie.release_date ? date(movie.release_date) : "N/A",
     },
-    {
-      title: "Status",
-      value: movie.status,
-    },
+
     {
       title: "Original Title",
       value: movie.original_title,
@@ -45,12 +42,19 @@ function RouteComponent() {
       title: "Language",
       value: movie.original_language,
     },
-
     {
       title: "Production Companies",
       value: movie.production_companies
         ?.map((productionCompany) => {
           return productionCompany.name;
+        })
+        .join(", "),
+    },
+    {
+      title: "Production Countries",
+      value: movie.production_countries
+        ?.map((country) => {
+          return country.name;
         })
         .join(", "),
     },
