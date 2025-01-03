@@ -38,10 +38,6 @@ function RouteComponent() {
         : "N/A",
     },
     {
-      title: "Status",
-      value: tvShow.status,
-    },
-    {
       title: "Original Name",
       value: tvShow.original_name,
     },
@@ -70,6 +66,14 @@ function RouteComponent() {
       value: tvShow.production_companies
         ?.map((productionCompany) => {
           return productionCompany.name;
+        })
+        .join(", "),
+    },
+    {
+      title: "Production Countries",
+      value: tvShow.production_countries
+        ?.map((country) => {
+          return country.name;
         })
         .join(", "),
     },

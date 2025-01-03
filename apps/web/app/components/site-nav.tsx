@@ -21,7 +21,7 @@ export const SiteNav = () => {
       <div className="dsy-navbar-start">
         <SiteNavMobileMenu items={nav.items} />
         <Link className="dsy-btn dsy-btn-ghost dsy-btn-sm md:dsy-btn-md" to="/">
-          <SiteLogo classname="w-8 h-8" />
+          <SiteLogo classname="w-6 h-6" />
           <span className="hidden font-bold lg:block">{site.title}</span>
         </Link>
         <div className="lg:hidden">
@@ -56,7 +56,7 @@ export const SiteNav = () => {
               type="button"
             >
               <span className="sr-only">Sign In</span>
-              <span className="icon-[lucide--log-in] h-7 w-7" />
+              <span className="icon-[lucide--log-in] h-5 w-5" />
             </button>
           </SignInButton>
         </SignedOut>
