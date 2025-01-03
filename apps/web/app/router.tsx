@@ -14,6 +14,9 @@ export function createRouter() {
       context: { queryClient },
       defaultErrorComponent: Error,
       defaultNotFoundComponent: NotFound,
+      defaultPendingComponent: () => {
+        return <div className="dsy-skeleton h-svh" />;
+      },
       defaultPreload: "intent",
       defaultStructuralSharing: true,
       routeTree,
