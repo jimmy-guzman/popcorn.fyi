@@ -229,8 +229,8 @@ importers:
   libs/tmdb:
     dependencies:
       openapi-fetch:
-        specifier: 0.13.3
-        version: 0.13.3(patch_hash=ilbdbptjz64vzalkhja6nib22u)
+        specifier: 0.13.4
+        version: 0.13.4(patch_hash=ilbdbptjz64vzalkhja6nib22u)
     devDependencies:
       '@popcorn.fyi/eslint':
         specifier: workspace:*
@@ -242,8 +242,8 @@ importers:
         specifier: 3.0.0-beta.3
         version: 3.0.0-beta.3(vitest@3.0.0-beta.3(@types/node@22.10.5)(happy-dom@16.3.0)(jiti@2.4.2)(msw@2.7.0(@types/node@22.10.5)(typescript@5.7.2))(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1))
       openapi-typescript:
-        specifier: 7.4.4
-        version: 7.4.4(typescript@5.7.2)
+        specifier: 7.5.1
+        version: 7.5.1(typescript@5.7.2)
       vitest:
         specifier: 3.0.0-beta.3
         version: 3.0.0-beta.3(@types/node@22.10.5)(happy-dom@16.3.0)(jiti@2.4.2)(msw@2.7.0(@types/node@22.10.5)(typescript@5.7.2))(terser@5.37.0)(tsx@4.19.2)(yaml@2.6.1)
@@ -4131,14 +4131,14 @@ packages:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
 
-  openapi-fetch@0.13.3:
-    resolution: {integrity: sha512-M1THnPkNOXUPsQKZfqunhW/wqH8l3/W3Vlj4lemQynf4mTaTwBTvL2pgjBe0zerL/GFT5ttCHu9fYvanUI3tOw==}
+  openapi-fetch@0.13.4:
+    resolution: {integrity: sha512-JHX7UYjLEiHuQGCPxa3CCCIqe/nc4bTIF9c4UYVC8BegAbWoS3g4gJxKX5XcG7UtYQs2060kY6DH64KkvNZahg==}
 
   openapi-typescript-helpers@0.0.15:
     resolution: {integrity: sha512-opyTPaunsklCBpTK8JGef6mfPhLSnyy5a0IN9vKtx3+4aExf+KxEqYwIy3hqkedXIB97u357uLMJsOnm3GVjsw==}
 
-  openapi-typescript@7.4.4:
-    resolution: {integrity: sha512-7j3nktnRzlQdlHnHsrcr6Gqz8f80/RhfA2I8s1clPI+jkY0hLNmnYVKBfuUEli5EEgK1B6M+ibdS5REasPlsUw==}
+  openapi-typescript@7.5.1:
+    resolution: {integrity: sha512-ebOnVlSyfObXR9geTkITBMan2HqmVJV14poVsS2/f2FS1RbiQsZFqh+q5zbrjn1tydSXHE6njUOfEvS3DOVsUQ==}
     hasBin: true
     peerDependencies:
       typescript: ^5.x
@@ -9668,7 +9668,7 @@ snapshots:
       node-fetch-native: 1.6.4
       ofetch: 1.4.1
       ohash: 1.1.4
-      openapi-typescript: 7.4.4(typescript@5.7.2)
+      openapi-typescript: 7.5.1(typescript@5.7.2)
       pathe: 1.1.2
       perfect-debounce: 1.0.0
       pkg-types: 1.2.1
@@ -9851,13 +9851,13 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openapi-fetch@0.13.3(patch_hash=ilbdbptjz64vzalkhja6nib22u):
+  openapi-fetch@0.13.4(patch_hash=ilbdbptjz64vzalkhja6nib22u):
     dependencies:
       openapi-typescript-helpers: 0.0.15
 
   openapi-typescript-helpers@0.0.15: {}
 
-  openapi-typescript@7.4.4(typescript@5.7.2):
+  openapi-typescript@7.5.1(typescript@5.7.2):
     dependencies:
       '@redocly/openapi-core': 1.25.15(supports-color@9.4.0)
       ansi-colors: 4.1.3

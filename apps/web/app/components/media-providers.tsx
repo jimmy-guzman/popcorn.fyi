@@ -1,23 +1,22 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 
-export const MediaProviders = ({
-  kind,
-  providers,
-}: {
-  kind: "buy" | "rent" | "stream";
+interface MediaProvidersProps {
   providers: {
     logo_path?: string;
     provider_id: number;
     provider_name?: string;
   }[];
-}) => {
+  title: "ads" | "buy" | "rent" | "stream";
+}
+
+export const MediaProviders = ({ providers, title }: MediaProvidersProps) => {
   return (
     <div className="flex flex-wrap gap-2">
       <div className="overflow-x-auto">
         <table className="dsy-table dsy-table-lg">
           <thead>
             <tr>
-              <th className="uppercase">{kind}</th>
+              <th className="uppercase">{title}</th>
             </tr>
           </thead>
           <tbody>
