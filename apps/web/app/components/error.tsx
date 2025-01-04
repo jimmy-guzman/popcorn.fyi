@@ -1,8 +1,10 @@
 import type { ErrorComponentProps } from "@tanstack/react-router";
 
-import { Link } from "@tanstack/react-router";
+import { useRouter } from "@tanstack/react-router";
 
 export const Error = ({ error }: ErrorComponentProps) => {
+  const router = useRouter();
+
   return (
     <main className="grid min-h-screen place-content-center">
       <div className="dsy-hero">
@@ -12,9 +14,15 @@ export const Error = ({ error }: ErrorComponentProps) => {
               Error
             </h1>
             <p className="text-error mb-5">{error.message}</p>
-            <Link className="dsy-btn dsy-btn-outline" to="..">
+            <button
+              className="dsy-btn dsy-btn-outline"
+              onClick={() => {
+                router.history.back();
+              }}
+              type="button"
+            >
               Go back
-            </Link>
+            </button>
           </div>
         </div>
       </div>
