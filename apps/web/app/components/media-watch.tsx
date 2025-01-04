@@ -3,25 +3,20 @@ import { urls } from "@/config/urls";
 import { MediaProviders } from "./media-providers";
 import { Prose } from "./prose";
 
+interface Provider {
+  logo_path?: string;
+  provider_id: number;
+  provider_name?: string;
+}
+
 interface MediaWatchProps {
   watchProviders: {
     US?: {
-      buy?: {
-        logo_path?: string;
-        provider_id: number;
-        provider_name?: string;
-      }[];
-      flatrate?: {
-        logo_path?: string;
-        provider_id: number;
-        provider_name?: string;
-      }[];
+      ads?: Provider[];
+      buy?: Provider[];
+      flatrate?: Provider[];
       link?: string;
-      rent?: {
-        logo_path?: string;
-        provider_id: number;
-        provider_name?: string;
-      }[];
+      rent?: Provider[];
     };
   };
 }
@@ -37,17 +32,21 @@ export const MediaWatch = ({ watchProviders }: MediaWatchProps) => {
         <div className="flex flex-col gap-4 md:flex-row">
           {watchProviders.US.flatrate ? (
             <MediaProviders
-              kind="stream"
               providers={watchProviders.US.flatrate}
+              title="stream"
             />
           ) : null}
 
+          {watchProviders.US.ads ? (
+            <MediaProviders providers={watchProviders.US.ads} title="ads" />
+          ) : null}
+
           {watchProviders.US.buy ? (
-            <MediaProviders kind="buy" providers={watchProviders.US.buy} />
+            <MediaProviders providers={watchProviders.US.buy} title="buy" />
           ) : null}
 
           {watchProviders.US.rent ? (
-            <MediaProviders kind="rent" providers={watchProviders.US.rent} />
+            <MediaProviders providers={watchProviders.US.rent} title="rent" />
           ) : null}
         </div>
       ) : (
