@@ -1,6 +1,8 @@
-import { Link } from "@tanstack/react-router";
+import { useRouter } from "@tanstack/react-router";
 
 export const NotFound = () => {
+  const router = useRouter();
+
   return (
     <main className="grid min-h-screen place-content-center">
       <div className="dsy-hero">
@@ -10,9 +12,15 @@ export const NotFound = () => {
               Error
             </h1>
             <p className="text-error mb-5">Not Found</p>
-            <Link className="dsy-btn dsy-btn-outline" to="/">
+            <button
+              className="dsy-btn dsy-btn-outline"
+              onClick={() => {
+                router.history.back();
+              }}
+              type="button"
+            >
               Go back
-            </Link>
+            </button>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Link } from "@tanstack/react-router";
 
+import { Card, CardContent, CardImage, CardTitle } from "./card";
 import { ListContent } from "./list-content";
 import { Prose } from "./prose";
 
@@ -31,23 +32,22 @@ export const MediaCredits = ({ credits }: MediaCreditsProps) => {
         {credits.cast?.map((person) => {
           return (
             <Link
-              className="dsy-card hover:bg-base-300 shadow-xl delay-150 hover:scale-105"
               key={person.id}
               params={{ id: person.id.toString() }}
               to="/people/$id"
             >
-              {person.profile_path ? (
-                <figure>
-                  <img
+              <Card>
+                {person.profile_path ? (
+                  <CardImage
                     alt={person.name}
                     src={tmdbImageUrl(person.profile_path, "w500")}
                   />
-                </figure>
-              ) : null}
-              <div className="dsy-card-body">
-                <h2 className="dsy-card-title">{person.name}</h2>
-                <p>{person.character}</p>
-              </div>
+                ) : null}
+                <CardContent>
+                  <CardTitle>{person.name}</CardTitle>
+                  <p>{person.character}</p>
+                </CardContent>
+              </Card>
             </Link>
           );
         })}
@@ -60,23 +60,22 @@ export const MediaCredits = ({ credits }: MediaCreditsProps) => {
         {credits.crew?.map((person) => {
           return (
             <Link
-              className="dsy-card hover:bg-base-300 shadow-xl delay-150 hover:scale-105"
               key={person.id}
               params={{ id: person.id.toString() }}
               to="/people/$id"
             >
-              {person.profile_path ? (
-                <figure>
-                  <img
+              <Card>
+                {person.profile_path ? (
+                  <CardImage
                     alt={person.name}
                     src={tmdbImageUrl(person.profile_path, "w500")}
                   />
-                </figure>
-              ) : null}
-              <div className="dsy-card-body">
-                <h2 className="dsy-card-title">{person.name}</h2>
-                <p>{person.job}</p>
-              </div>
+                ) : null}
+                <CardContent>
+                  <CardTitle>{person.name}</CardTitle>
+                  <p>{person.job}</p>
+                </CardContent>
+              </Card>
             </Link>
           );
         })}
