@@ -1,8 +1,7 @@
-import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
-import { Link } from "@tanstack/react-router";
+import { site } from "@/config/site";
 
-import { Card, CardContent, CardImage, CardTitle } from "./card";
-import { ListContent } from "./list-content";
+import { CastList } from "./cast-list";
+import { CrewList } from "./crew-list";
 import { Prose } from "./prose";
 
 interface MediaCreditsProps {
@@ -22,64 +21,32 @@ interface MediaCreditsProps {
   };
 }
 
-export const MediaCredits = ({ credits }: MediaCreditsProps) => {
+export const MediaCredits = ({
+  credits: { cast = [], crew = [] },
+}: MediaCreditsProps) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex w-full flex-col gap-4">
       <Prose>
-        <h2 id="cast">Cast</h2>
+        <h2 id="cast">{site.pages.media.credits.cast.title}</h2>
       </Prose>
-      <ListContent>
-        {credits.cast?.map((person) => {
-          return (
-            <Link
-              key={person.id}
-              params={{ id: person.id.toString() }}
-              to="/people/$id"
-            >
-              <Card>
-                {person.profile_path ? (
-                  <CardImage
-                    alt={person.name}
-                    src={tmdbImageUrl(person.profile_path, "w500")}
-                  />
-                ) : null}
-                <CardContent>
-                  <CardTitle>{person.name}</CardTitle>
-                  <p>{person.character}</p>
-                </CardContent>
-              </Card>
-            </Link>
-          );
-        })}
-      </ListContent>
+      {cast.length > 0 ? (
+        <CastList cast={cast} />
+      ) : (
+        <Prose>
+          <p>{site.pages.media.credits.cast.unavailable}</p>
+        </Prose>
+      )}
       <div className="dsy-divider" />
       <Prose>
-        <h2 id="crew">Crew</h2>
+        <h2 id="crew">{site.pages.media.credits.crew.title}</h2>
       </Prose>
-      <ListContent>
-        {credits.crew?.map((person) => {
-          return (
-            <Link
-              key={person.id}
-              params={{ id: person.id.toString() }}
-              to="/people/$id"
-            >
-              <Card>
-                {person.profile_path ? (
-                  <CardImage
-                    alt={person.name}
-                    src={tmdbImageUrl(person.profile_path, "w500")}
-                  />
-                ) : null}
-                <CardContent>
-                  <CardTitle>{person.name}</CardTitle>
-                  <p>{person.job}</p>
-                </CardContent>
-              </Card>
-            </Link>
-          );
-        })}
-      </ListContent>
+      {crew.length > 0 ? (
+        <CrewList crew={crew} />
+      ) : (
+        <Prose>
+          <p>{site.pages.media.credits.crew.unavailable}</p>
+        </Prose>
+      )}
     </div>
   );
 };

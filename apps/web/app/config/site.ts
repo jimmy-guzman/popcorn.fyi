@@ -1,6 +1,18 @@
 export const site = {
   description: "Discover your favorite TV Shows and Movies.",
   pages: {
+    media: {
+      credits: {
+        cast: {
+          title: "Cast",
+          unavailable: "No cast credits available.",
+        },
+        crew: {
+          title: "Crew",
+          unavailable: "No crew credits available.",
+        },
+      },
+    },
     popularMovies: {
       description: "Discover movies with a collection of popular movies.",
       title: "Popular Movies",

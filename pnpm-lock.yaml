@@ -89,8 +89,8 @@ importers:
         specifier: 10.0.4
         version: 10.0.4(react@19.0.0)
       valibot:
-        specifier: 1.0.0-beta.9
-        version: 1.0.0-beta.9(typescript@5.7.2)
+        specifier: 1.0.0-beta.10
+        version: 1.0.0-beta.10(typescript@5.7.2)
       vaul:
         specifier: 1.1.2
         version: 1.1.2(@types/react-dom@19.0.2(@types/react@19.0.2))(@types/react@19.0.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -196,8 +196,8 @@ importers:
         specifier: 1.2.10
         version: 1.2.10
       '@iconify-json/lucide':
-        specifier: 1.2.20
-        version: 1.2.20
+        specifier: 1.2.21
+        version: 1.2.21
       '@iconify-json/simple-icons':
         specifier: 1.2.18
         version: 1.2.18
@@ -996,8 +996,8 @@ packages:
   '@iconify-json/devicon-plain@1.2.10':
     resolution: {integrity: sha512-/qRghHZcxhmHi+32x78D4zbayOBitnoq/PsVqj2J4WOl6Ebbx5whkTXmzbR78oCDEEMib3lmqUHnk8C3OHBKlw==}
 
-  '@iconify-json/lucide@1.2.20':
-    resolution: {integrity: sha512-m/8rqukvQfsE+MYTwNXCxP/K2iucTCGSQfS0XZhYpkZKGRdiEOdAAnd8Vv+E78xKK94Jza2eTc5ihxbw6+i7EQ==}
+  '@iconify-json/lucide@1.2.21':
+    resolution: {integrity: sha512-Oi9bVtaDaiUg4DpmuFWO4bihwXvxFW47KYFUWEGRsqAWijnODTXIO24F2YNlz+k9WvdIr3RsOFiuNIoEzMPsRQ==}
 
   '@iconify-json/simple-icons@1.2.18':
     resolution: {integrity: sha512-ae4ig7fxNXME1wl5og7Ocp82TM4jyz6IsOyI8GrteSbvHR9gaPu2Z01Amn5V/xo1Y7A7/+EH/3Ovpy2az/gYbg==}
@@ -5330,8 +5330,8 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  valibot@1.0.0-beta.9:
-    resolution: {integrity: sha512-yEX8gMAZ2R1yI2uwOO4NCtVnJQx36zn3vD0omzzj9FhcoblvPukENIiRZXKZwCnqSeV80bMm8wNiGhQ0S8fiww==}
+  valibot@1.0.0-beta.10:
+    resolution: {integrity: sha512-nmo3nxvXRrxwDYZznK3aTgYv7ZA/SUZJ/s+pLY4Tqsex/fgwZ9XrrQ14jjozjUaeduQ9PhXHE2Xx1uMb0HePYw==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -6148,7 +6148,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/lucide@1.2.20':
+  '@iconify-json/lucide@1.2.21':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -11099,7 +11099,7 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  valibot@1.0.0-beta.9(typescript@5.7.2):
+  valibot@1.0.0-beta.10(typescript@5.7.2):
     optionalDependencies:
       typescript: 5.7.2
 

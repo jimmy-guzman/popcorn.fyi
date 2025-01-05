@@ -1,8 +1,17 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
-export const ListContent = ({ children }: { children: ReactNode }) => {
+interface ListContentProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, "classname" | "role"> {
+  children: ReactNode;
+}
+
+export const ListContent = ({ children, ...props }: ListContentProps) => {
   return (
-    <div className="grid min-h-[calc(100vh-8rem)] grid-cols-2 place-content-center content-center justify-center gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-5">
+    <div
+      {...props}
+      className="grid min-h-[calc(100vh-8rem)] grid-cols-2 place-content-center content-center justify-center gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-5"
+      role="list"
+    >
       {children}
     </div>
   );
