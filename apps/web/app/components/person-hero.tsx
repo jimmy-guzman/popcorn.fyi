@@ -17,7 +17,7 @@ export const PersonHero = ({ person }: PersonHeroProps) => {
   return (
     <div
       aria-label={person.name}
-      className="dsy-hero min-h-screen w-full"
+      className="dsy-hero w-full"
       role={person.backdrop_path ? "img" : undefined}
       style={{
         backgroundImage: person.backdrop_path

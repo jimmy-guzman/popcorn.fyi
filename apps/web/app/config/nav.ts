@@ -90,5 +90,10 @@ export const nav = {
       title: "Trending",
       to: "/trending",
     },
+    {
+      icon: "icon-[lucide--star]",
+      title: "Favorites",
+      to: "/favorites",
+    },
   ] satisfies NavItem[],
 };

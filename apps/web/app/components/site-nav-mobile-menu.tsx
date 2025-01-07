@@ -8,7 +8,6 @@ import { Drawer } from "vaul";
 
 import type { NavItem } from "@/config/nav";
 
-import { GitHubLink } from "./github-link";
 import { Prose } from "./prose";
 import { SiteNavMenuItem } from "./site-nav-menu-item";
 
@@ -34,7 +33,6 @@ export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {
               return <SiteNavMenuItem item={item} key={item.title} />;
             })}
             <li className="flex flex-row items-center justify-center">
-              <GitHubLink />
               <SignedIn>
                 <UserButton
                   appearance={{

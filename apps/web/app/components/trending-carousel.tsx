@@ -8,7 +8,7 @@ export const TrendingCarousel = ({
   trending: { id: number; media_type?: string }[];
 }) => {
   return (
-    <div className="dsy-carousel w-full">
+    <div className="dsy-carousel h-[calc(100vh-68px)] w-full">
       {trending.map((result) => {
         if (result.media_type === "tv") {
           return (

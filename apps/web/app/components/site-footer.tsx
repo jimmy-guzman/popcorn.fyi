@@ -1,5 +1,6 @@
 import { urls } from "@/config/urls";
 
+import { GitHubLink } from "./github-link";
 import { SiteLogo } from "./site-logo";
 import { TMDBLogo } from "./tmdb-logo";
 
@@ -79,6 +80,12 @@ export const SiteFooter = () => {
           TMDB.
         </p>
       </aside>
+      <nav>
+        <h6 className="dsy-footer-title sr-only">Social</h6>
+        <div className="grid grid-flow-col gap-4">
+          <GitHubLink />
+        </div>
+      </nav>
     </footer>
   );
 };

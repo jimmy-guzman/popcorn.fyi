@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout.index'
 import { Route as LayoutSearchImport } from './routes/_layout.search'
+import { Route as LayoutAuthedImport } from './routes/_layout._authed'
 import { Route as LayoutTvShowsTopRatedImport } from './routes/_layout.tv-shows.top-rated'
 import { Route as LayoutTvShowsPopularImport } from './routes/_layout.tv-shows.popular'
 import { Route as LayoutTvShowsIdImport } from './routes/_layout.tv-shows.$id'
@@ -25,6 +26,7 @@ import { Route as LayoutPeopleIdImport } from './routes/_layout.people.$id'
 import { Route as LayoutMoviesTopRatedImport } from './routes/_layout.movies.top-rated'
 import { Route as LayoutMoviesPopularImport } from './routes/_layout.movies.popular'
 import { Route as LayoutMoviesIdImport } from './routes/_layout.movies.$id'
+import { Route as LayoutAuthedFavoritesImport } from './routes/_layout._authed.favorites'
 import { Route as LayoutTvShowsIdIndexImport } from './routes/_layout.tv-shows.$id.index'
 import { Route as LayoutPeopleIdIndexImport } from './routes/_layout.people.$id.index'
 import { Route as LayoutMoviesIdIndexImport } from './routes/_layout.movies.$id.index'
@@ -51,6 +53,11 @@ const LayoutIndexRoute = LayoutIndexImport.update({
 const LayoutSearchRoute = LayoutSearchImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutAuthedRoute = LayoutAuthedImport.update({
+  id: '/_authed',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -120,6 +127,12 @@ const LayoutMoviesIdRoute = LayoutMoviesIdImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
+const LayoutAuthedFavoritesRoute = LayoutAuthedFavoritesImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => LayoutAuthedRoute,
+} as any)
+
 const LayoutTvShowsIdIndexRoute = LayoutTvShowsIdIndexImport.update({
   id: '/',
   path: '/',
@@ -185,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
+    '/_layout/_authed': {
+      id: '/_layout/_authed'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof LayoutAuthedImport
+      parentRoute: typeof LayoutImport
+    }
     '/_layout/search': {
       id: '/_layout/search'
       path: '/search'
@@ -198,6 +218,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof LayoutIndexImport
       parentRoute: typeof LayoutImport
+    }
+    '/_layout/_authed/favorites': {
+      id: '/_layout/_authed/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof LayoutAuthedFavoritesImport
+      parentRoute: typeof LayoutAuthedImport
     }
     '/_layout/movies/$id': {
       id: '/_layout/movies/$id'
@@ -344,6 +371,18 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
+interface LayoutAuthedRouteChildren {
+  LayoutAuthedFavoritesRoute: typeof LayoutAuthedFavoritesRoute
+}
+
+const LayoutAuthedRouteChildren: LayoutAuthedRouteChildren = {
+  LayoutAuthedFavoritesRoute: LayoutAuthedFavoritesRoute,
+}
+
+const LayoutAuthedRouteWithChildren = LayoutAuthedRoute._addFileChildren(
+  LayoutAuthedRouteChildren,
+)
+
 interface LayoutMoviesIdRouteChildren {
   LayoutMoviesIdCreditsRoute: typeof LayoutMoviesIdCreditsRoute
   LayoutMoviesIdTrailerRoute: typeof LayoutMoviesIdTrailerRoute
@@ -393,6 +432,7 @@ const LayoutTvShowsIdRouteWithChildren = LayoutTvShowsIdRoute._addFileChildren(
 )
 
 interface LayoutRouteChildren {
+  LayoutAuthedRoute: typeof LayoutAuthedRouteWithChildren
   LayoutSearchRoute: typeof LayoutSearchRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutMoviesIdRoute: typeof LayoutMoviesIdRouteWithChildren
@@ -409,6 +449,7 @@ interface LayoutRouteChildren {
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
+  LayoutAuthedRoute: LayoutAuthedRouteWithChildren,
   LayoutSearchRoute: LayoutSearchRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutMoviesIdRoute: LayoutMoviesIdRouteWithChildren,
@@ -428,9 +469,10 @@ const LayoutRouteWithChildren =
   LayoutRoute._addFileChildren(LayoutRouteChildren)
 
 export interface FileRoutesByFullPath {
-  '': typeof LayoutRouteWithChildren
+  '': typeof LayoutAuthedRouteWithChildren
   '/search': typeof LayoutSearchRoute
   '/': typeof LayoutIndexRoute
+  '/favorites': typeof LayoutAuthedFavoritesRoute
   '/movies/$id': typeof LayoutMoviesIdRouteWithChildren
   '/movies/popular': typeof LayoutMoviesPopularRoute
   '/movies/top-rated': typeof LayoutMoviesTopRatedRoute
@@ -454,8 +496,10 @@ export interface FileRoutesByFullPath {
 }
 
 export interface FileRoutesByTo {
+  '': typeof LayoutAuthedRouteWithChildren
   '/search': typeof LayoutSearchRoute
   '/': typeof LayoutIndexRoute
+  '/favorites': typeof LayoutAuthedFavoritesRoute
   '/movies/popular': typeof LayoutMoviesPopularRoute
   '/movies/top-rated': typeof LayoutMoviesTopRatedRoute
   '/people/popular': typeof LayoutPeoplePopularRoute
@@ -478,8 +522,10 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/_layout': typeof LayoutRouteWithChildren
+  '/_layout/_authed': typeof LayoutAuthedRouteWithChildren
   '/_layout/search': typeof LayoutSearchRoute
   '/_layout/': typeof LayoutIndexRoute
+  '/_layout/_authed/favorites': typeof LayoutAuthedFavoritesRoute
   '/_layout/movies/$id': typeof LayoutMoviesIdRouteWithChildren
   '/_layout/movies/popular': typeof LayoutMoviesPopularRoute
   '/_layout/movies/top-rated': typeof LayoutMoviesTopRatedRoute
@@ -508,6 +554,7 @@ export interface FileRouteTypes {
     | ''
     | '/search'
     | '/'
+    | '/favorites'
     | '/movies/$id'
     | '/movies/popular'
     | '/movies/top-rated'
@@ -530,8 +577,10 @@ export interface FileRouteTypes {
     | '/tv-shows/$id/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | ''
     | '/search'
     | '/'
+    | '/favorites'
     | '/movies/popular'
     | '/movies/top-rated'
     | '/people/popular'
@@ -552,8 +601,10 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/_layout'
+    | '/_layout/_authed'
     | '/_layout/search'
     | '/_layout/'
+    | '/_layout/_authed/favorites'
     | '/_layout/movies/$id'
     | '/_layout/movies/popular'
     | '/_layout/movies/top-rated'
@@ -601,6 +652,7 @@ export const routeTree = rootRoute
     "/_layout": {
       "filePath": "_layout.tsx",
       "children": [
+        "/_layout/_authed",
         "/_layout/search",
         "/_layout/",
         "/_layout/movies/$id",
@@ -616,6 +668,13 @@ export const routeTree = rootRoute
         "/_layout/tv-shows/top-rated"
       ]
     },
+    "/_layout/_authed": {
+      "filePath": "_layout._authed.tsx",
+      "parent": "/_layout",
+      "children": [
+        "/_layout/_authed/favorites"
+      ]
+    },
     "/_layout/search": {
       "filePath": "_layout.search.tsx",
       "parent": "/_layout"
@@ -623,6 +682,10 @@ export const routeTree = rootRoute
     "/_layout/": {
       "filePath": "_layout.index.tsx",
       "parent": "/_layout"
+    },
+    "/_layout/_authed/favorites": {
+      "filePath": "_layout._authed.favorites.tsx",
+      "parent": "/_layout/_authed"
     },
     "/_layout/movies/$id": {
       "filePath": "_layout.movies.$id.tsx",

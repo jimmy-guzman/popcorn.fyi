@@ -17,7 +17,7 @@ export const TvShowHero = ({ tvShow }: TVShowHeroProps) => {
   return (
     <div
       aria-label={tvShow.name}
-      className="dsy-hero min-h-screen w-full"
+      className="dsy-hero w-full"
       role={tvShow.backdrop_path ? "img" : undefined}
       style={{
         backgroundImage: tvShow.backdrop_path

@@ -17,7 +17,7 @@ export const MovieHero = ({ movie }: MovieHeroProps) => {
   return (
     <div
       aria-label={movie.title}
-      className="dsy-hero min-h-screen w-full"
+      className="dsy-hero w-full"
       role={movie.backdrop_path ? "img" : undefined}
       style={{
         backgroundImage: movie.backdrop_path
