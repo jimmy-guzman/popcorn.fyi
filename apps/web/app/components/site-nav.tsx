@@ -9,7 +9,6 @@ import { Link } from "@tanstack/react-router";
 import { nav } from "@/config/nav";
 import { site } from "@/config/site";
 
-import { GitHubLink } from "./github-link";
 import { SiteLogo } from "./site-logo";
 import { SiteNavMenuItem } from "./site-nav-menu-item";
 import { SiteNavMobileMenu } from "./site-nav-mobile-menu";
@@ -29,7 +28,7 @@ export const SiteNav = () => {
         </div>
       </div>
       <div className="dsy-navbar-center hidden lg:flex">
-        <ul className="dsy-menu dsy-menu-horizontal gap-2">
+        <ul className="dsy-menu dsy-menu-horizontal">
           {nav.items.map((item) => {
             return <SiteNavMenuItem item={item} key={item.title} />;
           })}
@@ -37,7 +36,6 @@ export const SiteNav = () => {
       </div>
       <div className="dsy-navbar-end hidden lg:flex">
         <SiteNavSearchInput />
-        <GitHubLink />
         <SignedIn>
           <UserButton
             appearance={{
