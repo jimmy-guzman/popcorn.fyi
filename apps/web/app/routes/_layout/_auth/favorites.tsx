@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { Prose } from "@/components/prose";
 
-export const Route = createFileRoute("/_layout/_authed/favorites")({
+export const Route = createFileRoute("/_layout/_auth/favorites")({
   component: RouteComponent,
 });
 
