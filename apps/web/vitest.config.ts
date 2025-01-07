@@ -22,6 +22,6 @@ export default defineConfig({
     exclude: [...configDefaults.exclude, "e2e/*"],
     globals: true,
     passWithNoTests: true,
-    setupFiles: "./app/testing/setup.ts",
+    setupFiles: "./app/testing/setup.tsx",
   },
 });

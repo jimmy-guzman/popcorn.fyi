@@ -1,6 +1,7 @@
 import type { RenderOptions } from "@testing-library/react";
 import type { ReactElement, ReactNode } from "react";
 
+import { ClerkProvider } from "@clerk/tanstack-start";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   createMemoryHistory,
@@ -39,8 +40,9 @@ const Wrapper = ({ children, initialEntries, path }: WrapperProps) => {
 
     const rootRoute = createRootRoute();
     const testingRoute = createRoute({
+      // eslint-disable-next-line react/no-unstable-nested-components -- testing purposes
       component: () => {
-        return children;
+        return <ClerkProvider>{children}</ClerkProvider>;
       },
       getParentRoute: () => {
         return rootRoute;
