@@ -4,7 +4,7 @@
     "commands": {
       "lint": {
         "root": "libs/utils",
-        "run": "pnpm eslint --flag unstable_ts_config --cache --quiet {staged_files}",
+        "run": "pnpm eslint  --cache --quiet {staged_files}",
         "stage_fixed": true
       }
     }

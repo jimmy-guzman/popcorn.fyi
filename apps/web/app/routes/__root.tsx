@@ -2,7 +2,6 @@ import type { QueryClient } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 
 import { ClerkProvider } from "@clerk/tanstack-start";
-import { getAuth } from "@clerk/tanstack-start/server";
 import { dark } from "@clerk/themes";
 import { theme } from "@popcorn.fyi/tailwind/theme";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -11,23 +10,17 @@ import {
   Outlet,
   ScrollRestoration,
 } from "@tanstack/react-router";
-import { createServerFn, Meta, Scripts } from "@tanstack/start";
+import { Meta, Scripts } from "@tanstack/start";
 import { lazy } from "react";
-import { getWebRequest } from "vinxi/http";
+import { Toaster } from "sonner";
 
 import { ThemeScript } from "@/components/theme-script";
 import { site } from "@/config/site";
+import { cn } from "@/lib/cn";
 import { seo } from "@/lib/seo";
+import { userFn } from "@/lib/user";
 
 import rootCSS from "./__root.css?url";
-
-const fetchClerkAuth = createServerFn({ method: "GET" }).handler(async () => {
-  const { userId } = await getAuth(getWebRequest());
-
-  return {
-    userId,
-  };
-});
 
 const TanStackRouterDevtools =
   process.env.NODE_ENV === "production"
@@ -63,6 +56,20 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <ScrollRestoration />
         <TanStackRouterDevtools position="bottom-right" />
         <ReactQueryDevtools buttonPosition="bottom-left" />
+        <Toaster
+          cn={cn}
+          toastOptions={{
+            classNames: {
+              error: "dsy-alert-error",
+              info: "dsy-alert-info",
+              loading: "dsy-alert-info",
+              success: "dsy-alert-success",
+              toast: "dsy-alert",
+              warning: "dsy-alert-warning",
+            },
+            unstyled: true,
+          }}
+        />
         <Scripts />
         <ThemeScript />
       </body>
@@ -75,7 +82,7 @@ export const Route = createRootRouteWithContext<{
 }>()({
   component: RootComponent,
   beforeLoad: async () => {
-    const { userId } = await fetchClerkAuth();
+    const { userId } = await userFn();
 
     return {
       userId,

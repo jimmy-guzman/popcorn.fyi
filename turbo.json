@@ -5,6 +5,10 @@
       "dependsOn": ["^gen"],
       "outputs": ["**/*.gen.*"]
     },
+    "push": {
+      "dependsOn": ["^push"],
+      "passThroughEnv": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"]
+    },
     "build": {
       "dependsOn": ["^build", "^gen"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"]

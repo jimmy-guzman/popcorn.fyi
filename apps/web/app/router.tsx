@@ -1,13 +1,22 @@
 import { QueryClient } from "@tanstack/react-query";
 import { createRouter as createTanStackRouter } from "@tanstack/react-router";
 import { routerWithQueryClient } from "@tanstack/react-router-with-query";
+import { toast } from "sonner";
 
 import { Error } from "./components/error";
 import { NotFound } from "./components/not-found";
 import { routeTree } from "./routeTree.gen";
 
 export function createRouter() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      mutations: {
+        onError: (error) => {
+          toast.error(error.message);
+        },
+      },
+    },
+  });
 
   const router = routerWithQueryClient(
     createTanStackRouter({

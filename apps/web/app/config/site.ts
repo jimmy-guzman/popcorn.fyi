@@ -1,6 +1,19 @@
 export const site = {
   description: "Discover your favorite TV Shows and Movies.",
   pages: {
+    favoriteMovies: {
+      description: "Your collection of your favorite Movies.",
+      title: "Favorite Movies",
+    },
+    favoritePeople: {
+      description:
+        "Your collection of your favorite People in Movies and TV Shows.",
+      title: "Favorite People",
+    },
+    favoriteTVShows: {
+      description: "Your collection of your favorite TV Shows.",
+      title: "Favorite TV Shows",
+    },
     media: {
       credits: {
         cast: {

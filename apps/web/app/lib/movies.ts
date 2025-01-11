@@ -9,6 +9,8 @@ import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
 import { PaginationSchema } from "@/schemas/pagination";
 
+import { findFavoriteFn } from "./favorites";
+
 const popularMoviesFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
     return v.parse(PaginationSchema, data);
@@ -28,7 +30,7 @@ export const moviesPopularOptions = (query: Pagination) => {
     queryFn: () => {
       return popularMoviesFn({ data: query });
     },
-    queryKey: ["movies", "popular", query],
+    queryKey: ["movie", "list", "popular", query],
   });
 };
 
@@ -51,7 +53,7 @@ export const moviesTopRatedOptions = (query: Pagination) => {
     queryFn: () => {
       return topRatedMoviesFn({ data: query });
     },
-    queryKey: ["movies", "top-rated", query],
+    queryKey: ["movie", "list", "top-rated", query],
   });
 };
 
@@ -68,7 +70,9 @@ const movieDetailsFn = createServerFn({ method: "GET" })
       },
     });
 
-    return rest;
+    const favorite = await findFavoriteFn(context);
+
+    return { ...rest, favorite: Boolean(favorite) };
   });
 
 export const movieDetailsOptions = (id: Id) => {
@@ -76,7 +80,7 @@ export const movieDetailsOptions = (id: Id) => {
     queryFn: () => {
       return movieDetailsFn({ data: id });
     },
-    queryKey: ["movies", "details", id],
+    queryKey: ["movie", "details", id],
   });
 };
 
@@ -99,7 +103,7 @@ export const movieCreditsOptions = (id: Id) => {
     queryFn: () => {
       return movieCreditsFn({ data: id });
     },
-    queryKey: ["movies", "details", id, "credits"],
+    queryKey: ["movie", "details", id, "credits"],
   });
 };
 
@@ -122,7 +126,7 @@ export const movieWatchOptions = (id: Id) => {
     queryFn: () => {
       return movieWatchFn({ data: id });
     },
-    queryKey: ["movies", "details", id, "watch"],
+    queryKey: ["movie", "details", id, "watch"],
   });
 };
 
@@ -145,6 +149,6 @@ export const movieVideosOptions = (id: Id) => {
     queryFn: () => {
       return movieVideosFn({ data: id });
     },
-    queryKey: ["movies", "details", id, "videos"],
+    queryKey: ["movie", "details", id, "videos"],
   });
 };

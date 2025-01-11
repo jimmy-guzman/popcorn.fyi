@@ -11,6 +11,7 @@ A [Turborepo](https://turbo.build/repo) of [apps](#-apps), [libs](#-libs) and [c
 ### 📦 Libs
 
 - [@popcorn.fyi/tmdb](./libs/tmdb/README.md): a [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) api client.
+- [@popcorn.fyi/db](./libs/db/README.md): a database client powered by [drizzle](https://orm.drizzle.team).
 - [@popcorn.fyi/utils](./libs/utils/README.md): a toolkit full of utility functions.
 
 ### ⚙️ Configs

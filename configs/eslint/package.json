@@ -5,7 +5,7 @@
     ".": "./eslint.config.ts"
   },
   "scripts": {
-    "lint": "eslint --flag unstable_ts_config --cache .",
+    "lint": "eslint --cache .",
     "typecheck": "tsc"
   },
   "dependencies": {

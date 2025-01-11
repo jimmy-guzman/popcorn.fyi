@@ -9,6 +9,8 @@ import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
 import { PaginationSchema } from "@/schemas/pagination";
 
+import { findFavoriteFn } from "./favorites";
+
 const popularPeopleFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
     return v.parse(PaginationSchema, data);
@@ -28,7 +30,7 @@ export const peoplePopularOptions = (query: Pagination) => {
     queryFn: () => {
       return popularPeopleFn({ data: query });
     },
-    queryKey: ["people", "popular", query],
+    queryKey: ["people", "list", "popular", query],
   });
 };
 
@@ -45,7 +47,9 @@ const personDetailsFn = createServerFn({ method: "GET" })
       },
     });
 
-    return rest;
+    const favorite = await findFavoriteFn(context);
+
+    return { ...rest, favorite: Boolean(favorite) };
   });
 
 export const personDetailsOptions = (id: Id) => {
@@ -53,7 +57,7 @@ export const personDetailsOptions = (id: Id) => {
     queryFn: () => {
       return personDetailsFn({ data: id });
     },
-    queryKey: ["people", "details", id],
+    queryKey: ["person", "details", id],
   });
 };
 
