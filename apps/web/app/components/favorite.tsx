@@ -1,12 +1,16 @@
 import { useUser } from "@clerk/tanstack-start";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 
+import type { MediaType } from "@/lib/types";
+
 import { addToFavoritesFn, removeFromFavoritesFn } from "@/lib/favorites";
+import { pluralMediaType } from "@/lib/plural-media-type";
 
 interface FavoriteProps {
   favorite: boolean;
-  mediaType: "movie" | "person" | "tv";
+  mediaType: MediaType;
   tmdbId: number;
 }
 
@@ -21,7 +25,16 @@ export const Favorite = ({ favorite, mediaType, tmdbId }: FavoriteProps) => {
         queryKey: [mediaType, "details", tmdbId],
       });
 
-      toast.success("Has been add to favorites.");
+      toast.success("Added to Favorites.", {
+        action: (
+          <Link
+            className="dsy-link"
+            to={`/favorites/${pluralMediaType(mediaType)}`}
+          >
+            View
+          </Link>
+        ),
+      });
     },
   });
   const removeFromFavorites = useMutation({
@@ -32,7 +45,16 @@ export const Favorite = ({ favorite, mediaType, tmdbId }: FavoriteProps) => {
         queryKey: [mediaType, "details", tmdbId],
       });
 
-      toast.success("Has been removed from favorites.");
+      toast.success("Removed from Favorites.", {
+        action: (
+          <Link
+            className="dsy-link"
+            to={`/favorites/${pluralMediaType(mediaType)}`}
+          >
+            View
+          </Link>
+        ),
+      });
     },
   });
 
