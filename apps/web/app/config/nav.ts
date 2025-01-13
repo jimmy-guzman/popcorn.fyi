@@ -92,6 +92,23 @@ export const nav = {
     },
     {
       icon: "icon-[lucide--star]",
+      items: [
+        {
+          icon: "icon-[lucide--clapperboard]",
+          title: "Movies",
+          to: "/favorites/movies",
+        },
+        {
+          icon: "icon-[lucide--tv]",
+          title: "TV Shows",
+          to: "/favorites/tv-shows",
+        },
+        {
+          icon: "icon-[lucide--person-standing]",
+          title: "People",
+          to: "/favorites/people",
+        },
+      ],
       title: "Favorites",
       to: "/favorites",
     },

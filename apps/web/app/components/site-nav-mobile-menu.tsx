@@ -14,7 +14,7 @@ import { SiteNavMenuItem } from "./site-nav-menu-item";
 export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {
   return (
     <Drawer.Root>
-      <Drawer.Trigger className="dsy-btn dsy-btn-ghost dsy-btn-sm lg:hidden">
+      <Drawer.Trigger className="dsy-btn dsy-btn-ghost dsy-btn-sm xl:hidden">
         <span className="icon-[lucide--menu] h-5 w-5" />
       </Drawer.Trigger>
       <Drawer.Portal>

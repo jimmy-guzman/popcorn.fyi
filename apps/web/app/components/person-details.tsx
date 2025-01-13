@@ -2,6 +2,7 @@ import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { date } from "@popcorn.fyi/utils";
 import { Outlet } from "@tanstack/react-router";
 
+import { Favorite } from "./favorite";
 import { MediaRating } from "./media-rating";
 import { Prose } from "./prose";
 
@@ -9,6 +10,7 @@ interface PersonDetailsProps {
   person: {
     biography?: string;
     birthday?: string;
+    favorite: boolean;
     id: number;
     known_for_department?: string;
     name?: string;
@@ -56,6 +58,13 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
                 <p>No biography available.</p>
               )}
             </Prose>
+            <div className="flex justify-start gap-2">
+              <Favorite
+                favorite={person.favorite}
+                mediaType="person"
+                tmdbId={person.id}
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
   "pre-commit": {
     "commands": {
       "lint": {
-        "root": "configs/tailwind",
+        "root": "libs/db",
         "run": "pnpm eslint  --cache --quiet {staged_files}",
         "stage_fixed": true
       }

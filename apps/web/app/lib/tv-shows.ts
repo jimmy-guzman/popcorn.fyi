@@ -9,6 +9,8 @@ import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
 import { PaginationSchema } from "@/schemas/pagination";
 
+import { findFavoriteFn } from "./favorites";
+
 const tvDetailsFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
     return v.parse(IdSchema, data);
@@ -22,7 +24,9 @@ const tvDetailsFn = createServerFn({ method: "GET" })
       },
     });
 
-    return rest;
+    const favorite = await findFavoriteFn(context);
+
+    return { ...rest, favorite: Boolean(favorite) };
   });
 
 export const tvDetailsOptions = (id: Id) => {
@@ -122,7 +126,7 @@ export const tvPopularOptions = (query: Pagination) => {
     queryFn: () => {
       return tvPopularFn({ data: query });
     },
-    queryKey: ["tv", "popular", query],
+    queryKey: ["tv", "list", "popular", query],
   });
 };
 
@@ -145,6 +149,6 @@ export const tvTopRatedOptions = (query: Pagination) => {
     queryFn: () => {
       return tvTopRatedFn({ data: query });
     },
-    queryKey: ["tv", "top-rated", query],
+    queryKey: ["tv", "list", "top-rated", query],
   });
 };

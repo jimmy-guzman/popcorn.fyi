@@ -13,12 +13,15 @@
     "iconify",
     "knip",
     "lefthook",
+    "neondatabase",
     "noninteractive",
     "nvmrc",
     "pnpx",
+    "sonner",
     "TMDB",
     "Turborepo",
     "TURSO",
+    "UNPOOLED",
     "valibot",
     "vaul",
     "vercel",
@@ -32,8 +35,5 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ],
-  "eslint.options": {
-    "flags": ["unstable_ts_config"]
-  }
+  ]
 }

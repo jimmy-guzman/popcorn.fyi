@@ -1,0 +1,27 @@
+{
+  "name": "@popcorn.fyi/db",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./user-favorites": "./src/schemas/user-favorites.ts"
+  },
+  "scripts": {
+    "lint": "eslint --cache .",
+    "push": "dotenv-run -- drizzle-kit push",
+    "studio": "drizzle-kit studio",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "0.10.4",
+    "bufferutil": "4.0.9",
+    "drizzle-orm": "0.38.3",
+    "drizzle-valibot": "0.3.1",
+    "ws": "8.18.0"
+  },
+  "devDependencies": {
+    "@popcorn.fyi/eslint": "workspace:*",
+    "@popcorn.fyi/ts": "workspace:*",
+    "@types/ws": "8.5.13",
+    "drizzle-kit": "0.30.1"
+  }
+}

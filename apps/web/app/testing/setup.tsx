@@ -23,5 +23,27 @@ vi.mock("@clerk/tanstack-start", async () => {
     SignIn: () => {
       return <div data-testid="clerk-signin" />;
     },
+    useUser: () => {
+      return vi.fn();
+    },
+  };
+});
+
+vi.mock("@tanstack/start", async () => {
+  const actual = await vi.importActual("@tanstack/start");
+
+  return {
+    ...actual,
+    createServerFn: () => {
+      return {
+        validator: () => {
+          return {
+            handler: () => {
+              return vi.fn();
+            },
+          };
+        },
+      };
+    },
   };
 });

@@ -3,6 +3,8 @@
   "extends": ["//"],
   "tasks": {
     "build": {
+      "dependsOn": ["@popcorn.fyi/db#push"],
+      "passThroughEnv": ["DATABASE_URL", "DATABASE_URL_UNPOOLED"],
       "outputs": [".vercel/**", ".vinxi/**", ".output/**"]
     }
   }

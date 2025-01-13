@@ -1,6 +1,7 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Link, Outlet } from "@tanstack/react-router";
 
+import { Favorite } from "./favorite";
 import { MediaGenres } from "./media-genres";
 import { MediaRating } from "./media-rating";
 import { MediaStatus } from "./media-status";
@@ -9,6 +10,7 @@ import { Prose } from "./prose";
 interface MovieDetailsProps {
   movie: {
     backdrop_path?: string;
+    favorite: boolean;
     genres?: { id: number; name?: string }[];
     id: number;
     overview?: string;
@@ -52,7 +54,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
               {movie.tagline ? <p>&quot;{movie.tagline}&quot;</p> : null}
               <p>{movie.overview}</p>
             </Prose>
-            <div>
+            <div className="flex justify-start gap-2">
               <Link
                 className="dsy-btn dsy-btn-secondary"
                 params={{ id: movie.id.toString() }}
@@ -61,6 +63,11 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
                 Watch Trailer{" "}
                 <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
               </Link>
+              <Favorite
+                favorite={movie.favorite}
+                mediaType="movie"
+                tmdbId={movie.id}
+              />
             </div>
           </div>
         </div>

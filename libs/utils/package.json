@@ -6,7 +6,7 @@
   },
   "scripts": {
     "coverage": "vitest run --coverage",
-    "lint": "eslint --flag unstable_ts_config --cache .",
+    "lint": "eslint --cache .",
     "test": "vitest",
     "typecheck": "tsc"
   },
