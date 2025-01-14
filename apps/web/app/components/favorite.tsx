@@ -45,16 +45,7 @@ export const Favorite = ({ favorite, mediaType, tmdbId }: FavoriteProps) => {
         queryKey: [mediaType, "details", tmdbId],
       });
 
-      toast.success("Removed from Favorites.", {
-        action: (
-          <Link
-            className="dsy-link"
-            to={`/favorites/${pluralMediaType(mediaType)}`}
-          >
-            View
-          </Link>
-        ),
-      });
+      toast.success("Removed from Favorites.");
     },
   });
 

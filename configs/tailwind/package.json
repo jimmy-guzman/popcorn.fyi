@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@iconify-json/devicon-plain": "1.2.10",
-    "@iconify-json/lucide": "1.2.22",
-    "@iconify-json/simple-icons": "1.2.19",
+    "@iconify-json/lucide": "1.2.23",
+    "@iconify-json/simple-icons": "1.2.20",
     "@iconify/tailwind": "1.2.0",
     "@tailwindcss/typography": "0.5.16",
     "daisyui": "4.12.23"

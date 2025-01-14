@@ -29,7 +29,7 @@ const CardContent = forwardRef<HTMLDivElement, { children: ReactNode }>(
 
 CardContent.displayName = "CardContent";
 
-const CardTitle = forwardRef<HTMLDivElement, { children: ReactNode }>(
+const CardTitle = forwardRef<HTMLHeadingElement, { children: ReactNode }>(
   ({ children }, ref) => {
     return (
       <h2 className="dsy-card-title" ref={ref}>
@@ -41,7 +41,7 @@ const CardTitle = forwardRef<HTMLDivElement, { children: ReactNode }>(
 
 CardTitle.displayName = "CardTitle";
 
-const CardImage = forwardRef<HTMLDivElement, { alt?: string; src: string }>(
+const CardImage = forwardRef<HTMLElement, { alt?: string; src: string }>(
   ({ alt, src }, ref) => {
     return (
       <figure ref={ref}>

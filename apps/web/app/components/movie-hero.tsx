@@ -1,6 +1,7 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Link } from "@tanstack/react-router";
 
+import { Hero, HeroBadges, HeroContent, HeroOverlay, HeroTitle } from "./hero";
 import { MediaType } from "./media-type";
 
 interface MovieHeroProps {
@@ -15,35 +16,27 @@ interface MovieHeroProps {
 
 export const MovieHero = ({ movie }: MovieHeroProps) => {
   return (
-    <div
+    <Hero
       aria-label={movie.title}
-      className="dsy-hero w-full"
-      role={movie.backdrop_path ? "img" : undefined}
-      style={{
-        backgroundImage: movie.backdrop_path
-          ? `url(${tmdbImageUrl(movie.backdrop_path)})`
-          : undefined,
-      }}
+      backgroundImage={
+        movie.backdrop_path ? tmdbImageUrl(movie.backdrop_path) : undefined
+      }
     >
-      <div className="dsy-hero-overlay bg-opacity-60" />
-      <div className="dsy-hero-content text-neutral-content text-center">
-        <div>
-          <div className="flex justify-end gap-2">
-            <MediaType mediaType={movie.media_type} />
-          </div>
-          <h1 className="mb-5 text-pretty text-6xl font-bold lg:text-8xl">
-            {movie.title}
-          </h1>
-          <p className="mb-5">{movie.overview}</p>
-          <Link
-            className="dsy-btn dsy-btn-primary"
-            params={{ id: movie.id.toString() }}
-            to="/movies/$id"
-          >
-            Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
-          </Link>
-        </div>
-      </div>
-    </div>
+      <HeroOverlay />
+      <HeroContent>
+        <HeroBadges>
+          <MediaType mediaType={movie.media_type} />
+        </HeroBadges>
+        <HeroTitle>{movie.title}</HeroTitle>
+        <p>{movie.overview}</p>
+        <Link
+          className="dsy-btn dsy-btn-primary"
+          params={{ id: movie.id.toString() }}
+          to="/movies/$id"
+        >
+          Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
+        </Link>
+      </HeroContent>
+    </Hero>
   );
 };
