@@ -40,6 +40,7 @@ jobs:
   e2e:
     name: "End-to-End"
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     env:
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ vars.TURBO_TEAM }}
