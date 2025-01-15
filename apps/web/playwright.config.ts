@@ -5,6 +5,7 @@ const IS_CI = process.env.CI;
 export default defineConfig({
   forbidOnly: true,
   fullyParallel: true,
+  globalTimeout: IS_CI ? 30 * 60 * 1000 : undefined,
   projects: [
     {
       name: "setup",
