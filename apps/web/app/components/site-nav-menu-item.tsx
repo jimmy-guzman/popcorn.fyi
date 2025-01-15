@@ -20,10 +20,12 @@ const SiteNavCollapsibleMenuItem = ({ item }: { item: MultipleNavItem }) => {
       }
     });
   };
+
   const isActive = pathname.startsWith(item.to);
 
   return (
-    <details onBlur={handleBlur} ref={ref}>
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- safari does not work correctly w/ document.activeElement
+    <details onBlur={handleBlur} ref={ref} tabIndex={0}>
       <summary className={cn(isActive && "dsy-btn-active")} role="button">
         <span className={cn(item.icon, "h-5 w-5")} /> {item.title}
       </summary>
