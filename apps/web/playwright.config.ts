@@ -33,5 +33,6 @@ export default defineConfig({
   webServer: {
     command: "pnpm build --preset node-server && pnpm preview",
     port: 3000,
+    stdout: "pipe",
   },
 });
