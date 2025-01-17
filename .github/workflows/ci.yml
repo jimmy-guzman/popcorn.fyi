@@ -1,11 +1,22 @@
 name: CI
 
 on:
-  pull_request:
-    branches: [main]
+  pull_request_target:
 
 jobs:
+  authorize:
+    name: "Authorize"
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ✓
+    # prettier-ignore
+    environment:
+      ${{ (github.event_name == 'pull_request_target' &&
+      github.event.pull_request.head.repo.full_name != github.repository) &&
+      'external' || 'internal' }}
+
   code_check:
+    needs: authorize
     name: "Code Check"
     runs-on: ubuntu-latest
     env:
@@ -16,6 +27,8 @@ jobs:
     steps:
       - name: 🏗 Setup Repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.ref }}
 
       - name: 🏗 Setup pnpm
         uses: pnpm/action-setup@v4
@@ -38,6 +51,7 @@ jobs:
         run: pnpm check
 
   e2e:
+    needs: authorize
     name: "End-to-End"
     runs-on: ubuntu-latest
     env:
@@ -48,6 +62,8 @@ jobs:
     steps:
       - name: 🏗 Setup Repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.ref }}
 
       - name: 🏗 Setup pnpm
         uses: pnpm/action-setup@v4
