@@ -16,7 +16,6 @@ import { Toaster } from "sonner";
 
 import { ThemeScript } from "@/components/theme-script";
 import { site } from "@/config/site";
-import { cn } from "@/lib/cn";
 import { seo } from "@/lib/seo";
 import { userFn } from "@/lib/user";
 
@@ -57,7 +56,6 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <TanStackRouterDevtools position="bottom-right" />
         <ReactQueryDevtools buttonPosition="bottom-left" />
         <Toaster
-          cn={cn}
           toastOptions={{
             classNames: {
               error: "dsy-alert-error",
