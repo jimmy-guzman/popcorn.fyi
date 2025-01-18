@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+
 import { MovieHero } from "./movie-hero";
 import { PersonHero } from "./person-hero";
 import { TvShowHero } from "./tv-show-hero";
@@ -8,34 +10,63 @@ export const TrendingCarousel = ({
   trending: { id: number; media_type?: string }[];
 }) => {
   return (
-    <div className="dsy-carousel h-[calc(100vh-68px)] w-full">
-      {trending.map((result) => {
-        if (result.media_type === "tv") {
-          return (
-            <div className="dsy-carousel-item w-full" key={result.id}>
-              <TvShowHero tvShow={result} />
-            </div>
-          );
-        }
+    <div className="flex h-[calc(100vh-68px)] flex-col justify-between">
+      <div className="dsy-carousel h-full w-full">
+        {trending.map((result, index) => {
+          if (result.media_type === "tv") {
+            return (
+              <div
+                className="dsy-carousel-item w-full"
+                id={`${index + 1}`}
+                key={result.id}
+              >
+                <TvShowHero tvShow={result} />
+              </div>
+            );
+          }
 
-        if (result.media_type === "movie") {
-          return (
-            <div className="dsy-carousel-item w-full" key={result.id}>
-              <MovieHero movie={result} />
-            </div>
-          );
-        }
+          if (result.media_type === "movie") {
+            return (
+              <div
+                className="dsy-carousel-item w-full"
+                id={`${index + 1}`}
+                key={result.id}
+              >
+                <MovieHero movie={result} />
+              </div>
+            );
+          }
 
-        if (result.media_type === "person") {
           return (
-            <div className="dsy-carousel-item w-full" key={result.id}>
+            <div
+              className="dsy-carousel-item w-full"
+              id={`${index + 1}`}
+              key={result.id}
+            >
               <PersonHero person={result} />
             </div>
           );
-        }
-
-        return null;
-      })}
+        })}
+      </div>
+      <div className="flex w-full justify-center gap-2 py-2">
+        {trending.map((_media, index) => {
+          return (
+            <Link
+              className="dsy-btn dsy-btn-xs"
+              hash={`${index + 1}`}
+              hashScrollIntoView={{
+                behavior: "instant",
+                block: "center",
+                inline: "center",
+              }}
+              key={`${index + 1}`}
+              to="."
+            >
+              {`${index + 1}`}
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 };
