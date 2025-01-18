@@ -29,7 +29,7 @@ export const SiteNavSearchInput = () => {
   }, [match]);
 
   return (
-    <label className="dsy-input flex w-full items-center gap-2">
+    <label className="dsy-input dsy-input-bordered flex w-full items-center gap-2">
       <span className="sr-only">Search</span>
       <input
         className="grow"
