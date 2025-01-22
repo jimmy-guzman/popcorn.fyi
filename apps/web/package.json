@@ -37,32 +37,32 @@
     "vinxi": "0.5.1"
   },
   "devDependencies": {
-    "@clerk/testing": "1.4.12",
+    "@clerk/testing": "1.4.13",
     "@dotenvx/dotenvx": "1.33.0",
     "@playwright/test": "1.49.1",
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/tailwind": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
     "@tanstack/react-query-devtools": "5.64.2",
-    "@tanstack/router-devtools": "1.97.3",
+    "@tanstack/router-devtools": "1.97.8",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.2.0",
-    "@testing-library/user-event": "14.6.0",
+    "@testing-library/user-event": "14.6.1",
     "@total-typescript/ts-reset": "0.6.1",
     "@types/node": "22.10.7",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
     "@vitejs/plugin-react": "4.3.4",
-    "@vitest/coverage-v8": "3.0.2",
+    "@vitest/coverage-v8": "3.0.3",
     "autoprefixer": "10.4.20",
     "get-tsconfig": "4.10.0",
-    "happy-dom": "16.7.1",
+    "happy-dom": "16.7.2",
     "msw": "2.7.0",
     "picocolors": "1.1.1",
     "tailwindcss": "3.4.17",
     "vite": "6.0.11",
     "vite-tsconfig-paths": "5.1.4",
-    "vitest": "3.0.2"
+    "vitest": "3.0.3"
   }
 }
