@@ -17,8 +17,8 @@
   "devDependencies": {
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
-    "@vitest/coverage-v8": "3.0.2",
+    "@vitest/coverage-v8": "3.0.3",
     "openapi-typescript": "7.5.2",
-    "vitest": "3.0.2"
+    "vitest": "3.0.3"
   }
 }
