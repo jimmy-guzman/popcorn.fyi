@@ -98,8 +98,8 @@ importers:
         specifier: 10.0.4
         version: 10.0.4(react@19.0.0)
       valibot:
-        specifier: 1.0.0-beta.12
-        version: 1.0.0-beta.12(typescript@5.7.3)
+        specifier: 1.0.0-beta.13
+        version: 1.0.0-beta.13(typescript@5.7.3)
       vaul:
         specifier: 1.1.2
         version: 1.1.2(@types/react-dom@19.0.3(@types/react@19.0.7))(@types/react@19.0.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -251,7 +251,7 @@ importers:
         version: 0.38.4(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(@types/react@19.0.7)(react@19.0.0)
       drizzle-valibot:
         specifier: 0.3.1
-        version: 0.3.1(drizzle-orm@0.38.4(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(@types/react@19.0.7)(react@19.0.0))(valibot@1.0.0-beta.12(typescript@5.7.3))
+        version: 0.3.1(drizzle-orm@0.38.4(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(@types/react@19.0.7)(react@19.0.0))(valibot@1.0.0-beta.13(typescript@5.7.3))
       ws:
         specifier: 8.18.0
         version: 8.18.0(bufferutil@4.0.9)
@@ -5926,8 +5926,8 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  valibot@1.0.0-beta.12:
-    resolution: {integrity: sha512-j3WIxJ0pmUFMfdfUECn3YnZPYOiG0yHYcFEa/+RVgo0I+MXE3ToLt7gNRLtY5pwGfgNmsmhenGZfU5suu9ijUA==}
+  valibot@1.0.0-beta.13:
+    resolution: {integrity: sha512-WCAqfG126/nadCrK36lOgVHrYWeWJfxb52PYE48gqg/8clLTy9sWjE6v/W43cVtgR+rSt30J1IAswk6ovT48pQ==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -8888,10 +8888,10 @@ snapshots:
       '@types/react': 19.0.7
       react: 19.0.0
 
-  drizzle-valibot@0.3.1(drizzle-orm@0.38.4(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(@types/react@19.0.7)(react@19.0.0))(valibot@1.0.0-beta.12(typescript@5.7.3)):
+  drizzle-valibot@0.3.1(drizzle-orm@0.38.4(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(@types/react@19.0.7)(react@19.0.0))(valibot@1.0.0-beta.13(typescript@5.7.3)):
     dependencies:
       drizzle-orm: 0.38.4(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(@types/react@19.0.7)(react@19.0.0)
-      valibot: 1.0.0-beta.12(typescript@5.7.3)
+      valibot: 1.0.0-beta.13(typescript@5.7.3)
 
   dunder-proto@1.0.0:
     dependencies:
@@ -12154,7 +12154,7 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  valibot@1.0.0-beta.12(typescript@5.7.3):
+  valibot@1.0.0-beta.13(typescript@5.7.3):
     optionalDependencies:
       typescript: 5.7.3
 
