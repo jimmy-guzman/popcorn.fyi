@@ -34,7 +34,7 @@ export const SiteNav = () => {
           })}
         </ul>
       </div>
-      <div className="dsy-navbar-end hidden xl:flex">
+      <div className="dsy-navbar-end hidden gap-2 xl:flex">
         <SiteNavSearchInput />
         <SignedIn>
           <UserButton
@@ -42,7 +42,7 @@ export const SiteNav = () => {
               elements: {
                 avatarImage: "rounded-full",
                 userButtonTrigger:
-                  "dsy-btn dsy-btn-ghost dsy-btn-circle dsy-avatar",
+                  "dsy-btn dsy-btn-ghost dsy-btn-circle dsy-avatar dsy-avatar-online",
               },
             }}
           />

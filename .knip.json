@@ -13,10 +13,16 @@
       "entry": ["app/{ssr,client}.tsx", "app.config.ts"],
       "project": "**/*.{ts,tsx}",
       "ignore": ["app/routeTree.gen.ts"],
-      "ignoreDependencies": ["autoprefixer"]
+      "ignoreDependencies": ["tailwindcss", "postcss"]
     },
     "configs/tailwind": {
-      "ignoreDependencies": ["@iconify-json/*"]
+      "ignoreDependencies": [
+        "@iconify-json/*",
+        "tailwindcss",
+        "@tailwindcss/typography",
+        "@iconify/tailwind4",
+        "daisyui"
+      ]
     }
   }
 }

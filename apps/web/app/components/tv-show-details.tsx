@@ -72,7 +72,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
           </div>
         </div>
       </div>
-      <div className="dsy-tabs dsy-tabs-boxed w-full md:w-auto" role="tablist">
+      <div className="dsy-tabs dsy-tabs-box w-full md:w-auto" role="tablist">
         <Link
           activeOptions={{ exact: true }}
           activeProps={{ className: "dsy-tab-active" }}

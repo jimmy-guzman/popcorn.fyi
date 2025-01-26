@@ -5,6 +5,7 @@
     }
   ],
   "cSpell.words": [
+    "daisyui",
     "devicon",
     "dotenvx",
     "eslintcache",
@@ -17,6 +18,7 @@
     "noninteractive",
     "nvmrc",
     "pnpx",
+    "prefersdark",
     "sonner",
     "tanstack",
     "TMDB",
@@ -36,5 +38,8 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }
