@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 
 import { ClerkProvider } from "@clerk/tanstack-start";
 import { dark } from "@clerk/themes";
-import { theme } from "@popcorn.fyi/tailwind/theme";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
   createRootRouteWithContext,
@@ -14,12 +13,11 @@ import { Meta, Scripts } from "@tanstack/start";
 import { lazy } from "react";
 import { Toaster } from "sonner";
 
-import { ThemeScript } from "@/components/theme-script";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 import { userFn } from "@/lib/user";
 
-import rootCSS from "./__root.css?url";
+import rootCSS from "@popcorn.fyi/tailwind/tailwind.css?url";
 
 const TanStackRouterDevtools =
   process.env.NODE_ENV === "production"
@@ -46,7 +44,7 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html data-theme={theme.dark} lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <Meta />
       </head>
@@ -62,14 +60,13 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
               info: "dsy-alert-info",
               loading: "dsy-alert-info",
               success: "dsy-alert-success",
-              toast: "dsy-alert",
+              toast: "dsy-alert dsy-alert-vertical lg:dsy-alert-horizontal",
               warning: "dsy-alert-warning",
             },
             unstyled: true,
           }}
         />
         <Scripts />
-        <ThemeScript />
       </body>
     </html>
   );

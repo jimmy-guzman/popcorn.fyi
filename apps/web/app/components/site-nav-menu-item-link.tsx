@@ -7,7 +7,10 @@ import { cn } from "@/lib/cn";
 export const SiteNavMenuItemLink = ({ item }: { item: SingleNavItem }) => {
   return (
     <Link
-      activeProps={{ className: "dsy-active" }}
+      activeProps={{
+        // TODO: remove bg-base-300 when daisyUI v5 fixes active menu item
+        className: "dsy-menu-active bg-base-300",
+      }}
       className="text-nowrap"
       to={item.to}
     >

@@ -26,10 +26,11 @@ const SiteNavCollapsibleMenuItem = ({ item }: { item: MultipleNavItem }) => {
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- safari does not work correctly w/ document.activeElement
     <details onBlur={handleBlur} ref={ref} tabIndex={0}>
-      <summary className={cn(isActive && "dsy-btn-active")} role="button">
+      {/* TODO: remove bg-base-300 when daisyUI v5 allows active dropdown */}
+      <summary className={cn(isActive && "bg-base-300")} role="button">
         <span className={cn(item.icon, "h-5 w-5")} /> {item.title}
       </summary>
-      <ul className="bg-base-100 rounded-t-none">
+      <ul className="bg-base-100 dsy-menu rounded-t-none">
         {item.items.map((item) => {
           return (
             <li key={item.title}>

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes:
+    fantasy --default,
+    night --prefersdark;
+  prefix: "dsy-";
+  logs: false;
+}
+
+@plugin "@iconify/tailwind4";
+
+@plugin "@tailwindcss/typography";

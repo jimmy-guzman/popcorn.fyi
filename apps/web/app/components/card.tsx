@@ -6,7 +6,7 @@ const Card = forwardRef<HTMLDivElement, { children: ReactNode }>(
   ({ children }, ref) => {
     return (
       <div
-        className="dsy-card dsy-card-compact md:dsy-card-normal h-full shadow-xl"
+        className="dsy-card dsy-card-sm md:dsy-card-normal h-full shadow-xl"
         ref={ref}
       >
         {children}
