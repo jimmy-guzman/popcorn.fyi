@@ -21,7 +21,7 @@
   "devDependencies": {
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
-    "@types/ws": "8.5.13",
+    "@types/ws": "8.5.14",
     "drizzle-kit": "0.30.2"
   }
 }

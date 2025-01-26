@@ -12,6 +12,7 @@ const startHandler = createStartHandler({
   getRouterManifest,
 });
 
+// @ts-expect-error @clerk/tanstack-start/server needs an update
 const clerkHandler = createClerkHandler(startHandler);
 
 const handler = clerkHandler(defaultStreamHandler);
