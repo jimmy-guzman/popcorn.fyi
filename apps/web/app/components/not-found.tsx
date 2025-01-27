@@ -1,3 +1,4 @@
+import { Button } from "@popcorn.fyi/ui/button";
 import { useRouter } from "@tanstack/react-router";
 
 export const NotFound = () => {
@@ -12,15 +13,14 @@ export const NotFound = () => {
               Error
             </h1>
             <p className="text-error mb-5">Not Found</p>
-            <button
-              className="dsy-btn dsy-btn-outline"
+            <Button
               onClick={() => {
                 router.history.back();
               }}
-              type="button"
+              variant="outline"
             >
               Go back
-            </button>
+            </Button>
           </div>
         </div>
       </div>

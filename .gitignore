@@ -51,3 +51,7 @@ app.config.timestamp_*.js
 # playwright
 playwright-report
 test-results
+
+# storybook
+*storybook.log
+storybook-static

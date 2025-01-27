@@ -1,3 +1,5 @@
+import { Button } from "@popcorn.fyi/ui/button";
+
 interface TableGlobalFilterProps {
   globalFilter: string;
   resetGlobalFilter: (defaultState?: boolean) => void;
@@ -25,15 +27,15 @@ export const TableGlobalFilter = ({
         <span className="icon-[lucide--search]" />
       </label>
       {globalFilter ? (
-        <button
-          className="dsy-btn dsy-btn-neutral dsy-btn-sm"
+        <Button
+          color="neutral"
           onClick={() => {
             resetGlobalFilter();
           }}
-          type="button"
+          size="sm"
         >
           Reset <span className="icon-[lucide--list-restart]" />
-        </button>
+        </Button>
       ) : null}
     </div>
   );

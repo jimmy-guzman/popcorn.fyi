@@ -1,4 +1,5 @@
 import { useUser } from "@clerk/tanstack-start";
+import { Button } from "@popcorn.fyi/ui/button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
@@ -52,31 +53,29 @@ export const Favorite = ({ favorite, mediaType, tmdbId }: FavoriteProps) => {
   return isSignedIn ? (
     favorite ? (
       <div className="dsy-tooltip" data-tip="Remove from favorites">
-        <button
-          className="dsy-btn dsy-btn-neutral"
+        <Button
+          color="neutral"
           disabled={removeFromFavorites.isPending}
           onClick={() => {
             removeFromFavorites.mutate({ data: tmdbId });
           }}
-          type="button"
         >
           <span className="icon-[lucide--star-off] h-5 w-5" />
-        </button>
+        </Button>
       </div>
     ) : (
       <div className="dsy-tooltip" data-tip="Add to favorites">
-        <button
-          className="dsy-btn dsy-btn-neutral"
+        <Button
+          color="neutral"
           disabled={addToFavorites.isPending}
           onClick={() => {
             addToFavorites.mutate({
               data: { mediaType, tmdbId, userId: user.id },
             });
           }}
-          type="button"
         >
           <span className="icon-[lucide--star] h-5 w-5" />
-        </button>
+        </Button>
       </div>
     )
   ) : null;

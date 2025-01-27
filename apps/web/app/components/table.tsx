@@ -4,6 +4,7 @@ import type {
   SortingState,
 } from "@tanstack/react-table";
 
+import { cn } from "@popcorn.fyi/ui/utils";
 import {
   flexRender,
   getCoreRowModel,
@@ -15,7 +16,6 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 
-import { cn } from "@/lib/cn";
 import { fuzzyFilter } from "@/lib/fuzzy-filter";
 
 import { TableGlobalFilter } from "./table-global-filter";

@@ -1,4 +1,5 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { Button } from "@popcorn.fyi/ui/button";
 import { Link } from "@tanstack/react-router";
 
 import { Hero, HeroBadges, HeroContent, HeroOverlay, HeroTitle } from "./hero";
@@ -29,13 +30,11 @@ export const PersonHero = ({ person }: PersonHeroProps) => {
         </HeroBadges>
         <HeroTitle>{person.name}</HeroTitle>
         <p>Known for {person.known_for_department}</p>
-        <Link
-          className="dsy-btn dsy-btn-primary"
-          params={{ id: person.id.toString() }}
-          to="/tv-shows/$id"
-        >
-          Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
-        </Link>
+        <Button asChild color="primary">
+          <Link params={{ id: person.id.toString() }} to="/tv-shows/$id">
+            Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
+          </Link>
+        </Button>
       </HeroContent>
     </Hero>
   );

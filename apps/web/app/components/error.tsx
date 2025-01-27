@@ -1,6 +1,7 @@
 import type { ErrorComponentProps } from "@tanstack/react-router";
 
 import { SignIn } from "@clerk/tanstack-start";
+import { Button } from "@popcorn.fyi/ui/button";
 import { useRouter } from "@tanstack/react-router";
 
 export const Error = ({ error }: ErrorComponentProps) => {
@@ -23,15 +24,14 @@ export const Error = ({ error }: ErrorComponentProps) => {
               Error
             </h1>
             <p className="text-error mb-5">{error.message}</p>
-            <button
-              className="dsy-btn dsy-btn-outline"
+            <Button
               onClick={() => {
                 router.history.back();
               }}
-              type="button"
+              variant="outline"
             >
               Go back
-            </button>
+            </Button>
           </div>
         </div>
       </div>

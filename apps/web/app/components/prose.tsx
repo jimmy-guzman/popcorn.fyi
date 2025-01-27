@@ -1,6 +1,6 @@
 import type { ReactNode } from "@tanstack/react-router";
 
-import { cn } from "@/lib/cn";
+import { cn } from "@popcorn.fyi/ui/utils";
 
 interface ProseProps {
   children: ReactNode;
