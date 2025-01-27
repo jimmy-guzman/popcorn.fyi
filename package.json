@@ -34,6 +34,9 @@
     "node": ">= 22"
   },
   "pnpm": {
+    "overrides": {
+      "@joshwooding/vite-plugin-react-docgen-typescript": "0.3.0"
+    },
     "patchedDependencies": {
       "openapi-fetch": "patches/openapi-fetch.patch"
     }

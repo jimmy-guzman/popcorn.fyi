@@ -13,7 +13,7 @@ export default defineConfig({
         "storybook-static/**",
         ".storybook/**",
         "**/*.stories.*",
-        "{tailwind,postcss,playwright,app}.config.*",
+        "{postcss,playwright,app}.config.*",
         "playwright.setup.*",
         "**/*.gen.*",
       ],

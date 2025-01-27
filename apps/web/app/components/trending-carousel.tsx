@@ -1,3 +1,4 @@
+import { Button } from "@popcorn.fyi/ui/button";
 import { Link } from "@tanstack/react-router";
 
 import { MovieHero } from "./movie-hero";
@@ -51,19 +52,19 @@ export const TrendingCarousel = ({
       <div className="flex w-full justify-center gap-2 py-2">
         {trending.map((_media, index) => {
           return (
-            <Link
-              className="dsy-btn dsy-btn-xs"
-              hash={`${index + 1}`}
-              hashScrollIntoView={{
-                behavior: "instant",
-                block: "center",
-                inline: "center",
-              }}
-              key={`${index + 1}`}
-              to="."
-            >
-              {`${index + 1}`}
-            </Link>
+            <Button key={`${index + 1}`} size="xs">
+              <Link
+                hash={`${index + 1}`}
+                hashScrollIntoView={{
+                  behavior: "instant",
+                  block: "center",
+                  inline: "center",
+                }}
+                to="."
+              >
+                {`${index + 1}`}
+              </Link>
+            </Button>
           );
         })}
       </div>

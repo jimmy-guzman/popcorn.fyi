@@ -4,6 +4,7 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/tanstack-start";
+import { Button } from "@popcorn.fyi/ui/button";
 import { Drawer } from "vaul";
 
 import type { NavItem } from "@/config/nav";
@@ -14,9 +15,11 @@ import { SiteNavMenuItem } from "./site-nav-menu-item";
 export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {
   return (
     <Drawer.Root>
-      <Drawer.Trigger className="dsy-btn dsy-btn-ghost dsy-btn-sm xl:hidden">
-        <span className="icon-[lucide--menu] h-5 w-5" />
-      </Drawer.Trigger>
+      <Button asChild className="xl:hidden" size="sm" variant="ghost">
+        <Drawer.Trigger>
+          <span className="icon-[lucide--menu] h-5 w-5" />
+        </Drawer.Trigger>
+      </Button>
       <Drawer.Portal>
         <Drawer.Overlay className="bg-base-100/40 fixed inset-0" />
         <Drawer.Content className="bg-base-100 fixed bottom-0 left-0 right-0 mt-3 flex h-fit flex-col items-center p-2">
@@ -46,13 +49,10 @@ export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {
               </SignedIn>
               <SignedOut>
                 <SignInButton>
-                  <button
-                    className="dsy-btn dsy-btn-circle dsy-btn-ghost"
-                    type="button"
-                  >
+                  <Button modifier="circle" variant="ghost">
                     <span className="sr-only">Sign In</span>
                     <span className="icon-[lucide--log-in] h-7 w-7" />
-                  </button>
+                  </Button>
                 </SignInButton>
               </SignedOut>
             </li>

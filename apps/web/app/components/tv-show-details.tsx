@@ -1,4 +1,5 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { Button } from "@popcorn.fyi/ui/button";
 import { Link, Outlet } from "@tanstack/react-router";
 
 import { Favorite } from "./favorite";
@@ -55,14 +56,15 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
               <p>{tvShow.overview}</p>
             </Prose>
             <div className="flex justify-start gap-2">
-              <Link
-                className="dsy-btn dsy-btn-secondary"
-                params={{ id: tvShow.id.toString() }}
-                to="/tv-shows/$id/trailer"
-              >
-                Watch Trailer{" "}
-                <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
-              </Link>
+              <Button asChild color="secondary">
+                <Link
+                  params={{ id: tvShow.id.toString() }}
+                  to="/tv-shows/$id/trailer"
+                >
+                  Watch Trailer{" "}
+                  <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
+                </Link>
+              </Button>
               <Favorite
                 favorite={tvShow.favorite}
                 mediaType="tv"

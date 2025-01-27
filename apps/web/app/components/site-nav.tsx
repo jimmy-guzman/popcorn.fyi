@@ -4,6 +4,7 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/tanstack-start";
+import { Button } from "@popcorn.fyi/ui/button";
 import { Link } from "@tanstack/react-router";
 
 import { nav } from "@/config/nav";
@@ -19,10 +20,12 @@ export const SiteNav = () => {
     <nav className="dsy-navbar static w-full lg:sticky lg:top-0 lg:z-30 lg:backdrop-blur">
       <div className="dsy-navbar-start">
         <SiteNavMobileMenu items={nav.items} />
-        <Link className="dsy-btn dsy-btn-ghost dsy-btn-sm md:dsy-btn-md" to="/">
-          <SiteLogo classname="w-6 h-6" />
-          <span className="hidden font-bold xl:block">{site.title}</span>
-        </Link>
+        <Button asChild variant="ghost">
+          <Link to="/">
+            <SiteLogo classname="w-6 h-6" />
+            <span className="hidden font-bold xl:block">{site.title}</span>
+          </Link>
+        </Button>
       </div>
       <div className="dsy-navbar-center grow xl:hidden">
         <SiteNavSearchInput />
@@ -49,13 +52,10 @@ export const SiteNav = () => {
         </SignedIn>
         <SignedOut>
           <SignInButton>
-            <button
-              className="dsy-btn dsy-btn-circle dsy-btn-ghost"
-              type="button"
-            >
+            <Button modifier="circle" variant="ghost">
               <span className="sr-only">Sign In</span>
               <span className="icon-[lucide--log-in] h-5 w-5" />
-            </button>
+            </Button>
           </SignInButton>
         </SignedOut>
       </div>

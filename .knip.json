@@ -15,6 +15,9 @@
       "ignore": ["app/routeTree.gen.ts"],
       "ignoreDependencies": ["tailwindcss", "postcss"]
     },
+    "libs/ui": {
+      "ignoreDependencies": ["postcss"]
+    },
     "configs/tailwind": {
       "ignoreDependencies": [
         "@iconify-json/*",
