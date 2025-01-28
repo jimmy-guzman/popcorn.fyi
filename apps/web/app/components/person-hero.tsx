@@ -1,8 +1,14 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Button } from "@popcorn.fyi/ui/button";
+import {
+  Hero,
+  HeroBadges,
+  HeroContent,
+  HeroOverlay,
+  HeroTitle,
+} from "@popcorn.fyi/ui/hero";
 import { Link } from "@tanstack/react-router";
 
-import { Hero, HeroBadges, HeroContent, HeroOverlay, HeroTitle } from "./hero";
 import { MediaType } from "./media-type";
 
 interface PersonHeroProps {

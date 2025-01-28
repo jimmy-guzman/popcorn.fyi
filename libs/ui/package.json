@@ -4,6 +4,7 @@
   "exports": {
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
+    "./hero": "./src/hero.tsx",
     "./utils": "./src/utils.ts"
   },
   "scripts": {
