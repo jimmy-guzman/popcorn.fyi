@@ -10,9 +10,13 @@ A [Turborepo](https://turbo.build/repo) of [apps](#-apps), [libs](#-libs) and [c
 
 ### 📦 Libs
 
-- [@popcorn.fyi/ui](./libs/ui/README.md): a collection of components powered by [daisyUI](https://daisyui.com) and [storybook](https://storybook.js.org/).
+- [@popcorn.fyi/ui](./libs/ui/README.md): a collection of components powered by:
+  - [daisyUI](https://daisyui.com)
+  - [storybook](https://storybook.js.org)
 - [@popcorn.fyi/tmdb](./libs/tmdb/README.md): a [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) api client.
-- [@popcorn.fyi/db](./libs/db/README.md): a database client powered by [drizzle](https://orm.drizzle.team).
+- [@popcorn.fyi/db](./libs/db/README.md): a database client powered by:
+  - [drizzle](https://orm.drizzle.team)
+  - [neon](https://neon.tech)
 - [@popcorn.fyi/utils](./libs/utils/README.md): a toolkit full of utility functions.
 
 ### ⚙️ Configs
@@ -49,11 +53,12 @@ Then setup environment variables, by running the following:
 cp apps/web/.env.example apps/web/.env
 ```
 
-| Environment Variable         | Source                                                                  |
-| ---------------------------- | ----------------------------------------------------------------------- |
-| `TMDB_API_TOKEN`             | [TMDB API Keys](https://www.themoviedb.org/settings/api)                |
-| `VITE_CLERK_PUBLISHABLE_KEY` | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys) |
-| `CLERK_SECRET_KEY`           | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys) |
+| Environment Variable         | Source                                                                              |
+| ---------------------------- | ----------------------------------------------------------------------------------- |
+| `TMDB_API_TOKEN`             | [TMDB API Keys](https://www.themoviedb.org/settings/api)                            |
+| `VITE_CLERK_PUBLISHABLE_KEY` | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys)             |
+| `CLERK_SECRET_KEY`           | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys)             |
+| `DATABASE_URL`               | [Getting Stated with Neon](https://neon.tech/docs/get-started-with-neon/signing-up) |
 
 Then you start running things, by running the following:
 

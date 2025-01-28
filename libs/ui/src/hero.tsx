@@ -2,6 +2,8 @@ import type { HTMLAttributes, ReactNode } from "react";
 
 import { forwardRef } from "react";
 
+import { cn } from "./utils";
+
 interface HTMLElementWithChildren<T> extends HTMLAttributes<T> {
   children: ReactNode;
 }
@@ -9,10 +11,10 @@ interface HTMLElementWithChildren<T> extends HTMLAttributes<T> {
 const Hero = forwardRef<
   HTMLDivElement,
   HTMLElementWithChildren<HTMLDivElement> & { backgroundImage?: string }
->(({ backgroundImage, ...props }, ref) => {
+>(({ backgroundImage, className, ...props }, ref) => {
   return (
     <div
-      className="dsy-hero w-full"
+      className={cn("dsy-hero w-full", className)}
       ref={ref}
       role={backgroundImage ? "img" : undefined}
       style={{
