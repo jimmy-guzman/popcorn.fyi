@@ -3,6 +3,7 @@
   "private": true,
   "exports": {
     "./button": "./src/button.tsx",
+    "./card": "./src/card.tsx",
     "./utils": "./src/utils.ts"
   },
   "scripts": {
@@ -22,14 +23,16 @@
     "tailwind-merge": "2.6.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "3.2.4",
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/tailwind": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
+    "@storybook/addon-a11y": "^8.5.2",
     "@storybook/addon-essentials": "8.5.2",
-    "@storybook/addon-interactions": "8.5.2",
+    "@storybook/addon-themes": "8.5.2",
+    "@storybook/blocks": "8.5.2",
     "@storybook/react": "8.5.2",
     "@storybook/react-vite": "8.5.2",
+    "@storybook/theming": "8.5.2",
     "@tailwindcss/postcss": "4.0.0",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
