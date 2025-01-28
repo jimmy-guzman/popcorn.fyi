@@ -1,8 +1,8 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { year } from "@popcorn.fyi/utils";
 import { Link } from "@tanstack/react-router";
 
-import { Card, CardContent, CardImage, CardTitle } from "./card";
 import { MediaRating } from "./media-rating";
 import { MediaType } from "./media-type";
 

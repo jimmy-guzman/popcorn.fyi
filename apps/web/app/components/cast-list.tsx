@@ -1,7 +1,7 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { Link } from "@tanstack/react-router";
 
-import { Card, CardContent, CardImage, CardTitle } from "./card";
 import { ListContent } from "./list-content";
 
 interface CastListProps {
