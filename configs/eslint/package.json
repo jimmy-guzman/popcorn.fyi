@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@jimmy.codes/eslint-config": "3.29.0",
-    "@tanstack/eslint-plugin-router": "1.97.19"
+    "@tanstack/eslint-plugin-router": "1.98.0"
   },
   "devDependencies": {
     "@popcorn.fyi/ts": "workspace:*"
