@@ -6,13 +6,25 @@ describe("MediaGenres", () => {
   it("should render empty DOM element when no genres", async () => {
     const { container } = await render(<MediaGenres genres={[]} />);
 
-    expect(container).toBeEmptyDOMElement();
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <script>
+          
+        </script>
+      </div>
+    `);
   });
 
   it("should render empty DOM element when no genres provided", async () => {
     const { container } = await render(<MediaGenres />);
 
-    expect(container).toBeEmptyDOMElement();
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <script>
+          
+        </script>
+      </div>
+    `);
   });
 
   it("should render genres", async () => {

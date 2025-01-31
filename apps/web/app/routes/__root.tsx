@@ -4,11 +4,7 @@ import type { ReactNode } from "react";
 import { ClerkProvider } from "@clerk/tanstack-start";
 import { dark } from "@clerk/themes";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import {
-  createRootRouteWithContext,
-  Outlet,
-  ScrollRestoration,
-} from "@tanstack/react-router";
+import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { Meta, Scripts } from "@tanstack/start";
 import { lazy } from "react";
 import { Toaster } from "sonner";
@@ -50,7 +46,6 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       </head>
       <body>
         {children}
-        <ScrollRestoration />
         <TanStackRouterDevtools position="bottom-right" />
         <ReactQueryDevtools buttonPosition="bottom-left" />
         <Toaster
