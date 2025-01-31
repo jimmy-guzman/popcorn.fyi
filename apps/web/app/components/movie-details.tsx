@@ -1,5 +1,6 @@
 import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Button } from "@popcorn.fyi/ui/button";
+import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { Link, Outlet } from "@tanstack/react-router";
 
 import { Favorite } from "./favorite";
@@ -35,8 +36,8 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           />
         ) : null}
       </div>
-      <div className="dsy-hero">
-        <div className="dsy-hero-content flex-col gap-4 lg:flex-row">
+      <Hero>
+        <HeroContent className="flex-col gap-4 lg:flex-row">
           {movie.poster_path ? (
             <img
               alt={movie.title}
@@ -72,8 +73,8 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
               />
             </div>
           </div>
-        </div>
-      </div>
+        </HeroContent>
+      </Hero>
       <div className="dsy-tabs dsy-tabs-box w-full md:w-auto" role="tablist">
         <Link
           activeOptions={{ exact: true }}

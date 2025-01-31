@@ -1,5 +1,6 @@
 import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Badge } from "@popcorn.fyi/ui/badge";
+import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { date } from "@popcorn.fyi/utils";
 import { Outlet } from "@tanstack/react-router";
 
@@ -24,8 +25,8 @@ interface PersonDetailsProps {
 export const PersonDetails = ({ person }: PersonDetailsProps) => {
   return (
     <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 p-4 lg:p-8">
-      <div className="dsy-hero">
-        <div className="dsy-hero-content flex-col items-start gap-4 lg:flex-row">
+      <Hero>
+        <HeroContent className="flex-col items-start gap-4 lg:flex-row">
           {person.profile_path ? (
             <img
               alt={person.name}
@@ -67,8 +68,8 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
               />
             </div>
           </div>
-        </div>
-      </div>
+        </HeroContent>
+      </Hero>
       <Outlet />
     </div>
   );

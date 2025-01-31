@@ -2,6 +2,7 @@ import type { ErrorComponentProps } from "@tanstack/react-router";
 
 import { SignIn } from "@clerk/tanstack-start";
 import { Button } from "@popcorn.fyi/ui/button";
+import { Hero, HeroContent, HeroTitle } from "@popcorn.fyi/ui/hero";
 import { useRouter } from "@tanstack/react-router";
 
 export const Error = ({ error }: ErrorComponentProps) => {
@@ -17,13 +18,11 @@ export const Error = ({ error }: ErrorComponentProps) => {
 
   return (
     <main className="grid min-h-screen place-content-center">
-      <div className="dsy-hero">
-        <div className="dsy-hero-content text-center">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold lg:text-7xl xl:text-9xl">
-              Error
-            </h1>
-            <p className="text-error mb-5">{error.message}</p>
+      <Hero>
+        <HeroContent className="text-neutral-content text-center">
+          <div className="flex flex-col items-center gap-5">
+            <HeroTitle>Error</HeroTitle>
+            <p className="text-error">{error.message}</p>
             <Button
               onClick={() => {
                 router.history.back();
@@ -33,8 +32,8 @@ export const Error = ({ error }: ErrorComponentProps) => {
               Go back
             </Button>
           </div>
-        </div>
-      </div>
+        </HeroContent>
+      </Hero>
     </main>
   );
 };

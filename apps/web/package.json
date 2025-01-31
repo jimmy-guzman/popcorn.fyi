@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vinxi build",
     "coverage": "vitest run --coverage",
-    "dev": "vinxi dev",
+    "dev": "vinxi dev --clearScreen false",
     "e2e": "dotenv-run -- playwright test",
     "e2e:ui": "dotenv-run -- playwright test --ui",
     "lint": "eslint --cache .",

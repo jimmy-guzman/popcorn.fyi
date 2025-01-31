@@ -30,17 +30,19 @@ export const PersonHero = ({ person }: PersonHeroProps) => {
       }
     >
       <HeroOverlay />
-      <HeroContent>
-        <HeroBadges>
-          <MediaType mediaType={person.media_type} />
-        </HeroBadges>
-        <HeroTitle>{person.name}</HeroTitle>
-        <p>Known for {person.known_for_department}</p>
-        <Button asChild color="primary">
-          <Link params={{ id: person.id.toString() }} to="/tv-shows/$id">
-            Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
-          </Link>
-        </Button>
+      <HeroContent className="text-neutral-content text-center">
+        <div className="flex flex-col items-center gap-5">
+          <HeroBadges>
+            <MediaType mediaType={person.media_type} />
+          </HeroBadges>
+          <HeroTitle>{person.name}</HeroTitle>
+          <p>Known for {person.known_for_department}</p>
+          <Button asChild color="primary">
+            <Link params={{ id: person.id.toString() }} to="/tv-shows/$id">
+              Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
+            </Link>
+          </Button>
+        </div>
       </HeroContent>
     </Hero>
   );
