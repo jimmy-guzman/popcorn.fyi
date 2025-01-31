@@ -6,7 +6,13 @@ describe("MediaStatus", () => {
   it("should render empty DOM element when no status", async () => {
     const { container } = await render(<MediaStatus />);
 
-    expect(container).toBeEmptyDOMElement();
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <script>
+          
+        </script>
+      </div>
+    `);
   });
 
   it("should render media status", async () => {

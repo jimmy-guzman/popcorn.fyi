@@ -29,6 +29,7 @@ export function createRouter() {
       defaultPreload: "intent",
       defaultStructuralSharing: true,
       routeTree,
+      scrollRestoration: true,
     }),
     queryClient,
   );

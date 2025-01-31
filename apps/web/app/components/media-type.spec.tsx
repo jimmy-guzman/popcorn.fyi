@@ -6,7 +6,13 @@ describe("MediaType", () => {
   it("should render empty DOM element when no genres", async () => {
     const { container } = await render(<MediaType />);
 
-    expect(container).toBeEmptyDOMElement();
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        <script>
+          
+        </script>
+      </div>
+    `);
   });
 
   it("should render TV Show when tv media type", async () => {
