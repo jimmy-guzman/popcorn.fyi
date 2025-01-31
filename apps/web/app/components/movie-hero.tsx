@@ -30,17 +30,19 @@ export const MovieHero = ({ movie }: MovieHeroProps) => {
       }
     >
       <HeroOverlay />
-      <HeroContent>
-        <HeroBadges>
-          <MediaType mediaType={movie.media_type} />
-        </HeroBadges>
-        <HeroTitle>{movie.title}</HeroTitle>
-        <p>{movie.overview}</p>
-        <Button asChild color="primary">
-          <Link params={{ id: movie.id.toString() }} to="/movies/$id">
-            Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
-          </Link>
-        </Button>
+      <HeroContent className="text-neutral-content text-center">
+        <div className="flex flex-col items-center gap-5">
+          <HeroBadges>
+            <MediaType mediaType={movie.media_type} />
+          </HeroBadges>
+          <HeroTitle>{movie.title}</HeroTitle>
+          <p>{movie.overview}</p>
+          <Button asChild color="primary">
+            <Link params={{ id: movie.id.toString() }} to="/movies/$id">
+              Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
+            </Link>
+          </Button>
+        </div>
       </HeroContent>
     </Hero>
   );

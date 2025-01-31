@@ -30,17 +30,19 @@ export const TvShowHero = ({ tvShow }: TVShowHeroProps) => {
       }
     >
       <HeroOverlay />
-      <HeroContent>
-        <HeroBadges>
-          <MediaType mediaType={tvShow.media_type} />
-        </HeroBadges>
-        <HeroTitle>{tvShow.name}</HeroTitle>
-        <p>{tvShow.overview}</p>
-        <Button asChild color="primary">
-          <Link params={{ id: tvShow.id.toString() }} to="/tv-shows/$id">
-            Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
-          </Link>
-        </Button>
+      <HeroContent className="text-neutral-content text-center">
+        <div className="flex flex-col items-center gap-5">
+          <HeroBadges>
+            <MediaType mediaType={tvShow.media_type} />
+          </HeroBadges>
+          <HeroTitle>{tvShow.name}</HeroTitle>
+          <p>{tvShow.overview}</p>
+          <Button asChild color="primary">
+            <Link params={{ id: tvShow.id.toString() }} to="/tv-shows/$id">
+              Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
+            </Link>
+          </Button>
+        </div>
       </HeroContent>
     </Hero>
   );

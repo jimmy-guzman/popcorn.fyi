@@ -27,14 +27,11 @@ const Hero = forwardRef<
 
 Hero.displayName = "Hero";
 
-const HeroContent = forwardRef<HTMLDivElement, { children: ReactNode }>(
-  ({ children }, ref) => {
+const HeroContent = forwardRef<HTMLDivElement, RequireChildren<HTMLDivElement>>(
+  ({ children, className, ...props }, ref) => {
     return (
-      <div
-        className="dsy-hero-content text-neutral-content text-center"
-        ref={ref}
-      >
-        <div className="flex flex-col items-center gap-5">{children}</div>
+      <div className={cn("dsy-hero-content", className)} ref={ref} {...props}>
+        {children}
       </div>
     );
   },
