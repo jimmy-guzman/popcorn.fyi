@@ -52,7 +52,7 @@ export const TrendingCarousel = ({
       <div className="flex w-full justify-center gap-2 py-2">
         {trending.map((_media, index) => {
           return (
-            <Button key={`${index + 1}`} size="xs">
+            <Button asChild key={`${index + 1}`} size="xs">
               <Link
                 hash={`${index + 1}`}
                 hashScrollIntoView={{
