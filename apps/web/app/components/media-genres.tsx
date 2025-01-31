@@ -1,3 +1,5 @@
+import { Badge } from "@popcorn.fyi/ui/badge";
+
 interface MediaGenresProps {
   genres?: { id: number; name?: string }[];
 }
@@ -5,9 +7,9 @@ interface MediaGenresProps {
 export const MediaGenres = ({ genres = [] }: MediaGenresProps) => {
   return genres.map((genre) => {
     return (
-      <span className="dsy-badge dsy-badge-neutral" key={genre.id}>
+      <Badge color="neutral" key={genre.id}>
         {genre.name}
-      </span>
+      </Badge>
     );
   });
 };

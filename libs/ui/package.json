@@ -3,6 +3,7 @@
   "private": true,
   "exports": {
     "./button": "./src/button.tsx",
+    "./badge": "./src/badge.tsx",
     "./card": "./src/card.tsx",
     "./hero": "./src/hero.tsx",
     "./utils": "./src/utils.ts"

@@ -1,9 +1,9 @@
+import { Badge } from "@popcorn.fyi/ui/badge";
+
 interface MediaStatusProps {
   status?: string;
 }
 
 export const MediaStatus = ({ status }: MediaStatusProps) => {
-  return status ? (
-    <span className="dsy-badge dsy-badge-secondary">{status}</span>
-  ) : null;
+  return status ? <Badge color="secondary">{status}</Badge> : null;
 };

@@ -4,6 +4,8 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
 import * as React from "react";
 
+import type { OmitColor } from "./types";
+
 import { cn } from "./utils";
 
 const buttonVariants = cva("dsy-btn", {
@@ -49,10 +51,7 @@ const buttonVariants = cva("dsy-btn", {
   },
 });
 
-type HtmlButtonProps = Omit<
-  React.ButtonHTMLAttributes<HTMLButtonElement>,
-  "color"
->;
+type HtmlButtonProps = OmitColor<React.ButtonHTMLAttributes<HTMLButtonElement>>;
 
 type ButtonVariants = VariantProps<typeof buttonVariants>;
 
