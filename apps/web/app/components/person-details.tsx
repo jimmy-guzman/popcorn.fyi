@@ -1,4 +1,5 @@
 import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { Badge } from "@popcorn.fyi/ui/badge";
 import { date } from "@popcorn.fyi/utils";
 import { Outlet } from "@tanstack/react-router";
 
@@ -35,9 +36,9 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
           <div className="flex flex-col gap-2">
             <div className="flex flex-wrap gap-2 lg:flex-nowrap lg:justify-end">
               <MediaRating average={person.popularity} />
-              <span className="dsy-badge dsy-badge-neutral">
+              <Badge color="neutral">
                 {person.known_for_department ?? "N/A"}
-              </span>
+              </Badge>
             </div>
             <Prose size="lg">
               <h1>{person.name}</h1>

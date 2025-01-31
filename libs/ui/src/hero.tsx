@@ -1,16 +1,14 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { forwardRef } from "react";
 
-import { cn } from "./utils";
+import type { RequireChildren } from "./types";
 
-interface HTMLElementWithChildren<T> extends HTMLAttributes<T> {
-  children: ReactNode;
-}
+import { cn } from "./utils";
 
 const Hero = forwardRef<
   HTMLDivElement,
-  HTMLElementWithChildren<HTMLDivElement> & { backgroundImage?: string }
+  RequireChildren<HTMLDivElement> & { backgroundImage?: string }
 >(({ backgroundImage, className, ...props }, ref) => {
   return (
     <div
