@@ -49,6 +49,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <TanStackRouterDevtools position="bottom-right" />
         <ReactQueryDevtools buttonPosition="bottom-left" />
         <Toaster
+          position="bottom-right"
           toastOptions={{
             classNames: {
               error: "dsy-alert-error",

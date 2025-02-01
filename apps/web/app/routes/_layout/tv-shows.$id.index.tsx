@@ -88,7 +88,7 @@ function RouteComponent() {
   ];
 
   return (
-    <section className="mx-auto mt-8 max-w-7xl">
+    <section>
       <Prose>
         <h2 id="overview">Overview</h2>
       </Prose>

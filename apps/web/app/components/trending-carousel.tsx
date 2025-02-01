@@ -5,14 +5,14 @@ import { MovieHero } from "./movie-hero";
 import { PersonHero } from "./person-hero";
 import { TvShowHero } from "./tv-show-hero";
 
-export const TrendingCarousel = ({
-  trending,
-}: {
+interface TrendingCarouselProps {
   trending: { id: number; media_type?: string }[];
-}) => {
+}
+
+export const TrendingCarousel = ({ trending }: TrendingCarouselProps) => {
   return (
-    <div className="flex h-[calc(100vh-68px)] flex-col justify-between">
-      <div className="dsy-carousel h-full w-full">
+    <div className="h-9/10 flex flex-col justify-between">
+      <div className="dsy-carousel rounded-box h-full">
         {trending.map((result, index) => {
           if (result.media_type === "tv") {
             return (

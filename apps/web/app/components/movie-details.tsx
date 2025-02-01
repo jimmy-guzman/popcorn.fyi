@@ -26,8 +26,8 @@ interface MovieDetailsProps {
 
 export const MovieDetails = ({ movie }: MovieDetailsProps) => {
   return (
-    <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 p-4 lg:p-8">
-      <div className="mx-auto hidden max-w-7xl md:block">
+    <div className="flex min-h-screen flex-col items-center gap-4">
+      <div className="hidden md:block">
         {movie.backdrop_path ? (
           <img
             alt={movie.title}

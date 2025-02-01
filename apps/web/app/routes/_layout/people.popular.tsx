@@ -31,7 +31,7 @@ function RouteComponent() {
   const { data: people } = useSuspenseQuery(peoplePopularOptions(search));
 
   return (
-    <div className="flex flex-col gap-4 p-8">
+    <div className="flex flex-col gap-4">
       <PeopleList
         description={site.pages.popularPeople.description}
         people={people.results ?? []}

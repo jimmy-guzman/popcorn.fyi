@@ -24,12 +24,10 @@ function RouteComponent() {
   const { data: tvShows } = useSuspenseQuery(trendingTVOptions());
 
   return (
-    <div className="p-8">
-      <TVShowList
-        description={site.pages.trendingTVShows.description}
-        title={site.pages.trendingTVShows.title}
-        tvShows={tvShows.results ?? []}
-      />
-    </div>
+    <TVShowList
+      description={site.pages.trendingTVShows.description}
+      title={site.pages.trendingTVShows.title}
+      tvShows={tvShows.results ?? []}
+    />
   );
 }
