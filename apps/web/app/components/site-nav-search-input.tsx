@@ -1,3 +1,4 @@
+import { Input } from "@popcorn.fyi/ui/input";
 import { useMatch, useNavigate, useSearch } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
@@ -29,23 +30,19 @@ export const SiteNavSearchInput = () => {
   }, [match]);
 
   return (
-    <label className="dsy-input dsy-input-bordered flex w-full items-center gap-2">
-      <span className="sr-only">Search</span>
-      <input
-        className="grow"
-        onChange={(event) => {
-          setQuery(event.target.value);
-        }}
-        onKeyDown={async (event) => {
-          if (event.key === "Enter") {
-            await handleSearch(value);
-          }
-        }}
-        placeholder="Search"
-        type="text"
-        value={query}
-      />
-      <span className="icon-[lucide--search] h-4 w-4 md:h-5 md:w-5" />
-    </label>
+    <Input
+      className="grow"
+      onChange={(event) => {
+        setQuery(event.target.value);
+      }}
+      onKeyDown={async (event) => {
+        if (event.key === "Enter") {
+          await handleSearch(value);
+        }
+      }}
+      placeholder="Search..."
+      type="text"
+      value={query}
+    />
   );
 };

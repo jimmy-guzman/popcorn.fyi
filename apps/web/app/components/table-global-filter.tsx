@@ -1,4 +1,5 @@
 import { Button } from "@popcorn.fyi/ui/button";
+import { Input } from "@popcorn.fyi/ui/input";
 
 interface TableGlobalFilterProps {
   globalFilter: string;
@@ -13,19 +14,15 @@ export const TableGlobalFilter = ({
 }: TableGlobalFilterProps) => {
   return (
     <div className="col-span-2 flex w-full items-center gap-2">
-      <label className="dsy-input flex w-full items-center">
-        <span className="sr-only">Search</span>
-        <input
-          className="w-full"
-          onChange={(event) => {
-            setGlobalFilter(String(event.target.value));
-          }}
-          placeholder="Search..."
-          type="text"
-          value={globalFilter}
-        />
-        <span className="icon-[lucide--search]" />
-      </label>
+      <Input
+        className="grow"
+        onChange={(event) => {
+          setGlobalFilter(String(event.target.value));
+        }}
+        placeholder="Search..."
+        type="text"
+        value={globalFilter}
+      />
       {globalFilter ? (
         <Button
           color="neutral"
