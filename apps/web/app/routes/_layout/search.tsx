@@ -33,7 +33,7 @@ function RouteComponent() {
   const { data } = useSuspenseQuery(searchOptions(search));
 
   return (
-    <div className="flex flex-col gap-4 p-8">
+    <div className="flex flex-col gap-4">
       <SearchList query={search.q} results={data.results ?? []} />
       <ListPagination page={data.page} totalPages={data.total_pages} />
     </div>

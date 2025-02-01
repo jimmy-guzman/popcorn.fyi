@@ -17,5 +17,9 @@ export const Route = createFileRoute("/_layout/")({
 function Home() {
   const trending = Route.useLoaderData();
 
-  return <TrendingCarousel trending={trending} />;
+  return (
+    <section className="h-screen">
+      <TrendingCarousel trending={trending} />
+    </section>
+  );
 }

@@ -24,12 +24,10 @@ function RouteComponent() {
   const { data: movies } = useSuspenseQuery(trendingMoviesOptions());
 
   return (
-    <div className="p-8">
-      <MovieList
-        description={site.pages.trendingMovies.description}
-        movies={movies.results ?? []}
-        title={site.pages.trendingMovies.title}
-      />
-    </div>
+    <MovieList
+      description={site.pages.trendingMovies.description}
+      movies={movies.results ?? []}
+      title={site.pages.trendingMovies.title}
+    />
   );
 }

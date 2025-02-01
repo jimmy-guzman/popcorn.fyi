@@ -31,7 +31,7 @@ function RouteComponent() {
   const { data: movies } = useSuspenseQuery(moviesTopRatedOptions(search));
 
   return (
-    <div className="flex flex-col gap-4 p-8">
+    <div className="flex flex-col gap-4">
       <MovieList
         description={site.pages.topRatedMovies.description}
         movies={movies.results ?? []}

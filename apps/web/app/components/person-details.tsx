@@ -24,7 +24,7 @@ interface PersonDetailsProps {
 
 export const PersonDetails = ({ person }: PersonDetailsProps) => {
   return (
-    <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center gap-4 p-4 lg:p-8">
+    <div className="flex min-h-screen flex-col items-center gap-4">
       <Hero>
         <HeroContent className="flex-col items-start gap-4 lg:flex-row">
           {person.profile_path ? (

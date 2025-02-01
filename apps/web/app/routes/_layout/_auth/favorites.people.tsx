@@ -25,7 +25,7 @@ function RouteComponent() {
   const favorites = Route.useLoaderData();
 
   return (
-    <div className="flex flex-col gap-4 p-8">
+    <div className="flex flex-col gap-4">
       <PeopleList
         description={site.pages.favoritePeople.description}
         people={favorites}

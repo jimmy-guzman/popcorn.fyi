@@ -1,6 +1,5 @@
 import { cn } from "@popcorn.fyi/ui/utils";
 import { useLocation } from "@tanstack/react-router";
-import { useRef } from "react";
 
 import type { MultipleNavItem, NavItem } from "@/config/nav";
 
@@ -8,28 +7,17 @@ import { SiteNavMenuItemLink } from "./site-nav-menu-item-link";
 
 const SiteNavCollapsibleMenuItem = ({ item }: { item: MultipleNavItem }) => {
   const { pathname } = useLocation();
-  const ref = useRef<HTMLDetailsElement>(null);
 
-  const handleBlur = (e: React.FocusEvent<HTMLDetailsElement>) => {
-    const currentTarget = e.currentTarget;
-
-    requestAnimationFrame(() => {
-      if (!currentTarget.contains(document.activeElement) && ref.current) {
-        ref.current.open = false;
-      }
-    });
-  };
-
-  const isActive = pathname.startsWith(item.to);
+  const isActive = pathname === item.to;
 
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- safari does not work correctly w/ document.activeElement
-    <details onBlur={handleBlur} ref={ref} tabIndex={0}>
+    <details tabIndex={0}>
       {/* TODO: remove bg-base-300 when daisyUI v5 allows active dropdown */}
       <summary className={cn(isActive && "bg-base-300")} role="button">
         <span className={cn(item.icon, "h-5 w-5")} /> {item.title}
       </summary>
-      <ul className="bg-base-100 dsy-menu rounded-t-none">
+      <ul>
         {item.items.map((item) => {
           return (
             <li key={item.title}>
