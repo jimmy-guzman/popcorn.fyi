@@ -6,6 +6,7 @@
     "./badge": "./src/badge.tsx",
     "./card": "./src/card.tsx",
     "./hero": "./src/hero.tsx",
+    "./tooltip": "./src/tooltip.tsx",
     "./utils": "./src/utils.ts"
   },
   "scripts": {
