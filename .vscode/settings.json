@@ -13,8 +13,10 @@
     "flatrate",
     "gitzy",
     "iconify",
+    "joshwooding",
     "knip",
     "lefthook",
+    "manypkg",
     "neondatabase",
     "noninteractive",
     "nvmrc",
@@ -50,5 +52,6 @@
     ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-  ]
+  ],
+  "vitest.workspaceConfig": ""
 }

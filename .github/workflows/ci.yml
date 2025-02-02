@@ -31,6 +31,12 @@ jobs:
       - name: 📦 Install Dependencies
         run: pnpm install
 
+      - name: ☂️ Manypkg
+        run: pnpm manypkg
+
+      - name: ✂️ Knip
+        run: pnpm knip
+
       - name: 🎨 Format
         run: pnpm format
 

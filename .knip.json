@@ -9,6 +9,11 @@
     "entry": ["e2e/**/*.spec.ts", "playwright.setup.ts"]
   },
   "workspaces": {
+    ".": {
+      "vitest": {
+        "config": ["vitest.workspace.ts"]
+      }
+    },
     "apps/web": {
       "entry": ["app/{ssr,client}.tsx", "app.config.ts"],
       "project": "**/*.{ts,tsx}",
