@@ -10,7 +10,7 @@ export const TableHeader = <T,>({ header }: { header: Header<T, unknown> }) => {
       <div className="flex flex-col items-start gap-2">
         {header.isPlaceholder ? null : header.column.getCanSort() ? (
           <button
-            className="capitalize"
+            className="cursor-pointer capitalize"
             onClick={header.column.getToggleSortingHandler()}
             type="button"
           >
