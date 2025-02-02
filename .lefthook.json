@@ -21,6 +21,10 @@
       "knip": {
         "run": "pnpm exec knip",
         "stage_fixed": true
+      },
+      "manypkg": {
+        "run": "pnpm exec manypkg check",
+        "stage_fixed": true
       }
     }
   }
