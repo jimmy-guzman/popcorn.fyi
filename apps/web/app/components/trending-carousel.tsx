@@ -52,7 +52,13 @@ export const TrendingCarousel = ({ trending }: TrendingCarouselProps) => {
       <div className="flex w-full justify-center gap-2 py-2">
         {trending.map((_media, index) => {
           return (
-            <Button asChild key={`${index + 1}`} size="xs">
+            <Button
+              asChild
+              key={`${index + 1}`}
+              modifier="circle"
+              size="sm"
+              variant="ghost"
+            >
               <Link
                 hash={`${index + 1}`}
                 hashScrollIntoView={{
@@ -62,7 +68,7 @@ export const TrendingCarousel = ({ trending }: TrendingCarouselProps) => {
                 }}
                 to="."
               >
-                {`${index + 1}`}
+                <span className="icon-[lucide--dot] h-8 w-8" />
               </Link>
             </Button>
           );
