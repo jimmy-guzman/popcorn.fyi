@@ -40,7 +40,7 @@ export const MediaTrailerDialog = ({
     >
       <div className="dsy-modal-box !max-w-screen-lg">
         <h3 className="text-lg font-bold">{trailer ? trailer.name : "N/A"}</h3>
-        <p className="py-4">Press ESC key or click on ✕ button to close.</p>
+        <p className="py-4">Press ESC key or click outside to close.</p>
         {trailer?.key ? (
           // eslint-disable-next-line react/iframe-missing-sandbox -- TODO
           <iframe
