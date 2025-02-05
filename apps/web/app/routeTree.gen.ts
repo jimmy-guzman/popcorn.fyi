@@ -8,6 +8,8 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
@@ -32,12 +34,18 @@ import { Route as LayoutMoviesIdIndexImport } from './routes/_layout/movies.$id.
 import { Route as LayoutTvShowsIdWatchImport } from './routes/_layout/tv-shows.$id.watch'
 import { Route as LayoutTvShowsIdTrailerImport } from './routes/_layout/tv-shows.$id.trailer'
 import { Route as LayoutTvShowsIdCreditsImport } from './routes/_layout/tv-shows.$id.credits'
+import { Route as LayoutMoviesDiscoverLayoutImport } from './routes/_layout/movies.discover._layout'
 import { Route as LayoutMoviesIdWatchImport } from './routes/_layout/movies.$id.watch'
 import { Route as LayoutMoviesIdTrailerImport } from './routes/_layout/movies.$id.trailer'
 import { Route as LayoutMoviesIdCreditsImport } from './routes/_layout/movies.$id.credits'
 import { Route as LayoutAuthFavoritesTvShowsImport } from './routes/_layout/_auth/favorites.tv-shows'
 import { Route as LayoutAuthFavoritesPeopleImport } from './routes/_layout/_auth/favorites.people'
 import { Route as LayoutAuthFavoritesMoviesImport } from './routes/_layout/_auth/favorites.movies'
+import { Route as LayoutMoviesDiscoverLayoutIndexImport } from './routes/_layout/movies.discover._layout.index'
+
+// Create Virtual Routes
+
+const LayoutMoviesDiscoverImport = createFileRoute('/_layout/movies/discover')()
 
 // Create/Update Routes
 
@@ -60,6 +68,12 @@ const LayoutSearchRoute = LayoutSearchImport.update({
 
 const LayoutAuthRoute = LayoutAuthImport.update({
   id: '/_auth',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutMoviesDiscoverRoute = LayoutMoviesDiscoverImport.update({
+  id: '/movies/discover',
+  path: '/movies/discover',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -165,6 +179,13 @@ const LayoutTvShowsIdCreditsRoute = LayoutTvShowsIdCreditsImport.update({
   getParentRoute: () => LayoutTvShowsIdRoute,
 } as any)
 
+const LayoutMoviesDiscoverLayoutRoute = LayoutMoviesDiscoverLayoutImport.update(
+  {
+    id: '/_layout',
+    getParentRoute: () => LayoutMoviesDiscoverRoute,
+  } as any,
+)
+
 const LayoutMoviesIdWatchRoute = LayoutMoviesIdWatchImport.update({
   id: '/watch',
   path: '/watch',
@@ -202,6 +223,13 @@ const LayoutAuthFavoritesMoviesRoute = LayoutAuthFavoritesMoviesImport.update({
   path: '/favorites/movies',
   getParentRoute: () => LayoutAuthRoute,
 } as any)
+
+const LayoutMoviesDiscoverLayoutIndexRoute =
+  LayoutMoviesDiscoverLayoutIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => LayoutMoviesDiscoverLayoutRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -354,6 +382,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutMoviesIdWatchImport
       parentRoute: typeof LayoutMoviesIdImport
     }
+    '/_layout/movies/discover': {
+      id: '/_layout/movies/discover'
+      path: '/movies/discover'
+      fullPath: '/movies/discover'
+      preLoaderRoute: typeof LayoutMoviesDiscoverImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/movies/discover/_layout': {
+      id: '/_layout/movies/discover/_layout'
+      path: '/movies/discover'
+      fullPath: '/movies/discover'
+      preLoaderRoute: typeof LayoutMoviesDiscoverLayoutImport
+      parentRoute: typeof LayoutMoviesDiscoverRoute
+    }
     '/_layout/tv-shows/$id/credits': {
       id: '/_layout/tv-shows/$id/credits'
       path: '/credits'
@@ -395,6 +437,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/tv-shows/$id/'
       preLoaderRoute: typeof LayoutTvShowsIdIndexImport
       parentRoute: typeof LayoutTvShowsIdImport
+    }
+    '/_layout/movies/discover/_layout/': {
+      id: '/_layout/movies/discover/_layout/'
+      path: '/'
+      fullPath: '/movies/discover/'
+      preLoaderRoute: typeof LayoutMoviesDiscoverLayoutIndexImport
+      parentRoute: typeof LayoutMoviesDiscoverLayoutImport
     }
   }
 }
@@ -465,6 +514,31 @@ const LayoutTvShowsIdRouteWithChildren = LayoutTvShowsIdRoute._addFileChildren(
   LayoutTvShowsIdRouteChildren,
 )
 
+interface LayoutMoviesDiscoverLayoutRouteChildren {
+  LayoutMoviesDiscoverLayoutIndexRoute: typeof LayoutMoviesDiscoverLayoutIndexRoute
+}
+
+const LayoutMoviesDiscoverLayoutRouteChildren: LayoutMoviesDiscoverLayoutRouteChildren =
+  {
+    LayoutMoviesDiscoverLayoutIndexRoute: LayoutMoviesDiscoverLayoutIndexRoute,
+  }
+
+const LayoutMoviesDiscoverLayoutRouteWithChildren =
+  LayoutMoviesDiscoverLayoutRoute._addFileChildren(
+    LayoutMoviesDiscoverLayoutRouteChildren,
+  )
+
+interface LayoutMoviesDiscoverRouteChildren {
+  LayoutMoviesDiscoverLayoutRoute: typeof LayoutMoviesDiscoverLayoutRouteWithChildren
+}
+
+const LayoutMoviesDiscoverRouteChildren: LayoutMoviesDiscoverRouteChildren = {
+  LayoutMoviesDiscoverLayoutRoute: LayoutMoviesDiscoverLayoutRouteWithChildren,
+}
+
+const LayoutMoviesDiscoverRouteWithChildren =
+  LayoutMoviesDiscoverRoute._addFileChildren(LayoutMoviesDiscoverRouteChildren)
+
 interface LayoutRouteChildren {
   LayoutAuthRoute: typeof LayoutAuthRouteWithChildren
   LayoutSearchRoute: typeof LayoutSearchRoute
@@ -480,6 +554,7 @@ interface LayoutRouteChildren {
   LayoutTvShowsIdRoute: typeof LayoutTvShowsIdRouteWithChildren
   LayoutTvShowsPopularRoute: typeof LayoutTvShowsPopularRoute
   LayoutTvShowsTopRatedRoute: typeof LayoutTvShowsTopRatedRoute
+  LayoutMoviesDiscoverRoute: typeof LayoutMoviesDiscoverRouteWithChildren
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
@@ -497,6 +572,7 @@ const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutTvShowsIdRoute: LayoutTvShowsIdRouteWithChildren,
   LayoutTvShowsPopularRoute: LayoutTvShowsPopularRoute,
   LayoutTvShowsTopRatedRoute: LayoutTvShowsTopRatedRoute,
+  LayoutMoviesDiscoverRoute: LayoutMoviesDiscoverRouteWithChildren,
 }
 
 const LayoutRouteWithChildren =
@@ -523,12 +599,14 @@ export interface FileRoutesByFullPath {
   '/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
   '/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
   '/movies/$id/watch': typeof LayoutMoviesIdWatchRoute
+  '/movies/discover': typeof LayoutMoviesDiscoverLayoutRouteWithChildren
   '/tv-shows/$id/credits': typeof LayoutTvShowsIdCreditsRoute
   '/tv-shows/$id/trailer': typeof LayoutTvShowsIdTrailerRoute
   '/tv-shows/$id/watch': typeof LayoutTvShowsIdWatchRoute
   '/movies/$id/': typeof LayoutMoviesIdIndexRoute
   '/people/$id/': typeof LayoutPeopleIdIndexRoute
   '/tv-shows/$id/': typeof LayoutTvShowsIdIndexRoute
+  '/movies/discover/': typeof LayoutMoviesDiscoverLayoutIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -549,6 +627,7 @@ export interface FileRoutesByTo {
   '/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
   '/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
   '/movies/$id/watch': typeof LayoutMoviesIdWatchRoute
+  '/movies/discover': typeof LayoutMoviesDiscoverLayoutIndexRoute
   '/tv-shows/$id/credits': typeof LayoutTvShowsIdCreditsRoute
   '/tv-shows/$id/trailer': typeof LayoutTvShowsIdTrailerRoute
   '/tv-shows/$id/watch': typeof LayoutTvShowsIdWatchRoute
@@ -580,12 +659,15 @@ export interface FileRoutesById {
   '/_layout/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
   '/_layout/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
   '/_layout/movies/$id/watch': typeof LayoutMoviesIdWatchRoute
+  '/_layout/movies/discover': typeof LayoutMoviesDiscoverRouteWithChildren
+  '/_layout/movies/discover/_layout': typeof LayoutMoviesDiscoverLayoutRouteWithChildren
   '/_layout/tv-shows/$id/credits': typeof LayoutTvShowsIdCreditsRoute
   '/_layout/tv-shows/$id/trailer': typeof LayoutTvShowsIdTrailerRoute
   '/_layout/tv-shows/$id/watch': typeof LayoutTvShowsIdWatchRoute
   '/_layout/movies/$id/': typeof LayoutMoviesIdIndexRoute
   '/_layout/people/$id/': typeof LayoutPeopleIdIndexRoute
   '/_layout/tv-shows/$id/': typeof LayoutTvShowsIdIndexRoute
+  '/_layout/movies/discover/_layout/': typeof LayoutMoviesDiscoverLayoutIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -611,12 +693,14 @@ export interface FileRouteTypes {
     | '/movies/$id/credits'
     | '/movies/$id/trailer'
     | '/movies/$id/watch'
+    | '/movies/discover'
     | '/tv-shows/$id/credits'
     | '/tv-shows/$id/trailer'
     | '/tv-shows/$id/watch'
     | '/movies/$id/'
     | '/people/$id/'
     | '/tv-shows/$id/'
+    | '/movies/discover/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | ''
@@ -636,6 +720,7 @@ export interface FileRouteTypes {
     | '/movies/$id/credits'
     | '/movies/$id/trailer'
     | '/movies/$id/watch'
+    | '/movies/discover'
     | '/tv-shows/$id/credits'
     | '/tv-shows/$id/trailer'
     | '/tv-shows/$id/watch'
@@ -665,12 +750,15 @@ export interface FileRouteTypes {
     | '/_layout/movies/$id/credits'
     | '/_layout/movies/$id/trailer'
     | '/_layout/movies/$id/watch'
+    | '/_layout/movies/discover'
+    | '/_layout/movies/discover/_layout'
     | '/_layout/tv-shows/$id/credits'
     | '/_layout/tv-shows/$id/trailer'
     | '/_layout/tv-shows/$id/watch'
     | '/_layout/movies/$id/'
     | '/_layout/people/$id/'
     | '/_layout/tv-shows/$id/'
+    | '/_layout/movies/discover/_layout/'
   fileRoutesById: FileRoutesById
 }
 
@@ -711,7 +799,8 @@ export const routeTree = rootRoute
         "/_layout/trending/tv-shows",
         "/_layout/tv-shows/$id",
         "/_layout/tv-shows/popular",
-        "/_layout/tv-shows/top-rated"
+        "/_layout/tv-shows/top-rated",
+        "/_layout/movies/discover"
       ]
     },
     "/_layout/_auth": {
@@ -814,6 +903,20 @@ export const routeTree = rootRoute
       "filePath": "_layout/movies.$id.watch.tsx",
       "parent": "/_layout/movies/$id"
     },
+    "/_layout/movies/discover": {
+      "filePath": "_layout",
+      "parent": "/_layout",
+      "children": [
+        "/_layout/movies/discover/_layout"
+      ]
+    },
+    "/_layout/movies/discover/_layout": {
+      "filePath": "_layout/movies.discover._layout.tsx",
+      "parent": "/_layout/movies/discover",
+      "children": [
+        "/_layout/movies/discover/_layout/"
+      ]
+    },
     "/_layout/tv-shows/$id/credits": {
       "filePath": "_layout/tv-shows.$id.credits.tsx",
       "parent": "/_layout/tv-shows/$id"
@@ -837,6 +940,10 @@ export const routeTree = rootRoute
     "/_layout/tv-shows/$id/": {
       "filePath": "_layout/tv-shows.$id.index.tsx",
       "parent": "/_layout/tv-shows/$id"
+    },
+    "/_layout/movies/discover/_layout/": {
+      "filePath": "_layout/movies.discover._layout.index.tsx",
+      "parent": "/_layout/movies/discover/_layout"
     }
   }
 }

@@ -35,6 +35,11 @@ export const nav = {
           title: "Top Rated",
           to: "/movies/top-rated",
         },
+        {
+          icon: "icon-[lucide--telescope]",
+          title: "Discover",
+          to: "/movies/discover",
+        },
       ],
       title: "Movies",
       to: "/movies",

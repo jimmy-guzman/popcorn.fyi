@@ -1,64 +1,66 @@
 export const site = {
-  description: "Discover your favorite TV Shows and Movies.",
+  description: "Explore and discover your favorite movies and TV shows.",
   pages: {
+    discoverMovies: {
+      description:
+        "Find and explore movies by genre, provider, region, release date, and sort order.",
+      title: "Discover Movies",
+    },
     favoriteMovies: {
-      description: "Your collection of your favorite Movies.",
+      description: "Your favorite movies, all in one place.",
       title: "Favorite Movies",
     },
     favoritePeople: {
       description:
-        "Your collection of your favorite People in Movies and TV Shows.",
+        "Your favorite actors and creators from movies and TV shows.",
       title: "Favorite People",
     },
     favoriteTVShows: {
-      description: "Your collection of your favorite TV Shows.",
+      description: "Your go-to collection of favorite TV shows.",
       title: "Favorite TV Shows",
     },
     media: {
       credits: {
         cast: {
           title: "Cast",
-          unavailable: "No cast credits available.",
+          unavailable: "No cast information available.",
         },
         crew: {
           title: "Crew",
-          unavailable: "No crew credits available.",
+          unavailable: "No crew information available.",
         },
       },
     },
     popularMovies: {
-      description: "Discover movies with a collection of popular movies.",
+      description: "See what's popular in movies right now.",
       title: "Popular Movies",
     },
     popularPeople: {
-      description:
-        "Discover people in movies and tv shows with a collection of popular people.",
+      description: "Meet the most popular actors and creators today.",
       title: "Popular People",
     },
     popularTVShows: {
-      description: "Discover tv shows with a collection of popular tv shows.",
+      description: "Check out the most popular TV shows.",
       title: "Popular TV Shows",
     },
     topRatedMovies: {
-      description: "Discover movies with a collection of top rated movies.",
+      description: "Explore the highest-rated movies.",
       title: "Top Rated Movies",
     },
     topRatedTVShows: {
-      description: "Discover tv shows with a collection of top rated tv shows.",
+      description: "Find the best-rated TV shows.",
       title: "Top Rated TV Shows",
     },
     trendingMovies: {
-      description: "Discover movies with a collection of trending movies.",
+      description: "See what's trending in movies right now.",
       title: "Trending Movies",
     },
     trendingPeople: {
-      description:
-        "Discover people in movies and tv shows with a collection of trending people.",
+      description: "Find actors and creators who are trending today.",
       title: "Trending People",
     },
     trendingTVShows: {
-      description:
-        "Discover people in movies and tv shows with a collection of trending tv shows.",
+      description: "Discover the latest trending TV shows.",
       title: "Trending TV Shows",
     },
   },
