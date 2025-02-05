@@ -15,7 +15,7 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
     <div className="flex justify-center">
       <div className="dsy-join">
         {page !== 1 && (
-          <Button asChild>
+          <Button aria-label="Previous Page" asChild>
             <Link
               className="dsy-join-item hidden md:flex"
               search={(prev) => {
@@ -33,6 +33,7 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
         {pageNumbers.map((page) => {
           return page === "ellipsis-before" || page === "ellipsis-after" ? (
             <Button
+              aria-label="Ellipsis"
               className="dsy-join-item hidden md:block"
               disabled
               key={page}
@@ -40,11 +41,10 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
               <span className="icon-[lucide--ellipsis] h-4 w-4" />
             </Button>
           ) : (
-            <Button asChild>
+            <Button asChild key={page}>
               <Link
                 activeProps={{ className: "dsy-btn-active" }}
                 className="dsy-join-item"
-                key={page}
                 search={(prev) => {
                   return {
                     ...prev,
@@ -59,7 +59,7 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
           );
         })}
         {totalPages !== page && (
-          <Button asChild>
+          <Button aria-label="Next Page" asChild>
             <Link
               className="dsy-join-item hidden md:flex"
               search={(prev) => {
