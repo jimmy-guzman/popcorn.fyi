@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
+import { discoverMoviesSortOptions } from "@/config/options";
 import { render, screen } from "@/testing/utils";
 
 import { MovieDiscoverFilters } from "./movie-discover-filters";
@@ -30,6 +31,7 @@ describe("MovieDiscoverFilters", () => {
         genres={mockGenres}
         providers={mockProviders}
         regions={mockRegions}
+        sortOptions={discoverMoviesSortOptions}
       />,
       { path: "/_layout/movies/discover/_layout" },
     );
@@ -56,6 +58,7 @@ describe("MovieDiscoverFilters", () => {
         genres={mockGenres}
         providers={mockProviders}
         regions={mockRegions}
+        sortOptions={discoverMoviesSortOptions}
       />,
       { path: "/_layout/movies/discover/_layout" },
     );
@@ -73,6 +76,7 @@ describe("MovieDiscoverFilters", () => {
         genres={mockGenres}
         providers={mockProviders}
         regions={mockRegions}
+        sortOptions={discoverMoviesSortOptions}
       />,
       { path: "/_layout/movies/discover/_layout" },
     );
@@ -93,6 +97,7 @@ describe("MovieDiscoverFilters", () => {
         genres={mockGenres}
         providers={mockProviders}
         regions={mockRegions}
+        sortOptions={discoverMoviesSortOptions}
       />,
       { path: "/_layout/movies/discover/_layout" },
     );
