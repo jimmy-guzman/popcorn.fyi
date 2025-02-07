@@ -12,7 +12,7 @@
     "@iconify-json/devicon-plain": "1.2.12",
     "@iconify-json/lucide": "1.2.25",
     "@iconify-json/simple-icons": "1.2.23",
-    "@iconify/tailwind4": "1.0.1",
+    "@iconify/tailwind4": "1.0.3",
     "@tailwindcss/typography": "0.5.16",
     "daisyui": "5.0.0-beta.6"
   },
