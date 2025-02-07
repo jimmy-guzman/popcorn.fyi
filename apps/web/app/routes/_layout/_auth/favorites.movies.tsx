@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { MovieList } from "@/components/movie-list";
 import { site } from "@/config/site";
-import { favoriteMoviesFn } from "@/lib/favorites";
+import { favoriteMoviesFn } from "@/api/favorites";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/_auth/favorites/movies")({

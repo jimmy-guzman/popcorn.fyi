@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 import type { MediaType } from "@/lib/types";
 
-import { addToFavoritesFn, removeFromFavoritesFn } from "@/lib/favorites";
+import { addToFavoritesFn, removeFromFavoritesFn } from "@/api/favorites";
 import { pluralMediaType } from "@/lib/plural-media-type";
 
 interface FavoriteProps {

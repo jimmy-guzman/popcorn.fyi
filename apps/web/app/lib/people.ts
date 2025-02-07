@@ -9,7 +9,7 @@ import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
 import { PaginationSchema } from "@/schemas/pagination";
 
-import { findFavoriteFn } from "./favorites";
+import { findFavoriteFn } from "../api/favorites";
 
 const popularPeopleFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {

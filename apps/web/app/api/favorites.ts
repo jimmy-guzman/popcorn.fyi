@@ -10,7 +10,7 @@ import type { Id } from "@/schemas/id";
 
 import { IdSchema, UserIdSchema } from "@/schemas/id";
 
-import { client } from "./tmdb";
+import { client } from "../lib/tmdb";
 
 export const favoritePeopleFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
