@@ -1,3 +1,5 @@
+import type * as v from "valibot";
+
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { Button } from "@popcorn.fyi/ui/button";
 import { useNavigate, useSearch } from "@tanstack/react-router";
@@ -5,23 +7,6 @@ import { useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
 
 import { DiscoverSchema } from "@/lib/movies";
-
-const sortOptions = [
-  { label: "Original Title (A-Z)", value: "original_title.asc" },
-  { label: "Original Title (Z-A)", value: "original_title.desc" },
-  { label: "Popularity (Low to High)", value: "popularity.asc" },
-  { label: "Popularity (High to Low)", value: "popularity.desc" },
-  { label: "Revenue (Low to High)", value: "revenue.asc" },
-  { label: "Revenue (High to Low)", value: "revenue.desc" },
-  { label: "Release Date (Oldest First)", value: "primary_release_date.asc" },
-  { label: "Release Date (Newest First)", value: "primary_release_date.desc" },
-  { label: "Title (A-Z)", value: "title.asc" },
-  { label: "Title (Z-A)", value: "title.desc" },
-  { label: "Rating (Low to High)", value: "vote_average.asc" },
-  { label: "Rating (High to Low)", value: "vote_average.desc" },
-  { label: "Vote Count (Low to High)", value: "vote_count.asc" },
-  { label: "Vote Count (High to Low)", value: "vote_count.desc" },
-];
 
 interface MovieDiscoverFiltersOptions {
   genres: {
@@ -40,12 +25,14 @@ interface MovieDiscoverFiltersOptions {
     iso_3166_1?: string | undefined;
     native_name?: string | undefined;
   }[];
+  sortOptions: readonly { label: string; value: string }[];
 }
 
 export const MovieDiscoverFilters = ({
   genres,
   providers,
   regions,
+  sortOptions,
 }: MovieDiscoverFiltersOptions) => {
   const search = useSearch({ from: "/_layout/movies/discover/_layout" });
   const navigate = useNavigate();
@@ -58,13 +45,28 @@ export const MovieDiscoverFilters = ({
   const values = useWatch({ control });
 
   useEffect(() => {
-    void navigate({
-      search: (prevSearch) => {
-        return { ...prevSearch, ...values };
-      },
-      to: "/movies/discover",
-    });
-  }, [values, navigate]);
+    const debouncedNavigate = setTimeout(() => {
+      if (JSON.stringify(values) !== JSON.stringify(search)) {
+        void navigate({
+          search: (prevSearch) => {
+            return { ...prevSearch, ...values };
+          },
+          to: "/movies/discover",
+        });
+      }
+    }, 200);
+
+    return () => {
+      clearTimeout(debouncedNavigate);
+    };
+  }, [values, navigate, search]);
+
+  const handleReset = (
+    field: keyof v.InferInput<typeof DiscoverSchema>,
+    defaultValue = "",
+  ) => {
+    resetField(field, { defaultValue });
+  };
 
   return (
     <form
@@ -100,7 +102,7 @@ export const MovieDiscoverFilters = ({
             className="dsy-join-item"
             color="neutral"
             onClick={() => {
-              resetField("with_genres", { defaultValue: "" });
+              handleReset("with_genres");
             }}
           >
             <span className="icon-[lucide--x]" />
@@ -130,7 +132,7 @@ export const MovieDiscoverFilters = ({
             className="dsy-join-item"
             color="neutral"
             onClick={() => {
-              resetField("with_watch_providers", { defaultValue: "" });
+              handleReset("with_watch_providers");
             }}
           >
             <span className="icon-[lucide--x]" />
@@ -154,7 +156,7 @@ export const MovieDiscoverFilters = ({
             className="dsy-join-item"
             color="neutral"
             onClick={() => {
-              resetField("watch_region", { defaultValue: "US" });
+              handleReset("watch_region", "US");
             }}
           >
             <span className="icon-[lucide--x]" />
@@ -172,7 +174,7 @@ export const MovieDiscoverFilters = ({
             className="dsy-join-item"
             color="neutral"
             onClick={() => {
-              resetField("primary_release_date_gte", { defaultValue: "" });
+              handleReset("primary_release_date_gte");
             }}
           >
             <span className="icon-[lucide--x]" />
@@ -188,7 +190,7 @@ export const MovieDiscoverFilters = ({
             className="dsy-join-item"
             color="neutral"
             onClick={() => {
-              resetField("primary_release_date_lte", { defaultValue: "" });
+              handleReset("primary_release_date_lte");
             }}
           >
             <span className="icon-[lucide--x]" />
@@ -213,7 +215,7 @@ export const MovieDiscoverFilters = ({
             className="dsy-join-item"
             color="neutral"
             onClick={() => {
-              resetField("sort_by", { defaultValue: "popularity.desc" });
+              handleReset("sort_by", "popularity.desc");
             }}
           >
             <span className="icon-[lucide--x]" />

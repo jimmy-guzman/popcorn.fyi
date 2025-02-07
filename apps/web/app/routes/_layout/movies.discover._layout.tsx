@@ -3,13 +3,14 @@ import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 import { MovieDiscoverFilters } from "@/components/movie-discover-filters";
 import { Prose } from "@/components/prose";
+import { discoverMoviesSortOptions } from "@/config/options";
 import { site } from "@/config/site";
 import {
+  DiscoverSchema,
   movieGenresOptions,
   movieProvidersOptions,
-  providerRegionsOptions,
-} from "@/lib/genres";
-import { DiscoverSchema } from "@/lib/movies";
+} from "@/lib/movies";
+import { providerRegionsOptions } from "@/lib/providers";
 
 export const Route = createFileRoute("/_layout/movies/discover/_layout")({
   component: RouteComponent,
@@ -29,7 +30,7 @@ function RouteComponent() {
   const { data: regions } = useSuspenseQuery(providerRegionsOptions());
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-8">
       <Prose>
         <h1>{site.pages.discoverMovies.title}</h1>
         <p>{site.pages.discoverMovies.description}</p>
@@ -38,6 +39,7 @@ function RouteComponent() {
         genres={genres}
         providers={providers}
         regions={regions}
+        sortOptions={discoverMoviesSortOptions}
       />
       <Outlet />
     </div>

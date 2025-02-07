@@ -1,0 +1,16 @@
+export const discoverMoviesSortOptions = [
+  { label: "Original Title (A–Z)", value: "original_title.asc" },
+  { label: "Original Title (Z–A)", value: "original_title.desc" },
+  { label: "Popularity (Low → High)", value: "popularity.asc" },
+  { label: "Popularity (High → Low)", value: "popularity.desc" },
+  { label: "Revenue (Low → High)", value: "revenue.asc" },
+  { label: "Revenue (High → Low)", value: "revenue.desc" },
+  { label: "Release Date (Oldest)", value: "primary_release_date.asc" },
+  { label: "Release Date (Newest)", value: "primary_release_date.desc" },
+  { label: "Title (A–Z)", value: "title.asc" },
+  { label: "Title (Z–A)", value: "title.desc" },
+  { label: "Rating (Low → High)", value: "vote_average.asc" },
+  { label: "Rating (High → Low)", value: "vote_average.desc" },
+  { label: "Votes (Low → High)", value: "vote_count.asc" },
+  { label: "Votes (High → Low)", value: "vote_count.desc" },
+] as const;
