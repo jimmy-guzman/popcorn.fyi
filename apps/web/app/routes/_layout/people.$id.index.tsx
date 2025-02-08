@@ -1,9 +1,9 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { CastCreditsTable } from "@/components/cast-credits-table";
-import { CrewCreditsTable } from "@/components/crew-credits-table";
-import { Prose } from "@/components/prose";
+import { Prose } from "@/components/shared/prose";
+import { CastCreditsTable } from "@/components/table/cast-credits-table";
+import { CrewCreditsTable } from "@/components/table/crew-credits-table";
 import { personCreditsOptions } from "@/lib/people";
 
 export const Route = createFileRoute("/_layout/people/$id/")({

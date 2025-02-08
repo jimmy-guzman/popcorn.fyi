@@ -3,8 +3,8 @@ import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { year } from "@popcorn.fyi/utils";
 import { Link } from "@tanstack/react-router";
 
-import { MediaRating } from "./media-rating";
-import { MediaType } from "./media-type";
+import { MediaRating } from "../media/media-rating";
+import { MediaType } from "../media/media-type";
 
 interface TVShowCardProps {
   tvShow: {

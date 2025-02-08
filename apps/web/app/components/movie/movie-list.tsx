@@ -1,6 +1,6 @@
-import { ListContent } from "./list-content";
+import { ListContent } from "../shared/list-content";
+import { Prose } from "../shared/prose";
 import { MovieCard } from "./movie-card";
-import { Prose } from "./prose";
 
 interface MovieListProps {
   description: string;

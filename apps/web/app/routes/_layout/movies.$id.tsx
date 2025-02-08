@@ -1,7 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { MovieDetails } from "@/components/movie-details";
+import { MovieDetails } from "@/components/movie/movie-details";
 import { site } from "@/config/site";
 import { movieDetailsOptions } from "@/lib/movies";
 import { seo } from "@/lib/seo";

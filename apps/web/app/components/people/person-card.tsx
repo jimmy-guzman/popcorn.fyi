@@ -2,7 +2,7 @@ import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { Link } from "@tanstack/react-router";
 
-import { MediaType } from "./media-type";
+import { MediaType } from "../media/media-type";
 
 interface PersonCardProps {
   person: {

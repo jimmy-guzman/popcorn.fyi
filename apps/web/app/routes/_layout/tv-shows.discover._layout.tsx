@@ -5,7 +5,7 @@ import { DiscoverSchema } from "@/api/tv/discover.list";
 import { tvGenresOptions } from "@/api/tv/genres";
 import { tvProvidersOptions } from "@/api/tv/providers.list";
 import { regionsOptions } from "@/api/tv/regions.list";
-import { Prose } from "@/components/prose";
+import { Prose } from "@/components/shared/prose";
 import { TvDiscoverFilters } from "@/components/tv/discover-filters";
 
 export const Route = createFileRoute("/_layout/tv-shows/discover/_layout")({

@@ -2,8 +2,8 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { tvTopRatedOptions } from "@/api/tv/top-rated.list";
-import { ListPagination } from "@/components/list-pagination";
-import { TVShowList } from "@/components/tv-show-list";
+import { ListPagination } from "@/components/shared/list-pagination";
+import { TVShowList } from "@/components/tv/tv-show-list";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 import { PaginationSchema } from "@/schemas/pagination";

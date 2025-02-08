@@ -1,8 +1,8 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { ListPagination } from "@/components/list-pagination";
-import { PeopleList } from "@/components/people-list";
+import { PeopleList } from "@/components/people/people-list";
+import { ListPagination } from "@/components/shared/list-pagination";
 import { site } from "@/config/site";
 import { peoplePopularOptions } from "@/lib/people";
 import { seo } from "@/lib/seo";

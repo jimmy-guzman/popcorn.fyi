@@ -1,15 +1,15 @@
 import { createColumnHelper } from "@tanstack/react-table";
 
-import { MediaTableCell } from "./media-table-cell";
+import { MediaTableCell } from "../media/media-table-cell";
 import { Table } from "./table";
 import { TitleNameTableCell } from "./title-name-table-cell";
 import { YearTableCell } from "./year-table-cell";
 
 interface Credit {
-  character?: string;
-  episode_count?: number;
+  department?: string;
   first_air_date?: string;
   id: number;
+  job?: string;
   media_type?: string;
   name?: string;
   poster_path?: string;
@@ -44,29 +44,26 @@ const columns = [
     {
       cell: TitleNameTableCell,
       enableColumnFilter: false,
-      header: "Title/Name",
+      id: "Title/Name",
     },
   ),
-  columnHelper.accessor("character", {
+  columnHelper.accessor("job", {
     cell: (info) => {
       return info.getValue();
     },
     enableColumnFilter: false,
   }),
-  columnHelper.accessor("episode_count", {
+  columnHelper.accessor("department", {
     cell: (info) => {
       return info.getValue();
     },
-    enableColumnFilter: false,
-    header: "Episodes",
-    sortUndefined: "last",
   }),
 ];
 
-interface CastCreditsTableProps {
+interface CrewCreditsTableProps {
   credits: Credit[];
 }
 
-export const CastCreditsTable = ({ credits }: CastCreditsTableProps) => {
+export const CrewCreditsTable = ({ credits }: CrewCreditsTableProps) => {
   return <Table columns={columns} data={credits} />;
 };

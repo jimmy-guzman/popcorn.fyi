@@ -1,8 +1,8 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { ListPagination } from "@/components/list-pagination";
-import { MovieList } from "@/components/movie-list";
+import { MovieList } from "@/components/movie/movie-list";
+import { ListPagination } from "@/components/shared/list-pagination";
 import { site } from "@/config/site";
 import { moviesTopRatedOptions } from "@/lib/movies";
 import { seo } from "@/lib/seo";

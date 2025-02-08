@@ -9,36 +9,36 @@ import {
 } from "@popcorn.fyi/ui/hero";
 import { Link } from "@tanstack/react-router";
 
-import { MediaType } from "./media-type";
+import { MediaType } from "../media/media-type";
 
-interface PersonHeroProps {
-  person: {
+interface TVShowHeroProps {
+  tvShow: {
     backdrop_path?: string;
     id: number;
-    known_for_department?: string;
     media_type?: string;
     name?: string;
+    overview?: string;
   };
 }
 
-export const PersonHero = ({ person }: PersonHeroProps) => {
+export const TvShowHero = ({ tvShow }: TVShowHeroProps) => {
   return (
     <Hero
-      aria-label={person.name}
+      aria-label={tvShow.name}
       backgroundImage={
-        person.backdrop_path ? tmdbImageUrl(person.backdrop_path) : undefined
+        tvShow.backdrop_path ? tmdbImageUrl(tvShow.backdrop_path) : undefined
       }
     >
       <HeroOverlay />
       <HeroContent className="text-neutral-content text-center">
         <div className="flex flex-col items-center gap-5">
           <HeroBadges>
-            <MediaType mediaType={person.media_type} />
+            <MediaType mediaType={tvShow.media_type} />
           </HeroBadges>
-          <HeroTitle>{person.name}</HeroTitle>
-          <p>Known for {person.known_for_department}</p>
+          <HeroTitle>{tvShow.name}</HeroTitle>
+          <p>{tvShow.overview}</p>
           <Button asChild color="primary">
-            <Link params={{ id: person.id.toString() }} to="/tv-shows/$id">
+            <Link params={{ id: tvShow.id.toString() }} to="/tv-shows/$id">
               Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
             </Link>
           </Button>

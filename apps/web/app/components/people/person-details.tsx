@@ -4,9 +4,9 @@ import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { date } from "@popcorn.fyi/utils";
 import { Outlet } from "@tanstack/react-router";
 
-import { Favorite } from "./favorite";
-import { MediaRating } from "./media-rating";
-import { Prose } from "./prose";
+import { MediaRating } from "../media/media-rating";
+import { Favorite } from "../shared/favorite";
+import { Prose } from "../shared/prose";
 
 interface PersonDetailsProps {
   person: {

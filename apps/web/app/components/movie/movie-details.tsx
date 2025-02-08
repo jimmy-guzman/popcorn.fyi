@@ -3,11 +3,11 @@ import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { Link, Outlet } from "@tanstack/react-router";
 
-import { Favorite } from "./favorite";
-import { MediaGenres } from "./media-genres";
-import { MediaRating } from "./media-rating";
-import { MediaStatus } from "./media-status";
-import { Prose } from "./prose";
+import { MediaGenres } from "../media/media-genres";
+import { MediaRating } from "../media/media-rating";
+import { MediaStatus } from "../media/media-status";
+import { Favorite } from "../shared/favorite";
+import { Prose } from "../shared/prose";
 
 interface MovieDetailsProps {
   movie: {

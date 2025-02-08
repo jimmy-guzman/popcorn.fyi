@@ -1,6 +1,6 @@
-import { ListContent } from "../list-content";
-import { ListPagination } from "../list-pagination";
-import { TVShowCard } from "../tv-show-card";
+import { ListContent } from "../shared/list-content";
+import { ListPagination } from "../shared/list-pagination";
+import { TVShowCard } from "./tv-show-card";
 
 interface TvDiscoverListProps {
   page: number;
