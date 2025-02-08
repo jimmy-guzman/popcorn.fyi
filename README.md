@@ -4,28 +4,37 @@
 >
 > **[Check out the live app here!](https://popcornfyi.vercel.app)**
 
+## 🎥 Demo
+
+Explore movies, TV shows, and more with advanced filters, personalized recommendations, and a sleek UI.
+
+<p align="center">
+  <img src="./assets/discover-movies.png" alt="Discover Movies Page" width="600"/>
+</p>
+
 ## 🛠 Tech Stack
 
 ### **Frontend**
 
-- **Framework:** React with [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview)
-- **Styling:** Tailwind CSS, daisyUI, Tailwind CSS Typography
-- **State Management & Data Fetching:** TanStack Query, [openapi-fetch](https://www.npmjs.com/package/openapi-fetch) (for TMDB API)
+- **Framework:** [React](https://react.dev) with [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com), [daisyUI](https://daisyui.com), [Tailwind CSS Typography](https://tailwindcss.com/docs/typography-plugin)
+- **State Management:** [TanStack Query](https://tanstack.com/query/latest)
+- **Data Fetching:** [openapi-fetch](https://www.npmjs.com/package/openapi-fetch) (for TMDB API)
 - **Authentication:** [Clerk](https://clerk.com) for user authentication and management
-- **Testing:** Playwright (end-to-end testing), Vitest (unit testing), React Testing Library, Storybook (component development)
+- **Testing:** [Playwright](https://playwright.dev) (end-to-end testing), [Vitest](https://vitest.dev) (unit testing), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), [Storybook](https://storybook.js.org) (component development)
 
 ### **Backend**
 
-- **Database:** PostgreSQL (hosted on [Neon](https://neon.tech))
-- **ORM:** [Drizzle](https://orm.drizzle.team)
+- **Database:** [PostgreSQL](https://www.postgresql.org) (hosted on [Neon](https://neon.tech))
+- **ORM:** [Drizzle ORM](https://orm.drizzle.team)
 - **API Integration:** [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started)
 
 ### **Tooling & DevOps**
 
 - **Monorepo Management:** [Turborepo](https://turbo.build/repo)
 - **Package Manager:** [pnpm](https://pnpm.io)
-- **Type Checking:** TypeScript
-- **Linting & Formatting:** ESLint (with [@jimmy.codes/eslint-config](https://github.com/jimmy-guzman/eslint-config)), Prettier
+- **Type Checking:** [TypeScript](https://www.typescriptlang.org)
+- **Linting & Formatting:** [ESLint](https://eslint.org) (with [@jimmy.codes/eslint-config](https://github.com/jimmy-guzman/eslint-config)), [Prettier](https://prettier.io)
 - **Deployment:** [Vercel](https://vercel.com)
 
 ## 🎁 What's Inside?
