@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 
 import { render, screen } from "@/testing/utils";
 
-import { MovieDiscoverFilters } from "./movie-discover-filters";
+import { MovieDiscoverFilters } from "./discover-filters";
 
 const mockNavigate = vi.fn();
 vi.mock("@tanstack/react-router", async () => {

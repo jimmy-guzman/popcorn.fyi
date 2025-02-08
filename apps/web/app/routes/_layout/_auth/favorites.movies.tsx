@@ -10,7 +10,7 @@ export const Route = createFileRoute("/_layout/_auth/favorites/movies")({
   head: () => {
     return {
       meta: seo({
-        title: `${site.pages.favoriteMovies.title} | ${site.title}`,
+        title: `${site.pages.favorites.movies.title} | ${site.title}`,
       }),
     };
   },
@@ -27,9 +27,9 @@ function RouteComponent() {
   return (
     <div className="flex flex-col gap-4">
       <MovieList
-        description={site.pages.favoriteMovies.description}
+        description={site.pages.favorites.movies.description}
         movies={favorites}
-        title={site.pages.favoriteMovies.title}
+        title={site.pages.favorites.movies.title}
       />
     </div>
   );
