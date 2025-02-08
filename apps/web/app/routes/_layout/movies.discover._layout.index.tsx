@@ -17,7 +17,6 @@ export const Route = createFileRoute("/_layout/movies/discover/_layout/")({
 
 function RouteComponent() {
   const search = Route.useSearch();
-
   const { data: movies } = useSuspenseQuery(discoverMoviesOptions(search));
 
   return (

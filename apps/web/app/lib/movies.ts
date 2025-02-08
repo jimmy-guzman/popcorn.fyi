@@ -8,8 +8,9 @@ import type { Pagination } from "@/schemas/pagination";
 import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
 import { PaginationSchema } from "@/schemas/pagination";
+import { Filter } from "@/schemas/utils";
 
-import { findFavoriteFn } from "./favorites";
+import { findFavoriteFn } from "../api/favorites";
 
 const popularMoviesFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
@@ -153,14 +154,6 @@ export const movieVideosOptions = (id: Id) => {
   });
 };
 
-const EmptyString = v.pipe(
-  v.literal(""),
-  v.transform(() => {
-    // eslint-disable-next-line unicorn/no-useless-undefined -- TODO
-    return undefined;
-  }),
-);
-
 const SortSchema = v.optional(
   v.fallback(
     v.union([
@@ -183,8 +176,6 @@ const SortSchema = v.optional(
   ),
   "popularity.desc",
 );
-
-const Filter = v.optional(v.union([EmptyString, v.string()]));
 
 export const DiscoverSchema = v.intersect([
   PaginationSchema,

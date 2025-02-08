@@ -44,24 +44,3 @@ export const movieProvidersOptions = () => {
     queryKey: ["movie", "providers", "list"],
   });
 };
-
-const providerRegionsFn = createServerFn({ method: "GET" }).handler(
-  async (context) => {
-    const { data } = await client.GET("/3/watch/providers/regions", {
-      params: {
-        query: context.data,
-      },
-    });
-
-    return data.results ?? [];
-  },
-);
-
-export const providerRegionsOptions = () => {
-  return queryOptions({
-    queryFn: () => {
-      return providerRegionsFn();
-    },
-    queryKey: ["provider", "regions", "list"],
-  });
-};

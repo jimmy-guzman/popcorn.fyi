@@ -3,9 +3,9 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Fragment } from "react/jsx-runtime";
 
+import { tvDetailsOptions } from "@/api/tv/details";
 import { MediaOverviewList } from "@/components/media-overview-list";
 import { Prose } from "@/components/prose";
-import { tvDetailsOptions } from "@/lib/tv-shows";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id/")({
   component: RouteComponent,
