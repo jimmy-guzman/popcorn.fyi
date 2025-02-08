@@ -11,7 +11,7 @@ export const Route = createFileRoute("/_layout/trending/tv-shows")({
   head: () => {
     return {
       meta: seo({
-        title: `${site.pages.trendingTVShows.title} | ${site.title}`,
+        title: `${site.pages.trending.tvShows.title} | ${site.title}`,
       }),
     };
   },
@@ -25,8 +25,8 @@ function RouteComponent() {
 
   return (
     <TVShowList
-      description={site.pages.trendingTVShows.description}
-      title={site.pages.trendingTVShows.title}
+      description={site.pages.trending.tvShows.description}
+      title={site.pages.trending.tvShows.title}
       tvShows={tvShows.results ?? []}
     />
   );

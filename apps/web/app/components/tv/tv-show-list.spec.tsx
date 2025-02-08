@@ -25,15 +25,15 @@ describe("TVShowList", () => {
   it("should render with title", async () => {
     await render(
       <TVShowList
-        description={site.pages.popularTVShows.description}
-        title={site.pages.popularTVShows.title}
+        description={site.pages.popular.tvShows.description}
+        title={site.pages.popular.tvShows.title}
         tvShows={[]}
       />,
     );
 
     const title = screen.getByRole("heading", {
       level: 1,
-      name: site.pages.popularTVShows.title,
+      name: site.pages.popular.tvShows.title,
     });
 
     expect(title).toBeInTheDocument();
@@ -42,13 +42,15 @@ describe("TVShowList", () => {
   it("should render with description", async () => {
     await render(
       <TVShowList
-        description={site.pages.popularTVShows.description}
-        title={site.pages.popularTVShows.title}
+        description={site.pages.popular.tvShows.description}
+        title={site.pages.popular.tvShows.title}
         tvShows={[]}
       />,
     );
 
-    const description = screen.getByText(site.pages.popularTVShows.description);
+    const description = screen.getByText(
+      site.pages.popular.tvShows.description,
+    );
 
     expect(description).toBeInTheDocument();
   });
@@ -56,8 +58,8 @@ describe("TVShowList", () => {
   it("should render with tv show card", async () => {
     await render(
       <TVShowList
-        description={site.pages.popularTVShows.description}
-        title={site.pages.popularTVShows.title}
+        description={site.pages.popular.tvShows.description}
+        title={site.pages.popular.tvShows.title}
         tvShows={[tvShow]}
       />,
     );

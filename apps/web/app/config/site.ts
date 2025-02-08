@@ -1,67 +1,81 @@
 export const site = {
   description: "Explore and discover your favorite movies and TV shows.",
   pages: {
-    discoverMovies: {
-      description:
-        "Find and explore movies by genre, provider, region, release date, and sort order.",
-      title: "Discover Movies",
+    discover: {
+      movies: {
+        description:
+          "Explore movies by genre, provider, region, release date, and sort order.",
+        title: "Discover Movies",
+      },
+      tvShows: {
+        description:
+          "Explore TV shows by genre, provider, region, release date, and sort order.",
+        title: "Discover TV Shows",
+      },
     },
-    favoriteMovies: {
-      description: "Your favorite movies, all in one place.",
-      title: "Favorite Movies",
-    },
-    favoritePeople: {
-      description:
-        "Your favorite actors and creators from movies and TV shows.",
-      title: "Favorite People",
-    },
-    favoriteTVShows: {
-      description: "Your go-to collection of favorite TV shows.",
-      title: "Favorite TV Shows",
+    favorites: {
+      movies: {
+        description: "All your favorite movies in one place.",
+        title: "Favorite Movies",
+      },
+      people: {
+        description: "All your favorite actors and creators in one place.",
+        title: "Favorite People",
+      },
+      tvShows: {
+        description: "All your favorite TV shows in one place.",
+        title: "Favorite TV Shows",
+      },
     },
     media: {
       credits: {
         cast: {
           title: "Cast",
-          unavailable: "No cast information available.",
+          unavailable: "Cast information is not available.",
         },
         crew: {
           title: "Crew",
-          unavailable: "No crew information available.",
+          unavailable: "Crew information is not available.",
         },
       },
     },
-    popularMovies: {
-      description: "See what's popular in movies right now.",
-      title: "Popular Movies",
+    popular: {
+      movies: {
+        description: "Explore popular movies at the moment.",
+        title: "Popular Movies",
+      },
+      people: {
+        description: "Explore popular actors and creators at the moment.",
+        title: "Popular People",
+      },
+      tvShows: {
+        description: "Explore popular TV shows at the moment.",
+        title: "Popular TV Shows",
+      },
     },
-    popularPeople: {
-      description: "Meet the most popular actors and creators today.",
-      title: "Popular People",
+    topRated: {
+      movies: {
+        description: "Explore the highest-rated movies to date.",
+        title: "Top Rated Movies",
+      },
+      tvShows: {
+        description: "Explore the highest-rated TV shows to date.",
+        title: "Top Rated TV Shows",
+      },
     },
-    popularTVShows: {
-      description: "Check out the most popular TV shows.",
-      title: "Popular TV Shows",
-    },
-    topRatedMovies: {
-      description: "Explore the highest-rated movies.",
-      title: "Top Rated Movies",
-    },
-    topRatedTVShows: {
-      description: "Find the best-rated TV shows.",
-      title: "Top Rated TV Shows",
-    },
-    trendingMovies: {
-      description: "See what's trending in movies right now.",
-      title: "Trending Movies",
-    },
-    trendingPeople: {
-      description: "Find actors and creators who are trending today.",
-      title: "Trending People",
-    },
-    trendingTVShows: {
-      description: "Discover the latest trending TV shows.",
-      title: "Trending TV Shows",
+    trending: {
+      movies: {
+        description: "Explore trending movies at the moment.",
+        title: "Trending Movies",
+      },
+      people: {
+        description: "Explore trending actors and creators at the moment.",
+        title: "Trending People",
+      },
+      tvShows: {
+        description: "Explore trending TV shows at the moment.",
+        title: "Trending TV Shows",
+      },
     },
   },
   title: "popcorn.fyi",

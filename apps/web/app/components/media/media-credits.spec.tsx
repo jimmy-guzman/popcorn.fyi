@@ -1,3 +1,4 @@
+import { site } from "@/config/site";
 import { render, screen } from "@/testing/utils";
 
 import { MediaCredits } from "./media-credits";
@@ -12,14 +13,14 @@ describe("MediaCredits", () => {
     await render(<MediaCredits credits={{}} />);
 
     expect(
-      screen.getByText("No cast information available."),
+      screen.getByText(site.pages.media.credits.cast.unavailable),
     ).toBeInTheDocument();
   });
   it("should NOT show cast when no cast", async () => {
     await render(<MediaCredits credits={{ cast: [] }} />);
 
     expect(
-      screen.getByText("No cast information available."),
+      screen.getByText(site.pages.media.credits.cast.unavailable),
     ).toBeInTheDocument();
   });
   it("should show crew when available", async () => {
@@ -31,14 +32,14 @@ describe("MediaCredits", () => {
     await render(<MediaCredits credits={{}} />);
 
     expect(
-      screen.getByText("No crew information available."),
+      screen.getByText(site.pages.media.credits.crew.unavailable),
     ).toBeInTheDocument();
   });
   it("should NOT show cast when no crew", async () => {
     await render(<MediaCredits credits={{ crew: [] }} />);
 
     expect(
-      screen.getByText("No crew information available."),
+      screen.getByText(site.pages.media.credits.crew.unavailable),
     ).toBeInTheDocument();
   });
 });
