@@ -4,26 +4,24 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
 
-import { DiscoverSchema } from "@/lib/movies";
+import { DiscoverSchema } from "@/api/tv/discover.list";
 
-const sortOptions = [
-  { label: "Original Title (A-Z)", value: "original_title.asc" },
-  { label: "Original Title (Z-A)", value: "original_title.desc" },
+const tvSortOptions = [
+  { label: "Original Name (A-Z)", value: "original_name.asc" },
+  { label: "Original Name (Z-A)", value: "original_name.desc" },
   { label: "Popularity (Low to High)", value: "popularity.asc" },
   { label: "Popularity (High to Low)", value: "popularity.desc" },
-  { label: "Revenue (Low to High)", value: "revenue.asc" },
-  { label: "Revenue (High to Low)", value: "revenue.desc" },
-  { label: "Release Date (Oldest First)", value: "primary_release_date.asc" },
-  { label: "Release Date (Newest First)", value: "primary_release_date.desc" },
-  { label: "Title (A-Z)", value: "title.asc" },
-  { label: "Title (Z-A)", value: "title.desc" },
+  { label: "First Air Date (Oldest First)", value: "first_air_date.asc" },
+  { label: "First Air Date (Newest First)", value: "first_air_date.desc" },
+  { label: "Name (A-Z)", value: "name.asc" },
+  { label: "Name (Z-A)", value: "name.desc" },
   { label: "Rating (Low to High)", value: "vote_average.asc" },
   { label: "Rating (High to Low)", value: "vote_average.desc" },
   { label: "Vote Count (Low to High)", value: "vote_count.asc" },
   { label: "Vote Count (High to Low)", value: "vote_count.desc" },
 ];
 
-interface MovieDiscoverFiltersOptions {
+interface TvDiscoverFiltersOptions {
   genres: {
     id: number;
     name?: string | undefined;
@@ -42,13 +40,13 @@ interface MovieDiscoverFiltersOptions {
   }[];
 }
 
-export const MovieDiscoverFilters = ({
+export const TvDiscoverFilters = ({
   genres,
   providers,
   regions,
-}: MovieDiscoverFiltersOptions) => {
-  const search = useSearch({ from: "/_layout/movies/discover/_layout" });
-  const navigate = useNavigate({ from: "/movies/discover" });
+}: TvDiscoverFiltersOptions) => {
+  const search = useSearch({ from: "/_layout/tv-shows/discover/_layout" });
+  const navigate = useNavigate({ from: "/tv-shows/discover" });
 
   const { control, handleSubmit, register, resetField } = useForm({
     resolver: valibotResolver(DiscoverSchema),
@@ -62,7 +60,7 @@ export const MovieDiscoverFilters = ({
       search: (prevSearch) => {
         return { ...prevSearch, ...values };
       },
-      to: "/movies/discover",
+      to: "/tv-shows/discover",
     });
   }, [values, navigate]);
 
@@ -74,7 +72,7 @@ export const MovieDiscoverFilters = ({
           search: (prevSearch) => {
             return { ...prevSearch, ...values };
           },
-          to: "/movies/discover",
+          to: "/tv-shows/discover",
         });
       })}
     >
@@ -165,14 +163,14 @@ export const MovieDiscoverFilters = ({
         <div className="dsy-join">
           <label className="dsy-input dsy-join-item w-full">
             <span className="dsy-label">From</span>
-            <input {...register("primary_release_date_gte")} type="date" />
+            <input {...register("first_air_date_gte")} type="date" />
           </label>
           <Button
             aria-label="Reset From"
             className="dsy-join-item"
             color="neutral"
             onClick={() => {
-              resetField("primary_release_date_gte", { defaultValue: "" });
+              resetField("first_air_date_gte", { defaultValue: "" });
             }}
           >
             <span className="icon-[lucide--x]" />
@@ -181,14 +179,14 @@ export const MovieDiscoverFilters = ({
         <div className="dsy-join">
           <label className="dsy-input dsy-join-item w-full">
             <span className="dsy-label">To</span>
-            <input {...register("primary_release_date_lte")} type="date" />
+            <input {...register("first_air_date_lte")} type="date" />
           </label>
           <Button
             aria-label="Reset To"
             className="dsy-join-item"
             color="neutral"
             onClick={() => {
-              resetField("primary_release_date_lte", { defaultValue: "" });
+              resetField("first_air_date_lte", { defaultValue: "" });
             }}
           >
             <span className="icon-[lucide--x]" />
@@ -199,7 +197,7 @@ export const MovieDiscoverFilters = ({
             <span className="dsy-label">Sort By</span>
             <select {...register("sort_by")}>
               <option value="" />
-              {sortOptions.map((sortOption) => {
+              {tvSortOptions.map((sortOption) => {
                 return (
                   <option key={sortOption.value} value={sortOption.value}>
                     {sortOption.label}

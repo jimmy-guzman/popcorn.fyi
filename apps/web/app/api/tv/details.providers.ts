@@ -7,7 +7,7 @@ import type { Id } from "@/schemas/id";
 import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
 
-const tvProvidersFn = createServerFn({ method: "GET" })
+const tvSeriesProvidersFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
     return v.parse(IdSchema, data);
   })
@@ -21,10 +21,10 @@ const tvProvidersFn = createServerFn({ method: "GET" })
     return data;
   });
 
-export const tvProvidersOptions = (id: Id) => {
+export const tvSeriesProvidersOptions = (id: Id) => {
   return queryOptions({
     queryFn: () => {
-      return tvProvidersFn({ data: id });
+      return tvSeriesProvidersFn({ data: id });
     },
     queryKey: ["tv", "details", id, "providers"],
   });

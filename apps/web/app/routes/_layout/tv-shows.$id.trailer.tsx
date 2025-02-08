@@ -2,7 +2,7 @@ import { selectYoutubeTrailer } from "@popcorn.fyi/tmdb";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { tvVideosOptions } from "@/api/tv/videos";
+import { tvVideosOptions } from "@/api/tv/details.videos";
 import { MediaTrailerDialog } from "@/components/media-trailer-dialog";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id/trailer")({

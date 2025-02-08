@@ -1,37 +1,37 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
+import { DiscoverSchema } from "@/api/tv/discover.list";
+import { tvGenresOptions } from "@/api/tv/genres";
+import { tvProvidersOptions } from "@/api/tv/providers.list";
 import { regionsOptions } from "@/api/tv/regions.list";
-import { MovieDiscoverFilters } from "@/components/movie-discover-filters";
 import { Prose } from "@/components/prose";
-import { site } from "@/config/site";
-import { movieGenresOptions, movieProvidersOptions } from "@/lib/genres";
-import { DiscoverSchema } from "@/lib/movies";
+import { TvDiscoverFilters } from "@/components/tv/discover-filters";
 
-export const Route = createFileRoute("/_layout/movies/discover/_layout")({
+export const Route = createFileRoute("/_layout/tv-shows/discover/_layout")({
   component: RouteComponent,
   validateSearch: DiscoverSchema,
   loader: async ({ context }) => {
     await Promise.all([
-      context.queryClient.ensureQueryData(movieGenresOptions()),
-      context.queryClient.ensureQueryData(movieProvidersOptions()),
+      context.queryClient.ensureQueryData(tvGenresOptions()),
+      context.queryClient.ensureQueryData(tvProvidersOptions()),
       context.queryClient.ensureQueryData(regionsOptions()),
     ]);
   },
 });
 
 function RouteComponent() {
-  const { data: genres } = useSuspenseQuery(movieGenresOptions());
-  const { data: providers } = useSuspenseQuery(movieProvidersOptions());
+  const { data: genres } = useSuspenseQuery(tvGenresOptions());
+  const { data: providers } = useSuspenseQuery(tvProvidersOptions());
   const { data: regions } = useSuspenseQuery(regionsOptions());
 
   return (
     <div className="flex flex-col gap-4">
       <Prose>
-        <h1>{site.pages.discoverMovies.title}</h1>
-        <p>{site.pages.discoverMovies.description}</p>
+        <h1>test</h1>
+        <p>test</p>
       </Prose>
-      <MovieDiscoverFilters
+      <TvDiscoverFilters
         genres={genres}
         providers={providers}
         regions={regions}

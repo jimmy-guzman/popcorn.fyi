@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { favoritePeopleFn } from "@/api/favorites";
 import { PeopleList } from "@/components/people-list";
 import { site } from "@/config/site";
-import { favoritePeopleFn } from "@/api/favorites";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/_auth/favorites/people")({
