@@ -40,11 +40,12 @@
   "devDependencies": {
     "@clerk/testing": "1.4.20",
     "@dotenvx/dotenvx": "1.34.0",
+    "@iconify-json/lucide": "1.2.26",
     "@playwright/test": "1.50.1",
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/tailwind": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
-    "@tailwindcss/postcss": "4.0.4",
+    "@tailwindcss/postcss": "4.0.5",
     "@tanstack/react-query-devtools": "5.66.0",
     "@tanstack/router-devtools": "1.99.9",
     "@testing-library/dom": "10.4.0",
@@ -62,7 +63,7 @@
     "msw": "2.7.0",
     "picocolors": "1.1.1",
     "postcss": "8.5.1",
-    "tailwindcss": "4.0.4",
+    "tailwindcss": "4.0.5",
     "vite": "6.1.0",
     "vite-tsconfig-paths": "5.1.4",
     "vitest": "3.0.5"
