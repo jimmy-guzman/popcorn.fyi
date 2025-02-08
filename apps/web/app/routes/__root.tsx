@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { Meta, Scripts } from "@tanstack/start";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { lazy } from "react";
 import { Toaster } from "sonner";
 
@@ -64,6 +65,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
           }}
         />
         <Analytics />
+        <SpeedInsights />
         <Scripts />
       </body>
     </html>
