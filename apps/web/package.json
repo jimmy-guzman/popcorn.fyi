@@ -28,6 +28,7 @@
     "@tanstack/react-router-with-query": "1.99.9",
     "@tanstack/react-table": "8.20.6",
     "@tanstack/start": "1.99.11",
+    "@vercel/analytics": "1.4.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-hook-form": "7.54.2",

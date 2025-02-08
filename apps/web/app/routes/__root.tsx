@@ -6,6 +6,7 @@ import { dark } from "@clerk/themes";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { Meta, Scripts } from "@tanstack/start";
+import { Analytics } from "@vercel/analytics/react";
 import { lazy } from "react";
 import { Toaster } from "sonner";
 
@@ -62,6 +63,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
             unstyled: true,
           }}
         />
+        <Analytics />
         <Scripts />
       </body>
     </html>

@@ -31,7 +31,7 @@ export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {
           <Drawer.Description>
             <span className="sr-only">Menu</span>
           </Drawer.Description>
-          <ul className="dsy-menu dsy-menu-sm w-full">
+          <ul className="dsy-menu w-full">
             {items.map((item) => {
               return <SiteNavMenuItem item={item} key={item.title} />;
             })}
