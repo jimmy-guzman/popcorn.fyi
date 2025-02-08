@@ -1,7 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { MediaCredits } from "@/components/media-credits";
+import { MediaCredits } from "@/components/media/media-credits";
 import { movieCreditsOptions } from "@/lib/movies";
 
 export const Route = createFileRoute("/_layout/movies/$id/credits")({

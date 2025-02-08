@@ -1,9 +1,9 @@
 import { Button } from "@popcorn.fyi/ui/button";
 import { Link } from "@tanstack/react-router";
 
-import { MovieHero } from "./movie-hero";
-import { PersonHero } from "./person-hero";
-import { TvShowHero } from "./tv-show-hero";
+import { MovieHero } from "./movie/movie-hero";
+import { PersonHero } from "./people/person-hero";
+import { TvShowHero } from "./tv/tv-show-hero";
 
 interface TrendingCarouselProps {
   trending: { id: number; media_type?: string }[];

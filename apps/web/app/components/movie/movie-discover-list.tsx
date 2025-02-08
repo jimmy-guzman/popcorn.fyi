@@ -1,5 +1,5 @@
-import { ListContent } from "./list-content";
-import { ListPagination } from "./list-pagination";
+import { ListContent } from "../shared/list-content";
+import { ListPagination } from "../shared/list-pagination";
 import { MovieCard } from "./movie-card";
 
 interface Movie {

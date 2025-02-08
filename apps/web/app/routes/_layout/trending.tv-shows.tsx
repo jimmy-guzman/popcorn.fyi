@@ -1,7 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { TVShowList } from "@/components/tv-show-list";
+import { TVShowList } from "@/components/tv/tv-show-list";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 import { trendingTVOptions } from "@/lib/trending";

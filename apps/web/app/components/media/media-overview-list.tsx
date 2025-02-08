@@ -1,4 +1,4 @@
-import { Prose } from "./prose";
+import { Prose } from "../shared/prose";
 
 interface MediaOverviewListProps {
   items: {

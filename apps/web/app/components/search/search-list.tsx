@@ -1,8 +1,8 @@
-import { ListContent } from "./list-content";
-import { MovieCard } from "./movie-card";
-import { PersonCard } from "./person-card";
-import { Prose } from "./prose";
-import { TVShowCard } from "./tv-show-card";
+import { MovieCard } from "../movie/movie-card";
+import { PersonCard } from "../people/person-card";
+import { ListContent } from "../shared/list-content";
+import { Prose } from "../shared/prose";
+import { TVShowCard } from "../tv/tv-show-card";
 
 interface SearchListProps {
   query: string;

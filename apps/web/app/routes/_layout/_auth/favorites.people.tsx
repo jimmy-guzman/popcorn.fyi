@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { favoritePeopleFn } from "@/api/favorites";
-import { PeopleList } from "@/components/people-list";
+import { PeopleList } from "@/components/people/people-list";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 

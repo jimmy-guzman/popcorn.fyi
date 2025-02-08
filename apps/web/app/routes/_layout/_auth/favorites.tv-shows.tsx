@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { favoriteTvShowsFn } from "@/api/favorites";
-import { TVShowList } from "@/components/tv-show-list";
+import { TVShowList } from "@/components/tv/tv-show-list";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 

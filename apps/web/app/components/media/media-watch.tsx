@@ -1,7 +1,7 @@
 import { urls } from "@/config/urls";
 
+import { Prose } from "../shared/prose";
 import { MediaProviders } from "./media-providers";
-import { Prose } from "./prose";
 
 interface Provider {
   logo_path?: string;

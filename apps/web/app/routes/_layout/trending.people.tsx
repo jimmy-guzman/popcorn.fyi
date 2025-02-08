@@ -1,7 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { PeopleList } from "@/components/people-list";
+import { PeopleList } from "@/components/people/people-list";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 import { trendingPeopleOptions } from "@/lib/trending";

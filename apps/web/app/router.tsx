@@ -3,8 +3,8 @@ import { createRouter as createTanStackRouter } from "@tanstack/react-router";
 import { routerWithQueryClient } from "@tanstack/react-router-with-query";
 import { toast } from "sonner";
 
-import { Error } from "./components/error";
-import { NotFound } from "./components/not-found";
+import { Error } from "./components/shared/error";
+import { NotFound } from "./components/shared/not-found";
 import { routeTree } from "./routeTree.gen";
 
 export function createRouter() {

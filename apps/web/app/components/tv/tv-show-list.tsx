@@ -1,5 +1,5 @@
-import { ListContent } from "./list-content";
-import { Prose } from "./prose";
+import { ListContent } from "../shared/list-content";
+import { Prose } from "../shared/prose";
 import { TVShowCard } from "./tv-show-card";
 
 interface TVShowListProps {

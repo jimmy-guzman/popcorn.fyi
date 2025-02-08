@@ -2,24 +2,24 @@ import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { Link } from "@tanstack/react-router";
 
-import { ListContent } from "./list-content";
+import { ListContent } from "../shared/list-content";
 
-interface CrewListProps {
-  crew: {
+interface CastListProps {
+  cast: {
+    character?: string;
     id: number;
-    job?: string;
     name?: string;
     profile_path?: string;
   }[];
 }
 
-export const CrewList = ({ crew }: CrewListProps) => {
+export const CastList = ({ cast }: CastListProps) => {
   return (
-    <ListContent aria-labelledby="crew">
-      {crew.map((person) => {
+    <ListContent aria-labelledby="cast">
+      {cast.map((person) => {
         return (
           <Link
-            key={person.job ? `${person.id}_${person.job}` : person.id}
+            key={person.id}
             params={{ id: person.id.toString() }}
             to="/people/$id"
           >
@@ -32,7 +32,7 @@ export const CrewList = ({ crew }: CrewListProps) => {
               ) : null}
               <CardContent>
                 <CardTitle>{person.name}</CardTitle>
-                <p>{person.job}</p>
+                <p>{person.character}</p>
               </CardContent>
             </Card>
           </Link>

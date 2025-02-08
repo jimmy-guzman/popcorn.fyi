@@ -1,7 +1,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { MovieList } from "@/components/movie-list";
+import { MovieList } from "@/components/movie/movie-list";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 import { trendingMoviesOptions } from "@/lib/trending";

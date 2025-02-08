@@ -1,8 +1,8 @@
 import { site } from "@/config/site";
 
+import { Prose } from "../shared/prose";
 import { CastList } from "./cast-list";
 import { CrewList } from "./crew-list";
-import { Prose } from "./prose";
 
 interface MediaCreditsProps {
   credits: {

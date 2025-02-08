@@ -9,7 +9,7 @@ import { Drawer } from "vaul";
 
 import type { NavItem } from "@/config/nav";
 
-import { Prose } from "./prose";
+import { Prose } from "../shared/prose";
 import { SiteNavMenuItem } from "./site-nav-menu-item";
 
 export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {

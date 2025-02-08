@@ -2,7 +2,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { tvDetailsOptions } from "@/api/tv/details";
-import { TVShowDetails } from "@/components/tv-show-details";
+import { TVShowDetails } from "@/components/tv/tv-show-details";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 

@@ -1,6 +1,6 @@
-import { ListContent } from "./list-content";
+import { ListContent } from "../shared/list-content";
+import { Prose } from "../shared/prose";
 import { PersonCard } from "./person-card";
-import { Prose } from "./prose";
 
 export const PeopleList = ({
   description,
