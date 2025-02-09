@@ -26,6 +26,7 @@ export function createRouter() {
       defaultPendingComponent: () => {
         return <div className="dsy-skeleton h-svh" />;
       },
+      defaultPendingMs: 0,
       defaultPreload: "intent",
       defaultStructuralSharing: true,
       routeTree,
