@@ -7,7 +7,7 @@ import {
 import { Button } from "@popcorn.fyi/ui/button";
 import { Link } from "@tanstack/react-router";
 
-import { nav } from "@/config/nav";
+import { categoryNav, homeNavItem } from "@/config/nav";
 
 import { SiteLogo } from "./site-logo";
 import { SiteNavMobileMenu } from "./site-nav-mobile-menu";
@@ -17,7 +17,7 @@ export const SiteNav = () => {
   return (
     <nav className="dsy-navbar bg-base-100 static w-full lg:sticky lg:top-0 lg:z-50">
       <div className="dsy-navbar-start">
-        <SiteNavMobileMenu items={nav.items} />
+        <SiteNavMobileMenu items={[homeNavItem, ...categoryNav.items]} />
         <div className="md:hidden">
           <Button asChild variant="ghost">
             <Link to="/">

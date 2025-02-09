@@ -1,11 +1,11 @@
 import { cn } from "@popcorn.fyi/ui/utils";
 import { useLocation } from "@tanstack/react-router";
 
-import type { MultipleNavItem, NavItem } from "@/config/nav";
+import type { GroupedNavItem, NavItem } from "@/config/nav";
 
 import { SiteNavMenuItemLink } from "./site-nav-menu-item-link";
 
-const SiteNavCollapsibleMenuItem = ({ item }: { item: MultipleNavItem }) => {
+const SiteNavCollapsibleMenuItem = ({ item }: { item: GroupedNavItem }) => {
   const { pathname } = useLocation();
 
   const isActive = pathname === item.to;

@@ -31,7 +31,7 @@ export const SiteNavSearchInput = () => {
 
   return (
     <Input
-      className="w-full lg:w-1/2"
+      className="w-full xl:w-1/2"
       onChange={(event) => {
         setQuery(event.target.value);
       }}
