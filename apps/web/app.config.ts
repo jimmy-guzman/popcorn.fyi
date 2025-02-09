@@ -17,6 +17,9 @@ export default defineConfig({
     },
     preset: "vercel",
   },
+  tsr: {
+    autoCodeSplitting: true,
+  },
   vite: {
     build: {
       target: tsconfig?.config.compilerOptions?.target,
