@@ -5,9 +5,20 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { SiteLogo } from "@/components/site/site-logo";
 import { SiteNav } from "@/components/site/site-nav";
 import { SiteNavMenuItem } from "@/components/site/site-nav-menu-item";
-import { nav } from "@/config/nav";
+import { SiteNavMenuItemLink } from "@/components/site/site-nav-menu-item-link";
+import {
+  categoryNav,
+  exploreNav,
+  favoritesNavItem,
+  homeNavItem,
+} from "@/config/nav";
 import { site } from "@/config/site";
 
+/**
+ * The main layout component for the application.
+ * It includes the navigation drawer, site navigation, and footer.
+ * @returns The layout structure including navigation, content area, and footer.
+ */
 function LayoutComponent() {
   return (
     <div>
@@ -32,7 +43,18 @@ function LayoutComponent() {
               </Button>
             </div>
             <ul className="dsy-menu text-base-content w-60 px-4">
-              {nav.items.map((item) => {
+              <li>
+                <SiteNavMenuItemLink item={homeNavItem} />
+              </li>
+              <SiteNavMenuItem item={favoritesNavItem} />
+              <div className="dsy-divider" />
+              <h2 className="dsy-menu-title">Explore</h2>
+              {exploreNav.items.map((item) => {
+                return <SiteNavMenuItem item={item} key={item.title} />;
+              })}
+              <div className="dsy-divider" />
+              <h2 className="dsy-menu-title">Categories</h2>
+              {categoryNav.items.map((item) => {
                 return <SiteNavMenuItem item={item} key={item.title} />;
               })}
             </ul>
