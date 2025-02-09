@@ -13,7 +13,6 @@ import { Toaster } from "sonner";
 
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
-import { userFn } from "@/lib/user";
 
 import rootCSS from "@popcorn.fyi/tailwind/tailwind.css?url";
 
@@ -76,13 +75,6 @@ export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
 }>()({
   component: RootComponent,
-  beforeLoad: async () => {
-    const { userId } = await userFn();
-
-    return {
-      userId,
-    };
-  },
   head: () => {
     return {
       links: [{ href: rootCSS, rel: "stylesheet" }],
