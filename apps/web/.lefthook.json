@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/lefthook.json",
+  "pre-commit": {
+    "commands": {
+      "lint": {
+        "root": "apps/web",
+        "run": "pnpm eslint  --cache --quiet {staged_files}",
+        "stage_fixed": true
+      }
+    }
+  }
+}
