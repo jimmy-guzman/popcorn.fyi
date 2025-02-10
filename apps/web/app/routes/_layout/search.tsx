@@ -1,10 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { searchOptions } from "@/api/search.list";
 import { SearchList } from "@/components/search/search-list";
 import { ListPagination } from "@/components/shared/list-pagination";
 import { site } from "@/config/site";
-import { searchOptions } from "@/lib/search";
 import { seo } from "@/lib/seo";
 import { SearchSchema } from "@/schemas/search";
 

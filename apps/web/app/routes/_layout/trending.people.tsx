@@ -1,10 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { trendingPeopleOptions } from "@/api/people/trending.list";
 import { PeopleList } from "@/components/people/people-list";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
-import { trendingPeopleOptions } from "@/lib/trending";
 
 export const Route = createFileRoute("/_layout/trending/people")({
   component: RouteComponent,

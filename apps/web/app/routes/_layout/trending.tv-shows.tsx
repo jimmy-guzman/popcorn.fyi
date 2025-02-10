@@ -1,10 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { trendingTVOptions } from "@/api/tv/trending.list";
 import { TVShowList } from "@/components/tv/tv-show-list";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
-import { trendingTVOptions } from "@/lib/trending";
 
 export const Route = createFileRoute("/_layout/trending/tv-shows")({
   component: RouteComponent,

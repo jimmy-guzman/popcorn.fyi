@@ -1,14 +1,14 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { movieWatchOptions } from "@/api/movie/details.providers";
+import { movieProvidersOptions } from "@/api/movie/details.providers";
 import { MediaWatch } from "@/components/media/media-watch";
 
 export const Route = createFileRoute("/_layout/movies/$id/watch")({
   component: RouteComponent,
   loader: async ({ context, params: { id } }) => {
     await context.queryClient.ensureQueryData(
-      movieWatchOptions(Number.parseInt(id)),
+      movieProvidersOptions(Number.parseInt(id)),
     );
   },
 });
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/_layout/movies/$id/watch")({
 function RouteComponent() {
   const { id } = Route.useParams();
   const { data: watchProviders } = useSuspenseQuery(
-    movieWatchOptions(Number.parseInt(id)),
+    movieProvidersOptions(Number.parseInt(id)),
   );
 
   return watchProviders.results ? (
