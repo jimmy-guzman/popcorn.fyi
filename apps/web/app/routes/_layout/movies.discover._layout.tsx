@@ -1,12 +1,13 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-import { regionsOptions } from "@/api/tv/regions.list";
+import { DiscoverSchema } from "@/api/movie/discover.list";
+import { movieGenresOptions } from "@/api/movie/genres.list";
+import { movieProvidersOptions } from "@/api/movie/providers.list";
+import { regionsOptions } from "@/api/regions.list";
 import { MovieDiscoverFilters } from "@/components/movie/discover-filters";
 import { Prose } from "@/components/shared/prose";
 import { site } from "@/config/site";
-import { movieGenresOptions, movieProvidersOptions } from "@/lib/genres";
-import { DiscoverSchema } from "@/lib/movies";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/movies/discover/_layout")({

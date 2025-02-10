@@ -4,7 +4,7 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
 
-import { DiscoverSchema } from "@/lib/movies";
+import { DiscoverSchema } from "@/api/movie/discover.list";
 
 const sortOptions = [
   { label: "Original Title (A-Z)", value: "original_title.asc" },
