@@ -1,10 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
+import { regionsOptions } from "@/api/regions.list";
 import { DiscoverSchema } from "@/api/tv/discover.list";
-import { tvGenresOptions } from "@/api/tv/genres";
+import { tvGenresOptions } from "@/api/tv/genres.list";
 import { tvProvidersOptions } from "@/api/tv/providers.list";
-import { regionsOptions } from "@/api/tv/regions.list";
 import { Prose } from "@/components/shared/prose";
 import { TvDiscoverFilters } from "@/components/tv/discover-filters";
 import { site } from "@/config/site";

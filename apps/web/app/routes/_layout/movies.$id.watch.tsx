@@ -1,8 +1,8 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { movieWatchOptions } from "@/api/movie/details.providers";
 import { MediaWatch } from "@/components/media/media-watch";
-import { movieWatchOptions } from "@/lib/movies";
 
 export const Route = createFileRoute("/_layout/movies/$id/watch")({
   component: RouteComponent,

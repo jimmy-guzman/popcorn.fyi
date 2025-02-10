@@ -1,8 +1,11 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import {
+  discoverMoviesOptions,
+  DiscoverSchema,
+} from "@/api/movie/discover.list";
 import { MovieDiscoverList } from "@/components/movie/movie-discover-list";
-import { discoverMoviesOptions, DiscoverSchema } from "@/lib/movies";
 
 export const Route = createFileRoute("/_layout/movies/discover/_layout/")({
   component: RouteComponent,

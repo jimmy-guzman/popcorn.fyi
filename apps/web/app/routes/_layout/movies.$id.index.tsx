@@ -2,9 +2,9 @@ import { currency, date, time } from "@popcorn.fyi/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { movieDetailsOptions } from "@/api/movie/details";
 import { MediaOverviewList } from "@/components/media/media-overview-list";
 import { Prose } from "@/components/shared/prose";
-import { movieDetailsOptions } from "@/lib/movies";
 
 export const Route = createFileRoute("/_layout/movies/$id/")({
   component: RouteComponent,

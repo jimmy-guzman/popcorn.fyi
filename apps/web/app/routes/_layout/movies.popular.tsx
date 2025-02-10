@@ -1,10 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { moviesPopularOptions } from "@/api/movie/popular.list";
 import { MovieList } from "@/components/movie/movie-list";
 import { ListPagination } from "@/components/shared/list-pagination";
 import { site } from "@/config/site";
-import { moviesPopularOptions } from "@/lib/movies";
 import { seo } from "@/lib/seo";
 import { PaginationSchema } from "@/schemas/pagination";
 
