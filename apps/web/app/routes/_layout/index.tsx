@@ -1,8 +1,8 @@
 import { shuffle } from "@popcorn.fyi/utils";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { trendingAllFn } from "@/api/trending.list";
 import { TrendingCarousel } from "@/components/trending-carousel";
-import { trendingAllFn } from "@/lib/trending";
 
 export const Route = createFileRoute("/_layout/")({
   component: Home,

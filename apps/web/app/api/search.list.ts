@@ -6,7 +6,7 @@ import type { Search } from "@/schemas/search";
 
 import { SearchSchema } from "@/schemas/search";
 
-import { client } from "./tmdb";
+import { client } from "../lib/tmdb";
 
 const searchFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => {
@@ -30,6 +30,6 @@ export const searchOptions = (search: Search) => {
     queryFn: () => {
       return searchFn({ data: search });
     },
-    queryKey: ["search", search],
+    queryKey: ["search", "list", search],
   });
 };

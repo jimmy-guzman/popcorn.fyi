@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { userFn } from "@/lib/user";
+import { userFn } from "@/api/user.details";
 
 export const Route = createFileRoute("/_layout/_auth")({
   beforeLoad: async () => {

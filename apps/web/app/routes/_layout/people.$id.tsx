@@ -1,9 +1,9 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { personDetailsOptions } from "@/api/people/details";
 import { PersonDetails } from "@/components/people/person-details";
 import { site } from "@/config/site";
-import { personDetailsOptions } from "@/lib/people";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/people/$id")({
