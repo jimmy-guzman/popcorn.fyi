@@ -47,7 +47,7 @@ export const MovieDetails = ({ movie, wikipediaUrl }: MovieDetailsProps) => {
             />
           ) : null}
           <div className="flex flex-col gap-2">
-            <div className="flex flex-wrap gap-2 lg:flex-nowrap lg:justify-end">
+            <div className="flex flex-wrap gap-2 xl:flex-nowrap xl:justify-end">
               <MediaRating average={movie.vote_average} />
               <MediaStatus status={movie.status} />
               <MediaGenres genres={movie.genres} />

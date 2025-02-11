@@ -47,7 +47,7 @@ export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
             />
           ) : null}
           <div className="flex flex-col gap-2">
-            <div className="flex flex-wrap gap-2 lg:flex-nowrap lg:justify-end">
+            <div className="flex flex-wrap gap-2 xl:flex-nowrap xl:justify-end">
               <MediaRating average={tvShow.vote_average} />
               <MediaStatus status={tvShow.status} />
               <MediaGenres genres={tvShow.genres} />
