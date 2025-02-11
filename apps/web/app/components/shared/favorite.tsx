@@ -53,7 +53,7 @@ export const Favorite = ({ favorite, mediaType, tmdbId }: FavoriteProps) => {
 
   return isSignedIn ? (
     favorite ? (
-      <Tooltip content="Remove From Favorite">
+      <Tooltip content="Remove From Favorites">
         <Button
           color="neutral"
           disabled={removeFromFavorites.isPending}

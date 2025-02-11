@@ -4,7 +4,7 @@
     "commands": {
       "lint": {
         "root": "configs/tailwind",
-        "run": "pnpm eslint  --cache --quiet {staged_files}",
+        "run": "pnpm eslint --cache --quiet {staged_files}",
         "stage_fixed": true
       }
     }

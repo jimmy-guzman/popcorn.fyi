@@ -131,6 +131,9 @@ importers:
       '@iconify-json/lucide':
         specifier: 1.2.26
         version: 1.2.26
+      '@iconify-json/simple-icons':
+        specifier: 1.2.24
+        version: 1.2.24
       '@playwright/test':
         specifier: 1.50.1
         version: 1.50.1
@@ -238,6 +241,9 @@ importers:
       '@iconify-json/lucide':
         specifier: 1.2.26
         version: 1.2.26
+      '@iconify-json/simple-icons':
+        specifier: 1.2.24
+        version: 1.2.24
       '@popcorn.fyi/eslint':
         specifier: workspace:*
         version: link:../eslint
@@ -1442,6 +1448,9 @@ packages:
 
   '@iconify-json/lucide@1.2.26':
     resolution: {integrity: sha512-arD/8mK0lRxFY2LgLf345NhWVWiOtV8sOxJuLnq4QRz3frMiOwVwGxEgp5Xe/bRGzxO2CxxCBok0bPRpCkYZQQ==}
+
+  '@iconify-json/simple-icons@1.2.24':
+    resolution: {integrity: sha512-06ZWXZx3PHCE+02zn+iIGOKKNgE3kyPd0Yh7IUEIa0bCYI6UmGlsYYghRx8As9TnTNYMCEiy5V0zI4Jb6EY6XA==}
 
   '@iconify/tailwind4@1.0.3':
     resolution: {integrity: sha512-qhgEBFwbhoWWGo3X27KInvNQOjt7UwmZTuLpjYQlYMTkcXzwPnomqmxzsBUC2L0ySA105BFDppYBv4CuWBQKwA==}
@@ -7450,6 +7459,10 @@ snapshots:
   '@humanwhocodes/retry@0.4.1': {}
 
   '@iconify-json/lucide@1.2.26':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/simple-icons@1.2.24':
     dependencies:
       '@iconify/types': 2.0.0
 

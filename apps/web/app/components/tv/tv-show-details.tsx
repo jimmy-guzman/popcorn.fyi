@@ -22,9 +22,10 @@ interface TVShowDetailsProps {
     tagline?: string;
     vote_average: number;
   };
+  wikipediaUrl?: string | undefined;
 }
 
-export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
+export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
   return (
     <div className="flex min-h-screen flex-col items-center gap-4">
       <div className="hidden md:block">
@@ -56,8 +57,8 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
               {tvShow.tagline ? <p>&quot;{tvShow.tagline}&quot;</p> : null}
               <p>{tvShow.overview}</p>
             </Prose>
-            <div className="flex justify-start gap-2">
-              <Button asChild color="secondary">
+            <div className="flex justify-center gap-4 md:justify-start">
+              <Button asChild color="primary">
                 <Link
                   params={{ id: tvShow.id.toString() }}
                   to="/tv-shows/$id/trailer"
@@ -66,6 +67,14 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
                   <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
                 </Link>
               </Button>
+              {wikipediaUrl ? (
+                <Button asChild color="secondary">
+                  <a href={wikipediaUrl} rel="noreferrer" target="_blank">
+                    <span className="sr-only md:not-sr-only">Wikipedia</span>{" "}
+                    <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
+                  </a>
+                </Button>
+              ) : null}
               <Favorite
                 favorite={tvShow.favorite}
                 mediaType="tv"

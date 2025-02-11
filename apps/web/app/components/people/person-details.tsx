@@ -1,5 +1,6 @@
 import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/tmdb";
 import { Badge } from "@popcorn.fyi/ui/badge";
+import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { date } from "@popcorn.fyi/utils";
 import { Outlet } from "@tanstack/react-router";
@@ -20,9 +21,10 @@ interface PersonDetailsProps {
     popularity: number;
     profile_path?: string;
   };
+  wikipediaUrl?: string | undefined;
 }
 
-export const PersonDetails = ({ person }: PersonDetailsProps) => {
+export const PersonDetails = ({ person, wikipediaUrl }: PersonDetailsProps) => {
   return (
     <div className="flex min-h-screen flex-col items-center gap-4">
       <Hero>
@@ -60,7 +62,15 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
                 <p>No biography available.</p>
               )}
             </Prose>
-            <div className="flex justify-start gap-2">
+            <div className="flex justify-center gap-4 md:justify-start">
+              {wikipediaUrl ? (
+                <Button asChild color="primary">
+                  <a href={wikipediaUrl} rel="noreferrer" target="_blank">
+                    <span className="sr-only md:not-sr-only">Wikipedia</span>{" "}
+                    <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
+                  </a>
+                </Button>
+              ) : null}
               <Favorite
                 favorite={person.favorite}
                 mediaType="person"

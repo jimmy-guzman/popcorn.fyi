@@ -22,9 +22,10 @@ interface MovieDetailsProps {
     title?: string;
     vote_average: number;
   };
+  wikipediaUrl?: string | undefined;
 }
 
-export const MovieDetails = ({ movie }: MovieDetailsProps) => {
+export const MovieDetails = ({ movie, wikipediaUrl }: MovieDetailsProps) => {
   return (
     <div className="flex min-h-screen flex-col items-center gap-4">
       <div className="hidden md:block">
@@ -56,16 +57,24 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
               {movie.tagline ? <p>&quot;{movie.tagline}&quot;</p> : null}
               <p>{movie.overview}</p>
             </Prose>
-            <div className="flex justify-start gap-2">
-              <Button asChild color="secondary">
+            <div className="flex justify-center gap-4 md:justify-start">
+              <Button asChild color="primary">
                 <Link
                   params={{ id: movie.id.toString() }}
                   to="/movies/$id/trailer"
                 >
-                  Watch Trailer{" "}
+                  <span className="sr-only md:not-sr-only">Watch Trailer</span>{" "}
                   <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
                 </Link>
               </Button>
+              {wikipediaUrl ? (
+                <Button asChild color="secondary">
+                  <a href={wikipediaUrl} rel="noreferrer" target="_blank">
+                    <span className="sr-only md:not-sr-only">Wikipedia</span>{" "}
+                    <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
+                  </a>
+                </Button>
+              ) : null}
               <Favorite
                 favorite={movie.favorite}
                 mediaType="movie"
