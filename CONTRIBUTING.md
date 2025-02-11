@@ -37,6 +37,8 @@ Refer to the [README](./README.md) for setting up the project. Here's a quick ov
 
    Visit `http://localhost:3000` to view the app.
 
+   > **Note:** Storybook for UI components will also be available at `http://localhost:6006` when running the development server.
+
 ## 🛠 Guidelines
 
 - **📝 Code Style:**
@@ -70,6 +72,12 @@ Refer to the [README](./README.md) for setting up the project. Here's a quick ov
   ```
 
   For a deeper dive into the testing approach, check out [docs/testing.md](./docs/testing.md).
+
+- **📚 UI Component Development:**
+
+  Storybook is used for developing and documenting UI components within the **libs/ui** package. When running the development server (`pnpm dev`), Storybook will automatically be available at `http://localhost:6006`. This allows you to develop and test components in isolation alongside the main app.
+
+  For more on how Storybook fits into the project, see [docs/testing.md](./docs/testing.md).
 
 - **🔄 CI/CD Pipeline:**
 
