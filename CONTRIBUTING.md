@@ -63,11 +63,17 @@ Refer to the [README](./README.md) for setting up the project. Here's a quick ov
 
 - **✅ Testing:**
 
-  We use Vitest with React Testing Library for unit tests, and Playwright for end-to-end tests. Run tests with:
+  The project uses Vitest with React Testing Library for unit tests, and Playwright for end-to-end tests. Run tests with:
 
   ```bash
   pnpm test
   ```
+
+  For a deeper dive into the testing approach, check out [docs/testing.md](./docs/testing.md).
+
+- **🔄 CI/CD Pipeline:**
+
+  The automated workflows handle everything from code checks to deployments with GitHub Actions and Vercel. Learn more about how it all fits together in [docs/ci-cd.md](./docs/ci-cd.md).
 
 - **✍️ Commit Messages:**
 
