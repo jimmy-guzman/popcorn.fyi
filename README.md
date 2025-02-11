@@ -1,6 +1,6 @@
 # 🍿 popcorn.fyi
 
-> A web app to explore movies, TV shows, and entertainment content using data from [TMDB](https://developer.themoviedb.org). Built with TanStack, Drizzle ORM, and Tailwind CSS for a fast, modular, and visually rich experience.
+> A web app to explore movies, TV shows, and entertainment content using data from [TMDB](https://developer.themoviedb.org) and [Wikidata](https://www.wikidata.org/). Built with TanStack, Drizzle ORM, and Tailwind CSS for a fast, modular, and visually rich experience.
 >
 > **[Check out the live app here!](https://popcornfyi.vercel.app)**
 
@@ -19,7 +19,7 @@ Explore movies, TV shows, and more with advanced filters, personalized recommend
 - **Framework:** [React](https://react.dev) with [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com), [daisyUI](https://daisyui.com), [Tailwind CSS Typography](https://tailwindcss.com/docs/typography-plugin)
 - **State Management:** [TanStack Query](https://tanstack.com/query/latest)
-- **Data Fetching:** [openapi-fetch](https://www.npmjs.com/package/openapi-fetch) (for TMDB API)
+- **Data Fetching:** [openapi-fetch](https://www.npmjs.com/package/openapi-fetch) (for TMDB and Wikidata APIs)
 - **Authentication:** [Clerk](https://clerk.com) for user authentication and management
 - **Testing:** [Playwright](https://playwright.dev) (end-to-end testing), [Vitest](https://vitest.dev) (unit testing), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), [Storybook](https://storybook.js.org) (component development)
 
@@ -27,7 +27,7 @@ Explore movies, TV shows, and more with advanced filters, personalized recommend
 
 - **Database:** [PostgreSQL](https://www.postgresql.org) (hosted on [Neon](https://neon.tech))
 - **ORM:** [Drizzle ORM](https://orm.drizzle.team)
-- **API Integration:** [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started)
+- **API Integration:** [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started), [Wikidata API](https://www.wikidata.org/w/api.php)
 
 ### **Tooling & DevOps**
 
@@ -43,12 +43,12 @@ A [Turborepo](https://turbo.build/repo) containing [apps](#-apps), [libs](#-libs
 
 ### 🚀 Apps
 
-- [**web**](./apps/web/README.md): The main full-stack application built with [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview). It features dynamic routes, interactive UI components, and optimized API calls to TMDB.
+- [**web**](./apps/web/README.md): The main full-stack application built with [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview). It features dynamic routes, interactive UI components, and optimized API calls to TMDB and Wikidata.
 
 ### 📦 Libs
 
 - [**@popcorn.fyi/ui**](./libs/ui/README.md): A reusable component library powered by [daisyUI](https://daisyui.com) and styled with Tailwind CSS. It also includes [Storybook](https://storybook.js.org) for easy component development and testing.
-- [**@popcorn.fyi/tmdb**](./libs/tmdb/README.md): A client library for interacting with the [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started), providing typed requests and seamless integration with the web app.
+- [**@popcorn.fyi/api-clients**](./libs/api-clients/README.md): A client library for interacting with the [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) and [Wikidata API](https://www.wikidata.org/w/api.php), providing typed requests and seamless integration with the web app.
 - [**@popcorn.fyi/db**](./libs/db/README.md): Manages database interactions using [drizzle](https://orm.drizzle.team) ORM and [neon](https://neon.tech) for serverless PostgreSQL hosting.
 - [**@popcorn.fyi/utils**](./libs/utils/README.md): A collection of utility functions to simplify common tasks across the codebase.
 

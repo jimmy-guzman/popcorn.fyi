@@ -1,6 +1,6 @@
 import createClient from "openapi-fetch";
 
-import type { paths } from "./schema.gen";
+import type { paths } from "./tmdb-v3.gen";
 
 export const setupClient = (token: string) => {
   const client = createClient<paths>({

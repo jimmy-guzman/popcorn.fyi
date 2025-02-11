@@ -1,4 +1,4 @@
-import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { Link } from "@tanstack/react-router";
 

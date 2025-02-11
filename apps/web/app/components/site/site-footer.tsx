@@ -1,16 +1,19 @@
 import { urls } from "@/config/urls";
 
+import { SiteLogo } from "../icons/site-logo";
+import { TMDBLogo } from "../icons/tmdb-logo";
+import { WikidataLogo } from "../icons/wikipedia-logo";
 import { GitHubLink } from "./github-link";
-import { SiteLogo } from "./site-logo";
-import { TMDBLogo } from "./tmdb-logo";
 
 export const SiteFooter = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="dsy-footer bg-base-200 text-base-content lg:dsy-footer-horizontal p-10">
       <aside>
         <SiteLogo classname="h-12 w-12" />
         <p>
-          © 2024{" "}
+          © <time dateTime={currentYear.toString()}>{currentYear}</time>{" "}
           <a
             className="dsy-link"
             href={urls.author}
@@ -21,6 +24,7 @@ export const SiteFooter = () => {
           </a>{" "}
           — All rights reserved.
         </p>
+
         <p>
           Built with{" "}
           <a
@@ -72,12 +76,21 @@ export const SiteFooter = () => {
         <p>
           Data provided by{" "}
           <a href={urls.tmdb} rel="noreferrer" target="_blank">
-            <TMDBLogo />
+            <TMDBLogo className="mr-1 inline h-4 w-auto" />
           </a>
+          and{" "}
+          <a href={urls.wikidata} rel="noreferrer" target="_blank">
+            <WikidataLogo className="inline h-5 w-auto" />
+          </a>
+          .
         </p>
         <p className="mt-8">
           This product uses the TMDB API but is not endorsed or certified by
           TMDB.
+        </p>
+        <p className="mt-2">
+          This product uses data from Wikidata but is not endorsed or certified
+          by Wikidata.
         </p>
       </aside>
       <nav>

@@ -9,7 +9,7 @@ import { Link } from "@tanstack/react-router";
 
 import { categoryNav, homeNavItem } from "@/config/nav";
 
-import { SiteLogo } from "./site-logo";
+import { SiteLogo } from "../icons/site-logo";
 import { SiteNavMobileMenu } from "./site-nav-mobile-menu";
 import { SiteNavSearchInput } from "./site-nav-search-input";
 
