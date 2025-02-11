@@ -2,7 +2,8 @@
   "name": "@popcorn.fyi/tmdb",
   "private": true,
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./wikidata": "./src/wikidata.ts"
   },
   "scripts": {
     "coverage": "vitest run --coverage",

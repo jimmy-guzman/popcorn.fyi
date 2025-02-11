@@ -4,7 +4,8 @@
     "commands": {
       "lint": {
         "root": "apps/web",
-        "run": "pnpm eslint  --cache --quiet {staged_files}",
+        "glob": "*.{ts,tsx}",
+        "run": "pnpm eslint --cache --quiet {staged_files}",
         "stage_fixed": true
       }
     }
