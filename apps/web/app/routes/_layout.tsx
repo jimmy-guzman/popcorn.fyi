@@ -36,7 +36,7 @@ function LayoutComponent() {
               <Button asChild modifier="wide" size="lg" variant="ghost">
                 <Link to="/">
                   <SiteLogo classname="w-6 h-6" />
-                  <span className="hidden font-bold xl:block">
+                  <span className="hidden font-bold lg:block">
                     {site.title}
                   </span>
                 </Link>
