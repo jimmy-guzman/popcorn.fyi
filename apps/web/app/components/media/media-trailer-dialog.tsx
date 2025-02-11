@@ -1,4 +1,4 @@
-import { youtubeVideoUrl } from "@popcorn.fyi/tmdb";
+import { youtubeVideoUrl } from "@popcorn.fyi/api-clients/utils";
 import { useEffect, useRef } from "react";
 
 interface MediaTrailerDialogProps {

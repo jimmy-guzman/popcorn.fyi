@@ -1,4 +1,4 @@
-import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Badge } from "@popcorn.fyi/ui/badge";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";

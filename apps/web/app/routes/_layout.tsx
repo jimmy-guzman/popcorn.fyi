@@ -1,8 +1,8 @@
 import { Button } from "@popcorn.fyi/ui/button";
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 
+import { SiteLogo } from "@/components/icons/site-logo";
 import { SiteFooter } from "@/components/site/site-footer";
-import { SiteLogo } from "@/components/site/site-logo";
 import { SiteNav } from "@/components/site/site-nav";
 import { SiteNavMenuItem } from "@/components/site/site-nav-menu-item";
 import { SiteNavMenuItemLink } from "@/components/site/site-nav-menu-item-link";

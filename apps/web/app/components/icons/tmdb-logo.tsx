@@ -1,7 +1,7 @@
-export const TMDBLogo = () => {
+export const TMDBLogo = ({ className }: { className?: string }) => {
   return (
     <svg
-      className="inline h-3 align-middle"
+      className={className}
       viewBox="0 0 273.42 35.52"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"

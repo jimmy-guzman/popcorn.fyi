@@ -39,4 +39,14 @@ describe("SiteFooter", () => {
 
     expect(link).toBeInTheDocument();
   });
+
+  it("should display the current year", async () => {
+    await render(<SiteFooter />);
+
+    const currentYear = new Date().getFullYear().toString();
+
+    const timeElement = screen.getByRole("time");
+
+    expect(timeElement).toHaveTextContent(currentYear);
+  });
 });

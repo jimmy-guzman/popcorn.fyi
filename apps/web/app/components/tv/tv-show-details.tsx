@@ -1,4 +1,4 @@
-import { tmdbImageUrl } from "@popcorn.fyi/tmdb";
+import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { Link, Outlet } from "@tanstack/react-router";

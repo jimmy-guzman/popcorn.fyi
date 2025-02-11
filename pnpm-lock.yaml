@@ -61,12 +61,12 @@ importers:
       '@hookform/resolvers':
         specifier: 4.0.0
         version: 4.0.0(react-hook-form@7.54.2(react@19.0.0))
+      '@popcorn.fyi/api-clients':
+        specifier: workspace:*
+        version: link:../../libs/api-clients
       '@popcorn.fyi/db':
         specifier: workspace:*
         version: link:../../libs/db
-      '@popcorn.fyi/tmdb':
-        specifier: workspace:*
-        version: link:../../libs/tmdb
       '@popcorn.fyi/ui':
         specifier: workspace:*
         version: link:../../libs/ui
@@ -259,6 +259,28 @@ importers:
 
   configs/ts: {}
 
+  libs/api-clients:
+    dependencies:
+      openapi-fetch:
+        specifier: 0.13.4
+        version: 0.13.4(patch_hash=ilbdbptjz64vzalkhja6nib22u)
+    devDependencies:
+      '@popcorn.fyi/eslint':
+        specifier: workspace:*
+        version: link:../../configs/eslint
+      '@popcorn.fyi/ts':
+        specifier: workspace:*
+        version: link:../../configs/ts
+      '@vitest/coverage-v8':
+        specifier: 3.0.5
+        version: 3.0.5(vitest@3.0.5(@types/node@22.13.1)(happy-dom@17.0.3)(jiti@2.4.2)(lightningcss@1.29.1)(msw@2.7.0(@types/node@22.13.1)(typescript@5.7.3))(terser@5.38.1)(tsx@4.19.2)(yaml@2.7.0))
+      openapi-typescript:
+        specifier: 7.6.1
+        version: 7.6.1(typescript@5.7.3)
+      vitest:
+        specifier: 3.0.5
+        version: 3.0.5(@types/node@22.13.1)(happy-dom@17.0.3)(jiti@2.4.2)(lightningcss@1.29.1)(msw@2.7.0(@types/node@22.13.1)(typescript@5.7.3))(terser@5.38.1)(tsx@4.19.2)(yaml@2.7.0)
+
   libs/db:
     dependencies:
       '@neondatabase/serverless':
@@ -289,28 +311,6 @@ importers:
       drizzle-kit:
         specifier: 0.30.4
         version: 0.30.4
-
-  libs/tmdb:
-    dependencies:
-      openapi-fetch:
-        specifier: 0.13.4
-        version: 0.13.4(patch_hash=ilbdbptjz64vzalkhja6nib22u)
-    devDependencies:
-      '@popcorn.fyi/eslint':
-        specifier: workspace:*
-        version: link:../../configs/eslint
-      '@popcorn.fyi/ts':
-        specifier: workspace:*
-        version: link:../../configs/ts
-      '@vitest/coverage-v8':
-        specifier: 3.0.5
-        version: 3.0.5(vitest@3.0.5(@types/node@22.13.1)(happy-dom@17.0.3)(jiti@2.4.2)(lightningcss@1.29.1)(msw@2.7.0(@types/node@22.13.1)(typescript@5.7.3))(terser@5.38.1)(tsx@4.19.2)(yaml@2.7.0))
-      openapi-typescript:
-        specifier: 7.6.1
-        version: 7.6.1(typescript@5.7.3)
-      vitest:
-        specifier: 3.0.5
-        version: 3.0.5(@types/node@22.13.1)(happy-dom@17.0.3)(jiti@2.4.2)(lightningcss@1.29.1)(msw@2.7.0(@types/node@22.13.1)(typescript@5.7.3))(terser@5.38.1)(tsx@4.19.2)(yaml@2.7.0)
 
   libs/ui:
     dependencies:

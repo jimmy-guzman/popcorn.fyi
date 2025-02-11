@@ -1,4 +1,4 @@
-import { setupClient } from "@popcorn.fyi/tmdb";
+import { setupClient } from "@popcorn.fyi/api-clients/tmdb-v3";
 
 import { environment } from "../../environment";
 

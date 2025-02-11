@@ -1,4 +1,4 @@
-import { selectYoutubeTrailer } from "@popcorn.fyi/tmdb";
+import { selectYoutubeTrailer } from "@popcorn.fyi/api-clients/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
