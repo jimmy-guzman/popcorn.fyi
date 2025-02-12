@@ -63,7 +63,7 @@ export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
                   params={{ id: tvShow.id.toString() }}
                   to="/tv-shows/$id/trailer"
                 >
-                  Watch Trailer{" "}
+                  <span className="sr-only md:not-sr-only">Watch Trailer</span>{" "}
                   <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
                 </Link>
               </Button>
