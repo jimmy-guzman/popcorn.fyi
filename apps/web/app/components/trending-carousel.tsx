@@ -60,6 +60,7 @@ export const TrendingCarousel = ({ trending }: TrendingCarouselProps) => {
               variant="ghost"
             >
               <Link
+                aria-label={`Go to slide ${index + 1}`}
                 hash={`${index + 1}`}
                 hashScrollIntoView={{
                   behavior: "instant",

@@ -75,11 +75,21 @@ export const SiteFooter = () => {
         </p>
         <p>
           Data provided by{" "}
-          <a href={urls.tmdb} rel="noreferrer" target="_blank">
+          <a
+            aria-label="TMDB Logo"
+            href={urls.tmdb}
+            rel="noreferrer"
+            target="_blank"
+          >
             <TMDBLogo className="mr-1 inline h-4 w-auto" />
           </a>
           and{" "}
-          <a href={urls.wikidata} rel="noreferrer" target="_blank">
+          <a
+            aria-label="Wikidata Logo"
+            href={urls.wikidata}
+            rel="noreferrer"
+            target="_blank"
+          >
             <WikidataLogo className="inline h-5 w-auto" />
           </a>
           .

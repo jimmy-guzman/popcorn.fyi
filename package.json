@@ -24,7 +24,7 @@
     "@dotenv-run/cli": "1.3.6",
     "@jimmy.codes/prettier-config": "1.3.0",
     "@manypkg/cli": "0.23.0",
-    "eslint": "9.20.0",
+    "eslint": "9.20.1",
     "gitzy": "5.7.1",
     "jiti": "2.4.2",
     "knip": "5.44.0",

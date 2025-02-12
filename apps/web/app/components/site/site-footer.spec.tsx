@@ -6,7 +6,15 @@ describe("SiteFooter", () => {
   it("should render TMDB link", async () => {
     await render(<SiteFooter />);
 
-    const link = screen.getByRole("link", { name: "TMDB" });
+    const link = screen.getByRole("link", { name: "TMDB Logo" });
+
+    expect(link).toBeInTheDocument();
+  });
+
+  it("should render wikidata link", async () => {
+    await render(<SiteFooter />);
+
+    const link = screen.getByRole("link", { name: "Wikidata Logo" });
 
     expect(link).toBeInTheDocument();
   });
