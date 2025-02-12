@@ -19,6 +19,7 @@ This balanced approach ensures robust coverage while maintaining speed and effic
 
 - **🧩 Unit & Integration Testing:** [Vitest](https://vitest.dev/) for fast, type-safe testing with coverage handled via **@vitest/coverage-v8**.
 - **🧱 Component Testing:** [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) for testing UI components in a way that mirrors user interactions.
+- **📚 UI Component Development & Documentation:** [Storybook](https://storybook.js.org/) is specifically used for developing, testing, and documenting UI components within the **libs/ui** package.
 - **🛠️ Mocking & API Simulation:** [MSW (Mock Service Worker)](https://mswjs.io/) to mock API requests during tests.
 - **🔍 DOM Simulation:** [Happy DOM](https://github.com/capricorn86/happy-dom) to provide a lightweight DOM environment for faster testing.
 - **🎭 End-to-End (E2E) Testing:** [Playwright](https://playwright.dev/) for browser-based tests, ensuring the app behaves correctly in real-world scenarios.
@@ -39,6 +40,11 @@ src/
   shared/
     button.tsx
     button.test.tsx
+libs/
+  ui/
+    button.tsx
+    button.test.tsx
+    button.stories.tsx
 ```
 
 ## 🏗️ Custom Render Utility
@@ -92,27 +98,43 @@ describe("MovieCard", () => {
 });
 ```
 
-## 🧱 Component Testing with React Testing Library
+## 🧱 Component Testing & Documentation with Storybook
 
-To enforce best practices in testing—like preferring **`userEvent`** over `fireEvent` for more realistic simulations—I use [eslint-plugin-testing-library](https://github.com/testing-library/eslint-plugin-testing-library?tab=readme-ov-file#supported-rules). This ensures consistent testing patterns and helps catch potential anti-patterns early.
+**Storybook** is specifically used for developing, testing, and documenting UI components within the **libs/ui** package. It serves as a living style guide and a playground to visualize and interact with UI components in various states.
 
-### 🧪 Example: Button Interaction
+### 🌟 Key Benefits of Storybook:
+
+- **📚 Documentation:** Easily document UI components and their props within the **libs/ui** package.
+- **🎨 Visual Testing:** Spot UI regressions quickly with integrated visual regression tools like Chromatic.
+- **🧪 Isolated Testing:** Develop and test UI components in isolation from the application logic.
+
+### 🧪 Example: Creating a Story for a Button Component
 
 ```tsx
-import { render, screen } from "@/testing/utils";
-import userEvent from "@testing-library/user-event";
 import { Button } from "./button";
 
-describe("Button", () => {
-  it("triggers onClick when clicked", async () => {
-    const handleClick = vi.fn();
-    render(<Button onClick={handleClick}>Click Me</Button>);
-    const button = screen.getByText("Click Me");
-    await userEvent.click(button);
-    expect(handleClick).toHaveBeenCalledTimes(1);
-  });
-});
+export default {
+  title: "UI/Button",
+  component: Button,
+};
+
+const Template = (args) => <Button {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  children: "Click Me",
+};
 ```
+
+### 🔍 Running Storybook
+
+To start Storybook and view UI components in isolation:
+
+```bash
+pnpm dev
+```
+
+> **Note:** Storybook will be available at `http://localhost:6006` when running the development server.
 
 ## 🛠️ Mocking API Requests with MSW
 
@@ -187,9 +209,13 @@ The Playwright setup is designed to ensure **cross-browser compatibility** and r
 
 While the primary focus is on ensuring the app runs smoothly in **Chromium**, Playwright tests have been expanded to include **Firefox** and **WebKit**. This ensures the app remains functional across a wide range of browsers. The main goal is to make sure _popcorn.fyi_ doesn’t break in any browser.
 
+## 🛡️ Enforcing Best Practices
+
+To enforce best practices in testing—like preferring **`userEvent`** over `fireEvent` for more realistic simulations—I use [eslint-plugin-testing-library](https://github.com/testing-library/eslint-plugin-testing-library?tab=readme-ov-file#supported-rules). This ensures consistent testing patterns and helps catch potential anti-patterns early.
+
 ## 🚀 Future Enhancements
 
-- **🖼️ Visual Regression Testing:** Adding tools like Percy or Chromatic to catch unintended UI changes.
+- **🖼️ Visual Regression Testing:** Adding tools like Percy or Chromatic to catch unintended UI changes in the **libs/ui** components.
 - **📊 Coverage Thresholds:** Implementing coverage threshold regression prevention with Vitest to ensure we don’t lose test coverage over time.
 - **♿ Accessibility Testing:** Integrating tools like [axe-core](https://github.com/dequelabs/axe-core) to ensure accessibility standards are met.
 
