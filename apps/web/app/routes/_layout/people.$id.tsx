@@ -23,7 +23,7 @@ export const Route = createFileRoute("/_layout/people/$id")({
   },
   head: ({ loaderData }) => {
     return {
-      meta: loaderData
+      meta: loaderData.title
         ? seo({
             title: `${loaderData.title} | People | ${site.title}`,
           })

@@ -104,15 +104,17 @@ export const favoriteTvShowsFn = createServerFn({ method: "GET" })
     );
   });
 
-export const addToFavoritesFn = createServerFn({ method: "GET" })
-  .validator((data: v.InferInput<typeof UserFavoritesInsertSchema>) => {
+export type InsertFavorite = v.InferInput<typeof UserFavoritesInsertSchema>;
+
+export const addToFavoritesFn = createServerFn({ method: "POST" })
+  .validator((data: InsertFavorite) => {
     return v.parse(UserFavoritesInsertSchema, data);
   })
   .handler(async ({ data }) => {
-    await db.insert(UserFavorites).values(data);
+    await db.insert(UserFavorites).values(data).returning();
   });
 
-export const removeFromFavoritesFn = createServerFn({ method: "GET" })
+export const removeFromFavoritesFn = createServerFn({ method: "POST" })
   .validator((data: Id) => {
     return v.parse(IdSchema, data);
   })
