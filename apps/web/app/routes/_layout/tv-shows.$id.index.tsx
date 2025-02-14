@@ -88,7 +88,7 @@ function RouteComponent() {
   ];
 
   return (
-    <section>
+    <section className="flex w-full flex-col gap-8">
       <Prose>
         <h2 id="overview">Overview</h2>
       </Prose>
