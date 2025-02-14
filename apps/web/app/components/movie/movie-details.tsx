@@ -3,6 +3,8 @@ import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { Link, Outlet } from "@tanstack/react-router";
 
+import { asQuote } from "@/lib/as-quote";
+
 import { MediaGenres } from "../media/media-genres";
 import { MediaRating } from "../media/media-rating";
 import { MediaStatus } from "../media/media-status";
@@ -54,7 +56,7 @@ export const MovieDetails = ({ movie, wikipediaUrl }: MovieDetailsProps) => {
             </div>
             <Prose size="lg">
               <h1>{movie.title}</h1>
-              {movie.tagline ? <p>&quot;{movie.tagline}&quot;</p> : null}
+              {movie.tagline ? <p>{asQuote(movie.tagline)}</p> : null}
               <p>{movie.overview}</p>
             </Prose>
             <div className="flex justify-center gap-4 md:justify-start">

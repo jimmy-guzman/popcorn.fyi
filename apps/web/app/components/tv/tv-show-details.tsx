@@ -3,6 +3,8 @@ import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { Link, Outlet } from "@tanstack/react-router";
 
+import { asQuote } from "@/lib/as-quote";
+
 import { MediaGenres } from "../media/media-genres";
 import { MediaRating } from "../media/media-rating";
 import { MediaStatus } from "../media/media-status";
@@ -54,7 +56,7 @@ export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
             </div>
             <Prose size="lg">
               <h1>{tvShow.name}</h1>
-              {tvShow.tagline ? <p>&quot;{tvShow.tagline}&quot;</p> : null}
+              {tvShow.tagline ? <p>{asQuote(tvShow.tagline)}</p> : null}
               <p>{tvShow.overview}</p>
             </Prose>
             <div className="flex justify-center gap-4 md:justify-start">
