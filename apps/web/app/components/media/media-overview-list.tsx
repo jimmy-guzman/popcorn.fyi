@@ -1,5 +1,3 @@
-import { Prose } from "../shared/prose";
-
 interface MediaOverviewListProps {
   items: {
     title: string;
@@ -9,17 +7,19 @@ interface MediaOverviewListProps {
 
 export const MediaOverviewList = ({ items }: MediaOverviewListProps) => {
   return (
-    <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:gap-8">
+    <ul className="grid w-full grid-cols-2 gap-2 md:grid-cols-4">
       {items.map((item) => {
         return (
-          <div className="w-full p-8" key={item.title}>
-            <Prose>
-              <h2>{item.title}</h2>
-              <p>{item.value}</p>
-            </Prose>
-          </div>
+          <li className="flex flex-col gap-0.5" key={item.title}>
+            <span className="text-base-content/70 text-xs font-medium uppercase tracking-normal">
+              {item.title}
+            </span>
+            <span className="text-base-content text-base">
+              {item.value ?? "—"}
+            </span>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 };
