@@ -52,7 +52,7 @@ export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
             <div className="flex flex-wrap gap-2 xl:flex-nowrap xl:justify-end">
               <MediaRating average={tvShow.vote_average} />
               <MediaStatus status={tvShow.status} />
-              <MediaGenres genres={tvShow.genres} />
+              <MediaGenres genres={tvShow.genres} media="tv-shows" />
             </div>
             <Prose size="lg">
               <h1>{tvShow.name}</h1>
