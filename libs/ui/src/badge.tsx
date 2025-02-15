@@ -1,6 +1,7 @@
 import type { VariantProps } from "class-variance-authority";
 import type * as React from "react";
 
+import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
 
 import type { OmitColor } from "./types";
@@ -46,11 +47,22 @@ type HtmlSpanProps = OmitColor<React.HTMLAttributes<HTMLSpanElement>>;
 
 type BadgeVariants = VariantProps<typeof badgeVariants>;
 
-interface BadgeProps extends BadgeVariants, HtmlSpanProps {}
+interface BadgeProps extends BadgeVariants, HtmlSpanProps {
+  asChild?: boolean;
+}
 
-const Badge = ({ className, color, size, variant, ...props }: BadgeProps) => {
+const Badge = ({
+  asChild,
+  className,
+  color,
+  size,
+  variant,
+  ...props
+}: BadgeProps) => {
+  const Comp = asChild ? Slot : "span";
+
   return (
-    <span
+    <Comp
       className={cn(badgeVariants({ color, size, variant }), className)}
       {...props}
     />
