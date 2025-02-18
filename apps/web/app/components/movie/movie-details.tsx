@@ -10,6 +10,7 @@ import { MediaRating } from "../media/media-rating";
 import { MediaStatus } from "../media/media-status";
 import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
+import { ShareButton } from "../shared/share-button";
 
 interface MovieDetailsProps {
   movie: {
@@ -76,6 +77,9 @@ export const MovieDetails = ({ movie, wikipediaUrl }: MovieDetailsProps) => {
                     <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
                   </a>
                 </Button>
+              ) : null}
+              {movie.title ? (
+                <ShareButton title={movie.title} url={`/movies/${movie.id}`} />
               ) : null}
               <Favorite
                 favorite={movie.favorite}

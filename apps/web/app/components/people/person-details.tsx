@@ -8,6 +8,7 @@ import { Outlet } from "@tanstack/react-router";
 import { MediaRating } from "../media/media-rating";
 import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
+import { ShareButton } from "../shared/share-button";
 
 interface PersonDetailsProps {
   person: {
@@ -70,6 +71,9 @@ export const PersonDetails = ({ person, wikipediaUrl }: PersonDetailsProps) => {
                     <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
                   </a>
                 </Button>
+              ) : null}
+              {person.name ? (
+                <ShareButton title={person.name} url={`/people/${person.id}`} />
               ) : null}
               <Favorite
                 favorite={person.favorite}

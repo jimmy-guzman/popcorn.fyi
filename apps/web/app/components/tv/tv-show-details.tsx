@@ -10,6 +10,7 @@ import { MediaRating } from "../media/media-rating";
 import { MediaStatus } from "../media/media-status";
 import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
+import { ShareButton } from "../shared/share-button";
 
 interface TVShowDetailsProps {
   tvShow: {
@@ -76,6 +77,12 @@ export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
                     <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
                   </a>
                 </Button>
+              ) : null}
+              {tvShow.name ? (
+                <ShareButton
+                  title={tvShow.name}
+                  url={`/tv-shows/${tvShow.id}`}
+                />
               ) : null}
               <Favorite
                 favorite={tvShow.favorite}
