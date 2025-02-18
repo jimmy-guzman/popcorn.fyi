@@ -13,6 +13,13 @@ import { seo } from "@/lib/seo";
 export const Route = createFileRoute("/_layout/tv-shows/discover/_layout")({
   component: RouteComponent,
   validateSearch: DiscoverSchema,
+  loader: async ({ context }) => {
+    await Promise.all([
+      context.queryClient.ensureQueryData(tvGenresOptions()),
+      context.queryClient.ensureQueryData(tvProvidersOptions()),
+      context.queryClient.ensureQueryData(regionsOptions()),
+    ]);
+  },
   head: () => {
     return {
       meta: seo({
@@ -20,13 +27,6 @@ export const Route = createFileRoute("/_layout/tv-shows/discover/_layout")({
         title: `${site.pages.discover.tvShows.title} | ${site.title}`,
       }),
     };
-  },
-  loader: async ({ context }) => {
-    await Promise.all([
-      context.queryClient.ensureQueryData(tvGenresOptions()),
-      context.queryClient.ensureQueryData(tvProvidersOptions()),
-      context.queryClient.ensureQueryData(regionsOptions()),
-    ]);
   },
 });
 

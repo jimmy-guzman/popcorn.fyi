@@ -10,19 +10,19 @@ import { PaginationSchema } from "@/schemas/pagination";
 
 export const Route = createFileRoute("/_layout/movies/top-rated")({
   component: RouteComponent,
-  head: () => {
-    return {
-      meta: seo({
-        title: `${site.pages.topRated.movies.title} | ${site.title}`,
-      }),
-    };
-  },
   validateSearch: PaginationSchema,
   loaderDeps: ({ search: { page } }) => {
     return { page };
   },
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(moviesTopRatedOptions(deps));
+  },
+  head: () => {
+    return {
+      meta: seo({
+        title: `${site.pages.topRated.movies.title} | ${site.title}`,
+      }),
+    };
   },
 });
 

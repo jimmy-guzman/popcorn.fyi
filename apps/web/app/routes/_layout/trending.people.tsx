@@ -8,15 +8,15 @@ import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/trending/people")({
   component: RouteComponent,
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData(trendingPeopleOptions());
+  },
   head: () => {
     return {
       meta: seo({
         title: `${site.pages.trending.people.title} | ${site.title}`,
       }),
     };
-  },
-  loader: async ({ context }) => {
-    await context.queryClient.ensureQueryData(trendingPeopleOptions());
   },
 });
 

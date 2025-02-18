@@ -8,6 +8,9 @@ import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/trending/movies")({
   component: RouteComponent,
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData(trendingMoviesOptions());
+  },
   head: () => {
     return {
       meta: seo({
@@ -15,9 +18,6 @@ export const Route = createFileRoute("/_layout/trending/movies")({
         title: `${site.pages.trending.movies.title} | ${site.title}`,
       }),
     };
-  },
-  loader: async ({ context }) => {
-    await context.queryClient.ensureQueryData(trendingMoviesOptions());
   },
 });
 
