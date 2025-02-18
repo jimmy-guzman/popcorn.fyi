@@ -1,5 +1,7 @@
 import type { Header } from "@tanstack/react-table";
 
+import { Select } from "@popcorn.fyi/ui/select";
+
 export const TableColumnFilter = <T,>({
   header,
 }: {
@@ -9,11 +11,12 @@ export const TableColumnFilter = <T,>({
   const sortedUniqueValues = [...header.column.getFacetedUniqueValues().keys()];
 
   return header.column.getCanFilter() ? (
-    <select
-      className="dsy-select dsy-select-xs grow"
+    <Select
+      className="grow"
       onChange={(e) => {
         header.column.setFilterValue(e.target.value);
       }}
+      size="xs"
       value={columnFilterValue?.toString()}
     >
       <option value="">All</option>
@@ -25,10 +28,10 @@ export const TableColumnFilter = <T,>({
           </option>
         );
       })}
-    </select>
+    </Select>
   ) : (
-    <select className="dsy-select dsy-select-xs grow" disabled>
+    <Select className="grow" disabled>
       <option selected>All</option>
-    </select>
+    </Select>
   );
 };

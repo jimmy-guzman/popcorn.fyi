@@ -14,6 +14,9 @@ export const Route = createFileRoute("/_layout/search")({
   loaderDeps: ({ search: { page, q } }) => {
     return { page, q };
   },
+  loader: async ({ context, deps }) => {
+    await context.queryClient.ensureQueryData(searchOptions(deps));
+  },
   head: ({ match }) => {
     return {
       meta: seo({
@@ -22,9 +25,6 @@ export const Route = createFileRoute("/_layout/search")({
           : `Search | ${site.title}`,
       }),
     };
-  },
-  loader: async ({ context, deps }) => {
-    await context.queryClient.ensureQueryData(searchOptions(deps));
   },
 });
 

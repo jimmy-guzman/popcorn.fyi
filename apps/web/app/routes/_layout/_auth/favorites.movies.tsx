@@ -7,17 +7,17 @@ import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/_auth/favorites/movies")({
   component: RouteComponent,
+  loader: async ({ context }) => {
+    const data = await favoriteMoviesFn({ data: context.userId });
+
+    return data;
+  },
   head: () => {
     return {
       meta: seo({
         title: `${site.pages.favorites.movies.title} | ${site.title}`,
       }),
     };
-  },
-  loader: async ({ context }) => {
-    const data = await favoriteMoviesFn({ data: context.userId });
-
-    return data;
   },
 });
 
