@@ -63,9 +63,9 @@ export const PersonDetails = ({ person, wikipediaUrl }: PersonDetailsProps) => {
                 <p>No biography available.</p>
               )}
             </Prose>
-            <div className="flex justify-center gap-4 md:justify-start">
+            <div className="flex justify-center gap-2 md:justify-start">
               {wikipediaUrl ? (
-                <Button asChild color="primary">
+                <Button asChild color="neutral">
                   <a href={wikipediaUrl} rel="noreferrer" target="_blank">
                     <span className="sr-only md:not-sr-only">Wikipedia</span>{" "}
                     <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
