@@ -33,7 +33,7 @@ export const ShareButton = ({ title, url }: ShareButtonProps) => {
   };
 
   return (
-    <Button onClick={handleShare} variant="outline">
+    <Button color="neutral" onClick={handleShare}>
       <span className="sr-only md:not-sr-only">Share</span>{" "}
       <span className="icon-[lucide--share]" />
     </Button>

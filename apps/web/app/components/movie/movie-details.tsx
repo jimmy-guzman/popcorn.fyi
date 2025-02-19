@@ -60,8 +60,8 @@ export const MovieDetails = ({ movie, wikipediaUrl }: MovieDetailsProps) => {
               {movie.tagline ? <p>{asQuote(movie.tagline)}</p> : null}
               <p>{movie.overview}</p>
             </Prose>
-            <div className="flex justify-center gap-4 md:justify-start">
-              <Button asChild color="primary">
+            <div className="flex justify-center gap-2 md:justify-start">
+              <Button asChild color="neutral">
                 <Link
                   params={{ id: movie.id.toString() }}
                   to="/movies/$id/trailer"
@@ -71,7 +71,7 @@ export const MovieDetails = ({ movie, wikipediaUrl }: MovieDetailsProps) => {
                 </Link>
               </Button>
               {wikipediaUrl ? (
-                <Button asChild color="secondary">
+                <Button asChild color="neutral">
                   <a href={wikipediaUrl} rel="noreferrer" target="_blank">
                     <span className="sr-only md:not-sr-only">Wikipedia</span>{" "}
                     <span className="icon-[simple-icons--wikipedia] h-5 w-5" />

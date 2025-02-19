@@ -60,8 +60,8 @@ export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
               {tvShow.tagline ? <p>{asQuote(tvShow.tagline)}</p> : null}
               <p>{tvShow.overview}</p>
             </Prose>
-            <div className="flex justify-center gap-4 md:justify-start">
-              <Button asChild color="primary">
+            <div className="flex justify-center gap-2 md:justify-start">
+              <Button asChild color="neutral">
                 <Link
                   params={{ id: tvShow.id.toString() }}
                   to="/tv-shows/$id/trailer"
@@ -71,7 +71,7 @@ export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
                 </Link>
               </Button>
               {wikipediaUrl ? (
-                <Button asChild color="secondary">
+                <Button asChild color="neutral">
                   <a href={wikipediaUrl} rel="noreferrer" target="_blank">
                     <span className="sr-only md:not-sr-only">Wikipedia</span>{" "}
                     <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
