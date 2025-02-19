@@ -2,3 +2,11 @@ packages:
   - "apps/*"
   - "libs/*"
   - "configs/*"
+onlyBuiltDependencies:
+  - "@clerk/shared"
+  - "@parcel/watcher"
+  - "@vercel/speed-insights"
+  - "bufferutil"
+  - "esbuild"
+  - "lefthook"
+  - "msw"
