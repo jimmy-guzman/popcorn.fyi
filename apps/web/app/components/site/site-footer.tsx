@@ -3,7 +3,7 @@ import { urls } from "@/config/urls";
 import { SiteLogo } from "../icons/site-logo";
 import { TMDBLogo } from "../icons/tmdb-logo";
 import { WikidataLogo } from "../icons/wikipedia-logo";
-import { GitHubLink } from "./github-link";
+import { SiteFooterNav } from "./site-footer-nav";
 
 export const SiteFooter = () => {
   const currentYear = new Date().getFullYear();
@@ -103,12 +103,7 @@ export const SiteFooter = () => {
           by Wikidata.
         </p>
       </aside>
-      <nav>
-        <h6 className="dsy-footer-title sr-only">Social</h6>
-        <div className="grid grid-flow-col gap-4">
-          <GitHubLink />
-        </div>
-      </nav>
+      <SiteFooterNav />
     </footer>
   );
 };
