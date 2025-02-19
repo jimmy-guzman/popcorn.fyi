@@ -5,9 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  openapi-fetch:
-    hash: ilbdbptjz64vzalkhja6nib22u
-    path: patches/openapi-fetch.patch
+  openapi-fetch@0.13.4:
+    hash: 7a43450f5dedfb191ffd4b5355ff28718916fcf0f7ebe31130ce26a3bec45fc6
+    path: patches/openapi-fetch@0.13.4.patch
 
 importers:
 
@@ -263,7 +263,7 @@ importers:
     dependencies:
       openapi-fetch:
         specifier: 0.13.4
-        version: 0.13.4(patch_hash=ilbdbptjz64vzalkhja6nib22u)
+        version: 0.13.4(patch_hash=7a43450f5dedfb191ffd4b5355ff28718916fcf0f7ebe31130ce26a3bec45fc6)
     devDependencies:
       '@popcorn.fyi/eslint':
         specifier: workspace:*
@@ -12170,7 +12170,7 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openapi-fetch@0.13.4(patch_hash=ilbdbptjz64vzalkhja6nib22u):
+  openapi-fetch@0.13.4(patch_hash=7a43450f5dedfb191ffd4b5355ff28718916fcf0f7ebe31130ce26a3bec45fc6):
     dependencies:
       openapi-typescript-helpers: 0.0.15
 
