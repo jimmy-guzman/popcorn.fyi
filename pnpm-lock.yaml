@@ -9,7 +9,7 @@ overrides:
 
 patchedDependencies:
   openapi-fetch:
-    hash: ilbdbptjz64vzalkhja6nib22u
+    hash: f7400d44305df5022443b5d574d56c820fc7dc2c6251df37d8369282b157d62b
     path: patches/openapi-fetch.patch
 
 importers:
@@ -201,8 +201,8 @@ importers:
         specifier: 1.1.1
         version: 1.1.1
       postcss:
-        specifier: 8.5.2
-        version: 8.5.2
+        specifier: 8.5.3
+        version: 8.5.3
       tailwindcss:
         specifier: 4.0.7
         version: 4.0.7
@@ -263,7 +263,7 @@ importers:
     dependencies:
       openapi-fetch:
         specifier: 0.13.4
-        version: 0.13.4(patch_hash=ilbdbptjz64vzalkhja6nib22u)
+        version: 0.13.4(patch_hash=f7400d44305df5022443b5d574d56c820fc7dc2c6251df37d8369282b157d62b)
     devDependencies:
       '@popcorn.fyi/eslint':
         specifier: workspace:*
@@ -382,8 +382,8 @@ importers:
         specifier: 17.1.1
         version: 17.1.1
       postcss:
-        specifier: 8.5.2
-        version: 8.5.2
+        specifier: 8.5.3
+        version: 8.5.3
       storybook:
         specifier: 8.5.8
         version: 8.5.8(bufferutil@4.0.9)(prettier@3.5.1)
@@ -532,10 +532,6 @@ packages:
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
-
-  '@babel/runtime@7.26.7':
-    resolution: {integrity: sha512-AOPI3D+a8dXnja+iwsUqGRjr1BbZIe771sXdapOtYI531gSqpi92vXivKcq2asu/DFpdl1ceFAKZyRzK2PCVcQ==}
-    engines: {node: '>=6.9.0'}
 
   '@babel/runtime@7.26.9':
     resolution: {integrity: sha512-aA63XwOkcl4xxQa3HjPMqOP6LiK0ZDv3mUPYEFXkpHbaFjtGggE1A61FjFzJnB+p7/oy2gA8E+rcBNl/zC1tMg==}
@@ -1433,8 +1429,8 @@ packages:
     resolution: {integrity: sha512-JBxkERygn7Bv/GbN5Rv8Ul6LVknS+5Bp6RgDC/O8gEBU/yeH5Ui5C/OlWrTb6qct7LjjfT6Re2NxB0ln0yYybA==}
     engines: {node: '>=18.18'}
 
-  '@humanwhocodes/retry@0.4.1':
-    resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
+  '@humanwhocodes/retry@0.4.2':
+    resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
 
   '@iconify-json/lucide@1.2.26':
@@ -5334,8 +5330,8 @@ packages:
     resolution: {integrity: sha512-9RbEr1Y7FFfptd/1eEdntyjMwLeghW1bHX9GWjXo19vx4ytPQhANltvVxDggzJl7mnWM+dX28kb6cyS/4iQjlQ==}
     engines: {node: '>=4'}
 
-  postcss@8.5.2:
-    resolution: {integrity: sha512-MjOadfU3Ys9KYoX0AdkBlFEF1Vx37uCCeN4ZHnmwm9FfpbsGWMZeBLMmmpY+6Ocqod7mkdZ0DT31OlbsFrLlkA==}
+  postcss@8.5.3:
+    resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
     engines: {node: ^10 || ^12 || >=14}
 
   postgres-array@3.0.2:
@@ -6796,10 +6792,6 @@ snapshots:
       '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/runtime@7.26.7':
-    dependencies:
-      regenerator-runtime: 0.14.1
-
   '@babel/runtime@7.26.9':
     dependencies:
       regenerator-runtime: 0.14.1
@@ -7428,7 +7420,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.3.1': {}
 
-  '@humanwhocodes/retry@0.4.1': {}
+  '@humanwhocodes/retry@0.4.2': {}
 
   '@iconify-json/lucide@1.2.26':
     dependencies:
@@ -8384,7 +8376,7 @@ snapshots:
       '@tailwindcss/node': 4.0.7
       '@tailwindcss/oxide': 4.0.7
       lightningcss: 1.29.1
-      postcss: 8.5.2
+      postcss: 8.5.3
       tailwindcss: 4.0.7
 
   '@tailwindcss/typography@0.5.16(tailwindcss@4.0.7)':
@@ -9135,7 +9127,7 @@ snapshots:
   '@testing-library/dom@10.4.0':
     dependencies:
       '@babel/code-frame': 7.26.2
-      '@babel/runtime': 7.26.7
+      '@babel/runtime': 7.26.9
       '@types/aria-query': 5.0.4
       aria-query: 5.3.0
       chalk: 4.1.2
@@ -9165,7 +9157,7 @@ snapshots:
 
   '@testing-library/react@16.2.0(@testing-library/dom@10.4.0)(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@babel/runtime': 7.26.7
+      '@babel/runtime': 7.26.9
       '@testing-library/dom': 10.4.0
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
@@ -10515,7 +10507,7 @@ snapshots:
       eslint: 9.20.1(jiti@2.4.2)
       eslint-compat-utils: 0.6.4(eslint@9.20.1(jiti@2.4.2))
       globals: 15.14.0
-      postcss: 8.5.2
+      postcss: 8.5.3
       postcss-selector-parser: 7.0.0
     transitivePeerDependencies:
       - supports-color
@@ -10548,7 +10540,7 @@ snapshots:
 
   eslint-plugin-jest-dom@5.5.0(@testing-library/dom@10.4.0)(eslint@9.20.1(jiti@2.4.2)):
     dependencies:
-      '@babel/runtime': 7.26.7
+      '@babel/runtime': 7.26.9
       eslint: 9.20.1(jiti@2.4.2)
       requireindex: 1.2.0
     optionalDependencies:
@@ -10739,7 +10731,7 @@ snapshots:
       '@eslint/plugin-kit': 0.2.6
       '@humanfs/node': 0.16.6
       '@humanwhocodes/module-importer': 1.0.1
-      '@humanwhocodes/retry': 0.4.1
+      '@humanwhocodes/retry': 0.4.2
       '@types/estree': 1.0.6
       '@types/json-schema': 7.0.15
       ajv: 6.12.6
@@ -12014,7 +12006,7 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openapi-fetch@0.13.4(patch_hash=ilbdbptjz64vzalkhja6nib22u):
+  openapi-fetch@0.13.4(patch_hash=f7400d44305df5022443b5d574d56c820fc7dc2c6251df37d8369282b157d62b):
     dependencies:
       openapi-typescript-helpers: 0.0.15
 
@@ -12191,7 +12183,7 @@ snapshots:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
-  postcss@8.5.2:
+  postcss@8.5.3:
     dependencies:
       nanoid: 3.3.8
       picocolors: 1.1.1
@@ -13367,7 +13359,7 @@ snapshots:
   vite@6.1.1(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.38.1)(tsx@4.19.3)(yaml@2.7.0):
     dependencies:
       esbuild: 0.24.2
-      postcss: 8.5.2
+      postcss: 8.5.3
       rollup: 4.34.8
     optionalDependencies:
       '@types/node': 22.13.4
