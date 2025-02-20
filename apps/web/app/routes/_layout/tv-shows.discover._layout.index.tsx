@@ -7,9 +7,7 @@ import { TvDiscoverList } from "@/components/tv/discover-list";
 export const Route = createFileRoute("/_layout/tv-shows/discover/_layout/")({
   component: RouteComponent,
   validateSearch: DiscoverSchema,
-  loaderDeps: ({ search: { page, with_genres } }) => {
-    return { page, with_genres };
-  },
+  loaderDeps: ({ search: { page, with_genres } }) => ({ page, with_genres }),
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(discoverTvOptions(deps));
   },

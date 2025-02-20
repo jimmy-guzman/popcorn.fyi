@@ -8,9 +8,7 @@ const IdSchema = v.string();
 type Id = v.InferInput<typeof IdSchema>;
 
 export const wikipediaFn = createServerFn({ method: "GET" })
-  .validator((data: Id) => {
-    return v.parse(IdSchema, data);
-  })
+  .validator((data: Id) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const { data } = await wikiDataClient.GET("/", {
       params: {

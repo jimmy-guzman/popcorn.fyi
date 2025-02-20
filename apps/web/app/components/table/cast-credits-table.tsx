@@ -26,9 +26,7 @@ const columns = [
     header: "Media",
   }),
   columnHelper.accessor(
-    (originalRow) => {
-      return originalRow.release_date ?? originalRow.first_air_date;
-    },
+    (originalRow) => originalRow.release_date ?? originalRow.first_air_date,
     {
       cell: YearTableCell,
       enableColumnFilter: false,
@@ -38,9 +36,7 @@ const columns = [
     },
   ),
   columnHelper.accessor(
-    (originalRow) => {
-      return originalRow.title ?? originalRow.name;
-    },
+    (originalRow) => originalRow.title ?? originalRow.name,
     {
       cell: TitleNameTableCell,
       enableColumnFilter: false,
@@ -48,15 +44,11 @@ const columns = [
     },
   ),
   columnHelper.accessor("character", {
-    cell: (info) => {
-      return info.getValue();
-    },
+    cell: (info) => info.getValue(),
     enableColumnFilter: false,
   }),
   columnHelper.accessor("episode_count", {
-    cell: (info) => {
-      return info.getValue();
-    },
+    cell: (info) => info.getValue(),
     enableColumnFilter: false,
     header: "Episodes",
     sortUndefined: "last",

@@ -8,9 +8,7 @@ import { client } from "@/lib/tmdb";
 import { PaginationSchema } from "@/schemas/pagination";
 
 const topRatedMoviesFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => {
-    return v.parse(PaginationSchema, data);
-  })
+  .validator((data: unknown) => v.parse(PaginationSchema, data))
   .handler(async (context) => {
     const { data } = await client.GET("/3/movie/top_rated", {
       params: {
@@ -23,9 +21,7 @@ const topRatedMoviesFn = createServerFn({ method: "GET" })
 
 export const moviesTopRatedOptions = (query: Pagination) => {
   return queryOptions({
-    queryFn: () => {
-      return topRatedMoviesFn({ data: query });
-    },
+    queryFn: () => topRatedMoviesFn({ data: query }),
     queryKey: ["movie", "list", "top-rated", query],
   });
 };

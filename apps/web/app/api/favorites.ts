@@ -13,9 +13,7 @@ import { IdSchema, UserIdSchema } from "@/schemas/id";
 import { client } from "../lib/tmdb";
 
 export const favoritePeopleFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => {
-    return v.parse(UserIdSchema, data);
-  })
+  .validator((data: unknown) => v.parse(UserIdSchema, data))
   .handler(async ({ data }) => {
     const favorites = await db.query.UserFavorites.findMany({
       where: (favorites, { and, eq }) => {
@@ -44,9 +42,7 @@ export const favoritePeopleFn = createServerFn({ method: "GET" })
   });
 
 export const favoriteMoviesFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => {
-    return v.parse(UserIdSchema, data);
-  })
+  .validator((data: unknown) => v.parse(UserIdSchema, data))
   .handler(async ({ data }) => {
     const favorites = await db.query.UserFavorites.findMany({
       where: (favorites, { and, eq }) => {
@@ -76,9 +72,7 @@ export const favoriteMoviesFn = createServerFn({ method: "GET" })
   });
 
 export const favoriteTvShowsFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => {
-    return v.parse(UserIdSchema, data);
-  })
+  .validator((data: unknown) => v.parse(UserIdSchema, data))
   .handler(async ({ data }) => {
     const favorites = await db.query.UserFavorites.findMany({
       where: (favorites, { and, eq }) => {
@@ -107,29 +101,21 @@ export const favoriteTvShowsFn = createServerFn({ method: "GET" })
 export type InsertFavorite = v.InferInput<typeof UserFavoritesInsertSchema>;
 
 export const addToFavoritesFn = createServerFn({ method: "POST" })
-  .validator((data: InsertFavorite) => {
-    return v.parse(UserFavoritesInsertSchema, data);
-  })
+  .validator((data: InsertFavorite) => v.parse(UserFavoritesInsertSchema, data))
   .handler(async ({ data }) => {
     await db.insert(UserFavorites).values(data).returning();
   });
 
 export const removeFromFavoritesFn = createServerFn({ method: "POST" })
-  .validator((data: Id) => {
-    return v.parse(IdSchema, data);
-  })
+  .validator((data: Id) => v.parse(IdSchema, data))
   .handler(async ({ data }) => {
     await db.delete(UserFavorites).where(eq(UserFavorites.tmdbId, data));
   });
 
 export const findFavoriteFn = createServerFn({ method: "GET" })
-  .validator((data: Id) => {
-    return v.parse(IdSchema, data);
-  })
+  .validator((data: Id) => v.parse(IdSchema, data))
   .handler(async ({ data }) => {
     return db.query.UserFavorites.findFirst({
-      where: (favorites, { eq }) => {
-        return eq(favorites.tmdbId, data);
-      },
+      where: (favorites, { eq }) => eq(favorites.tmdbId, data),
     });
   });

@@ -1,33 +1,37 @@
+import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { useSuspenseQueries } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
+import * as v from "valibot";
 
 import { personDetailsOptions } from "@/api/people/details";
 import { personExternalOptions } from "@/api/people/details.external";
 import { PersonDetails } from "@/components/people/person-details";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
+import { IdSchema } from "@/schemas/id";
 
 export const Route = createFileRoute("/_layout/people/$id")({
   component: RouteComponent,
   loader: async ({ context, params: { id } }) => {
-    const personId = Number.parseInt(id);
+    const personId = v.parse(IdSchema, id);
 
     const [data] = await Promise.all([
       context.queryClient.ensureQueryData(personDetailsOptions(personId)),
-      context.queryClient.prefetchQuery(personExternalOptions(personId)),
+      context.queryClient.ensureQueryData(personExternalOptions(personId)),
     ]);
 
     return {
-      title: data.name,
+      seo: {
+        image: data.profile_path ? tmdbImageUrl(data.profile_path) : undefined,
+        title: data.name
+          ? `${data.name} | People | ${site.title}`
+          : `People | ${site.title}`,
+      },
     };
   },
   head: ({ loaderData }) => {
     return {
-      meta: loaderData.title
-        ? seo({
-            title: `${loaderData.title} | People | ${site.title}`,
-          })
-        : undefined,
+      meta: seo(loaderData.seo),
     };
   },
 });

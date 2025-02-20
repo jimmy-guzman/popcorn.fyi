@@ -8,12 +8,8 @@ const mockNavigate = vi.fn();
 vi.mock("@tanstack/react-router", async () => {
   return {
     ...(await vi.importActual("@tanstack/react-router")),
-    useNavigate: vi.fn(() => {
-      return mockNavigate;
-    }),
-    useSearch: vi.fn(() => {
-      return {};
-    }),
+    useNavigate: vi.fn(() => mockNavigate),
+    useSearch: vi.fn(() => ({})),
   };
 });
 

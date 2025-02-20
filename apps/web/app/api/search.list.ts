@@ -9,9 +9,7 @@ import { SearchSchema } from "@/schemas/search";
 import { client } from "../lib/tmdb";
 
 const searchFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => {
-    return v.parse(SearchSchema, data);
-  })
+  .validator((data: unknown) => v.parse(SearchSchema, data))
   .handler(async (context) => {
     const { data } = await client.GET("/3/search/multi", {
       params: {
@@ -27,9 +25,7 @@ const searchFn = createServerFn({ method: "GET" })
 
 export const searchOptions = (search: Search) => {
   return queryOptions({
-    queryFn: () => {
-      return searchFn({ data: search });
-    },
+    queryFn: () => searchFn({ data: search }),
     queryKey: ["search", "list", search],
   });
 };

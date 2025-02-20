@@ -41,12 +41,8 @@ const Wrapper = ({ children, initialEntries, path }: WrapperProps) => {
     const rootRoute = createRootRoute();
     const testingRoute = createRoute({
       // eslint-disable-next-line react/no-unstable-nested-components -- testing purposes
-      component: () => {
-        return <ClerkProvider>{children}</ClerkProvider>;
-      },
-      getParentRoute: () => {
-        return rootRoute;
-      },
+      component: () => <ClerkProvider>{children}</ClerkProvider>,
+      getParentRoute: () => rootRoute,
       path,
     });
 

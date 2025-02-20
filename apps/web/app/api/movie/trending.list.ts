@@ -13,9 +13,7 @@ const trendingMovieFn = createServerFn({ method: "GET" }).handler(async () => {
 
 export const trendingMoviesOptions = () => {
   return queryOptions({
-    queryFn: () => {
-      return trendingMovieFn();
-    },
+    queryFn: () => trendingMovieFn(),
     queryKey: ["trending", "movies"],
   });
 };

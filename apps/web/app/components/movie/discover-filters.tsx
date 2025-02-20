@@ -61,9 +61,7 @@ export const MovieDiscoverFilters = ({
 
   useEffect(() => {
     void navigate({
-      search: (prevSearch) => {
-        return { ...prevSearch, ...values };
-      },
+      search: (prevSearch) => ({ ...prevSearch, ...values }),
       to: "/movies/discover",
     });
   }, [values, navigate]);
@@ -73,9 +71,7 @@ export const MovieDiscoverFilters = ({
       className="grid grid-cols-1 gap-4"
       onSubmit={handleSubmit(async (values) => {
         await navigate({
-          search: (prevSearch) => {
-            return { ...prevSearch, ...values };
-          },
+          search: (prevSearch) => ({ ...prevSearch, ...values }),
           to: "/movies/discover",
         });
       })}

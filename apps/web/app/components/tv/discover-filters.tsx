@@ -46,9 +46,7 @@ export const TvDiscoverFilters = ({
 
   useEffect(() => {
     void navigate({
-      search: (prevSearch) => {
-        return { ...prevSearch, ...values };
-      },
+      search: (prevSearch) => ({ ...prevSearch, ...values }),
       to: "/tv-shows/discover",
     });
   }, [values, navigate]);
@@ -58,9 +56,7 @@ export const TvDiscoverFilters = ({
       className="grid grid-cols-1 gap-4"
       onSubmit={handleSubmit(async (values) => {
         await navigate({
-          search: (prevSearch) => {
-            return { ...prevSearch, ...values };
-          },
+          search: (prevSearch) => ({ ...prevSearch, ...values }),
           to: "/tv-shows/discover",
         });
       })}

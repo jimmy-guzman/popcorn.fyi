@@ -15,9 +15,7 @@ const regionsFn = createServerFn({ method: "GET" }).handler(async (context) => {
 
 export const regionsOptions = () => {
   return queryOptions({
-    queryFn: () => {
-      return regionsFn();
-    },
+    queryFn: () => regionsFn(),
     queryKey: ["regions", "list"],
   });
 };

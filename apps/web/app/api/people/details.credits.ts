@@ -8,9 +8,7 @@ import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
 
 const personCreditsFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => {
-    return v.parse(IdSchema, data);
-  })
+  .validator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const { data } = await client.GET(
       "/3/person/{person_id}/combined_credits",
@@ -26,9 +24,7 @@ const personCreditsFn = createServerFn({ method: "GET" })
 
 export const personCreditsOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => {
-      return personCreditsFn({ data: id });
-    },
+    queryFn: () => personCreditsFn({ data: id }),
     queryKey: ["people", "details", id, "credits"],
   });
 };

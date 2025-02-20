@@ -11,9 +11,7 @@ import { SearchSchema } from "@/schemas/search";
 export const Route = createFileRoute("/_layout/search")({
   component: RouteComponent,
   validateSearch: SearchSchema,
-  loaderDeps: ({ search: { page, q } }) => {
-    return { page, q };
-  },
+  loaderDeps: ({ search: { page, q } }) => ({ page, q }),
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(searchOptions(deps));
   },

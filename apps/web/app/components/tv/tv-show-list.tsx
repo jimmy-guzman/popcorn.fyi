@@ -26,9 +26,9 @@ export const TVShowList = ({
         <p>{description}</p>
       </Prose>
       <ListContent>
-        {tvShows.map((tvShow) => {
-          return <TVShowCard key={tvShow.id} tvShow={tvShow} />;
-        })}
+        {tvShows.map((tvShow) => (
+          <TVShowCard key={tvShow.id} tvShow={tvShow} />
+        ))}
       </ListContent>
     </div>
   );

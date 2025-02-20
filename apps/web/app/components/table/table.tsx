@@ -65,9 +65,9 @@ export const Table = <TData,>({
             {table.getHeaderGroups().map((headerGroup) => {
               return (
                 <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => {
-                    return <TableHeader header={header} key={header.id} />;
-                  })}
+                  {headerGroup.headers.map((header) => (
+                    <TableHeader header={header} key={header.id} />
+                  ))}
                 </tr>
               );
             })}
