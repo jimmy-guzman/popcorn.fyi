@@ -6,16 +6,22 @@ interface SeoProps {
    * The description of the page for SEO and social sharing.
    */
   description?: string;
-
+  /**
+   * The image URL for Open Graph previews.
+   */
+  image?: string;
   /**
    * A comma-separated list of keywords for SEO.
    */
   keywords?: string;
-
   /**
    * The title of the page.
    */
   title: string;
+  /**
+   * The full URL of the page for Open Graph (og:url).
+   */
+  url?: string;
 }
 
 /**
@@ -47,7 +53,7 @@ interface MetaTag {
  * Generates an array of meta tag objects for SEO and social media integration.
  * @returns An array of meta tag objects.
  */
-export const seo = ({ description, keywords, title }: SeoProps) => {
+export const seo = ({ description, image, keywords, title, url }: SeoProps) => {
   const meta = [
     { title },
     { content: title, name: "twitter:title" },
@@ -65,6 +71,14 @@ export const seo = ({ description, keywords, title }: SeoProps) => {
 
   if (keywords) {
     meta.push({ content: keywords, name: "keywords" });
+  }
+
+  if (url) {
+    meta.push({ content: url, property: "og:url" });
+  }
+
+  if (image) {
+    meta.push({ content: image, property: "og:image" });
   }
 
   return meta;

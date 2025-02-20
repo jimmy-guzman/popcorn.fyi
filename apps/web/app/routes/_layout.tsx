@@ -26,7 +26,7 @@ function LayoutComponent() {
         <input className="dsy-drawer-toggle" id="my-drawer-2" type="checkbox" />
         <div className="dsy-drawer-content">
           <SiteNav />
-          <main className="container mx-auto min-h-screen p-4">
+          <main className="container mx-auto min-h-screen p-4 pb-16">
             <Outlet />
           </main>
         </div>
