@@ -1,3 +1,4 @@
+import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { useSuspenseQueries } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -18,13 +19,18 @@ export const Route = createFileRoute("/_layout/movies/$id")({
     ]);
 
     return {
+      image: data.poster_path
+        ? tmdbImageUrl(data.poster_path, "w185")
+        : undefined,
       title: data.title,
+      url: location.href,
     };
   },
   head: ({ loaderData }) => {
     return {
       meta: loaderData.title
         ? seo({
+            ...loaderData,
             title: `${loaderData.title} | Movies | ${site.title}`,
           })
         : undefined,
