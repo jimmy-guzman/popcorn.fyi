@@ -19,18 +19,15 @@ export const Route = createFileRoute("/_layout/movies/$id")({
     ]);
 
     return {
-      image: data.poster_path
-        ? tmdbImageUrl(data.poster_path, "w185")
-        : undefined,
+      image: data.poster_path ? tmdbImageUrl(data.poster_path) : undefined,
       title: data.title,
-      url: location.href,
     };
   },
   head: ({ loaderData }) => {
     return {
       meta: loaderData.title
         ? seo({
-            ...loaderData,
+            image: loaderData.image,
             title: `${loaderData.title} | Movies | ${site.title}`,
           })
         : undefined,
