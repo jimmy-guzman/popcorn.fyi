@@ -51,9 +51,9 @@ const HeroTitle = forwardRef<HTMLHeadingElement, { children: ReactNode }>(
 
 HeroTitle.displayName = "HeroTitle";
 
-const HeroOverlay = forwardRef<HTMLDivElement>((_props, ref) => {
-  return <div className="dsy-hero-overlay bg-opacity-60" ref={ref} />;
-});
+const HeroOverlay = forwardRef<HTMLDivElement>((_props, ref) => (
+  <div className="dsy-hero-overlay bg-opacity-60" ref={ref} />
+));
 
 HeroOverlay.displayName = "HeroOverlay";
 

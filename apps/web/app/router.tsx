@@ -23,9 +23,7 @@ export function createRouter() {
       context: { queryClient },
       defaultErrorComponent: Error,
       defaultNotFoundComponent: NotFound,
-      defaultPendingComponent: () => {
-        return <div className="dsy-skeleton h-svh" />;
-      },
+      defaultPendingComponent: () => <div className="dsy-skeleton h-svh" />,
       defaultPendingMs: 0,
       defaultPreload: "intent",
       defaultStructuralSharing: true,

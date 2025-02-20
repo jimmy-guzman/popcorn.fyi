@@ -49,14 +49,14 @@ function LayoutComponent() {
               <SiteNavMenuItem item={favoritesNavItem} />
               <div className="dsy-divider" />
               <h2 className="dsy-menu-title">Explore</h2>
-              {exploreNav.items.map((item) => {
-                return <SiteNavMenuItem item={item} key={item.title} />;
-              })}
+              {exploreNav.items.map((item) => (
+                <SiteNavMenuItem item={item} key={item.title} />
+              ))}
               <div className="dsy-divider" />
               <h2 className="dsy-menu-title">Categories</h2>
-              {categoryNav.items.map((item) => {
-                return <SiteNavMenuItem item={item} key={item.title} />;
-              })}
+              {categoryNav.items.map((item) => (
+                <SiteNavMenuItem item={item} key={item.title} />
+              ))}
             </ul>
           </aside>
         </div>

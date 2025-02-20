@@ -10,9 +10,7 @@ import { IdSchema } from "@/schemas/id";
 import { findFavoriteFn } from "../favorites";
 
 const personDetailsFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => {
-    return v.parse(IdSchema, data);
-  })
+  .validator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const {
       data: { deathday, homepage, ...rest },
@@ -29,9 +27,7 @@ const personDetailsFn = createServerFn({ method: "GET" })
 
 export const personDetailsOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => {
-      return personDetailsFn({ data: id });
-    },
+    queryFn: () => personDetailsFn({ data: id }),
     queryKey: ["person", "details", id],
   });
 };

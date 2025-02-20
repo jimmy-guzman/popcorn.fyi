@@ -38,9 +38,9 @@ export const DiscoverSchema = v.intersect([
 ]);
 
 const discoverTvFn = createServerFn({ method: "GET" })
-  .validator((data: v.InferInput<typeof DiscoverSchema>) => {
-    return v.parse(DiscoverSchema, data);
-  })
+  .validator((data: v.InferInput<typeof DiscoverSchema>) =>
+    v.parse(DiscoverSchema, data),
+  )
   .handler(async (context) => {
     const { data } = await client.GET("/3/discover/tv", {
       params: {
@@ -59,9 +59,7 @@ export const discoverTvOptions = (
   query: v.InferInput<typeof DiscoverSchema>,
 ) => {
   return queryOptions({
-    queryFn: () => {
-      return discoverTvFn({ data: query });
-    },
+    queryFn: () => discoverTvFn({ data: query }),
     queryKey: ["tv", "list", "discover", query],
   });
 };

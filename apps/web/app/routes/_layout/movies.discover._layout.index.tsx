@@ -10,9 +10,7 @@ import { MovieDiscoverList } from "@/components/movie/movie-discover-list";
 export const Route = createFileRoute("/_layout/movies/discover/_layout/")({
   component: RouteComponent,
   validateSearch: DiscoverSchema,
-  loaderDeps: ({ search: { page, with_genres } }) => {
-    return { page, with_genres };
-  },
+  loaderDeps: ({ search: { page, with_genres } }) => ({ page, with_genres }),
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(discoverMoviesOptions(deps));
   },

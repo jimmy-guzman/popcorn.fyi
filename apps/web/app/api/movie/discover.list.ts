@@ -42,9 +42,9 @@ export const DiscoverSchema = v.intersect([
 ]);
 
 const discoverMoviesFn = createServerFn({ method: "GET" })
-  .validator((data: v.InferInput<typeof DiscoverSchema>) => {
-    return v.parse(DiscoverSchema, data);
-  })
+  .validator((data: v.InferInput<typeof DiscoverSchema>) =>
+    v.parse(DiscoverSchema, data),
+  )
   .handler(async (context) => {
     const { data } = await client.GET("/3/discover/movie", {
       params: {
@@ -63,9 +63,7 @@ export const discoverMoviesOptions = (
   query: v.InferInput<typeof DiscoverSchema>,
 ) => {
   return queryOptions({
-    queryFn: () => {
-      return discoverMoviesFn({ data: query });
-    },
+    queryFn: () => discoverMoviesFn({ data: query }),
     queryKey: ["movie", "list", "discover", query],
   });
 };

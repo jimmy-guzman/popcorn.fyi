@@ -10,9 +10,7 @@ import { IdSchema } from "@/schemas/id";
 import { wikipediaFn } from "../wikipedia";
 
 const personExternalFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => {
-    return v.parse(IdSchema, data);
-  })
+  .validator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const { data } = await client.GET("/3/person/{person_id}/external_ids", {
       params: {
@@ -34,9 +32,7 @@ const personExternalFn = createServerFn({ method: "GET" })
 
 export const personExternalOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => {
-      return personExternalFn({ data: id });
-    },
+    queryFn: () => personExternalFn({ data: id }),
     queryKey: ["person", "details", id, "external"],
   });
 };

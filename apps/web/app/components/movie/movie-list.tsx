@@ -22,9 +22,9 @@ export const MovieList = ({ description, movies, title }: MovieListProps) => {
         <p>{description}</p>
       </Prose>
       <ListContent>
-        {movies.map((movie) => {
-          return <MovieCard key={movie.id} movie={movie} />;
-        })}
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
       </ListContent>
     </div>
   );

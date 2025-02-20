@@ -10,9 +10,7 @@ import { IdSchema } from "@/schemas/id";
 import { wikipediaFn } from "../wikipedia";
 
 const tvExternalFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => {
-    return v.parse(IdSchema, data);
-  })
+  .validator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const { data } = await client.GET("/3/tv/{series_id}/external_ids", {
       params: {
@@ -34,9 +32,7 @@ const tvExternalFn = createServerFn({ method: "GET" })
 
 export const tvExternalOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => {
-      return tvExternalFn({ data: id });
-    },
+    queryFn: () => tvExternalFn({ data: id }),
     queryKey: ["tv", "details", id, "external"],
   });
 };

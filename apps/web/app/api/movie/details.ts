@@ -10,9 +10,7 @@ import { IdSchema } from "@/schemas/id";
 import { findFavoriteFn } from "../favorites";
 
 const movieDetailsFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => {
-    return v.parse(IdSchema, data);
-  })
+  .validator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const {
       data: { belongs_to_collection, ...rest },
@@ -29,9 +27,7 @@ const movieDetailsFn = createServerFn({ method: "GET" })
 
 export const movieDetailsOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => {
-      return movieDetailsFn({ data: id });
-    },
+    queryFn: () => movieDetailsFn({ data: id }),
     queryKey: ["movie", "details", id],
   });
 };

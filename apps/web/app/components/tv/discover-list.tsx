@@ -23,9 +23,9 @@ export const TvDiscoverList = ({
   return tv.length > 0 ? (
     <div className="flex flex-col gap-4">
       <ListContent>
-        {tv.map((tvSeries) => {
-          return <TVShowCard key={tvSeries.id} tvShow={tvSeries} />;
-        })}
+        {tv.map((tvSeries) => (
+          <TVShowCard key={tvSeries.id} tvShow={tvSeries} />
+        ))}
       </ListContent>
       {totalPages > 1 && <ListPagination page={page} totalPages={totalPages} />}
     </div>

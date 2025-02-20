@@ -45,17 +45,13 @@ function RouteComponent() {
     {
       title: "Production Companies",
       value: movie.production_companies
-        ?.map((productionCompany) => {
-          return productionCompany.name;
-        })
+        ?.map((productionCompany) => productionCompany.name)
         .join(", "),
     },
     {
       title: "Production Countries",
       value: movie.production_countries
-        ?.map((country) => {
-          return country.name;
-        })
+        ?.map((country) => country.name)
         .join(", "),
     },
   ];

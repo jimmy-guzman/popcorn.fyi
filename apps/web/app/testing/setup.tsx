@@ -17,15 +17,9 @@ afterAll(() => {
 vi.mock("@clerk/tanstack-start", async () => {
   return {
     ...(await vi.importActual("@clerk/tanstack-start")),
-    ClerkProvider: ({ children }: { children: React.ReactNode }) => {
-      return children;
-    },
-    SignIn: () => {
-      return <div data-testid="clerk-signin" />;
-    },
-    useUser: () => {
-      return vi.fn();
-    },
+    ClerkProvider: ({ children }: { children: React.ReactNode }) => children,
+    SignIn: () => <div data-testid="clerk-signin" />,
+    useUser: () => vi.fn(),
   };
 });
 
@@ -38,9 +32,7 @@ vi.mock("@tanstack/start", async () => {
       return {
         validator: () => {
           return {
-            handler: () => {
-              return vi.fn();
-            },
+            handler: () => vi.fn(),
           };
         },
       };

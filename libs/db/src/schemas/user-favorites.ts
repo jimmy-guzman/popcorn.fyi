@@ -13,9 +13,7 @@ export const UserFavorites = pgTable(
       updatedAt: t
         .timestamp({ mode: "string" })
         .defaultNow()
-        .$onUpdate(() => {
-          return sql`now()`;
-        })
+        .$onUpdate(() => sql`now()`)
         .notNull(),
       userId: t.text().notNull(),
     };

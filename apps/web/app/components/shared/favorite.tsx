@@ -22,9 +22,7 @@ export const Favorite = ({ favorite, mediaType, tmdbId }: FavoriteProps) => {
   const { isSignedIn, user } = useUser();
   const queryClient = useQueryClient();
   const addToFavorites = useMutation({
-    mutationFn: async (data: InsertFavorite) => {
-      return addToFavoritesFn({ data });
-    },
+    mutationFn: async (data: InsertFavorite) => addToFavoritesFn({ data }),
     mutationKey: [mediaType, "favorites", "add", tmdbId],
     onSuccess: async () => {
       await queryClient.invalidateQueries({
@@ -44,9 +42,7 @@ export const Favorite = ({ favorite, mediaType, tmdbId }: FavoriteProps) => {
     },
   });
   const removeFromFavorites = useMutation({
-    mutationFn: async (id: Id) => {
-      return removeFromFavoritesFn({ data: id });
-    },
+    mutationFn: async (id: Id) => removeFromFavoritesFn({ data: id }),
     mutationKey: [mediaType, "favorites", "remove", tmdbId],
     onSuccess: async () => {
       await queryClient.invalidateQueries({
