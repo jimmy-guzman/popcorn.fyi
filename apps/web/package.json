@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@clerk/testing": "1.4.23",
-    "@dotenvx/dotenvx": "1.36.0",
+    "@dotenvx/dotenvx": "1.37.0",
     "@iconify-json/lucide": "1.2.26",
     "@iconify-json/simple-icons": "1.2.25",
     "@playwright/test": "1.50.1",
@@ -50,7 +50,7 @@
     "@popcorn.fyi/ts": "workspace:*",
     "@tailwindcss/postcss": "4.0.7",
     "@tanstack/react-query-devtools": "5.66.8",
-    "@tanstack/router-devtools": "1.109.0",
+    "@tanstack/router-devtools": "1.109.2",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.2.0",
