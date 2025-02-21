@@ -29,7 +29,9 @@ const person = {
 
 describe("<PersonDetails />", () => {
   it("should render title as a heading", async () => {
-    await render(<PersonDetails person={person} />);
+    await render(<PersonDetails person={person} />, {
+      queryData: [[["person", "details", 64, "external"], {}]],
+    });
 
     const heading = screen.getByRole("heading", {
       level: 1,
@@ -42,7 +44,9 @@ describe("<PersonDetails />", () => {
   it("should render 'No biography available.' when no biography.", async () => {
     const { biography, ...rest } = person;
 
-    await render(<PersonDetails person={rest} />);
+    await render(<PersonDetails person={rest} />, {
+      queryData: [[["person", "details", 64, "external"], {}]],
+    });
 
     const paragraph = screen.getByText("No biography available.");
 
@@ -52,7 +56,9 @@ describe("<PersonDetails />", () => {
   it("should render 'No birthday available.' when no biography.", async () => {
     const { birthday, ...rest } = person;
 
-    await render(<PersonDetails person={rest} />);
+    await render(<PersonDetails person={rest} />, {
+      queryData: [[["person", "details", 64, "external"], {}]],
+    });
 
     const paragraph = screen.getByText("No birthday available.");
 

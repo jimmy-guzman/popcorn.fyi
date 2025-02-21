@@ -1,5 +1,5 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import { useSuspenseQueries } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import * as v from "valibot";
 
@@ -15,10 +15,11 @@ export const Route = createFileRoute("/_layout/people/$id")({
   loader: async ({ context, params: { id } }) => {
     const personId = v.parse(IdSchema, id);
 
-    const [data] = await Promise.all([
-      context.queryClient.ensureQueryData(personDetailsOptions(personId)),
-      context.queryClient.ensureQueryData(personExternalOptions(personId)),
-    ]);
+    const data = await context.queryClient.ensureQueryData(
+      personDetailsOptions(personId),
+    );
+
+    void context.queryClient.prefetchQuery(personExternalOptions(personId));
 
     return {
       seo: {
@@ -39,12 +40,9 @@ export const Route = createFileRoute("/_layout/people/$id")({
 function RouteComponent() {
   const { id } = Route.useParams();
 
-  const [{ data: person }, { data: ids }] = useSuspenseQueries({
-    queries: [
-      personDetailsOptions(Number.parseInt(id)),
-      personExternalOptions(Number.parseInt(id)),
-    ],
-  });
+  const { data: person } = useSuspenseQuery(
+    personDetailsOptions(v.parse(IdSchema, id)),
+  );
 
-  return <PersonDetails person={person} wikipediaUrl={ids.wikipedia_url} />;
+  return <PersonDetails person={person} />;
 }

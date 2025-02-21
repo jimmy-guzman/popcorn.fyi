@@ -25,10 +25,16 @@ interface WrapperProps {
   children: ReactNode;
   initialEntries: string[];
   path: keyof FileRoutesById;
+  queryData?: [key: unknown[], data: unknown][];
 }
 
 // eslint-disable-next-line react-refresh/only-export-components -- this is only used in tests.
-const Wrapper = ({ children, initialEntries, path }: WrapperProps) => {
+const Wrapper = ({
+  children,
+  initialEntries,
+  path,
+  queryData,
+}: WrapperProps) => {
   const { queryClient, router } = useMemo(() => {
     const queryClient = new QueryClient({
       defaultOptions: {
@@ -37,6 +43,12 @@ const Wrapper = ({ children, initialEntries, path }: WrapperProps) => {
         },
       },
     });
+
+    if (queryData) {
+      for (const [key, data] of queryData) {
+        queryClient.setQueryData(key, data);
+      }
+    }
 
     const rootRoute = createRootRoute();
     const testingRoute = createRoute({
@@ -54,11 +66,11 @@ const Wrapper = ({ children, initialEntries, path }: WrapperProps) => {
         routeTree: rootRoute.addChildren([testingRoute]),
       }),
     };
-  }, [children, initialEntries, path]);
+  }, [children, initialEntries, path, queryData]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* @ts-expect-error this is due the testing router diverging from the application router */}
+      {/* @ts-expect-error this is due to the testing router diverging from the application router */}
       <RouterProvider router={router} />
     </QueryClientProvider>
   );
@@ -69,6 +81,7 @@ const customRender = async (
   {
     path = "/_layout",
     initialEntries = [path],
+    queryData = [],
     ...options
   }: Omit<RenderOptions, "wrapper"> & Partial<WrapperProps> = {},
 ) => {
@@ -77,7 +90,11 @@ const customRender = async (
     return render(ui, {
       wrapper: ({ children }) => {
         return (
-          <Wrapper initialEntries={initialEntries} path={path}>
+          <Wrapper
+            initialEntries={initialEntries}
+            path={path}
+            queryData={queryData}
+          >
             {children}
           </Wrapper>
         );

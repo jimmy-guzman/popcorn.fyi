@@ -1,5 +1,5 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import { useSuspenseQueries } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import * as v from "valibot";
 
@@ -15,10 +15,11 @@ export const Route = createFileRoute("/_layout/tv-shows/$id")({
   loader: async ({ context, params: { id } }) => {
     const tvShowId = v.parse(IdSchema, id);
 
-    const [data] = await Promise.all([
-      context.queryClient.ensureQueryData(tvDetailsOptions(tvShowId)),
-      context.queryClient.ensureQueryData(tvExternalOptions(tvShowId)),
-    ]);
+    const data = await context.queryClient.ensureQueryData(
+      tvDetailsOptions(tvShowId),
+    );
+
+    void context.queryClient.prefetchQuery(tvExternalOptions(tvShowId));
 
     return {
       seo: {
@@ -39,12 +40,9 @@ export const Route = createFileRoute("/_layout/tv-shows/$id")({
 function RouteComponent() {
   const { id } = Route.useParams();
 
-  const [{ data: tvShow }, { data: ids }] = useSuspenseQueries({
-    queries: [
-      tvDetailsOptions(Number.parseInt(id)),
-      tvExternalOptions(Number.parseInt(id)),
-    ],
-  });
+  const { data: tvShow } = useSuspenseQuery(
+    tvDetailsOptions(v.parse(IdSchema, id)),
+  );
 
-  return <TVShowDetails tvShow={tvShow} wikipediaUrl={ids.wikipedia_url} />;
+  return <TVShowDetails tvShow={tvShow} />;
 }

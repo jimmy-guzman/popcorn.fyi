@@ -2,6 +2,7 @@ import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { Link, Outlet } from "@tanstack/react-router";
+import { Suspense } from "react";
 
 import { asQuote } from "@/lib/as-quote";
 
@@ -12,6 +13,7 @@ import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
 import { ShareButton } from "../shared/share-button";
 import { MovieDetailsTabs } from "./movie-details-tabs";
+import { WikipediaButton } from "./wikipedia-button";
 
 interface MovieDetailsProps {
   movie: {
@@ -26,10 +28,9 @@ interface MovieDetailsProps {
     title?: string;
     vote_average: number;
   };
-  wikipediaUrl?: string | undefined;
 }
 
-export const MovieDetails = ({ movie, wikipediaUrl }: MovieDetailsProps) => {
+export const MovieDetails = ({ movie }: MovieDetailsProps) => {
   return (
     <div className="flex min-h-screen flex-col items-center gap-4">
       <div className="hidden md:block">
@@ -71,14 +72,11 @@ export const MovieDetails = ({ movie, wikipediaUrl }: MovieDetailsProps) => {
                   <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
                 </Link>
               </Button>
-              {wikipediaUrl ? (
-                <Button asChild color="neutral">
-                  <a href={wikipediaUrl} rel="noreferrer" target="_blank">
-                    <span className="sr-only md:not-sr-only">Wikipedia</span>{" "}
-                    <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
-                  </a>
-                </Button>
-              ) : null}
+              <Suspense
+                fallback={<div className="dsy-skeleton h-10 w-10 md:w-32" />}
+              >
+                <WikipediaButton id={movie.id} />
+              </Suspense>
               {movie.title ? (
                 <ShareButton title={movie.title} url={`/movies/${movie.id}`} />
               ) : null}

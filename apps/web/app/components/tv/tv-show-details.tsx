@@ -2,6 +2,7 @@ import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { Link, Outlet } from "@tanstack/react-router";
+import { Suspense } from "react";
 
 import { asQuote } from "@/lib/as-quote";
 
@@ -12,6 +13,7 @@ import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
 import { ShareButton } from "../shared/share-button";
 import { TvShowDetailsTabs } from "./tv-show-details-tabs";
+import { WikipediaButton } from "./wikipedia-button";
 
 interface TVShowDetailsProps {
   tvShow: {
@@ -26,10 +28,9 @@ interface TVShowDetailsProps {
     tagline?: string;
     vote_average: number;
   };
-  wikipediaUrl?: string | undefined;
 }
 
-export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
+export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
   return (
     <div className="flex min-h-screen flex-col items-center gap-4">
       <div className="hidden md:block">
@@ -71,14 +72,11 @@ export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
                   <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
                 </Link>
               </Button>
-              {wikipediaUrl ? (
-                <Button asChild color="neutral">
-                  <a href={wikipediaUrl} rel="noreferrer" target="_blank">
-                    <span className="sr-only md:not-sr-only">Wikipedia</span>{" "}
-                    <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
-                  </a>
-                </Button>
-              ) : null}
+              <Suspense
+                fallback={<div className="dsy-skeleton h-10 w-10 md:w-32" />}
+              >
+                <WikipediaButton id={tvShow.id} />
+              </Suspense>
               {tvShow.name ? (
                 <ShareButton
                   title={tvShow.name}
