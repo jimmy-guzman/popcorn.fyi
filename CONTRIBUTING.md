@@ -93,6 +93,90 @@ Refer to the [README](./README.md) for setting up the project. Here's a quick ov
   docs: update documentation 📚
   ```
 
+#### **📜 Available Scripts**
+
+The project provides several commands to streamline development and ensure code quality. Below are the most commonly used ones:
+
+- **🚀 Start Development Server**
+
+  ```sh
+  pnpm dev
+  ```
+
+  Runs the web application locally at `http://localhost:3000`. Storybook (for UI components) is available at `http://localhost:6006`.
+
+- **🏗 Build for Production**
+
+  ```sh
+  pnpm build
+  ```
+
+  Generates the production-ready build.
+
+- **✅ Run Tests**
+
+  ```sh
+  pnpm test
+  ```
+
+  Runs unit and integration tests with **Vitest**.
+
+- **📸 Run End-to-End (E2E) Tests**
+
+  ```sh
+  pnpm e2e
+  ```
+
+  Runs **Playwright** end-to-end tests.
+
+- **🎨 Format Code**
+
+  ```sh
+  pnpm format
+  ```
+
+  Uses **Prettier** to format the codebase.
+
+- **🔍 Lint Code**
+
+  ```sh
+  pnpm lint
+  ```
+
+  Runs **ESLint** to enforce code style.
+
+- **🔎 Type Checking**
+
+  ```sh
+  pnpm typecheck
+  ```
+
+  Ensures **TypeScript** type safety.
+
+- **🔄 Full Project Check**
+  ```sh
+  pnpm check
+  ```
+  Runs linting, type checking, and coverage reports.
+
+### **🛠 Git Hooks (Lefthook)**
+
+The project uses **Lefthook** to automate pre-commit checks. These run automatically when committing code:
+
+- **📑 sort-package-json** – Ensures `package.json` structure remains consistent.
+- **🎨 Prettier** – Formats staged files.
+- **🔍 ESLint** – Lints JavaScript/TypeScript code.
+- **🧹 Knip** – Detects unused files and dependencies.
+- **🗂 Manypkg** – Enforces consistency in monorepo dependencies.
+
+If any of these checks fail, they must be fixed before committing.
+
+To run pre-commit checks manually:
+
+```sh
+pnpm check
+```
+
 ## 📤 Submitting a Pull Request
 
 1. **🍴 Fork the Repository**
