@@ -17,6 +17,7 @@ export default defineConfig({
         "playwright.setup.*",
         "**/*.gen.*",
       ],
+      reporter: ["text", "json"],
     },
     environment: "happy-dom",
     exclude: [...configDefaults.exclude, "e2e/*"],

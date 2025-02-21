@@ -1,0 +1,26 @@
+coverage:
+  precision: 2
+  round: down
+  range: 50..90
+  status:
+    project:
+      default:
+        target: auto
+        informational: false
+    patch:
+      default:
+        informational: true
+
+flags:
+  monorepo:
+    paths:
+      - libs/ui
+      - libs/utils
+      - libs/api-clients
+      - apps/web
+
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
+  require_changes: false
+  require_head: true
