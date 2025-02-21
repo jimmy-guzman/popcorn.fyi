@@ -1,14 +1,15 @@
 import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Badge } from "@popcorn.fyi/ui/badge";
-import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { date } from "@popcorn.fyi/utils";
 import { Outlet } from "@tanstack/react-router";
+import { Suspense } from "react";
 
 import { MediaRating } from "../media/media-rating";
 import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
 import { ShareButton } from "../shared/share-button";
+import { WikipediaButton } from "./wikipedia-button";
 
 interface PersonDetailsProps {
   person: {
@@ -22,10 +23,9 @@ interface PersonDetailsProps {
     popularity: number;
     profile_path?: string;
   };
-  wikipediaUrl?: string | undefined;
 }
 
-export const PersonDetails = ({ person, wikipediaUrl }: PersonDetailsProps) => {
+export const PersonDetails = ({ person }: PersonDetailsProps) => {
   return (
     <div className="flex min-h-screen flex-col items-center gap-4">
       <Hero>
@@ -64,14 +64,11 @@ export const PersonDetails = ({ person, wikipediaUrl }: PersonDetailsProps) => {
               )}
             </Prose>
             <div className="flex justify-center gap-2 md:justify-start">
-              {wikipediaUrl ? (
-                <Button asChild color="neutral">
-                  <a href={wikipediaUrl} rel="noreferrer" target="_blank">
-                    <span className="sr-only md:not-sr-only">Wikipedia</span>{" "}
-                    <span className="icon-[simple-icons--wikipedia] h-5 w-5" />
-                  </a>
-                </Button>
-              ) : null}
+              <Suspense
+                fallback={<div className="dsy-skeleton h-10 w-10 md:w-32" />}
+              >
+                <WikipediaButton id={person.id} />
+              </Suspense>
               {person.name ? (
                 <ShareButton title={person.name} url={`/people/${person.id}`} />
               ) : null}

@@ -1,5 +1,5 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import { useSuspenseQueries } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import * as v from "valibot";
 
@@ -15,10 +15,11 @@ export const Route = createFileRoute("/_layout/movies/$id")({
   loader: async ({ context, params: { id } }) => {
     const movieId = v.parse(IdSchema, id);
 
-    const [data] = await Promise.all([
-      context.queryClient.ensureQueryData(movieDetailsOptions(movieId)),
-      context.queryClient.ensureQueryData(movieExternalOptions(movieId)),
-    ]);
+    const data = await context.queryClient.ensureQueryData(
+      movieDetailsOptions(movieId),
+    );
+
+    void context.queryClient.prefetchQuery(movieExternalOptions(movieId));
 
     return {
       seo: {
@@ -39,12 +40,9 @@ export const Route = createFileRoute("/_layout/movies/$id")({
 function RouteComponent() {
   const { id } = Route.useParams();
 
-  const [{ data: movie }, { data: ids }] = useSuspenseQueries({
-    queries: [
-      movieDetailsOptions(Number.parseInt(id)),
-      movieExternalOptions(Number.parseInt(id)),
-    ],
-  });
+  const { data: movie } = useSuspenseQuery(
+    movieDetailsOptions(v.parse(IdSchema, id)),
+  );
 
-  return <MovieDetails movie={movie} wikipediaUrl={ids.wikipedia_url} />;
+  return <MovieDetails movie={movie} />;
 }
