@@ -11,6 +11,7 @@ import { MediaStatus } from "../media/media-status";
 import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
 import { ShareButton } from "../shared/share-button";
+import { MovieDetailsTabs } from "./movie-details-tabs";
 
 interface MovieDetailsProps {
   movie: {
@@ -90,39 +91,7 @@ export const MovieDetails = ({ movie, wikipediaUrl }: MovieDetailsProps) => {
           </div>
         </HeroContent>
       </Hero>
-      <div className="dsy-tabs dsy-tabs-box w-full md:w-auto" role="tablist">
-        <Link
-          activeOptions={{ exact: true }}
-          activeProps={{ className: "dsy-tab-active" }}
-          className="dsy-tab"
-          hash="overview"
-          params={{ id: movie.id.toString() }}
-          role="tab"
-          to="/movies/$id"
-        >
-          Overview
-        </Link>
-        <Link
-          activeProps={{ className: "dsy-tab-active" }}
-          className="dsy-tab"
-          hash="cast"
-          params={{ id: movie.id.toString() }}
-          role="tab"
-          to="/movies/$id/credits"
-        >
-          Credits
-        </Link>
-        <Link
-          activeProps={{ className: "dsy-tab-active" }}
-          className="dsy-tab"
-          hash="providers"
-          params={{ id: movie.id.toString() }}
-          role="tab"
-          to="/movies/$id/watch"
-        >
-          Watch
-        </Link>
-      </div>
+      <MovieDetailsTabs id={movie.id.toString()} />
       <Outlet />
     </div>
   );
