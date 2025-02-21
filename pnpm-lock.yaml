@@ -129,8 +129,8 @@ importers:
         specifier: 1.4.23
         version: 1.4.23(@playwright/test@1.50.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@dotenvx/dotenvx':
-        specifier: 1.36.0
-        version: 1.36.0
+        specifier: 1.37.0
+        version: 1.37.0
       '@iconify-json/lucide':
         specifier: 1.2.26
         version: 1.2.26
@@ -156,8 +156,8 @@ importers:
         specifier: 5.66.8
         version: 5.66.8(@tanstack/react-query@5.66.8(react@19.0.0))(react@19.0.0)
       '@tanstack/router-devtools':
-        specifier: 1.109.0
-        version: 1.109.0(@tanstack/react-router@1.109.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(csstype@3.1.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 1.109.2
+        version: 1.109.2(@tanstack/react-router@1.109.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(csstype@3.1.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@testing-library/dom':
         specifier: 10.4.0
         version: 10.4.0
@@ -635,8 +635,8 @@ packages:
   '@dotenv-run/core@1.3.6':
     resolution: {integrity: sha512-lVfZc2DWu2P2rKyjrLDN9dw0gKHaFmNMdnrb7peoFv+LUmMxvp9QrWTzU585dU1z2Jj93a2Y3X2T890hAj+mcw==}
 
-  '@dotenvx/dotenvx@1.36.0':
-    resolution: {integrity: sha512-SCS+N/UdQcMwJCefvC32K5VD4kV19wC32eR2lJ0S+9gurNngJAK96BZBPcIHNTi0tEFa71DBUbiRQiD2+OVyIQ==}
+  '@dotenvx/dotenvx@1.37.0':
+    resolution: {integrity: sha512-AMPts6UnBQoJ+ash2M5MLSVETa0MZCY89p5msW+ojq7sbgM7R+H9Kmd8Gj1yTpcBoKbiOElWq5OLSHwG5nyCNg==}
     hasBin: true
 
   '@drizzle-team/brocli@0.10.2':
@@ -2430,11 +2430,11 @@ packages:
     resolution: {integrity: sha512-lo6Nqdp8gxWNZ8YZ6UhiQgR0CgcAiMaw1cxgKK7M4u3nFFwqW7Hzycl5ik1l3NRh5/pQVK+OVzlKok5rrrHxSg==}
     engines: {node: '>=12'}
 
-  '@tanstack/router-devtools@1.109.0':
-    resolution: {integrity: sha512-lPSiua8LJANLMQRQeFHtqA18JKOuyAM9z59w20MTzia2qyNi64+PdNhiRUe6oIFbDZt54uAMh+4eRWoKNYtQAg==}
+  '@tanstack/router-devtools@1.109.2':
+    resolution: {integrity: sha512-jz3o5srcbFSUTNJHvBlDGcAW+Q2YETbJAiCiSZ7sjaNhNd3odPwGw0JLc4Dh1mkL0Vp94L7eJdIBfmNMBuOR9w==}
     engines: {node: '>=12'}
     peerDependencies:
-      '@tanstack/react-router': ^1.109.0
+      '@tanstack/react-router': ^1.109.2
       csstype: ^3.0.10
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
@@ -6991,7 +6991,7 @@ snapshots:
       dotenv-expand: 10.0.0
       find-up: 5.0.0
 
-  '@dotenvx/dotenvx@1.36.0':
+  '@dotenvx/dotenvx@1.37.0':
     dependencies:
       commander: 11.1.0
       dotenv: 16.4.7
@@ -8508,7 +8508,7 @@ snapshots:
       '@tanstack/history': 1.99.13
       '@tanstack/store': 0.7.0
 
-  '@tanstack/router-devtools@1.109.0(@tanstack/react-router@1.109.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(csstype@3.1.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@tanstack/router-devtools@1.109.2(@tanstack/react-router@1.109.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(csstype@3.1.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@tanstack/react-router': 1.109.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       clsx: 2.1.1
