@@ -36,6 +36,7 @@ Explore movies, TV shows, and more with advanced filters, personalized recommend
 - **Type Checking:** [TypeScript](https://www.typescriptlang.org)
 - **Linting & Formatting:** [ESLint](https://eslint.org) (with [@jimmy.codes/eslint-config](https://github.com/jimmy-guzman/eslint-config)), [Prettier](https://prettier.io)
 - **Deployment:** [Vercel](https://vercel.com)
+- **Test Coverage Reporting:** [Codecov](https://about.codecov.io) for tracking test coverage and preventing regressions.
 
 ## 🎁 What's Inside?
 

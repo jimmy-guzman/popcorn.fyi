@@ -24,6 +24,7 @@ This balanced approach ensures robust coverage while maintaining speed and effic
 - **🔍 DOM Simulation:** [Happy DOM](https://github.com/capricorn86/happy-dom) to provide a lightweight DOM environment for faster testing.
 - **🎭 End-to-End (E2E) Testing:** [Playwright](https://playwright.dev/) for browser-based tests, ensuring the app behaves correctly in real-world scenarios.
 - **🛡️ Test Utilities:** Custom render utilities from **@/testing/utils** with **`userEvent`** from **@testing-library/user-event** for simulating realistic user interactions.
+- **📊 Coverage Threshold Regression Prevention:** [Codecov](https://about.codecov.io/) is used to track and enforce test coverage thresholds, ensuring new changes do not reduce overall test coverage.
 
 ## 🗂️ Test Organization
 
@@ -213,10 +214,29 @@ While the primary focus is on ensuring the app runs smoothly in **Chromium**, Pl
 
 To enforce best practices in testing—like preferring **`userEvent`** over `fireEvent` for more realistic simulations—I use [eslint-plugin-testing-library](https://github.com/testing-library/eslint-plugin-testing-library?tab=readme-ov-file#supported-rules). This ensures consistent testing patterns and helps catch potential anti-patterns early.
 
+## 📊 Coverage Threshold Regression Prevention with Codecov
+
+To prevent test regressions, we’ve integrated **Codecov** to track coverage changes over time and enforce coverage thresholds.
+
+### 🔄 How Codecov Works
+
+- **Automatic Coverage Reports:** Every pull request gets an automated test coverage report.
+- **⚡ Quick Insights:** PR comments highlight changes in coverage, making it easy to track improvements or regressions.
+- **📊 Enforced Coverage Thresholds:** If a PR drops test coverage below the configured threshold, it will be flagged, ensuring the project maintains strong test coverage over time.
+
+### 📊 Running Tests with Coverage
+
+To generate a coverage report locally:
+
+```bash
+pnpm coverage
+```
+
+Codecov will then process the coverage data and display reports in PRs, ensuring that test coverage remains consistent and does not regress.
+
 ## 🚀 Future Enhancements
 
 - **🖼️ Visual Regression Testing:** Adding tools like Percy or Chromatic to catch unintended UI changes in the **libs/ui** components.
-- **📊 Coverage Thresholds:** Implementing coverage threshold regression prevention with Vitest to ensure we don’t lose test coverage over time.
 - **♿ Accessibility Testing:** Integrating tools like [axe-core](https://github.com/dequelabs/axe-core) to ensure accessibility standards are met.
 
 ---
