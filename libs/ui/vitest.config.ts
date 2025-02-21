@@ -10,6 +10,7 @@ export default defineConfig({
         "**/*.stories.*",
         "postcss.config.*",
       ],
+      reporter: ["text", "json"],
     },
     environment: "happy-dom",
     globals: true,

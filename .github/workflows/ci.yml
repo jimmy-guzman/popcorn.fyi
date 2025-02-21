@@ -51,6 +51,19 @@ jobs:
       - name: ✔️ Check
         run: pnpm check
 
+      - name: 🔄 Merge Coverage Reports
+        run: |
+          pnpm dlx istanbul-merge --out coverage/coverage-final.json **/coverage/**/*.json
+
+      - name: ☁️ Upload to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/coverage-final.json
+          flags: monorepo
+          fail_ci_if_error: true
+          verbose: true
+
   e2e:
     name: "End-to-End"
     runs-on: ubuntu-latest
