@@ -11,6 +11,7 @@ import { MediaStatus } from "../media/media-status";
 import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
 import { ShareButton } from "../shared/share-button";
+import { TvShowDetailsTabs } from "./tv-show-details-tabs";
 
 interface TVShowDetailsProps {
   tvShow: {
@@ -93,39 +94,7 @@ export const TVShowDetails = ({ tvShow, wikipediaUrl }: TVShowDetailsProps) => {
           </div>
         </HeroContent>
       </Hero>
-      <div className="dsy-tabs dsy-tabs-box w-full md:w-auto" role="tablist">
-        <Link
-          activeOptions={{ exact: true }}
-          activeProps={{ className: "dsy-tab-active" }}
-          className="dsy-tab"
-          hash="overview"
-          params={{ id: tvShow.id.toString() }}
-          role="tab"
-          to="/tv-shows/$id"
-        >
-          Overview
-        </Link>
-        <Link
-          activeProps={{ className: "dsy-tab-active" }}
-          className="dsy-tab"
-          hash="cast"
-          params={{ id: tvShow.id.toString() }}
-          role="tab"
-          to="/tv-shows/$id/credits"
-        >
-          Credits
-        </Link>
-        <Link
-          activeProps={{ className: "dsy-tab-active" }}
-          className="dsy-tab"
-          hash="providers"
-          params={{ id: tvShow.id.toString() }}
-          role="tab"
-          to="/tv-shows/$id/watch"
-        >
-          Watch
-        </Link>
-      </div>
+      <TvShowDetailsTabs id={tvShow.id.toString()} />
       <Outlet />
     </div>
   );
