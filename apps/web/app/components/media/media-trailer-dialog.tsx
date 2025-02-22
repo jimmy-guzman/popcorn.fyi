@@ -25,6 +25,7 @@ export const MediaTrailerDialog = ({
         handleClose();
       }
     };
+
     globalThis.addEventListener("keydown", handleEsc);
 
     return () => {
