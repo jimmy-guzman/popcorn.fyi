@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@iconify-json/lucide": "1.2.26",
-    "@iconify-json/simple-icons": "1.2.25",
+    "@iconify-json/simple-icons": "1.2.26",
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
     "tailwindcss": "4.0.8",
@@ -23,6 +23,6 @@
   },
   "peerDependencies": {
     "@iconify-json/lucide": "1.2.26",
-    "@iconify-json/simple-icons": "1.2.25"
+    "@iconify-json/simple-icons": "1.2.26"
   }
 }
