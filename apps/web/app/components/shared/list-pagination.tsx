@@ -12,7 +12,11 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
   const pageNumbers = composePageNumbers(page, Math.min(totalPages, 500));
 
   return (
-    <div className="flex justify-center">
+    <div
+      aria-label="Pagination Navigation"
+      className="flex justify-center"
+      role="navigation"
+    >
       <div className="dsy-join">
         {page !== 1 && (
           <Button aria-label="Previous Page" asChild>
