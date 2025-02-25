@@ -4,7 +4,6 @@ export const TMDBLogo = ({ className }: { className?: string }) => {
       className={className}
       viewBox="0 0 273.42 35.52"
       xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
     >
       <defs>
         <style>{`.cls-1{fill:url(#linear-gradient);}`}</style>

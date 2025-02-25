@@ -9,7 +9,7 @@
 Explore movies, TV shows, and more with advanced filters, personalized recommendations, and a sleek UI.
 
 <p align="center">
-  <img src="./assets/discover-movies.png" alt="Discover Movies Page" width="600"/>
+  <img src="./assets/discover-movies.png" alt="Discover Movies Page" width="700"/>
 </p>
 
 ## 🛠 Tech Stack
