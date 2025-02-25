@@ -12,3 +12,7 @@ export const UserIdSchema = v.string();
 export const FavoriteIdSchema = v.string();
 
 export type FavoriteId = v.InferInput<typeof FavoriteIdSchema>;
+
+export const WatchlistIdSchema = v.string();
+
+export type WatchlistId = v.InferInput<typeof WatchlistIdSchema>;

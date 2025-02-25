@@ -11,6 +11,7 @@ import {
   exploreNav,
   favoritesNavItem,
   homeNavItem,
+  watchlistNavItem,
 } from "@/config/nav";
 import { site } from "@/config/site";
 
@@ -47,6 +48,7 @@ function LayoutComponent() {
                 <SiteNavMenuItemLink item={homeNavItem} />
               </li>
               <SiteNavMenuItem item={favoritesNavItem} />
+              <SiteNavMenuItem item={watchlistNavItem} />
               <div className="dsy-divider" />
               <h2 className="dsy-menu-title">Explore</h2>
               {exploreNav.items.map((item) => (

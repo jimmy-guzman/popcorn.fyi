@@ -13,6 +13,7 @@ import { MediaStatus } from "../media/media-status";
 import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
 import { ShareButton } from "../shared/share-button";
+import { Watch } from "../shared/watch";
 import { TvShowDetailsTabs } from "./tv-show-details-tabs";
 import { WikipediaButton } from "./wikipedia-button";
 
@@ -86,6 +87,9 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
               <SignedIn>
                 <Suspense fallback={<div className="dsy-skeleton h-10 w-10" />}>
                   <Favorite mediaType="tv" tmdbId={tvShow.id} />
+                </Suspense>
+                <Suspense fallback={<div className="dsy-skeleton h-10 w-10" />}>
+                  <Watch mediaType="tv" tmdbId={tvShow.id} />
                 </Suspense>
               </SignedIn>
             </div>

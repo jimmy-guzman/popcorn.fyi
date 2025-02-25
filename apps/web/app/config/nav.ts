@@ -1,13 +1,11 @@
 import type { FileRoutesByTo } from "@/routeTree.gen";
+
 /**
  * Represents a single navigation item with an icon, title, and route.
  */
 export interface SingleNavItem {
-  /** The icon associated with the navigation item */
   icon: string;
-  /** The display title of the navigation item */
   title: string;
-  /** The route path for the navigation item */
   to: keyof FileRoutesByTo;
 }
 
@@ -15,13 +13,9 @@ export interface SingleNavItem {
  * Represents a grouped navigation item that contains multiple sub-items.
  */
 export interface GroupedNavItem {
-  /** The icon representing the group of navigation items */
   icon: string;
-  /** The array of sub-items under this grouped navigation item */
   items: SingleNavItem[];
-  /** The display title of the grouped navigation item */
   title: string;
-  /** The route path for the grouped navigation item */
   to: string;
 }
 
@@ -63,6 +57,11 @@ export const categoryNav = {
           title: "Favorites",
           to: "/favorites/movies",
         },
+        {
+          icon: "icon-[lucide--eye]",
+          title: "Watchlist",
+          to: "/watch/movies",
+        },
       ],
       title: "Movies",
       to: "/movies",
@@ -94,6 +93,11 @@ export const categoryNav = {
           icon: "icon-[lucide--star]",
           title: "Favorites",
           to: "/favorites/tv-shows",
+        },
+        {
+          icon: "icon-[lucide--eye]",
+          title: "Watchlist",
+          to: "/watch/tv-shows",
         },
       ],
       title: "TV Shows",
@@ -153,6 +157,23 @@ export const favoritesNavItem = {
   ],
   title: "Favorites",
   to: "/favorites",
+} satisfies NavItem;
+
+/**
+ * Navigation configuration for accessing user watchlist.
+ */
+export const watchlistNavItem = {
+  icon: "icon-[lucide--eye]",
+  items: [
+    {
+      icon: "icon-[lucide--clapperboard]",
+      title: "Movies",
+      to: "/watch/movies",
+    },
+    { icon: "icon-[lucide--tv]", title: "TV Shows", to: "/watch/tv-shows" },
+  ],
+  title: "Watchlist",
+  to: "/watch",
 } satisfies NavItem;
 
 /**

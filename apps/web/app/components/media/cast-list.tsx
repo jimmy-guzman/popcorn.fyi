@@ -19,6 +19,7 @@ export const CastList = ({ cast }: CastListProps) => {
       {cast.map((person) => {
         return (
           <Link
+            aria-label={person.name}
             key={person.id}
             params={{ id: person.id.toString() }}
             to="/people/$id"
