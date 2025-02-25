@@ -15,6 +15,26 @@ updates:
         update-types:
           - "version-update:semver-major"
     groups:
+      eslint:
+        patterns:
+          - "eslint*"
+          - "prettier"
+          - "@*/prettier*"
+          - "@*/eslint*"
+      testing:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+          - "playwright"
+          - "testing-library/*"
+          - "happy-dom"
+          - "msw"
+      "tanstack-start":
+        patterns:
+          - "@tanstack/start"
+          - "@tanstack/react-router"
+          - "@tanstack/react-router-with-query"
+          - "@tanstack/router-devtools"
       "dev-deps":
         dependency-type: "development"
       "prod-deps":
