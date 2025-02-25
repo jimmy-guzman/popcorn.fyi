@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@clerk/testing": "1.4.23",
-    "@dotenvx/dotenvx": "1.38.2",
+    "@dotenvx/dotenvx": "1.38.3",
     "@iconify-json/lucide": "1.2.26",
     "@iconify-json/simple-icons": "1.2.26",
     "@playwright/test": "1.50.1",
