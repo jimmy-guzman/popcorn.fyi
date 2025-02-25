@@ -28,10 +28,10 @@
     "eslint": "9.21.0",
     "gitzy": "5.7.1",
     "jiti": "2.4.2",
-    "knip": "5.44.5",
-    "lefthook": "1.11.0",
+    "knip": "5.45.0",
+    "lefthook": "1.11.1",
     "prettier": "3.5.2",
-    "turbo": "2.4.2",
+    "turbo": "2.4.4",
     "typescript": "5.7.3",
     "vitest": "3.0.7"
   },
