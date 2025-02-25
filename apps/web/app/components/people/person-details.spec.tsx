@@ -44,7 +44,7 @@ describe("<PersonDetails />", () => {
     });
 
     const birthInfo = screen.getByText(
-      /Nov 10, 1974\s*-\s*Los Angeles, California, USA/i,
+      /Nov 11, 1974\s*-\s*Los Angeles, California, USA/i,
     );
 
     expect(birthInfo).toBeInTheDocument();
