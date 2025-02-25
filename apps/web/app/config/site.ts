@@ -77,6 +77,16 @@ export const site = {
         title: "Trending TV Shows",
       },
     },
+    watchlist: {
+      movies: {
+        description: "Your personal watchlist for movies you want to see.",
+        title: "Watchlist Movies",
+      },
+      tvShows: {
+        description: "Your personal watchlist for TV shows you want to watch.",
+        title: "Watchlist TV Shows",
+      },
+    },
   },
   title: "popcorn.fyi",
 };

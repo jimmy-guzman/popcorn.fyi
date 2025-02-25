@@ -26,7 +26,7 @@ export const MovieDetailsTabs = ({ id }: MovieDetailsTabsProps) => {
         role="tab"
         to="/movies/$id/watch"
       >
-        Watch
+        Providers
       </Link>
       <Link
         activeProps={{ className: "dsy-tab-active" }}

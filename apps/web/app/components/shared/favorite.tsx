@@ -74,6 +74,7 @@ export const Favorite = ({ mediaType, tmdbId }: FavoriteProps) => {
           removeFromFavorites.mutate(favorite.id);
         }}
       >
+        <span className="sr-only md:not-sr-only">Favorite</span>{" "}
         <span className="icon-[lucide--star-off] h-5 w-5" />
       </Button>
     </Tooltip>
@@ -86,6 +87,7 @@ export const Favorite = ({ mediaType, tmdbId }: FavoriteProps) => {
           addToFavorites.mutate({ mediaType, tmdbId, userId });
         }}
       >
+        <span className="sr-only md:not-sr-only">Favorite</span>{" "}
         <span className="icon-[lucide--star] h-5 w-5" />
       </Button>
     </Tooltip>
