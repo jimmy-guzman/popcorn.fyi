@@ -1,32 +1,44 @@
-import { useUser } from "@clerk/tanstack-start";
+import { useAuth } from "@clerk/tanstack-start";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Tooltip } from "@popcorn.fyi/ui/tooltip";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  useMutation,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/start";
 import { toast } from "sonner";
 
-import type { InsertFavorite } from "@/api/favorites";
 import type { MediaType } from "@/lib/types";
-import type { Id } from "@/schemas/id";
+import type { FavoriteId } from "@/schemas/id";
 
-import { addToFavoritesFn, removeFromFavoritesFn } from "@/api/favorites";
+import {
+  addToFavoritesFn,
+  findFavoriteFn,
+  removeFromFavoritesFn,
+} from "@/api/favorites";
 import { pluralMediaType } from "@/lib/plural-media-type";
 
 interface FavoriteProps {
-  favorite: boolean;
   mediaType: MediaType;
   tmdbId: number;
 }
 
-export const Favorite = ({ favorite, mediaType, tmdbId }: FavoriteProps) => {
-  const { isSignedIn, user } = useUser();
+export const Favorite = ({ mediaType, tmdbId }: FavoriteProps) => {
+  const { userId } = useAuth();
+  const getFavorite = useServerFn(findFavoriteFn);
+  const { data: favorite } = useSuspenseQuery({
+    queryFn: async () => getFavorite({ data: { tmdbId, userId } }),
+    queryKey: ["favorites", "details", { tmdbId, userId }],
+  });
   const queryClient = useQueryClient();
   const addToFavorites = useMutation({
-    mutationFn: async (data: InsertFavorite) => addToFavoritesFn({ data }),
+    mutationFn: async (data: unknown) => addToFavoritesFn({ data }),
     mutationKey: [mediaType, "favorites", "add", tmdbId],
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: [mediaType, "details", tmdbId],
+        queryKey: ["favorites", "details", { tmdbId, userId }],
       });
 
       toast.success("Added to Favorites.", {
@@ -42,42 +54,40 @@ export const Favorite = ({ favorite, mediaType, tmdbId }: FavoriteProps) => {
     },
   });
   const removeFromFavorites = useMutation({
-    mutationFn: async (id: Id) => removeFromFavoritesFn({ data: id }),
+    mutationFn: async (id: FavoriteId) => removeFromFavoritesFn({ data: id }),
     mutationKey: [mediaType, "favorites", "remove", tmdbId],
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: [mediaType, "details", tmdbId],
+        queryKey: ["favorites", "details", { tmdbId, userId }],
       });
 
       toast.success("Removed from Favorites.");
     },
   });
 
-  return isSignedIn ? (
-    favorite ? (
-      <Tooltip content="Remove From Favorites">
-        <Button
-          color="neutral"
-          disabled={removeFromFavorites.isPending}
-          onClick={() => {
-            removeFromFavorites.mutate(tmdbId);
-          }}
-        >
-          <span className="icon-[lucide--star-off] h-5 w-5" />
-        </Button>
-      </Tooltip>
-    ) : (
-      <Tooltip content="Add to favorites">
-        <Button
-          color="neutral"
-          disabled={addToFavorites.isPending}
-          onClick={() => {
-            addToFavorites.mutate({ mediaType, tmdbId, userId: user.id });
-          }}
-        >
-          <span className="icon-[lucide--star] h-5 w-5" />
-        </Button>
-      </Tooltip>
-    )
-  ) : null;
+  return favorite?.id ? (
+    <Tooltip content="Remove From Favorites">
+      <Button
+        color="neutral"
+        disabled={removeFromFavorites.isPending}
+        onClick={() => {
+          removeFromFavorites.mutate(favorite.id);
+        }}
+      >
+        <span className="icon-[lucide--star-off] h-5 w-5" />
+      </Button>
+    </Tooltip>
+  ) : (
+    <Tooltip content="Add to favorites">
+      <Button
+        color="neutral"
+        disabled={addToFavorites.isPending}
+        onClick={() => {
+          addToFavorites.mutate({ mediaType, tmdbId, userId });
+        }}
+      >
+        <span className="icon-[lucide--star] h-5 w-5" />
+      </Button>
+    </Tooltip>
+  );
 };

@@ -4,7 +4,6 @@ import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
-import { findFavoriteFn } from "@/api/favorites";
 import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
 
@@ -17,9 +16,7 @@ const tvDetailsFn = createServerFn({ method: "GET" })
       params: { path: { series_id: context.data } },
     });
 
-    const favorite = await findFavoriteFn(context);
-
-    return { ...rest, favorite: Boolean(favorite) };
+    return rest;
   });
 
 export const tvDetailsOptions = (id: Id) => {

@@ -1,25 +1,23 @@
-import { db, eq } from "@popcorn.fyi/db";
-import {
-  UserFavorites,
-  UserFavoritesInsertSchema,
-} from "@popcorn.fyi/db/user-favorites";
+import { db, eq, sql } from "@popcorn.fyi/db";
+import { Favorites, FavoritesInsertSchema } from "@popcorn.fyi/db/favorites";
 import { createServerFn } from "@tanstack/start";
 import * as v from "valibot";
 
-import type { Id } from "@/schemas/id";
+import type { FavoriteId } from "@/schemas/id";
 
-import { IdSchema, UserIdSchema } from "@/schemas/id";
+import { FavoriteIdSchema, IdSchema, UserIdSchema } from "@/schemas/id";
 
 import { client } from "../lib/tmdb";
 
 export const favoritePeopleFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => v.parse(UserIdSchema, data))
   .handler(async ({ data }) => {
-    const favorites = await db.query.UserFavorites.findMany({
-      where: (favorites, { and, eq }) => {
+    const favorites = await db.query.Favorites.findMany({
+      where: (favorites, { and, eq, isNull }) => {
         return and(
           eq(favorites.userId, data),
           eq(favorites.mediaType, "person"),
+          isNull(favorites.deletedAt),
         );
       },
     });
@@ -40,15 +38,15 @@ export const favoritePeopleFn = createServerFn({ method: "GET" })
       }),
     );
   });
-
 export const favoriteMoviesFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => v.parse(UserIdSchema, data))
   .handler(async ({ data }) => {
-    const favorites = await db.query.UserFavorites.findMany({
-      where: (favorites, { and, eq }) => {
+    const favorites = await db.query.Favorites.findMany({
+      where: (favorites, { and, eq, isNull }) => {
         return and(
           eq(favorites.userId, data),
           eq(favorites.mediaType, "movie"),
+          isNull(favorites.deletedAt),
         );
       },
     });
@@ -74,9 +72,13 @@ export const favoriteMoviesFn = createServerFn({ method: "GET" })
 export const favoriteTvShowsFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => v.parse(UserIdSchema, data))
   .handler(async ({ data }) => {
-    const favorites = await db.query.UserFavorites.findMany({
-      where: (favorites, { and, eq }) => {
-        return and(eq(favorites.userId, data), eq(favorites.mediaType, "tv"));
+    const favorites = await db.query.Favorites.findMany({
+      where: (favorites, { and, eq, isNull }) => {
+        return and(
+          eq(favorites.userId, data),
+          eq(favorites.mediaType, "tv"),
+          isNull(favorites.deletedAt),
+        );
       },
     });
 
@@ -98,24 +100,61 @@ export const favoriteTvShowsFn = createServerFn({ method: "GET" })
     );
   });
 
-export type InsertFavorite = v.InferInput<typeof UserFavoritesInsertSchema>;
-
 export const addToFavoritesFn = createServerFn({ method: "POST" })
-  .validator((data: InsertFavorite) => v.parse(UserFavoritesInsertSchema, data))
+  .validator((data: unknown) => v.parse(FavoritesInsertSchema, data))
   .handler(async ({ data }) => {
-    await db.insert(UserFavorites).values(data).returning();
+    const existingFavorite = await db.query.Favorites.findFirst({
+      where: (favorites, { and, eq }) => {
+        return and(
+          eq(favorites.userId, data.userId),
+          eq(favorites.mediaType, data.mediaType),
+          eq(favorites.tmdbId, data.tmdbId),
+        );
+      },
+    });
+
+    return existingFavorite
+      ? await db
+          .update(Favorites)
+          .set({ deletedAt: null })
+          .where(eq(Favorites.id, existingFavorite.id))
+          .returning()
+          .then((res) => res[0])
+      : await db
+          .insert(Favorites)
+          .values(data)
+          .returning()
+          .then((res) => res[0]);
   });
 
 export const removeFromFavoritesFn = createServerFn({ method: "POST" })
-  .validator((data: Id) => v.parse(IdSchema, data))
+  .validator((data: FavoriteId) => v.parse(FavoriteIdSchema, data))
   .handler(async ({ data }) => {
-    await db.delete(UserFavorites).where(eq(UserFavorites.tmdbId, data));
+    const result = await db
+      .update(Favorites)
+      .set({ deletedAt: sql`now()` })
+      .where(eq(Favorites.id, data))
+      .returning();
+
+    if (result.length === 0) {
+      throw new Error("Favorite does not exist or has already been removed.");
+    }
   });
 
+const FindFavoriteSchema = v.object({ tmdbId: IdSchema, userId: UserIdSchema });
+
 export const findFavoriteFn = createServerFn({ method: "GET" })
-  .validator((data: Id) => v.parse(IdSchema, data))
+  .validator((data: unknown) => v.parse(FindFavoriteSchema, data))
   .handler(async ({ data }) => {
-    return db.query.UserFavorites.findFirst({
-      where: (favorites, { eq }) => eq(favorites.tmdbId, data),
+    const favorite = await db.query.Favorites.findFirst({
+      where: (favorites, { and, eq, isNull }) => {
+        return and(
+          eq(favorites.userId, data.userId),
+          eq(favorites.tmdbId, data.tmdbId),
+          isNull(favorites.deletedAt),
+        );
+      },
     });
+
+    return favorite ?? null;
   });

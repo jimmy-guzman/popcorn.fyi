@@ -18,7 +18,10 @@ vi.mock("@clerk/tanstack-start", async () => {
   return {
     ...(await vi.importActual("@clerk/tanstack-start")),
     ClerkProvider: ({ children }: { children: React.ReactNode }) => children,
+    SignedIn: ({ children: _children }: { children: React.ReactNode }) =>
+      undefined,
     SignIn: () => <div data-testid="clerk-signin" />,
+    useAuth: () => vi.fn(),
     useUser: () => vi.fn(),
   };
 });

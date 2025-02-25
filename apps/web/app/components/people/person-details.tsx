@@ -1,3 +1,4 @@
+import { SignedIn } from "@clerk/tanstack-start";
 import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Badge } from "@popcorn.fyi/ui/badge";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
@@ -15,7 +16,6 @@ interface PersonDetailsProps {
   person: {
     biography?: string;
     birthday?: string;
-    favorite: boolean;
     id: number;
     known_for_department?: string;
     name?: string;
@@ -72,11 +72,11 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
               {person.name ? (
                 <ShareButton title={person.name} url={`/people/${person.id}`} />
               ) : null}
-              <Favorite
-                favorite={person.favorite}
-                mediaType="person"
-                tmdbId={person.id}
-              />
+              <SignedIn>
+                <Suspense fallback={<div className="dsy-skeleton h-10 w-10" />}>
+                  <Favorite mediaType="person" tmdbId={person.id} />
+                </Suspense>
+              </SignedIn>
             </div>
           </div>
         </HeroContent>
