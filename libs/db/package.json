@@ -3,7 +3,8 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./user-favorites": "./src/schemas/user-favorites.ts"
+    "./favorites": "./src/schemas/favorites.ts",
+    "./watchlist": "./src/schemas/watchlist.ts"
   },
   "scripts": {
     "lint": "eslint --cache .",

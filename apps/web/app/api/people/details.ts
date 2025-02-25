@@ -7,8 +7,6 @@ import type { Id } from "@/schemas/id";
 import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
 
-import { findFavoriteFn } from "../favorites";
-
 const personDetailsFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
@@ -20,9 +18,7 @@ const personDetailsFn = createServerFn({ method: "GET" })
       },
     });
 
-    const favorite = await findFavoriteFn(context);
-
-    return { ...rest, favorite: Boolean(favorite) };
+    return rest;
   });
 
 export const personDetailsOptions = (id: Id) => {

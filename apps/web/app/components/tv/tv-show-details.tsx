@@ -1,3 +1,4 @@
+import { SignedIn } from "@clerk/tanstack-start";
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
@@ -18,7 +19,6 @@ import { WikipediaButton } from "./wikipedia-button";
 interface TVShowDetailsProps {
   tvShow: {
     backdrop_path?: string;
-    favorite: boolean;
     genres?: { id: number; name?: string }[];
     id: number;
     name?: string;
@@ -83,11 +83,11 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
                   url={`/tv-shows/${tvShow.id}`}
                 />
               ) : null}
-              <Favorite
-                favorite={tvShow.favorite}
-                mediaType="tv"
-                tmdbId={tvShow.id}
-              />
+              <SignedIn>
+                <Suspense fallback={<div className="dsy-skeleton h-10 w-10" />}>
+                  <Favorite mediaType="tv" tmdbId={tvShow.id} />
+                </Suspense>
+              </SignedIn>
             </div>
           </div>
         </HeroContent>

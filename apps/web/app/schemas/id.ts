@@ -8,3 +8,7 @@ export const IdSchema = v.pipe(
 export type Id = v.InferInput<typeof IdSchema>;
 
 export const UserIdSchema = v.string();
+
+export const FavoriteIdSchema = v.string();
+
+export type FavoriteId = v.InferInput<typeof FavoriteIdSchema>;
