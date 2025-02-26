@@ -1,6 +1,6 @@
 import { db, eq, sql } from "@popcorn.fyi/db";
 import { Watchlist, WatchlistInsertSchema } from "@popcorn.fyi/db/watchlist";
-import { createServerFn } from "@tanstack/start";
+import { createServerFn } from "@tanstack/react-start";
 import * as v from "valibot";
 
 import type { WatchlistId } from "@/schemas/id";
