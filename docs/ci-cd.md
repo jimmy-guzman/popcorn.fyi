@@ -2,7 +2,7 @@
 
 ## 🔍 Overview
 
-When I set out to build _popcorn.fyi_, I knew I wanted a CI/CD setup that was fast, reliable, and easy to maintain—basically something that wouldn't get in the way but would still keep the codebase in top shape. So, I leaned into **GitHub Actions** for the CI/CD pipeline and **Vercel** for deployments. The pipeline handles everything from code checks and linting to end-to-end testing, dependency updates, test coverage tracking, and seamless deployments.
+When I set out to build _popcorn.fyi_, I knew I wanted a CI/CD setup that was fast, reliable, and easy to maintain—basically something that wouldn't get in the way but would still keep the codebase in top shape. So, I leaned into **GitHub Actions** for the CI/CD pipeline and **Vercel** for deployments. The pipeline handles everything from **code checks, linting, end-to-end testing, dependency updates, test coverage tracking, PR labeling, and seamless deployments**.
 
 ## 🏗️ Architecture
 
@@ -11,8 +11,9 @@ Here’s the high-level view of how everything fits together:
 1. **🔧 Version Control:** The entire project lives on GitHub.
 2. **🔄 Continuous Integration (CI):** Every pull request triggers GitHub Actions workflows to ensure code quality.
 3. **📦 Dependency Management:** Dependabot keeps dependencies fresh, with auto-approval and auto-merge workflows.
-4. **📊 Test Coverage Tracking:** Code coverage reports are merged and uploaded to Codecov to track test quality.
-5. **🚚 Continuous Deployment (CD):** Any successful merge to `main` gets automatically deployed to Vercel—because who wants to click deploy buttons?
+4. **🏷️ Automated PR Labeling:** GitHub Labeler automatically categorizes PRs based on the modified files.
+5. **📊 Test Coverage Tracking:** Code coverage reports are merged and uploaded to Codecov to track test quality.
+6. **🚚 Continuous Deployment (CD):** Any successful merge to `main` gets automatically deployed to Vercel—because who wants to click deploy buttons?
 
 ## 🔁 Workflow Breakdown
 
@@ -26,7 +27,17 @@ Every time a pull request is opened, the CI workflow kicks in to make sure every
 
 [View CI Workflow](/.github/workflows/ci.yml)
 
-### 2. **📦 Dependabot Workflow**
+### 2. **🏷️ PR Labeling Workflow**
+
+Managing pull requests can be tedious, so **GitHub Actions Labeler** automatically categorizes PRs based on which files were changed.
+
+- **🔄 Auto-label PRs** based on modified files (e.g., changes in `libs/api-clients/` get a `lib:api-clients` label).
+- **📂 Workspace-based labeling** ensures each PR gets a relevant tag without manual effort.
+- **❌ Syncs labels**—removes outdated ones if a PR changes.
+
+[View Labeler Workflow](/.github/workflows/label-prs.yml)
+
+### 3. **📦 Dependabot Workflow**
 
 No one likes outdated dependencies, but manually updating them is a pain. Enter Dependabot. This workflow handles:
 
@@ -35,7 +46,7 @@ No one likes outdated dependencies, but manually updating them is a pain. Enter 
 
 [View Dependabot Workflow](/.github/workflows/dependabot.yml)
 
-### 3. **🚚 CD Workflow**
+### 4. **🚚 CD Workflow**
 
 Whenever a PR is merged into `main`, the CD workflow takes over.
 
@@ -60,6 +71,7 @@ Here’s what makes this CI/CD setup tick:
 - **📦 Dependency Caching:** `pnpm` store caching reduces install times.
 - **☂️ Code Coverage Reports:** Coverage data is merged and uploaded to Codecov to track test health.
 - **📊 Playwright Reports:** Test reports are automatically uploaded for review.
+- **🏷️ Automated PR Labeling:** Labeler ensures every PR is categorized based on modified files.
 - **🤖 Automated Dependency Management:** Dependabot handles updates with auto-approve and auto-merge, so you don’t have to.
 
 ## 📈 CI/CD Workflow Diagram
@@ -69,14 +81,25 @@ Here’s a visual of how it all flows:
 ```mermaid
 flowchart LR
   A[💻 Code Push or PR Opened] -->|Trigger CI Workflow| B[📝 Code Check]
+  A -->|🏷️ Label PR| L[🏷️ PR Auto-Labeling]
   A -->|🔧 Dependabot PR| C[✅ Auto-Approve & 🔀 Auto-Merge]
+
   B --> D[🛠️ Format, Static Analysis, Type Check]
   B --> E[☂️ Coverage Report Merge & Upload]
   B --> F[🌐 End-to-End Tests]
+
+  subgraph "⚡ Caching Optimizations"
+    X[🔄 Restore pnpm Cache]
+    Y[🚀 TurboRepo Remote Cache]
+  end
+
+  X & Y --> D & E & F
+
   D & E & F -->|✔️ All Checks Pass| G[🔀 Merge to Main]
   G -->|Trigger CD Workflow| H[🔁 Re-run CI Checks]
   H --> I[🚀 Deploy to Vercel]
   I --> J[🎉 Production Deployment]
+
 ```
 
 ## 🔮 Future Enhancements
