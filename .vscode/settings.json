@@ -59,5 +59,10 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
-  "vitest.workspaceConfig": ""
+  "vitest.workspaceConfig": "",
+  "yaml.schemas": {
+    "https://json.schemastore.org/pull-request-labeler-5.json": [
+      ".github/labeler.yml"
+    ]
+  }
 }
