@@ -35,13 +35,22 @@
     "typescript": "5.7.3",
     "vitest": "3.0.7"
   },
-  "packageManager": "pnpm@9.15.5",
+  "packageManager": "pnpm@10.5.0",
   "engines": {
     "node": ">= 22"
   },
   "pnpm": {
+    "onlyBuiltDependencies": [
+      "@clerk/shared",
+      "@parcel/watcher",
+      "@vercel/speed-insights",
+      "bufferutil",
+      "esbuild",
+      "lefthook",
+      "msw"
+    ],
     "patchedDependencies": {
-      "openapi-fetch": "patches/openapi-fetch.patch"
+      "openapi-fetch@0.13.4": "patches/openapi-fetch@0.13.4.patch"
     }
   }
 }
