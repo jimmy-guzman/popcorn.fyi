@@ -1,0 +1,24 @@
+---
+"app:popcorn.fyi":
+  - apps/web/**
+
+"lib:api-clients":
+  - libs/api-clients/**
+
+"lib:db":
+  - libs/db/**
+
+"lib:ui":
+  - libs/ui/**
+
+"lib:utils":
+  - libs/utils/**
+
+"config:eslint":
+  - configs/eslint/**
+
+"config:tailwind":
+  - configs/tailwind/**
+
+"config:typescript":
+  - configs/ts/**
