@@ -7,7 +7,7 @@ import {
   useSuspenseQuery,
 } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/start";
+import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 
 import type { MediaType } from "@/lib/types";

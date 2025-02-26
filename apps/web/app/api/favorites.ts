@@ -1,6 +1,6 @@
 import { db, eq, sql } from "@popcorn.fyi/db";
 import { Favorites, FavoritesInsertSchema } from "@popcorn.fyi/db/favorites";
-import { createServerFn } from "@tanstack/start";
+import { createServerFn } from "@tanstack/react-start";
 import * as v from "valibot";
 
 import type { FavoriteId } from "@/schemas/id";

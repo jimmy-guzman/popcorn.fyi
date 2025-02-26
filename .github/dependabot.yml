@@ -31,7 +31,7 @@ updates:
           - "msw"
       "tanstack-start":
         patterns:
-          - "@tanstack/start"
+          - "@tanstack/react-start"
           - "@tanstack/react-router"
           - "@tanstack/react-router-with-query"
           - "@tanstack/router-devtools"
