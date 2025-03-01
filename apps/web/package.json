@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vinxi build",
     "coverage": "vitest run --coverage",
-    "dev": "vinxi dev --clearScreen false",
+    "dev": "dotenv-run -- vinxi dev --clearScreen false",
     "e2e": "dotenv-run -- playwright test",
     "e2e:ui": "dotenv-run -- playwright test --ui",
     "lint": "eslint --cache .",
@@ -34,6 +34,7 @@
     "react-dom": "19.0.0",
     "react-hook-form": "7.54.2",
     "sonner": "2.0.1",
+    "tiny-lru": "11.2.11",
     "use-debounce": "10.0.4",
     "valibot": "1.0.0-rc.2",
     "vaul": "1.1.2",

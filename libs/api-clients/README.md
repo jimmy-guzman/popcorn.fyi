@@ -1,8 +1,8 @@
-# @popcorn.fyi/api-clients
+# **@popcorn.fyi/api-clients**
 
-A collection of API clients for fetching media-related data from The Movie Database (TMDB) and Wikidata. This package is part of the [popcorn.fyi](https://popcornfyi.vercel.app) monorepo.
+A collection of API clients for fetching **media-related data** from **The Movie Database (TMDB)**, **Wikidata**, and **OpenAI**. This package is part of the [popcorn.fyi](https://popcornfyi.vercel.app) monorepo.
 
-## Installation
+## **Installation**
 
 From the root of the monorepo, run:
 
@@ -10,11 +10,13 @@ From the root of the monorepo, run:
 pnpm add @popcorn.fyi/api-clients
 ```
 
-## Available Clients
+---
 
-### TMDB API (v3)
+## **Available Clients**
 
-Provides access to The Movie Database API v3 for retrieving movie, TV show, and person data.
+### **TMDB API (v3)**
+
+Provides access to **The Movie Database API v3** for retrieving **movie, TV show, and person data**.
 
 **Import:**
 
@@ -22,9 +24,11 @@ Provides access to The Movie Database API v3 for retrieving movie, TV show, and 
 import { setupClient } from "@popcorn.fyi/api-clients/tmdb-v3";
 ```
 
-### Wikidata API
+---
 
-Allows querying Wikidata for additional media-related metadata.
+### **Wikidata API**
+
+Allows querying **Wikidata** for **additional media-related metadata**.
 
 **Import:**
 
@@ -32,7 +36,21 @@ Allows querying Wikidata for additional media-related metadata.
 import { setupClient } from "@popcorn.fyi/api-clients/wikidata";
 ```
 
-## Utilities
+---
+
+### **OpenAI API (AI-Powered Summaries)**
+
+Used to **generate expanded movie plot summaries** with **spoiler control**, powered by **GPT-based models**.
+
+**Import:**
+
+```ts
+import { setupClient } from "@popcorn.fyi/api-clients/openai";
+```
+
+---
+
+## **Utilities**
 
 Shared utilities for working with API data.
 
@@ -42,12 +60,14 @@ Shared utilities for working with API data.
 import { someUtility } from "@popcorn.fyi/api-clients/utils";
 ```
 
-## Scripts
+---
+
+## **Scripts**
 
 Run these from the root of the monorepo:
 
-- `pnpm --filter @popcorn.fyi/api-clients run gen` - Generates TypeScript types from OpenAPI specs.
-- `pnpm --filter @popcorn.fyi/api-clients run test` - Runs tests with Vitest.
-- `pnpm --filter @popcorn.fyi/api-clients run coverage` - Runs tests and outputs coverage.
+- `pnpm --filter @popcorn.fyi/api-clients run gen` - Generates **TypeScript types** from OpenAPI specs.
+- `pnpm --filter @popcorn.fyi/api-clients run test` - Runs tests with **Vitest**.
+- `pnpm --filter @popcorn.fyi/api-clients run coverage` - Runs tests and outputs **coverage reports**.
 - `pnpm --filter @popcorn.fyi/api-clients run lint` - Lints the codebase.
-- `pnpm --filter @popcorn.fyi/api-clients run typecheck` - Checks TypeScript types.
+- `pnpm --filter @popcorn.fyi/api-clients run typecheck` - **Ensures TypeScript correctness**.

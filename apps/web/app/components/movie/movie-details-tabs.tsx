@@ -31,12 +31,22 @@ export const MovieDetailsTabs = ({ id }: MovieDetailsTabsProps) => {
       <Link
         activeProps={{ className: "dsy-tab-active" }}
         className="dsy-tab"
-        hash="providers"
+        hash="similar"
         params={{ id }}
         role="tab"
         to="/movies/$id/similar"
       >
         Similar
+      </Link>
+      <Link
+        activeProps={{ className: "dsy-tab-active" }}
+        className="dsy-tab"
+        hash="expanded"
+        params={{ id }}
+        role="tab"
+        to="/movies/$id/plot"
+      >
+        Plot
       </Link>
       <Link
         activeProps={{ className: "dsy-tab-active" }}
