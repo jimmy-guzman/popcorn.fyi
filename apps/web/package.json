@@ -15,7 +15,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@clerk/tanstack-start": "0.11.0",
+    "@clerk/tanstack-start": "0.11.1",
     "@clerk/themes": "2.2.20",
     "@hookform/resolvers": "4.1.2",
     "@popcorn.fyi/api-clients": "workspace:*",
