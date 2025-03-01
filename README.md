@@ -4,6 +4,14 @@
 >
 > **[Check out the live app here!](https://popcornfyi.vercel.app)**
 
+## 🏆 Features
+
+✅ **AI-Generated Expanded Plot Summaries** – See a **structured breakdown** of a movie’s story with **spoiler control**.  
+✅ **Discover Movies & TV Shows** – Browse trending, popular, and personalized recommendations.  
+✅ **Filter & Sort** – Advanced filters for **genres, ratings, and release year**.  
+✅ **User Accounts** – **Save favorites** and **track your watched content** (powered by Clerk).  
+✅ **Fast & Modular UI** – Built with **TanStack Start**, **daisyUI**, and **Tailwind CSS** for a responsive and smooth experience.
+
 ## 🎥 Demo
 
 Explore movies, TV shows, and more with advanced filters, personalized recommendations, and a sleek UI.
@@ -25,9 +33,11 @@ Explore movies, TV shows, and more with advanced filters, personalized recommend
 
 ### **Backend**
 
+- **AI-Powered Summaries:** [OpenAI](https://platform.openai.com/) is used to generate **expanded movie plot summaries** with **spoiler control**.
 - **Database:** [PostgreSQL](https://www.postgresql.org) (hosted on [Neon](https://neon.tech))
 - **ORM:** [Drizzle ORM](https://orm.drizzle.team)
 - **API Integration:** [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started), [Wikidata API](https://www.wikidata.org/w/api.php)
+- **Caching:** Uses **LRU caching** with **dynamic TTL** based on movie release date.
 
 ### **Tooling & DevOps**
 
@@ -49,7 +59,7 @@ A [Turborepo](https://turbo.build/repo) containing [apps](#-apps), [libs](#-libs
 ### 📦 Libs
 
 - [**@popcorn.fyi/ui**](./libs/ui/README.md): A reusable component library powered by [daisyUI](https://daisyui.com) and styled with Tailwind CSS. It also includes [Storybook](https://storybook.js.org) for easy component development and testing.
-- [**@popcorn.fyi/api-clients**](./libs/api-clients/README.md): A client library for interacting with the [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started) and [Wikidata API](https://www.wikidata.org/w/api.php), providing typed requests and seamless integration with the web app.
+- [**@popcorn.fyi/api-clients**](./libs/api-clients/README.md): A client library for interacting with the [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started), [Wikidata API](https://www.wikidata.org/w/api.php), and [OpenAI API](https://platform.openai.com/docs) to fetch movie data, metadata, and generate AI-powered expanded plot summaries. It provides **typed requests** and **seamless integration** with the web app.
 - [**@popcorn.fyi/db**](./libs/db/README.md): Manages database interactions using [drizzle](https://orm.drizzle.team) ORM and [neon](https://neon.tech) for serverless PostgreSQL hosting.
 - [**@popcorn.fyi/utils**](./libs/utils/README.md): A collection of utility functions to simplify common tasks across the codebase.
 
@@ -88,6 +98,7 @@ cp apps/web/.env.example apps/web/.env
 | `VITE_CLERK_PUBLISHABLE_KEY` | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys)              |
 | `CLERK_SECRET_KEY`           | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys)              |
 | `DATABASE_URL`               | [Getting Started with Neon](https://neon.tech/docs/get-started-with-neon/signing-up) |
+| `OPENAI_API_KEY`             | [Getting started with OpenAI](https://platform.openai.com/docs/quickstart)           |
 
 Start the development server with the following command:
 
