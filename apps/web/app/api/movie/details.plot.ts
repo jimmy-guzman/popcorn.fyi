@@ -61,7 +61,7 @@ const generateAISummaries = async (metadata: MovieMetadata) => {
   return summaries;
 };
 
-const movieSummaries = createServerFn({ method: "GET" })
+const moviePlot = createServerFn({ method: "GET" })
   .validator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const data = await movieDetailsFn(context);
@@ -69,9 +69,9 @@ const movieSummaries = createServerFn({ method: "GET" })
     return generateAISummaries(data);
   });
 
-export const movieSummariesOptions = (id: Id) => {
+export const moviePlotOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => movieSummaries({ data: id }),
+    queryFn: () => moviePlot({ data: id }),
     queryKey: ["movie", "details", id, "plot"],
   });
 };
