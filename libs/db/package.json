@@ -3,13 +3,13 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./favorites": "./src/schemas/favorites.ts",
-    "./watchlist": "./src/schemas/watchlist.ts"
+    "./media": "./src/schemas/media.ts",
+    "./media-list": "./src/schemas/media-list.ts"
   },
   "scripts": {
     "lint": "eslint --cache .",
     "push": "dotenv-run -- drizzle-kit push",
-    "studio": "drizzle-kit studio",
+    "studio": "dotenv-run -- drizzle-kit studio",
     "typecheck": "tsc"
   },
   "dependencies": {

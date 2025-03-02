@@ -1,2 +1,2 @@
-export { Favorites } from "./favorites";
-export { Watchlist } from "./watchlist";
+export { Media } from "./media";
+export { mediaListRelations, mediaRelations } from "./relations";

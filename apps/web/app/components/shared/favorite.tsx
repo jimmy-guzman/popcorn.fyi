@@ -65,13 +65,13 @@ export const Favorite = ({ mediaType, tmdbId }: FavoriteProps) => {
     },
   });
 
-  return favorite?.id ? (
+  return favorite?.favoriteId ? (
     <Tooltip content="Remove From Favorites">
       <Button
         color="neutral"
         disabled={removeFromFavorites.isPending}
         onClick={() => {
-          removeFromFavorites.mutate(favorite.id);
+          removeFromFavorites.mutate(favorite.favoriteId);
         }}
       >
         <span className="sr-only md:not-sr-only">Favorite</span>{" "}

@@ -64,13 +64,13 @@ export const Watch = ({ mediaType, tmdbId }: WatchProps) => {
     },
   });
 
-  return watchlistItem?.id ? (
+  return watchlistItem?.watchlistId ? (
     <Tooltip content="Remove From Watchlist">
       <Button
         color="neutral"
         disabled={removeFromWatchlist.isPending}
         onClick={() => {
-          removeFromWatchlist.mutate(watchlistItem.id);
+          removeFromWatchlist.mutate(watchlistItem.watchlistId);
         }}
       >
         <span className="sr-only md:not-sr-only">Watchlist</span>{" "}
