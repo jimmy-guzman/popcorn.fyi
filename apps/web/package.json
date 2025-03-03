@@ -17,7 +17,7 @@
   "dependencies": {
     "@clerk/tanstack-start": "0.11.1",
     "@clerk/themes": "2.2.20",
-    "@hookform/resolvers": "4.1.2",
+    "@hookform/resolvers": "4.1.3",
     "@popcorn.fyi/api-clients": "workspace:*",
     "@popcorn.fyi/db": "workspace:*",
     "@popcorn.fyi/ui": "workspace:*",
