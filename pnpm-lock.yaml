@@ -29,8 +29,8 @@ importers:
         specifier: 9.21.0
         version: 9.21.0(jiti@2.4.2)
       gitzy:
-        specifier: 5.7.1
-        version: 5.7.1
+        specifier: 5.8.0
+        version: 5.8.0
       jiti:
         specifier: 2.4.2
         version: 2.4.2
@@ -135,11 +135,11 @@ importers:
         specifier: 1.38.3
         version: 1.38.3
       '@iconify-json/lucide':
+        specifier: 1.2.28
+        version: 1.2.28
+      '@iconify-json/simple-icons':
         specifier: 1.2.27
         version: 1.2.27
-      '@iconify-json/simple-icons':
-        specifier: 1.2.26
-        version: 1.2.26
       '@playwright/test':
         specifier: 1.50.1
         version: 1.50.1
@@ -242,11 +242,11 @@ importers:
         version: 5.0.0
     devDependencies:
       '@iconify-json/lucide':
+        specifier: 1.2.28
+        version: 1.2.28
+      '@iconify-json/simple-icons':
         specifier: 1.2.27
         version: 1.2.27
-      '@iconify-json/simple-icons':
-        specifier: 1.2.26
-        version: 1.2.26
       '@popcorn.fyi/eslint':
         specifier: workspace:*
         version: link:../eslint
@@ -1439,11 +1439,11 @@ packages:
     resolution: {integrity: sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify-json/lucide@1.2.27':
-    resolution: {integrity: sha512-Q1Msf39/6TuY3DL9vKkrAbGaK7/28E0/9oWnwcgfSQ9zJvOV1bY9OzK14vIBIqtaGyYI5st/wwNiJNi+16WEkQ==}
+  '@iconify-json/lucide@1.2.28':
+    resolution: {integrity: sha512-SPeAoh1YKhALpNSto/FBspf3GZ0eAr3ka/OI7cJJ5HljLzycIITv0s4Rd2+sRVzFtD1I991mJJmYohQeOSZ+Og==}
 
-  '@iconify-json/simple-icons@1.2.26':
-    resolution: {integrity: sha512-NvqRuE+5h/tp4boPlnvfs0alD0CvnRE7oeG9Li5NGmZRx2/rhwlNjW/vEVTyhZcR9zqvRPAVh2GXR+PTEpzV+A==}
+  '@iconify-json/simple-icons@1.2.27':
+    resolution: {integrity: sha512-FtZwp/H7ih5rY9FPfDR+k6toOo/cuwpHWY8faNhxLs5O5uW6Q8TeqdNWfjVfgFtrs5tUUzWysjqNGL234v8EMA==}
 
   '@iconify/tailwind4@1.0.6':
     resolution: {integrity: sha512-43ZXe+bC7CuE2LCgROdqbQeFYJi/J7L/k1UpSy8KDQlWVsWxPzLSWbWhlJx4uRYLOh1NRyw02YlDOgzBOFNd+A==}
@@ -4307,8 +4307,8 @@ packages:
     resolution: {integrity: sha512-Wv+daGyispVoA31TrWAVR+aAdP7roubTPEM/8JzRnqXhLbdJH0T9eQyXVFF8fjk3WKTsctII6QcyxILYgNp2DA==}
     hasBin: true
 
-  gitzy@5.7.1:
-    resolution: {integrity: sha512-2T33lH+t9U+01sw0LyV6y//cIDqGkTLiwBGzhjkEXmgGyuk4ZLsQJD11wcNg77vDhNxHXs3sIzfsjNO3F4dsKQ==}
+  gitzy@5.8.0:
+    resolution: {integrity: sha512-ptqsCDn8qX90n95ipEKdL+paW7+aKrkvHE+5sEvSuniB3vvuCGM1G480M0gGiUmDV4EGkgUf53ve8JIFlAbbMA==}
     engines: {node: '>= 18'}
     hasBin: true
 
@@ -7659,11 +7659,11 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.2': {}
 
-  '@iconify-json/lucide@1.2.27':
+  '@iconify-json/lucide@1.2.28':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/simple-icons@1.2.26':
+  '@iconify-json/simple-icons@1.2.27':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -11366,7 +11366,7 @@ snapshots:
       pathe: 2.0.3
       tar: 6.2.1
 
-  gitzy@5.7.1:
+  gitzy@5.8.0:
     dependencies:
       commander: 12.1.0
       enquirer: 2.3.6
