@@ -119,8 +119,8 @@ importers:
         specifier: 10.0.4
         version: 10.0.4(react@19.0.0)
       valibot:
-        specifier: 1.0.0-rc.2
-        version: 1.0.0-rc.2(typescript@5.7.3)
+        specifier: 1.0.0-rc.3
+        version: 1.0.0-rc.3(typescript@5.7.3)
       vaul:
         specifier: 1.1.2
         version: 1.1.2(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -294,7 +294,7 @@ importers:
         version: 0.40.0(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(gel@2.0.0)
       drizzle-valibot:
         specifier: 0.4.0
-        version: 0.4.0(drizzle-orm@0.40.0(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(gel@2.0.0))(valibot@1.0.0-rc.2(typescript@5.7.3))
+        version: 0.4.0(drizzle-orm@0.40.0(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(gel@2.0.0))(valibot@1.0.0-rc.3(typescript@5.7.3))
       ws:
         specifier: 8.18.1
         version: 8.18.1(bufferutil@4.0.9)
@@ -6573,8 +6573,8 @@ packages:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
 
-  valibot@1.0.0-rc.2:
-    resolution: {integrity: sha512-Tnnp7dydpihvoUbJiaxuYfsCAgAFKuFMex7PTaI25XSjRWkU70DmJPlAO1W6sF1/WUx4RNWyM2hdmBSMIUSZFA==}
+  valibot@1.0.0-rc.3:
+    resolution: {integrity: sha512-LT0REa7Iqx4QGcaHLiTiTkcmJqJ9QdpOy89HALFFBJgejTS64GQFRIbDF7e4f6pauQbo/myfKGmWXCLhMeM6+g==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -10503,10 +10503,10 @@ snapshots:
       '@types/pg': 8.11.6
       gel: 2.0.0
 
-  drizzle-valibot@0.4.0(drizzle-orm@0.40.0(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(gel@2.0.0))(valibot@1.0.0-rc.2(typescript@5.7.3)):
+  drizzle-valibot@0.4.0(drizzle-orm@0.40.0(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(gel@2.0.0))(valibot@1.0.0-rc.3(typescript@5.7.3)):
     dependencies:
       drizzle-orm: 0.40.0(@neondatabase/serverless@0.10.4)(@types/pg@8.11.6)(gel@2.0.0)
-      valibot: 1.0.0-rc.2(typescript@5.7.3)
+      valibot: 1.0.0-rc.3(typescript@5.7.3)
 
   dunder-proto@1.0.1:
     dependencies:
@@ -13686,7 +13686,7 @@ snapshots:
 
   uuid@9.0.1: {}
 
-  valibot@1.0.0-rc.2(typescript@5.7.3):
+  valibot@1.0.0-rc.3(typescript@5.7.3):
     optionalDependencies:
       typescript: 5.7.3
 
