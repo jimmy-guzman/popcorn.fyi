@@ -41,8 +41,8 @@
     "vinxi": "0.5.3"
   },
   "devDependencies": {
-    "@clerk/testing": "1.4.24",
-    "@dotenvx/dotenvx": "1.38.3",
+    "@clerk/testing": "1.4.25",
+    "@dotenvx/dotenvx": "1.38.4",
     "@iconify-json/lucide": "1.2.28",
     "@iconify-json/simple-icons": "1.2.27",
     "@playwright/test": "1.50.1",
