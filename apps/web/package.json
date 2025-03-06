@@ -49,7 +49,7 @@
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/tailwind": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
-    "@tailwindcss/postcss": "4.0.9",
+    "@tailwindcss/postcss": "4.0.10",
     "@tanstack/react-query-devtools": "5.67.1",
     "@tanstack/router-devtools": "1.112.11",
     "@testing-library/dom": "10.4.0",
@@ -66,7 +66,7 @@
     "msw": "2.7.3",
     "picocolors": "1.1.1",
     "postcss": "8.5.3",
-    "tailwindcss": "4.0.9",
+    "tailwindcss": "4.0.10",
     "vite": "6.2.0",
     "vite-tsconfig-paths": "5.1.4"
   }
