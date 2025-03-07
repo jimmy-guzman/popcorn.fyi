@@ -1,17 +1,17 @@
 import { openai } from "@popcorn.fyi/api-clients/openai";
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import { lru } from "tiny-lru";
 import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 import type { Summaries } from "@/schemas/summaries";
 
+import cache from "@/lib/cache";
 import { IdSchema } from "@/schemas/id";
 import { SummariesSchema } from "@/schemas/summaries";
 
 import { movieDetailsFn } from "./details";
-import { composePrompt, getTTL, normalizeMetadata } from "./utils";
+import { composePrompt, getExpiry, normalizeMetadata } from "./utils";
 
 interface MovieMetadata {
   genres?: { id: number; name?: string }[];
@@ -20,22 +20,18 @@ interface MovieMetadata {
   title?: string;
 }
 
-const cache = lru<{ data: Summaries; expiresAt: number }>(500);
-
 const generateAISummaries = async (metadata: MovieMetadata) => {
   const { description, genres, releaseDate, title } =
     normalizeMetadata(metadata);
 
   const cacheKey = `summary:${title}:${releaseDate}`;
 
-  const ttl = getTTL(metadata.release_date);
+  const expiry = getExpiry(metadata.release_date);
 
-  const now = Date.now();
+  const cachedEntry = await cache.get<Summaries>(cacheKey);
 
-  const cachedEntry = cache.get(cacheKey);
-
-  if (cachedEntry && now < cachedEntry.expiresAt) {
-    return cachedEntry.data;
+  if (cachedEntry) {
+    return cachedEntry;
   }
 
   const prompt = composePrompt({ description, genres, releaseDate, title });
@@ -56,7 +52,7 @@ const generateAISummaries = async (metadata: MovieMetadata) => {
 
   const summaries = v.parse(SummariesSchema, JSON.parse(rawContent));
 
-  cache.set(cacheKey, { data: summaries, expiresAt: now + ttl });
+  await cache.set(cacheKey, summaries, { ex: expiry });
 
   return summaries;
 };

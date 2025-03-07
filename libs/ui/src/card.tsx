@@ -45,7 +45,7 @@ const CardImage = forwardRef<HTMLElement, { alt?: string; src: string }>(
   ({ alt, src }, ref) => {
     return (
       <figure ref={ref}>
-        <img alt={alt} src={src} />
+        <img alt={alt} loading="lazy" src={src} />
       </figure>
     );
   },

@@ -1,6 +1,4 @@
-import { describe, expect, it } from "vitest";
-
-import { composePrompt, getTTL, normalizeMetadata } from "./utils";
+import { composePrompt, getExpiry, normalizeMetadata } from "./utils";
 
 describe("normalizeMetadata", () => {
   it("should return correct metadata when all fields are provided", () => {
@@ -113,34 +111,34 @@ describe("composePrompt", () => {
   });
 });
 
-describe("getTTL", () => {
-  it("should return 6 hours (21,600,000 ms) for movies released within the last 2 years", () => {
+describe("getExpiry", () => {
+  it("should return 12 hours (43,200,000 ms) for movies released within the last 2 years", () => {
     const currentYear = new Date().getUTCFullYear();
 
-    expect(getTTL(`${currentYear}-01-01`)).toBe(21_600_000);
-    expect(getTTL(`${currentYear - 1}-06-15`)).toBe(21_600_000);
-    expect(getTTL(`${currentYear - 2}-12-31`)).toBe(21_600_000);
+    expect(getExpiry(`${currentYear}-01-01`)).toBe(43_200_000);
+    expect(getExpiry(`${currentYear - 1}-06-15`)).toBe(43_200_000);
+    expect(getExpiry(`${currentYear - 2}-12-31`)).toBe(43_200_000);
   });
 
-  it("should return 24 hours (86,400,000 ms) for movies released between 3-10 years ago", () => {
+  it("should return 48 hours (172,800,000 ms) for movies released between 3-10 years ago", () => {
     const currentYear = new Date().getUTCFullYear();
 
-    expect(getTTL(`${currentYear - 3}-01-01`)).toBe(86_400_000);
-    expect(getTTL(`${currentYear - 5}-06-15`)).toBe(86_400_000);
-    expect(getTTL(`${currentYear - 10}-12-31`)).toBe(86_400_000);
+    expect(getExpiry(`${currentYear - 3}-01-01`)).toBe(172_800_000);
+    expect(getExpiry(`${currentYear - 5}-06-15`)).toBe(172_800_000);
+    expect(getExpiry(`${currentYear - 10}-12-31`)).toBe(172_800_000);
   });
 
-  it("should return 72 hours (259,200,000 ms) for movies older than 10 years", () => {
+  it("should return 7 days (604,800,000 ms) for movies older than 10 years", () => {
     const currentYear = new Date().getUTCFullYear();
 
-    expect(getTTL(`${currentYear - 11}-01-01`)).toBe(259_200_000);
-    expect(getTTL(`${currentYear - 15}-06-15`)).toBe(259_200_000);
-    expect(getTTL("2000-12-31")).toBe(259_200_000);
+    expect(getExpiry(`${currentYear - 11}-01-01`)).toBe(604_800_000);
+    expect(getExpiry(`${currentYear - 15}-06-15`)).toBe(604_800_000);
+    expect(getExpiry("2000-12-31")).toBe(604_800_000);
   });
 
-  it("should return 24 hours (86,400,000 ms) for invalid or missing release date", () => {
-    expect(getTTL(undefined)).toBe(86_400_000);
-    expect(getTTL("")).toBe(86_400_000);
-    expect(getTTL("invalid")).toBe(86_400_000);
+  it("should return 48 hours (172,800,000 ms) for invalid or missing release date", () => {
+    expect(getExpiry(undefined)).toBe(172_800_000);
+    expect(getExpiry("")).toBe(172_800_000);
+    expect(getExpiry("invalid")).toBe(172_800_000);
   });
 });

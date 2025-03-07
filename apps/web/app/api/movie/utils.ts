@@ -64,17 +64,16 @@ export const composePrompt = ({
 `;
 };
 
-export const getTTL = (releaseDate?: string) => {
+export const getExpiry = (releaseDate?: string) => {
   const releaseYear = releaseDate ? year(releaseDate) : 0;
 
-  if (!releaseYear || Number.isNaN(releaseYear)) return 86_400_000; // 24 hours
+  if (!releaseYear || Number.isNaN(releaseYear)) return 172_800_000; // 48 hours
 
   const currentYear = new Date().getUTCFullYear();
-
   const yearsAgo = currentYear - releaseYear;
 
-  if (yearsAgo < 3) return 21_600_000; //  6 hours
-  if (yearsAgo < 11) return 86_400_000; // 24 hours
+  if (yearsAgo < 3) return 43_200_000; // 12 hours
+  if (yearsAgo < 11) return 172_800_000; // 48 hours
 
-  return 259_200_000; // 72 hours
+  return 604_800_000; // 7 days
 };

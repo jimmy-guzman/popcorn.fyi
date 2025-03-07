@@ -12,7 +12,7 @@ graph TD;
     C -->|Interacts with| F[@popcorn.fyi/db Drizzle + Neon]
     F -->|Stores Data| G[PostgreSQL Neon]
     B -->|Uses CDN & Edge Functions| H[Vercel]
-    B -->|Manages State & Caching| I[TanStack Query + LRU Cache]
+    B -->|Manages State & Caching| I[TanStack Query + Redis (Upstash)]
 ```
 
 ---
@@ -28,7 +28,7 @@ Popcorn.fyi is a **modular, performant, and scalable** movie discovery platform 
 1. **Frontend:** Built with **TanStack Start**, TailwindCSS, and DaisyUI.
 2. **UI Library:** `@popcorn.fyi/ui` – A reusable component library with **Storybook** deployed on **Vercel**.
 3. **API Clients:** `@popcorn.fyi/api-clients` – Handles data fetching from **TMDB, Wikidata, and OpenAI**.
-4. **State Management & Caching:** **TanStack Query + LRU caching** with **dynamic TTL** based on movie release year.
+4. **State Management & Caching:** **TanStack Query + Redis (Upstash)** with **dynamic TTL** based on movie release year.
 5. **Database:** PostgreSQL (via **Neon**) with **Drizzle ORM**.
 6. **CI/CD:** GitHub Actions + Vercel for deployment.
 7. **Testing:** Vitest (unit), Playwright (E2E), and React Testing Library.

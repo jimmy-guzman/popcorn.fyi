@@ -6,11 +6,11 @@
 
 ## 🏆 Features
 
-✅ **AI-Generated Expanded Plot Summaries** – See a **structured breakdown** of a movie’s story with **spoiler control**.  
-✅ **Discover Movies & TV Shows** – Browse trending, popular, and personalized recommendations.  
-✅ **Filter & Sort** – Advanced filters for **genres, ratings, and release year**.  
-✅ **User Accounts** – **Save favorites** and **track your watched content** (powered by Clerk).  
-✅ **Fast & Modular UI** – Built with **TanStack Start**, **daisyUI**, and **Tailwind CSS** for a responsive and smooth experience.
+👉 **AI-Generated Expanded Plot Summaries** – See a **structured breakdown** of a movie’s story with **spoiler control**.  
+👉 **Discover Movies & TV Shows** – Browse trending, popular, and personalized recommendations.  
+👉 **Filter & Sort** – Advanced filters for **genres, ratings, and release year**.  
+👉 **User Accounts** – **Save favorites** and **track your watched content** (powered by Clerk).  
+👉 **Fast & Modular UI** – Built with **TanStack Start**, **daisyUI**, and **Tailwind CSS** for a responsive and smooth experience.
 
 ## 🎥 Demo
 
@@ -37,7 +37,7 @@ Explore movies, TV shows, and more with advanced filters, personalized recommend
 - **Database:** [PostgreSQL](https://www.postgresql.org) (hosted on [Neon](https://neon.tech))
 - **ORM:** [Drizzle ORM](https://orm.drizzle.team)
 - **API Integration:** [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started), [Wikidata API](https://www.wikidata.org/w/api.php)
-- **Caching:** Uses **LRU caching** with **dynamic TTL** based on movie release date.
+- **Caching:** Uses **Redis (Upstash)** for caching AI-generated summaries and performance optimizations.
 
 ### **Tooling & DevOps**
 
@@ -56,7 +56,7 @@ A [Turborepo](https://turbo.build/repo) containing [apps](#-apps), [libs](#-libs
 
 - [**web**](./apps/web/README.md): The main full-stack application built with [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview). It features dynamic routes, interactive UI components, and optimized API calls to TMDB and Wikidata.
 
-### 📦 Libs
+### 📚 Libs
 
 - [**@popcorn.fyi/ui**](./libs/ui/README.md): A reusable component library powered by [daisyUI](https://daisyui.com) and styled with Tailwind CSS. It also includes [Storybook](https://storybook.js.org) for easy component development and testing.
 - [**@popcorn.fyi/api-clients**](./libs/api-clients/README.md): A client library for interacting with the [TMDB API](https://developer.themoviedb.org/reference/intro/getting-started), [Wikidata API](https://www.wikidata.org/w/api.php), and [OpenAI API](https://platform.openai.com/docs) to fetch movie data, metadata, and generate AI-powered expanded plot summaries. It provides **typed requests** and **seamless integration** with the web app.
@@ -92,13 +92,15 @@ Then setup environment variables, by running the following:
 cp apps/web/.env.example apps/web/.env
 ```
 
-| Environment Variable         | Source                                                                               |
-| ---------------------------- | ------------------------------------------------------------------------------------ |
-| `TMDB_API_TOKEN`             | [TMDB API Keys](https://www.themoviedb.org/settings/api)                             |
-| `VITE_CLERK_PUBLISHABLE_KEY` | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys)              |
-| `CLERK_SECRET_KEY`           | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys)              |
-| `DATABASE_URL`               | [Getting Started with Neon](https://neon.tech/docs/get-started-with-neon/signing-up) |
-| `OPENAI_API_KEY`             | [Getting started with OpenAI](https://platform.openai.com/docs/quickstart)           |
+| Environment Variable         | Source                                                                                  |
+| ---------------------------- | --------------------------------------------------------------------------------------- |
+| `TMDB_API_TOKEN`             | [TMDB API Keys](https://www.themoviedb.org/settings/api)                                |
+| `VITE_CLERK_PUBLISHABLE_KEY` | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys)                 |
+| `CLERK_SECRET_KEY`           | [Clerk API Keys](https://dashboard.clerk.com/last-active?path=api-keys)                 |
+| `DATABASE_URL`               | [Getting Started with Neon](https://neon.tech/docs/get-started-with-neon/signing-up)    |
+| `OPENAI_API_KEY`             | [Getting started with OpenAI](https://platform.openai.com/docs/quickstart)              |
+| `KV_REST_API_URL`            | [Getting started with Upstash Redis](https://upstash.com/docs/redis/overall/getstarted) |
+| `KV_REST_API_TOKEN`          | [Getting started with Upstash Redis](https://upstash.com/docs/redis/overall/getstarted) |
 
 Start the development server with the following command:
 
@@ -106,7 +108,7 @@ Start the development server with the following command:
 pnpm dev
 ```
 
-## 🤝 Contributing
+## 💪 Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request to add features or fix bugs.
 
