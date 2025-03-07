@@ -38,7 +38,7 @@
     "@storybook/react": "8.6.4",
     "@storybook/react-vite": "8.6.4",
     "@storybook/theming": "8.6.4",
-    "@tailwindcss/postcss": "4.0.10",
+    "@tailwindcss/postcss": "4.0.11",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.2.0",
