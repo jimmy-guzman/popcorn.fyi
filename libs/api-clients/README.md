@@ -38,9 +38,9 @@ import { setupClient } from "@popcorn.fyi/api-clients/wikidata";
 
 ---
 
-### **OpenAI API (AI-Powered Summaries)**
+### **OpenAI API**
 
-Used to **generate expanded movie plot summaries** with **spoiler control**, powered by **GPT-based models**.
+Provides access to **OpenAPI API**.
 
 **Import:**
 
