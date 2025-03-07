@@ -29,8 +29,8 @@ importers:
         specifier: 9.22.0
         version: 9.22.0(jiti@2.4.2)
       gitzy:
-        specifier: 5.8.0
-        version: 5.8.0
+        specifier: 5.8.1
+        version: 5.8.1
       jiti:
         specifier: 2.4.2
         version: 2.4.2
@@ -4247,8 +4247,8 @@ packages:
     resolution: {integrity: sha512-Wv+daGyispVoA31TrWAVR+aAdP7roubTPEM/8JzRnqXhLbdJH0T9eQyXVFF8fjk3WKTsctII6QcyxILYgNp2DA==}
     hasBin: true
 
-  gitzy@5.8.0:
-    resolution: {integrity: sha512-ptqsCDn8qX90n95ipEKdL+paW7+aKrkvHE+5sEvSuniB3vvuCGM1G480M0gGiUmDV4EGkgUf53ve8JIFlAbbMA==}
+  gitzy@5.8.1:
+    resolution: {integrity: sha512-OndtQLjEUxGrxeG4se+q2rvVExL9dsQ3KL3SN2TaQoni6vEkjX+9PWwNgU6hGEufXEYiK4mWHXrbG5VQrFSjDQ==}
     engines: {node: '>= 18'}
     hasBin: true
 
@@ -11278,7 +11278,7 @@ snapshots:
       pathe: 2.0.3
       tar: 6.2.1
 
-  gitzy@5.8.0:
+  gitzy@5.8.1:
     dependencies:
       commander: 12.1.0
       enquirer: 2.3.6
