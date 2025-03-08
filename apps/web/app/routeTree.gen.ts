@@ -15,6 +15,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
+import { Route as LayoutSignInImport } from './routes/_layout.sign-in'
 import { Route as LayoutSearchImport } from './routes/_layout/search'
 import { Route as LayoutAuthImport } from './routes/_layout/_auth'
 import { Route as LayoutTvShowsTopRatedImport } from './routes/_layout/tv-shows.top-rated'
@@ -67,6 +68,12 @@ const LayoutRoute = LayoutImport.update({
 const LayoutIndexRoute = LayoutIndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutSignInRoute = LayoutSignInImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -313,6 +320,13 @@ declare module '@tanstack/react-router' {
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof LayoutSearchImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/sign-in': {
+      id: '/_layout/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof LayoutSignInImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/': {
@@ -696,6 +710,7 @@ const LayoutTvShowsDiscoverRouteWithChildren =
 interface LayoutRouteChildren {
   LayoutAuthRoute: typeof LayoutAuthRouteWithChildren
   LayoutSearchRoute: typeof LayoutSearchRoute
+  LayoutSignInRoute: typeof LayoutSignInRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutMoviesIdRoute: typeof LayoutMoviesIdRouteWithChildren
   LayoutMoviesPopularRoute: typeof LayoutMoviesPopularRoute
@@ -715,6 +730,7 @@ interface LayoutRouteChildren {
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutAuthRoute: LayoutAuthRouteWithChildren,
   LayoutSearchRoute: LayoutSearchRoute,
+  LayoutSignInRoute: LayoutSignInRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutMoviesIdRoute: LayoutMoviesIdRouteWithChildren,
   LayoutMoviesPopularRoute: LayoutMoviesPopularRoute,
@@ -737,6 +753,7 @@ const LayoutRouteWithChildren =
 export interface FileRoutesByFullPath {
   '': typeof LayoutAuthRouteWithChildren
   '/search': typeof LayoutSearchRoute
+  '/sign-in': typeof LayoutSignInRoute
   '/': typeof LayoutIndexRoute
   '/movies/$id': typeof LayoutMoviesIdRouteWithChildren
   '/movies/popular': typeof LayoutMoviesPopularRoute
@@ -775,6 +792,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '': typeof LayoutAuthRouteWithChildren
   '/search': typeof LayoutSearchRoute
+  '/sign-in': typeof LayoutSignInRoute
   '/': typeof LayoutIndexRoute
   '/movies/popular': typeof LayoutMoviesPopularRoute
   '/movies/top-rated': typeof LayoutMoviesTopRatedRoute
@@ -810,6 +828,7 @@ export interface FileRoutesById {
   '/_layout': typeof LayoutRouteWithChildren
   '/_layout/_auth': typeof LayoutAuthRouteWithChildren
   '/_layout/search': typeof LayoutSearchRoute
+  '/_layout/sign-in': typeof LayoutSignInRoute
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/movies/$id': typeof LayoutMoviesIdRouteWithChildren
   '/_layout/movies/popular': typeof LayoutMoviesPopularRoute
@@ -852,6 +871,7 @@ export interface FileRouteTypes {
   fullPaths:
     | ''
     | '/search'
+    | '/sign-in'
     | '/'
     | '/movies/$id'
     | '/movies/popular'
@@ -889,6 +909,7 @@ export interface FileRouteTypes {
   to:
     | ''
     | '/search'
+    | '/sign-in'
     | '/'
     | '/movies/popular'
     | '/movies/top-rated'
@@ -922,6 +943,7 @@ export interface FileRouteTypes {
     | '/_layout'
     | '/_layout/_auth'
     | '/_layout/search'
+    | '/_layout/sign-in'
     | '/_layout/'
     | '/_layout/movies/$id'
     | '/_layout/movies/popular'
@@ -986,6 +1008,7 @@ export const routeTree = rootRoute
       "children": [
         "/_layout/_auth",
         "/_layout/search",
+        "/_layout/sign-in",
         "/_layout/",
         "/_layout/movies/$id",
         "/_layout/movies/popular",
@@ -1015,6 +1038,10 @@ export const routeTree = rootRoute
     },
     "/_layout/search": {
       "filePath": "_layout/search.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/sign-in": {
+      "filePath": "_layout.sign-in.tsx",
       "parent": "/_layout"
     },
     "/_layout/": {
