@@ -1,5 +1,5 @@
 diff --git a/dist/index.d.ts b/dist/index.d.ts
-index e3e91b80587a093dbf641c966a9dba43c54d619d..a96fd5d856d886c604c138895fff8ce9bbce8218 100644
+index 06d01d4005d2174c383e0561ba971540899ded3e..be3ee867c06c326ec56cdedff5dc2531fb99906b 100644
 --- a/dist/index.d.ts
 +++ b/dist/index.d.ts
 @@ -100,17 +100,14 @@ export type RequestBodyOption<T> = OperationRequestBodyContent<T> extends never

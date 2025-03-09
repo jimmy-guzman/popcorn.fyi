@@ -13,11 +13,6 @@
         "run": "pnpm exec prettier --write --cache --log-level silent . {staged_files}",
         "stage_fixed": true
       },
-      "sort-package-json": {
-        "glob": "{,**/}package.json",
-        "run": "pnpm dlx sort-package-json {staged_files}",
-        "stage_fixed": true
-      },
       "knip": {
         "run": "pnpm exec knip",
         "stage_fixed": true
