@@ -14,7 +14,7 @@ function RouteComponent() {
   const isOnLoginPage = location.pathname === "/sign-in";
 
   return (
-    <div className="flex h-[calc(100vh-68px)] items-center justify-center">
+    <div className="-mt-17 flex min-h-screen items-center justify-center">
       {isOnLoginPage ? (
         <SignIn forceRedirectUrl={redirectUrl} withSignUp />
       ) : null}
