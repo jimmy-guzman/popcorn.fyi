@@ -1,10 +1,10 @@
 # 🎥 Contributing to popcorn.fyi
 
-Thanks for your interest in contributing to popcorn.fyi! We welcome all contributions, whether it's fixing bugs 🐛, improving documentation 📚, or suggesting new features ✨.
+Thanks for your interest in contributing! Whether you're fixing bugs 🐛, improving docs 📚, or suggesting new features ✨, all contributions are welcome.
 
 ## 🚀 Getting Started
 
-Refer to the [README](./README.md) for setting up the project. Here's a quick overview:
+Refer to the [README](./README.md) for full setup details. Here's a quick start:
 
 1. **🔄 Clone the Repository**
 
@@ -14,16 +14,13 @@ Refer to the [README](./README.md) for setting up the project. Here's a quick ov
    ```
 
 2. **📦 Install Dependencies**
-
-   Make sure you have [pnpm](https://pnpm.io/installation) installed:
+   Ensure you have [pnpm](https://pnpm.io/installation) installed:
 
    ```bash
    pnpm install
    ```
 
 3. **🔧 Setup Environment Variables**
-
-   Copy the example environment file and update it with your credentials:
 
    ```bash
    cp apps/web/.env.example apps/web/.env
@@ -37,141 +34,110 @@ Refer to the [README](./README.md) for setting up the project. Here's a quick ov
 
    Visit `http://localhost:3000` to view the app.
 
-   > **Note:** Storybook for UI components will also be available at `http://localhost:6006` when running the development server.
+   > **Note:** Storybook for UI components will be available at `http://localhost:6006`.
 
 ## 🛠 Guidelines
 
-- **📝 Code Style:**
+### **📝 Code Style**
 
-  Follow existing coding patterns. Use kebab-case for filenames and keep components organized by feature (e.g., `movie/`, `tv/`, `person/`).
+- Follow existing patterns.
+- Use **kebab-case** for filenames.
+- Keep components organized by feature (e.g., `movie/`, `tv/`, `person/`).
 
-- **🔒 Type Safety & Linting:**
+### **🔒 Type Safety & Linting**
 
-  The repository uses [Lefthook](https://github.com/evilmartians/lefthook) for git hooks to automatically run checks before commits. These include:
+- The repo uses [Lefthook](https://github.com/evilmartians/lefthook) for pre-commit checks:
+  - **🎨 Prettier** (formatting)
+  - **📑 sort-package-json** (consistent `package.json`)
+  - **🧹 Knip** (detects unused files/dependencies)
+  - **🗂 Manypkg** (monorepo dependency management)
+  - **🔍 ESLint** (linting)
 
-  - **🎨 Prettier** for formatting code.
-  - **📑 sort-package-json** to maintain consistent `package.json` structure.
-  - **🧹 Knip** for detecting unused files and dependencies.
-  - **🗂 Manypkg** for managing monorepo dependencies.
-  - **🔍 ESLint** for linting across most workspaces.
+Run checks manually:
 
-  You can also manually run all checks with:
+```bash
+pnpm check
+```
 
-  ```bash
-  pnpm check
-  ```
+### **✅ Testing**
 
-  This runs type checks, linting, and coverage reports to ensure code quality.
+- **Unit & Integration:** [Vitest](https://vitest.dev) with React Testing Library.
+- **E2E:** [Playwright](https://playwright.dev).
 
-- **✅ Testing:**
+Run tests:
 
-  The project uses Vitest with React Testing Library for unit tests, and Playwright for end-to-end tests. Run tests with:
+```bash
+pnpm test
+```
 
-  ```bash
-  pnpm test
-  ```
+See [docs/testing.md](./docs/testing.md) for details.
 
-  For a deeper dive into the testing approach, check out [docs/testing.md](./docs/testing.md).
+### **📚 UI Component Development**
 
-- **📚 UI Component Development:**
+Storybook is used for developing UI components in **libs/ui**. Running `pnpm dev` makes it available at `http://localhost:6006`.
 
-  Storybook is used for developing and documenting UI components within the **libs/ui** package. When running the development server (`pnpm dev`), Storybook will automatically be available at `http://localhost:6006`. This allows you to develop and test components in isolation alongside the main app.
+More details in [docs/testing.md](./docs/testing.md).
 
-  For more on how Storybook fits into the project, see [docs/testing.md](./docs/testing.md).
+### **🔄 CI/CD Pipeline**
 
-- **🔄 CI/CD Pipeline:**
+- Uses **GitHub Actions** + **Vercel** for deployments.
+- Details in [docs/ci-cd.md](./docs/ci-cd.md).
 
-  The automated workflows handle everything from code checks to deployments with GitHub Actions and Vercel. Learn more about how it all fits together in [docs/ci-cd.md](./docs/ci-cd.md).
+### **✍️ Commit Messages**
 
-- **✍️ Commit Messages:**
+Follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/):
 
-  Follow the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format:
+```bash
+feat: add new feature ✨
+fix: fix a bug 🐛
+docs: update documentation 📚
+```
 
-  ```
-  feat: add new feature ✨
-  fix: fix a bug 🐛
-  docs: update documentation 📚
-  ```
+## 📜 Available Scripts
 
-#### **📜 Available Scripts**
-
-The project provides several commands to streamline development and ensure code quality. Below are the most commonly used ones:
-
-- **🚀 Start Development Server**
-
+- **🚀 Start Development**
   ```sh
   pnpm dev
   ```
-
-  Runs the web application locally at `http://localhost:3000`. Storybook (for UI components) is available at `http://localhost:6006`.
-
 - **🏗 Build for Production**
-
   ```sh
   pnpm build
   ```
-
-  Generates the production-ready build.
-
 - **✅ Run Tests**
-
   ```sh
   pnpm test
   ```
-
-  Runs unit and integration tests with **Vitest**.
-
-- **📸 Run End-to-End (E2E) Tests**
-
+- **📸 Run E2E Tests**
   ```sh
   pnpm e2e
   ```
-
-  Runs **Playwright** end-to-end tests.
-
 - **🎨 Format Code**
-
   ```sh
   pnpm format
   ```
-
-  Uses **Prettier** to format the codebase.
-
 - **🔍 Lint Code**
-
   ```sh
   pnpm lint
   ```
-
-  Runs **ESLint** to enforce code style.
-
 - **🔎 Type Checking**
-
   ```sh
   pnpm typecheck
   ```
-
-  Ensures **TypeScript** type safety.
-
 - **🔄 Full Project Check**
   ```sh
   pnpm check
   ```
-  Runs linting, type checking, and coverage reports.
 
-### **🛠 Git Hooks (Lefthook)**
+## 🛠 Git Hooks (Lefthook)
 
-The project uses **Lefthook** to automate pre-commit checks. These run automatically when committing code:
+Pre-commit checks run automatically:
 
-- **📑 sort-package-json** – Ensures `package.json` structure remains consistent.
 - **🎨 Prettier** – Formats staged files.
-- **🔍 ESLint** – Lints JavaScript/TypeScript code.
-- **🧹 Knip** – Detects unused files and dependencies.
-- **🗂 Manypkg** – Enforces consistency in monorepo dependencies.
+- **🔍 ESLint** – Lints code.
+- **🧹 Knip** – Detects unused files/dependencies.
+- **🗂 Manypkg** – Ensures monorepo consistency.
 
-If any of these checks fail, they must be fixed before committing.
-
-To run pre-commit checks manually:
+Run manually:
 
 ```sh
 pnpm check
@@ -179,31 +145,25 @@ pnpm check
 
 ## 📤 Submitting a Pull Request
 
-1. **🍴 Fork the Repository**
-2. **🌿 Create a New Branch:**
-
+1. **🍴 Fork the Repo**
+2. **🌿 Create a Branch**
    ```bash
    git checkout -b feature/your-feature-name
    ```
-
 3. **🛠 Make Your Changes**
-4. **🔍 Run Checks:**
-
+4. **🔍 Run Checks**
    ```bash
    pnpm check
    ```
-
-5. **🚀 Push to Your Fork:**
-
+5. **🚀 Push to Your Fork**
    ```bash
    git push origin feature/your-feature-name
    ```
-
-6. **🔄 Open a Pull Request** on the main repository.
+6. **🔄 Open a PR**
 
 ## 🐞 Reporting Issues
 
-If you find a bug or have a feature request, please open an issue with a clear description and steps to reproduce (if applicable).
+Found a bug? Have a feature request? Open an issue with details.
 
 ---
 

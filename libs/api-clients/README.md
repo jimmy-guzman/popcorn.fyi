@@ -40,7 +40,7 @@ import { setupClient } from "@popcorn.fyi/api-clients/wikidata";
 
 ### **OpenAI API**
 
-Provides access to **OpenAPI API**.
+Provides access to **OpenAI API** for **AI-generated plot summaries**.
 
 **Import:**
 
@@ -71,3 +71,7 @@ Run these from the root of the monorepo:
 - `pnpm --filter @popcorn.fyi/api-clients run coverage` - Runs tests and outputs **coverage reports**.
 - `pnpm --filter @popcorn.fyi/api-clients run lint` - Lints the codebase.
 - `pnpm --filter @popcorn.fyi/api-clients run typecheck` - **Ensures TypeScript correctness**.
+
+---
+
+This package ensures **strongly typed** API interactions, improving maintainability and reliability across _popcorn.fyi_. 🚀

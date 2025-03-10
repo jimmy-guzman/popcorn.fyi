@@ -2,56 +2,55 @@
 
 ## 🔍 Overview
 
-When I set out to build _popcorn.fyi_, I knew I wanted a CI/CD setup that was fast, reliable, and easy to maintain—basically something that wouldn't get in the way but would still keep the codebase in top shape. So, I leaned into **GitHub Actions** for the CI/CD pipeline and **Vercel** for deployments. The pipeline handles everything from **code checks, linting, end-to-end testing, dependency updates, test coverage tracking, PR labeling, and seamless deployments**.
+When I built _popcorn.fyi_, I wanted a CI/CD setup that was **fast, reliable, and low-maintenance**—something that wouldn’t slow me down but would still enforce code quality. The result? A **GitHub Actions-powered pipeline** that handles **code checks, linting, tests, PR labeling, dependency updates, test coverage tracking, and automatic deployments to Vercel**.
 
 ## 🏗️ Architecture
 
-Here’s the high-level view of how everything fits together:
+Here’s the high-level view:
 
-1. **🔧 Version Control:** The entire project lives on GitHub.
-2. **🔄 Continuous Integration (CI):** Every pull request triggers GitHub Actions workflows to ensure code quality.
-3. **📦 Dependency Management:** Dependabot keeps dependencies fresh, with auto-approval and auto-merge workflows.
-4. **🏷️ Automated PR Labeling:** GitHub Labeler automatically categorizes PRs based on the modified files.
-5. **📊 Test Coverage Tracking:** Code coverage reports are merged and uploaded to Codecov to track test quality.
-6. **🚚 Continuous Deployment (CD):** Any successful merge to `main` gets automatically deployed to Vercel—because who wants to click deploy buttons?
+1. **🔧 GitHub Repo:** The project is fully managed on GitHub.
+2. **🔄 CI Workflows:** Every PR triggers GitHub Actions to enforce code quality.
+3. **📦 Dependency Updates:** Dependabot keeps packages up to date with auto-merge.
+4. **🏷️ PR Labeling:** GitHub Labeler auto-tags PRs based on file changes.
+5. **📊 Coverage Tracking:** Codecov tracks and merges test coverage reports.
+6. **🚚 Auto Deployments:** Merging to `main` triggers an automatic Vercel deployment.
 
 ## 🔁 Workflow Breakdown
 
 ### 1. **🧪 CI Workflow**
 
-Every time a pull request is opened, the CI workflow kicks in to make sure everything's in order.
+Runs automatically on PRs to ensure nothing breaks:
 
-- **📝 Code Check:** This step runs tasks like formatting, static analysis, and type checking with tools like `manypkg`, `knip`, and `pnpm check`.
-- **☂️ Coverage Reporting:** Merges coverage reports and uploads them to Codecov for tracking.
-- **🌐 End-to-End Testing:** Using Playwright to run browser-based tests to catch anything that slips through unit tests.
+- **📝 Code Check:** Runs linting, type checking, and static analysis (`pnpm check`).
+- **☂️ Coverage Reporting:** Merges reports and uploads them to Codecov.
+- **🌐 E2E Tests:** Uses Playwright for full browser-based testing.
 
 [View CI Workflow](/.github/workflows/ci.yml)
 
-### 2. **🏷️ PR Labeling Workflow**
+### 2. **🏷️ PR Labeling**
 
-Managing pull requests can be tedious, so **GitHub Actions Labeler** automatically categorizes PRs based on which files were changed.
+Automates PR categorization based on modified files:
 
-- **🔄 Auto-label PRs** based on modified files (e.g., changes in `libs/api-clients/` get a `lib:api-clients` label).
-- **📂 Workspace-based labeling** ensures each PR gets a relevant tag without manual effort.
-- **❌ Syncs labels**—removes outdated ones if a PR changes.
+- **🔄 Auto-label PRs** (e.g., `lib:api-clients` for API changes).
+- **📂 Keeps labels up-to-date** as PRs evolve.
 
 [View Labeler Workflow](/.github/workflows/label-prs.yml)
 
 ### 3. **📦 Dependabot Workflow**
 
-No one likes outdated dependencies, but manually updating them is a pain. Enter Dependabot. This workflow handles:
+Keeps dependencies fresh and secure:
 
-- **✅ Auto-Approve:** It automatically gives the thumbs up to PRs created by Dependabot.
-- **🔀 Auto-Merge:** Once approved, it squashes and merges those updates. Easy.
+- **✅ Auto-Approve:** Automatically approves Dependabot PRs.
+- **🔀 Auto-Merge:** Merges updates when checks pass.
 
 [View Dependabot Workflow](/.github/workflows/dependabot.yml)
 
 ### 4. **🚚 CD Workflow**
 
-Whenever a PR is merged into `main`, the CD workflow takes over.
+Triggers when a PR merges to `main`:
 
-- **🔁 Re-run CI Checks:** Just to be extra sure, it reruns the linting, type checks, and tests.
-- **🚀 Deploy to Vercel:** If all checks pass, Vercel takes care of deploying the latest version to production.
+- **🔁 Runs CI Checks** again for safety.
+- **🚀 Deploys to Vercel** automatically.
 
 **Trigger:**
 
@@ -63,20 +62,16 @@ on:
 
 ## 🔑 Key Features
 
-Here’s what makes this CI/CD setup tick:
-
-- **⛔ Fail Fast Strategy:** The pipeline stops at the first sign of failure to save time.
-- **🔀 Parallel Jobs:** Code checks and E2E tests run in parallel to speed things up.
-- **⚡ Turbo Caching:** TurboRepo’s remote caching keeps builds and tests fast.
-- **📦 Dependency Caching:** `pnpm` store caching reduces install times.
-- **☂️ Code Coverage Reports:** Coverage data is merged and uploaded to Codecov to track test health.
-- **📊 Playwright Reports:** Test reports are automatically uploaded for review.
-- **🏷️ Automated PR Labeling:** Labeler ensures every PR is categorized based on modified files.
-- **🤖 Automated Dependency Management:** Dependabot handles updates with auto-approve and auto-merge, so you don’t have to.
+- **⛔ Fail Fast:** Stops at the first failure to save time.
+- **🔀 Parallel Jobs:** Runs code checks and tests in parallel.
+- **⚡ Turbo Caching:** Uses TurboRepo for faster builds.
+- **📦 pnpm Caching:** Speeds up installs.
+- **☂️ Coverage Reports:** Codecov tracks test health.
+- **📊 Playwright Reports:** Automatically uploads test results.
+- **🏷️ Auto PR Labeling:** Ensures organized PRs.
+- **🤖 Dependabot Automation:** Auto-handles dependency updates.
 
 ## 📈 CI/CD Workflow Diagram
-
-Here’s a visual of how it all flows:
 
 ```mermaid
 flowchart LR
@@ -99,17 +94,14 @@ flowchart LR
   G -->|Trigger CD Workflow| H[🔁 Re-run CI Checks]
   H --> I[🚀 Deploy to Vercel]
   I --> J[🎉 Production Deployment]
-
 ```
 
 ## 🔮 Future Enhancements
 
-Like any good project, there’s always room for improvement:
-
-- **🖼️ Visual Regression Testing:** Tools like Percy or Chromatic could help catch UI glitches.
-- **📢 Slack/Email Notifications:** Set up alerts for failed builds or deployments to stay in the loop.
-- **🚦 Performance Budgets:** Prevent performance regressions by setting clear thresholds.
+- **🖼️ Visual Regression Testing:** Using Percy or Chromatic for UI testing.
+- **📢 Build Failure Alerts:** Slack/Email notifications for failed builds.
+- **🚦 Performance Budgets:** Setting limits to prevent regressions.
 
 ---
 
-This CI/CD setup keeps _popcorn.fyi_ running smoothly, so I can focus on building cool features instead of worrying about deployments or broken builds.
+This CI/CD setup keeps _popcorn.fyi_ running smoothly so I can focus on shipping features instead of managing deployments. 🚀
