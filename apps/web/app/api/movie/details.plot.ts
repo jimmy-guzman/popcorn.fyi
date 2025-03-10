@@ -21,10 +21,10 @@ interface MovieMetadata {
 }
 
 const generateAISummaries = async (metadata: MovieMetadata) => {
-  const { description, genres, releaseDate, title } =
+  const { description, genres, id, releaseDate, title } =
     normalizeMetadata(metadata);
 
-  const cacheKey = `summary:${title}:${releaseDate}`;
+  const cacheKey = `openai:summary:${id}`;
 
   const expiry = getExpiry(metadata.release_date);
 
