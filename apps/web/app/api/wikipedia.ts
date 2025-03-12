@@ -25,4 +25,6 @@ export const wikipediaFn = createServerFn({ method: "GET" })
     if (sitelinks?.enwiki?.title) {
       return `https://en.wikipedia.org/wiki/${sitelinks.enwiki.title.replaceAll(" ", "_")}`;
     }
+
+    return null;
   });

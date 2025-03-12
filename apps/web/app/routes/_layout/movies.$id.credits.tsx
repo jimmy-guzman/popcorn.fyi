@@ -8,7 +8,7 @@ export const Route = createFileRoute("/_layout/movies/$id/credits")({
   component: RouteComponent,
   loader: async ({ context, params: { id } }) => {
     await context.queryClient.ensureQueryData(
-      movieCreditsOptions(Number.parseInt(id)),
+      movieCreditsOptions(Number.parseInt(id, 10)),
     );
   },
 });
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/_layout/movies/$id/credits")({
 function RouteComponent() {
   const { id } = Route.useParams();
   const { data: credits } = useSuspenseQuery(
-    movieCreditsOptions(Number.parseInt(id)),
+    movieCreditsOptions(Number.parseInt(id, 10)),
   );
 
   return <MediaCredits credits={credits} />;

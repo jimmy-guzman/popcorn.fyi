@@ -3,11 +3,13 @@ import { useMatch, useNavigate, useSearch } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
+const DEBOUNCE_MS = 500;
+
 export const SiteNavSearchInput = () => {
   const match = useMatch({ from: "/_layout/search", shouldThrow: false });
   const search = useSearch({ strict: false });
   const [query, setQuery] = useState(search.q ?? "");
-  const [value] = useDebounce(query, 500);
+  const [value] = useDebounce(query, DEBOUNCE_MS);
   const navigate = useNavigate();
 
   const handleSearch = useCallback(

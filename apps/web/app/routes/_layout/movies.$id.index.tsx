@@ -10,10 +10,12 @@ export const Route = createFileRoute("/_layout/movies/$id/")({
   component: RouteComponent,
 });
 
+const ONE_MINUTE_MS = 60_000;
+
 function RouteComponent() {
   const { id } = Route.useParams();
   const { data: movie } = useSuspenseQuery(
-    movieDetailsOptions(Number.parseInt(id)),
+    movieDetailsOptions(Number.parseInt(id, 10)),
   );
 
   const overview = [
@@ -28,7 +30,7 @@ function RouteComponent() {
     },
     {
       title: "Runtime",
-      value: time(movie.runtime * 60 * 1000),
+      value: time(movie.runtime * ONE_MINUTE_MS),
     },
     {
       title: "Budget",

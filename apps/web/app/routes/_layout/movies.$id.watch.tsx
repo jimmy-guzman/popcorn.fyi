@@ -8,7 +8,7 @@ export const Route = createFileRoute("/_layout/movies/$id/watch")({
   component: RouteComponent,
   loader: async ({ context, params: { id } }) => {
     await context.queryClient.ensureQueryData(
-      movieProvidersOptions(Number.parseInt(id)),
+      movieProvidersOptions(Number.parseInt(id, 10)),
     );
   },
 });
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/_layout/movies/$id/watch")({
 function RouteComponent() {
   const { id } = Route.useParams();
   const { data: watchProviders } = useSuspenseQuery(
-    movieProvidersOptions(Number.parseInt(id)),
+    movieProvidersOptions(Number.parseInt(id, 10)),
   );
 
   return watchProviders.results ? (

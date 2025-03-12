@@ -3,13 +3,18 @@ import { Link } from "@tanstack/react-router";
 
 import { composePageNumbers } from "@/lib/pagination";
 
+const MAX_TOTAL_PAGES = 500;
+
 interface ListPaginationProps {
   page: number;
   totalPages: number;
 }
 
 export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
-  const pageNumbers = composePageNumbers(page, Math.min(totalPages, 500));
+  const pageNumbers = composePageNumbers(
+    page,
+    Math.min(totalPages, MAX_TOTAL_PAGES),
+  );
 
   return (
     <div
