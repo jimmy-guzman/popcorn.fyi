@@ -10,7 +10,7 @@ export const Route = createFileRoute("/_layout/people/$id/")({
   component: RouteComponent,
   loader: async ({ context, params }) => {
     await context.queryClient.ensureQueryData(
-      personCreditsOptions(Number.parseInt(params.id)),
+      personCreditsOptions(Number.parseInt(params.id, 10)),
     );
   },
 });
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/_layout/people/$id/")({
 function RouteComponent() {
   const params = Route.useParams();
   const { data: credits } = useSuspenseQuery(
-    personCreditsOptions(Number.parseInt(params.id)),
+    personCreditsOptions(Number.parseInt(params.id, 10)),
   );
 
   return (

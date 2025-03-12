@@ -1,11 +1,13 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const IS_CI = process.env.CI;
+const THIRTY_MINUTES_MS = 1_800_000;
+const CI_RETRIES = 3;
 
 export default defineConfig({
   forbidOnly: true,
   fullyParallel: true,
-  globalTimeout: IS_CI ? 30 * 60 * 1000 : undefined,
+  globalTimeout: IS_CI ? THIRTY_MINUTES_MS : undefined,
   projects: [
     {
       name: "setup",
@@ -28,7 +30,7 @@ export default defineConfig({
     },
   ],
   reporter: "html",
-  retries: IS_CI ? 3 : 0,
+  retries: IS_CI ? CI_RETRIES : 0,
   testDir: "./e2e",
   webServer: {
     command: "pnpm build --preset node-server && pnpm preview",

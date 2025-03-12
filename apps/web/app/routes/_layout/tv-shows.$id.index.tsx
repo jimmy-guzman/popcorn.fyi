@@ -14,7 +14,7 @@ export const Route = createFileRoute("/_layout/tv-shows/$id/")({
 function RouteComponent() {
   const { id } = Route.useParams();
   const { data: tvShow } = useSuspenseQuery(
-    tvDetailsOptions(Number.parseInt(id)),
+    tvDetailsOptions(Number.parseInt(id, 10)),
   );
 
   const overview = [

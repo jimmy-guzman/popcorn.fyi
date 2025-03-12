@@ -82,16 +82,23 @@ export const composePrompt = ({
   `;
 };
 
+const TWO_DAYS_MS = 172_800_000;
+const SEVEN_DAYS_MS = 604_800_000;
+const THIRTY_DAYS_MS = 2_592_000_000;
+
+const RECENT_YEARS_THRESHOLD = 3;
+const OLD_YEARS_THRESHOLD = 11;
+
 export const getExpiry = (releaseDate?: string) => {
   const releaseYear = releaseDate ? year(releaseDate) : 0;
 
-  if (!releaseYear || Number.isNaN(releaseYear)) return 604_800_000;
+  if (!releaseYear || Number.isNaN(releaseYear)) return SEVEN_DAYS_MS;
 
   const currentYear = new Date().getUTCFullYear();
   const yearsAgo = currentYear - releaseYear;
 
-  if (yearsAgo < 3) return 172_800_000; // 48 hours
-  if (yearsAgo < 11) return 604_800_000; // 7 days
+  if (yearsAgo < RECENT_YEARS_THRESHOLD) return TWO_DAYS_MS;
+  if (yearsAgo < OLD_YEARS_THRESHOLD) return SEVEN_DAYS_MS;
 
-  return 2_592_000_000; // 30 days
+  return THIRTY_DAYS_MS;
 };
