@@ -2,6 +2,7 @@
  * Formats a date string into a human-readable format.
  *
  * Uses UTC to prevent timezone shifts.
+ *
  * @param  date - The date string in ISO (YYYY-MM-DD) or other valid formats.
  *
  * @returns The formatted date in a medium-length human-readable style.

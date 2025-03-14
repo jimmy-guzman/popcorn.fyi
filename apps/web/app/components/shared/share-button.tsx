@@ -13,6 +13,7 @@ interface ShareButtonProps {
 /**
  * A button component that enables users to share content via the Web Share API.
  * Falls back to copying the URL to the clipboard if the Web Share API is unavailable.
+ *
  * @example
  * <ShareButton title="Inception" url="/movies/123" />
  */

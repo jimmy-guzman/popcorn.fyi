@@ -51,6 +51,7 @@ interface MetaTag {
 
 /**
  * Generates an array of meta tag objects for SEO and social media integration.
+ *
  * @returns An array of meta tag objects.
  */
 export const seo = ({ description, image, keywords, title, url }: SeoProps) => {

@@ -10,6 +10,7 @@ interface MediaGenresProps {
 
 /**
  * Renders a list of genre badges as links to the respective discover pages.
+ *
  * @param props - Component props
  *
  * @param [props.genres] - List of genres

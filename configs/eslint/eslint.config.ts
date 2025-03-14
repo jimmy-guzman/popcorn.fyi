@@ -1,8 +1,8 @@
-import eslintConfig from "@jimmy.codes/eslint-config";
+import { defineConfig } from "@jimmy.codes/eslint-config";
 import pluginRouter from "@tanstack/eslint-plugin-router";
 import arrowReturnStyle from "eslint-plugin-arrow-return-style";
 
-export default eslintConfig({
+export default defineConfig({
   overrides: [
     {
       files: ["**/*.?([cm])tsx"],
