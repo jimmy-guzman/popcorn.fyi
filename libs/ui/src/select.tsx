@@ -30,6 +30,7 @@ type SelectProps = HtmlSelectProps & SelectVariants;
  * Select component to render a dropdown list.
  *
  * This component wraps the native `select` element and supports custom class names.
+ *
  * @example
  * <Select>
  *   <option value="apple">Apple</option>

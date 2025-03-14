@@ -18,6 +18,7 @@ import { site } from "@/config/site";
 /**
  * The main layout component for the application.
  * It includes the navigation drawer, site navigation, and footer.
+ *
  * @returns The layout structure including navigation, content area, and footer.
  */
 function LayoutComponent() {

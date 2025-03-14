@@ -15,7 +15,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "openai": "4.86.2",
+    "openai": "4.87.3",
     "openapi-fetch": "0.13.4"
   },
   "devDependencies": {
