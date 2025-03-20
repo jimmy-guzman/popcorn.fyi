@@ -13,6 +13,7 @@ const tvCreditsFn = createServerFn({ method: "GET" })
     const { data } = await client.GET("/3/tv/{series_id}/credits", {
       params: { path: { series_id: context.data } },
     });
+
     return data;
   });
 

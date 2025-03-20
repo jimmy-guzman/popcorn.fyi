@@ -45,6 +45,7 @@ describe("ExpandedPlot", () => {
     );
 
     const spoilerText = screen.getByText("Secret twist");
+
     expect(spoilerText).toHaveClass("blur-sm");
   });
 
@@ -58,6 +59,7 @@ describe("ExpandedPlot", () => {
     );
 
     const toggle = screen.getByRole("checkbox", { name: /reveal spoilers/i });
+
     await user.click(toggle);
     expect(screen.getByText("Secret twist")).not.toHaveClass("blur-sm");
   });
@@ -79,6 +81,7 @@ describe("ExpandedPlot", () => {
     expect(screen.queryByText("Paragraph 2")).not.toBeInTheDocument();
 
     const readMoreButton = screen.getByRole("button", { name: /read more/i });
+
     await user.click(readMoreButton);
     expect(screen.getByText("Paragraph 2")).toBeInTheDocument();
 
@@ -86,6 +89,7 @@ describe("ExpandedPlot", () => {
     expect(screen.getByText("Paragraph 3")).toBeInTheDocument();
 
     const readLessButton = screen.getByRole("button", { name: /read less/i });
+
     await user.click(readLessButton);
     expect(screen.queryByText("Paragraph 2")).not.toBeInTheDocument();
   });

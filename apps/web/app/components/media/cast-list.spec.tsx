@@ -40,6 +40,7 @@ describe("<CastList />", () => {
 
   it("should not render an image if profile_path is missing", async () => {
     const castWithoutImage = [{ character: "Eames", id: 3, name: "Tom Hardy" }];
+
     await render(<CastList cast={castWithoutImage} />);
 
     expect(screen.getByText("Tom Hardy")).toBeInTheDocument();

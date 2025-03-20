@@ -22,6 +22,7 @@ describe("ShareButton", () => {
 
   it("should call navigator.share when available", async () => {
     const shareMock = vi.fn();
+
     Object.defineProperty(navigator, "share", {
       value: shareMock,
       writable: true,

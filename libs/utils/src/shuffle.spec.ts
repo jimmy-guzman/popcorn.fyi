@@ -4,6 +4,7 @@ describe("shuffle", () => {
   it("returns list with same number of items", () => {
     const list = [1, 2, 3, 4, 5];
     const result = shuffle(list);
+
     expect(list).toHaveLength(result.length);
   });
 

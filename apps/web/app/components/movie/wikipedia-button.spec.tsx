@@ -14,6 +14,7 @@ describe("WikipediaButton", () => {
     });
 
     const link = await screen.findByRole("link", { name: /wikipedia/i });
+
     expect(link).toHaveAttribute(
       "href",
       "https://en.wikipedia.org/wiki/Test_Movie",

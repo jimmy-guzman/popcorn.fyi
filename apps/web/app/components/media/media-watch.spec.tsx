@@ -61,6 +61,7 @@ describe("MediaWatch", () => {
 
   it("should render a message when watchProviders.US is not provided", async () => {
     const watchProviders = {}; // No US key provided
+
     await render(<MediaWatch watchProviders={watchProviders} />);
 
     expect(screen.getByText(/no providers available/i)).toBeInTheDocument();

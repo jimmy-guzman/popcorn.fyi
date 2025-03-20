@@ -41,6 +41,7 @@ describe("<CrewList />", () => {
 
   it("should not render an image if profile_path is missing", async () => {
     const crewWithoutImage = [{ id: 3, job: "Producer", name: "Emma Thomas" }];
+
     await render(<CrewList crew={crewWithoutImage} />);
 
     expect(screen.getByText("Emma Thomas")).toBeInTheDocument();
