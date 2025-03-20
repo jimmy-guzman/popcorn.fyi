@@ -3,7 +3,7 @@ import {
   SignedOut,
   SignInButton,
   UserButton,
-} from "@clerk/tanstack-start";
+} from "@clerk/tanstack-react-start";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Drawer } from "vaul";
 

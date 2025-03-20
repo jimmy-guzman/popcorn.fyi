@@ -1,4 +1,4 @@
-import { createClerkHandler } from "@clerk/tanstack-start/server";
+import { createClerkHandler } from "@clerk/tanstack-react-start/server";
 import { getRouterManifest } from "@tanstack/react-start/router-manifest";
 import {
   createStartHandler,

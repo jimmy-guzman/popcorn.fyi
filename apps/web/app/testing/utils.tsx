@@ -1,7 +1,7 @@
 import type { RenderOptions } from "@testing-library/react";
 import type { ReactElement, ReactNode } from "react";
 
-import { ClerkProvider } from "@clerk/tanstack-start";
+import { ClerkProvider } from "@clerk/tanstack-react-start";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   createMemoryHistory,

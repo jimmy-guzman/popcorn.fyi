@@ -1,4 +1,4 @@
-import { SignIn } from "@clerk/tanstack-start";
+import { SignIn } from "@clerk/tanstack-react-start";
 import { createFileRoute, useLocation } from "@tanstack/react-router";
 import * as v from "valibot";
 

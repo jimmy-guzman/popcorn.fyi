@@ -14,9 +14,9 @@ afterAll(() => {
   server.close();
 });
 
-vi.mock("@clerk/tanstack-start", async () => {
+vi.mock("@clerk/tanstack-react-start", async () => {
   return {
-    ...(await vi.importActual("@clerk/tanstack-start")),
+    ...(await vi.importActual("@clerk/tanstack-react-start")),
     ClerkProvider: ({ children }: { children: React.ReactNode }) => children,
     SignedIn: ({ children: _children }: { children: React.ReactNode }) =>
       undefined,
