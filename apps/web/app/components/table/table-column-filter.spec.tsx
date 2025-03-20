@@ -44,6 +44,7 @@ describe("TableColumnFilter", () => {
     );
 
     const select = screen.getByRole("combobox");
+
     await user.selectOptions(select, "B");
 
     expect(setFilterValue).toHaveBeenCalledWith("B");

@@ -13,6 +13,7 @@ const tvPopularFn = createServerFn({ method: "GET" })
     const { data } = await client.GET("/3/tv/popular", {
       params: { query: context.data },
     });
+
     return data;
   });
 

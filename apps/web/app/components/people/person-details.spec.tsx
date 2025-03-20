@@ -35,6 +35,7 @@ describe("<PersonDetails />", () => {
     const biography = screen.getByText(
       /an american actor, film producer, and environmentalist/i,
     );
+
     expect(biography).toBeInTheDocument();
   });
 
@@ -52,6 +53,7 @@ describe("<PersonDetails />", () => {
 
   it("should render 'No birthday available.' when birthdate is missing", async () => {
     const { birthday, ...rest } = person;
+
     await render(<PersonDetails person={rest} />, {
       queryData: [[["person", "details", 300, "external"], {}]],
     });

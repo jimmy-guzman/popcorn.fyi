@@ -5,6 +5,7 @@ import { render, screen } from "@/testing/utils";
 import { MovieDiscoverFilters } from "./discover-filters";
 
 const mockNavigate = vi.fn();
+
 vi.mock("@tanstack/react-router", async () => {
   return {
     ...(await vi.importActual("@tanstack/react-router")),
@@ -94,6 +95,7 @@ describe("MovieDiscoverFilters", () => {
     );
 
     const sortSelect = screen.getByRole("combobox", { name: /sort by/i });
+
     await user.selectOptions(sortSelect, "popularity.asc");
 
     expect(mockNavigate).toHaveBeenCalledWith({

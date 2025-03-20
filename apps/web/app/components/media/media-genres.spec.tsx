@@ -31,6 +31,7 @@ describe("MediaGenres", () => {
     );
 
     const link = screen.getByRole("link", { name: "Fantasy" });
+
     expect(link).toHaveAttribute(
       "href",
       "/movies/discover?with_genres=%221%22",
@@ -43,6 +44,7 @@ describe("MediaGenres", () => {
     );
 
     const link = screen.getByRole("link", { name: "Drama" });
+
     expect(link).toHaveAttribute(
       "href",
       "/tv-shows/discover?with_genres=%225%22",
