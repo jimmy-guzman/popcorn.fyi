@@ -1,4 +1,4 @@
-import { SignedIn } from "@clerk/tanstack-start";
+import { SignedIn } from "@clerk/tanstack-react-start";
 import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Badge } from "@popcorn.fyi/ui/badge";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";

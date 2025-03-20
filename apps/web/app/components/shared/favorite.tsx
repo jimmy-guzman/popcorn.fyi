@@ -1,4 +1,4 @@
-import { useAuth } from "@clerk/tanstack-start";
+import { useAuth } from "@clerk/tanstack-react-start";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Tooltip } from "@popcorn.fyi/ui/tooltip";
 import {
