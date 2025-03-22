@@ -11,10 +11,10 @@
   "dependencies": {
     "@iconify/tailwind4": "1.0.6",
     "@tailwindcss/typography": "0.5.16",
-    "daisyui": "5.0.6"
+    "daisyui": "5.0.9"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "1.2.31",
+    "@iconify-json/lucide": "1.2.32",
     "@iconify-json/simple-icons": "1.2.29",
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
@@ -22,7 +22,7 @@
     "typescript": "5.8.2"
   },
   "peerDependencies": {
-    "@iconify-json/lucide": "1.2.31",
+    "@iconify-json/lucide": "1.2.32",
     "@iconify-json/simple-icons": "1.2.29"
   }
 }

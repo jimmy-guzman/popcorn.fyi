@@ -1,8 +1,8 @@
 import type { VariantProps } from "class-variance-authority";
+import type * as React from "react";
 
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
-import * as React from "react";
 
 import type { OmitColor } from "./types";
 
@@ -59,39 +59,35 @@ interface ButtonProps extends ButtonVariants, HtmlButtonProps {
   asChild?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      asChild = false,
-      className,
-      color,
-      modifier,
-      size,
-      variant,
-      ...props
-    }: ButtonProps,
-    ref,
-  ) => {
-    const Comp = asChild ? Slot : "button";
+const Button = ({
+  asChild = false,
+  className,
+  color,
+  modifier,
+  ref,
+  size,
+  variant,
+  ...props
+}: ButtonProps & { ref?: React.RefObject<HTMLButtonElement | null> }) => {
+  const Comp = asChild ? Slot : "button";
 
-    return (
-      <Comp
-        className={cn(
-          buttonVariants({
-            className,
-            color,
-            modifier,
-            size,
-            variant,
-          }),
-        )}
-        ref={ref}
-        type="button"
-        {...props}
-      />
-    );
-  },
-);
+  return (
+    <Comp
+      className={cn(
+        buttonVariants({
+          className,
+          color,
+          modifier,
+          size,
+          variant,
+        }),
+      )}
+      ref={ref}
+      type="button"
+      {...props}
+    />
+  );
+};
 
 Button.displayName = "Button";
 

@@ -55,6 +55,7 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
               )}
               {person.biography ? (
                 <div
+                  // eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml -- TODO
                   dangerouslySetInnerHTML={{
                     __html: tmdbContent(person.biography),
                   }}
