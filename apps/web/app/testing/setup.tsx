@@ -21,7 +21,9 @@ vi.mock("@clerk/tanstack-react-start", async () => {
     SignedIn: ({ children: _children }: { children: React.ReactNode }) =>
       undefined,
     SignIn: () => <div data-testid="clerk-signin" />,
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-unnecessary-use-prefix -- mocking
     useAuth: () => vi.fn(),
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-unnecessary-use-prefix -- mocking
     useUser: () => vi.fn(),
   };
 });

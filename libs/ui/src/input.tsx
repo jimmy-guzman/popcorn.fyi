@@ -1,20 +1,23 @@
-import * as React from "react";
+import type * as React from "react";
+
+import type { WithRef } from "./types";
 
 import { cn } from "./utils";
 
-const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className, type, ...props }, ref) => {
-    return (
-      <input
-        className={cn("dsy-input", className)}
-        ref={ref}
-        type={type}
-        {...props}
-      />
-    );
-  },
-);
-
-Input.displayName = "Input";
+const Input = ({
+  className,
+  ref,
+  type,
+  ...props
+}: WithRef<React.ComponentProps<"input">, HTMLInputElement>) => {
+  return (
+    <input
+      className={cn("dsy-input", className)}
+      ref={ref}
+      type={type}
+      {...props}
+    />
+  );
+};
 
 export { Input };

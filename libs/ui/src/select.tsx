@@ -1,7 +1,7 @@
 import type { VariantProps } from "class-variance-authority";
+import type * as React from "react";
 
 import { cva } from "class-variance-authority";
-import * as React from "react";
 
 import { cn } from "./utils";
 
@@ -38,23 +38,29 @@ type SelectProps = HtmlSelectProps & SelectVariants;
  *   <option value="cherry">Cherry</option>
  * </Select>
  *
- * @param props - Props for the `select` element, including `className`, `children`, and other native attributes.
  *
  * @returns A styled `select` element.
  *
  * @see [DaisyUI Select](https://v5.daisyui.com/components/select/)
  */
-const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({ className, size, ...props }, ref) => {
-    return (
-      <select
-        className={cn(selectVariants({ size }), className)}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
+const Select = ({
+  className,
+  ref,
+  size,
+  ...props
+}: SelectProps & {
+  ref?:
+    | React.RefCallback<HTMLSelectElement | null>
+    | React.RefObject<HTMLSelectElement | null>;
+}) => {
+  return (
+    <select
+      className={cn(selectVariants({ size }), className)}
+      ref={ref}
+      {...props}
+    />
+  );
+};
 
 Select.displayName = "Select";
 

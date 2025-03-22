@@ -1,32 +1,38 @@
-import * as React from "react";
+import type * as React from "react";
 
-import type { RequireChildren } from "./types";
+import type { WithChildren } from "./types";
 
 import { cn } from "./utils";
 
-interface TooltipProps extends RequireChildren<HTMLDivElement> {
+interface TooltipProps extends WithChildren<HTMLDivElement> {
   content?: string;
 }
 
-const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
-  ({ className, content, ...props }, ref) => {
-    return (
-      <div
-        className={cn("dsy-tooltip", className)}
-        data-tip={content}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
+const Tooltip = ({
+  className,
+  content,
+  ref,
+  ...props
+}: TooltipProps & { ref?: React.RefObject<HTMLDivElement | null> }) => {
+  return (
+    <div
+      className={cn("dsy-tooltip", className)}
+      data-tip={content}
+      ref={ref}
+      {...props}
+    />
+  );
+};
 
 Tooltip.displayName = "Tooltip";
 
-const TooltipContent = React.forwardRef<
-  HTMLDivElement,
-  RequireChildren<HTMLDivElement>
->(({ className, ...props }, ref) => {
+const TooltipContent = ({
+  className,
+  ref,
+  ...props
+}: WithChildren<HTMLDivElement> & {
+  ref?: React.RefObject<HTMLDivElement | null>;
+}) => {
   return (
     <div
       className={cn("dsy-tooltip-content", className)}
@@ -34,7 +40,7 @@ const TooltipContent = React.forwardRef<
       {...props}
     />
   );
-});
+};
 
 TooltipContent.displayName = "TooltipContent";
 

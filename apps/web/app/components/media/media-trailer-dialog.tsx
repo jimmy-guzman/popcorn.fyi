@@ -43,11 +43,11 @@ export const MediaTrailerDialog = ({
         <h3 className="text-lg font-bold">{trailer ? trailer.name : "N/A"}</h3>
         <p className="py-4">Press ESC key or click outside to close.</p>
         {trailer?.key ? (
-          // eslint-disable-next-line react/iframe-missing-sandbox -- TODO
           <iframe
             allow="autoplay; encrypted-media"
             allowFullScreen
             className="aspect-square size-full rounded-md sm:aspect-video"
+            // eslint-disable-next-line @eslint-react/dom/no-unsafe-iframe-sandbox -- TODO
             sandbox="allow-scripts allow-same-origin allow-presentation"
             src={youtubeVideoUrl(trailer.key, { autoplay: true })}
             title={trailer.name}

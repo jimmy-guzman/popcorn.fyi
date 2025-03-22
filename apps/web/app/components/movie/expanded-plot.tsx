@@ -44,9 +44,9 @@ export const ExpandedPlot = ({ summaries }: ExpandedPlotProps) => {
       </div>
 
       <Prose>
-        {displayedSummary?.map((section, index) => {
+        {displayedSummary?.map((section) => {
           return (
-            <p key={index}>
+            <p key={section.text}>
               {section.text}
               {section.spoiler ? (
                 <span
