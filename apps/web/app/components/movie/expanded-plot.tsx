@@ -1,8 +1,8 @@
-import { Button } from "@popcorn.fyi/ui/button";
 import { cn } from "@popcorn.fyi/ui/utils";
 import { useState } from "react";
 
 import { Prose } from "../shared/prose";
+import { ExpandMoreLess } from "./expand-more-less";
 
 interface ExpandedPlotProps {
   summaries?: {
@@ -63,29 +63,11 @@ export const ExpandedPlot = ({ summaries }: ExpandedPlotProps) => {
           );
         })}
       </Prose>
-      <div className="flex justify-start">
-        {summary && summary.length > expanded ? (
-          <Button
-            onClick={() => {
-              setExpanded((prev) => Math.min(prev + 1, summary.length));
-            }}
-            variant="ghost"
-          >
-            Read More
-            <span className="icon-[lucide--chevron-down] h-4 w-4" />
-          </Button>
-        ) : expanded > 1 ? (
-          <Button
-            onClick={() => {
-              setExpanded(1);
-            }}
-            variant="ghost"
-          >
-            Read Less
-            <span className="icon-[lucide--chevron-up] h-4 w-4" />
-          </Button>
-        ) : null}
-      </div>
+      <ExpandMoreLess
+        handleExpand={setExpanded}
+        isExpanded={expanded}
+        summaryLength={summary?.length}
+      />
     </div>
   );
 };
