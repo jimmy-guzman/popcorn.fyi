@@ -31,13 +31,13 @@
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/tailwind": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
-    "@storybook/addon-a11y": "8.6.8",
-    "@storybook/addon-essentials": "8.6.8",
-    "@storybook/addon-themes": "8.6.8",
-    "@storybook/blocks": "8.6.8",
-    "@storybook/react": "8.6.8",
-    "@storybook/react-vite": "8.6.8",
-    "@storybook/theming": "8.6.8",
+    "@storybook/addon-a11y": "8.6.9",
+    "@storybook/addon-essentials": "8.6.9",
+    "@storybook/addon-themes": "8.6.9",
+    "@storybook/blocks": "8.6.9",
+    "@storybook/react": "8.6.9",
+    "@storybook/react-vite": "8.6.9",
+    "@storybook/theming": "8.6.9",
     "@tailwindcss/postcss": "4.0.15",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
@@ -47,6 +47,6 @@
     "@types/react-dom": "19.0.4",
     "happy-dom": "17.4.4",
     "postcss": "8.5.3",
-    "storybook": "8.6.8"
+    "storybook": "8.6.9"
   }
 }
