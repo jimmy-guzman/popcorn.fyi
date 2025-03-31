@@ -13,7 +13,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@neondatabase/serverless": "0.10.4",
+    "@neondatabase/serverless": "1.0.0",
     "bufferutil": "4.0.9",
     "drizzle-orm": "0.41.0",
     "drizzle-valibot": "0.4.0",
