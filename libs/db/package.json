@@ -16,7 +16,7 @@
     "@neondatabase/serverless": "1.0.0",
     "bufferutil": "4.0.9",
     "drizzle-orm": "0.41.0",
-    "drizzle-valibot": "0.4.0",
+    "drizzle-valibot": "0.4.1",
     "ws": "8.18.1"
   },
   "devDependencies": {
