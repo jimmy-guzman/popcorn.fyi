@@ -25,28 +25,28 @@
     "clsx": "2.1.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "tailwind-merge": "3.0.2"
+    "tailwind-merge": "3.2.0"
   },
   "devDependencies": {
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/tailwind": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
-    "@storybook/addon-a11y": "8.6.11",
-    "@storybook/addon-essentials": "8.6.11",
-    "@storybook/addon-themes": "8.6.11",
-    "@storybook/blocks": "8.6.11",
-    "@storybook/react": "8.6.11",
-    "@storybook/react-vite": "8.6.11",
-    "@storybook/theming": "8.6.11",
-    "@tailwindcss/postcss": "4.0.17",
+    "@storybook/addon-a11y": "8.6.12",
+    "@storybook/addon-essentials": "8.6.12",
+    "@storybook/addon-themes": "8.6.12",
+    "@storybook/blocks": "8.6.12",
+    "@storybook/react": "8.6.12",
+    "@storybook/react-vite": "8.6.12",
+    "@storybook/theming": "8.6.12",
+    "@tailwindcss/postcss": "4.1.3",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
-    "@testing-library/react": "16.2.0",
+    "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "14.6.1",
-    "@types/react": "19.0.12",
-    "@types/react-dom": "19.0.4",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.1",
     "happy-dom": "17.4.4",
     "postcss": "8.5.3",
-    "storybook": "8.6.11"
+    "storybook": "8.6.12"
   }
 }
