@@ -26,7 +26,7 @@ const TanStackRouterDevtools =
         return null;
       }
     : lazy(async () => {
-        const res = await import("@tanstack/router-devtools");
+        const res = await import("@tanstack/react-router-devtools");
 
         return {
           default: res.TanStackRouterDevtools,
