@@ -34,7 +34,7 @@ updates:
           - "@tanstack/react-start"
           - "@tanstack/react-router"
           - "@tanstack/react-router-with-query"
-          - "@tanstack/router-devtools"
+          - "@tanstack/react-router-devtools"
       "dev-deps":
         dependency-type: "development"
       "prod-deps":
