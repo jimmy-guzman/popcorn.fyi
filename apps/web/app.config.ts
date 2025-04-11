@@ -18,6 +18,7 @@ export default defineConfig({
     preset: "vercel",
   },
   tsr: {
+    appDirectory: "./src",
     autoCodeSplitting: true,
   },
   vite: {
