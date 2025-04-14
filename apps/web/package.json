@@ -15,15 +15,15 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@clerk/tanstack-react-start": "0.13.0",
-    "@clerk/themes": "2.2.27",
+    "@clerk/tanstack-react-start": "0.13.4",
+    "@clerk/themes": "2.2.31",
     "@hookform/resolvers": "5.0.1",
     "@popcorn.fyi/api-clients": "workspace:*",
     "@popcorn.fyi/db": "workspace:*",
     "@popcorn.fyi/ui": "workspace:*",
     "@popcorn.fyi/utils": "workspace:*",
     "@tanstack/match-sorter-utils": "8.19.4",
-    "@tanstack/react-query": "5.72.0",
+    "@tanstack/react-query": "5.74.2",
     "@tanstack/react-router": "1.116.0",
     "@tanstack/react-router-with-query": "1.116.0",
     "@tanstack/react-start": "1.116.1",
@@ -39,7 +39,7 @@
     "use-debounce": "10.0.4",
     "valibot": "1.0.0",
     "vaul": "1.1.2",
-    "vinxi": "0.5.3"
+    "vinxi": "0.5.4"
   },
   "devDependencies": {
     "@clerk/testing": "1.4.34",
