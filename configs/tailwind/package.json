@@ -14,15 +14,15 @@
     "daisyui": "5.0.19"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "1.2.35",
-    "@iconify-json/simple-icons": "1.2.31",
+    "@iconify-json/lucide": "1.2.36",
+    "@iconify-json/simple-icons": "1.2.32",
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
     "tailwindcss": "4.1.3",
     "typescript": "5.8.3"
   },
   "peerDependencies": {
-    "@iconify-json/lucide": "1.2.35",
-    "@iconify-json/simple-icons": "1.2.31"
+    "@iconify-json/lucide": "1.2.36",
+    "@iconify-json/simple-icons": "1.2.32"
   }
 }
