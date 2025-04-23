@@ -15,7 +15,7 @@
   "dependencies": {
     "@neondatabase/serverless": "1.0.0",
     "bufferutil": "4.0.9",
-    "drizzle-orm": "0.41.0",
+    "drizzle-orm": "0.42.0",
     "drizzle-valibot": "0.4.1",
     "ws": "8.18.1"
   },
@@ -23,6 +23,6 @@
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
     "@types/ws": "8.18.1",
-    "drizzle-kit": "0.30.6"
+    "drizzle-kit": "0.31.0"
   }
 }

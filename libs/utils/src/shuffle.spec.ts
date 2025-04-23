@@ -1,14 +1,14 @@
 import { shuffle } from "./shuffle";
 
 describe("shuffle", () => {
-  it("returns list with same number of items", () => {
+  it("should return a list with same number of items", () => {
     const list = [1, 2, 3, 4, 5];
     const result = shuffle(list);
 
     expect(list).toHaveLength(result.length);
   });
 
-  it("returns copy of list without mutating input", () => {
+  it("should return a copy of list without mutating input", () => {
     const list = [1, 2, 3, 4, 5];
     const result = shuffle(list);
 
