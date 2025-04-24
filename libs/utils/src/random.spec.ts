@@ -1,7 +1,7 @@
 import { random } from "./random";
 
 describe("random", () => {
-  it("returns a number", () => {
+  it("should return a number", () => {
     const result = random(0, 100);
 
     expect(result).toBeGreaterThanOrEqual(0);

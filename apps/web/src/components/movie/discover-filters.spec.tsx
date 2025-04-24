@@ -21,7 +21,7 @@ const mockProviders = [
 const mockRegions = [{ english_name: "United States", iso_3166_1: "US" }];
 
 describe("MovieDiscoverFilters", () => {
-  it("renders all filters correctly", async () => {
+  it("should renders all filters correctly", async () => {
     await render(
       <MovieDiscoverFilters
         genres={mockGenres}
@@ -47,7 +47,7 @@ describe("MovieDiscoverFilters", () => {
     ).toBeInTheDocument();
   });
 
-  it("allows selecting a genre", async () => {
+  it("should allow selecting a genre", async () => {
     const { user } = await render(
       <MovieDiscoverFilters
         genres={mockGenres}
@@ -64,7 +64,7 @@ describe("MovieDiscoverFilters", () => {
     expect(genreSelect).toHaveValue("1");
   });
 
-  it("resets the genre when reset button is clicked", async () => {
+  it("should reset the genre when reset button is clicked", async () => {
     const { user } = await render(
       <MovieDiscoverFilters
         genres={mockGenres}
@@ -84,7 +84,7 @@ describe("MovieDiscoverFilters", () => {
     expect(genreSelect).toHaveValue("");
   });
 
-  it("calls navigation when filters change", async () => {
+  it("should call navigation when filters change", async () => {
     const { user } = await render(
       <MovieDiscoverFilters
         genres={mockGenres}
