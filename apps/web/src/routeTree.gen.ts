@@ -41,7 +41,6 @@ import { Route as LayoutMoviesDiscoverLayoutImport } from './routes/_layout/movi
 import { Route as LayoutMoviesIdWatchImport } from './routes/_layout/movies.$id.watch'
 import { Route as LayoutMoviesIdTrailerImport } from './routes/_layout/movies.$id.trailer'
 import { Route as LayoutMoviesIdSimilarImport } from './routes/_layout/movies.$id.similar'
-import { Route as LayoutMoviesIdPlotImport } from './routes/_layout/movies.$id.plot'
 import { Route as LayoutMoviesIdCreditsImport } from './routes/_layout/movies.$id.credits'
 import { Route as LayoutAuthWatchTvShowsImport } from './routes/_layout/_auth/watch.tv-shows'
 import { Route as LayoutAuthWatchMoviesImport } from './routes/_layout/_auth/watch.movies'
@@ -236,12 +235,6 @@ const LayoutMoviesIdTrailerRoute = LayoutMoviesIdTrailerImport.update({
 const LayoutMoviesIdSimilarRoute = LayoutMoviesIdSimilarImport.update({
   id: '/similar',
   path: '/similar',
-  getParentRoute: () => LayoutMoviesIdRoute,
-} as any)
-
-const LayoutMoviesIdPlotRoute = LayoutMoviesIdPlotImport.update({
-  id: '/plot',
-  path: '/plot',
   getParentRoute: () => LayoutMoviesIdRoute,
 } as any)
 
@@ -455,13 +448,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutMoviesIdCreditsImport
       parentRoute: typeof LayoutMoviesIdImport
     }
-    '/_layout/movies/$id/plot': {
-      id: '/_layout/movies/$id/plot'
-      path: '/plot'
-      fullPath: '/movies/$id/plot'
-      preLoaderRoute: typeof LayoutMoviesIdPlotImport
-      parentRoute: typeof LayoutMoviesIdImport
-    }
     '/_layout/movies/$id/similar': {
       id: '/_layout/movies/$id/similar'
       path: '/similar'
@@ -601,7 +587,6 @@ const LayoutAuthRouteWithChildren = LayoutAuthRoute._addFileChildren(
 
 interface LayoutMoviesIdRouteChildren {
   LayoutMoviesIdCreditsRoute: typeof LayoutMoviesIdCreditsRoute
-  LayoutMoviesIdPlotRoute: typeof LayoutMoviesIdPlotRoute
   LayoutMoviesIdSimilarRoute: typeof LayoutMoviesIdSimilarRoute
   LayoutMoviesIdTrailerRoute: typeof LayoutMoviesIdTrailerRoute
   LayoutMoviesIdWatchRoute: typeof LayoutMoviesIdWatchRoute
@@ -610,7 +595,6 @@ interface LayoutMoviesIdRouteChildren {
 
 const LayoutMoviesIdRouteChildren: LayoutMoviesIdRouteChildren = {
   LayoutMoviesIdCreditsRoute: LayoutMoviesIdCreditsRoute,
-  LayoutMoviesIdPlotRoute: LayoutMoviesIdPlotRoute,
   LayoutMoviesIdSimilarRoute: LayoutMoviesIdSimilarRoute,
   LayoutMoviesIdTrailerRoute: LayoutMoviesIdTrailerRoute,
   LayoutMoviesIdWatchRoute: LayoutMoviesIdWatchRoute,
@@ -772,7 +756,6 @@ export interface FileRoutesByFullPath {
   '/watch/movies': typeof LayoutAuthWatchMoviesRoute
   '/watch/tv-shows': typeof LayoutAuthWatchTvShowsRoute
   '/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
-  '/movies/$id/plot': typeof LayoutMoviesIdPlotRoute
   '/movies/$id/similar': typeof LayoutMoviesIdSimilarRoute
   '/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
   '/movies/$id/watch': typeof LayoutMoviesIdWatchRoute
@@ -808,7 +791,6 @@ export interface FileRoutesByTo {
   '/watch/movies': typeof LayoutAuthWatchMoviesRoute
   '/watch/tv-shows': typeof LayoutAuthWatchTvShowsRoute
   '/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
-  '/movies/$id/plot': typeof LayoutMoviesIdPlotRoute
   '/movies/$id/similar': typeof LayoutMoviesIdSimilarRoute
   '/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
   '/movies/$id/watch': typeof LayoutMoviesIdWatchRoute
@@ -847,7 +829,6 @@ export interface FileRoutesById {
   '/_layout/_auth/watch/movies': typeof LayoutAuthWatchMoviesRoute
   '/_layout/_auth/watch/tv-shows': typeof LayoutAuthWatchTvShowsRoute
   '/_layout/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
-  '/_layout/movies/$id/plot': typeof LayoutMoviesIdPlotRoute
   '/_layout/movies/$id/similar': typeof LayoutMoviesIdSimilarRoute
   '/_layout/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
   '/_layout/movies/$id/watch': typeof LayoutMoviesIdWatchRoute
@@ -890,7 +871,6 @@ export interface FileRouteTypes {
     | '/watch/movies'
     | '/watch/tv-shows'
     | '/movies/$id/credits'
-    | '/movies/$id/plot'
     | '/movies/$id/similar'
     | '/movies/$id/trailer'
     | '/movies/$id/watch'
@@ -925,7 +905,6 @@ export interface FileRouteTypes {
     | '/watch/movies'
     | '/watch/tv-shows'
     | '/movies/$id/credits'
-    | '/movies/$id/plot'
     | '/movies/$id/similar'
     | '/movies/$id/trailer'
     | '/movies/$id/watch'
@@ -962,7 +941,6 @@ export interface FileRouteTypes {
     | '/_layout/_auth/watch/movies'
     | '/_layout/_auth/watch/tv-shows'
     | '/_layout/movies/$id/credits'
-    | '/_layout/movies/$id/plot'
     | '/_layout/movies/$id/similar'
     | '/_layout/movies/$id/trailer'
     | '/_layout/movies/$id/watch'
@@ -1053,7 +1031,6 @@ export const routeTree = rootRoute
       "parent": "/_layout",
       "children": [
         "/_layout/movies/$id/credits",
-        "/_layout/movies/$id/plot",
         "/_layout/movies/$id/similar",
         "/_layout/movies/$id/trailer",
         "/_layout/movies/$id/watch",
@@ -1132,10 +1109,6 @@ export const routeTree = rootRoute
     },
     "/_layout/movies/$id/credits": {
       "filePath": "_layout/movies.$id.credits.tsx",
-      "parent": "/_layout/movies/$id"
-    },
-    "/_layout/movies/$id/plot": {
-      "filePath": "_layout/movies.$id.plot.tsx",
       "parent": "/_layout/movies/$id"
     },
     "/_layout/movies/$id/similar": {
