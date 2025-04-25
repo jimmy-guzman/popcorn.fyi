@@ -1,12 +1,11 @@
 # 🍿 popcorn.fyi
 
-> A fast, modular, and AI-enhanced way to explore movies and TV shows using data from [TMDB](https://developer.themoviedb.org) and [Wikidata](https://www.wikidata.org/).
+> A fast and modular to explore movies and TV shows using data from [TMDB](https://developer.themoviedb.org) and [Wikidata](https://www.wikidata.org/).
 >
 > **[Check it out live!](https://popcornfyi.vercel.app)**
 
 ## 🏆 Features
 
-🎬 **AI-Powered Plot Summaries** – Get structured breakdowns of a movie’s story with **spoiler control**.  
 🔍 **Discover Movies & TV Shows** – Browse trending, popular, and personalized recommendations.  
 🎛 **Advanced Filters** – Sort by **genre, rating, release year, and more**.  
 ⭐ **Favorites & Watchlist** – Save what you love and track what you’ve watched (powered by Clerk).  
@@ -31,7 +30,6 @@
 
 ### **Backend**
 
-- **AI Summaries:** [OpenAI](https://platform.openai.com/) generates structured movie summaries.
 - **Database:** [PostgreSQL](https://www.postgresql.org) (hosted on [Neon](https://neon.tech))
 - **ORM:** [Drizzle ORM](https://orm.drizzle.team)
 - **APIs:** [TMDB](https://developer.themoviedb.org/reference/intro/getting-started) & [Wikidata](https://www.wikidata.org/w/api.php)

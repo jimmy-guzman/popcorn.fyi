@@ -8,7 +8,6 @@ graph TD;
     B -->|API Calls| C[@popcorn.fyi/api-clients]
     C -->|Fetches Data| D[TMDB API]
     C -->|Fetches Data| E[Wikidata API]
-    C -->|Fetches Data| L[OpenAI API]
     C -->|Interacts with| F[@popcorn.fyi/db Drizzle + Neon]
     F -->|Stores Data| G[PostgreSQL Neon]
     B -->|Uses CDN & Edge Functions| H[Vercel]
