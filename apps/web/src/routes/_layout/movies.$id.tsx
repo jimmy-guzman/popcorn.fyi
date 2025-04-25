@@ -5,7 +5,6 @@ import * as v from "valibot";
 
 import { movieDetailsOptions } from "@/api/movie/details";
 import { movieExternalOptions } from "@/api/movie/details.external";
-import { moviePlotOptions } from "@/api/movie/details.plot";
 import { MovieDetails } from "@/components/movie/movie-details";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
@@ -21,7 +20,6 @@ export const Route = createFileRoute("/_layout/movies/$id")({
     );
 
     void context.queryClient.prefetchQuery(movieExternalOptions(movieId));
-    void context.queryClient.prefetchQuery(moviePlotOptions(movieId));
 
     return {
       seo: {
