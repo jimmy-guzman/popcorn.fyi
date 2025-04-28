@@ -44,21 +44,21 @@
   "devDependencies": {
     "@clerk/testing": "1.5.1",
     "@dotenvx/dotenvx": "1.41.0",
-    "@iconify-json/lucide": "1.2.38",
+    "@iconify-json/lucide": "1.2.39",
     "@iconify-json/simple-icons": "1.2.33",
     "@playwright/test": "1.52.0",
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/tailwind": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
     "@tailwindcss/postcss": "4.1.4",
-    "@tanstack/react-query-devtools": "5.74.6",
+    "@tanstack/react-query-devtools": "5.74.7",
     "@tanstack/react-router-devtools": "1.117.1",
     "@testing-library/dom": "10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.3.0",
     "@testing-library/user-event": "14.6.1",
     "@total-typescript/ts-reset": "0.6.1",
-    "@types/node": "22.14.1",
+    "@types/node": "22.15.3",
     "@types/react": "19.1.2",
     "@types/react-dom": "19.1.2",
     "@vitejs/plugin-react": "4.4.1",
@@ -68,7 +68,7 @@
     "picocolors": "1.1.1",
     "postcss": "8.5.3",
     "tailwindcss": "4.1.4",
-    "vite": "6.3.2",
+    "vite": "6.3.3",
     "vite-tsconfig-paths": "5.1.4"
   }
 }

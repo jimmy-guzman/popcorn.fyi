@@ -14,7 +14,7 @@
     "daisyui": "5.0.28"
   },
   "devDependencies": {
-    "@iconify-json/lucide": "1.2.38",
+    "@iconify-json/lucide": "1.2.39",
     "@iconify-json/simple-icons": "1.2.33",
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
@@ -22,7 +22,7 @@
     "typescript": "5.8.3"
   },
   "peerDependencies": {
-    "@iconify-json/lucide": "1.2.38",
+    "@iconify-json/lucide": "1.2.39",
     "@iconify-json/simple-icons": "1.2.33"
   }
 }
