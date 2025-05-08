@@ -18,10 +18,7 @@
       "entry": ["src/{ssr,client}.tsx", "app.config.ts"],
       "project": "**/*.{ts,tsx}",
       "ignore": ["src/routeTree.gen.ts"],
-      "ignoreDependencies": ["tailwindcss", "postcss"]
-    },
-    "libs/ui": {
-      "ignoreDependencies": ["postcss"]
+      "ignoreDependencies": ["tailwindcss"]
     },
     "configs/tailwind": {
       "ignoreDependencies": [

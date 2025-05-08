@@ -17,7 +17,7 @@ export const TableGlobalFilter = ({
       <Input
         className="grow"
         onChange={(event) => {
-          setGlobalFilter(String(event.target.value));
+          setGlobalFilter(event.target.value);
         }}
         placeholder="Search..."
         type="text"

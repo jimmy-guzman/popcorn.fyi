@@ -9,7 +9,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@jimmy.codes/eslint-config": "5.12.0",
+    "@jimmy.codes/eslint-config": "5.14.0",
     "@tanstack/eslint-plugin-router": "1.115.0",
     "eslint-plugin-arrow-return-style": "1.3.1"
   },
