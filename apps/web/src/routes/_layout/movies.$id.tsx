@@ -32,7 +32,7 @@ export const Route = createFileRoute("/_layout/movies/$id")({
   },
   head: ({ loaderData }) => {
     return {
-      meta: seo(loaderData.seo),
+      meta: loaderData ? seo(loaderData.seo) : undefined,
     };
   },
 });
