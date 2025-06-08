@@ -53,16 +53,7 @@ export const SiteFooter = () => {
           >
             Vercel
           </a>
-          ,{" "}
-          <a
-            className="dsy-link"
-            href={urls.clerk}
-            rel="noreferrer"
-            target="_blank"
-          >
-            Clerk
-          </a>{" "}
-          and{" "}
+          , and{" "}
           <a
             className="dsy-link"
             href={urls.neon}

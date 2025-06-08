@@ -52,16 +52,6 @@ export const categoryNav = {
           title: "Top Rated",
           to: "/movies/top-rated",
         },
-        {
-          icon: "icon-[lucide--star]",
-          title: "Favorites",
-          to: "/favorites/movies",
-        },
-        {
-          icon: "icon-[lucide--eye]",
-          title: "Watchlist",
-          to: "/watch/movies",
-        },
       ],
       title: "Movies",
       to: "/movies",
@@ -89,16 +79,6 @@ export const categoryNav = {
           title: "Top Rated",
           to: "/tv-shows/top-rated",
         },
-        {
-          icon: "icon-[lucide--star]",
-          title: "Favorites",
-          to: "/favorites/tv-shows",
-        },
-        {
-          icon: "icon-[lucide--eye]",
-          title: "Watchlist",
-          to: "/watch/tv-shows",
-        },
       ],
       title: "TV Shows",
       to: "/tv-shows",
@@ -116,11 +96,6 @@ export const categoryNav = {
           title: "Popular",
           to: "/people/popular",
         },
-        {
-          icon: "icon-[lucide--star]",
-          title: "Favorites",
-          to: "/favorites/people",
-        },
       ],
       title: "People",
       to: "/people",
@@ -135,45 +110,6 @@ export const homeNavItem = {
   icon: "icon-[lucide--home]",
   title: "Home",
   to: "/",
-} satisfies NavItem;
-
-/**
- * Navigation configuration for accessing user favorites.
- */
-export const favoritesNavItem = {
-  icon: "icon-[lucide--star]",
-  items: [
-    {
-      icon: "icon-[lucide--clapperboard]",
-      title: "Movies",
-      to: "/favorites/movies",
-    },
-    { icon: "icon-[lucide--tv]", title: "TV Shows", to: "/favorites/tv-shows" },
-    {
-      icon: "icon-[lucide--person-standing]",
-      title: "People",
-      to: "/favorites/people",
-    },
-  ],
-  title: "Favorites",
-  to: "/favorites",
-} satisfies NavItem;
-
-/**
- * Navigation configuration for accessing user watchlist.
- */
-export const watchlistNavItem = {
-  icon: "icon-[lucide--eye]",
-  items: [
-    {
-      icon: "icon-[lucide--clapperboard]",
-      title: "Movies",
-      to: "/watch/movies",
-    },
-    { icon: "icon-[lucide--tv]", title: "TV Shows", to: "/watch/tv-shows" },
-  ],
-  title: "Watchlist",
-  to: "/watch",
 } satisfies NavItem;
 
 /**

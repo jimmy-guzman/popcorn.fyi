@@ -3,7 +3,6 @@ packages:
   - "libs/*"
   - "configs/*"
 onlyBuiltDependencies:
-  - "@clerk/shared"
   - "@parcel/watcher"
   - "@vercel/speed-insights"
   - "bufferutil"

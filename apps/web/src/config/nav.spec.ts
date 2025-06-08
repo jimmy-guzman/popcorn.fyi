@@ -1,19 +1,7 @@
-import {
-  categoryNav,
-  exploreNav,
-  favoritesNavItem,
-  homeNavItem,
-  watchlistNavItem,
-} from "./nav";
+import { categoryNav, exploreNav, homeNavItem } from "./nav";
 
 describe("Navigation Configuration", () => {
-  const navConfigs = [
-    ...categoryNav.items,
-    ...exploreNav.items,
-    homeNavItem,
-    favoritesNavItem,
-    watchlistNavItem,
-  ];
+  const navConfigs = [...categoryNav.items, ...exploreNav.items, homeNavItem];
 
   it("should have valid routes for all navigation items", () => {
     for (const item of navConfigs) {

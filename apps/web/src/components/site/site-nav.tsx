@@ -1,9 +1,3 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/tanstack-react-start";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Link } from "@tanstack/react-router";
 
@@ -32,25 +26,6 @@ export const SiteNav = () => {
       <div className="dsy-navbar-center hidden xl:flex" />
       <div className="dsy-navbar-end hidden gap-2 xl:flex">
         <SiteNavSearchInput />
-        <SignedIn>
-          <UserButton
-            appearance={{
-              elements: {
-                avatarImage: "rounded-full",
-                userButtonTrigger:
-                  "dsy-btn dsy-btn-ghost dsy-btn-circle dsy-avatar dsy-avatar-online",
-              },
-            }}
-          />
-        </SignedIn>
-        <SignedOut>
-          <SignInButton>
-            <Button modifier="circle" variant="ghost">
-              <span className="sr-only">Sign In</span>
-              <span className="icon-[lucide--log-in] h-5 w-5" />
-            </Button>
-          </SignInButton>
-        </SignedOut>
       </div>
     </nav>
   );

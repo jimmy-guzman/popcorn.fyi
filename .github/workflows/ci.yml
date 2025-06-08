@@ -108,8 +108,6 @@ jobs:
         env:
           COMPATIBILITY_DATE: 2024-11-14
           TMDB_API_TOKEN: ${{ secrets.TMDB_API_TOKEN }}
-          VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
-          CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
 
       - name: 🗃️ Upload Playwright Report
         uses: actions/upload-artifact@v4

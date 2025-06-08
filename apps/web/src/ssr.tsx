@@ -1,4 +1,3 @@
-import { createClerkHandler } from "@clerk/tanstack-react-start/server";
 import { getRouterManifest } from "@tanstack/react-start/router-manifest";
 import {
   createStartHandler,
@@ -7,13 +6,10 @@ import {
 
 import { createRouter } from "./router";
 
-const startHandler = createStartHandler({
+const handler = createStartHandler({
   createRouter,
   getRouterManifest,
-});
-
-const clerkHandler = createClerkHandler(startHandler);
-
-const handler = clerkHandler(defaultStreamHandler);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- TODO: fix me
+})(defaultStreamHandler);
 
 export default handler;

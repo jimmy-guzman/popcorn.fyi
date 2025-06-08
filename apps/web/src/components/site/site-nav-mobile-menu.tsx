@@ -1,9 +1,3 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/tanstack-react-start";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Drawer } from "vaul";
 
@@ -35,27 +29,6 @@ export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {
             {items.map((item) => (
               <SiteNavMenuItem item={item} key={item.title} />
             ))}
-            <li className="flex flex-row items-center justify-center">
-              <SignedIn>
-                <UserButton
-                  appearance={{
-                    elements: {
-                      avatarImage: "rounded-full",
-                      userButtonTrigger:
-                        "dsy-btn dsy-btn-ghost dsy-btn-circle dsy-avatar",
-                    },
-                  }}
-                />
-              </SignedIn>
-              <SignedOut>
-                <SignInButton>
-                  <Button modifier="circle" variant="ghost">
-                    <span className="sr-only">Sign In</span>
-                    <span className="icon-[lucide--log-in] h-7 w-7" />
-                  </Button>
-                </SignInButton>
-              </SignedOut>
-            </li>
           </ul>
         </Drawer.Content>
       </Drawer.Portal>

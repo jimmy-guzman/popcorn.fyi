@@ -15,9 +15,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
-import { Route as LayoutSignInImport } from './routes/_layout.sign-in'
 import { Route as LayoutSearchImport } from './routes/_layout/search'
-import { Route as LayoutAuthImport } from './routes/_layout/_auth'
 import { Route as LayoutTvShowsTopRatedImport } from './routes/_layout/tv-shows.top-rated'
 import { Route as LayoutTvShowsPopularImport } from './routes/_layout/tv-shows.popular'
 import { Route as LayoutTvShowsIdImport } from './routes/_layout/tv-shows.$id'
@@ -42,11 +40,6 @@ import { Route as LayoutMoviesIdWatchImport } from './routes/_layout/movies.$id.
 import { Route as LayoutMoviesIdTrailerImport } from './routes/_layout/movies.$id.trailer'
 import { Route as LayoutMoviesIdSimilarImport } from './routes/_layout/movies.$id.similar'
 import { Route as LayoutMoviesIdCreditsImport } from './routes/_layout/movies.$id.credits'
-import { Route as LayoutAuthWatchTvShowsImport } from './routes/_layout/_auth/watch.tv-shows'
-import { Route as LayoutAuthWatchMoviesImport } from './routes/_layout/_auth/watch.movies'
-import { Route as LayoutAuthFavoritesTvShowsImport } from './routes/_layout/_auth/favorites.tv-shows'
-import { Route as LayoutAuthFavoritesPeopleImport } from './routes/_layout/_auth/favorites.people'
-import { Route as LayoutAuthFavoritesMoviesImport } from './routes/_layout/_auth/favorites.movies'
 import { Route as LayoutTvShowsDiscoverLayoutIndexImport } from './routes/_layout/tv-shows.discover._layout.index'
 import { Route as LayoutMoviesDiscoverLayoutIndexImport } from './routes/_layout/movies.discover._layout.index'
 
@@ -70,20 +63,9 @@ const LayoutIndexRoute = LayoutIndexImport.update({
   getParentRoute: () => LayoutRoute,
 } as any)
 
-const LayoutSignInRoute = LayoutSignInImport.update({
-  id: '/sign-in',
-  path: '/sign-in',
-  getParentRoute: () => LayoutRoute,
-} as any)
-
 const LayoutSearchRoute = LayoutSearchImport.update({
   id: '/search',
   path: '/search',
-  getParentRoute: () => LayoutRoute,
-} as any)
-
-const LayoutAuthRoute = LayoutAuthImport.update({
-  id: '/_auth',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -244,38 +226,6 @@ const LayoutMoviesIdCreditsRoute = LayoutMoviesIdCreditsImport.update({
   getParentRoute: () => LayoutMoviesIdRoute,
 } as any)
 
-const LayoutAuthWatchTvShowsRoute = LayoutAuthWatchTvShowsImport.update({
-  id: '/watch/tv-shows',
-  path: '/watch/tv-shows',
-  getParentRoute: () => LayoutAuthRoute,
-} as any)
-
-const LayoutAuthWatchMoviesRoute = LayoutAuthWatchMoviesImport.update({
-  id: '/watch/movies',
-  path: '/watch/movies',
-  getParentRoute: () => LayoutAuthRoute,
-} as any)
-
-const LayoutAuthFavoritesTvShowsRoute = LayoutAuthFavoritesTvShowsImport.update(
-  {
-    id: '/favorites/tv-shows',
-    path: '/favorites/tv-shows',
-    getParentRoute: () => LayoutAuthRoute,
-  } as any,
-)
-
-const LayoutAuthFavoritesPeopleRoute = LayoutAuthFavoritesPeopleImport.update({
-  id: '/favorites/people',
-  path: '/favorites/people',
-  getParentRoute: () => LayoutAuthRoute,
-} as any)
-
-const LayoutAuthFavoritesMoviesRoute = LayoutAuthFavoritesMoviesImport.update({
-  id: '/favorites/movies',
-  path: '/favorites/movies',
-  getParentRoute: () => LayoutAuthRoute,
-} as any)
-
 const LayoutTvShowsDiscoverLayoutIndexRoute =
   LayoutTvShowsDiscoverLayoutIndexImport.update({
     id: '/',
@@ -301,25 +251,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
-    '/_layout/_auth': {
-      id: '/_layout/_auth'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof LayoutAuthImport
-      parentRoute: typeof LayoutImport
-    }
     '/_layout/search': {
       id: '/_layout/search'
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof LayoutSearchImport
-      parentRoute: typeof LayoutImport
-    }
-    '/_layout/sign-in': {
-      id: '/_layout/sign-in'
-      path: '/sign-in'
-      fullPath: '/sign-in'
-      preLoaderRoute: typeof LayoutSignInImport
       parentRoute: typeof LayoutImport
     }
     '/_layout/': {
@@ -405,41 +341,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/tv-shows/top-rated'
       preLoaderRoute: typeof LayoutTvShowsTopRatedImport
       parentRoute: typeof LayoutImport
-    }
-    '/_layout/_auth/favorites/movies': {
-      id: '/_layout/_auth/favorites/movies'
-      path: '/favorites/movies'
-      fullPath: '/favorites/movies'
-      preLoaderRoute: typeof LayoutAuthFavoritesMoviesImport
-      parentRoute: typeof LayoutAuthImport
-    }
-    '/_layout/_auth/favorites/people': {
-      id: '/_layout/_auth/favorites/people'
-      path: '/favorites/people'
-      fullPath: '/favorites/people'
-      preLoaderRoute: typeof LayoutAuthFavoritesPeopleImport
-      parentRoute: typeof LayoutAuthImport
-    }
-    '/_layout/_auth/favorites/tv-shows': {
-      id: '/_layout/_auth/favorites/tv-shows'
-      path: '/favorites/tv-shows'
-      fullPath: '/favorites/tv-shows'
-      preLoaderRoute: typeof LayoutAuthFavoritesTvShowsImport
-      parentRoute: typeof LayoutAuthImport
-    }
-    '/_layout/_auth/watch/movies': {
-      id: '/_layout/_auth/watch/movies'
-      path: '/watch/movies'
-      fullPath: '/watch/movies'
-      preLoaderRoute: typeof LayoutAuthWatchMoviesImport
-      parentRoute: typeof LayoutAuthImport
-    }
-    '/_layout/_auth/watch/tv-shows': {
-      id: '/_layout/_auth/watch/tv-shows'
-      path: '/watch/tv-shows'
-      fullPath: '/watch/tv-shows'
-      preLoaderRoute: typeof LayoutAuthWatchTvShowsImport
-      parentRoute: typeof LayoutAuthImport
     }
     '/_layout/movies/$id/credits': {
       id: '/_layout/movies/$id/credits'
@@ -565,26 +466,6 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-interface LayoutAuthRouteChildren {
-  LayoutAuthFavoritesMoviesRoute: typeof LayoutAuthFavoritesMoviesRoute
-  LayoutAuthFavoritesPeopleRoute: typeof LayoutAuthFavoritesPeopleRoute
-  LayoutAuthFavoritesTvShowsRoute: typeof LayoutAuthFavoritesTvShowsRoute
-  LayoutAuthWatchMoviesRoute: typeof LayoutAuthWatchMoviesRoute
-  LayoutAuthWatchTvShowsRoute: typeof LayoutAuthWatchTvShowsRoute
-}
-
-const LayoutAuthRouteChildren: LayoutAuthRouteChildren = {
-  LayoutAuthFavoritesMoviesRoute: LayoutAuthFavoritesMoviesRoute,
-  LayoutAuthFavoritesPeopleRoute: LayoutAuthFavoritesPeopleRoute,
-  LayoutAuthFavoritesTvShowsRoute: LayoutAuthFavoritesTvShowsRoute,
-  LayoutAuthWatchMoviesRoute: LayoutAuthWatchMoviesRoute,
-  LayoutAuthWatchTvShowsRoute: LayoutAuthWatchTvShowsRoute,
-}
-
-const LayoutAuthRouteWithChildren = LayoutAuthRoute._addFileChildren(
-  LayoutAuthRouteChildren,
-)
-
 interface LayoutMoviesIdRouteChildren {
   LayoutMoviesIdCreditsRoute: typeof LayoutMoviesIdCreditsRoute
   LayoutMoviesIdSimilarRoute: typeof LayoutMoviesIdSimilarRoute
@@ -692,9 +573,7 @@ const LayoutTvShowsDiscoverRouteWithChildren =
   )
 
 interface LayoutRouteChildren {
-  LayoutAuthRoute: typeof LayoutAuthRouteWithChildren
   LayoutSearchRoute: typeof LayoutSearchRoute
-  LayoutSignInRoute: typeof LayoutSignInRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
   LayoutMoviesIdRoute: typeof LayoutMoviesIdRouteWithChildren
   LayoutMoviesPopularRoute: typeof LayoutMoviesPopularRoute
@@ -712,9 +591,7 @@ interface LayoutRouteChildren {
 }
 
 const LayoutRouteChildren: LayoutRouteChildren = {
-  LayoutAuthRoute: LayoutAuthRouteWithChildren,
   LayoutSearchRoute: LayoutSearchRoute,
-  LayoutSignInRoute: LayoutSignInRoute,
   LayoutIndexRoute: LayoutIndexRoute,
   LayoutMoviesIdRoute: LayoutMoviesIdRouteWithChildren,
   LayoutMoviesPopularRoute: LayoutMoviesPopularRoute,
@@ -735,9 +612,8 @@ const LayoutRouteWithChildren =
   LayoutRoute._addFileChildren(LayoutRouteChildren)
 
 export interface FileRoutesByFullPath {
-  '': typeof LayoutAuthRouteWithChildren
+  '': typeof LayoutRouteWithChildren
   '/search': typeof LayoutSearchRoute
-  '/sign-in': typeof LayoutSignInRoute
   '/': typeof LayoutIndexRoute
   '/movies/$id': typeof LayoutMoviesIdRouteWithChildren
   '/movies/popular': typeof LayoutMoviesPopularRoute
@@ -750,11 +626,6 @@ export interface FileRoutesByFullPath {
   '/tv-shows/$id': typeof LayoutTvShowsIdRouteWithChildren
   '/tv-shows/popular': typeof LayoutTvShowsPopularRoute
   '/tv-shows/top-rated': typeof LayoutTvShowsTopRatedRoute
-  '/favorites/movies': typeof LayoutAuthFavoritesMoviesRoute
-  '/favorites/people': typeof LayoutAuthFavoritesPeopleRoute
-  '/favorites/tv-shows': typeof LayoutAuthFavoritesTvShowsRoute
-  '/watch/movies': typeof LayoutAuthWatchMoviesRoute
-  '/watch/tv-shows': typeof LayoutAuthWatchTvShowsRoute
   '/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
   '/movies/$id/similar': typeof LayoutMoviesIdSimilarRoute
   '/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
@@ -773,9 +644,7 @@ export interface FileRoutesByFullPath {
 }
 
 export interface FileRoutesByTo {
-  '': typeof LayoutAuthRouteWithChildren
   '/search': typeof LayoutSearchRoute
-  '/sign-in': typeof LayoutSignInRoute
   '/': typeof LayoutIndexRoute
   '/movies/popular': typeof LayoutMoviesPopularRoute
   '/movies/top-rated': typeof LayoutMoviesTopRatedRoute
@@ -785,11 +654,6 @@ export interface FileRoutesByTo {
   '/trending/tv-shows': typeof LayoutTrendingTvShowsRoute
   '/tv-shows/popular': typeof LayoutTvShowsPopularRoute
   '/tv-shows/top-rated': typeof LayoutTvShowsTopRatedRoute
-  '/favorites/movies': typeof LayoutAuthFavoritesMoviesRoute
-  '/favorites/people': typeof LayoutAuthFavoritesPeopleRoute
-  '/favorites/tv-shows': typeof LayoutAuthFavoritesTvShowsRoute
-  '/watch/movies': typeof LayoutAuthWatchMoviesRoute
-  '/watch/tv-shows': typeof LayoutAuthWatchTvShowsRoute
   '/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
   '/movies/$id/similar': typeof LayoutMoviesIdSimilarRoute
   '/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
@@ -808,9 +672,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/_layout': typeof LayoutRouteWithChildren
-  '/_layout/_auth': typeof LayoutAuthRouteWithChildren
   '/_layout/search': typeof LayoutSearchRoute
-  '/_layout/sign-in': typeof LayoutSignInRoute
   '/_layout/': typeof LayoutIndexRoute
   '/_layout/movies/$id': typeof LayoutMoviesIdRouteWithChildren
   '/_layout/movies/popular': typeof LayoutMoviesPopularRoute
@@ -823,11 +685,6 @@ export interface FileRoutesById {
   '/_layout/tv-shows/$id': typeof LayoutTvShowsIdRouteWithChildren
   '/_layout/tv-shows/popular': typeof LayoutTvShowsPopularRoute
   '/_layout/tv-shows/top-rated': typeof LayoutTvShowsTopRatedRoute
-  '/_layout/_auth/favorites/movies': typeof LayoutAuthFavoritesMoviesRoute
-  '/_layout/_auth/favorites/people': typeof LayoutAuthFavoritesPeopleRoute
-  '/_layout/_auth/favorites/tv-shows': typeof LayoutAuthFavoritesTvShowsRoute
-  '/_layout/_auth/watch/movies': typeof LayoutAuthWatchMoviesRoute
-  '/_layout/_auth/watch/tv-shows': typeof LayoutAuthWatchTvShowsRoute
   '/_layout/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
   '/_layout/movies/$id/similar': typeof LayoutMoviesIdSimilarRoute
   '/_layout/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
@@ -852,7 +709,6 @@ export interface FileRouteTypes {
   fullPaths:
     | ''
     | '/search'
-    | '/sign-in'
     | '/'
     | '/movies/$id'
     | '/movies/popular'
@@ -865,11 +721,6 @@ export interface FileRouteTypes {
     | '/tv-shows/$id'
     | '/tv-shows/popular'
     | '/tv-shows/top-rated'
-    | '/favorites/movies'
-    | '/favorites/people'
-    | '/favorites/tv-shows'
-    | '/watch/movies'
-    | '/watch/tv-shows'
     | '/movies/$id/credits'
     | '/movies/$id/similar'
     | '/movies/$id/trailer'
@@ -887,9 +738,7 @@ export interface FileRouteTypes {
     | '/tv-shows/discover/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | ''
     | '/search'
-    | '/sign-in'
     | '/'
     | '/movies/popular'
     | '/movies/top-rated'
@@ -899,11 +748,6 @@ export interface FileRouteTypes {
     | '/trending/tv-shows'
     | '/tv-shows/popular'
     | '/tv-shows/top-rated'
-    | '/favorites/movies'
-    | '/favorites/people'
-    | '/favorites/tv-shows'
-    | '/watch/movies'
-    | '/watch/tv-shows'
     | '/movies/$id/credits'
     | '/movies/$id/similar'
     | '/movies/$id/trailer'
@@ -920,9 +764,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/_layout'
-    | '/_layout/_auth'
     | '/_layout/search'
-    | '/_layout/sign-in'
     | '/_layout/'
     | '/_layout/movies/$id'
     | '/_layout/movies/popular'
@@ -935,11 +777,6 @@ export interface FileRouteTypes {
     | '/_layout/tv-shows/$id'
     | '/_layout/tv-shows/popular'
     | '/_layout/tv-shows/top-rated'
-    | '/_layout/_auth/favorites/movies'
-    | '/_layout/_auth/favorites/people'
-    | '/_layout/_auth/favorites/tv-shows'
-    | '/_layout/_auth/watch/movies'
-    | '/_layout/_auth/watch/tv-shows'
     | '/_layout/movies/$id/credits'
     | '/_layout/movies/$id/similar'
     | '/_layout/movies/$id/trailer'
@@ -984,9 +821,7 @@ export const routeTree = rootRoute
     "/_layout": {
       "filePath": "_layout.tsx",
       "children": [
-        "/_layout/_auth",
         "/_layout/search",
-        "/_layout/sign-in",
         "/_layout/",
         "/_layout/movies/$id",
         "/_layout/movies/popular",
@@ -1003,23 +838,8 @@ export const routeTree = rootRoute
         "/_layout/tv-shows/discover"
       ]
     },
-    "/_layout/_auth": {
-      "filePath": "_layout/_auth.tsx",
-      "parent": "/_layout",
-      "children": [
-        "/_layout/_auth/favorites/movies",
-        "/_layout/_auth/favorites/people",
-        "/_layout/_auth/favorites/tv-shows",
-        "/_layout/_auth/watch/movies",
-        "/_layout/_auth/watch/tv-shows"
-      ]
-    },
     "/_layout/search": {
       "filePath": "_layout/search.tsx",
-      "parent": "/_layout"
-    },
-    "/_layout/sign-in": {
-      "filePath": "_layout.sign-in.tsx",
       "parent": "/_layout"
     },
     "/_layout/": {
@@ -1086,26 +906,6 @@ export const routeTree = rootRoute
     "/_layout/tv-shows/top-rated": {
       "filePath": "_layout/tv-shows.top-rated.tsx",
       "parent": "/_layout"
-    },
-    "/_layout/_auth/favorites/movies": {
-      "filePath": "_layout/_auth/favorites.movies.tsx",
-      "parent": "/_layout/_auth"
-    },
-    "/_layout/_auth/favorites/people": {
-      "filePath": "_layout/_auth/favorites.people.tsx",
-      "parent": "/_layout/_auth"
-    },
-    "/_layout/_auth/favorites/tv-shows": {
-      "filePath": "_layout/_auth/favorites.tv-shows.tsx",
-      "parent": "/_layout/_auth"
-    },
-    "/_layout/_auth/watch/movies": {
-      "filePath": "_layout/_auth/watch.movies.tsx",
-      "parent": "/_layout/_auth"
-    },
-    "/_layout/_auth/watch/tv-shows": {
-      "filePath": "_layout/_auth/watch.tv-shows.tsx",
-      "parent": "/_layout/_auth"
     },
     "/_layout/movies/$id/credits": {
       "filePath": "_layout/movies.$id.credits.tsx",
