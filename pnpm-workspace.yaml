@@ -1,13 +1,20 @@
 packages:
-  - "apps/*"
-  - "libs/*"
-  - "configs/*"
+  - apps/*
+  - libs/*
+  - configs/*
+
+autoInstallPeers: false
+
 onlyBuiltDependencies:
   - "@parcel/watcher"
+  - "@tailwindcss/oxide"
   - "@vercel/speed-insights"
-  - "bufferutil"
-  - "esbuild"
-  - "lefthook"
-  - "msw"
+  - bufferutil
+  - esbuild
+  - lefthook
+  - msw
+
+patchedDependencies:
+  openapi-fetch@0.13.4: patches/openapi-fetch@0.13.4.patch
+
 savePrefix: ""
-autoInstallPeers: false
