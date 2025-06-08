@@ -5,6 +5,7 @@
     "build": "turbo build",
     "check": "turbo typecheck lint coverage",
     "coverage": "turbo coverage",
+    "deps:bump": "pnpx npm-check-updates -ui -ws",
     "dev": "turbo dev",
     "e2e": "turbo e2e",
     "format": "prettier --check --cache .",

@@ -7,8 +7,7 @@ export const SiteNavMenuItemLink = ({ item }: { item: SingleNavItem }) => {
   return (
     <Link
       activeProps={{
-        // TODO: remove bg-base-300 when daisyUI v5 fixes active menu item
-        className: "dsy-menu-active bg-base-300",
+        className: "dsy-menu-active",
       }}
       className="text-nowrap"
       to={item.to}

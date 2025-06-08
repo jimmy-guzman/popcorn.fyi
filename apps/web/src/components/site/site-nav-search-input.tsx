@@ -33,19 +33,24 @@ export const SiteNavSearchInput = () => {
   }, [match]);
 
   return (
-    <Input
-      className="w-full xl:w-1/2"
-      onChange={(event) => {
-        setQuery(event.target.value);
-      }}
-      onKeyDown={async (event) => {
-        if (event.key === "Enter") {
-          await handleSearch(value);
-        }
-      }}
-      placeholder="Search..."
-      type="text"
-      value={query}
-    />
+    <div aria-label="Site search" className="w-full md:w-1/2" role="search">
+      <label className="sr-only" htmlFor="site-search">
+        Search movies and TV shows
+      </label>
+      <Input
+        id="site-search"
+        onChange={(event) => {
+          setQuery(event.target.value);
+        }}
+        onKeyDown={async (event) => {
+          if (event.key === "Enter") {
+            await handleSearch(value);
+          }
+        }}
+        placeholder="Search..."
+        type="search"
+        value={query}
+      />
+    </div>
   );
 };

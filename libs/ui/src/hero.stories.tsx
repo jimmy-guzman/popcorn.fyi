@@ -10,11 +10,10 @@ const meta = {
     layout: "padded",
   },
   subcomponents: {
-    // TODO: remove casting when https://github.com/storybookjs/storybook/issues/23170 is closed
-    HeroBadges: HeroBadges as React.ComponentType<unknown>,
-    HeroContent: HeroContent as React.ComponentType<unknown>,
-    HeroOverlay: HeroOverlay as React.ComponentType<unknown>,
-    HeroTitle: HeroTitle as React.ComponentType<unknown>,
+    HeroBadges,
+    HeroContent,
+    HeroOverlay,
+    HeroTitle,
   },
   title: "Hero",
 } satisfies Meta<typeof Hero>;
