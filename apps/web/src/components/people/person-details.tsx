@@ -1,4 +1,3 @@
-import { SignedIn } from "@clerk/tanstack-react-start";
 import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Badge } from "@popcorn.fyi/ui/badge";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
@@ -7,7 +6,6 @@ import { Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
 
 import { MediaRating } from "../media/media-rating";
-import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
 import { ShareButton } from "../shared/share-button";
 import { WikipediaButton } from "./wikipedia-button";
@@ -73,11 +71,6 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
               {person.name ? (
                 <ShareButton title={person.name} url={`/people/${person.id}`} />
               ) : null}
-              <SignedIn>
-                <Suspense fallback={<div className="dsy-skeleton h-10 w-10" />}>
-                  <Favorite mediaType="person" tmdbId={person.id} />
-                </Suspense>
-              </SignedIn>
             </div>
           </div>
         </HeroContent>

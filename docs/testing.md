@@ -53,7 +53,6 @@ libs/
 Tests use a **custom render utility** (`@/testing/utils`) that wraps components with:
 
 - **🔄 State Management:** `QueryClientProvider` (TanStack Query).
-- **🔑 Authentication:** `ClerkProvider` for simulating auth states.
 - **🗺️ Routing Support:** `RouterProvider` (TanStack Router).
 
 ### 🧪 Example Usage:

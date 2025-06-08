@@ -7,8 +7,7 @@
 ## 🏆 Features
 
 🔍 **Discover Movies & TV Shows** – Browse trending, popular, and personalized recommendations.  
-🎛 **Advanced Filters** – Sort by **genre, rating, release year, and more**.  
-⭐ **Favorites & Watchlist** – Save what you love and track what you’ve watched (powered by Clerk).  
+🎛 **Advanced Filters** – Sort by **genre, rating, release year, and more**.
 ⚡ **Fast & Modern UI** – Built with **TanStack Start**, **daisyUI**, and **Tailwind CSS** for a smooth experience.
 
 ## 🎥 Demo
@@ -25,7 +24,6 @@
 - **Styling:** [Tailwind CSS](https://tailwindcss.com) + [daisyUI](https://daisyui.com)
 - **State Management:** [TanStack Query](https://tanstack.com/query/latest)
 - **Data Fetching:** [openapi-fetch](https://www.npmjs.com/package/openapi-fetch) (for TMDB and Wikidata)
-- **Auth:** [Clerk](https://clerk.com)
 - **Testing:** [Playwright](https://playwright.dev) (E2E), [Vitest](https://vitest.dev) (unit), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), [Storybook](https://storybook.js.org)
 
 ### **Backend**
@@ -78,15 +76,13 @@ pnpm dev
 
 ### Environment Variables
 
-| Variable                     | Description / Source                                          |
-| ---------------------------- | ------------------------------------------------------------- |
-| `TMDB_API_TOKEN`             | [TMDB API Key](https://www.themoviedb.org/settings/api)       |
-| `VITE_CLERK_PUBLISHABLE_KEY` | [Clerk API Key](https://dashboard.clerk.com)                  |
-| `CLERK_SECRET_KEY`           | [Clerk API Key](https://dashboard.clerk.com)                  |
-| `DATABASE_URL`               | [Neon Database URL](https://neon.tech/docs)                   |
-| `OPENAI_API_KEY`             | [OpenAI API Key](https://platform.openai.com/docs/quickstart) |
-| `KV_REST_API_URL`            | [Upstash Redis](https://upstash.com/docs/redis)               |
-| `KV_REST_API_TOKEN`          | [Upstash Redis](https://upstash.com/docs/redis)               |
+| Variable            | Description / Source                                          |
+| ------------------- | ------------------------------------------------------------- |
+| `TMDB_API_TOKEN`    | [TMDB API Key](https://www.themoviedb.org/settings/api)       |
+| `DATABASE_URL`      | [Neon Database URL](https://neon.tech/docs)                   |
+| `OPENAI_API_KEY`    | [OpenAI API Key](https://platform.openai.com/docs/quickstart) |
+| `KV_REST_API_URL`   | [Upstash Redis](https://upstash.com/docs/redis)               |
+| `KV_REST_API_TOKEN` | [Upstash Redis](https://upstash.com/docs/redis)               |
 
 ## 💪 Contributing
 

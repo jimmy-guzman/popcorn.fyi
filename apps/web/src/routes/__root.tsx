@@ -1,8 +1,6 @@
 import type { QueryClient } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 
-import { ClerkProvider } from "@clerk/tanstack-react-start";
-import { dark } from "@clerk/themes";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
   createRootRouteWithContext,
@@ -35,11 +33,9 @@ const TanStackRouterDevtools =
 
 function RootComponent() {
   return (
-    <ClerkProvider appearance={{ baseTheme: [dark] }}>
-      <RootDocument>
-        <Outlet />
-      </RootDocument>
-    </ClerkProvider>
+    <RootDocument>
+      <Outlet />
+    </RootDocument>
   );
 }
 

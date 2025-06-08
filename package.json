@@ -41,7 +41,6 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "@clerk/shared",
       "@parcel/watcher",
       "@vercel/speed-insights",
       "bufferutil",

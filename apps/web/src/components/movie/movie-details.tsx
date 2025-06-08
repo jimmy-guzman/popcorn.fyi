@@ -1,4 +1,3 @@
-import { SignedIn } from "@clerk/tanstack-react-start";
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
@@ -10,10 +9,8 @@ import { asQuote } from "@/lib/as-quote";
 import { MediaGenres } from "../media/media-genres";
 import { MediaRating } from "../media/media-rating";
 import { MediaStatus } from "../media/media-status";
-import { Favorite } from "../shared/favorite";
 import { Prose } from "../shared/prose";
 import { ShareButton } from "../shared/share-button";
-import { Watch } from "../shared/watch";
 import { MovieDetailsTabs } from "./movie-details-tabs";
 import { WikipediaButton } from "./wikipedia-button";
 
@@ -81,14 +78,6 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
               {movie.title ? (
                 <ShareButton title={movie.title} url={`/movies/${movie.id}`} />
               ) : null}
-              <SignedIn>
-                <Suspense fallback={<div className="dsy-skeleton h-10 w-10" />}>
-                  <Favorite mediaType="movie" tmdbId={movie.id} />
-                </Suspense>
-                <Suspense fallback={<div className="dsy-skeleton h-10 w-10" />}>
-                  <Watch mediaType="movie" tmdbId={movie.id} />
-                </Suspense>
-              </SignedIn>
             </div>
           </div>
         </HeroContent>

@@ -6,13 +6,7 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { SiteNav } from "@/components/site/site-nav";
 import { SiteNavMenuItem } from "@/components/site/site-nav-menu-item";
 import { SiteNavMenuItemLink } from "@/components/site/site-nav-menu-item-link";
-import {
-  categoryNav,
-  exploreNav,
-  favoritesNavItem,
-  homeNavItem,
-  watchlistNavItem,
-} from "@/config/nav";
+import { categoryNav, exploreNav, homeNavItem } from "@/config/nav";
 import { site } from "@/config/site";
 
 /**
@@ -48,8 +42,6 @@ function LayoutComponent() {
               <li>
                 <SiteNavMenuItemLink item={homeNavItem} />
               </li>
-              <SiteNavMenuItem item={favoritesNavItem} />
-              <SiteNavMenuItem item={watchlistNavItem} />
               <div className="dsy-divider" />
               <h2 className="dsy-menu-title">Explore</h2>
               {exploreNav.items.map((item) => (

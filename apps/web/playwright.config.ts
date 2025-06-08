@@ -10,21 +10,14 @@ export default defineConfig({
   globalTimeout: IS_CI ? THIRTY_MINUTES_MS : undefined,
   projects: [
     {
-      name: "setup",
-      testMatch: /playwright\.setup\.ts/,
-    },
-    {
-      dependencies: ["setup"],
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
     {
-      dependencies: ["setup"],
       name: "firefox",
       use: { ...devices["Desktop Firefox"] },
     },
     {
-      dependencies: ["setup"],
       name: "webkit",
       use: { ...devices["Desktop Safari"] },
     },
