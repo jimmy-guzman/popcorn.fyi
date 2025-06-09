@@ -15,7 +15,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@hookform/resolvers": "5.1.0",
+    "@hookform/resolvers": "5.1.1",
     "@popcorn.fyi/api-clients": "workspace:*",
     "@popcorn.fyi/ui": "workspace:*",
     "@popcorn.fyi/utils": "workspace:*",
