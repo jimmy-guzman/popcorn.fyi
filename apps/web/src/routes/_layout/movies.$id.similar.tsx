@@ -24,17 +24,15 @@ function RouteComponent() {
   );
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="grid grid-cols-1 gap-8">
-        <Prose>
-          <h2>Similar</h2>
-        </Prose>
-        <ListContent>
-          {similar.results?.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </ListContent>
-      </div>
-    </div>
+    <section className="flex w-full flex-col gap-8">
+      <Prose>
+        <h2>Similar</h2>
+      </Prose>
+      <ListContent>
+        {similar.results?.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </ListContent>
+    </section>
   );
 }

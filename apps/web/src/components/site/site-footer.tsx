@@ -9,7 +9,7 @@ export const SiteFooter = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="dsy-footer bg-base-200 text-base-content lg:dsy-footer-horizontal p-10">
+    <footer className="dsy-footer text-base-content lg:dsy-footer-horizontal p-10">
       <aside>
         <SiteLogo classname="h-12 w-12" />
         <p>
