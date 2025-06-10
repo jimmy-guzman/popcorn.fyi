@@ -1,5 +1,6 @@
 import { cn } from "@popcorn.fyi/ui/utils";
 import { useLocation } from "@tanstack/react-router";
+import { useRef } from "react";
 
 import type { GroupedNavItem, NavItem } from "@/config/nav";
 
@@ -7,14 +8,25 @@ import { SiteNavMenuItemLink } from "./site-nav-menu-item-link";
 
 const SiteNavCollapsibleMenuItem = ({ item }: { item: GroupedNavItem }) => {
   const { pathname } = useLocation();
+  const ref = useRef<HTMLDetailsElement>(null);
 
-  const isActive = pathname === item.to;
+  const isActive = pathname.startsWith(item.to);
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- safari does not work correctly w/ document.activeElement
-    <details tabIndex={0}>
-      {/* TODO: remove bg-base-300 when daisyUI v5 allows active dropdown */}
-      <summary className={cn(isActive && "bg-base-300")} role="button">
+    <details
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          e.currentTarget.removeAttribute("open");
+        }
+      }}
+      ref={ref}
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- safari does not work correctly w/ document.activeElement
+      tabIndex={0}
+    >
+      <summary
+        className={cn(isActive && "bg-(--dsy-menu-active-bg)")}
+        role="button"
+      >
         <span className={cn(item.icon, "h-5 w-5")} /> {item.title}
       </summary>
       <ul>

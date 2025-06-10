@@ -6,8 +6,7 @@ import { Tooltip, TooltipContent } from "./tooltip";
 const meta = {
   component: Tooltip,
   subcomponents: {
-    // TODO: remove casting when https://github.com/storybookjs/storybook/issues/23170 is closed
-    TooltipContent: TooltipContent as React.ComponentType<unknown>,
+    TooltipContent,
   },
   title: "Tooltip",
 } satisfies Meta<typeof Tooltip>;

@@ -13,6 +13,7 @@ onlyBuiltDependencies:
   - esbuild
   - lefthook
   - msw
+  - unrs-resolver
 
 patchedDependencies:
   openapi-fetch@0.13.4: patches/openapi-fetch@0.13.4.patch

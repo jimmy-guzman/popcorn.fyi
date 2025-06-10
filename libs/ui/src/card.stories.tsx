@@ -5,10 +5,9 @@ import { Card, CardContent, CardImage, CardTitle } from "./card";
 const meta = {
   component: Card,
   subcomponents: {
-    // TODO: remove casting when https://github.com/storybookjs/storybook/issues/23170 is closed
-    CardContent: CardContent as React.ComponentType<unknown>,
-    CardImage: CardImage as React.ComponentType<unknown>,
-    CardTitle: CardTitle as React.ComponentType<unknown>,
+    CardContent,
+    CardImage,
+    CardTitle,
   },
   title: "Card",
 } satisfies Meta<typeof Card>;
