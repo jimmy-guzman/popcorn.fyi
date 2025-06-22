@@ -11,6 +11,7 @@ describe("Error", () => {
       />,
     );
 
+    // eslint-disable-next-line testing-library/no-test-id-queries -- Clerk uses test ids
     expect(screen.queryByTestId("clerk-signin")).not.toBeInTheDocument();
     expect(
       screen.getByRole("heading", { level: 1, name: "Error" }),
