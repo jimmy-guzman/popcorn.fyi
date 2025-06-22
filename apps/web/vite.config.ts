@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
           "storybook-static/**",
           ".storybook/**",
           "**/*.stories.*",
-          "{postcss,playwright,app}.config.*",
+          "{playwright,env}.config.*",
           "playwright.setup.*",
           "**/*.gen.*",
         ],

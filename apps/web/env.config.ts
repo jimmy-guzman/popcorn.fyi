@@ -6,7 +6,7 @@ const schema = v.object({
   TMDB_API_TOKEN: v.string(),
 });
 
-function getEnvironment() {
+function getEnvironmentConfig() {
   config({ ignore: ["MISSING_ENV_FILE"], quiet: true });
 
   if (process.env.CI && !process.env.PLAYWRIGHT) {
@@ -31,4 +31,6 @@ function getEnvironment() {
   return parsed.output;
 }
 
-export const environment = getEnvironment();
+const envConfig = getEnvironmentConfig();
+
+export default envConfig;
