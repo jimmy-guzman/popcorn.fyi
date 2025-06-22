@@ -77,6 +77,7 @@ describe("Badge", () => {
   it("should forward additional props", () => {
     render(<Badge data-testid="custom-badge">Custom Badge</Badge>);
 
+    // eslint-disable-next-line testing-library/no-test-id-queries -- this is a test for custom data-testid
     expect(screen.getByTestId("custom-badge")).toBeInTheDocument();
   });
 });

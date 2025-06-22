@@ -12,10 +12,11 @@
     ".": {
       "vitest": {
         "config": ["vitest.workspace.ts"]
-      }
+      },
+      "ignoreBinaries": ["playwright"]
     },
     "apps/web": {
-      "entry": ["src/{ssr,client}.tsx", "app.config.ts"],
+      "entry": ["src/router.tsx", "src/routes/**/*.tsx"],
       "project": "**/*.{ts,tsx}",
       "ignore": ["src/routeTree.gen.ts"],
       "ignoreDependencies": ["tailwindcss"]

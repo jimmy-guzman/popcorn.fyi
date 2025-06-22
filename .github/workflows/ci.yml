@@ -101,12 +101,12 @@ jobs:
         run: pnpm install
 
       - name: 📦 Install Playwright Browsers
-        run: pnpx playwright install --with-deps
+        run: pnpm --filter web exec playwright install --with-deps
 
       - name: 🧪 Run End-to-End Tests
         run: pnpm e2e
         env:
-          COMPATIBILITY_DATE: 2024-11-14
+          SERVER_PRESET: node-server
           TMDB_API_TOKEN: ${{ secrets.TMDB_API_TOKEN }}
 
       - name: 🗃️ Upload Playwright Report

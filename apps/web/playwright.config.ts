@@ -26,7 +26,7 @@ export default defineConfig({
   retries: IS_CI ? CI_RETRIES : 0,
   testDir: "./e2e",
   webServer: {
-    command: "pnpm build --preset node-server && pnpm preview",
+    command: "pnpm build && pnpm preview --port 3000",
     port: 3000,
   },
 });

@@ -40,12 +40,13 @@ yarn-error.log*
 # eslint
 .eslintcache
 
-# vinxi
-.vercel
-.vinxi
-.output
 
 # tanstack start
+.vercel
+.tanstack
+.output
+.nitro
+.vinxi
 app.config.timestamp_*.js
 
 # playwright

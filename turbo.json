@@ -32,7 +32,7 @@
     },
     "e2e": {
       "dependsOn": ["^gen"],
-      "passThroughEnv": ["TMDB_API_TOKEN", "COMPATIBILITY_DATE"],
+      "passThroughEnv": ["TMDB_API_TOKEN", "SERVER_PRESET"],
       "outputs": ["playwright-report/**", "test-results/**"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },

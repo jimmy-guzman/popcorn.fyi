@@ -3,7 +3,6 @@ import pc from "picocolors";
 import * as v from "valibot";
 
 const schema = v.object({
-  COMPATIBILITY_DATE: v.string(),
   TMDB_API_TOKEN: v.string(),
 });
 
