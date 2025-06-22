@@ -36,10 +36,10 @@
     "vaul": "1.1.2"
   },
   "devDependencies": {
-    "@dotenvx/dotenvx": "1.44.2",
-    "@iconify-json/lucide": "1.2.49",
-    "@iconify-json/simple-icons": "1.2.38",
-    "@playwright/test": "1.53.0",
+    "@dotenvx/dotenvx": "1.45.1",
+    "@iconify-json/lucide": "1.2.51",
+    "@iconify-json/simple-icons": "1.2.39",
+    "@playwright/test": "1.53.1",
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/tailwind": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",

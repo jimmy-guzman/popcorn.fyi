@@ -12,8 +12,7 @@
     ".": {
       "vitest": {
         "config": ["vitest.workspace.ts"]
-      },
-      "ignoreBinaries": ["playwright"]
+      }
     },
     "apps/web": {
       "entry": ["src/router.tsx", "src/routes/**/*.tsx"],
