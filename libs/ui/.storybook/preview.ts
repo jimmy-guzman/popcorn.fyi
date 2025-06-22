@@ -1,12 +1,12 @@
 import "@popcorn.fyi/tailwind/tailwind.css";
 
-import type { DocsContextProps } from "@storybook/blocks";
-import type { Preview } from "@storybook/react";
+import type { DocsContextProps } from "@storybook/addon-docs/blocks";
+import type { Preview } from "@storybook/react-vite";
 
+import { DocsContainer } from "@storybook/addon-docs/blocks";
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
-import { DocsContainer } from "@storybook/blocks";
-import { themes } from "@storybook/theming";
 import { createElement } from "react";
+import { themes } from "storybook/theming";
 
 const preview = {
   decorators: [
