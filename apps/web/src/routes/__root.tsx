@@ -8,28 +8,16 @@ import {
   Outlet,
   Scripts,
 } from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { lazy } from "react";
+import HolyLoader from "holy-loader";
 import { Toaster } from "sonner";
 
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 
 import rootCSS from "@popcorn.fyi/tailwind/tailwind.css?url";
-
-const TanStackRouterDevtools =
-  process.env.NODE_ENV === "production"
-    ? () => {
-        return null;
-      }
-    : lazy(async () => {
-        const res = await import("@tanstack/react-router-devtools");
-
-        return {
-          default: res.TanStackRouterDevtools,
-        };
-      });
 
 function RootComponent() {
   return (
@@ -42,6 +30,7 @@ function RootComponent() {
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
+      <HolyLoader color="var(--color-accent)" />
       <head>
         <HeadContent />
       </head>
