@@ -2,32 +2,30 @@
 
 ```mermaid
 graph TD;
-    A[User] -->|Interacts| B[Web App TanStack Start]
-    B -->|Uses Components| J[@popcorn.fyi/ui Library]
-    J -->|Deploys Storybook| K[Vercel]
-    B -->|API Calls| C[@popcorn.fyi/api-clients]
-    C -->|Fetches Data| D[TMDB API]
-    C -->|Fetches Data| E[Wikidata API]
-    C -->|Interacts with| F[@popcorn.fyi/db Drizzle + Neon]
-    F -->|Stores Data| G[PostgreSQL Neon]
-    B -->|Uses CDN & Edge Functions| H[Vercel]
-    B -->|Manages State & Caching| I[TanStack Query + Redis (Upstash)]
+    A[User] -->|Interacts| B["Web App (TanStack Start)"]
+    B -->|Renders UI| J["@popcorn.fyi/ui"]
+    J -->|Previewed via| K["Storybook (Vercel)"]
+    B -->|Fetches Data via| C["@popcorn.fyi/api-clients"]
+    C -->|Calls| D["TMDB API"]
+    C -->|Calls| E["Wikidata API"]
+    B -->|Runs on| H["Vercel (CDN + Edge Functions)"]
+    B -->|Manages State| I["TanStack Query + Redis (Upstash)"]
+
 ```
 
 ---
 
 ## **Overview**
 
-Popcorn.fyi is a **modular, performant, and scalable** movie discovery platform built with a **monorepo architecture** using **Turborepo**. It leverages modern web technologies for an optimized experience.
+**Popcorn.fyi** is a fast, modular, and scalable movie discovery platform. It uses a **monorepo** powered by **Turborepo** and modern web technologies for a seamless developer and user experience.
 
 ---
 
 ## **🔹 Key Components**
 
-1. **Frontend:** Built with **TanStack Start**, TailwindCSS, and DaisyUI.
-2. **UI Library:** `@popcorn.fyi/ui` – A reusable component library with **Storybook** deployed on **Vercel**.
-3. **API Clients:** `@popcorn.fyi/api-clients` – Handles data fetching from **TMDB, Wikidata, and OpenAI**.
-4. **State Management & Caching:** **TanStack Query + Redis (Upstash)** with **dynamic TTL** based on movie release year.
-5. **Database:** PostgreSQL (via **Neon**) with **Drizzle ORM**.
-6. **CI/CD:** GitHub Actions + Vercel for deployment.
-7. **Testing:** Vitest (unit), Playwright (E2E), and React Testing Library.
+1. **Frontend:** Built with **TanStack Start**, **TailwindCSS**, and **DaisyUI**.
+2. **UI Library:** `@popcorn.fyi/ui` – Reusable components previewed via **Storybook** on **Vercel**.
+3. **API Clients:** `@popcorn.fyi/api-clients` – Unified layer for fetching data from **TMDB**, **Wikidata**, and **OpenAI**.
+4. **State & Caching:** Powered by **TanStack Query** and **Upstash Redis**, using **dynamic TTLs** based on release year.
+5. **CI/CD:** Handled via **GitHub Actions** with deployment on **Vercel**.
+6. **Testing:** Comprehensive coverage using **Vitest** (unit), **React Testing Library**, and **Playwright** (E2E).

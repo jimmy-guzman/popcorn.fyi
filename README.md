@@ -37,8 +37,6 @@
 
 ### **Backend**
 
-- **Database:** [PostgreSQL](https://www.postgresql.org) (via [Neon](https://neon.tech))
-- **ORM:** [Drizzle ORM](https://orm.drizzle.team)
 - **APIs:** [TMDB](https://developer.themoviedb.org/reference/intro/getting-started), [Wikidata](https://www.wikidata.org/w/api.php)
 - **Caching:** [Upstash Redis](https://upstash.com)
 
@@ -65,7 +63,6 @@ This repo is powered by [Turborepo](https://turbo.build/repo), with clearly scop
 
 - [`@popcorn.fyi/ui`](./libs/ui/README.md) – UI components built with daisyUI, showcased via Storybook.
 - [`@popcorn.fyi/api-clients`](./libs/api-clients/README.md) – Typed clients for TMDB, Wikidata, and OpenAI.
-- [`@popcorn.fyi/db`](./libs/db/README.md) – Drizzle ORM setup for interacting with a Postgres database via Neon.
 - [`@popcorn.fyi/utils`](./libs/utils/README.md) – Shared utilities for common logic and helpers.
 
 ### ⚙️ Configs
@@ -94,7 +91,6 @@ pnpm dev
 | Variable            | Description                                                   |
 | ------------------- | ------------------------------------------------------------- |
 | `TMDB_API_TOKEN`    | [TMDB API Key](https://www.themoviedb.org/settings/api)       |
-| `DATABASE_URL`      | [Neon Database URL](https://neon.tech/docs)                   |
 | `OPENAI_API_KEY`    | [OpenAI API Key](https://platform.openai.com/docs/quickstart) |
 | `KV_REST_API_URL`   | [Upstash Redis URL](https://upstash.com/docs/redis)           |
 | `KV_REST_API_TOKEN` | [Upstash Redis Token](https://upstash.com/docs/redis)         |
