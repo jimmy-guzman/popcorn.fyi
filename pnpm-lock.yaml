@@ -5,9 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  openapi-fetch@0.13.4:
-    hash: ec6005884e49fd07b7973193ac704bc913f938c1cba665fd240bbfa794927df3
-    path: patches/openapi-fetch@0.13.4.patch
+  openapi-fetch@0.14.0:
+    hash: 958267e830ddbc30c4a6a5f0318c9b8bbf33f49b427c85d2c9ad9ba1fdfbc0a8
+    path: patches/openapi-fetch@0.14.0.patch
 
 importers:
 
@@ -119,12 +119,6 @@ importers:
       '@dotenvx/dotenvx':
         specifier: 1.45.1
         version: 1.45.1
-      '@iconify-json/lucide':
-        specifier: 1.2.51
-        version: 1.2.51
-      '@iconify-json/simple-icons':
-        specifier: 1.2.39
-        version: 1.2.39
       '@playwright/test':
         specifier: 1.53.1
         version: 1.53.1
@@ -210,6 +204,12 @@ importers:
 
   configs/tailwind:
     dependencies:
+      '@iconify-json/lucide':
+        specifier: 1.2.51
+        version: 1.2.51
+      '@iconify-json/simple-icons':
+        specifier: 1.2.39
+        version: 1.2.39
       '@iconify/tailwind4':
         specifier: 1.0.6
         version: 1.0.6(tailwindcss@4.1.10)
@@ -220,12 +220,6 @@ importers:
         specifier: 5.0.43
         version: 5.0.43
     devDependencies:
-      '@iconify-json/lucide':
-        specifier: 1.2.51
-        version: 1.2.51
-      '@iconify-json/simple-icons':
-        specifier: 1.2.39
-        version: 1.2.39
       '@popcorn.fyi/eslint':
         specifier: workspace:*
         version: link:../eslint
@@ -244,11 +238,11 @@ importers:
   libs/api-clients:
     dependencies:
       openai:
-        specifier: 5.6.0
-        version: 5.6.0(ws@8.18.2(bufferutil@4.0.9))(zod@3.25.67)
+        specifier: 5.7.0
+        version: 5.7.0(ws@8.18.2(bufferutil@4.0.9))(zod@3.25.67)
       openapi-fetch:
-        specifier: 0.13.4
-        version: 0.13.4(patch_hash=ec6005884e49fd07b7973193ac704bc913f938c1cba665fd240bbfa794927df3)
+        specifier: 0.14.0
+        version: 0.14.0(patch_hash=958267e830ddbc30c4a6a5f0318c9b8bbf33f49b427c85d2c9ad9ba1fdfbc0a8)
     devDependencies:
       '@popcorn.fyi/eslint':
         specifier: workspace:*
@@ -5095,8 +5089,8 @@ packages:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
 
-  openai@5.6.0:
-    resolution: {integrity: sha512-jNH5z+hYAdOMZXyEt0yZ7246s+UZjg2AwFQqkAhZIPPjxNtHHO5mykOefau6FkOqj16aC94MOdJl/rZBcKj/cQ==}
+  openai@5.7.0:
+    resolution: {integrity: sha512-zXWawZl6J/P5Wz57/nKzVT3kJQZvogfuyuNVCdEp4/XU2UNrjL7SsuNpWAyLZbo6HVymwmnfno9toVzBhelygA==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -5107,8 +5101,8 @@ packages:
       zod:
         optional: true
 
-  openapi-fetch@0.13.4:
-    resolution: {integrity: sha512-JHX7UYjLEiHuQGCPxa3CCCIqe/nc4bTIF9c4UYVC8BegAbWoS3g4gJxKX5XcG7UtYQs2060kY6DH64KkvNZahg==}
+  openapi-fetch@0.14.0:
+    resolution: {integrity: sha512-PshIdm1NgdLvb05zp8LqRQMNSKzIlPkyMxYFxwyHR+UlKD4t2nUjkDhNxeRbhRSEd3x5EUNh2w5sJYwkhOH4fg==}
 
   openapi-typescript-helpers@0.0.15:
     resolution: {integrity: sha512-opyTPaunsklCBpTK8JGef6mfPhLSnyy5a0IN9vKtx3+4aExf+KxEqYwIy3hqkedXIB97u357uLMJsOnm3GVjsw==}
@@ -11934,12 +11928,12 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openai@5.6.0(ws@8.18.2(bufferutil@4.0.9))(zod@3.25.67):
+  openai@5.7.0(ws@8.18.2(bufferutil@4.0.9))(zod@3.25.67):
     optionalDependencies:
       ws: 8.18.2(bufferutil@4.0.9)
       zod: 3.25.67
 
-  openapi-fetch@0.13.4(patch_hash=ec6005884e49fd07b7973193ac704bc913f938c1cba665fd240bbfa794927df3):
+  openapi-fetch@0.14.0(patch_hash=958267e830ddbc30c4a6a5f0318c9b8bbf33f49b427c85d2c9ad9ba1fdfbc0a8):
     dependencies:
       openapi-typescript-helpers: 0.0.15
 

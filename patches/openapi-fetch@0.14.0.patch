@@ -1,0 +1,30 @@
+diff --git a/dist/index.d.mts b/dist/index.d.mts
+index d0bdd6b4e2ff6a89cf2014b533b37bb16abb8a44..9ff89c59b9597f88b2cff1e7bf12e6a205563e77 100644
+--- a/dist/index.d.mts
++++ b/dist/index.d.mts
+@@ -89,17 +89,14 @@ type RequestBodyOption<T> = OperationRequestBodyContent<T> extends never
+ 
+ type FetchOptions<T> = RequestOptions<T> & Omit<RequestInit, "body" | "headers">;
+ 
+-type FetchResponse<T extends Record<string | number, any>, Options, Media extends MediaType> =
+-  | {
+-      data: ParseAsResponse<SuccessResponse<ResponseObjectMap<T>, Media>, Options>;
+-      error?: never;
+-      response: Response;
+-    }
+-  | {
+-      data?: never;
+-      error: ErrorResponse<ResponseObjectMap<T>, Media>;
+-      response: Response;
+-    };
++type FetchResponse<
++  T extends Record<string | number, any>,
++  Options,
++  Media extends MediaType,
++> = {
++  data: ParseAsResponse<SuccessResponse<ResponseObjectMap<T>, Media>, Options>;
++  response: Response;
++};
+ 
+ type RequestOptions<T> = ParamsOption<T> &
+   RequestBodyOption<T> & {

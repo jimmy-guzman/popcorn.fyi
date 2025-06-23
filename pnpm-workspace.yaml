@@ -16,6 +16,6 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 patchedDependencies:
-  openapi-fetch@0.13.4: patches/openapi-fetch@0.13.4.patch
+  openapi-fetch@0.14.0: patches/openapi-fetch@0.14.0.patch
 
 savePrefix: ""
