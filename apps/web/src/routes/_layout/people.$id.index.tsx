@@ -8,18 +8,14 @@ import { CrewCreditsTable } from "@/components/table/crew-credits-table";
 
 export const Route = createFileRoute("/_layout/people/$id/")({
   component: RouteComponent,
-  loader: async ({ context, params }) => {
-    await context.queryClient.ensureQueryData(
-      personCreditsOptions(Number.parseInt(params.id, 10)),
-    );
+  loader: async ({ context, params: { id } }) => {
+    await context.queryClient.ensureQueryData(personCreditsOptions(id));
   },
 });
 
 function RouteComponent() {
-  const params = Route.useParams();
-  const { data: credits } = useSuspenseQuery(
-    personCreditsOptions(Number.parseInt(params.id, 10)),
-  );
+  const { id } = Route.useParams();
+  const { data: credits } = useSuspenseQuery(personCreditsOptions(id));
 
   return (
     <div className="flex w-full flex-col gap-4">

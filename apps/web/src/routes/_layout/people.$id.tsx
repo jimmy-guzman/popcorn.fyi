@@ -8,18 +8,19 @@ import { personExternalOptions } from "@/api/people/details.external";
 import { PersonDetails } from "@/components/people/person-details";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
-import { IdSchema } from "@/schemas/id";
+import { PathParamsSchema } from "@/schemas/path-params";
 
 export const Route = createFileRoute("/_layout/people/$id")({
   component: RouteComponent,
+  params: {
+    parse: (params) => v.parse(PathParamsSchema, params),
+  },
   loader: async ({ context, params: { id } }) => {
-    const personId = v.parse(IdSchema, id);
-
     const data = await context.queryClient.ensureQueryData(
-      personDetailsOptions(personId),
+      personDetailsOptions(id),
     );
 
-    void context.queryClient.prefetchQuery(personExternalOptions(personId));
+    void context.queryClient.prefetchQuery(personExternalOptions(id));
 
     return {
       seo: {
@@ -39,10 +40,7 @@ export const Route = createFileRoute("/_layout/people/$id")({
 
 function RouteComponent() {
   const { id } = Route.useParams();
-
-  const { data: person } = useSuspenseQuery(
-    personDetailsOptions(v.parse(IdSchema, id)),
-  );
+  const { data: person } = useSuspenseQuery(personDetailsOptions(id));
 
   return <PersonDetails person={person} />;
 }

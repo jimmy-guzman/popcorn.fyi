@@ -62,10 +62,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
             </Prose>
             <div className="flex justify-center gap-2 md:justify-start">
               <Button asChild color="neutral">
-                <Link
-                  params={{ id: movie.id.toString() }}
-                  to="/movies/$id/trailer"
-                >
+                <Link params={{ id: movie.id }} to="/movies/$id/trailer">
                   <span className="sr-only md:not-sr-only">Watch Trailer</span>{" "}
                   <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
                 </Link>
@@ -82,7 +79,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           </div>
         </HeroContent>
       </Hero>
-      <MovieDetailsTabs id={movie.id.toString()} />
+      <MovieDetailsTabs id={movie.id} />
       <Outlet />
     </div>
   );

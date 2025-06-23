@@ -16,11 +16,7 @@ interface PersonCardProps {
 
 export const PersonCard = ({ person }: PersonCardProps) => {
   return (
-    <Link
-      key={person.id}
-      params={{ id: person.id.toString() }}
-      to="/people/$id"
-    >
+    <Link key={person.id} params={{ id: person.id }} to="/people/$id">
       <Card>
         {person.profile_path ? (
           <CardImage

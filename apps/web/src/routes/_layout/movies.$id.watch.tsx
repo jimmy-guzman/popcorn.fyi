@@ -6,18 +6,15 @@ import { MediaWatch } from "@/components/media/media-watch";
 
 export const Route = createFileRoute("/_layout/movies/$id/watch")({
   component: RouteComponent,
+
   loader: async ({ context, params: { id } }) => {
-    await context.queryClient.ensureQueryData(
-      movieProvidersOptions(Number.parseInt(id, 10)),
-    );
+    await context.queryClient.ensureQueryData(movieProvidersOptions(id));
   },
 });
 
 function RouteComponent() {
   const { id } = Route.useParams();
-  const { data: watchProviders } = useSuspenseQuery(
-    movieProvidersOptions(Number.parseInt(id, 10)),
-  );
+  const { data: watchProviders } = useSuspenseQuery(movieProvidersOptions(id));
 
   return watchProviders.results ? (
     <MediaWatch watchProviders={watchProviders.results} />

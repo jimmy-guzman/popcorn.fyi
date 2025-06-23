@@ -13,9 +13,7 @@ export const Route = createFileRoute("/_layout/tv-shows/$id/")({
 
 function RouteComponent() {
   const { id } = Route.useParams();
-  const { data: tvShow } = useSuspenseQuery(
-    tvDetailsOptions(Number.parseInt(id, 10)),
-  );
+  const { data: tvShow } = useSuspenseQuery(tvDetailsOptions(id));
 
   const overview = [
     {
@@ -26,7 +24,7 @@ function RouteComponent() {
               <Fragment key={creator.id}>
                 <Link
                   className="dsy-link"
-                  params={{ id: creator.id.toString() }}
+                  params={{ id: creator.id }}
                   to="/people/$id"
                 >
                   {creator.name}

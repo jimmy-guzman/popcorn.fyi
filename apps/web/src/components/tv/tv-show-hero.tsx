@@ -38,7 +38,7 @@ export const TvShowHero = ({ tvShow }: TVShowHeroProps) => {
           <HeroTitle>{tvShow.name}</HeroTitle>
           <p>{tvShow.overview}</p>
           <Button asChild color="primary">
-            <Link params={{ id: tvShow.id.toString() }} to="/tv-shows/$id">
+            <Link params={{ id: tvShow.id }} to="/tv-shows/$id">
               Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
             </Link>
           </Button>

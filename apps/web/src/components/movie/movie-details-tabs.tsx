@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 interface MovieDetailsTabsProps {
-  id: string;
+  id: number;
 }
 
 export const MovieDetailsTabs = ({ id }: MovieDetailsTabsProps) => {

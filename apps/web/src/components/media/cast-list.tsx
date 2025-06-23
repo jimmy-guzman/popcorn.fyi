@@ -21,7 +21,7 @@ export const CastList = ({ cast }: CastListProps) => {
           <Link
             aria-label={person.name}
             key={person.id}
-            params={{ id: person.id.toString() }}
+            params={{ id: person.id }}
             to="/people/$id"
           >
             <Card>

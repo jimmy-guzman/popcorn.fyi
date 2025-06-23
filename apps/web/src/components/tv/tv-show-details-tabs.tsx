@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 interface TvShowDetailsTabsProps {
-  id: string;
+  id: number;
 }
 
 export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {

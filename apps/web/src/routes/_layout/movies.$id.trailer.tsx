@@ -8,9 +8,7 @@ import { MediaTrailerDialog } from "@/components/media/media-trailer-dialog";
 export const Route = createFileRoute("/_layout/movies/$id/trailer")({
   component: RouteComponent,
   loader: async ({ context, params: { id } }) => {
-    await context.queryClient.ensureQueryData(
-      movieVideosOptions(Number.parseInt(id, 10)),
-    );
+    await context.queryClient.ensureQueryData(movieVideosOptions(id));
   },
 });
 
@@ -18,7 +16,7 @@ function RouteComponent() {
   const { id } = Route.useParams();
   const navigate = Route.useNavigate();
   const { data: trailer } = useSuspenseQuery({
-    ...movieVideosOptions(Number.parseInt(id, 10)),
+    ...movieVideosOptions(id),
     select: selectYoutubeTrailer,
   });
 
