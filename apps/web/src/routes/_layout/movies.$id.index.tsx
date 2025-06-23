@@ -14,9 +14,7 @@ const ONE_MINUTE_MS = 60_000;
 
 function RouteComponent() {
   const { id } = Route.useParams();
-  const { data: movie } = useSuspenseQuery(
-    movieDetailsOptions(Number.parseInt(id, 10)),
-  );
+  const { data: movie } = useSuspenseQuery(movieDetailsOptions(id));
 
   const overview = [
     {

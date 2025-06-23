@@ -62,10 +62,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
             </Prose>
             <div className="flex justify-center gap-2 md:justify-start">
               <Button asChild color="neutral">
-                <Link
-                  params={{ id: tvShow.id.toString() }}
-                  to="/tv-shows/$id/trailer"
-                >
+                <Link params={{ id: tvShow.id }} to="/tv-shows/$id/trailer">
                   <span className="sr-only md:not-sr-only">Watch Trailer</span>{" "}
                   <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
                 </Link>
@@ -85,7 +82,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
           </div>
         </HeroContent>
       </Hero>
-      <TvShowDetailsTabs id={tvShow.id.toString()} />
+      <TvShowDetailsTabs id={tvShow.id} />
       <Outlet />
     </div>
   );

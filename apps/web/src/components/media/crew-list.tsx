@@ -21,7 +21,7 @@ export const CrewList = ({ crew }: CrewListProps) => {
           <Link
             aria-label={person.name}
             key={person.job ? `${person.id}_${person.job}` : person.id}
-            params={{ id: person.id.toString() }}
+            params={{ id: person.id }}
             to="/people/$id"
           >
             <Card>

@@ -19,7 +19,7 @@ interface MovieCardProps {
 
 export const MovieCard = ({ movie }: MovieCardProps) => {
   return (
-    <Link params={{ id: movie.id.toString() }} to="/movies/$id">
+    <Link params={{ id: movie.id }} to="/movies/$id">
       <Card>
         {movie.poster_path ? (
           <CardImage

@@ -19,7 +19,7 @@ interface TVShowCardProps {
 
 export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
   return (
-    <Link params={{ id: tvShow.id.toString() }} to="/tv-shows/$id">
+    <Link params={{ id: tvShow.id }} to="/tv-shows/$id">
       <Card>
         {tvShow.poster_path ? (
           <CardImage
