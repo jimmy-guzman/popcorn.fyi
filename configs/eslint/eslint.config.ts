@@ -35,8 +35,5 @@ export default defineConfig({
       },
     },
     ...pluginRouter.configs["flat/recommended"],
-    {
-      ignores: [".tanstack/**", ".nitro/**"],
-    },
   ],
 });
