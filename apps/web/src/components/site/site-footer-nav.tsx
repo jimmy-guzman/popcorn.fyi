@@ -20,6 +20,17 @@ export const SiteFooterNav = () => {
         </Button>
         <Button asChild>
           <a
+            aria-label="Report a bug"
+            href={`${links.github}/issues`}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <span className="sr-only md:not-sr-only">Report a bug</span>
+            <span className="icon-[lucide--bug] h-5 w-5" />
+          </a>
+        </Button>
+        <Button asChild>
+          <a
             aria-label="Storybook"
             href={links.storybook}
             rel="noreferrer"

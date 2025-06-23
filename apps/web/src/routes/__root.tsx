@@ -30,7 +30,7 @@ function RootComponent() {
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <HolyLoader color="var(--color-accent)" ignoreSearchParams />
+      <HolyLoader color="var(--color-neutral-content)" ignoreSearchParams />
       <head>
         <HeadContent />
       </head>

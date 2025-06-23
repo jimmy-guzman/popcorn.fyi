@@ -15,8 +15,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "openai": "5.6.0",
-    "openapi-fetch": "0.13.4"
+    "openai": "5.7.0",
+    "openapi-fetch": "0.14.0"
   },
   "devDependencies": {
     "@popcorn.fyi/eslint": "workspace:*",
