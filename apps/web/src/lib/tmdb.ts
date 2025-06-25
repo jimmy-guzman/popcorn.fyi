@@ -2,4 +2,7 @@ import { setupClient } from "@popcorn.fyi/api-clients/tmdb-v3";
 
 import env from "../../env.config";
 
-export const client = setupClient(env.TMDB_API_TOKEN);
+export const client = setupClient(env.TMDB_API_TOKEN, {
+  token: env.KV_REST_API_TOKEN,
+  url: env.KV_REST_API_URL,
+});
