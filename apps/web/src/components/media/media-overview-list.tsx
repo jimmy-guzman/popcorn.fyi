@@ -11,13 +11,13 @@ export const MediaOverviewList = ({ items }: MediaOverviewListProps) => {
       {items.map(({ title, value }) => {
         return (
           <div
-            className="even:bg-base-200 grid grid-cols-12 gap-x-4 px-4 py-3"
+            className="even:bg-base-200 flex flex-col gap-1 px-4 py-3 sm:grid sm:grid-cols-12 sm:gap-x-4"
             key={title}
           >
-            <dt className="text-base-content/70 col-span-2 truncate text-sm font-semibold">
+            <dt className="text-base-content/70 text-sm font-semibold sm:col-span-2">
               {title}
             </dt>
-            <dd className="text-base-content col-span-10 min-w-0 break-words text-right text-sm font-medium sm:text-left">
+            <dd className="text-base-content min-w-0 break-words text-right text-sm font-medium sm:col-span-10 sm:text-left">
               {value ?? "—"}
             </dd>
           </div>
