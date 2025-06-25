@@ -12,6 +12,11 @@ export default defineConfig(({ mode }) => {
       tsconfigPaths(),
       tailwindcss(),
       tanstackStart({
+        react: {
+          babel: {
+            plugins: [["babel-plugin-react-compiler"]],
+          },
+        },
         target: env.SERVER_PRESET ?? "vercel",
       }),
     ],
