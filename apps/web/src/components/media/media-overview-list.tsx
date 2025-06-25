@@ -1,25 +1,28 @@
 interface MediaOverviewListProps {
   items: {
     title: string;
-    value?: number | React.JSX.Element[] | string;
+    value?: number | React.ReactNode | string;
   }[];
 }
 
 export const MediaOverviewList = ({ items }: MediaOverviewListProps) => {
   return (
-    <ul className="grid w-full grid-cols-2 gap-2 md:grid-cols-4">
-      {items.map((item) => {
+    <dl className="rounded-box border-base-300 divide-base-200 divide-y overflow-hidden border">
+      {items.map(({ title, value }) => {
         return (
-          <li className="flex flex-col gap-0.5" key={item.title}>
-            <span className="text-base-content/70 text-xs font-medium uppercase tracking-normal">
-              {item.title}
-            </span>
-            <span className="text-base-content text-base">
-              {item.value ?? "—"}
-            </span>
-          </li>
+          <div
+            className="even:bg-base-200 grid grid-cols-12 gap-x-4 px-4 py-3"
+            key={title}
+          >
+            <dt className="text-base-content/70 col-span-2 truncate text-sm font-semibold">
+              {title}
+            </dt>
+            <dd className="text-base-content col-span-10 min-w-0 break-words text-right text-sm font-medium sm:text-left">
+              {value ?? "—"}
+            </dd>
+          </div>
         );
       })}
-    </ul>
+    </dl>
   );
 };

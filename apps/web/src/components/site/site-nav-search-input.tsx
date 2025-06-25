@@ -1,6 +1,6 @@
 import { Input } from "@popcorn.fyi/ui/input";
 import { useMatch, useNavigate, useSearch } from "@tanstack/react-router";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
 const DEBOUNCE_MS = 500;
@@ -12,18 +12,11 @@ export const SiteNavSearchInput = () => {
   const [value] = useDebounce(query, DEBOUNCE_MS);
   const navigate = useNavigate();
 
-  const handleSearch = useCallback(
-    async (value: string) => {
-      await navigate({ search: { q: value }, to: "/search" });
-    },
-    [navigate],
-  );
-
   useEffect(() => {
     if (value !== "") {
-      void handleSearch(value);
+      void navigate({ search: { q: value }, to: "/search" });
     }
-  }, [value, handleSearch]);
+  }, [value, navigate]);
 
   useEffect(() => {
     if (!match) {
@@ -44,7 +37,7 @@ export const SiteNavSearchInput = () => {
         }}
         onKeyDown={async (event) => {
           if (event.key === "Enter") {
-            await handleSearch(value);
+            await navigate({ search: { q: value }, to: "/search" });
           }
         }}
         placeholder="Search..."
