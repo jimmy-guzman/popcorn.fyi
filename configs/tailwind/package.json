@@ -9,8 +9,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@iconify-json/lucide": "1.2.51",
-    "@iconify-json/simple-icons": "1.2.39",
+    "@iconify-json/lucide": "1.2.52",
+    "@iconify-json/simple-icons": "1.2.40",
     "@iconify/tailwind4": "1.0.6",
     "@tailwindcss/typography": "0.5.16",
     "daisyui": "5.0.43"

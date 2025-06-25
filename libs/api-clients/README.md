@@ -38,18 +38,6 @@ import { setupClient } from "@popcorn.fyi/api-clients/wikidata";
 
 ---
 
-### **OpenAI API**
-
-Provides access to **OpenAI API** for **AI-generated plot summaries**.
-
-**Import:**
-
-```ts
-import { setupClient } from "@popcorn.fyi/api-clients/openai";
-```
-
----
-
 ## **Utilities**
 
 Shared utilities for working with API data.
