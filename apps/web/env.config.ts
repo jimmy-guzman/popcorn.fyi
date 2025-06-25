@@ -3,6 +3,8 @@ import pc from "picocolors";
 import * as v from "valibot";
 
 const schema = v.object({
+  KV_REST_API_TOKEN: v.string(),
+  KV_REST_API_URL: v.string(),
   TMDB_API_TOKEN: v.string(),
 });
 
