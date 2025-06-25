@@ -38,14 +38,13 @@ describe("<CastList />", () => {
     ).toHaveAttribute("href", "/people/2");
   });
 
-  it("should not render an image if profile_path is missing", async () => {
+  it("should render fallback image profile_path is missing", async () => {
     const castWithoutImage = [{ character: "Eames", id: 3, name: "Tom Hardy" }];
 
     await render(<CastList cast={castWithoutImage} />);
 
-    expect(screen.getByText("Tom Hardy")).toBeInTheDocument();
     expect(
-      screen.queryByRole("img", { name: "Tom Hardy" }),
-    ).not.toBeInTheDocument();
+      screen.getByRole("img", { name: "Image unavailable" }),
+    ).toBeInTheDocument();
   });
 });

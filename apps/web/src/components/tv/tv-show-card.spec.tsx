@@ -29,14 +29,14 @@ describe("TVShowCard", () => {
     expect(image).toBeInTheDocument();
   });
 
-  it("should NOT render image when it doesn't exists", async () => {
+  it("should render image fallback when it doesn't exists", async () => {
     const { poster_path, ...rest } = tvShow;
 
     await render(<TVShowCard tvShow={rest} />);
 
-    const image = screen.queryByRole("img", { name: tvShow.name });
-
-    expect(image).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("img", { name: "Image unavailable" }),
+    ).toBeInTheDocument();
   });
 
   it("should render average vote", async () => {
