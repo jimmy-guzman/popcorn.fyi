@@ -4,14 +4,15 @@ import { MediaOverviewList } from "./media-overview-list";
 
 describe("MediaOverviewList", () => {
   it("should render without crashing when provided with an empty items array", async () => {
-    await render(<MediaOverviewList items={[]} />);
+    const { container } = await render(<MediaOverviewList items={[]} />);
 
-    const list = screen.getByRole("list");
+    // eslint-disable-next-line testing-library/no-container -- there is no other way to check for the presence of the <dl> element
+    const list = container.querySelector("dl");
 
     expect(list).toBeInTheDocument();
   });
 
-  it("should render a list item for each item in the items array", async () => {
+  it("should render a row for each item in the items array", async () => {
     const items = [
       { title: "Title1", value: "Value1" },
       { title: "Title2", value: 123 },
@@ -20,9 +21,13 @@ describe("MediaOverviewList", () => {
 
     await render(<MediaOverviewList items={items} />);
 
-    const listItems = screen.getAllByRole("listitem");
+    const terms = screen.getAllByRole("term");
 
-    expect(listItems).toHaveLength(3);
+    expect(terms).toHaveLength(3);
+
+    const definitions = screen.getAllByRole("definition");
+
+    expect(definitions).toHaveLength(3);
   });
 
   it("should display the correct title and value for each item", async () => {
