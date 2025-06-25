@@ -2,6 +2,7 @@ import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { Link } from "@tanstack/react-router";
 
+import { CardImageFallback } from "../media/card-image-fallback";
 import { MediaType } from "../media/media-type";
 
 interface PersonCardProps {
@@ -23,7 +24,9 @@ export const PersonCard = ({ person }: PersonCardProps) => {
             alt={person.name}
             src={tmdbImageUrl(person.profile_path, "w500")}
           />
-        ) : null}
+        ) : (
+          <CardImageFallback />
+        )}
         <CardContent>
           <div className="flex justify-end gap-2">
             <MediaType mediaType={person.media_type} />

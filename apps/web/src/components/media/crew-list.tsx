@@ -3,6 +3,7 @@ import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { Link } from "@tanstack/react-router";
 
 import { ListContent } from "../shared/list-content";
+import { CardImageFallback } from "./card-image-fallback";
 
 interface CrewListProps {
   crew: {
@@ -30,7 +31,9 @@ export const CrewList = ({ crew }: CrewListProps) => {
                   alt={person.name}
                   src={tmdbImageUrl(person.profile_path, "w500")}
                 />
-              ) : null}
+              ) : (
+                <CardImageFallback />
+              )}
               <CardContent>
                 <CardTitle>{person.name}</CardTitle>
                 <p>{person.job}</p>

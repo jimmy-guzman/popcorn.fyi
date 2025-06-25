@@ -39,14 +39,13 @@ describe("<CrewList />", () => {
     );
   });
 
-  it("should not render an image if profile_path is missing", async () => {
+  it("should render fallback image if profile_path is missing", async () => {
     const crewWithoutImage = [{ id: 3, job: "Producer", name: "Emma Thomas" }];
 
     await render(<CrewList crew={crewWithoutImage} />);
 
-    expect(screen.getByText("Emma Thomas")).toBeInTheDocument();
     expect(
-      screen.queryByRole("img", { name: "Emma Thomas" }),
-    ).not.toBeInTheDocument();
+      screen.getByRole("img", { name: "Image unavailable" }),
+    ).toBeInTheDocument();
   });
 });

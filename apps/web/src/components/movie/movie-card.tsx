@@ -3,6 +3,7 @@ import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { year } from "@popcorn.fyi/utils";
 import { Link } from "@tanstack/react-router";
 
+import { CardImageFallback } from "../media/card-image-fallback";
 import { MediaRating } from "../media/media-rating";
 import { MediaType } from "../media/media-type";
 
@@ -26,7 +27,9 @@ export const MovieCard = ({ movie }: MovieCardProps) => {
             alt={movie.title}
             src={tmdbImageUrl(movie.poster_path, "w500")}
           />
-        ) : null}
+        ) : (
+          <CardImageFallback />
+        )}
         <CardContent>
           <div className="flex justify-end gap-2">
             <MediaRating average={movie.vote_average} />

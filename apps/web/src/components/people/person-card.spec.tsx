@@ -78,14 +78,14 @@ describe("PersonCard", () => {
     expect(image).toBeInTheDocument();
   });
 
-  it("should NOT render image when it doesn't exists", async () => {
+  it("should render fallback image when it doesn't exists", async () => {
     const { profile_path, ...rest } = person;
 
     await render(<PersonCard person={rest} />);
 
-    const image = screen.queryByRole("img", { name: person.name });
-
-    expect(image).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("img", { name: "Image unavailable" }),
+    ).toBeInTheDocument();
   });
 
   it("should render known for", async () => {
