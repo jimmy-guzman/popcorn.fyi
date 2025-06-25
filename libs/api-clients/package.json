@@ -3,7 +3,6 @@
   "private": true,
   "exports": {
     "./utils": "./src/index.ts",
-    "./openai": "./src/openai.ts",
     "./tmdb-v3": "./src/tmdb-v3.ts",
     "./wikidata": "./src/wikidata.ts"
   },
@@ -15,7 +14,6 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "openai": "5.7.0",
     "openapi-fetch": "0.14.0"
   },
   "devDependencies": {
