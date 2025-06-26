@@ -2,8 +2,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { toast } from "sonner";
 
-import { site } from "@/config/site";
-
 import { ShareButton } from "./share-button";
 
 vi.mock("sonner", () => {
@@ -33,7 +31,6 @@ describe("ShareButton", () => {
     await userEvent.click(screen.getByRole("button", { name: /share/i }));
 
     expect(shareMock).toHaveBeenCalledWith({
-      text: `Check out "${title}" on ${site.title}!`,
       title,
       url,
     });
