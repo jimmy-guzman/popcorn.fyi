@@ -16,11 +16,11 @@ export const SiteNav = () => {
         <Button asChild variant="ghost">
           <Link to="/">
             <SiteLogo classname="h-6 w-6" />
-            <span className="ml-2 hidden font-bold lg:block">{site.title}</span>
+            <span className="ml-2 hidden font-bold xl:block">{site.title}</span>
           </Link>
         </Button>
 
-        <ul className="dsy-menu dsy-menu-horizontal hidden gap-1 px-2 lg:flex">
+        <ul className="dsy-menu dsy-menu-horizontal hidden gap-1 px-2 xl:flex">
           {topNav.map((item) => (
             <SiteNavMenuItem item={item} key={item.title} />
           ))}

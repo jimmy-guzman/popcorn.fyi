@@ -26,24 +26,32 @@ export const SiteNavSearchInput = () => {
   }, [match]);
 
   return (
-    <div aria-label="Site search" className="w-full md:w-1/2" role="search">
-      <label className="sr-only" htmlFor="site-search">
-        Search movies and TV shows
+    <div
+      aria-label="Site search"
+      className="w-full lg:w-1/2 xl:w-3/4"
+      role="search"
+    >
+      <label
+        aria-label="Search movies and TV shows"
+        className="dsy-input w-full"
+        htmlFor="site-search"
+      >
+        <span className="icon-[lucide--search] h-[1em] opacity-50" />
+        <Input
+          id="site-search"
+          onChange={(event) => {
+            setQuery(event.target.value);
+          }}
+          onKeyDown={async (event) => {
+            if (event.key === "Enter") {
+              await navigate({ search: { q: value }, to: "/search" });
+            }
+          }}
+          placeholder="Search..."
+          type="search"
+          value={query}
+        />
       </label>
-      <Input
-        id="site-search"
-        onChange={(event) => {
-          setQuery(event.target.value);
-        }}
-        onKeyDown={async (event) => {
-          if (event.key === "Enter") {
-            await navigate({ search: { q: value }, to: "/search" });
-          }
-        }}
-        placeholder="Search..."
-        type="search"
-        value={query}
-      />
     </div>
   );
 };

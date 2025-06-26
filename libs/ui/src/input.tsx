@@ -12,7 +12,7 @@ const Input = ({
 }: WithRef<React.ComponentProps<"input">, HTMLInputElement>) => {
   return (
     <input
-      className={cn("dsy-input", className)}
+      className={cn("[&:not(label_*)]:dsy-input", className)}
       ref={ref}
       type={type}
       {...props}
