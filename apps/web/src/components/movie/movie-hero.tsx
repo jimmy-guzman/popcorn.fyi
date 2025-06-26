@@ -10,8 +10,10 @@ import {
 import { Link } from "@tanstack/react-router";
 
 import { MediaType } from "../media/media-type";
+import { TrendingBadge } from "../media/trending-badge";
 
 interface MovieHeroProps {
+  isTrending?: boolean;
   movie: {
     backdrop_path?: string;
     id: number;
@@ -21,7 +23,7 @@ interface MovieHeroProps {
   };
 }
 
-export const MovieHero = ({ movie }: MovieHeroProps) => {
+export const MovieHero = ({ isTrending, movie }: MovieHeroProps) => {
   return (
     <Hero
       aria-label={movie.title}
@@ -33,6 +35,7 @@ export const MovieHero = ({ movie }: MovieHeroProps) => {
       <HeroContent className="text-neutral-content text-center">
         <div className="flex flex-col items-center gap-5">
           <HeroBadges>
+            {isTrending && <TrendingBadge />}
             <MediaType mediaType={movie.media_type} />
           </HeroBadges>
           <HeroTitle>{movie.title}</HeroTitle>

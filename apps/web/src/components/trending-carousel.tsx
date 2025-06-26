@@ -21,7 +21,7 @@ export const TrendingCarousel = ({ trending }: TrendingCarouselProps) => {
                 id={`${index + 1}`}
                 key={result.id}
               >
-                <TvShowHero tvShow={result} />
+                <TvShowHero isTrending tvShow={result} />
               </div>
             );
           }
@@ -33,7 +33,7 @@ export const TrendingCarousel = ({ trending }: TrendingCarouselProps) => {
                 id={`${index + 1}`}
                 key={result.id}
               >
-                <MovieHero movie={result} />
+                <MovieHero isTrending movie={result} />
               </div>
             );
           }

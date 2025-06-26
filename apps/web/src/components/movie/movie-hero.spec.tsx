@@ -19,7 +19,7 @@ describe("MovieHero", () => {
     expect(image).toBeInTheDocument();
   });
 
-  it("should render NOT image when it doesn't exists", async () => {
+  it("should NOT render image when it doesn't exists", async () => {
     const movie = {
       id: 1,
       overview:
@@ -67,5 +67,37 @@ describe("MovieHero", () => {
     const overview = screen.getByText(movie.overview);
 
     expect(overview).toBeInTheDocument();
+  });
+
+  it("should render trending badge", async () => {
+    const movie = {
+      backdrop_path: "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
+      id: 1,
+      overview:
+        "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",
+      title: "Venom: The Last Dance",
+    };
+
+    await render(<MovieHero isTrending movie={movie} />);
+
+    const trendingBadge = screen.getByText("Trending");
+
+    expect(trendingBadge).toBeInTheDocument();
+  });
+
+  it("should NOT render trending badge when NOT trending", async () => {
+    const movie = {
+      backdrop_path: "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
+      id: 1,
+      overview:
+        "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",
+      title: "Venom: The Last Dance",
+    };
+
+    await render(<MovieHero movie={movie} />);
+
+    const trendingBadge = screen.queryByText("Trending");
+
+    expect(trendingBadge).not.toBeInTheDocument();
   });
 });

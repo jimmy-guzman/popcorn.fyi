@@ -18,7 +18,7 @@
   "devDependencies": {
     "@popcorn.fyi/eslint": "workspace:*",
     "@popcorn.fyi/ts": "workspace:*",
-    "tailwindcss": "4.1.10",
+    "tailwindcss": "4.1.11",
     "typescript": "5.8.3"
   }
 }
