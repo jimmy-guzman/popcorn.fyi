@@ -1,8 +1,6 @@
 import { Button } from "@popcorn.fyi/ui/button";
 import { toast } from "sonner";
 
-import { site } from "@/config/site";
-
 interface ShareButtonProps {
   /** The title of the content being shared */
   title: string;
@@ -19,14 +17,11 @@ interface ShareButtonProps {
  */
 export const ShareButton = ({ title, url }: ShareButtonProps) => {
   const handleShare = async () => {
-    const shareData = {
-      text: `Check out "${title}" on ${site.title}!`,
-      title,
-      url,
-    };
-
     if (typeof navigator.share === "function") {
-      await navigator.share(shareData);
+      await navigator.share({
+        title,
+        url,
+      });
     } else {
       await navigator.clipboard.writeText(url);
       toast.success("Link copied to clipboard!");
