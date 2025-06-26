@@ -1,6 +1,6 @@
 import { Button } from "@popcorn.fyi/ui/button";
 
-import { links } from "@/constants";
+import { urls } from "@/config/urls";
 
 export const SiteFooterNav = () => {
   return (
@@ -10,7 +10,7 @@ export const SiteFooterNav = () => {
         <Button asChild>
           <a
             aria-label="Github"
-            href={links.github}
+            href={urls.github}
             rel="noreferrer"
             target="_blank"
           >
@@ -21,7 +21,7 @@ export const SiteFooterNav = () => {
         <Button asChild>
           <a
             aria-label="Report a bug"
-            href={`${links.github}/issues`}
+            href={`${urls.github}/issues`}
             rel="noreferrer"
             target="_blank"
           >
@@ -32,7 +32,7 @@ export const SiteFooterNav = () => {
         <Button asChild>
           <a
             aria-label="Storybook"
-            href={links.storybook}
+            href={urls.storybook}
             rel="noreferrer"
             target="_blank"
           >
