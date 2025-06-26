@@ -2,7 +2,7 @@
 
 > A fast and fun way to explore and discover your favorite movies and TV shows — powered by [TMDB](https://developer.themoviedb.org) and [Wikidata](https://www.wikidata.org/).
 >
-> **[🌐 Try it live](https://popcornfyi.vercel.app)**
+> **[🌐 Try it live](https://popcorn.fyi)**
 
 ---
 

@@ -11,8 +11,8 @@ import { MediaRating } from "../media/media-rating";
 import { MediaStatus } from "../media/media-status";
 import { Prose } from "../shared/prose";
 import { ShareButton } from "../shared/share-button";
+import { ExternalLinks, ExternalLinksSkeleton } from "./external-links";
 import { MovieDetailsTabs } from "./movie-details-tabs";
-import { WikipediaButton } from "./wikipedia-button";
 
 interface MovieDetailsProps {
   movie: {
@@ -63,14 +63,12 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
             <div className="flex justify-center gap-2 md:justify-start">
               <Button asChild color="neutral">
                 <Link params={{ id: movie.id }} to="/movies/$id/trailer">
-                  <span className="sr-only md:not-sr-only">Watch Trailer</span>{" "}
+                  <span className="sr-only md:not-sr-only">Trailer</span>{" "}
                   <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
                 </Link>
               </Button>
-              <Suspense
-                fallback={<div className="dsy-skeleton h-10 w-10 md:w-32" />}
-              >
-                <WikipediaButton id={movie.id} />
+              <Suspense fallback={<ExternalLinksSkeleton />}>
+                <ExternalLinks id={movie.id} />
               </Suspense>
               {movie.title ? (
                 <ShareButton title={movie.title} url={`/movies/${movie.id}`} />

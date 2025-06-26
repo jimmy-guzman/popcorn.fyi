@@ -11,8 +11,8 @@ import { MediaRating } from "../media/media-rating";
 import { MediaStatus } from "../media/media-status";
 import { Prose } from "../shared/prose";
 import { ShareButton } from "../shared/share-button";
+import { ExternalLinks, ExternalLinksSkeleton } from "./external-links";
 import { TvShowDetailsTabs } from "./tv-show-details-tabs";
-import { WikipediaButton } from "./wikipedia-button";
 
 interface TVShowDetailsProps {
   tvShow: {
@@ -67,10 +67,8 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
                   <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
                 </Link>
               </Button>
-              <Suspense
-                fallback={<div className="dsy-skeleton h-10 w-10 md:w-32" />}
-              >
-                <WikipediaButton id={tvShow.id} />
+              <Suspense fallback={<ExternalLinksSkeleton />}>
+                <ExternalLinks id={tvShow.id} />
               </Suspense>
               {tvShow.name ? (
                 <ShareButton
