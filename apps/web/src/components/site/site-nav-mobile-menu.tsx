@@ -10,7 +10,7 @@ export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
-        <Button className="lg:hidden" size="sm" variant="ghost">
+        <Button className="xl:hidden" size="sm" variant="ghost">
           <span className="sr-only">Open Navigation Menu</span>
           <span className="icon-[lucide--menu] h-5 w-5" />
         </Button>
