@@ -9,7 +9,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@iconify-json/lucide": "1.2.52",
+    "@iconify-json/lucide": "1.2.53",
     "@iconify-json/simple-icons": "1.2.40",
     "@iconify/tailwind4": "1.0.6",
     "@tailwindcss/typography": "0.5.16",

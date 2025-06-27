@@ -1,4 +1,4 @@
-import type { ReactNode } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 
 import { cn } from "@popcorn.fyi/ui/utils";
 

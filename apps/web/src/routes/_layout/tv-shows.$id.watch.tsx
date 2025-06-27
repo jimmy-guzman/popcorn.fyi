@@ -17,7 +17,5 @@ function RouteComponent() {
     tvSeriesProvidersOptions(id),
   );
 
-  return watchProviders.results ? (
-    <MediaWatch watchProviders={watchProviders.results} />
-  ) : null;
+  return <MediaWatch watchProviders={watchProviders.results} />;
 }

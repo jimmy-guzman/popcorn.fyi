@@ -16,7 +16,5 @@ function RouteComponent() {
   const { id } = Route.useParams();
   const { data: watchProviders } = useSuspenseQuery(movieProvidersOptions(id));
 
-  return watchProviders.results ? (
-    <MediaWatch watchProviders={watchProviders.results} />
-  ) : null;
+  return <MediaWatch watchProviders={watchProviders.results} />;
 }

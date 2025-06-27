@@ -10,7 +10,7 @@ interface Provider {
 }
 
 interface MediaWatchProps {
-  watchProviders: {
+  watchProviders?: {
     US?: {
       ads?: Provider[];
       buy?: Provider[];
@@ -28,7 +28,7 @@ export const MediaWatch = ({ watchProviders }: MediaWatchProps) => {
         <h2 id="providers">Providers</h2>
       </Prose>
 
-      {watchProviders.US ? (
+      {watchProviders?.US ? (
         <div className="flex flex-col gap-4 md:flex-row">
           {watchProviders.US.flatrate ? (
             <MediaProviders
