@@ -1,36 +1,58 @@
-# 🧪 Testing Strategy for popcorn.fyi
+## **Testing Design**
 
-## 🔄 Overview
-
-For _popcorn.fyi_, I wanted a testing setup that ensures reliability without adding unnecessary complexity. The focus is on **catching regressions early**, maintaining **type safety**, and ensuring a **smooth user experience**. The strategy covers everything from **unit tests** to **end-to-end (E2E) testing**.
-
-## 🏆 Testing Philosophy
-
-This testing strategy follows the **[Testing Trophy](https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications)** approach by Kent C. Dodds, emphasizing:
-
-- **🏋️‍♂️ Integration Tests:** Ensuring different parts of the system work together.
-- **🧩 Unit Tests:** Testing isolated logic for small components.
-- **🎭 End-to-End Tests:** Verifying real-world user flows and full application behavior.
-- **🛡️ Static Analysis:** Using TypeScript and ESLint to catch errors early.
-
-This approach balances coverage with speed and efficiency.
-
-## 🧰 Testing Stack
-
-- **🧩 Unit & Integration Testing:** [Vitest](https://vitest.dev/) for fast, type-safe testing with coverage via **@vitest/coverage-v8**.
-- **🧱 Component Testing:** [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) for user-driven component tests.
-- **📚 UI Component Documentation:** [Storybook](https://storybook.js.org/) for testing and visualizing components in **libs/ui**.
-- **🛠️ Mocking & API Simulation:** [MSW (Mock Service Worker)](https://mswjs.io/) to mock API requests.
-- **🔍 DOM Simulation:** [Happy DOM](https://github.com/capricorn86/happy-dom) for lightweight, fast DOM testing.
-- **🎭 End-to-End (E2E) Testing:** [Playwright](https://playwright.dev/) for browser-based tests.
-- **🛡️ Test Utilities:** Custom render utilities from **@/testing/utils**, using **userEvent** for realistic interactions.
-- **📊 Coverage Enforcement:** [Codecov](https://about.codecov.io/) to track and enforce test coverage thresholds.
-
-## 🗂️ Test Organization
-
-Tests follow a **feature-based folder structure**:
-
+```mermaid
+graph TD;
+  A[Codebase] -->|Unit & Integration Tests| B[Vitest + React Testing Library]
+  A -->|Component Docs & Visual Testing| C[Storybook]
+  A -->|Mocked API Layer| D[MSW]
+  A -->|DOM Emulation| E[Happy DOM]
+  A -->|End-to-End Tests| F[Playwright]
+  A -->|Static Analysis| G[TypeScript + ESLint]
+  B & F -->|Upload Coverage| H[Codecov]
 ```
+
+---
+
+## **Overview**
+
+Popcorn.fyi uses a layered testing strategy focused on reliability, speed, and developer feedback. It combines static analysis, unit tests, component tests, and full browser-based end-to-end testing. All test types run in CI, with coverage tracked via Codecov.
+
+---
+
+## Key Components
+
+1. **Static Analysis:**
+   - Type checking with **TypeScript**
+   - Linting with **ESLint**
+
+2. **Unit & Integration Testing:**
+   - **Vitest** with **React Testing Library**
+   - Fast, type-safe, and focused on component behavior
+
+3. **UI Component Testing:**
+   - **Storybook** for interactive development and isolated testing of `@popcorn.fyi/ui`
+
+4. **Mocking:**
+   - **MSW (Mock Service Worker)** to simulate network requests in tests
+   - **Happy DOM** for fast, lightweight DOM testing during unit/integration runs
+
+5. **End-to-End Testing:**
+   - **Playwright** simulates real user flows across multiple browsers
+   - Used in CI to validate navigation and page content
+
+6. **Custom Test Utilities:**
+   - Centralized render helpers (`@/testing/utils`)
+   - Wraps components with routing, state, and auth context for realistic tests
+
+7. **Coverage Reporting:**
+   - Tests upload results to **Codecov**
+   - Used to enforce thresholds and monitor test health over time
+
+---
+
+## Example Structure
+
+```text
 src/
   movie/
     movie-card.tsx
@@ -38,9 +60,6 @@ src/
   tv-show/
     trending-carousel.tsx
     trending-carousel.test.tsx
-  shared/
-    button.tsx
-    button.test.tsx
 libs/
   ui/
     button.tsx
@@ -48,41 +67,16 @@ libs/
     button.stories.tsx
 ```
 
-## 🏗️ Custom Render Utility
+---
 
-Tests use a **custom render utility** (`@/testing/utils`) that wraps components with:
-
-- **🔄 State Management:** `QueryClientProvider` (TanStack Query).
-- **🗺️ Routing Support:** `RouterProvider` (TanStack Router).
-
-### 🧪 Example Usage:
+## Example: Unit Test (Vitest)
 
 ```tsx
 import { render, screen } from "@/testing/utils";
 import { MovieCard } from "./movie-card";
 
 describe("MovieCard", () => {
-  it("renders with authentication and query context", () => {
-    render(
-      <MovieCard movie={{ title: "Inception", releaseDate: "2010-07-16" }} />,
-    );
-    expect(screen.getByText("Inception")).toBeInTheDocument();
-  });
-});
-```
-
-## 🧩 Unit & Integration Testing with Vitest
-
-Vitest ensures fast, type-safe tests.
-
-### 🧪 Example:
-
-```tsx
-import { render, screen } from "@/testing/utils";
-import { MovieCard } from "./movie-card";
-
-describe("MovieCard", () => {
-  it("renders title and release date", () => {
+  it("renders title and release year", () => {
     render(
       <MovieCard movie={{ title: "Inception", releaseDate: "2010-07-16" }} />,
     );
@@ -92,39 +86,25 @@ describe("MovieCard", () => {
 });
 ```
 
-## 🧱 UI Testing & Documentation with Storybook
+---
 
-Storybook is used to **develop, test, and document** UI components in **libs/ui**.
+## Example: E2E Test (Playwright)
 
-### 🧪 Example:
+```ts
+import { test, expect } from "@playwright/test";
 
-```tsx
-import { Button } from "./button";
-
-export default {
-  title: "UI/Button",
-  component: Button,
-};
-
-const Template = (args) => <Button {...args} />;
-
-export const Default = Template.bind({});
-Default.args = { children: "Click Me" };
+test("navigates to Movies page", async ({ page }) => {
+  await page.goto("/");
+  await page.click("text=Discover");
+  await page.click("text=Movies");
+  await expect(page).toHaveURL("/discover/movies");
+  await expect(page.getByText("Popular Movies")).toBeVisible();
+});
 ```
 
-### 🔍 Running Storybook:
+---
 
-```bash
-pnpm dev
-```
-
-> **Storybook available at:** `http://localhost:6006`
-
-## 🛠️ Mocking API Requests with MSW
-
-**Mock Service Worker (MSW)** is used to mock API calls.
-
-### 🧪 Example:
+## Example: Mocking with MSW
 
 ```tsx
 import { rest } from "msw";
@@ -144,44 +124,22 @@ const server = setupServer(
 );
 
 describe("MovieList", () => {
-  it("should render a list of movies", async () => {
+  it("renders mocked movie list", async () => {
     render(<MovieList />);
-
     expect(await screen.findByText("Inception")).toBeInTheDocument();
     expect(await screen.findByText("Interstellar")).toBeInTheDocument();
   });
 });
 ```
 
-## 🎭 End-to-End (E2E) Testing with Playwright
+---
 
-Playwright ensures real-world testing across browsers.
+## Coverage & CI
 
-### 🧪 Example:
-
-```ts
-import { test, expect } from "@playwright/test";
-
-test("should navigate to the Movies page", async ({ page }) => {
-  await page.goto("/");
-  await page.click("text=Discover");
-  await page.click("text=Movies");
-  await expect(page).toHaveURL("/discover/movies");
-  await expect(page.getByText("Popular Movies")).toBeVisible();
-});
-```
-
-## 📊 Coverage & Best Practices
-
-- **Codecov:** Tracks test coverage in PRs and enforces thresholds.
-- **ESLint Plugin:** Enforces best practices for testing.
-- **Playwright in CI:** Runs tests in Chromium, Firefox, and WebKit.
-
-## 🚀 Future Enhancements
-
-- **🖼️ Visual Regression Testing:** Using Percy or Chromatic.
-- **♿ Accessibility Testing:** Ensuring compliance with axe-core.
+- **Codecov** collects and merges coverage data across test runs.
+- **Playwright** runs in Chromium, Firefox, and WebKit.
+- **CI runs all test types**, using caching to speed up execution.
 
 ---
 
-This setup ensures _popcorn.fyi_ stays **reliable, fast, and user-friendly** as the project evolves. 🚀
+This strategy helps ensure _popcorn.fyi_ stays fast, stable, and confidently shippable.

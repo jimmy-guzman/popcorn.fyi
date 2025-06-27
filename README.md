@@ -62,7 +62,7 @@ This repo is powered by [Turborepo](https://turbo.build/repo), with clearly scop
 ### 📚 Libraries
 
 - [`@popcorn.fyi/ui`](./libs/ui/README.md) – UI components built with daisyUI, showcased via Storybook.
-- [`@popcorn.fyi/api-clients`](./libs/api-clients/README.md) – Typed clients for TMDB, Wikidata, and OpenAI.
+- [`@popcorn.fyi/api-clients`](./libs/api-clients/README.md) – Typed clients for TMDB and Wikidata.
 - [`@popcorn.fyi/utils`](./libs/utils/README.md) – Shared utilities for common logic and helpers.
 
 ### ⚙️ Configs
@@ -88,12 +88,11 @@ pnpm dev
 
 ### 🔐 Environment Variables
 
-| Variable            | Description                                                   |
-| ------------------- | ------------------------------------------------------------- |
-| `TMDB_API_TOKEN`    | [TMDB API Key](https://www.themoviedb.org/settings/api)       |
-| `OPENAI_API_KEY`    | [OpenAI API Key](https://platform.openai.com/docs/quickstart) |
-| `KV_REST_API_URL`   | [Upstash Redis URL](https://upstash.com/docs/redis)           |
-| `KV_REST_API_TOKEN` | [Upstash Redis Token](https://upstash.com/docs/redis)         |
+| Variable            | Description                                             |
+| ------------------- | ------------------------------------------------------- |
+| `TMDB_API_TOKEN`    | [TMDB API Key](https://www.themoviedb.org/settings/api) |
+| `KV_REST_API_URL`   | [Upstash Redis URL](https://upstash.com/docs/redis)     |
+| `KV_REST_API_TOKEN` | [Upstash Redis Token](https://upstash.com/docs/redis)   |
 
 ---
 
