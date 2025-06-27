@@ -60,7 +60,7 @@ describe("MediaWatch", () => {
   });
 
   it("should render a message when watchProviders.US is not provided", async () => {
-    const watchProviders = {}; // No US key provided
+    const watchProviders = {};
 
     await render(<MediaWatch watchProviders={watchProviders} />);
 
@@ -81,5 +81,11 @@ describe("MediaWatch", () => {
     const logo = screen.getByRole("img", { name: /justwatch/i });
 
     expect(logo).toHaveAttribute("src", urls.JustWatchLogo);
+  });
+
+  it("should render a message when watchProviders is not provided", async () => {
+    await render(<MediaWatch />);
+
+    expect(screen.getByText(/no providers available/i)).toBeInTheDocument();
   });
 });
