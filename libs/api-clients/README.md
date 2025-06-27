@@ -1,6 +1,6 @@
 # **@popcorn.fyi/api-clients**
 
-A collection of API clients for fetching **media-related data** from **The Movie Database (TMDB)**, **Wikidata**, and **OpenAI**. This package is part of the [popcorn.fyi](https://popcorn.fyi) monorepo.
+A collection of API clients for fetching **media-related data** from **The Movie Database (TMDB)** and **Wikidata**. This package is part of the [popcorn.fyi](https://popcorn.fyi) monorepo.
 
 ## **Installation**
 
