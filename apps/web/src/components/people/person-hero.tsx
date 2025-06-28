@@ -1,11 +1,4 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import {
-  Hero,
-  HeroBadges,
-  HeroContent,
-  HeroOverlay,
-  HeroTitle,
-} from "@popcorn.fyi/ui/hero";
 import { Link } from "@tanstack/react-router";
 
 import { MediaType } from "../media/media-type";
@@ -22,19 +15,25 @@ interface PersonHeroProps {
 
 export const PersonHero = ({ person }: PersonHeroProps) => {
   return (
-    <Hero
+    <div
       aria-label={person.name}
-      backgroundImage={
-        person.backdrop_path ? tmdbImageUrl(person.backdrop_path) : undefined
-      }
+      className="dsy-hero w-full"
+      role="img"
+      style={{
+        backgroundImage: person.backdrop_path
+          ? `url(${tmdbImageUrl(person.backdrop_path)})`
+          : undefined,
+      }}
     >
-      <HeroOverlay />
-      <HeroContent className="text-neutral-content text-center">
+      <div className="dsy-hero-overlay bg-opacity-60" />
+      <div className="dsy-hero-content text-neutral-content text-center">
         <div className="flex flex-col items-center gap-5">
-          <HeroBadges>
+          <div className="flex w-full justify-end gap-2">
             <MediaType mediaType={person.media_type} />
-          </HeroBadges>
-          <HeroTitle>{person.name}</HeroTitle>
+          </div>
+          <h1 className="text-pretty text-5xl font-bold lg:text-7xl">
+            {person.name}
+          </h1>
           <p>Known for {person.known_for_department}</p>
           <Link
             className="dsy-btn dsy-btn-primary"
@@ -44,7 +43,7 @@ export const PersonHero = ({ person }: PersonHeroProps) => {
             Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
           </Link>
         </div>
-      </HeroContent>
-    </Hero>
+      </div>
+    </div>
   );
 };

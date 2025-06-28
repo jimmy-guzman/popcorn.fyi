@@ -1,11 +1,4 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import {
-  Hero,
-  HeroBadges,
-  HeroContent,
-  HeroOverlay,
-  HeroTitle,
-} from "@popcorn.fyi/ui/hero";
 import { Link } from "@tanstack/react-router";
 
 import { MediaType } from "../media/media-type";
@@ -24,20 +17,26 @@ interface TVShowHeroProps {
 
 export const TvShowHero = ({ isTrending, tvShow }: TVShowHeroProps) => {
   return (
-    <Hero
+    <div
       aria-label={tvShow.name}
-      backgroundImage={
-        tvShow.backdrop_path ? tmdbImageUrl(tvShow.backdrop_path) : undefined
-      }
+      className="dsy-hero w-full"
+      role={tvShow.backdrop_path ? "img" : undefined}
+      style={{
+        backgroundImage: tvShow.backdrop_path
+          ? `url(${tmdbImageUrl(tvShow.backdrop_path)})`
+          : undefined,
+      }}
     >
-      <HeroOverlay />
-      <HeroContent className="text-neutral-content text-center">
+      <div className="dsy-hero-overlay bg-opacity-60" />
+      <div className="dsy-hero-content text-neutral-content text-center">
         <div className="flex flex-col items-center gap-5">
-          <HeroBadges>
+          <div className="flex w-full justify-end gap-2">
             {isTrending && <TrendingBadge />}
             <MediaType mediaType={tvShow.media_type} />
-          </HeroBadges>
-          <HeroTitle>{tvShow.name}</HeroTitle>
+          </div>
+          <h1 className="text-pretty text-5xl font-bold lg:text-7xl">
+            {tvShow.name}
+          </h1>
           <p>{tvShow.overview}</p>
           <Link
             className="dsy-btn dsy-btn-primary"
@@ -47,7 +46,7 @@ export const TvShowHero = ({ isTrending, tvShow }: TVShowHeroProps) => {
             Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
           </Link>
         </div>
-      </HeroContent>
-    </Hero>
+      </div>
+    </div>
   );
 };

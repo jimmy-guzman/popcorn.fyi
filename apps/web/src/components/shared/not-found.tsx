@@ -1,4 +1,3 @@
-import { Hero, HeroContent, HeroTitle } from "@popcorn.fyi/ui/hero";
 import { useRouter } from "@tanstack/react-router";
 
 export const NotFound = () => {
@@ -6,10 +5,12 @@ export const NotFound = () => {
 
   return (
     <main className="grid min-h-screen place-content-center">
-      <Hero>
-        <HeroContent className="text-neutral-content text-center">
+      <div className="dsy-hero w-full">
+        <div className="dsy-hero-content text-neutral-content text-center">
           <div className="flex flex-col items-center gap-5">
-            <HeroTitle>Error</HeroTitle>
+            <h1 className="text-pretty text-5xl font-bold lg:text-7xl">
+              Error
+            </h1>
             <p className="text-error">Not Found</p>
             <button
               className="dsy-btn dsy-btn-outline"
@@ -21,8 +22,8 @@ export const NotFound = () => {
               Go back
             </button>
           </div>
-        </HeroContent>
-      </Hero>
+        </div>
+      </div>
     </main>
   );
 };
