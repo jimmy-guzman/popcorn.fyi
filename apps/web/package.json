@@ -17,7 +17,6 @@
   "dependencies": {
     "@hookform/resolvers": "5.1.1",
     "@popcorn.fyi/api-clients": "workspace:*",
-    "@popcorn.fyi/ui": "workspace:*",
     "@popcorn.fyi/utils": "workspace:*",
     "@tanstack/match-sorter-utils": "8.19.4",
     "@tanstack/react-query": "5.81.5",
@@ -27,11 +26,13 @@
     "@tanstack/react-table": "8.21.3",
     "@vercel/analytics": "1.5.0",
     "@vercel/speed-insights": "1.2.0",
+    "clsx": "2.1.1",
     "holy-loader": "2.3.13",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hook-form": "7.59.0",
     "sonner": "2.0.5",
+    "tailwind-merge": "3.3.1",
     "use-debounce": "10.0.5",
     "valibot": "1.1.0",
     "vaul": "1.1.2"

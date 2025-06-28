@@ -3,8 +3,7 @@
 ```mermaid
 graph TD;
     A[User] -->|Interacts| B["Web App (TanStack Start)"]
-    B -->|Renders UI| J["@popcorn.fyi/ui"]
-    J -->|Previewed via| K["Storybook (Vercel)"]
+    B -->|Renders UI| J["daisyUI"]
     B -->|Fetches Data via| C["@popcorn.fyi/api-clients"]
     C -->|Calls| D["TMDB API"]
     C -->|Calls| E["Wikidata API"]
@@ -21,26 +20,25 @@ graph TD;
 
 ## **Overview**
 
-`popcorn.fyi` is a read-only, server-rendered web app built with TanStack Start. It uses a thin API client layer to fetch data from TMDB and Wikidata, with Redis-based server-side caching applied to TMDB responses. Client-side state is managed by TanStack Query, and all frontend UI is composed from a shared component library (`@popcorn.fyi/ui`). The app is deployed via Vercel, with CI/CD powered by GitHub Actions.
+`popcorn.fyi` is a read-only, server-rendered web app built with TanStack Start. It uses a thin API client layer to fetch data from TMDB and Wikidata, with Redis-based server-side caching applied to TMDB responses. Client-side state is managed by TanStack Query, and all frontend UI is composed from `tailwindcss` and `daisyui`. The app is deployed via Vercel, with CI/CD powered by GitHub Actions.
 
 ---
 
 ## Key Components
 
 1. **Frontend:** Built with **TanStack Start**, **TailwindCSS**, and **DaisyUI**.
-2. **UI Library:** `@popcorn.fyi/ui` – Reusable components previewed via **Storybook** on **Vercel**.
-3. **API Clients:** `@popcorn.fyi/api-clients` – Unified layer for fetching data from **TMDB** and **Wikidata**.
-4. **HTTP Client:** **OpenAPI-Fetch** with custom Redis caching middleware (currently used only for **TMDB**).
-5. **State Management:**
+2. **API Clients:** `@popcorn.fyi/api-clients` – Unified layer for fetching data from **TMDB** and **Wikidata**.
+3. **HTTP Client:** **OpenAPI-Fetch** with custom Redis caching middleware (currently used only for **TMDB**).
+4. **State Management:**
    - **TanStack Query** for client-side state and caching
    - Handles query deduplication and revalidation on the client
 
-6. **Server-Side Caching:**
+5. **Server-Side Caching:**
    - Redis (Upstash) is used to cache **TMDB** responses only
    - **Wikidata** responses are **not cached** at this time
 
-7. **CI/CD:** Handled via **GitHub Actions** with deployment on **Vercel**.
-8. **Testing:** Comprehensive coverage using **Vitest** (unit), **React Testing Library**, and **Playwright** (E2E).
+6. **CI/CD:** Handled via **GitHub Actions** with deployment on **Vercel**.
+7. **Testing:** Comprehensive coverage using **Vitest** (unit), **React Testing Library**, and **Playwright** (E2E).
 
 ---
 

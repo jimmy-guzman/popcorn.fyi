@@ -34,8 +34,6 @@ Refer to the [README](./README.md) for full setup details. Here's a quick start:
 
    Visit `http://localhost:3000` to view the app.
 
-   > **Note:** Storybook for UI components will be available at `http://localhost:6006`.
-
 ## 🛠 Guidelines
 
 ### **📝 Code Style**
@@ -71,12 +69,6 @@ pnpm test
 ```
 
 See [docs/testing.md](./docs/testing.md) for details.
-
-### **📚 UI Component Development**
-
-Storybook is used for developing UI components in **libs/ui**. Running `pnpm dev` makes it available at `http://localhost:6006`.
-
-More details in [docs/testing.md](./docs/testing.md).
 
 ### **🔄 CI/CD Pipeline**
 

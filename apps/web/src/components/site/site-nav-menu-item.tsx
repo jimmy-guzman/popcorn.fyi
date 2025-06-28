@@ -1,8 +1,9 @@
-import { cn } from "@popcorn.fyi/ui/utils";
 import { useLocation } from "@tanstack/react-router";
 import { useRef } from "react";
 
 import type { GroupedNavItem, NavItem } from "@/config/nav";
+
+import { cn } from "@/lib/cn";
 
 import { SiteNavMenuItemLink } from "./site-nav-menu-item-link";
 

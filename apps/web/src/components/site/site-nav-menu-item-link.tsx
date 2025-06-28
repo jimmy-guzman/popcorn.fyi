@@ -1,7 +1,8 @@
-import { cn } from "@popcorn.fyi/ui/utils";
 import { Link } from "@tanstack/react-router";
 
 import type { SingleNavItem } from "@/config/nav";
+
+import { cn } from "@/lib/cn";
 
 export const SiteNavMenuItemLink = ({ item }: { item: SingleNavItem }) => {
   return (
