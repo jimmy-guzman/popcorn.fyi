@@ -6,33 +6,33 @@
       "outputs": ["**/*.gen.*"]
     },
     "build": {
-      "dependsOn": ["^build", "^gen"],
+      "dependsOn": ["^build", "gen"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },
     "lint": {
-      "dependsOn": ["^lint", "^gen"],
+      "dependsOn": ["^lint", "gen"],
       "outputs": [".eslintcache"]
     },
     "typecheck": {
-      "dependsOn": ["^typecheck", "^gen"]
+      "dependsOn": ["^typecheck", "gen"]
     },
     "test": {
-      "dependsOn": ["^gen"],
+      "dependsOn": ["gen"],
       "cache": false,
       "persistent": true
     },
     "coverage": {
-      "dependsOn": ["^coverage", "^gen"],
+      "dependsOn": ["^coverage", "gen"],
       "outputs": ["coverage/**"]
     },
     "e2e": {
-      "dependsOn": ["^gen"],
+      "dependsOn": ["gen"],
       "passThroughEnv": ["TMDB_API_TOKEN", "SERVER_PRESET"],
       "outputs": ["playwright-report/**", "test-results/**"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },
     "dev": {
-      "dependsOn": ["^gen"],
+      "dependsOn": ["gen"],
       "cache": false,
       "persistent": true
     }

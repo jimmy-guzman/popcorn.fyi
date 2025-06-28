@@ -53,15 +53,11 @@
 
 ## 📦 What's Inside
 
-This repo is powered by [Turborepo](https://turbo.build/repo), with clearly scoped apps, libraries, and shared configs.
+This repo is powered by [Turborepo](https://turbo.build/repo), with clearly scoped apps and shared configs.
 
 ### 🚀 Apps
 
 - [`web`](./apps/web/README.md) – The main full-stack app. Built with TanStack Start, it handles routing, data fetching, and all UI interactions.
-
-### 📚 Libraries
-
-- [`@popcorn.fyi/api-clients`](./libs/api-clients/README.md) – Typed clients for TMDB and Wikidata.
 
 ### ⚙️ Configs
 

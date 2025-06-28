@@ -1,7 +1,7 @@
-import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Link, Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
 
+import { tmdbImageUrl } from "@/lib/api-clients/urls";
 import { asQuote } from "@/lib/as-quote";
 
 import { MediaGenres } from "../media/media-genres";

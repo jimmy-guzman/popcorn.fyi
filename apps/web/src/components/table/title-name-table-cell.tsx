@@ -1,7 +1,8 @@
 import type { CellContext } from "@tanstack/react-table";
 
-import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Link } from "@tanstack/react-router";
+
+import { tmdbImageUrl } from "@/lib/api-clients/urls";
 
 export const TitleNameTableCell = (
   props: CellContext<

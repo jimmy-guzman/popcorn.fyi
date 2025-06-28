@@ -58,9 +58,6 @@ importers:
       '@hookform/resolvers':
         specifier: 5.1.1
         version: 5.1.1(react-hook-form@7.59.0(react@19.1.0))
-      '@popcorn.fyi/api-clients':
-        specifier: workspace:*
-        version: link:../../libs/api-clients
       '@tanstack/match-sorter-utils':
         specifier: 8.19.4
         version: 8.19.4
@@ -79,6 +76,9 @@ importers:
       '@tanstack/react-table':
         specifier: 8.21.3
         version: 8.21.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@upstash/redis':
+        specifier: 1.35.0
+        version: 1.35.0
       '@vercel/analytics':
         specifier: 1.5.0
         version: 1.5.0(react@19.1.0)
@@ -91,6 +91,9 @@ importers:
       holy-loader:
         specifier: 2.3.13
         version: 2.3.13(react@19.1.0)
+      openapi-fetch:
+        specifier: 0.14.0
+        version: 0.14.0(patch_hash=958267e830ddbc30c4a6a5f0318c9b8bbf33f49b427c85d2c9ad9ba1fdfbc0a8)
       react:
         specifier: 19.1.0
         version: 19.1.0
@@ -176,6 +179,9 @@ importers:
       msw:
         specifier: 2.10.2
         version: 2.10.2(@types/node@22.15.32)(typescript@5.8.3)
+      openapi-typescript:
+        specifier: 7.8.0
+        version: 7.8.0(typescript@5.8.3)
       picocolors:
         specifier: 1.1.1
         version: 1.1.1
@@ -237,25 +243,6 @@ importers:
         version: 5.8.3
 
   configs/ts: {}
-
-  libs/api-clients:
-    dependencies:
-      '@upstash/redis':
-        specifier: 1.35.0
-        version: 1.35.0
-      openapi-fetch:
-        specifier: 0.14.0
-        version: 0.14.0(patch_hash=958267e830ddbc30c4a6a5f0318c9b8bbf33f49b427c85d2c9ad9ba1fdfbc0a8)
-    devDependencies:
-      '@popcorn.fyi/eslint':
-        specifier: workspace:*
-        version: link:../../configs/eslint
-      '@popcorn.fyi/ts':
-        specifier: workspace:*
-        version: link:../../configs/ts
-      openapi-typescript:
-        specifier: 7.8.0
-        version: 7.8.0(typescript@5.8.3)
 
 packages:
 
