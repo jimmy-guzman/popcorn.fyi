@@ -1,4 +1,3 @@
-import { Badge } from "@popcorn.fyi/ui/badge";
 import { Link } from "@tanstack/react-router";
 
 interface MediaGenresProps {
@@ -22,14 +21,14 @@ interface MediaGenresProps {
 export const MediaGenres = ({ genres = [], media }: MediaGenresProps) => {
   return genres.map((genre) => {
     return (
-      <Badge asChild color="neutral" key={genre.id}>
-        <Link
-          search={{ with_genres: genre.id.toString() }}
-          to={`/${media}/discover`}
-        >
-          {genre.name ?? "Unknown"}
-        </Link>
-      </Badge>
+      <Link
+        className="dsy-badge dsy-badge-neutral"
+        key={genre.id}
+        search={{ with_genres: genre.id.toString() }}
+        to={`/${media}/discover`}
+      >
+        {genre.name ?? "Unknown"}
+      </Link>
     );
   });
 };
