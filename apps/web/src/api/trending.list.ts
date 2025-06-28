@@ -1,7 +1,8 @@
-import { limit, shuffle } from "@popcorn.fyi/utils";
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
 
+import { limit } from "@/lib/limit";
+import { shuffle } from "@/lib/shuffle";
 import { client } from "@/lib/tmdb";
 
 const TRENDING_FETCH_LIMIT = 15;

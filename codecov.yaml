@@ -14,8 +14,6 @@ coverage:
 flags:
   monorepo:
     paths:
-      - libs/ui
-      - libs/utils
       - libs/api-clients
       - apps/web
 

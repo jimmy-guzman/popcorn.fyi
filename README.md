@@ -62,7 +62,6 @@ This repo is powered by [Turborepo](https://turbo.build/repo), with clearly scop
 ### 📚 Libraries
 
 - [`@popcorn.fyi/api-clients`](./libs/api-clients/README.md) – Typed clients for TMDB and Wikidata.
-- [`@popcorn.fyi/utils`](./libs/utils/README.md) – Shared utilities for common logic and helpers.
 
 ### ⚙️ Configs
 

@@ -1,4 +1,3 @@
-import { date } from "@popcorn.fyi/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Fragment } from "react/jsx-runtime";
@@ -6,6 +5,7 @@ import { Fragment } from "react/jsx-runtime";
 import { tvDetailsOptions } from "@/api/tv/details";
 import { MediaOverviewList } from "@/components/media/media-overview-list";
 import { Prose } from "@/components/shared/prose";
+import { date } from "@/lib/date";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id/")({
   component: RouteComponent,

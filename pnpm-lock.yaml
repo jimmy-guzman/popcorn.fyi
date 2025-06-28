@@ -61,9 +61,6 @@ importers:
       '@popcorn.fyi/api-clients':
         specifier: workspace:*
         version: link:../../libs/api-clients
-      '@popcorn.fyi/utils':
-        specifier: workspace:*
-        version: link:../../libs/utils
       '@tanstack/match-sorter-utils':
         specifier: 8.19.4
         version: 8.19.4
@@ -259,15 +256,6 @@ importers:
       openapi-typescript:
         specifier: 7.8.0
         version: 7.8.0(typescript@5.8.3)
-
-  libs/utils:
-    devDependencies:
-      '@popcorn.fyi/eslint':
-        specifier: workspace:*
-        version: link:../../configs/eslint
-      '@popcorn.fyi/ts':
-        specifier: workspace:*
-        version: link:../../configs/ts
 
 packages:
 

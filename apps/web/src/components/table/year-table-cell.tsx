@@ -1,6 +1,6 @@
 import type { CellContext } from "@tanstack/react-table";
 
-import { year } from "@popcorn.fyi/utils";
+import { year } from "@/lib/year";
 
 export const YearTableCell = (
   props: CellContext<
