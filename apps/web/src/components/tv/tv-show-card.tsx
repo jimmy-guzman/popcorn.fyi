@@ -1,6 +1,7 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import { year } from "@popcorn.fyi/utils";
 import { Link } from "@tanstack/react-router";
+
+import { year } from "@/lib/year";
 
 import { CardImageFallback } from "../media/card-image-fallback";
 import { MediaRating } from "../media/media-rating";
