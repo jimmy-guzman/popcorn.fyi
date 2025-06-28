@@ -28,7 +28,7 @@ export const PersonCard = ({ person }: PersonCardProps) => {
         ) : (
           <CardImageFallback />
         )}
-        <div>
+        <div className="dsy-card-body">
           <div className="flex justify-end gap-2">
             <MediaType mediaType={person.media_type} />
           </div>
