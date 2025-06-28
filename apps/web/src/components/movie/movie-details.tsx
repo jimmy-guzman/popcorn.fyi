@@ -1,5 +1,4 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { Link, Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
 
@@ -39,8 +38,8 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           />
         ) : null}
       </div>
-      <Hero>
-        <HeroContent className="flex-col gap-4 lg:flex-row">
+      <div className="dsy-hero w-full">
+        <div className="dsy-hero-content flex-col gap-4 lg:flex-row">
           {movie.poster_path ? (
             <img
               alt={movie.title}
@@ -76,8 +75,8 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
               ) : null}
             </div>
           </div>
-        </HeroContent>
-      </Hero>
+        </div>
+      </div>
       <MovieDetailsTabs id={movie.id} />
       <Outlet />
     </div>
