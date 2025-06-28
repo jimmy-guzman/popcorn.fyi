@@ -29,8 +29,8 @@ export const TableColumnFilter = <T,>({
       })}
     </select>
   ) : (
-    <select className="dsy-select grow" disabled>
-      <option selected>All</option>
+    <select className="dsy-select grow" disabled value="">
+      <option value="">All</option>
     </select>
   );
 };
