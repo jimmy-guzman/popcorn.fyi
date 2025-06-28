@@ -1,10 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/lefthook.json",
-  "extends": [
-    "configs/*/.lefthook.json",
-    "apps/*/.lefthook.json",
-    "libs/*/.lefthook.json"
-  ],
+  "extends": ["configs/*/.lefthook.json", "apps/*/.lefthook.json"],
   "pre-commit": {
     "parallel": true,
     "commands": {

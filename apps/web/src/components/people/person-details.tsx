@@ -1,7 +1,8 @@
-import { tmdbContent, tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
 
+import { tmdbContent } from "@/lib/api-clients/content";
+import { tmdbImageUrl } from "@/lib/api-clients/urls";
 import { date } from "@/lib/date";
 
 import { MediaRating } from "../media/media-rating";

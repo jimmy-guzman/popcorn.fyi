@@ -4,7 +4,7 @@
 graph TD;
     A[User] -->|Interacts| B["Web App (TanStack Start)"]
     B -->|Renders UI| J["daisyUI"]
-    B -->|Fetches Data via| C["@popcorn.fyi/api-clients"]
+    B -->|Fetches Data via| C["API Layer"]
     C -->|Calls| D["TMDB API"]
     C -->|Calls| E["Wikidata API"]
     C -->|Uses| F["OpenAPI-Fetch"]
@@ -20,14 +20,14 @@ graph TD;
 
 ## **Overview**
 
-`popcorn.fyi` is a read-only, server-rendered web app built with TanStack Start. It uses a thin API client layer to fetch data from TMDB and Wikidata, with Redis-based server-side caching applied to TMDB responses. Client-side state is managed by TanStack Query, and all frontend UI is composed from `tailwindcss` and `daisyui`. The app is deployed via Vercel, with CI/CD powered by GitHub Actions.
+`popcorn.fyi` is a read-only, server-rendered web app built with TanStack Start. It uses a thin API layer to fetch data from TMDB and Wikidata, with Redis-based server-side caching applied to TMDB responses. Client-side state is managed by TanStack Query, and all frontend UI is composed from `tailwindcss` and `daisyui`. The app is deployed via Vercel, with CI/CD powered by GitHub Actions.
 
 ---
 
 ## Key Components
 
 1. **Frontend:** Built with **TanStack Start**, **TailwindCSS**, and **DaisyUI**.
-2. **API Clients:** `@popcorn.fyi/api-clients` – Unified layer for fetching data from **TMDB** and **Wikidata**.
+2. **API Layer:** Unified functions for fetching data from **TMDB** and **Wikidata**.
 3. **HTTP Client:** **OpenAPI-Fetch** with custom Redis caching middleware (currently used only for **TMDB**).
 4. **State Management:**
    - **TanStack Query** for client-side state and caching
@@ -51,7 +51,7 @@ graph TD;
    - `refetchOnWindowFocus: false` – Reduces API calls
    - Designed for smooth and responsive user experience
 
-2. **Server-Side (Redis via API Clients):**
+2. **Server-Side (Redis via API Functions):**
    - **TMDB** HTTP responses cached using Redis
    - Respects `cache-control` headers (e.g., `max-age=21092` → \~6 hours)
    - Falls back to 1-hour TTL if headers are missing

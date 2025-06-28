@@ -73,7 +73,7 @@ export const setupClient = (
       if (ttl > 0) {
         try {
           const responseClone = response.clone();
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- This is ok.
+
           const data = await responseClone.json();
 
           await redis.set(cacheKey, JSON.stringify(data), { ex: ttl });

@@ -1,4 +1,3 @@
-import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import * as v from "valibot";
@@ -7,6 +6,7 @@ import { movieDetailsOptions } from "@/api/movie/details";
 import { movieExternalOptions } from "@/api/movie/details.external";
 import { MovieDetails } from "@/components/movie/movie-details";
 import { site } from "@/config/site";
+import { tmdbImageUrl } from "@/lib/api-clients/urls";
 import { seo } from "@/lib/seo";
 import { PathParamsSchema } from "@/schemas/path-params";
 

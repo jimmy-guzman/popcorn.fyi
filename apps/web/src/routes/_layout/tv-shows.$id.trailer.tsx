@@ -1,9 +1,9 @@
-import { selectYoutubeTrailer } from "@popcorn.fyi/api-clients/utils";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { tvVideosOptions } from "@/api/tv/details.videos";
 import { MediaTrailerDialog } from "@/components/media/media-trailer-dialog";
+import { selectYoutubeTrailer } from "@/lib/api-clients/youtube";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id/trailer")({
   component: RouteComponent,

@@ -2,8 +2,8 @@ apis:
   tmdb@v3:
     root: https://developer.themoviedb.org/openapi/64542913e1f86100738e227f
     x-openapi-ts:
-      output: ./src/tmdb-v3.gen.d.ts
+      output: ./src/lib/api-clients/tmdb-v3.gen.d.ts
   wikidata@v1:
     root: ./specs/wikidata.yaml
     x-openapi-ts:
-      output: ./src/wikidata.gen.d.ts
+      output: ./src/lib/api-clients/wikidata.gen.d.ts

@@ -1,5 +1,6 @@
-import { youtubeVideoUrl } from "@popcorn.fyi/api-clients/utils";
 import { useEffect, useRef } from "react";
+
+import { youtubeVideoUrl } from "@/lib/api-clients/youtube";
 
 interface MediaTrailerDialogProps {
   handleClose: () => void;

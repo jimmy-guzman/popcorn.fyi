@@ -1,3 +1,3 @@
-import { setupClient } from "@popcorn.fyi/api-clients/wikidata";
+import { setupClient } from "./api-clients/wikidata";
 
 export const wikiDataClient = setupClient();

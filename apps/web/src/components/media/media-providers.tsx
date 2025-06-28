@@ -1,4 +1,4 @@
-import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
+import { tmdbImageUrl } from "@/lib/api-clients/urls";
 
 interface MediaProvidersProps {
   providers: {
