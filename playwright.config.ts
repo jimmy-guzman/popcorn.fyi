@@ -22,11 +22,18 @@ export default defineConfig({
       use: { ...devices["Desktop Safari"] },
     },
   ],
-  reporter: "html",
+  reporter: IS_CI ? [["html"], ["github"]] : "html",
   retries: IS_CI ? CI_RETRIES : 0,
   testDir: "./e2e",
+  use: {
+    baseURL: "http://localhost:3000",
+    screenshot: "only-on-failure",
+    trace: IS_CI ? "retain-on-failure" : "on-first-retry",
+  },
   webServer: {
-    command: "pnpm build && pnpm preview --port 3000",
+    command: "pnpm preview --port 3000",
     port: 3000,
+    reuseExistingServer: !IS_CI,
+    timeout: 120_000,
   },
 });

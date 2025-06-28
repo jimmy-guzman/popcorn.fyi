@@ -1,6 +1,8 @@
+import type { ErrorComponentProps } from "@tanstack/react-router";
+
 import { useRouter } from "@tanstack/react-router";
 
-export const NotFound = () => {
+export const Error = ({ error }: ErrorComponentProps) => {
   const router = useRouter();
 
   return (
@@ -8,10 +10,10 @@ export const NotFound = () => {
       <div className="dsy-hero w-full">
         <div className="dsy-hero-content text-neutral-content text-center">
           <div className="flex flex-col items-center gap-5">
-            <h1 className="text-pretty text-5xl font-bold lg:text-7xl">
+            <h1 className="text-5xl font-bold text-pretty lg:text-7xl">
               Error
             </h1>
-            <p className="text-error">Not Found</p>
+            <p className="text-error">{error.message}</p>
             <button
               className="dsy-btn dsy-btn-outline"
               onClick={() => {

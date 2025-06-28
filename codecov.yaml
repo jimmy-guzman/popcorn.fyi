@@ -11,11 +11,6 @@ coverage:
       default:
         informational: true
 
-flags:
-  monorepo:
-    paths:
-      - apps/web
-
 comment:
   layout: "reach, diff, flags, files"
   behavior: default

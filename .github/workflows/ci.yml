@@ -33,28 +33,14 @@ jobs:
       - name: 📦 Install Dependencies
         run: pnpm install
 
-      - name: ☂️ Manypkg
-        run: pnpm manypkg
-
-      - name: ✂️ Knip
-        run: pnpm knip
-
-      - name: 🎨 Format
-        run: pnpm format
-
       - name: ✔️ Check
         run: pnpm check
-
-      - name: 🔄 Merge Coverage Reports
-        run: |
-          pnpm dlx istanbul-merge --out coverage/coverage-final.json **/coverage/**/*.json
 
       - name: ☁️ Upload to Codecov
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/coverage-final.json
-          flags: monorepo
           fail_ci_if_error: true
           verbose: true
 
@@ -85,10 +71,10 @@ jobs:
         run: pnpm install
 
       - name: 📦 Install Playwright Browsers
-        run: pnpm --filter web exec playwright install --with-deps
+        run: pnpm exec playwright install --with-deps
 
       - name: 🧪 Run End-to-End Tests
-        run: pnpm e2e
+        run: pnpm turbo e2e
         env:
           SERVER_PRESET: node-server
           TMDB_API_TOKEN: ${{ secrets.TMDB_API_TOKEN }}
@@ -98,5 +84,5 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
-          path: apps/web/playwright-report/
+          path: playwright-report/
           retention-days: 30

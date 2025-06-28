@@ -1,3 +1,0 @@
-app:popcorn.fyi:
-  - changed-files:
-      - any-glob-to-any-file: ["apps/web/**"]

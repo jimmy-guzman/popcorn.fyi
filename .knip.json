@@ -1,6 +1,14 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "ignoreDependencies": ["gitzy"],
+  "ignoreDependencies": [
+    "gitzy",
+    "tailwindcss",
+    "babel-plugin-react-compiler",
+    "@iconify-json/*",
+    "@tailwindcss/typography",
+    "@iconify/tailwind4",
+    "daisyui"
+  ],
   "eslint": {
     "entry": ["eslint.config.ts"]
   },
@@ -8,24 +16,10 @@
     "config": ["playwright.config.ts"],
     "entry": ["e2e/**/*.spec.ts", "playwright.setup.ts"]
   },
-  "workspaces": {
-    ".": {
-      "vitest": {
-        "config": ["vitest.workspace.ts"]
-      }
-    },
-    "apps/web": {
-      "entry": ["src/router.tsx", "src/routes/**/*.tsx"],
-      "project": "**/*.{ts,tsx}",
-      "ignore": ["src/routeTree.gen.ts"],
-      "ignoreDependencies": [
-        "tailwindcss",
-        "babel-plugin-react-compiler",
-        "@iconify-json/*",
-        "@tailwindcss/typography",
-        "@iconify/tailwind4",
-        "daisyui"
-      ]
-    }
-  }
+  "vitest": {
+    "config": ["vitest.workspace.ts"]
+  },
+  "entry": ["src/router.tsx", "src/routes/**/*.tsx"],
+  "project": "**/*.{ts,tsx}",
+  "ignore": ["src/routeTree.gen.ts"]
 }

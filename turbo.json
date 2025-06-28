@@ -1,38 +1,50 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["SERVER_PRESET"],
+  "globalPassThroughEnv": [
+    "TMDB_API_TOKEN",
+    "KV_REST_API_TOKEN",
+    "KV_REST_API_URL"
+  ],
   "tasks": {
-    "gen": {
-      "dependsOn": ["^gen"],
+    "gen:types": {
       "outputs": ["**/*.gen.*"]
     },
     "build": {
-      "dependsOn": ["^build", "gen"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".nitro/**", ".tanstack/**", ".vercel/**", ".output/**"]
     },
     "lint": {
-      "dependsOn": ["^lint", "gen"],
+      "dependsOn": ["gen:types"],
       "outputs": [".eslintcache"]
     },
+    "format": {
+      "outputs": ["node_modules/.cache/prettier/**"]
+    },
     "typecheck": {
-      "dependsOn": ["^typecheck", "gen"]
+      "dependsOn": ["gen:types"]
     },
     "test": {
-      "dependsOn": ["gen"],
       "cache": false,
       "persistent": true
     },
     "coverage": {
-      "dependsOn": ["^coverage", "gen"],
       "outputs": ["coverage/**"]
     },
     "e2e": {
-      "dependsOn": ["gen"],
-      "passThroughEnv": ["TMDB_API_TOKEN", "SERVER_PRESET"],
-      "outputs": ["playwright-report/**", "test-results/**"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+      "dependsOn": ["build"],
+      "passThroughEnv": ["CI"],
+      "outputs": ["playwright-report/**", "test-results/**"]
+    },
+    "e2e:ui": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
+    },
+    "knip": {
+      "outputs": []
     },
     "dev": {
-      "dependsOn": ["gen"],
       "cache": false,
       "persistent": true
     }
