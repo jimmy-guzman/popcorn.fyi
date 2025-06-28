@@ -1,6 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/lefthook.json",
-  "extends": ["apps/*/.lefthook.json"],
   "pre-commit": {
     "parallel": true,
     "commands": {
@@ -13,8 +12,9 @@
         "run": "pnpm exec knip",
         "stage_fixed": true
       },
-      "manypkg": {
-        "run": "pnpm exec manypkg check",
+      "lint": {
+        "glob": "*.{js,cjs,ts,tsx}",
+        "run": "pnpm exec eslint --fix {staged_files}",
         "stage_fixed": true
       }
     }

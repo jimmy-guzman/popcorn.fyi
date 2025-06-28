@@ -19,7 +19,7 @@ export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="bg-base-100/40 fixed inset-0" />
-        <Drawer.Content className="bg-base-100 fixed bottom-0 left-0 right-0 mt-3 flex h-fit flex-col items-center p-2">
+        <Drawer.Content className="bg-base-100 fixed right-0 bottom-0 left-0 mt-3 flex h-fit flex-col items-center p-2">
           <Drawer.Title className="text-center">
             <Prose size="sm">
               <h2>Menu</h2>

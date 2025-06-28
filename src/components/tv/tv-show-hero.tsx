@@ -5,26 +5,26 @@ import { tmdbImageUrl } from "@/lib/api-clients/urls";
 import { MediaType } from "../media/media-type";
 import { TrendingBadge } from "../media/trending-badge";
 
-interface MovieHeroProps {
+interface TVShowHeroProps {
   isTrending?: boolean;
-  movie: {
+  tvShow: {
     backdrop_path?: string;
     id: number;
     media_type?: string;
+    name?: string;
     overview?: string;
-    title?: string;
   };
 }
 
-export const MovieHero = ({ isTrending, movie }: MovieHeroProps) => {
+export const TvShowHero = ({ isTrending, tvShow }: TVShowHeroProps) => {
   return (
     <div
-      aria-label={movie.title}
+      aria-label={tvShow.name}
       className="dsy-hero w-full"
-      role={movie.backdrop_path ? "img" : undefined}
+      role={tvShow.backdrop_path ? "img" : undefined}
       style={{
-        backgroundImage: movie.backdrop_path
-          ? `url(${tmdbImageUrl(movie.backdrop_path)})`
+        backgroundImage: tvShow.backdrop_path
+          ? `url(${tmdbImageUrl(tvShow.backdrop_path)})`
           : undefined,
       }}
     >
@@ -33,16 +33,16 @@ export const MovieHero = ({ isTrending, movie }: MovieHeroProps) => {
         <div className="flex flex-col items-center gap-5">
           <div className="flex w-full justify-end gap-2">
             {isTrending && <TrendingBadge />}
-            <MediaType mediaType={movie.media_type} />
+            <MediaType mediaType={tvShow.media_type} />
           </div>
-          <h1 className="text-pretty text-5xl font-bold lg:text-7xl">
-            {movie.title}
+          <h1 className="text-5xl font-bold text-pretty lg:text-7xl">
+            {tvShow.name}
           </h1>
-          <p>{movie.overview}</p>
+          <p>{tvShow.overview}</p>
           <Link
             className="dsy-btn dsy-btn-primary"
-            params={{ id: movie.id }}
-            to="/movies/$id"
+            params={{ id: tvShow.id }}
+            to="/tv-shows/$id"
           >
             Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
           </Link>

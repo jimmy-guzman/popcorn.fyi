@@ -10,7 +10,7 @@ interface TrendingCarouselProps {
 
 export const TrendingCarousel = ({ trending }: TrendingCarouselProps) => {
   return (
-    <div className="h-9/10 flex flex-col justify-between">
+    <div className="flex h-9/10 flex-col justify-between">
       <div className="dsy-carousel rounded-box h-full">
         {trending.map((result, index) => {
           if (result.media_type === "tv") {

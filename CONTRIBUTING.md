@@ -48,7 +48,6 @@ Refer to the [README](./README.md) for full setup details. Here's a quick start:
   - **🎨 Prettier** (formatting)
   - **📑 sort-package-json** (consistent `package.json`)
   - **🧹 Knip** (detects unused files/dependencies)
-  - **🗂 Manypkg** (monorepo dependency management)
   - **🔍 ESLint** (linting)
 
 Run checks manually:
@@ -127,7 +126,6 @@ Pre-commit checks run automatically:
 - **🎨 Prettier** – Formats staged files.
 - **🔍 ESLint** – Lints code.
 - **🧹 Knip** – Detects unused files/dependencies.
-- **🗂 Manypkg** – Ensures monorepo consistency.
 
 Run manually:
 

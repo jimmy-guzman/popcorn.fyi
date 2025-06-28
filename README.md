@@ -42,22 +42,12 @@
 
 ### **Dev & Infra**
 
-- **Monorepo:** [Turborepo](https://turbo.build/repo)
+- **Build System:** [Turborepo](https://turbo.build/repo) (single-package workspace)
 - **Package Manager:** [pnpm](https://pnpm.io)
 - **Type Checking:** [TypeScript](https://www.typescriptlang.org)
 - **Lint & Format:** [ESLint](https://eslint.org) ([config](https://github.com/jimmy-guzman/eslint-config)), [Prettier](https://prettier.io)
 - **Deployment:** [Vercel](https://vercel.com)
 - **Coverage:** [Codecov](https://about.codecov.io)
-
----
-
-## 📦 What's Inside
-
-This repo is powered by [Turborepo](https://turbo.build/repo), with clearly scoped apps and shared configs.
-
-### 🚀 Apps
-
-- [`web`](./apps/web/README.md) – The main full-stack app. Built with TanStack Start, it handles routing, data fetching, and all UI interactions.
 
 ---
 

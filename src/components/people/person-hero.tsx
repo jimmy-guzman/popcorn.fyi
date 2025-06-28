@@ -32,7 +32,7 @@ export const PersonHero = ({ person }: PersonHeroProps) => {
           <div className="flex w-full justify-end gap-2">
             <MediaType mediaType={person.media_type} />
           </div>
-          <h1 className="text-pretty text-5xl font-bold lg:text-7xl">
+          <h1 className="text-5xl font-bold text-pretty lg:text-7xl">
             {person.name}
           </h1>
           <p>Known for {person.known_for_department}</p>
