@@ -1,11 +1,11 @@
 interface SiteLogoProps {
-  classname?: string;
+  className?: string;
 }
 
-export const SiteLogo = ({ classname }: SiteLogoProps) => {
+export const SiteLogo = ({ className }: SiteLogoProps) => {
   return (
     <svg
-      className={classname}
+      className={className}
       preserveAspectRatio="xMidYMid meet"
       version="1.0"
       viewBox="0 0 375 374.999991"

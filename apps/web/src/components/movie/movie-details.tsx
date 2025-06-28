@@ -1,5 +1,4 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent } from "@popcorn.fyi/ui/hero";
 import { Link, Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
@@ -61,12 +60,14 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
               <p>{movie.overview}</p>
             </Prose>
             <div className="flex justify-center gap-2 md:justify-start">
-              <Button asChild color="neutral">
-                <Link params={{ id: movie.id }} to="/movies/$id/trailer">
-                  <span className="sr-only md:not-sr-only">Trailer</span>{" "}
-                  <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
-                </Link>
-              </Button>
+              <Link
+                className="dsy-btn dsy-btn-neutral"
+                params={{ id: movie.id }}
+                to="/movies/$id/trailer"
+              >
+                <span className="sr-only md:not-sr-only">Trailer</span>{" "}
+                <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
+              </Link>
               <Suspense fallback={<ExternalLinksSkeleton />}>
                 <ExternalLinks id={movie.id} />
               </Suspense>

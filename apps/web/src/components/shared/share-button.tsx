@@ -1,4 +1,3 @@
-import { Button } from "@popcorn.fyi/ui/button";
 import { toast } from "sonner";
 
 interface ShareButtonProps {
@@ -29,9 +28,13 @@ export const ShareButton = ({ title, url }: ShareButtonProps) => {
   };
 
   return (
-    <Button color="neutral" onClick={handleShare}>
+    <button
+      className="dsy-btn dsy-btn-neutral"
+      onClick={handleShare}
+      type="button"
+    >
       <span className="sr-only md:not-sr-only">Share</span>{" "}
       <span className="icon-[lucide--share]" />
-    </Button>
+    </button>
   );
 };

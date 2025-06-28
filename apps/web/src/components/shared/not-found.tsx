@@ -1,4 +1,3 @@
-import { Button } from "@popcorn.fyi/ui/button";
 import { Hero, HeroContent, HeroTitle } from "@popcorn.fyi/ui/hero";
 import { useRouter } from "@tanstack/react-router";
 
@@ -12,14 +11,15 @@ export const NotFound = () => {
           <div className="flex flex-col items-center gap-5">
             <HeroTitle>Error</HeroTitle>
             <p className="text-error">Not Found</p>
-            <Button
+            <button
+              className="dsy-btn dsy-btn-outline"
               onClick={() => {
                 router.history.back();
               }}
-              variant="outline"
+              type="button"
             >
               Go back
-            </Button>
+            </button>
           </div>
         </HeroContent>
       </Hero>

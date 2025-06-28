@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Button } from "./button";
 import { Tooltip, TooltipContent } from "./tooltip";
 
 const meta = {
@@ -17,7 +16,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Simple = {
   args: {
-    children: <Button>Tooltip</Button>,
+    children: (
+      <button className="dsy-btn" type="button">
+        Tooltip
+      </button>
+    ),
     content: "An amazing button.",
   },
 } satisfies Story;
@@ -26,7 +29,9 @@ export const WithContent = {
   args: {
     children: (
       <>
-        <Button>Tooltip</Button>
+        <button className="dsy-btn" type="button">
+          Tooltip
+        </button>
         <TooltipContent>
           <div className="-rotate-10 animate-bounce text-xl font-black text-pink-400">
             Wow!

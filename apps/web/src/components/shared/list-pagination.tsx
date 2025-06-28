@@ -1,4 +1,3 @@
-import { Button } from "@popcorn.fyi/ui/button";
 import { Link } from "@tanstack/react-router";
 
 import { composePageNumbers } from "@/lib/pagination";
@@ -24,64 +23,62 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
     >
       <div className="dsy-join">
         {page !== 1 && (
-          <Button aria-label="Previous Page" asChild>
-            <Link
-              className="dsy-join-item hidden md:flex"
-              search={(prev) => {
-                return {
-                  ...prev,
-                  page: (prev.page ?? 1) - 1,
-                };
-              }}
-              to="."
-            >
-              <span className="icon-[lucide--chevron-left] h-4 w-4" />
-            </Link>
-          </Button>
+          <Link
+            aria-label="Previous Page"
+            className="dsy-join-item dsy-btn hidden md:flex"
+            search={(prev) => {
+              return {
+                ...prev,
+                page: (prev.page ?? 1) - 1,
+              };
+            }}
+            to="."
+          >
+            <span className="icon-[lucide--chevron-left] h-4 w-4" />
+          </Link>
         )}
         {pageNumbers.map((page) => {
           return page === "ellipsis-before" || page === "ellipsis-after" ? (
-            <Button
+            <button
               aria-label="Ellipsis"
-              className="dsy-join-item hidden md:block"
+              className="dsy-join-item dsy-btn hidden md:block"
               disabled
               key={page}
+              type="button"
             >
               <span className="icon-[lucide--ellipsis] h-4 w-4" />
-            </Button>
+            </button>
           ) : (
-            <Button asChild key={page}>
-              <Link
-                activeProps={{ className: "dsy-btn-active" }}
-                className="dsy-join-item"
-                search={(prev) => {
-                  return {
-                    ...prev,
-                    page,
-                  };
-                }}
-                to="."
-              >
-                {page}
-              </Link>
-            </Button>
-          );
-        })}
-        {totalPages !== page && (
-          <Button aria-label="Next Page" asChild>
             <Link
-              className="dsy-join-item hidden md:flex"
+              activeProps={{ className: "dsy-btn-active" }}
+              className="dsy-join-item dsy-btn"
+              key={page}
               search={(prev) => {
                 return {
                   ...prev,
-                  page: (prev.page ?? 1) + 1,
+                  page,
                 };
               }}
               to="."
             >
-              <span className="icon-[lucide--chevron-right] h-4 w-4" />
+              {page}
             </Link>
-          </Button>
+          );
+        })}
+        {totalPages !== page && (
+          <Link
+            aria-label="Next Page"
+            className="dsy-join-item dsy-btn hidden md:flex"
+            search={(prev) => {
+              return {
+                ...prev,
+                page: (prev.page ?? 1) + 1,
+              };
+            }}
+            to="."
+          >
+            <span className="icon-[lucide--chevron-right] h-4 w-4" />
+          </Link>
         )}
       </div>
     </div>

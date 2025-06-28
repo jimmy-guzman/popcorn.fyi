@@ -1,5 +1,4 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import { Button } from "@popcorn.fyi/ui/button";
 import {
   Hero,
   HeroBadges,
@@ -37,11 +36,13 @@ export const PersonHero = ({ person }: PersonHeroProps) => {
           </HeroBadges>
           <HeroTitle>{person.name}</HeroTitle>
           <p>Known for {person.known_for_department}</p>
-          <Button asChild color="primary">
-            <Link params={{ id: person.id }} to="/tv-shows/$id">
-              Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
-            </Link>
-          </Button>
+          <Link
+            className="dsy-btn dsy-btn-primary"
+            params={{ id: person.id }}
+            to="/tv-shows/$id"
+          >
+            Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
+          </Link>
         </div>
       </HeroContent>
     </Hero>
