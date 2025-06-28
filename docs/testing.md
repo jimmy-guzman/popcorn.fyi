@@ -3,7 +3,6 @@
 ```mermaid
 graph TD;
   A[Codebase] -->|Unit & Integration Tests| B[Vitest + React Testing Library]
-  A -->|Component Docs & Visual Testing| C[Storybook]
   A -->|Mocked API Layer| D[MSW]
   A -->|DOM Emulation| E[Happy DOM]
   A -->|End-to-End Tests| F[Playwright]
@@ -29,22 +28,19 @@ Popcorn.fyi uses a layered testing strategy focused on reliability, speed, and d
    - **Vitest** with **React Testing Library**
    - Fast, type-safe, and focused on component behavior
 
-3. **UI Component Testing:**
-   - **Storybook** for interactive development and isolated testing of `@popcorn.fyi/ui`
-
-4. **Mocking:**
+3. **Mocking:**
    - **MSW (Mock Service Worker)** to simulate network requests in tests
    - **Happy DOM** for fast, lightweight DOM testing during unit/integration runs
 
-5. **End-to-End Testing:**
+4. **End-to-End Testing:**
    - **Playwright** simulates real user flows across multiple browsers
    - Used in CI to validate navigation and page content
 
-6. **Custom Test Utilities:**
+5. **Custom Test Utilities:**
    - Centralized render helpers (`@/testing/utils`)
    - Wraps components with routing, state, and auth context for realistic tests
 
-7. **Coverage Reporting:**
+6. **Coverage Reporting:**
    - Tests upload results to **Codecov**
    - Used to enforce thresholds and monitor test health over time
 

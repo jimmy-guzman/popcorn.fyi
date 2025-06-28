@@ -33,7 +33,7 @@
 - **Framework:** [React](https://react.dev) + [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com) + [daisyUI](https://daisyui.com)
 - **Data Layer:** [TanStack Query](https://tanstack.com/query/latest) + [openapi-fetch](https://www.npmjs.com/package/openapi-fetch)
-- **Testing:** [Vitest](https://vitest.dev), [React Testing Library](https://testing-library.com), [Playwright](https://playwright.dev), [Storybook](https://storybook.js.org)
+- **Testing:** [Vitest](https://vitest.dev), [React Testing Library](https://testing-library.com) and [Playwright](https://playwright.dev)
 
 ### **Backend**
 
@@ -61,7 +61,6 @@ This repo is powered by [Turborepo](https://turbo.build/repo), with clearly scop
 
 ### 📚 Libraries
 
-- [`@popcorn.fyi/ui`](./libs/ui/README.md) – UI components built with daisyUI, showcased via Storybook.
 - [`@popcorn.fyi/api-clients`](./libs/api-clients/README.md) – Typed clients for TMDB and Wikidata.
 - [`@popcorn.fyi/utils`](./libs/utils/README.md) – Shared utilities for common logic and helpers.
 

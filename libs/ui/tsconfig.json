@@ -1,9 +1,0 @@
-{
-  "extends": "@popcorn.fyi/ts/base.json",
-  "compilerOptions": {
-    "jsx": "react-jsx",
-
-    "types": ["vitest/globals"]
-  },
-  "include": ["*.config.ts", "src", "**/.storybook/**/*.ts"]
-}

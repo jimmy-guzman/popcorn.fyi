@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { cn } from "@popcorn.fyi/ui/utils";
+import { cn } from "@/lib/cn";
 
 interface ProseProps {
   children: ReactNode;
