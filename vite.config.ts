@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
+      tailwindcss(),
       tanstackStart({
         react: {
           babel: {
@@ -18,7 +19,6 @@ export default defineConfig(({ mode }) => {
         target: env.SERVER_PRESET ?? "vercel",
       }),
       tsconfigPaths(),
-      tailwindcss(),
     ],
     test: {
       coverage: {

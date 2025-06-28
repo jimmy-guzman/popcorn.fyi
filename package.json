@@ -17,7 +17,7 @@
     "postinstall": "lefthook install",
     "knip": "knip",
     "lint": "eslint --cache .",
-    "lint:fix": "turbo lint -- --fix",
+    "lint:fix": "eslint --cache . --fix",
     "preview": "node .output/server/index.mjs",
     "test": "vitest",
     "typecheck": "tsc"
