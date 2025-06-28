@@ -2,9 +2,7 @@
   "name": "@popcorn.fyi/ui",
   "private": true,
   "exports": {
-    "./card": "./src/card.tsx",
     "./hero": "./src/hero.tsx",
-    "./tooltip": "./src/tooltip.tsx",
     "./utils": "./src/utils.ts"
   },
   "scripts": {
