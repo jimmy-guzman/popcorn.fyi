@@ -11,7 +11,7 @@ export const SiteFooter = () => {
   return (
     <footer className="dsy-footer text-base-content lg:dsy-footer-horizontal p-10">
       <aside>
-        <SiteLogo classname="h-12 w-12" />
+        <SiteLogo className="h-12 w-12" />
         <p>
           © <time dateTime={currentYear.toString()}>{currentYear}</time>{" "}
           <a

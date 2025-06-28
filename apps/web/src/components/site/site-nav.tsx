@@ -13,7 +13,7 @@ export const SiteNav = () => {
     <nav className="dsy-navbar bg-base-100 sticky top-0 z-50 w-full">
       <div className="dsy-navbar-center">
         <Link className="dsy-btn dsy-btn-ghost" to="/">
-          <SiteLogo classname="h-6 w-6" />
+          <SiteLogo className="h-6 w-6" />
           <span className="ml-2 hidden font-bold xl:block">{site.title}</span>
         </Link>
         <ul className="dsy-menu dsy-menu-horizontal hidden gap-1 px-2 xl:flex">

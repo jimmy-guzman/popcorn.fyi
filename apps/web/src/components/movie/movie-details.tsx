@@ -68,7 +68,6 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
                 <span className="sr-only md:not-sr-only">Trailer</span>{" "}
                 <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
               </Link>
-
               <Suspense fallback={<ExternalLinksSkeleton />}>
                 <ExternalLinks id={movie.id} />
               </Suspense>
