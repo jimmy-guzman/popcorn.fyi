@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Badge } from "./badge";
 import { Hero, HeroBadges, HeroContent, HeroOverlay, HeroTitle } from "./hero";
 
 const meta = {
@@ -91,7 +90,7 @@ export const WithBadges = {
         <HeroContent className="text-neutral-content text-center">
           <div className="max-w-md">
             <HeroBadges>
-              <Badge variant="outline">badge</Badge>
+              <span className="dsy-badge dsy-badge-outline">badge</span>
             </HeroBadges>
             <HeroTitle>Hello there</HeroTitle>
             <p className="mb-5">

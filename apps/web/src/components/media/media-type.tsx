@@ -1,9 +1,7 @@
-import { Badge } from "@popcorn.fyi/ui/badge";
-
 export const MediaType = ({ mediaType }: { mediaType?: string }) => {
   return mediaType ? (
-    <Badge className="text-nowrap capitalize" variant="outline">
+    <span className="dsy-badge dsy-badge-outline text-nowrap capitalize">
       {mediaType === "tv" ? "TV Show" : mediaType}
-    </Badge>
+    </span>
   ) : null;
 };
