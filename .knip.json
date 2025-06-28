@@ -18,12 +18,10 @@
       "entry": ["src/router.tsx", "src/routes/**/*.tsx"],
       "project": "**/*.{ts,tsx}",
       "ignore": ["src/routeTree.gen.ts"],
-      "ignoreDependencies": ["tailwindcss", "babel-plugin-react-compiler"]
-    },
-    "configs/tailwind": {
       "ignoreDependencies": [
-        "@iconify-json/*",
         "tailwindcss",
+        "babel-plugin-react-compiler",
+        "@iconify-json/*",
         "@tailwindcss/typography",
         "@iconify/tailwind4",
         "daisyui"

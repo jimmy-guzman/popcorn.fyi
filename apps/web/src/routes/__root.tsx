@@ -17,7 +17,7 @@ import { Toaster } from "sonner";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 
-import rootCSS from "@popcorn.fyi/tailwind/tailwind.css?url";
+import rootCSS from "@/styles/global.css?url";
 
 function RootComponent() {
   return (

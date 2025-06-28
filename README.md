@@ -59,12 +59,6 @@ This repo is powered by [Turborepo](https://turbo.build/repo), with clearly scop
 
 - [`web`](./apps/web/README.md) – The main full-stack app. Built with TanStack Start, it handles routing, data fetching, and all UI interactions.
 
-### ⚙️ Configs
-
-- [`@popcorn.fyi/tailwind`](./configs/tailwind/README.md) – Shared Tailwind CSS config.
-- [`@popcorn.fyi/ts`](./configs/ts/README.md) – Centralized TypeScript config.
-- [`@popcorn.fyi/eslint`](./configs/eslint/README.md) – Unified ESLint rules.
-
 ---
 
 ## ⚡ Getting Started
