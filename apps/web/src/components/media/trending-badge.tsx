@@ -1,5 +1,5 @@
 export const TrendingBadge = () => {
   return (
-    <span className="dsy-badge-accent dsy-badge text-nowrap">Trending</span>
+    <span className="dsy-badge dsy-badge-accent text-nowrap">Trending</span>
   );
 };
