@@ -1,4 +1,3 @@
-import { Button } from "@popcorn.fyi/ui/button";
 import { Input } from "@popcorn.fyi/ui/input";
 
 interface TableGlobalFilterProps {
@@ -24,15 +23,15 @@ export const TableGlobalFilter = ({
         value={globalFilter}
       />
       {globalFilter ? (
-        <Button
-          color="neutral"
+        <button
+          className="dsy-btn-sm dsy-btn dsy-btn-neutral"
           onClick={() => {
             resetGlobalFilter();
           }}
-          size="sm"
+          type="button"
         >
           Reset <span className="icon-[lucide--list-restart]" />
-        </Button>
+        </button>
       ) : null}
     </div>
   );

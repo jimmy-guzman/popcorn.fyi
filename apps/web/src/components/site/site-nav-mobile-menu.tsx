@@ -1,4 +1,3 @@
-import { Button } from "@popcorn.fyi/ui/button";
 import { Drawer } from "vaul";
 
 import type { NavItem } from "@/config/nav";
@@ -10,10 +9,13 @@ export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {
   return (
     <Drawer.Root>
       <Drawer.Trigger asChild>
-        <Button className="xl:hidden" size="sm" variant="ghost">
+        <button
+          className="dsy-btn dsy-btn-sm dsy-btn-ghost xl:hidden"
+          type="button"
+        >
           <span className="sr-only">Open Navigation Menu</span>
           <span className="icon-[lucide--menu] h-5 w-5" />
-        </Button>
+        </button>
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="bg-base-100/40 fixed inset-0" />

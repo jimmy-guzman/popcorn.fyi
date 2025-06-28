@@ -1,5 +1,4 @@
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import { Button } from "@popcorn.fyi/ui/button";
 import { Input } from "@popcorn.fyi/ui/input";
 import { Select } from "@popcorn.fyi/ui/select";
 import { useNavigate, useSearch } from "@tanstack/react-router";
@@ -97,16 +96,16 @@ export const MovieDiscoverFilters = ({
               })}
             </Select>
           </label>
-          <Button
+          <button
             aria-label="Reset Genre"
-            className="dsy-join-item"
-            color="neutral"
+            className="dsy-btn dsy-btn-neutral dsy-join-item"
             onClick={() => {
               resetField("with_genres", { defaultValue: "" });
             }}
+            type="button"
           >
             <span className="icon-[lucide--x]" />
-          </Button>
+          </button>
         </div>
         <div className="dsy-join">
           <label className="dsy-floating-label w-full">
@@ -131,16 +130,16 @@ export const MovieDiscoverFilters = ({
               })}
             </Select>
           </label>
-          <Button
+          <button
             aria-label="Reset Provider"
-            className="dsy-join-item"
-            color="neutral"
+            className="dsy-btn dsy-btn-neutral dsy-join-item"
             onClick={() => {
               resetField("with_watch_providers", { defaultValue: "" });
             }}
+            type="button"
           >
             <span className="icon-[lucide--x]" />
-          </Button>
+          </button>
         </div>
         <div className="dsy-join">
           <label className="dsy-floating-label w-full">
@@ -155,16 +154,16 @@ export const MovieDiscoverFilters = ({
               })}
             </Select>
           </label>
-          <Button
+          <button
             aria-label="Reset Region"
-            className="dsy-join-item"
-            color="neutral"
+            className="dsy-btn dsy-btn-neutral dsy-join-item"
             onClick={() => {
               resetField("watch_region", { defaultValue: "US" });
             }}
+            type="button"
           >
             <span className="icon-[lucide--x]" />
-          </Button>
+          </button>
         </div>
       </div>
       <div className="grid gap-2 md:grid-cols-3">
@@ -177,16 +176,16 @@ export const MovieDiscoverFilters = ({
               type="date"
             />
           </label>
-          <Button
+          <button
             aria-label="Reset From"
-            className="dsy-join-item"
-            color="neutral"
+            className="dsy-btn dsy-btn-neutral dsy-join-item"
             onClick={() => {
               resetField("primary_release_date_gte", { defaultValue: "" });
             }}
+            type="button"
           >
             <span className="icon-[lucide--x]" />
-          </Button>
+          </button>
         </div>
         <div className="dsy-join">
           <label className="dsy-floating-label w-full">
@@ -197,16 +196,16 @@ export const MovieDiscoverFilters = ({
               type="date"
             />
           </label>
-          <Button
+          <button
             aria-label="Reset To"
-            className="dsy-join-item"
-            color="neutral"
+            className="dsy-btn dsy-btn-neutral dsy-join-item"
             onClick={() => {
               resetField("primary_release_date_lte", { defaultValue: "" });
             }}
+            type="button"
           >
             <span className="icon-[lucide--x]" />
-          </Button>
+          </button>
         </div>
         <div className="dsy-join">
           <label className="dsy-floating-label w-full">
@@ -222,16 +221,16 @@ export const MovieDiscoverFilters = ({
               })}
             </Select>
           </label>
-          <Button
+          <button
             aria-label="Reset Sort By"
-            className="dsy-join-item"
-            color="neutral"
+            className="dsy-btn dsy-btn-neutral dsy-join-item"
             onClick={() => {
               resetField("sort_by", { defaultValue: "popularity.desc" });
             }}
+            type="button"
           >
             <span className="icon-[lucide--x]" />
-          </Button>
+          </button>
         </div>
       </div>
     </form>

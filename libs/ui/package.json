@@ -2,7 +2,6 @@
   "name": "@popcorn.fyi/ui",
   "private": true,
   "exports": {
-    "./button": "./src/button.tsx",
     "./badge": "./src/badge.tsx",
     "./card": "./src/card.tsx",
     "./hero": "./src/hero.tsx",
