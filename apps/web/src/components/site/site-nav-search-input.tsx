@@ -1,4 +1,3 @@
-import { Input } from "@popcorn.fyi/ui/input";
 import { useMatch, useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
@@ -37,7 +36,7 @@ export const SiteNavSearchInput = () => {
         htmlFor="site-search"
       >
         <span className="icon-[lucide--search] h-[1em] opacity-50" />
-        <Input
+        <input
           id="site-search"
           onChange={(event) => {
             setQuery(event.target.value);

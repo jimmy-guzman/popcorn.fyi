@@ -1,5 +1,3 @@
-import { Input } from "@popcorn.fyi/ui/input";
-
 interface TableGlobalFilterProps {
   globalFilter: string;
   resetGlobalFilter: (defaultState?: boolean) => void;
@@ -13,8 +11,8 @@ export const TableGlobalFilter = ({
 }: TableGlobalFilterProps) => {
   return (
     <div className="col-span-2 flex w-full items-center gap-2">
-      <Input
-        className="grow"
+      <input
+        className="dsy-input grow"
         onChange={(event) => {
           setGlobalFilter(event.target.value);
         }}
