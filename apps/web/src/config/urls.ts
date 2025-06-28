@@ -4,7 +4,6 @@ export const urls = {
   github: "https://github.com/jimmy-guzman/popcorn.fyi",
   JustWatch: "https://www.justwatch.com",
   JustWatchLogo: "https://widget.justwatch.com/assets/JW_logo_color_10px.svg",
-  storybook: "https://storybookpopcornfyi.vercel.app/",
   tanstackStart: "https://tanstack.com/start",
   tmdb: "https://www.themoviedb.org",
   vercel: "https://vercel.com",

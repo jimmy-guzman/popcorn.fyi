@@ -25,16 +25,6 @@ export const SiteFooterNav = () => {
           <span className="sr-only md:not-sr-only">Report a bug</span>
           <span className="icon-[lucide--bug] h-5 w-5" />
         </a>
-        <a
-          aria-label="Storybook"
-          className="dsy-btn"
-          href={urls.storybook}
-          rel="noreferrer"
-          target="_blank"
-        >
-          <span className="sr-only md:not-sr-only">Storybook</span>
-          <span className="icon-[simple-icons--storybook] h-5 w-5" />
-        </a>
       </div>
     </nav>
   );
