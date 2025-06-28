@@ -1,6 +1,4 @@
 import { valibotResolver } from "@hookform/resolvers/valibot";
-import { Input } from "@popcorn.fyi/ui/input";
-import { Select } from "@popcorn.fyi/ui/select";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
@@ -79,9 +77,9 @@ export const MovieDiscoverFilters = ({
         <div className="dsy-join">
           <label className="dsy-floating-label w-full">
             <span>Genre</span>
-            <Select
+            <select
               {...register("with_genres")}
-              className="w-full"
+              className="dsy-select w-full"
               defaultValue=""
             >
               <option disabled value="">
@@ -94,7 +92,7 @@ export const MovieDiscoverFilters = ({
                   </option>
                 );
               })}
-            </Select>
+            </select>
           </label>
           <button
             aria-label="Reset Genre"
@@ -110,10 +108,10 @@ export const MovieDiscoverFilters = ({
         <div className="dsy-join">
           <label className="dsy-floating-label w-full">
             <span>Provider</span>
-            <Select
+            <select
               defaultValue=""
               {...register("with_watch_providers")}
-              className="w-full"
+              className="dsy-select w-full"
             >
               <option disabled value="">
                 Pick a Provider
@@ -128,7 +126,7 @@ export const MovieDiscoverFilters = ({
                   </option>
                 );
               })}
-            </Select>
+            </select>
           </label>
           <button
             aria-label="Reset Provider"
@@ -144,7 +142,7 @@ export const MovieDiscoverFilters = ({
         <div className="dsy-join">
           <label className="dsy-floating-label w-full">
             <span>Region</span>
-            <Select {...register("watch_region")} className="w-full">
+            <select {...register("watch_region")} className="dsy-select w-full">
               {regions.map((region) => {
                 return (
                   <option key={region.iso_3166_1} value={region.iso_3166_1}>
@@ -152,7 +150,7 @@ export const MovieDiscoverFilters = ({
                   </option>
                 );
               })}
-            </Select>
+            </select>
           </label>
           <button
             aria-label="Reset Region"
@@ -170,9 +168,9 @@ export const MovieDiscoverFilters = ({
         <div className="dsy-join">
           <label className="dsy-floating-label w-full">
             <span>From</span>
-            <Input
+            <input
               {...register("primary_release_date_gte")}
-              className="w-full"
+              className="dsy-input w-full"
               type="date"
             />
           </label>
@@ -190,9 +188,9 @@ export const MovieDiscoverFilters = ({
         <div className="dsy-join">
           <label className="dsy-floating-label w-full">
             <span>To</span>
-            <Input
+            <input
               {...register("primary_release_date_lte")}
-              className="w-full"
+              className="dsy-input w-full"
               type="date"
             />
           </label>
@@ -210,7 +208,7 @@ export const MovieDiscoverFilters = ({
         <div className="dsy-join">
           <label className="dsy-floating-label w-full">
             <span>Sort By</span>
-            <Select {...register("sort_by")} className="w-full">
+            <select {...register("sort_by")} className="dsy-select w-full">
               <option value="" />
               {sortOptions.map((sortOption) => {
                 return (
@@ -219,7 +217,7 @@ export const MovieDiscoverFilters = ({
                   </option>
                 );
               })}
-            </Select>
+            </select>
           </label>
           <button
             aria-label="Reset Sort By"
