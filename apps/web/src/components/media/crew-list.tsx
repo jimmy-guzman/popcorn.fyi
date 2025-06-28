@@ -1,5 +1,4 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { Link } from "@tanstack/react-router";
 
 import { ListContent } from "../shared/list-content";
@@ -25,20 +24,22 @@ export const CrewList = ({ crew }: CrewListProps) => {
             params={{ id: person.id }}
             to="/people/$id"
           >
-            <Card>
+            <div className="dsy-card dsy-card-sm md:dsy-card-normal h-full shadow-xl">
               {person.profile_path ? (
-                <CardImage
-                  alt={person.name}
-                  src={tmdbImageUrl(person.profile_path, "w500")}
-                />
+                <figure>
+                  <img
+                    alt={person.name}
+                    src={tmdbImageUrl(person.profile_path, "w500")}
+                  />
+                </figure>
               ) : (
                 <CardImageFallback />
               )}
-              <CardContent>
-                <CardTitle>{person.name}</CardTitle>
+              <div className="dsy-card-body">
+                <h2 className="dsy-card-title">{person.name}</h2>
                 <p>{person.job}</p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </Link>
         );
       })}

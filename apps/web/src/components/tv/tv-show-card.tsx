@@ -1,5 +1,4 @@
 import { tmdbImageUrl } from "@popcorn.fyi/api-clients/utils";
-import { Card, CardContent, CardImage, CardTitle } from "@popcorn.fyi/ui/card";
 import { year } from "@popcorn.fyi/utils";
 import { Link } from "@tanstack/react-router";
 
@@ -21,24 +20,26 @@ interface TVShowCardProps {
 export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
   return (
     <Link params={{ id: tvShow.id }} to="/tv-shows/$id">
-      <Card>
+      <div className="dsy-card dsy-card-sm md:dsy-card-normal h-full shadow-xl">
         {tvShow.poster_path ? (
-          <CardImage
-            alt={tvShow.name}
-            src={tmdbImageUrl(tvShow.poster_path, "w500")}
-          />
+          <figure>
+            <img
+              alt={tvShow.name}
+              src={tmdbImageUrl(tvShow.poster_path, "w500")}
+            />
+          </figure>
         ) : (
           <CardImageFallback />
         )}
-        <CardContent>
+        <div className="dsy-card-body">
           <div className="flex justify-end gap-2">
             <MediaRating average={tvShow.vote_average} />
             <MediaType mediaType={tvShow.media_type} />
           </div>
-          <CardTitle>{tvShow.name}</CardTitle>
+          <h2 className="dsy-card-title">{tvShow.name}</h2>
           {tvShow.first_air_date ? <p>{year(tvShow.first_air_date)}</p> : "N/A"}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </Link>
   );
 };
