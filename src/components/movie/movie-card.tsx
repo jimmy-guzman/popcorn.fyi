@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
-import { tmdbImageUrl } from "@/lib/urls";
-import { year } from "@/lib/year";
+import { year } from "@/lib/date";
+import { tmdbImageUrl } from "@/lib/tmdb-images";
 
 import { CardImageFallback } from "../media/card-image-fallback";
 import { MediaRating } from "../media/media-rating";

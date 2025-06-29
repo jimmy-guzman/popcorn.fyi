@@ -1,8 +1,8 @@
 import { Link, Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
 
-import { asQuote } from "@/lib/as-quote";
-import { tmdbImageUrl } from "@/lib/urls";
+import { quote } from "@/lib/string";
+import { tmdbImageUrl } from "@/lib/tmdb-images";
 
 import { MediaGenres } from "../media/media-genres";
 import { MediaRating } from "../media/media-rating";
@@ -55,7 +55,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
             </div>
             <Prose size="lg">
               <h1>{tvShow.name}</h1>
-              {tvShow.tagline ? <p>{asQuote(tvShow.tagline)}</p> : null}
+              {tvShow.tagline ? <p>{quote(tvShow.tagline)}</p> : null}
               <p>{tvShow.overview}</p>
             </Prose>
             <div className="flex justify-center gap-2 md:justify-start">

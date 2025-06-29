@@ -7,7 +7,7 @@ import { tvExternalOptions } from "@/api/tv/details.external";
 import { TVShowDetails } from "@/components/tv/tv-show-details";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
-import { tmdbImageUrl } from "@/lib/urls";
+import { tmdbImageUrl } from "@/lib/tmdb-images";
 import { PathParamsSchema } from "@/schemas/path-params";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id")({

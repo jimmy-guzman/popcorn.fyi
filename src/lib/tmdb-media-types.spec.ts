@@ -1,4 +1,4 @@
-import { pluralMediaType } from "./plural-media-type";
+import { pluralMediaType } from "./tmdb-media-types";
 
 describe("pluralMediaType", () => {
   it.each([

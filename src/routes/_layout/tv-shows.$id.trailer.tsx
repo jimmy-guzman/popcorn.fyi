@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { tvVideosOptions } from "@/api/tv/details.videos";
 import { MediaTrailerDialog } from "@/components/media/media-trailer-dialog";
-import { selectYoutubeTrailer } from "@/lib/youtube";
+import { selectYoutubeTrailer } from "@/lib/tmdb-youtube";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id/trailer")({
   component: RouteComponent,

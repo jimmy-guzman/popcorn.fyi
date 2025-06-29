@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import { tmdbImageUrl } from "@/lib/urls";
+import { tmdbImageUrl } from "@/lib/tmdb-images";
 
 import { MediaType } from "../media/media-type";
 

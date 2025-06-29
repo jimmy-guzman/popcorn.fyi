@@ -6,10 +6,10 @@
  * @returns The string wrapped in double quotes if not already quoted.
  *
  * @example
- * asQuote("hello"); // => "\"hello\""
- * asQuote('"hello"'); // => '"hello"'
- * asQuote("'hello'"); // => "'hello'"
+ * quote("hello"); // => "\"hello\""
+ * quote('"hello"'); // => '"hello"'
+ * quote("'hello'"); // => "'hello'"
  */
-export const asQuote = (value: string): string => {
+export const quote = (value: string) => {
   return /^(['"]).*\1$/.test(value) ? value : `"${value}"`;
 };

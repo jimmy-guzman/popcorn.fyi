@@ -1,4 +1,4 @@
-import { tmdbImageUrl } from "@/lib/urls";
+import { tmdbImageUrl } from "@/lib/tmdb-images";
 
 interface MediaProvidersProps {
   providers: {
