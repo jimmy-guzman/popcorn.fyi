@@ -3,7 +3,7 @@ import createClient from "openapi-fetch";
 import type { paths } from "./wikidata.gen";
 
 const wikiDataClient = createClient<paths>({
-  baseUrl: "https://www.wikidata.org/w/api.php/",
+  baseUrl: "https://www.wikidata.org/w/rest.php/wikibase",
   headers: {
     "Accept-Encoding": "gzip,deflate",
     "User-Agent": "popcorn.fyi",

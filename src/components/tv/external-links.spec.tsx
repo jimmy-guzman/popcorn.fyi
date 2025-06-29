@@ -1,3 +1,4 @@
+import { urls } from "@/config/urls";
 import { render, screen } from "@/testing/utils";
 
 import { ExternalLinks } from "./external-links";
@@ -40,16 +41,13 @@ describe("ExternalLinks", () => {
       queryData: [
         [
           ["tv", "details", 64, "external"],
-          { imdb_url: "https://www.imdb.com/title/tt16311594" },
+          { imdb_url: `${urls.imdb}/title/tt16311594` },
         ],
       ],
     });
 
     const link = await screen.findByRole("link", { name: /imdb/i });
 
-    expect(link).toHaveAttribute(
-      "href",
-      "https://www.imdb.com/title/tt16311594",
-    );
+    expect(link).toHaveAttribute("href", `${urls.imdb}/title/tt16311594`);
   });
 });

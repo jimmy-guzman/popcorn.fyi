@@ -5,26 +5,17 @@ import wikiDataClient from "./clients/wikidata";
 
 const IdSchema = v.string();
 
-type Id = v.InferInput<typeof IdSchema>;
-
 export const wikipediaFn = createServerFn({ method: "GET" })
-  .validator((data: Id) => v.parse(IdSchema, data))
+  .validator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
-    const { data } = await wikiDataClient.GET("/", {
-      params: {
-        query: {
-          action: "wbgetentities",
-          format: "json",
-          ids: context.data,
+    const { data } = await wikiDataClient.GET(
+      "/v1/entities/items/{item_id}/sitelinks/{site_id}",
+      {
+        params: {
+          path: { item_id: context.data, site_id: "enwiki" },
         },
       },
-    });
+    );
 
-    const sitelinks = data.entities?.[context.data]?.sitelinks;
-
-    if (sitelinks?.enwiki?.title) {
-      return `https://en.wikipedia.org/wiki/${sitelinks.enwiki.title.replaceAll(" ", "_")}`;
-    }
-
-    return null;
+    return data.url;
   });
