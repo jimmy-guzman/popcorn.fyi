@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
         exclude: [
           ...(configDefaults.coverage.exclude ?? []),
           "playwright-report/**",
-          "{playwright,env,knip}.config.*",
+          "{playwright,knip}.config.*",
           "playwright.setup.*",
           "**/*.gen.*",
         ],
