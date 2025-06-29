@@ -1,4 +1,4 @@
-import { selectYoutubeTrailer, youtubeVideoUrl } from "./youtube";
+import { selectYoutubeTrailer, youtubeVideoUrl } from "./tmdb-youtube";
 
 describe("selectYoutubeTrailer", () => {
   it("should return undefined when site is not YouTube", () => {

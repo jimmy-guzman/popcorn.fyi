@@ -1,4 +1,4 @@
-import type { MediaType } from "./types";
+type MediaType = "movie" | "person" | "tv";
 
 export const pluralMediaType = (mediaType: MediaType) => {
   if (mediaType === "movie") {

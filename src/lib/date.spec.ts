@@ -1,4 +1,4 @@
-import { date } from "./date";
+import { date, year } from "./date";
 
 describe("date", () => {
   it("should throw when date is an empty string", () => {
@@ -19,5 +19,19 @@ describe("date", () => {
 
   it("should format as UTC", () => {
     expect(date("1974-11-11")).toBe("Nov 11, 1974");
+  });
+});
+
+describe("year", () => {
+  it("should return NaN when year is an empty string", () => {
+    expect(year("")).toBeNaN();
+  });
+
+  it("should return NaN when year is an invalid format", () => {
+    expect(year("bad")).toBeNaN();
+  });
+
+  it("should return full year from date", () => {
+    expect(year("02/27/2015")).toBe(2015);
   });
 });

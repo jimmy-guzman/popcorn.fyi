@@ -1,8 +1,7 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
 
-import { limit } from "@/lib/limit";
-import { shuffle } from "@/lib/shuffle";
+import { limit, shuffle } from "@/lib/array";
 
 import tmdbClient from "./clients/tmdb";
 
