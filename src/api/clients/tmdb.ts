@@ -1,10 +1,12 @@
-import { Redis } from "@upstash/redis";
 import envConfig from "env.config";
 import createClient from "openapi-fetch";
 
 import type { paths } from "./tmdb.gen";
 
+import cache from "./cache";
+
 const CACHE_CONTROL_FALLBACK = 3600;
+const CACHE_PREFIX = "tmdb:";
 
 function parseCacheControl(cacheControl: null | string): number {
   if (!cacheControl) {
@@ -22,15 +24,6 @@ function parseCacheControl(cacheControl: null | string): number {
   return CACHE_CONTROL_FALLBACK;
 }
 
-function getCacheKey(url: string) {
-  return `tmdb:${url}`;
-}
-
-const redis = new Redis({
-  token: envConfig.KV_REST_API_TOKEN,
-  url: envConfig.KV_REST_API_URL,
-});
-
 const tmdbClient = createClient<paths>({
   baseUrl: "https://api.themoviedb.org/",
   headers: {
@@ -41,10 +34,10 @@ const tmdbClient = createClient<paths>({
 
 tmdbClient.use({
   async onRequest({ request }) {
-    const cacheKey = getCacheKey(request.url);
+    const cacheKey = `${CACHE_PREFIX}${request.url}`;
 
     try {
-      const cached = await redis.get(cacheKey);
+      const cached = await cache.get(cacheKey);
 
       if (cached) {
         return new Response(JSON.stringify(cached), {
@@ -66,7 +59,7 @@ tmdbClient.use({
       throw new Error(`${response.url}: ${response.statusText}`);
     }
 
-    const cacheKey = getCacheKey(request.url);
+    const cacheKey = `${CACHE_PREFIX}${request.url}`;
     const cacheControl = response.headers.get("cache-control");
     const ttl = parseCacheControl(cacheControl);
 
@@ -76,7 +69,7 @@ tmdbClient.use({
 
         const data = await responseClone.json();
 
-        await redis.set(cacheKey, JSON.stringify(data), { ex: ttl });
+        await cache.set(cacheKey, JSON.stringify(data), { ex: ttl });
       } catch (error) {
         // eslint-disable-next-line no-console -- This is ok.
         console.error("Redis error:", error);
