@@ -2,9 +2,10 @@ import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
 import * as v from "valibot";
 
-import { client } from "@/lib/tmdb";
 import { PaginationSchema } from "@/schemas/pagination";
 import { Filter } from "@/schemas/utils";
+
+import tmdbClient from "../clients/tmdb";
 
 const SortSchema = v.optional(
   v.fallback(
@@ -46,7 +47,7 @@ const discoverMoviesFn = createServerFn({ method: "GET" })
     v.parse(DiscoverSchema, data),
   )
   .handler(async (context) => {
-    const { data } = await client.GET("/3/discover/movie", {
+    const { data } = await tmdbClient.GET("/3/discover/movie", {
       params: {
         query: {
           ...context.data,

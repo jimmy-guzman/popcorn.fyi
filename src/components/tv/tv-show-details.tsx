@@ -1,8 +1,8 @@
 import { Link, Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
 
-import { tmdbImageUrl } from "@/lib/api-clients/urls";
 import { asQuote } from "@/lib/as-quote";
+import { tmdbImageUrl } from "@/lib/urls";
 
 import { MediaGenres } from "../media/media-genres";
 import { MediaRating } from "../media/media-rating";

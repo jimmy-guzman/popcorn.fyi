@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import { youtubeVideoUrl } from "@/lib/api-clients/youtube";
+import { youtubeVideoUrl } from "@/lib/youtube";
 
 interface MediaTrailerDialogProps {
   handleClose: () => void;

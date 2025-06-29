@@ -3,7 +3,8 @@ import { createServerFn } from "@tanstack/react-start";
 
 import { limit } from "@/lib/limit";
 import { shuffle } from "@/lib/shuffle";
-import { client } from "@/lib/tmdb";
+
+import tmdbClient from "./clients/tmdb";
 
 const TRENDING_FETCH_LIMIT = 15;
 const TRENDING_PREVIEW_LIMIT = 5;
@@ -11,7 +12,7 @@ const TRENDING_PREVIEW_LIMIT = 5;
 const trendingAllFn = createServerFn({ method: "GET" }).handler(async () => {
   const {
     data: { results = [] },
-  } = await client.GET("/3/trending/all/{time_window}", {
+  } = await tmdbClient.GET("/3/trending/all/{time_window}", {
     params: { path: { time_window: "day" } },
   });
 

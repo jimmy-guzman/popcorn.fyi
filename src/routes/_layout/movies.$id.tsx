@@ -6,8 +6,8 @@ import { movieDetailsOptions } from "@/api/movie/details";
 import { movieExternalOptions } from "@/api/movie/details.external";
 import { MovieDetails } from "@/components/movie/movie-details";
 import { site } from "@/config/site";
-import { tmdbImageUrl } from "@/lib/api-clients/urls";
 import { seo } from "@/lib/seo";
+import { tmdbImageUrl } from "@/lib/urls";
 import { PathParamsSchema } from "@/schemas/path-params";
 
 export const Route = createFileRoute("/_layout/movies/$id")({

@@ -13,11 +13,11 @@
     "e2e:ui": "dotenv-run -- playwright test --ui",
     "format": "prettier --check --cache .",
     "format:fix": "prettier --write --cache .",
-    "gen:types": "openapi-typescript --root-types",
     "postinstall": "lefthook install",
     "knip": "knip",
     "lint": "eslint --cache .",
     "lint:fix": "eslint --cache . --fix",
+    "open-api": "openapi-typescript --root-types",
     "preview": "node .output/server/index.mjs",
     "test": "vitest",
     "typecheck": "tsc"

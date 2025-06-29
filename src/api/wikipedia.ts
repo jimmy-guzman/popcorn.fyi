@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import * as v from "valibot";
 
-import { wikiDataClient } from "@/lib/wikidata";
+import wikiDataClient from "./clients/wikidata";
 
 const IdSchema = v.string();
 

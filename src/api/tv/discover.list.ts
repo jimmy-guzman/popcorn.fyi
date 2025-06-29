@@ -2,9 +2,10 @@ import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
 import * as v from "valibot";
 
-import { client } from "@/lib/tmdb";
 import { PaginationSchema } from "@/schemas/pagination";
 import { Filter } from "@/schemas/utils";
+
+import tmdbClient from "../clients/tmdb";
 
 export const DiscoverSchema = v.intersect([
   PaginationSchema,
@@ -42,7 +43,7 @@ const discoverTvFn = createServerFn({ method: "GET" })
     v.parse(DiscoverSchema, data),
   )
   .handler(async (context) => {
-    const { data } = await client.GET("/3/discover/tv", {
+    const { data } = await tmdbClient.GET("/3/discover/tv", {
       params: {
         query: {
           ...context.data,

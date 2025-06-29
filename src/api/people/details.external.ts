@@ -4,19 +4,22 @@ import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
-import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
 
+import tmdbClient from "../clients/tmdb";
 import { wikipediaFn } from "../wikipedia";
 
 const personExternalFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
-    const { data } = await client.GET("/3/person/{person_id}/external_ids", {
-      params: {
-        path: { person_id: context.data },
+    const { data } = await tmdbClient.GET(
+      "/3/person/{person_id}/external_ids",
+      {
+        params: {
+          path: { person_id: context.data },
+        },
       },
-    });
+    );
 
     return {
       imdb_id: data.imdb_id,

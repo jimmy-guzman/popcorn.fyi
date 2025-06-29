@@ -6,8 +6,8 @@ import { personDetailsOptions } from "@/api/people/details";
 import { personExternalOptions } from "@/api/people/details.external";
 import { PersonDetails } from "@/components/people/person-details";
 import { site } from "@/config/site";
-import { tmdbImageUrl } from "@/lib/api-clients/urls";
 import { seo } from "@/lib/seo";
+import { tmdbImageUrl } from "@/lib/urls";
 import { PathParamsSchema } from "@/schemas/path-params";
 
 export const Route = createFileRoute("/_layout/people/$id")({
