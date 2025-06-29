@@ -1,10 +1,10 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
 
-import { client } from "@/lib/tmdb";
+import tmdbClient from "./clients/tmdb";
 
 const regionsFn = createServerFn({ method: "GET" }).handler(async (context) => {
-  const { data } = await client.GET("/3/watch/providers/regions", {
+  const { data } = await tmdbClient.GET("/3/watch/providers/regions", {
     params: {
       query: context.data,
     },

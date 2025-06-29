@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import { tmdbImageUrl } from "@/lib/api-clients/urls";
+import { tmdbImageUrl } from "@/lib/urls";
 
 import { ListContent } from "../shared/list-content";
 import { CardImageFallback } from "./card-image-fallback";

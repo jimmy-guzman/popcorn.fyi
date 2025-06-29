@@ -7,7 +7,7 @@
     "KV_REST_API_URL"
   ],
   "tasks": {
-    "gen:types": {
+    "open-api": {
       "outputs": ["**/*.gen.*"]
     },
     "build": {
@@ -15,14 +15,14 @@
       "outputs": [".nitro/**", ".tanstack/**", ".vercel/**", ".output/**"]
     },
     "lint": {
-      "dependsOn": ["gen:types"],
+      "dependsOn": ["open-api"],
       "outputs": [".eslintcache"]
     },
     "format": {
       "outputs": ["node_modules/.cache/prettier/**"]
     },
     "typecheck": {
-      "dependsOn": ["gen:types"]
+      "dependsOn": ["open-api"]
     },
     "test": {
       "cache": false,

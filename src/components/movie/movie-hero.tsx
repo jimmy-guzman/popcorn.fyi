@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import { tmdbImageUrl } from "@/lib/api-clients/urls";
+import { tmdbImageUrl } from "@/lib/urls";
 
 import { MediaType } from "../media/media-type";
 import { TrendingBadge } from "../media/trending-badge";

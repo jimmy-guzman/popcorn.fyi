@@ -1,11 +1,11 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
 
-import { client } from "../../lib/tmdb";
+import tmdbClient from "../clients/tmdb";
 
 const movieProvidersFn = createServerFn({ method: "GET" }).handler(
   async (context) => {
-    const { data } = await client.GET("/3/watch/providers/movie", {
+    const { data } = await tmdbClient.GET("/3/watch/providers/movie", {
       params: {
         query: context.data,
       },

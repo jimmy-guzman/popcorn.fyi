@@ -1,9 +1,9 @@
 import { Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
 
-import { tmdbContent } from "@/lib/api-clients/content";
-import { tmdbImageUrl } from "@/lib/api-clients/urls";
+import { tmdbContent } from "@/lib/content";
 import { date } from "@/lib/date";
+import { tmdbImageUrl } from "@/lib/urls";
 
 import { MediaRating } from "../media/media-rating";
 import { Prose } from "../shared/prose";

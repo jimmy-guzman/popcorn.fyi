@@ -4,13 +4,14 @@ import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
-import { client } from "@/lib/tmdb";
 import { IdSchema } from "@/schemas/id";
+
+import tmdbClient from "../clients/tmdb";
 
 const tvSimilar = createServerFn({ method: "GET" })
   .validator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
-    const { data } = await client.GET("/3/tv/{series_id}/similar", {
+    const { data } = await tmdbClient.GET("/3/tv/{series_id}/similar", {
       params: {
         path: { series_id: context.data.toString() },
       },
