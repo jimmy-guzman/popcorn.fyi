@@ -1,160 +1,88 @@
-# 🎥 Contributing to popcorn.fyi
+# Contributing to popcorn.fyi
 
-Thanks for your interest in contributing! Whether you're fixing bugs 🐛, improving docs 📚, or suggesting new features ✨, all contributions are welcome.
+Thanks for your interest in contributing! Whether you're fixing bugs, adding features, or improving docs, all contributions are welcome.
 
-## 🚀 Getting Started
+## Quick Start
 
-Refer to the [README](./README.md) for full setup details. Here's a quick start:
+```bash
+gh repo clone jimmy-guzman/popcorn.fyi
+cd popcorn.fyi
+pnpm install
+pnpm exec playwright install
+cp .env.example .env
+pnpm dev
+```
 
-1. **🔄 Clone the Repository**
+You'll need to add your API keys to `.env` - see the [README](./README.md) for details.
 
-   ```bash
-   gh repo clone jimmy-guzman/popcorn.fyi
-   cd popcorn.fyi
-   ```
+## Before You Submit
 
-2. **📦 Install Dependencies**
-   Ensure you have [pnpm](https://pnpm.io/installation) installed:
-
-   ```bash
-   pnpm install
-   ```
-
-3. **🔧 Setup Environment Variables**
-
-   ```bash
-   cp apps/web/.env.example apps/web/.env
-   ```
-
-4. **💻 Run the Development Server**
-
-   ```bash
-   pnpm dev
-   ```
-
-   Visit `http://localhost:3000` to view the app.
-
-## 🛠 Guidelines
-
-### **📝 Code Style**
-
-- Follow existing patterns.
-- Use **kebab-case** for filenames.
-- Keep components organized by feature (e.g., `movie/`, `tv/`, `person/`).
-
-### **🔒 Type Safety & Linting**
-
-- The repo uses [Lefthook](https://github.com/evilmartians/lefthook) for pre-commit checks:
-  - **🎨 Prettier** (formatting)
-  - **📑 sort-package-json** (consistent `package.json`)
-  - **🧹 Knip** (detects unused files/dependencies)
-  - **🔍 ESLint** (linting)
-
-Run checks manually:
+Run the full check to make sure everything passes:
 
 ```bash
 pnpm check
 ```
 
-### **✅ Testing**
+This runs formatting, linting, type checking, tests, and builds the project.
 
-- **Unit & Integration:** [Vitest](https://vitest.dev) with React Testing Library.
-- **E2E:** [Playwright](https://playwright.dev).
+## Guidelines
 
-Run tests:
+- Use kebab-case for file names
+- Organize by feature (`src/movie/`, `src/tv-show/`, etc.)
+- Co-locate tests with components
+- Follow conventional commits (`feat:`, `fix:`, `docs:`)
 
-```bash
-pnpm test
+## Project Structure
+
+```
+popcorn.fyi/
+├── src/
+│   ├── api/                 # API functions for TMDB & Wikidata
+│   │   ├── movie/          # Movie-specific endpoints
+│   │   ├── tv/             # TV show endpoints
+│   │   └── people/         # People endpoints
+│   ├── components/         # React components
+│   │   ├── movie/          # Movie components
+│   │   ├── tv/             # TV show components
+│   │   ├── people/         # People components
+│   │   ├── media/          # Shared media components
+│   │   └── shared/         # Common UI components
+│   ├── routes/             # TanStack Start routes
+│   ├── lib/                # Utility functions
+│   └── testing/            # Test utilities & mocks
+├── docs/                   # Documentation
+├── e2e/                    # Playwright tests
+└── public/                 # Static assets
 ```
 
-See [docs/testing.md](./docs/testing.md) for details.
+## Available Commands
 
-### **🔄 CI/CD Pipeline**
+| Command           | Description                       |
+| ----------------- | --------------------------------- |
+| `pnpm dev`        | Start development server          |
+| `pnpm build`      | Build for production              |
+| `pnpm test`       | Run unit/integration tests        |
+| `pnpm e2e`        | Run end-to-end tests              |
+| `pnpm e2e:ui`     | Run E2E tests with UI             |
+| `pnpm coverage`   | Generate test coverage report     |
+| `pnpm format`     | Check code formatting             |
+| `pnpm format:fix` | Fix code formatting               |
+| `pnpm lint`       | Run ESLint                        |
+| `pnpm lint:fix`   | Fix ESLint issues                 |
+| `pnpm typecheck`  | Check TypeScript types            |
+| `pnpm check`      | Run all quality checks            |
+| `pnpm deps:up`    | Update dependencies interactively |
 
-- Uses **GitHub Actions** + **Vercel** for deployments.
-- Details in [docs/ci-cd.md](./docs/ci-cd.md).
+## Learn More
 
-### **✍️ Commit Messages**
+- **Architecture:** [docs/architecture.md](./docs/architecture.md) - System design and tech stack
+- **Testing:** [docs/testing.md](./docs/testing.md) - Testing strategy and examples
+- **CI/CD:** [docs/ci-cd.md](./docs/ci-cd.md) - Build and deployment process
 
-Follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/):
+## Need Help?
 
-```bash
-feat: add new feature ✨
-fix: fix a bug 🐛
-docs: update documentation 📚
-```
-
-## 📜 Available Scripts
-
-- **🚀 Start Development**
-  ```sh
-  pnpm dev
-  ```
-- **🏗 Build for Production**
-  ```sh
-  pnpm build
-  ```
-- **✅ Run Tests**
-  ```sh
-  pnpm test
-  ```
-- **📸 Run E2E Tests**
-  ```sh
-  pnpm e2e
-  ```
-- **🎨 Format Code**
-  ```sh
-  pnpm format
-  ```
-- **🔍 Lint Code**
-  ```sh
-  pnpm lint
-  ```
-- **🔎 Type Checking**
-  ```sh
-  pnpm typecheck
-  ```
-- **🔄 Full Project Check**
-  ```sh
-  pnpm check
-  ```
-
-## 🛠 Git Hooks (Lefthook)
-
-Pre-commit checks run automatically:
-
-- **🎨 Prettier** – Formats staged files.
-- **🔍 ESLint** – Lints code.
-- **🧹 Knip** – Detects unused files/dependencies.
-
-Run manually:
-
-```sh
-pnpm check
-```
-
-## 📤 Submitting a Pull Request
-
-1. **🍴 Fork the Repo**
-2. **🌿 Create a Branch**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. **🛠 Make Your Changes**
-4. **🔍 Run Checks**
-   ```bash
-   pnpm check
-   ```
-5. **🚀 Push to Your Fork**
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-6. **🔄 Open a PR**
-
-## 🐞 Reporting Issues
-
-Found a bug? Have a feature request? Open an issue with details.
+Open an issue if you're stuck, found a bug, or have ideas for improvements.
 
 ---
 
-Thanks for contributing! 🎬
+Thanks for contributing!

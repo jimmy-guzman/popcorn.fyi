@@ -58,7 +58,7 @@ Make sure you have [pnpm](https://pnpm.io) installed, then run:
 ```bash
 pnpm install
 pnpm --filter web exec playwright install
-cp apps/web/.env.example apps/web/.env
+cp .env.example .env
 pnpm dev
 ```
 
