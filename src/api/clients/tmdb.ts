@@ -1,5 +1,6 @@
-import envConfig from "env.config";
 import createClient from "openapi-fetch";
+
+import { env } from "@/env";
 
 import type { paths } from "./tmdb.gen";
 
@@ -28,7 +29,7 @@ const tmdbClient = createClient<paths>({
   baseUrl: "https://api.themoviedb.org/",
   headers: {
     accept: "application/json",
-    Authorization: `Bearer ${envConfig.TMDB_API_TOKEN}`,
+    Authorization: `Bearer ${env.TMDB_API_TOKEN}`,
   },
 });
 
