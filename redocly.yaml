@@ -4,6 +4,6 @@ apis:
     x-openapi-ts:
       output: ./src/api/clients/tmdb.gen.d.ts
   wikidata@v1:
-    root: ./specs/wikidata.yaml
+    root: https://www.wikidata.org/w/rest.php/wikibase/v1/openapi.json
     x-openapi-ts:
       output: ./src/api/clients/wikidata.gen.d.ts

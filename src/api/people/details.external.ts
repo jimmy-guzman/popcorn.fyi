@@ -4,6 +4,7 @@ import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
+import { urls } from "@/config/urls";
 import { IdSchema } from "@/schemas/id";
 
 import tmdbClient from "../clients/tmdb";
@@ -23,9 +24,7 @@ const personExternalFn = createServerFn({ method: "GET" })
 
     return {
       imdb_id: data.imdb_id,
-      imdb_url: data.imdb_id
-        ? `https://www.imdb.com/name/${data.imdb_id}`
-        : undefined,
+      imdb_url: data.imdb_id ? `${urls.imdb}/name/${data.imdb_id}` : undefined,
       wikidata_id: data.wikidata_id,
       wikipedia_url: data.wikidata_id
         ? await wikipediaFn({ data: data.wikidata_id })

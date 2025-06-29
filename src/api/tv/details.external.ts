@@ -4,6 +4,7 @@ import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
+import { urls } from "@/config/urls";
 import { IdSchema } from "@/schemas/id";
 
 import tmdbClient from "../clients/tmdb";
@@ -18,16 +19,21 @@ const tvExternalFn = createServerFn({ method: "GET" })
       },
     });
 
-    return {
+    const base = {
       imdb_id: data.imdb_id,
-      imdb_url: data.imdb_id
-        ? `https://www.imdb.com/title/${data.imdb_id}`
-        : undefined,
+      imdb_url: data.imdb_id ? `${urls.imdb}/title/${data.imdb_id}` : undefined,
       wikidata_id: data.wikidata_id,
-      wikipedia_url: data.wikidata_id
-        ? await wikipediaFn({ data: data.wikidata_id })
-        : undefined,
+      wikipedia_url: null,
     };
+
+    try {
+      return {
+        ...base,
+        wikipedia_url: await wikipediaFn({ data: base.wikidata_id }),
+      };
+    } catch {
+      return base;
+    }
   });
 
 export const tvExternalOptions = (id: Id) => {
