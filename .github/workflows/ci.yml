@@ -78,6 +78,8 @@ jobs:
         env:
           SERVER_PRESET: node-server
           TMDB_API_TOKEN: ${{ secrets.TMDB_API_TOKEN }}
+          KV_REST_API_TOKEN: ${{ secrets.KV_REST_API_TOKEN }}
+          KV_REST_API_URL: ${{ secrets.KV_REST_API_URL }}
 
       - name: 🗃️ Upload Playwright Report
         uses: actions/upload-artifact@v4

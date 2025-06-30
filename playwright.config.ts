@@ -1,13 +1,13 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const IS_CI = process.env.CI;
-const THIRTY_MINUTES_MS = 1_800_000;
+const GLOBAL_TIMEOUT = 1_800_000;
 const CI_RETRIES = 3;
 
 export default defineConfig({
   forbidOnly: true,
   fullyParallel: true,
-  globalTimeout: IS_CI ? THIRTY_MINUTES_MS : undefined,
+  globalTimeout: IS_CI ? GLOBAL_TIMEOUT : undefined,
   projects: [
     {
       name: "chromium",

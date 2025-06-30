@@ -1,9 +1,10 @@
 import { Redis } from "@upstash/redis";
-import envConfig from "env.config";
+
+import { env } from "@/env";
 
 const cache = new Redis({
-  token: envConfig.KV_REST_API_TOKEN,
-  url: envConfig.KV_REST_API_URL,
+  token: env.KV_REST_API_TOKEN,
+  url: env.KV_REST_API_URL,
 });
 
 export default cache;
