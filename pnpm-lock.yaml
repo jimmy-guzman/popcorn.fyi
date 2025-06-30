@@ -149,9 +149,6 @@ importers:
       daisyui:
         specifier: 5.0.43
         version: 5.0.43
-      dotenv:
-        specifier: 17.0.0
-        version: 17.0.0
       eslint:
         specifier: 9.30.0
         version: 9.30.0(jiti@2.4.2)
@@ -2857,10 +2854,6 @@ packages:
 
   dotenv@16.5.0:
     resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
-    engines: {node: '>=12'}
-
-  dotenv@17.0.0:
-    resolution: {integrity: sha512-A0BJ5lrpJVSfnMMXjmeO0xUnoxqsBHWCoqqTnGwGYVdnctqXXUEhJOO7LxmgxJon9tEZFGpe0xPRX0h2v3AANQ==}
     engines: {node: '>=12'}
 
   dunder-proto@1.0.1:
@@ -8950,8 +8943,6 @@ snapshots:
       type-fest: 4.41.0
 
   dotenv@16.5.0: {}
-
-  dotenv@17.0.0: {}
 
   dunder-proto@1.0.1:
     dependencies:

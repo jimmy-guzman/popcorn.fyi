@@ -1,7 +1,4 @@
 import { defineConfig, devices } from "@playwright/test";
-import { config } from "dotenv";
-
-config({ quiet: true });
 
 const IS_CI = process.env.CI;
 const GLOBAL_TIMEOUT = 1_800_000;
