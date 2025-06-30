@@ -22,14 +22,21 @@ const personExternalFn = createServerFn({ method: "GET" })
       },
     );
 
-    return {
+    const base = {
       imdb_id: data.imdb_id,
       imdb_url: data.imdb_id ? `${urls.imdb}/name/${data.imdb_id}` : undefined,
       wikidata_id: data.wikidata_id,
-      wikipedia_url: data.wikidata_id
-        ? await wikipediaFn({ data: data.wikidata_id })
-        : undefined,
+      wikipedia_url: null,
     };
+
+    try {
+      return {
+        ...base,
+        wikipedia_url: await wikipediaFn({ data: base.wikidata_id }),
+      };
+    } catch {
+      return base;
+    }
   });
 
 export const personExternalOptions = (id: Id) => {
