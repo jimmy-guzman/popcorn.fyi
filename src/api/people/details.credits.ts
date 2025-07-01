@@ -6,7 +6,14 @@ import type { Id } from "@/schemas/id";
 
 import { IdSchema } from "@/schemas/id";
 
+import type { operations } from "../clients/tmdb.gen";
+
 import tmdbClient from "../clients/tmdb";
+
+type OriginalCombinedCredits =
+  operations["person-combined-credits"]["responses"]["200"]["content"]["application/json"];
+
+export type PersonCredits = OriginalCombinedCredits;
 
 const personCreditsFn = createServerFn({ method: "GET" })
   .validator((data: unknown) => v.parse(IdSchema, data))
