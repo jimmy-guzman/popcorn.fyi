@@ -28,3 +28,32 @@ export const limit = <T>(array: T[], maxLength: number) => {
 
   return array.slice(0, maxLength);
 };
+
+/**
+ * Removes duplicate objects from an array based on a specified key.
+ * Optimized version with improved performance characteristics.
+ *
+ * @param array the input array containing objects to be filtered
+ *
+ * @param key the key of the object to determine uniqueness
+ *
+ * @returns A new array containing only unique objects based on the specified key.
+ */
+export const unique = <T>(array: T[], key: keyof T): T[] => {
+  if (array.length === 0) return [];
+  if (array.length === 1) return [...array];
+
+  const seen = new Set<T[keyof T]>();
+  const result: T[] = [];
+
+  for (const item of array) {
+    const k = item[key];
+
+    if (!seen.has(k)) {
+      seen.add(k);
+      result.push(item);
+    }
+  }
+
+  return result;
+};

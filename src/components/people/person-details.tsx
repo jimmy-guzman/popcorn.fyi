@@ -1,4 +1,4 @@
-import { Outlet } from "@tanstack/react-router";
+import { Link, Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
 
 import { date } from "@/lib/date";
@@ -74,6 +74,29 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="dsy-tabs dsy-tabs-box w-full md:w-auto" role="tablist">
+        <Link
+          activeOptions={{ exact: true }}
+          activeProps={{ className: "dsy-tab-active" }}
+          className="dsy-tab"
+          hash="known-for"
+          params={{ id: person.id }}
+          role="tab"
+          to="/people/$id"
+        >
+          Known For
+        </Link>
+        <Link
+          activeProps={{ className: "dsy-tab-active" }}
+          className="dsy-tab"
+          hash="credits"
+          params={{ id: person.id }}
+          role="tab"
+          to="/people/$id/credits"
+        >
+          Credits
+        </Link>
       </div>
       <Outlet />
     </div>

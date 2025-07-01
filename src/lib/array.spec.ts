@@ -1,4 +1,4 @@
-import { limit, shuffle } from "./array";
+import { limit, shuffle, unique } from "./array";
 
 describe("shuffle", () => {
   it("should return a new array with the same elements", () => {
@@ -81,5 +81,70 @@ describe("limit", () => {
     const result = limit(input, 5);
 
     expect(result).toStrictEqual([]);
+  });
+});
+
+describe("unique", () => {
+  it("should return an empty array if input is empty", () => {
+    const result = unique([], "id");
+
+    expect(result).toStrictEqual([]);
+  });
+
+  it("should return the same array if it has only one item", () => {
+    const input = [{ id: 1, name: "Alice" }];
+    const result = unique(input, "id");
+
+    expect(result).toStrictEqual(input);
+    expect(result).not.toBe(input); // ensure it's a new array
+  });
+
+  it("should remove duplicates based on the specified key", () => {
+    const input = [
+      { id: 1, name: "Alice" },
+      { id: 2, name: "Bob" },
+      { id: 1, name: "Alice again" },
+    ];
+    const result = unique(input, "id");
+
+    expect(result).toStrictEqual([
+      { id: 1, name: "Alice" },
+      { id: 2, name: "Bob" },
+    ]);
+  });
+
+  it("should keep the first occurrence of each unique key", () => {
+    const input = [
+      { id: "x", value: 1 },
+      { id: "y", value: 2 },
+      { id: "x", value: 3 }, // should be ignored
+    ];
+    const result = unique(input, "id");
+
+    expect(result).toStrictEqual([
+      { id: "x", value: 1 },
+      { id: "y", value: 2 },
+    ]);
+  });
+
+  it("should work with numbers, strings, and booleans as keys", () => {
+    const input = [{ id: 1 }, { id: 2 }, { id: 1 }, { id: 3 }];
+
+    expect(unique(input, "id")).toStrictEqual([
+      { id: 1 },
+      { id: 2 },
+      { id: 3 },
+    ]);
+
+    const inputStr = [{ key: "a" }, { key: "b" }, { key: "a" }];
+
+    expect(unique(inputStr, "key")).toStrictEqual([{ key: "a" }, { key: "b" }]);
+
+    const inputBool = [{ active: true }, { active: false }, { active: true }];
+
+    expect(unique(inputBool, "active")).toStrictEqual([
+      { active: true },
+      { active: false },
+    ]);
   });
 });
