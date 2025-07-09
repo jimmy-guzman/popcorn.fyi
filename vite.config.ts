@@ -1,5 +1,6 @@
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { configDefaults } from "vitest/config";
@@ -11,12 +12,13 @@ export default defineConfig(({ mode }) => {
     plugins: [
       tailwindcss(),
       tanstackStart({
-        react: {
-          babel: {
-            plugins: [["babel-plugin-react-compiler"]],
-          },
-        },
+        customViteReactPlugin: true,
         target: env.SERVER_PRESET ?? "vercel",
+      }),
+      react({
+        babel: {
+          plugins: [["babel-plugin-react-compiler"]],
+        },
       }),
       tsconfigPaths(),
     ],
