@@ -618,10 +618,7 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /**
-         * [WIP] Simple Item search by prefix, for labels and aliases
-         * @description This endpoint is currently in development and is not recommended for production use.
-         */
+        /** Simple Item search by prefix, for labels and aliases */
         get: operations["simpleItemSuggest"];
         put?: never;
         post?: never;
