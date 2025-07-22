@@ -8,6 +8,7 @@ onlyBuiltDependencies:
   - esbuild
   - lefthook
   - msw
+  - oxc-resolver
   - unrs-resolver
 
 patchedDependencies:
