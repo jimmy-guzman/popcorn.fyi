@@ -15,3 +15,6 @@ patchedDependencies:
   openapi-fetch@0.14.0: patches/openapi-fetch@0.14.0.patch
 
 savePrefix: ""
+
+overrides:
+  vite: "npm:rolldown-vite@7.1.0"
