@@ -11,4 +11,5 @@ export const env = createEnv({
     KV_REST_API_URL: v.string(),
     TMDB_API_TOKEN: v.string(),
   },
+  skipValidation: import.meta.env.MODE === "test",
 });

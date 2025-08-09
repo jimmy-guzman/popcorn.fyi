@@ -11,10 +11,14 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       tailwindcss(),
-      tanstackStart({
-        customViteReactPlugin: true,
-        target: env.SERVER_PRESET ?? "vercel",
-      }),
+      ...(env.TEST === "true"
+        ? []
+        : [
+            tanstackStart({
+              customViteReactPlugin: true,
+              target: env.SERVER_PRESET ?? "vercel",
+            }),
+          ]),
       react({
         babel: {
           plugins: [["babel-plugin-react-compiler"]],
@@ -36,7 +40,6 @@ export default defineConfig(({ mode }) => {
       environment: "happy-dom",
       exclude: [...configDefaults.exclude, "e2e/*"],
       globals: true,
-      passWithNoTests: true,
       setupFiles: "./src/testing/setup.tsx",
     },
   };
