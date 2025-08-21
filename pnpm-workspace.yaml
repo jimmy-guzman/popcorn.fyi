@@ -18,3 +18,5 @@ savePrefix: ""
 
 overrides:
   vite: "npm:rolldown-vite@7.1.0"
+
+cleanupUnusedCatalogs: true

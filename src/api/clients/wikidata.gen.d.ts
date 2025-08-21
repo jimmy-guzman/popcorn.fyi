@@ -619,7 +619,24 @@ export interface paths {
             cookie?: never;
         };
         /** Simple Item search by prefix, for labels and aliases */
-        get: operations["simpleItemSuggest"];
+        get: operations["suggestItems"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/v0/suggest/properties": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Simple Property search by prefix, for labels and aliases */
+        get: operations["suggestProperties"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1810,7 +1827,7 @@ export interface components {
                  *           "match": {
                  *             "type": "label",
                  *             "language": "en",
-                 *             "text": "taxon"
+                 *             "text": "taxon name"
                  *           }
                  *         },
                  *         {
@@ -1826,7 +1843,7 @@ export interface components {
                  *           "match": {
                  *             "type": "label",
                  *             "language": "en",
-                 *             "text": "taxon"
+                 *             "text": "taxon rank"
                  *           }
                  *         }
                  *       ]
@@ -1889,6 +1906,68 @@ export interface components {
                  *             "type": "label",
                  *             "language": "en",
                  *             "text": "potato"
+                 *           }
+                 *         }
+                 *       ]
+                 *     } */
+                "application/json": {
+                    results: {
+                        id: string;
+                        "display-label": {
+                            language: string;
+                            value: string;
+                        } | null;
+                        description: {
+                            language: string;
+                            value: string;
+                        } | null;
+                        match: {
+                            type: string;
+                            language?: string;
+                            text: string;
+                        };
+                    }[];
+                };
+            };
+        };
+        /** @description A list of search results */
+        SuggestPropertySuccess: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                /** @example {
+                 *       "results": [
+                 *         {
+                 *           "id": "P123",
+                 *           "display-label": {
+                 *             "language": "en",
+                 *             "value": "taxon name"
+                 *           },
+                 *           "description": {
+                 *             "language": "en",
+                 *             "value": "scientific name of a taxon"
+                 *           },
+                 *           "match": {
+                 *             "type": "label",
+                 *             "language": "en",
+                 *             "text": "taxon name"
+                 *           }
+                 *         },
+                 *         {
+                 *           "id": "P234",
+                 *           "display-label": {
+                 *             "language": "en",
+                 *             "value": "taxon rank"
+                 *           },
+                 *           "description": {
+                 *             "language": "en",
+                 *             "value": "level in a taxonomic hierarchy"
+                 *           },
+                 *           "match": {
+                 *             "type": "label",
+                 *             "language": "en",
+                 *             "text": "taxon rank"
                  *           }
                  *         }
                  *       ]
@@ -2080,6 +2159,7 @@ export type ResponseBadRequest = components['responses']['BadRequest'];
 export type ResponseSearchItemSuccess = components['responses']['SearchItemSuccess'];
 export type ResponseSearchPropertySuccess = components['responses']['SearchPropertySuccess'];
 export type ResponseSuggestItemSuccess = components['responses']['SuggestItemSuccess'];
+export type ResponseSuggestPropertySuccess = components['responses']['SuggestPropertySuccess'];
 export type ParameterItemId = components['parameters']['ItemId'];
 export type ParameterPropertyId = components['parameters']['PropertyId'];
 export type ParameterStatementId = components['parameters']['StatementId'];
@@ -15920,7 +16000,7 @@ export interface operations {
                      *           "match": {
                      *             "type": "label",
                      *             "language": "en",
-                     *             "text": "taxon"
+                     *             "text": "taxon name"
                      *           }
                      *         },
                      *         {
@@ -15936,7 +16016,7 @@ export interface operations {
                      *           "match": {
                      *             "type": "label",
                      *             "language": "en",
-                     *             "text": "taxon"
+                     *             "text": "taxon rank"
                      *           }
                      *         }
                      *       ]
@@ -15978,7 +16058,7 @@ export interface operations {
             };
         };
     };
-    simpleItemSuggest: {
+    suggestItems: {
         parameters: {
             query: {
                 /**
@@ -16046,6 +16126,115 @@ export interface operations {
                      *             "type": "label",
                      *             "language": "en",
                      *             "text": "potato"
+                     *           }
+                     *         }
+                     *       ]
+                     *     } */
+                    "application/json": {
+                        results: {
+                            id: string;
+                            "display-label": {
+                                language: string;
+                                value: string;
+                            } | null;
+                            description: {
+                                language: string;
+                                value: string;
+                            } | null;
+                            match: {
+                                type: string;
+                                language?: string;
+                                text: string;
+                            };
+                        }[];
+                    };
+                };
+            };
+            /** @description The request cannot be processed */
+            400: {
+                headers: {
+                    /** @description Language code of the language in which error message is provided */
+                    "Content-Language": string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        code: string;
+                        message: string;
+                        context?: Record<string, never>;
+                    };
+                };
+            };
+        };
+    };
+    suggestProperties: {
+        parameters: {
+            query: {
+                /**
+                 * @description The term to search labels by
+                 * @example taxon
+                 */
+                q: string;
+                /**
+                 * @description The language to search labels in
+                 * @example en
+                 */
+                language: string;
+                /**
+                 * @description The maximum number of results to return
+                 * @example 20
+                 */
+                limit?: number;
+                /**
+                 * @description The index to start showing results from
+                 * @example 4
+                 */
+                offset?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A list of search results */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    /** @example {
+                     *       "results": [
+                     *         {
+                     *           "id": "P123",
+                     *           "display-label": {
+                     *             "language": "en",
+                     *             "value": "taxon name"
+                     *           },
+                     *           "description": {
+                     *             "language": "en",
+                     *             "value": "scientific name of a taxon"
+                     *           },
+                     *           "match": {
+                     *             "type": "label",
+                     *             "language": "en",
+                     *             "text": "taxon name"
+                     *           }
+                     *         },
+                     *         {
+                     *           "id": "P234",
+                     *           "display-label": {
+                     *             "language": "en",
+                     *             "value": "taxon rank"
+                     *           },
+                     *           "description": {
+                     *             "language": "en",
+                     *             "value": "level in a taxonomic hierarchy"
+                     *           },
+                     *           "match": {
+                     *             "type": "label",
+                     *             "language": "en",
+                     *             "text": "taxon rank"
                      *           }
                      *         }
                      *       ]
