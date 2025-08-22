@@ -64,7 +64,7 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
             </Prose>
             <div className="flex justify-center gap-2 md:justify-start">
               <Suspense
-                fallback={<div className="dsy-skeleton h-10 w-10 md:w-32" />}
+                fallback={<div className="h-10 w-10 dsy-skeleton md:w-32" />}
               >
                 <WikipediaButton id={person.id} />
               </Suspense>
@@ -75,7 +75,7 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
           </div>
         </div>
       </div>
-      <div className="dsy-tabs dsy-tabs-box w-full md:w-auto" role="tablist">
+      <div className="dsy-tabs w-full dsy-tabs-box md:w-auto" role="tablist">
         <Link
           activeOptions={{ exact: true }}
           activeProps={{ className: "dsy-tab-active" }}

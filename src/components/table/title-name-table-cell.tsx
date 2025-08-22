@@ -14,7 +14,7 @@ export const TitleNameTableCell = (
 
   return (
     <Link
-      className="dsy-link dsy-link-hover flex items-center gap-3"
+      className="flex dsy-link items-center gap-3 dsy-link-hover"
       params={{ id: credit.id }}
       to={credit.media_type === "movie" ? "/movies/$id" : "/tv-shows/$id"}
     >
