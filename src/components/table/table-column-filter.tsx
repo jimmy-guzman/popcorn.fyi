@@ -12,7 +12,7 @@ export const TableColumnFilter = <T,>({
 
   return header.column.getCanFilter() ? (
     <select
-      className="dsy-select dsy-select-xs grow"
+      className="dsy-select grow dsy-select-xs"
       onChange={(e) => {
         header.column.setFilterValue(e.target.value);
       }}
@@ -29,7 +29,7 @@ export const TableColumnFilter = <T,>({
       })}
     </select>
   ) : (
-    <select className="dsy-select dsy-select-xs grow" disabled value="">
+    <select className="dsy-select grow dsy-select-xs" disabled value="">
       <option value="">All</option>
     </select>
   );
