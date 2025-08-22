@@ -25,7 +25,7 @@ export const CastList = ({ cast }: CastListProps) => {
             params={{ id: person.id }}
             to="/people/$id"
           >
-            <div className="dsy-card dsy-card-sm md:dsy-card-normal h-full shadow-xl">
+            <div className="md:dsy-card-normal dsy-card h-full shadow-xl dsy-card-sm">
               {person.profile_path ? (
                 <figure>
                   <img

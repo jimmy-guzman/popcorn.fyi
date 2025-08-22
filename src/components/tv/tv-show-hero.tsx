@@ -28,8 +28,8 @@ export const TvShowHero = ({ isTrending, tvShow }: TVShowHeroProps) => {
           : undefined,
       }}
     >
-      <div className="dsy-hero-overlay bg-opacity-60" />
-      <div className="dsy-hero-content text-neutral-content text-center">
+      <div className="bg-opacity-60 dsy-hero-overlay" />
+      <div className="dsy-hero-content text-center text-neutral-content">
         <div className="flex flex-col items-center gap-5">
           <div className="flex w-full justify-end gap-2">
             {isTrending && <TrendingBadge />}

@@ -81,7 +81,7 @@ export const TvDiscoverFilters = ({
           </label>
           <button
             aria-label="Reset Genre"
-            className="dsy-btn dsy-btn-neutral dsy-join-item"
+            className="dsy-btn dsy-join-item dsy-btn-neutral"
             onClick={() => {
               resetField("with_genres", { defaultValue: "" });
             }}
@@ -116,7 +116,7 @@ export const TvDiscoverFilters = ({
           </label>
           <button
             aria-label="Reset Provider"
-            className="dsy-btn dsy-btn-neutral dsy-join-item"
+            className="dsy-btn dsy-join-item dsy-btn-neutral"
             onClick={() => {
               resetField("with_watch_providers", { defaultValue: "" });
             }}
@@ -141,7 +141,7 @@ export const TvDiscoverFilters = ({
           </label>
           <button
             aria-label="Reset Region"
-            className="dsy-btn dsy-btn-neutral dsy-join-item"
+            className="dsy-btn dsy-join-item dsy-btn-neutral"
             onClick={() => {
               resetField("watch_region", { defaultValue: "US" });
             }}
@@ -164,7 +164,7 @@ export const TvDiscoverFilters = ({
           </label>
           <button
             aria-label="Reset From"
-            className="dsy-btn dsy-btn-neutral dsy-join-item"
+            className="dsy-btn dsy-join-item dsy-btn-neutral"
             onClick={() => {
               resetField("first_air_date_gte", { defaultValue: "" });
             }}
@@ -185,7 +185,7 @@ export const TvDiscoverFilters = ({
           </label>
           <button
             aria-label="Reset To"
-            className="dsy-btn dsy-btn-neutral dsy-join-item"
+            className="dsy-btn dsy-join-item dsy-btn-neutral"
             onClick={() => {
               resetField("first_air_date_lte", { defaultValue: "" });
             }}
@@ -211,7 +211,7 @@ export const TvDiscoverFilters = ({
           </label>
           <button
             aria-label="Reset Sort By"
-            className="dsy-btn dsy-btn-neutral dsy-join-item"
+            className="dsy-btn dsy-join-item dsy-btn-neutral"
             onClick={() => {
               resetField("sort_by", { defaultValue: "popularity.desc" });
             }}

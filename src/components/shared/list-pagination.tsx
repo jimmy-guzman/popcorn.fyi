@@ -25,7 +25,7 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
         {page !== 1 && (
           <Link
             aria-label="Previous Page"
-            className="dsy-join-item dsy-btn hidden md:flex"
+            className="dsy-btn dsy-join-item hidden md:flex"
             search={(prev) => {
               return {
                 ...prev,
@@ -41,7 +41,7 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
           return page === "ellipsis-before" || page === "ellipsis-after" ? (
             <button
               aria-label="Ellipsis"
-              className="dsy-join-item dsy-btn hidden md:block"
+              className="dsy-btn dsy-join-item hidden md:block"
               disabled
               key={page}
               type="button"
@@ -51,7 +51,7 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
           ) : (
             <Link
               activeProps={{ className: "dsy-btn-active" }}
-              className="dsy-join-item dsy-btn"
+              className="dsy-btn dsy-join-item"
               key={page}
               search={(prev) => {
                 return {
@@ -68,7 +68,7 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
         {totalPages !== page && (
           <Link
             aria-label="Next Page"
-            className="dsy-join-item dsy-btn hidden md:flex"
+            className="dsy-btn dsy-join-item hidden md:flex"
             search={(prev) => {
               return {
                 ...prev,

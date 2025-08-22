@@ -7,17 +7,17 @@ interface MediaOverviewListProps {
 
 export const MediaOverviewList = ({ items }: MediaOverviewListProps) => {
   return (
-    <dl className="rounded-box border-base-300 divide-base-200 divide-y overflow-hidden border">
+    <dl className="divide-y divide-base-200 overflow-hidden rounded-box border border-base-300">
       {items.map(({ title, value }) => {
         return (
           <div
-            className="even:bg-base-200 flex flex-col gap-1 px-4 py-3 sm:grid sm:grid-cols-12 sm:gap-x-4"
+            className="flex flex-col gap-1 px-4 py-3 even:bg-base-200 sm:grid sm:grid-cols-12 sm:gap-x-4"
             key={title}
           >
-            <dt className="text-base-content/70 text-sm font-semibold sm:col-span-2">
+            <dt className="text-sm font-semibold text-base-content/70 sm:col-span-2">
               {title}
             </dt>
-            <dd className="text-base-content min-w-0 text-right text-sm font-medium break-words sm:col-span-10 sm:text-left">
+            <dd className="min-w-0 text-right text-sm font-medium break-words text-base-content sm:col-span-10 sm:text-left">
               {value ?? "—"}
             </dd>
           </div>

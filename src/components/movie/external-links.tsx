@@ -9,8 +9,8 @@ interface WikipediaButtonProps {
 export const ExternalLinksSkeleton = () => {
   return (
     <>
-      <div className="dsy-skeleton h-10 w-10 rounded md:w-32" />
-      <div className="dsy-skeleton h-10 w-10 rounded md:w-28" />
+      <div className="h-10 w-10 dsy-skeleton rounded md:w-32" />
+      <div className="h-10 w-10 dsy-skeleton rounded md:w-28" />
     </>
   );
 };
