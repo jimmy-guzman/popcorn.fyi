@@ -22,7 +22,7 @@ export const TableGlobalFilter = ({
       />
       {globalFilter ? (
         <button
-          className="dsy-btn-sm dsy-btn dsy-btn-neutral"
+          className="dsy-btn dsy-btn-sm dsy-btn-neutral"
           onClick={() => {
             resetGlobalFilter();
           }}

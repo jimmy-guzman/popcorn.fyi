@@ -21,7 +21,7 @@ interface MovieCardProps {
 export const MovieCard = ({ movie }: MovieCardProps) => {
   return (
     <Link params={{ id: movie.id }} to="/movies/$id">
-      <div className="dsy-card dsy-card-sm md:dsy-card-normal h-full shadow-xl">
+      <div className="md:dsy-card-normal dsy-card h-full shadow-xl dsy-card-sm">
         {movie.poster_path ? (
           <figure>
             <img

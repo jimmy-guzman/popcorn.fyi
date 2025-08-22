@@ -21,7 +21,7 @@ interface TVShowCardProps {
 export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
   return (
     <Link params={{ id: tvShow.id }} to="/tv-shows/$id">
-      <div className="dsy-card dsy-card-sm md:dsy-card-normal h-full shadow-xl">
+      <div className="md:dsy-card-normal dsy-card h-full shadow-xl dsy-card-sm">
         {tvShow.poster_path ? (
           <figure>
             <img
