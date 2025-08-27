@@ -9,7 +9,7 @@ export default {
     },
   },
   entry: ["src/router.tsx", "src/routes/**/*.tsx"],
-  ignore: ["src/routeTree.gen.ts"],
+  ignore: ["src/routeTree.gen.ts", "prettier.config.js"],
   ignoreDependencies: [
     "gitzy",
     "@iconify-json/*",

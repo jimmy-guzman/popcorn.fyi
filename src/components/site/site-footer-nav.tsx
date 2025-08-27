@@ -3,7 +3,7 @@ import { urls } from "@/config/urls";
 export const SiteFooterNav = () => {
   return (
     <nav>
-      <h6 className="dsy-footer-title sr-only">Social</h6>
+      <h6 className="sr-only dsy-footer-title">Social</h6>
       <div className="grid grid-flow-col gap-2">
         <a
           aria-label="Github"

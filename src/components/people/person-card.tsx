@@ -18,7 +18,7 @@ interface PersonCardProps {
 export const PersonCard = ({ person }: PersonCardProps) => {
   return (
     <Link key={person.id} params={{ id: person.id }} to="/people/$id">
-      <div className="dsy-card dsy-card-sm md:dsy-card-normal h-full shadow-xl">
+      <div className="md:dsy-card-normal dsy-card h-full shadow-xl dsy-card-sm">
         {person.profile_path ? (
           <figure>
             <img

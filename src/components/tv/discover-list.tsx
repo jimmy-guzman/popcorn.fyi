@@ -31,7 +31,7 @@ export const TvDiscoverList = ({
     </div>
   ) : (
     <div className="dsy-alert" role="alert">
-      <span className="icon-[lucide--alert-circle] text-error h-6 w-6" />
+      <span className="icon-[lucide--alert-circle] h-6 w-6 text-error" />
       <span>No results available based on your filters.</span>
     </div>
   );

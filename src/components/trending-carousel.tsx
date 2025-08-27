@@ -11,7 +11,7 @@ interface TrendingCarouselProps {
 export const TrendingCarousel = ({ trending }: TrendingCarouselProps) => {
   return (
     <div className="flex h-9/10 flex-col justify-between">
-      <div className="dsy-carousel rounded-box h-full">
+      <div className="dsy-carousel h-full rounded-box">
         {trending.map((result, index) => {
           if (result.media_type === "tv") {
             return (
@@ -53,7 +53,7 @@ export const TrendingCarousel = ({ trending }: TrendingCarouselProps) => {
           return (
             <Link
               aria-label={`Go to slide ${index + 1}`}
-              className="dsy-btn dsy-btn-sm dsy-btn-ghost dsy-btn-circle"
+              className="dsy-btn dsy-btn-circle dsy-btn-ghost dsy-btn-sm"
               hash={`${index + 1}`}
               hashScrollIntoView={{
                 behavior: "instant",

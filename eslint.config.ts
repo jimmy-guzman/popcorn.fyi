@@ -1,11 +1,12 @@
 import { defineConfig } from "@jimmy.codes/eslint-config";
+import { GLOB_TSX } from "@jimmy.codes/eslint-config/globs";
 import pluginRouter from "@tanstack/eslint-plugin-router";
 import arrowReturnStyle from "eslint-plugin-arrow-return-style";
 
 export default defineConfig({
   overrides: [
     {
-      files: ["**/*.?([cm])tsx"],
+      files: [GLOB_TSX],
       rules: {
         "jsx-a11y/label-has-associated-control": [
           2,
