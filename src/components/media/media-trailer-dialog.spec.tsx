@@ -31,6 +31,7 @@ describe("MediaTrailerDialog", () => {
     );
 
     expect(screen.getByText("Test Trailer")).toBeInTheDocument();
+
     const iframe = screen.getByTitle("Test Trailer");
 
     expect(iframe).toHaveAttribute(
@@ -64,8 +65,8 @@ describe("MediaTrailerDialog", () => {
       <MediaTrailerDialog handleClose={handleClose} />,
     );
 
-    // eslint-disable-next-line testing-library/no-node-access -- this is not applicable here
     await user.click(screen.getByRole("button", { name: /close/i }));
+
     expect(handleClose).toHaveBeenCalledWith();
   });
 });

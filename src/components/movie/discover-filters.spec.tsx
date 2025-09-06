@@ -76,10 +76,11 @@ describe("MovieDiscoverFilters", () => {
     const resetButton = screen.getByRole("button", { name: /reset genre/i });
 
     await user.selectOptions(genreSelect, "1");
+
     expect(genreSelect).toHaveValue("1");
 
-    // eslint-disable-next-line testing-library/no-node-access -- this rule is not applicable here
     await user.click(resetButton);
+
     expect(genreSelect).toHaveValue("");
   });
 

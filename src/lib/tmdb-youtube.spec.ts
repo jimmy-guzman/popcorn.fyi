@@ -9,6 +9,7 @@ describe("selectYoutubeTrailer", () => {
       }),
     ).toBeUndefined();
   });
+
   it("should return undefined when type is not Trailer", () => {
     expect(
       selectYoutubeTrailer({
@@ -92,6 +93,7 @@ describe("youtubeVideUrl", () => {
       "https://www.youtube.com/embed/123?rel=0&showinfo=0&autoplay=1&mute=1",
     );
   });
+
   it("should NOT enable autoplay", () => {
     expect(youtubeVideoUrl("123", { autoplay: false })).toBe(
       "https://www.youtube.com/embed/123?rel=0&showinfo=0&autoplay=0",

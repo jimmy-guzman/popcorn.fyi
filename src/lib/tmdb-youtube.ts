@@ -11,7 +11,7 @@ export const selectYoutubeTrailer = ({
   }[];
 }) => {
   return results
-    ?.sort((a) => (a.official ? -1 : 1))
+    ?.toSorted((a) => (a.official ? -1 : 1))
     .find((result) => result.type === "Trailer" && result.site === "YouTube");
 };
 
