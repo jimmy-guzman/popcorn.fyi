@@ -7,7 +7,7 @@ describe("shuffle", () => {
 
     // Same elements (ignoring order)
     expect(result).toHaveLength(input.length);
-    expect(result.sort()).toStrictEqual([...input].sort());
+    expect(result.toSorted()).toStrictEqual(input.toSorted());
   });
 
   it("should not mutate the original array", () => {

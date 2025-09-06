@@ -33,7 +33,7 @@ const calculateNotabilityScore = ({
 };
 
 const sortByNotability = <T extends NotabilityMetrics>(items: T[]) => {
-  return items.sort(
+  return items.toSorted(
     (a, b) => calculateNotabilityScore(b) - calculateNotabilityScore(a),
   );
 };

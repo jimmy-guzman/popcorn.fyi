@@ -18,6 +18,7 @@ describe("SiteFooter", () => {
 
     expect(link).toBeInTheDocument();
   });
+
   it("should render Author link", async () => {
     await render(<SiteFooter />);
 
@@ -25,6 +26,7 @@ describe("SiteFooter", () => {
 
     expect(link).toBeInTheDocument();
   });
+
   it("should render TanStack Start link", async () => {
     await render(<SiteFooter />);
 
@@ -32,6 +34,7 @@ describe("SiteFooter", () => {
 
     expect(link).toBeInTheDocument();
   });
+
   it("should render daisyUI Start link", async () => {
     await render(<SiteFooter />);
 

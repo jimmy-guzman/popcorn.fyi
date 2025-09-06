@@ -49,7 +49,6 @@ describe("TableGlobalFilter", () => {
 
     const resetButton = screen.getByRole("button", { name: /reset/i });
 
-    // eslint-disable-next-line testing-library/no-node-access -- this is not applicable here
     await user.click(resetButton);
 
     expect(resetGlobalFilter).toHaveBeenCalledWith();
