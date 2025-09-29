@@ -9,7 +9,7 @@ import { SearchSchema } from "@/schemas/search";
 import tmdbClient from "./clients/tmdb";
 
 const searchFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => v.parse(SearchSchema, data))
+  .inputValidator((data: unknown) => v.parse(SearchSchema, data))
   .handler(async (context) => {
     const { data } = await tmdbClient.GET("/3/search/multi", {
       params: {

@@ -9,7 +9,7 @@ import { IdSchema } from "@/schemas/id";
 import tmdbClient from "../clients/tmdb";
 
 const movieCreditsFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => v.parse(IdSchema, data))
+  .inputValidator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const { data } = await tmdbClient.GET("/3/movie/{movie_id}/credits", {
       params: {

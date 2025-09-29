@@ -16,7 +16,7 @@ type OriginalCombinedCredits =
 export type PersonCredits = OriginalCombinedCredits;
 
 const personCreditsFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => v.parse(IdSchema, data))
+  .inputValidator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const { data } = await tmdbClient.GET(
       "/3/person/{person_id}/combined_credits",

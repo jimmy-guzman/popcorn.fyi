@@ -9,7 +9,7 @@ import { IdSchema } from "@/schemas/id";
 import tmdbClient from "../clients/tmdb";
 
 const movieDetailsFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => v.parse(IdSchema, data))
+  .inputValidator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const {
       data: { belongs_to_collection, ...rest },

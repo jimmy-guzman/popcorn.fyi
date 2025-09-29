@@ -9,7 +9,7 @@ import { PaginationSchema } from "@/schemas/pagination";
 import tmdbClient from "../clients/tmdb";
 
 const popularMoviesFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => v.parse(PaginationSchema, data))
+  .inputValidator((data: unknown) => v.parse(PaginationSchema, data))
   .handler(async (context) => {
     const { data } = await tmdbClient.GET("/3/movie/popular", {
       params: {
