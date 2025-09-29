@@ -11,7 +11,7 @@ import tmdbClient from "../clients/tmdb";
 import { wikipediaFn } from "../wikipedia";
 
 const movieExternalFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => v.parse(IdSchema, data))
+  .inputValidator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const { data } = await tmdbClient.GET("/3/movie/{movie_id}/external_ids", {
       params: {

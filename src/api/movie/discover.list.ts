@@ -43,7 +43,7 @@ export const DiscoverSchema = v.intersect([
 ]);
 
 const discoverMoviesFn = createServerFn({ method: "GET" })
-  .validator((data: v.InferInput<typeof DiscoverSchema>) =>
+  .inputValidator((data: v.InferInput<typeof DiscoverSchema>) =>
     v.parse(DiscoverSchema, data),
   )
   .handler(async (context) => {

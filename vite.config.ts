@@ -1,5 +1,6 @@
 import tailwindcss from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
+import { nitroV2Plugin } from "@tanstack/nitro-v2-vite-plugin";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
@@ -8,26 +9,24 @@ import { configDefaults } from "vitest/config";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  const isTest = env.TEST === "true";
 
   return {
     plugins: [
       devtools(),
       tailwindcss(),
-      ...(env.TEST === "true"
-        ? []
-        : [
-            tanstackStart({
-              customViteReactPlugin: true,
-              target: env.SERVER_PRESET ?? "vercel",
-            }),
-          ]),
+      !isTest && tanstackStart(),
+      !isTest &&
+        nitroV2Plugin({
+          preset: env.SERVER_PRESET,
+        }),
       react({
         babel: {
           plugins: [["babel-plugin-react-compiler"]],
         },
       }),
       tsconfigPaths(),
-    ],
+    ].filter(Boolean),
     test: {
       coverage: {
         exclude: [

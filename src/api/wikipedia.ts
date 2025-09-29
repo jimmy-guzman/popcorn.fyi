@@ -6,7 +6,7 @@ import wikiDataClient from "./clients/wikidata";
 const IdSchema = v.string();
 
 export const wikipediaFn = createServerFn({ method: "GET" })
-  .validator((data: unknown) => v.parse(IdSchema, data))
+  .inputValidator((data: unknown) => v.parse(IdSchema, data))
   .handler(async (context) => {
     const { data } = await wikiDataClient.GET(
       "/v1/entities/items/{item_id}/sitelinks/{site_id}",
