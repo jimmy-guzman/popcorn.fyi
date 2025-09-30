@@ -75,7 +75,7 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
           </div>
         </div>
       </div>
-      <div className="dsy-tabs w-full dsy-tabs-box md:w-auto" role="tablist">
+      <div className="dsy-tabs-box dsy-tabs w-full md:w-auto" role="tablist">
         <Link
           activeOptions={{ exact: true }}
           activeProps={{ className: "dsy-tab-active" }}

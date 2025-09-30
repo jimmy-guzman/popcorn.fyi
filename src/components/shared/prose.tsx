@@ -10,7 +10,7 @@ interface ProseProps {
 export const Prose = ({ children, size }: ProseProps) => {
   return (
     <article
-      className={cn("prose dsy-prose", {
+      className={cn("dsy-prose prose", {
         "prose-lg": size === "lg",
         "prose-sm": size === "sm",
       })}
