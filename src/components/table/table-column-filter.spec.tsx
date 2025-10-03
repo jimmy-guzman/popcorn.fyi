@@ -47,7 +47,7 @@ describe("TableColumnFilter", () => {
 
     await user.selectOptions(select, "B");
 
-    expect(setFilterValue).toHaveBeenCalledWith("B");
+    expect(setFilterValue).toHaveBeenCalledExactlyOnceWith("B");
   });
 
   it("should render a disabled select when filtering is not allowed", async () => {

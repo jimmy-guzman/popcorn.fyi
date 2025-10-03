@@ -98,7 +98,7 @@ describe("MovieDiscoverFilters", () => {
 
     await user.selectOptions(sortSelect, "popularity.asc");
 
-    expect(mockNavigate).toHaveBeenCalledWith({
+    expect(mockNavigate).toHaveBeenNthCalledWith(1, {
       search: expect.any(Function),
       to: "/movies/discover",
     });

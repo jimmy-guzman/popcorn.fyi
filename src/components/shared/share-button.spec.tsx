@@ -30,7 +30,7 @@ describe("ShareButton", () => {
 
     await userEvent.click(screen.getByRole("button", { name: /share/i }));
 
-    expect(shareMock).toHaveBeenCalledWith({
+    expect(shareMock).toHaveBeenCalledExactlyOnceWith({
       title,
       url,
     });
@@ -50,8 +50,10 @@ describe("ShareButton", () => {
     await userEvent.click(screen.getByRole("button", { name: /share/i }));
 
     // eslint-disable-next-line @typescript-eslint/unbound-method -- it's ok due to stubGlobal
-    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(url);
-    expect(toast.success).toHaveBeenCalledWith("Link copied to clipboard!");
+    expect(navigator.clipboard.writeText).toHaveBeenCalledExactlyOnceWith(url);
+    expect(toast.success).toHaveBeenCalledExactlyOnceWith(
+      "Link copied to clipboard!",
+    );
   });
 
   it("should render the button with an icon", () => {

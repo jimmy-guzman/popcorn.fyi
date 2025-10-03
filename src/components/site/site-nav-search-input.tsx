@@ -19,7 +19,7 @@ export const SiteNavSearchInput = () => {
 
   useEffect(() => {
     if (!match) {
-      // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect -- TODO
+      // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect, react-hooks/set-state-in-effect -- TODO
       setQuery("");
     }
   }, [match]);

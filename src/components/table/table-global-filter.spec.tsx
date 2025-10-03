@@ -51,6 +51,6 @@ describe("TableGlobalFilter", () => {
 
     await user.click(resetButton);
 
-    expect(resetGlobalFilter).toHaveBeenCalledWith();
+    expect(resetGlobalFilter).toHaveBeenCalledExactlyOnceWith();
   });
 });
