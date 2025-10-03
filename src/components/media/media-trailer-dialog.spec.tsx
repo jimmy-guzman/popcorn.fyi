@@ -56,7 +56,7 @@ describe("MediaTrailerDialog", () => {
 
     await user.keyboard("{Escape}");
 
-    expect(handleClose).toHaveBeenCalledWith();
+    expect(handleClose).toHaveBeenCalledExactlyOnceWith();
   });
 
   it("should call handleClose when clicking outside the modal", async () => {
@@ -67,6 +67,6 @@ describe("MediaTrailerDialog", () => {
 
     await user.click(screen.getByRole("button", { name: /close/i }));
 
-    expect(handleClose).toHaveBeenCalledWith();
+    expect(handleClose).toHaveBeenCalledExactlyOnceWith();
   });
 });
