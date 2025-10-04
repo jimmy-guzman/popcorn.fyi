@@ -7,22 +7,17 @@ const DEBOUNCE_MS = 500;
 export const SiteNavSearchInput = () => {
   const match = useMatch({ from: "/_layout/search", shouldThrow: false });
   const search = useSearch({ strict: false });
-  const [query, setQuery] = useState(search.q ?? "");
-  const [value] = useDebounce(query, DEBOUNCE_MS);
   const navigate = useNavigate();
+
+  const initialQuery = match ? (search.q ?? "") : "";
+  const [query, setQuery] = useState(initialQuery);
+  const [value] = useDebounce(query, DEBOUNCE_MS);
 
   useEffect(() => {
     if (value !== "") {
       void navigate({ search: { q: value }, to: "/search" });
     }
   }, [value, navigate]);
-
-  useEffect(() => {
-    if (!match) {
-      // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect, react-hooks/set-state-in-effect -- TODO
-      setQuery("");
-    }
-  }, [match]);
 
   return (
     <div
@@ -37,6 +32,7 @@ export const SiteNavSearchInput = () => {
       >
         <span className="icon-[lucide--search] h-[1em] opacity-50" />
         <input
+          defaultValue={initialQuery}
           id="site-search"
           onChange={(event) => {
             setQuery(event.target.value);
@@ -48,7 +44,6 @@ export const SiteNavSearchInput = () => {
           }}
           placeholder="Search..."
           type="search"
-          value={query}
         />
       </label>
     </div>
