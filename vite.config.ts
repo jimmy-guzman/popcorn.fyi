@@ -16,10 +16,10 @@ export default defineConfig(({ mode }) => {
       devtools(),
       tailwindcss(),
       !isTest && tanstackStart(),
-      !isTest &&
-        nitroV2Plugin({
-          preset: env.SERVER_PRESET,
-        }),
+      nitroV2Plugin({
+        compatibilityDate: "2025-10-09",
+        preset: env.SERVER_PRESET,
+      }),
       react({
         babel: {
           plugins: [["babel-plugin-react-compiler"]],
