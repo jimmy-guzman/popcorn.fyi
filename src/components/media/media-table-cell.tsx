@@ -5,8 +5,8 @@ type MediaTableCellProps = CellContext<
   string | undefined
 >;
 
-export const MediaTableCell = (props: MediaTableCellProps) => {
-  return props.getValue() === "tv" ? (
+export const MediaTableCell = ({ getValue }: MediaTableCellProps) => {
+  return getValue() === "tv" ? (
     <>
       <span className="icon-[lucide--tv]" /> TV Show
     </>

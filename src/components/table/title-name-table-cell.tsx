@@ -4,13 +4,14 @@ import { Link } from "@tanstack/react-router";
 
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
-export const TitleNameTableCell = (
-  props: CellContext<
-    { id: number; media_type?: string; poster_path?: string },
-    string | undefined
-  >,
-) => {
-  const credit = props.row.original;
+export const TitleNameTableCell = ({
+  getValue,
+  row,
+}: CellContext<
+  { id: number; media_type?: string; poster_path?: string },
+  string | undefined
+>) => {
+  const credit = row.original;
 
   return (
     <Link
@@ -21,14 +22,11 @@ export const TitleNameTableCell = (
       {credit.poster_path ? (
         <div className="dsy-avatar hidden md:block">
           <div className="h-12 w-12 rounded">
-            <img
-              alt={props.getValue()}
-              src={tmdbImageUrl(credit.poster_path)}
-            />
+            <img alt={getValue()} src={tmdbImageUrl(credit.poster_path)} />
           </div>
         </div>
       ) : null}
-      {props.getValue()}
+      {getValue()}
     </Link>
   );
 };

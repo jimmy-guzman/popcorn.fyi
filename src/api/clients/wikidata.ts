@@ -23,7 +23,7 @@ wikiDataClient.use({
       const cached = await cache.get(cacheKey);
 
       if (cached) {
-        return new Response(JSON.stringify(cached), {
+        return Response.json(cached, {
           headers: {
             "content-type": "application/json",
           },
