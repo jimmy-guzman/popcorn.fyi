@@ -31,11 +31,9 @@ export const Route = createFileRoute("/_layout/tv-shows/$id")({
       },
     };
   },
-  head: ({ loaderData }) => {
-    return {
-      meta: loaderData ? seo(loaderData.seo) : undefined,
-    };
-  },
+  head: ({ loaderData }) => ({
+    meta: loaderData ? seo(loaderData.seo) : undefined,
+  }),
 });
 
 function RouteComponent() {
