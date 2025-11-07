@@ -23,7 +23,9 @@ export function getRouter() {
       context: { queryClient },
       defaultErrorComponent: Error,
       defaultNotFoundComponent: NotFound,
-      defaultPendingComponent: () => <div className="h-svh dsy-skeleton" />,
+      defaultPendingComponent: () => {
+        return <div className="h-svh dsy-skeleton" />;
+      },
       defaultPendingMs: 0,
       defaultPreload: "intent",
       defaultStructuralSharing: true,

@@ -29,13 +29,6 @@ export default defineConfig(({ mode }) => {
     ].filter(Boolean),
     test: {
       coverage: {
-        exclude: [
-          ...(configDefaults.coverage.exclude ?? []),
-          "playwright-report/**",
-          "{playwright,knip}.config.*",
-          "playwright.setup.*",
-          "**/*.gen.*",
-        ],
         reporter: ["text", "json"],
       },
       environment: "happy-dom",

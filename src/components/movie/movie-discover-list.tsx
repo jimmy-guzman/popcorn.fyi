@@ -24,9 +24,9 @@ export const MovieDiscoverList = ({
   return movies.length > 0 ? (
     <div className="flex flex-col gap-4">
       <ListContent>
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        {movies.map((movie) => {
+          return <MovieCard key={movie.id} movie={movie} />;
+        })}
       </ListContent>
       {totalPages > 1 && <ListPagination page={page} totalPages={totalPages} />}
     </div>
