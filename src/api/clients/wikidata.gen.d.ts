@@ -1275,10 +1275,12 @@ export interface components {
                 [name: string]: unknown;
             };
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "code": "unexpected-error",
                  *       "message": "Unexpected Error"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     code: string;
                     message: string;
@@ -1298,7 +1300,8 @@ export interface components {
                 [name: string]: unknown;
             };
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "id": "Q24",
                  *       "type": "item",
                  *       "labels": {
@@ -1415,7 +1418,8 @@ export interface components {
                  *           "url": "https://ruwiki.example.org/wiki/Джейн_Доу"
                  *         }
                  *       }
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     readonly id?: string;
                     /** @constant */
@@ -1525,7 +1529,8 @@ export interface components {
                 [name: string]: unknown;
             };
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "enwiki": {
                  *         "title": "Jane Doe",
                  *         "badges": [],
@@ -1536,7 +1541,8 @@ export interface components {
                  *         "badges": [],
                  *         "url": "https://ruwiki.example.org/wiki/Джейн_Доу"
                  *       }
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     [key: string]: {
                         title: string;
@@ -1558,11 +1564,13 @@ export interface components {
                 [name: string]: unknown;
             };
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "title": "Jane Doe",
                  *       "badges": [],
                  *       "url": "https://enwiki.example.org/wiki/Jane_Doe"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     title: string;
                     badges?: string[];
@@ -1582,7 +1590,8 @@ export interface components {
                 [name: string]: unknown;
             };
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "id": "P694",
                  *       "type": "property",
                  *       "data_type": "wikibase-item",
@@ -1622,7 +1631,8 @@ export interface components {
                  *           }
                  *         ]
                  *       }
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     readonly id?: string;
                     /** @constant */
@@ -1750,7 +1760,8 @@ export interface components {
                 [name: string]: unknown;
             };
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "results": [
                  *         {
                  *           "id": "Q123",
@@ -1785,7 +1796,8 @@ export interface components {
                  *           }
                  *         }
                  *       ]
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     results: {
                         id: string;
@@ -1812,7 +1824,8 @@ export interface components {
                 [name: string]: unknown;
             };
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "results": [
                  *         {
                  *           "id": "P123",
@@ -1847,7 +1860,8 @@ export interface components {
                  *           }
                  *         }
                  *       ]
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     results: {
                         id: string;
@@ -1874,7 +1888,8 @@ export interface components {
                 [name: string]: unknown;
             };
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "results": [
                  *         {
                  *           "id": "Q456",
@@ -1909,7 +1924,8 @@ export interface components {
                  *           }
                  *         }
                  *       ]
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     results: {
                         id: string;
@@ -1936,7 +1952,8 @@ export interface components {
                 [name: string]: unknown;
             };
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "results": [
                  *         {
                  *           "id": "P123",
@@ -1971,7 +1988,8 @@ export interface components {
                  *           }
                  *         }
                  *       ]
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     results: {
                         id: string;
@@ -2087,11 +2105,13 @@ export interface components {
         /** @description Edit payload containing edit metadata */
         Delete: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @default [] */
                     tags?: string[];
@@ -2201,7 +2221,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "openapi": "...",
                      *       "info": {
                      *         "title": "Wikibase REST API",
@@ -2209,7 +2230,8 @@ export interface operations {
                      *         "description": "OpenAPI definition of Wikibase REST API"
                      *       },
                      *       "paths": "..."
-                     *     } */
+                     *     }
+                     */
                     "application/json": Record<string, never>;
                 };
             };
@@ -2230,9 +2252,11 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "data-type": "value-type"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string;
                     };
@@ -2256,7 +2280,8 @@ export interface operations {
         /** @description Payload containing a Wikibase Item and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "item": {
                  *         "labels": {
                  *           "en": "Jane Doe",
@@ -2354,7 +2379,8 @@ export interface operations {
                  *         }
                  *       },
                  *       "comment": "Create an Item for Jane Doe"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     item: {
                         readonly id?: string;
@@ -2466,7 +2492,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "Q24",
                      *       "type": "item",
                      *       "labels": {
@@ -2583,7 +2610,8 @@ export interface operations {
                      *           "url": "https://ruwiki.example.org/wiki/Джейн_Доу"
                      *         }
                      *       }
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         readonly id?: string;
                         /** @constant */
@@ -2749,10 +2777,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -2822,7 +2852,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "Q24",
                      *       "type": "item",
                      *       "labels": {
@@ -2939,7 +2970,8 @@ export interface operations {
                      *           "url": "https://ruwiki.example.org/wiki/Джейн_Доу"
                      *         }
                      *       }
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         readonly id?: string;
                         /** @constant */
@@ -3100,10 +3132,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -3148,7 +3182,8 @@ export interface operations {
         };
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -3159,7 +3194,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Update the English label"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -3181,7 +3217,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -3192,7 +3229,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Update the English label"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -3229,7 +3267,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "Q24",
                      *       "type": "item",
                      *       "labels": {
@@ -3346,7 +3385,8 @@ export interface operations {
                      *           "url": "https://ruwiki.example.org/wiki/Джейн_Доу"
                      *         }
                      *       }
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         readonly id?: string;
                         /** @constant */
@@ -3549,10 +3589,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -3619,7 +3661,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "enwiki": {
                      *         "title": "Jane Doe",
                      *         "badges": [],
@@ -3630,7 +3673,8 @@ export interface operations {
                      *         "badges": [],
                      *         "url": "https://ruwiki.example.org/wiki/Джейн_Доу"
                      *       }
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: {
                             title: string;
@@ -3703,10 +3747,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -3751,7 +3797,8 @@ export interface operations {
         };
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -3762,7 +3809,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add sitelink to ruwiki"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -3784,7 +3832,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -3795,7 +3844,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add sitelink to ruwiki"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -3832,7 +3882,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "enwiki": {
                      *         "title": "Jane Doe",
                      *         "badges": [],
@@ -3843,7 +3894,8 @@ export interface operations {
                      *         "badges": [],
                      *         "url": "https://ruwiki.example.org/wiki/Джейн_Доу"
                      *       }
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: {
                             title: string;
@@ -3958,10 +4010,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -4033,11 +4087,13 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "title": "Jane Doe",
                      *       "badges": [],
                      *       "url": "https://enwiki.example.org/wiki/Jane_Doe"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         title: string;
                         badges?: string[];
@@ -4108,10 +4164,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -4172,7 +4230,8 @@ export interface operations {
         /** @description Payload containing a Wikibase Sitelink object and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "sitelink": {
                  *         "title": "Jane Doe",
                  *         "badges": []
@@ -4180,7 +4239,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add enwiki sitelink"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     sitelink: {
                         title: string;
@@ -4209,11 +4269,13 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "title": "Jane Doe",
                      *       "badges": [],
                      *       "url": "https://enwiki.example.org/wiki/Jane_Doe"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         title: string;
                         badges?: string[];
@@ -4233,11 +4295,13 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "title": "Jane Doe",
                      *       "badges": [],
                      *       "url": "https://enwiki.example.org/wiki/Jane_Doe"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         title: string;
                         badges?: string[];
@@ -4350,10 +4414,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -4414,11 +4480,13 @@ export interface operations {
         /** @description Edit payload containing edit metadata */
         requestBody?: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @default [] */
                     tags?: string[];
@@ -4533,10 +4601,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -4603,10 +4673,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": "Jane Doe",
                      *       "ru": "Джейн Доу"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string;
                     };
@@ -4675,10 +4747,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -4724,7 +4798,8 @@ export interface operations {
         /** @description Payload containing a JSON Patch document to be applied to Labels and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -4735,7 +4810,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "replace English label"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -4757,7 +4833,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -4768,7 +4845,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "replace English label"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -4805,10 +4883,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": "Jane Doe",
                      *       "ru": "Джейн Доу"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string;
                     };
@@ -4919,10 +4999,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -5061,10 +5143,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -5125,12 +5209,14 @@ export interface operations {
         /** @description Payload containing an Item label in the specified language and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "label": "Jane Doe",
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Update the English label"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     label: string;
                 } & {
@@ -5289,10 +5375,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -5353,11 +5441,13 @@ export interface operations {
         /** @description Edit payload containing edit metadata */
         requestBody?: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @default [] */
                     tags?: string[];
@@ -5472,10 +5562,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -5623,10 +5715,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -5693,10 +5787,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": "famous person",
                      *       "ru": "известная личность"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string;
                     };
@@ -5765,10 +5861,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -5814,7 +5912,8 @@ export interface operations {
         /** @description Payload containing a JSON Patch document to be applied to an Item's descriptions and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -5825,7 +5924,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "update English description"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -5847,7 +5947,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -5858,7 +5959,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "update English description"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -5895,10 +5997,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": "famous person",
                      *       "ru": "известная личность"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string;
                     };
@@ -6009,10 +6113,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -6151,10 +6257,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -6215,12 +6323,14 @@ export interface operations {
         /** @description Payload containing Item description in the specified language and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "description": "famous person",
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "set English description"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     description: string;
                     /** @default [] */
@@ -6378,10 +6488,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -6442,11 +6554,13 @@ export interface operations {
         /** @description Edit payload containing edit metadata */
         requestBody?: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @default [] */
                     tags?: string[];
@@ -6561,10 +6675,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -6712,10 +6828,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -6782,7 +6900,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": [
                      *         "Jane M. Doe",
                      *         "JD"
@@ -6790,7 +6909,8 @@ export interface operations {
                      *       "ru": [
                      *         "Джейн М. Доу"
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string[];
                     };
@@ -6859,10 +6979,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -6908,7 +7030,8 @@ export interface operations {
         /** @description Payload containing a JSON Patch document to be applied to an Item's aliases and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -6919,7 +7042,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add English alias"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -6941,7 +7065,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -6952,7 +7077,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add English alias"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -6989,7 +7115,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": [
                      *         "Jane M. Doe",
                      *         "JD"
@@ -6997,7 +7124,8 @@ export interface operations {
                      *       "ru": [
                      *         "Джейн М. Доу"
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string[];
                     };
@@ -7108,10 +7236,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -7183,10 +7313,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example [
+                    /**
+                     * @example [
                      *       "Jane M. Doe",
                      *       "JD"
-                     *     ] */
+                     *     ]
+                     */
                     "application/json": string[];
                 };
             };
@@ -7253,10 +7385,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -7317,14 +7451,16 @@ export interface operations {
         /** @description Payload containing a list of Item aliases in the specified language and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "aliases": [
                  *         "JD"
                  *       ],
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add English alias"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     aliases: string[];
                     /** @default [] */
@@ -7348,10 +7484,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example [
+                    /**
+                     * @example [
                      *       "Jane M. Doe",
                      *       "JD"
-                     *     ] */
+                     *     ]
+                     */
                     "application/json": string[];
                 };
             };
@@ -7367,10 +7505,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example [
+                    /**
+                     * @example [
                      *       "Jane M. Doe",
                      *       "JD"
-                     *     ] */
+                     *     ]
+                     */
                     "application/json": string[];
                 };
             };
@@ -7473,10 +7613,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -7549,7 +7691,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "P694": [
                      *         {
                      *           "id": "Q24$BB728546-A400-4116-A772-16D54B62AC2B",
@@ -7633,7 +7776,8 @@ export interface operations {
                      *           ]
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: ({
                             /** @description The globally unique identifier for this Statement */
@@ -7772,10 +7916,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -7821,7 +7967,8 @@ export interface operations {
         /** @description Payload containing a Wikibase Statement object and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "statement": {
                  *         "property": {
                  *           "id": "P17"
@@ -7864,7 +8011,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     statement: {
                         /** @description The globally unique identifier for this Statement */
@@ -7961,7 +8109,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "Q24$9966A1CA-F3F5-4B1D-A534-7CD5953169DA",
                      *       "rank": "normal",
                      *       "property": {
@@ -8005,7 +8154,8 @@ export interface operations {
                      *           ]
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -8169,10 +8319,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -8244,7 +8396,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "Q24$9966A1CA-F3F5-4B1D-A534-7CD5953169DA",
                      *       "rank": "normal",
                      *       "property": {
@@ -8288,7 +8441,8 @@ export interface operations {
                      *           ]
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -8416,10 +8570,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -8470,7 +8626,8 @@ export interface operations {
         /** @description Payload containing a Wikibase Statement object and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "statement": {
                  *         "property": {
                  *           "id": "P17"
@@ -8513,7 +8670,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     statement: {
                         /** @description The globally unique identifier for this Statement */
@@ -8608,7 +8766,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "Q24$9966A1CA-F3F5-4B1D-A534-7CD5953169DA",
                      *       "rank": "normal",
                      *       "property": {
@@ -8652,7 +8811,8 @@ export interface operations {
                      *           ]
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -8801,10 +8961,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -8855,11 +9017,13 @@ export interface operations {
         /** @description Edit payload containing edit metadata */
         requestBody?: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @default [] */
                     tags?: string[];
@@ -8959,10 +9123,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -9013,7 +9179,8 @@ export interface operations {
         /** @description Payload containing a JSON Patch document to be applied to the Statement and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -9036,7 +9203,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add reference to Statement"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -9058,7 +9226,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -9081,7 +9250,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add reference to Statement"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -9118,7 +9288,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "Q24$9966A1CA-F3F5-4B1D-A534-7CD5953169DA",
                      *       "rank": "normal",
                      *       "property": {
@@ -9162,7 +9333,8 @@ export interface operations {
                      *           ]
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -9341,10 +9513,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -9370,7 +9544,8 @@ export interface operations {
         /** @description Payload containing a Wikibase Property and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "property": {
                  *         "data_type": "wikibase-item",
                  *         "labels": {
@@ -9405,7 +9580,8 @@ export interface operations {
                  *           ]
                  *         }
                  *       }
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     property: {
                         readonly id?: string;
@@ -9511,7 +9687,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "P694",
                      *       "type": "property",
                      *       "data_type": "wikibase-item",
@@ -9551,7 +9728,8 @@ export interface operations {
                      *           }
                      *         ]
                      *       }
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         readonly id?: string;
                         /** @constant */
@@ -9708,10 +9886,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -9781,7 +9961,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "P694",
                      *       "type": "property",
                      *       "data_type": "wikibase-item",
@@ -9821,7 +10002,8 @@ export interface operations {
                      *           }
                      *         ]
                      *       }
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         readonly id?: string;
                         /** @constant */
@@ -9948,10 +10130,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -9996,7 +10180,8 @@ export interface operations {
         };
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -10007,7 +10192,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "add 'is an' as an English alias"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -10029,7 +10215,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -10040,7 +10227,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "add 'is an' as an English alias"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -10077,7 +10265,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "P694",
                      *       "type": "property",
                      *       "data_type": "wikibase-item",
@@ -10117,7 +10306,8 @@ export interface operations {
                      *           }
                      *         ]
                      *       }
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         readonly id?: string;
                         /** @constant */
@@ -10311,10 +10501,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -10381,10 +10573,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": "instance of",
                      *       "ru": "это частный случай понятия"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string;
                     };
@@ -10444,10 +10638,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -10493,7 +10689,8 @@ export interface operations {
         /** @description Payload containing a JSON Patch document to be applied to Labels and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -10504,7 +10701,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "replace English label"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -10526,7 +10724,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -10537,7 +10736,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "replace English label"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -10574,10 +10774,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": "instance of",
                      *       "ru": "это частный случай понятия"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string;
                     };
@@ -10688,10 +10890,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -10821,10 +11025,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -10885,12 +11091,14 @@ export interface operations {
         /** @description Payload containing a Property label in the specified language and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "label": "instance of",
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Update the English label"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     label: string;
                 } & {
@@ -11034,10 +11242,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -11098,11 +11308,13 @@ export interface operations {
         /** @description Edit payload containing edit metadata */
         requestBody?: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @default [] */
                     tags?: string[];
@@ -11202,10 +11414,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -11344,10 +11558,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -11414,10 +11630,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": "the subject is a concrete object (instance) of this class, category, or object group",
                      *       "ru": "данный элемент представляет собой конкретный объект (экземпляр / частный случай) класса, категории"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string;
                     };
@@ -11477,10 +11695,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -11526,7 +11746,8 @@ export interface operations {
         /** @description Payload containing a JSON Patch document to be applied to a Property's descriptions and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -11537,7 +11758,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "update English description"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -11559,7 +11781,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -11570,7 +11793,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "update English description"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -11607,10 +11831,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": "the subject is a concrete object (instance) of this class, category, or object group",
                      *       "ru": "данный элемент представляет собой конкретный объект (экземпляр / частный случай) класса, категории"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string;
                     };
@@ -11721,10 +11947,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -11854,10 +12082,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -11918,12 +12148,14 @@ export interface operations {
         /** @description Payload containing Property description in the specified language and edit metadata */
         requestBody?: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "description": "the subject is a concrete object (instance) of this class, category, or object group",
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "set English description"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     description: string;
                     /** @default [] */
@@ -12066,10 +12298,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -12130,11 +12364,13 @@ export interface operations {
         /** @description Edit payload containing edit metadata */
         requestBody?: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @default [] */
                     tags?: string[];
@@ -12234,10 +12470,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -12376,10 +12614,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -12446,7 +12686,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": [
                      *         "is a",
                      *         "is an"
@@ -12455,7 +12696,8 @@ export interface operations {
                      *         "представляет собой",
                      *         "является"
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string[];
                     };
@@ -12515,10 +12757,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -12564,7 +12808,8 @@ export interface operations {
         /** @description Payload containing a JSON Patch document to be applied to a Property's aliases and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -12575,7 +12820,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add English alias"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -12597,7 +12843,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -12608,7 +12855,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add English alias"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -12645,7 +12893,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "en": [
                      *         "is a",
                      *         "is an"
@@ -12654,7 +12903,8 @@ export interface operations {
                      *         "представляет собой",
                      *         "является"
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: string[];
                     };
@@ -12765,10 +13015,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -12840,10 +13092,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example [
+                    /**
+                     * @example [
                      *       "is a",
                      *       "is an"
-                     *     ] */
+                     *     ]
+                     */
                     "application/json": string[];
                 };
             };
@@ -12901,10 +13155,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -12965,14 +13221,16 @@ export interface operations {
         /** @description Payload containing a list of Wikibase aliases in the specified language and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "aliases": [
                  *         "is an"
                  *       ],
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add English alias"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     aliases: string[];
                     /** @default [] */
@@ -12996,10 +13254,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example [
+                    /**
+                     * @example [
                      *       "is a",
                      *       "is an"
-                     *     ] */
+                     *     ]
+                     */
                     "application/json": string[];
                 };
             };
@@ -13015,10 +13275,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example [
+                    /**
+                     * @example [
                      *       "is a",
                      *       "is an"
-                     *     ] */
+                     *     ]
+                     */
                     "application/json": string[];
                 };
             };
@@ -13106,10 +13368,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -13182,7 +13446,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "P1628": [
                      *         {
                      *           "id": "P694$B4C349A2-C504-4FC5-B7D5-8B781C719D71",
@@ -13199,7 +13464,8 @@ export interface operations {
                      *           "references": []
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         [key: string]: ({
                             /** @description The globally unique identifier for this Statement */
@@ -13329,10 +13595,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -13378,7 +13646,8 @@ export interface operations {
         /** @description Payload containing a Wikibase Statement object and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "statement": {
                  *         "property": {
                  *           "id": "P1628"
@@ -13391,7 +13660,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     statement: {
                         /** @description The globally unique identifier for this Statement */
@@ -13488,7 +13758,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "P694$B4C349A2-C504-4FC5-B7D5-8B781C719D71",
                      *       "rank": "normal",
                      *       "property": {
@@ -13501,7 +13772,8 @@ export interface operations {
                      *       },
                      *       "qualifiers": [],
                      *       "references": []
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -13650,10 +13922,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -13725,7 +13999,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "P694$B4C349A2-C504-4FC5-B7D5-8B781C719D71",
                      *       "rank": "normal",
                      *       "property": {
@@ -13738,7 +14013,8 @@ export interface operations {
                      *       },
                      *       "qualifiers": [],
                      *       "references": []
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -13866,10 +14142,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -13920,7 +14198,8 @@ export interface operations {
         /** @description Payload containing a Wikibase Statement object and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "statement": {
                  *         "property": {
                  *           "id": "P1628"
@@ -13933,7 +14212,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     statement: {
                         /** @description The globally unique identifier for this Statement */
@@ -14028,7 +14308,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "P694$B4C349A2-C504-4FC5-B7D5-8B781C719D71",
                      *       "rank": "normal",
                      *       "property": {
@@ -14041,7 +14322,8 @@ export interface operations {
                      *       },
                      *       "qualifiers": [],
                      *       "references": []
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -14190,10 +14472,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -14244,11 +14528,13 @@ export interface operations {
         /** @description Edit payload containing edit metadata */
         requestBody?: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @default [] */
                     tags?: string[];
@@ -14348,10 +14634,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -14402,7 +14690,8 @@ export interface operations {
         /** @description Payload containing a JSON Patch document to be applied to the Statement and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -14413,7 +14702,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Update value of the 'equivalent property' Statement"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -14435,7 +14725,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "replace",
@@ -14446,7 +14737,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Update value of the 'equivalent property' Statement"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -14483,7 +14775,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "P694$B4C349A2-C504-4FC5-B7D5-8B781C719D71",
                      *       "rank": "normal",
                      *       "property": {
@@ -14496,7 +14789,8 @@ export interface operations {
                      *       },
                      *       "qualifiers": [],
                      *       "references": []
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -14675,10 +14969,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -14745,7 +15041,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "Q24$9966A1CA-F3F5-4B1D-A534-7CD5953169DA",
                      *       "rank": "normal",
                      *       "property": {
@@ -14789,7 +15086,8 @@ export interface operations {
                      *           ]
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -14917,10 +15215,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -14966,7 +15266,8 @@ export interface operations {
         /** @description Payload containing a Wikibase Statement object and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "statement": {
                  *         "property": {
                  *           "id": "P17"
@@ -15009,7 +15310,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     statement: {
                         /** @description The globally unique identifier for this Statement */
@@ -15104,7 +15406,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "Q24$9966A1CA-F3F5-4B1D-A534-7CD5953169DA",
                      *       "rank": "normal",
                      *       "property": {
@@ -15148,7 +15451,8 @@ export interface operations {
                      *           ]
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -15297,10 +15601,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -15346,11 +15652,13 @@ export interface operations {
         /** @description Edit payload containing edit metadata */
         requestBody?: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Example edit using the Wikibase REST API"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @default [] */
                     tags?: string[];
@@ -15450,10 +15758,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -15499,7 +15809,8 @@ export interface operations {
         /** @description Payload containing a JSON Patch document to be applied to the Statement and edit metadata */
         requestBody: {
             content: {
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -15522,7 +15833,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add reference to Statement"
-                 *     } */
+                 *     }
+                 */
                 "application/json-patch+json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -15544,7 +15856,8 @@ export interface operations {
                     bot?: boolean;
                     comment?: string;
                 };
-                /** @example {
+                /**
+                 * @example {
                  *       "patch": [
                  *         {
                  *           "op": "add",
@@ -15567,7 +15880,8 @@ export interface operations {
                  *       "tags": [],
                  *       "bot": false,
                  *       "comment": "Add reference to Statement"
-                 *     } */
+                 *     }
+                 */
                 "application/json": {
                     /** @description A JSON Patch document as defined by RFC 6902 */
                     patch: {
@@ -15604,7 +15918,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "id": "Q24$9966A1CA-F3F5-4B1D-A534-7CD5953169DA",
                      *       "rank": "normal",
                      *       "property": {
@@ -15648,7 +15963,8 @@ export interface operations {
                      *           ]
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         /** @description The globally unique identifier for this Statement */
                         readonly id?: string;
@@ -15827,10 +16143,12 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "code": "unexpected-error",
                      *       "message": "Unexpected Error"
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         code: string;
                         message: string;
@@ -15876,7 +16194,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "results": [
                      *         {
                      *           "id": "Q123",
@@ -15911,7 +16230,8 @@ export interface operations {
                      *           }
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         results: {
                             id: string;
@@ -15985,7 +16305,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "results": [
                      *         {
                      *           "id": "P123",
@@ -16020,7 +16341,8 @@ export interface operations {
                      *           }
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         results: {
                             id: string;
@@ -16094,7 +16416,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "results": [
                      *         {
                      *           "id": "Q456",
@@ -16129,7 +16452,8 @@ export interface operations {
                      *           }
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         results: {
                             id: string;
@@ -16203,7 +16527,8 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    /** @example {
+                    /**
+                     * @example {
                      *       "results": [
                      *         {
                      *           "id": "P123",
@@ -16238,7 +16563,8 @@ export interface operations {
                      *           }
                      *         }
                      *       ]
-                     *     } */
+                     *     }
+                     */
                     "application/json": {
                         results: {
                             id: string;

@@ -21,9 +21,9 @@ describe("MediaTrailerDialog", () => {
     const trailer = { key: "testKey", name: "Test Trailer" };
 
     server.use(
-      http.get("https://www.youtube.com/embed/testKey", () =>
-        HttpResponse.json({}),
-      ),
+      http.get("https://www.youtube.com/embed/testKey", () => {
+        return HttpResponse.json({});
+      }),
     );
 
     await render(
