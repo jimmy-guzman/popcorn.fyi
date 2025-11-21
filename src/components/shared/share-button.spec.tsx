@@ -4,11 +4,9 @@ import { toast } from "sonner";
 
 import { ShareButton } from "./share-button";
 
-vi.mock("sonner", () => {
-  return {
-    toast: { success: vi.fn() },
-  };
-});
+vi.mock("sonner", () => ({
+  toast: { success: vi.fn() },
+}));
 
 describe("ShareButton", () => {
   const title = "Inception";

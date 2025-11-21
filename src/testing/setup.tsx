@@ -27,14 +27,10 @@ vi.mock("@tanstack/start", async () => {
 
   return {
     ...actual,
-    createServerFn: () => {
-      return {
-        validator: () => {
-          return {
-            handler: () => vi.fn(),
-          };
-        },
-      };
-    },
+    createServerFn: () => ({
+      validator: () => ({
+        handler: () => vi.fn(),
+      }),
+    }),
   };
 });

@@ -40,7 +40,7 @@ export const MediaTrailerDialog = ({
       id="my_modal_2"
       ref={ref}
     >
-      <div className="dsy-modal-box !max-w-screen-lg">
+      <div className="dsy-modal-box max-w-5xl!">
         <h3 className="text-lg font-bold">{trailer ? trailer.name : "N/A"}</h3>
         <p className="py-4">Press ESC key or click outside to close.</p>
         {trailer?.key ? (
@@ -48,7 +48,7 @@ export const MediaTrailerDialog = ({
             allow="autoplay; encrypted-media"
             allowFullScreen
             className="aspect-square size-full rounded-md sm:aspect-video"
-            // eslint-disable-next-line @eslint-react/dom/no-unsafe-iframe-sandbox -- TODO
+            // eslint-disable-next-line react-dom/no-unsafe-iframe-sandbox -- TODO: Remove this line when eslint config is fixed
             sandbox="allow-scripts allow-same-origin allow-presentation"
             src={youtubeVideoUrl(trailer.key, { autoplay: true })}
             title={trailer.name}

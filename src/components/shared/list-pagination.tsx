@@ -26,12 +26,10 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
           <Link
             aria-label="Previous Page"
             className="dsy-btn dsy-join-item hidden md:flex"
-            search={(prev) => {
-              return {
-                ...prev,
-                page: (prev.page ?? 1) - 1,
-              };
-            }}
+            search={(prev) => ({
+              ...prev,
+              page: (prev.page ?? 1) - 1,
+            })}
             to="."
           >
             <span className="icon-[lucide--chevron-left] h-4 w-4" />
@@ -53,12 +51,10 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
               activeProps={{ className: "dsy-btn-active" }}
               className="dsy-btn dsy-join-item"
               key={page}
-              search={(prev) => {
-                return {
-                  ...prev,
-                  page,
-                };
-              }}
+              search={(prev) => ({
+                ...prev,
+                page,
+              })}
               to="."
             >
               {page}
@@ -69,12 +65,10 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
           <Link
             aria-label="Next Page"
             className="dsy-btn dsy-join-item hidden md:flex"
-            search={(prev) => {
-              return {
-                ...prev,
-                page: (prev.page ?? 1) + 1,
-              };
-            }}
+            search={(prev) => ({
+              ...prev,
+              page: (prev.page ?? 1) + 1,
+            })}
             to="."
           >
             <span className="icon-[lucide--chevron-right] h-4 w-4" />

@@ -17,9 +17,9 @@ export const SiteNav = () => {
           <span className="ml-2 hidden font-bold xl:block">{site.title}</span>
         </Link>
         <ul className="dsy-menu dsy-menu-horizontal hidden gap-1 px-2 xl:flex">
-          {topNav.map((item) => (
-            <SiteNavMenuItem item={item} key={item.title} />
-          ))}
+          {topNav.map((item) => {
+            return <SiteNavMenuItem item={item} key={item.title} />;
+          })}
         </ul>
       </div>
 

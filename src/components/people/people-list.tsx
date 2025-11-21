@@ -23,9 +23,9 @@ export const PeopleList = ({
         <p>{description}</p>
       </Prose>
       <ListContent>
-        {people.map((person) => (
-          <PersonCard key={person.id} person={person} />
-        ))}
+        {people.map((person) => {
+          return <PersonCard key={person.id} person={person} />;
+        })}
       </ListContent>
     </div>
   );

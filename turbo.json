@@ -15,15 +15,12 @@
       "outputs": [".nitro/**", ".tanstack/**", ".vercel/**", ".output/**"]
     },
     "lint": {
-      "dependsOn": ["open-api"],
       "outputs": [".eslintcache"]
     },
     "format": {
       "outputs": ["node_modules/.cache/prettier/**"]
     },
-    "typecheck": {
-      "dependsOn": ["open-api"]
-    },
+    "typecheck": {},
     "test": {
       "cache": false,
       "persistent": true

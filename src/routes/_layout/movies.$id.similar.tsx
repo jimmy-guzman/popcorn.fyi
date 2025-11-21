@@ -23,9 +23,9 @@ function RouteComponent() {
         <h2>Similar</h2>
       </Prose>
       <ListContent>
-        {similar.results?.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        {similar.results?.map((movie) => {
+          return <MovieCard key={movie.id} movie={movie} />;
+        })}
       </ListContent>
     </section>
   );
