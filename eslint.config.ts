@@ -26,4 +26,7 @@ export default defineConfig({
     },
     ...pluginRouter.configs["flat/recommended"],
   ],
+  vitest: {
+    globals: "implicit",
+  },
 });
