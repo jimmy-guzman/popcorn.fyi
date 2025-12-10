@@ -1,7 +1,9 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
-interface ListContentProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "classname" | "role"> {
+interface ListContentProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "classname" | "role"
+> {
   children: ReactNode;
 }
 

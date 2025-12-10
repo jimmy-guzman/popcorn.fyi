@@ -4,7 +4,7 @@ describe("time", () => {
   it("should not throw an error", () => {
     expect(() => {
       time(500);
-    }).not.toThrow();
+    }).not.toThrowError();
   });
 
   it("should support milliseconds", () => {

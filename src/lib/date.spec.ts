@@ -2,11 +2,11 @@ import { date, year } from "./date";
 
 describe("date", () => {
   it("should throw when date is an empty string", () => {
-    expect(() => date("")).toThrow("Invalid time value");
+    expect(() => date("")).toThrowError("Invalid time value");
   });
 
   it("should throw when date is an invalid format", () => {
-    expect(() => date("bad")).toThrow("Invalid time value");
+    expect(() => date("bad")).toThrowError("Invalid time value");
   });
 
   it("should return date as human readable (YYYY-MM-DD)", () => {
