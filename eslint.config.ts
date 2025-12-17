@@ -7,7 +7,18 @@ export default defineConfig({
       rules: {
         "perfectionist/sort-objects": [
           "error",
-          { ignorePattern: ["Route"], type: "natural" },
+          {
+            type: "natural",
+            useConfigurationIf: {
+              declarationMatchesPattern: {
+                flags: "i",
+                pattern: "^(?!.*Route).*$",
+              },
+            },
+          },
+          {
+            type: "unsorted",
+          },
         ],
       },
     },
