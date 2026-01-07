@@ -29,14 +29,15 @@ describe("shuffle", () => {
 
   it("should sometimes change the order", () => {
     const input = [1, 2, 3, 4, 5];
+
     let changed = false;
 
-    // Try 10 times to catch a shuffle that changes the order
     for (let i = 0; i < 10; i++) {
       const result = shuffle(input);
 
       if (result.join(",") !== input.join(",")) {
         changed = true;
+
         break;
       }
     }

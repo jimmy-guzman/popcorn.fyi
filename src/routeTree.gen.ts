@@ -126,7 +126,7 @@ const LayoutMoviesIdIndexRoute = LayoutMoviesIdIndexRouteImport.update({
 } as any)
 const LayoutTvShowsDiscoverLayoutRoute =
   LayoutTvShowsDiscoverLayoutRouteImport.update({
-    id: '/_layout/tv-shows/discover/_layout',
+    id: '/tv-shows/discover/_layout',
     path: '/tv-shows/discover',
     getParentRoute: () => LayoutRoute,
   } as any)
@@ -157,7 +157,7 @@ const LayoutPeopleIdCreditsRoute = LayoutPeopleIdCreditsRouteImport.update({
 } as any)
 const LayoutMoviesDiscoverLayoutRoute =
   LayoutMoviesDiscoverLayoutRouteImport.update({
-    id: '/_layout/movies/discover/_layout',
+    id: '/movies/discover/_layout',
     path: '/movies/discover',
     getParentRoute: () => LayoutRoute,
   } as any)
