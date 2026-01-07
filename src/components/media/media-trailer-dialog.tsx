@@ -14,10 +14,10 @@ export const MediaTrailerDialog = ({
   handleClose,
   trailer,
 }: MediaTrailerDialogProps) => {
-  const ref = useRef<HTMLDialogElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
-    ref.current?.showModal();
+    dialogRef.current?.showModal();
   }, []);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const MediaTrailerDialog = ({
     <dialog
       className="dsy-modal dsy-modal-bottom sm:dsy-modal-middle"
       id="my_modal_2"
-      ref={ref}
+      ref={dialogRef}
     >
       <div className="dsy-modal-box max-w-5xl!">
         <h3 className="text-lg font-bold">{trailer ? trailer.name : "N/A"}</h3>

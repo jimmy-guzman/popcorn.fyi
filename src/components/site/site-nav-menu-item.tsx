@@ -9,7 +9,7 @@ import { SiteNavMenuItemLink } from "./site-nav-menu-item-link";
 
 const SiteNavCollapsibleMenuItem = ({ item }: { item: GroupedNavItem }) => {
   const { pathname } = useLocation();
-  const ref = useRef<HTMLDetailsElement>(null);
+  const detailsRef = useRef<HTMLDetailsElement>(null);
 
   const isActive = pathname.startsWith(item.to);
 
@@ -20,7 +20,7 @@ const SiteNavCollapsibleMenuItem = ({ item }: { item: GroupedNavItem }) => {
           e.currentTarget.removeAttribute("open");
         }
       }}
-      ref={ref}
+      ref={detailsRef}
       // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- safari does not work correctly w/ document.activeElement
       tabIndex={0}
     >

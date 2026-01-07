@@ -41,6 +41,7 @@ export const limit = <T>(array: T[], maxLength: number) => {
  */
 export const unique = <T>(array: T[], key: keyof T): T[] => {
   if (array.length === 0) return [];
+
   if (array.length === 1) return [...array];
 
   const seen = new Set<T[keyof T]>();
