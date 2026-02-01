@@ -35,7 +35,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="bg-base-200">
         {children}
         <TanStackDevtools
           plugins={[

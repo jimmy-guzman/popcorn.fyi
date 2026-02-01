@@ -577,7 +577,7 @@ export interface paths {
         patch: operations["patchStatement"];
         trace?: never;
     };
-    "/v0/search/items": {
+    "/v1/search/items": {
         parameters: {
             query?: never;
             header?: never;
@@ -594,7 +594,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/v0/search/properties": {
+    "/v1/search/properties": {
         parameters: {
             query?: never;
             header?: never;
@@ -611,7 +611,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/v0/suggest/items": {
+    "/v1/suggest/items": {
         parameters: {
             query?: never;
             header?: never;
@@ -628,7 +628,7 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/v0/suggest/properties": {
+    "/v1/suggest/properties": {
         parameters: {
             query?: never;
             header?: never;
