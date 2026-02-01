@@ -6,7 +6,7 @@ export const Error = ({ error }: ErrorComponentProps) => {
   const router = useRouter();
 
   return (
-    <main className="grid min-h-screen place-content-center">
+    <main className="grid min-h-screen place-content-center bg-base-200">
       <div className="dsy-hero w-full">
         <div className="dsy-hero-content text-center text-neutral-content">
           <div className="flex flex-col items-center gap-5">

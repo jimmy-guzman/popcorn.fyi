@@ -195,8 +195,8 @@ const LayoutMoviesDiscoverLayoutIndexRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/search': typeof LayoutSearchRoute
   '/': typeof LayoutIndexRoute
+  '/search': typeof LayoutSearchRoute
   '/movies/$id': typeof LayoutMoviesIdRouteWithChildren
   '/movies/popular': typeof LayoutMoviesPopularRoute
   '/movies/top-rated': typeof LayoutMoviesTopRatedRoute
@@ -287,8 +287,8 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/search'
     | '/'
+    | '/search'
     | '/movies/$id'
     | '/movies/popular'
     | '/movies/top-rated'
@@ -385,7 +385,7 @@ declare module '@tanstack/react-router' {
     '/_layout': {
       id: '/_layout'
       path: ''
-      fullPath: ''
+      fullPath: '/'
       preLoaderRoute: typeof LayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
