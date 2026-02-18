@@ -27,6 +27,7 @@
     "nvmrc",
     "ohash",
     "oktay",
+    "oxfmt",
     "pnpx",
     "prefersdark",
     "refetches",
@@ -48,7 +49,7 @@
     "watchlist",
     "wbgetentities"
   ],
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "eslint.validate": [
     "javascript",
@@ -65,10 +66,5 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
-  "vitest.workspaceConfig": "",
-  "yaml.schemas": {
-    "https://json.schemastore.org/pull-request-labeler-5.json": [
-      ".github/labeler.yml"
-    ]
-  }
+  "vitest.workspaceConfig": ""
 }

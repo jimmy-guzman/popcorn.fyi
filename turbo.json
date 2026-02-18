@@ -17,9 +17,7 @@
     "lint": {
       "outputs": [".eslintcache"]
     },
-    "format": {
-      "outputs": ["node_modules/.cache/prettier/**"]
-    },
+    "format": {},
     "typecheck": {},
     "test": {
       "cache": false,

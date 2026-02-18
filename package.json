@@ -1,18 +1,18 @@
 {
   "name": "popcorn.fyi",
   "private": true,
-  "sideEffects": false,
   "type": "module",
+  "sideEffects": false,
   "scripts": {
     "build": "vite build",
-    "check": "turbo format knip lint typecheck coverage build",
+    "check": "turbo fmt knip lint typecheck coverage build",
     "coverage": "vitest run --coverage",
     "deps:up": "pnpx npm-check-updates -ui",
     "dev": "vite dev --clearScreen false",
     "e2e": "playwright test",
     "e2e:ui": "playwright test --ui",
-    "format": "prettier --check --cache --experimental-cli .",
-    "format:fix": "prettier --write --cache --experimental-cli .",
+    "fmt": "oxfmt --check",
+    "fmt:fix": "oxfmt",
     "postinstall": "lefthook install",
     "knip": "knip",
     "lint": "eslint --cache --concurrency=auto .",
@@ -80,17 +80,15 @@
     "lefthook": "2.1.1",
     "msw": "2.12.10",
     "openapi-typescript": "7.13.0",
-    "prettier": "3.8.1",
-    "prettier-plugin-packagejson": "3.0.0",
-    "prettier-plugin-tailwindcss": "0.7.2",
+    "oxfmt": "0.33.0",
     "tailwindcss": "4.1.18",
     "turbo": "2.8.9",
     "typescript": "5.9.3",
     "vite": "8.0.0-beta.14",
     "vitest": "4.0.18"
   },
-  "packageManager": "pnpm@10.30.0",
   "engines": {
     "node": ">= 24"
-  }
+  },
+  "packageManager": "pnpm@10.30.0"
 }

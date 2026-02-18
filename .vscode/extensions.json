@@ -2,7 +2,7 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "bradlc.vscode-tailwindcss",
-    "esbenp.prettier-vscode",
+    "oxc.oxc-vscode",
     "vercel.turbo-vsc",
     "vitest.explorer"
   ]

@@ -10,7 +10,7 @@ import { SiteNavSearchInput } from "./site-nav-search-input";
 
 export const SiteNav = () => {
   return (
-    <nav className="sticky top-0 z-50 dsy-navbar w-full bg-base-100">
+    <nav className="dsy-navbar sticky top-0 z-50 w-full bg-base-100">
       <div className="dsy-navbar-center">
         <Link className="dsy-btn dsy-btn-ghost" to="/">
           <SiteLogo className="h-6 w-6" />
