@@ -33,6 +33,20 @@ export default defineConfig({
           depth: 3,
         },
       ],
+      "react-refresh/only-export-components": [
+        "error",
+        {
+          extraHOCs: [
+            "createFileRoute",
+            "createLazyFileRoute",
+            "createRootRoute",
+            "createRootRouteWithContext",
+            "createLink",
+            "createRoute",
+            "createLazyRoute",
+          ],
+        },
+      ],
     },
   },
   vitest: {
