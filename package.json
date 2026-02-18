@@ -87,7 +87,6 @@
     "turbo": "2.8.9",
     "typescript": "5.9.3",
     "vite": "8.0.0-beta.14",
-    "vite-tsconfig-paths": "6.1.1",
     "vitest": "4.0.18"
   },
   "packageManager": "pnpm@10.30.0",
