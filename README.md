@@ -45,7 +45,7 @@
 - **Build System:** [Turborepo](https://turbo.build/repo) (single-package workspace)
 - **Package Manager:** [pnpm](https://pnpm.io)
 - **Type Checking:** [TypeScript](https://www.typescriptlang.org)
-- **Lint & Format:** [ESLint](https://eslint.org) ([config](https://github.com/jimmy-guzman/eslint-config)), [Prettier](https://prettier.io)
+- **Lint & Format:** [ESLint](https://eslint.org) ([config](https://github.com/jimmy-guzman/eslint-config)), [OXC](https://oxc.rs)
 - **Deployment:** [Vercel](https://vercel.com)
 - **Coverage:** [Codecov](https://about.codecov.io)
 
