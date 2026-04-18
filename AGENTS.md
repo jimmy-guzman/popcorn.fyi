@@ -1,0 +1,125 @@
+# AGENTS.md
+
+Agent-focused notes for this repo. For humans, see [README.md](README.md).
+
+## Project
+
+React app (TanStack Start / Router, TanStack Query) for exploring movies and TV using TMDB and Wikidata APIs.
+
+## Prerequisites
+
+- **Node:** satisfy the range in [`package.json`](package.json) `engines`. For the exact version used locally and in CI, see [`.nvmrc`](.nvmrc).
+- **pnpm:** version pinned in [`package.json`](package.json) `packageManager` (enable via [Corepack](https://nodejs.org/api/corepack.html) or install matching pnpm yourself).
+
+## Setup
+
+```bash
+pnpm install
+cp .env.example .env
+```
+
+Edit `.env` and set `TMDB_API_TOKEN` (required for API calls; also used by Turborepo tasks per `turbo.json`).
+
+## Commands
+
+| Task                                                                | Command                                                                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Dev server                                                          | `pnpm dev`                                                                                                          |
+| Full check (matches CI: format, knip, lint, types, coverage, build) | `pnpm check`                                                                                                        |
+| Unit tests (watch)                                                  | `pnpm test`                                                                                                         |
+| Unit tests + coverage                                               | `pnpm coverage`                                                                                                     |
+| E2E (install Chromium first if needed)                              | `pnpm exec playwright install --no-shell chromium` then `pnpm e2e` (CI uses `pnpm turbo e2e -- --project=chromium`) |
+| Production build                                                    | `pnpm build`                                                                                                        |
+| Preview production build locally                                    | `pnpm preview` (after `pnpm build`)                                                                                 |
+| Format (check / fix)                                                | `pnpm fmt` / `pnpm fmt:fix`                                                                                         |
+| Unused code / dependencies (Knip)                                   | `pnpm knip`                                                                                                         |
+| Lint (check / fix)                                                  | `pnpm lint` / `pnpm lint:fix`                                                                                       |
+| Regenerate OpenAPI client                                           | `pnpm openapi-ts` (see `openapi-ts.config.ts`)                                                                      |
+
+## Conventions
+
+- **TypeScript:** `strict` mode with `noUncheckedIndexedAccess` and `noImplicitOverride` ([`tsconfig.json`](tsconfig.json)).
+- **Lint:** ESLint with [`@jimmy.codes/eslint-config`](https://github.com/jimmy-guzman/eslint-config).
+- **Format:** [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) (`.oxfmtrc.json`).
+- **UI:** Tailwind CSS v4 and daisyUI (`package.json` dependencies).
+
+When changing API client types or OpenAPI inputs, run `pnpm openapi-ts` and ensure `pnpm check` still passes.
+
+## Code style & structure
+
+- **Files read bottom-up: helpers at the top, main exported symbol at the bottom.**
+  The file's public API is immediately visible when you scroll to the end, and implementation details are grouped in the order you'd naturally compose them.
+
+- **Kebab-case for all filenames and directories. Framework-reserved filenames (e.g. `page.tsx`, `layout.tsx`) are exempt.**
+  One casing rule means no bikeshedding at import time. Framework conventions override because fighting them breaks tooling.
+
+- **Use `satisfies` for type narrowing where possible.**
+  Preserves the literal type instead of widening to the annotation, which keeps downstream inference tight without giving up the shape check.
+
+- **Test files use the `.spec.ts` suffix and live next to the code they test.**
+  Colocation makes tests discoverable alongside the thing they cover, and a single suffix keeps test runners' glob configs simple.
+
+## Type discipline
+
+- **Do not reach for `as`, `!`, or `any` without first exhausting proper solutions. Understand the type error before casting.**
+  A type error is signal. Casting silences the signal without fixing the underlying mismatch, and the bug usually surfaces later in a worse place.
+
+- **No redundant return types on internal functions (unexported functions, local arrow `const`s, inline callbacks). Exception: interface method signatures and exported functions where the return type is part of the public contract.**
+  Inference handles internal functions correctly and keeps them low-noise. Explicit annotations belong where the type is a contract, not where it duplicates what the compiler already knows.
+
+## Comments
+
+- **No comments other than JSDoc or `TODO`/`FIXME`.**
+  Code should explain itself through naming and structure. Comments drift from the code they describe; the ones worth keeping have a specific purpose (API docs, known gaps).
+
+## Static analysis
+
+- **Resolve warnings and errors your changes introduce before finishing. Fix the root cause, not the symptom. Do not silence with rule overrides or type casts.**
+  Warnings and errors are there because something is genuinely off. Silencing them turns a solvable problem into a latent one.
+
+## Docs
+
+- **After introducing a new pattern, feature, convention, or structural change, ask whether `AGENTS.md` and/or `README.md` should be updated, then apply the changes.**
+  Docs rot the moment the code moves without them. Catching the update at the point of change is the only time it reliably happens.
+
+## Writing
+
+- **No em dashes.** Use a comma, period, or restructure the sentence instead.
+  Em dashes create rhythm that doesn't translate well to technical writing. They can feel informal or ambiguous about the relationship between clauses.
+
+- **No horizontal rules as section dividers.** Don't use `---` to separate sections when a heading is already doing that job.
+  Headings provide structure and are navigable. A `---` on top of a heading is visual noise with no semantic value. Exception: `---` is fine as a thematic break when there is no heading on either side (e.g. a closing thought separated from the last section).
+
+- **No curly/smart quotes in prose.** Use straight quotes (`"`) not curly quotes (U+201C `\u201C` / U+201D `\u201D`).
+  Curly quotes are inconsistent across editors and tools, and can cause subtle encoding issues. Straight quotes are unambiguous. Applies to prose only. Code blocks are verbatim and exempt.
+
+- **Sentence case subheadings.** Write `## Like this` not `## Like This`.
+  Subheadings are not titles. Sentence case reads more naturally in technical prose and avoids the stiffness of title case. Exception: proper nouns and acronyms follow their standard casing (e.g. `## Working with TypeScript`).
+
+## Pausing
+
+- **Between phases:** After completing a discrete chunk of work, stop. Post a short summary, then ask before starting the next.
+  A summary creates a checkpoint for course correction before the next chunk compounds on the last.
+
+- **On uncertainty:** If a decision is not covered by existing rules or context, do not invent. Stop and ask.
+  Invented conventions are worse than absent ones. They look authoritative while being arbitrary.
+
+- **On a debug loop:** If the same error persists after 3 consecutive fix attempts, stop. Report the error, what was tried, and the likely cause. Do not attempt a fourth fix without input.
+  Repeated failed attempts usually mean the mental model is wrong, not the fix. More attempts make it worse.
+
+## Branching & commits
+
+- **Branch naming: `{type}-{short-description}` in kebab-case. Types: `feat`, `fix`, `refactor`, `chore`, `docs`, `ci`.**
+  Predictable branch names make history scannable and let tooling infer intent from the name alone.
+
+- **Commits: Conventional Commits with emoji after the colon and lowercase description. Format: `<type>: <emoji> <description>`. Subject under 50 chars, body wrapped at 72.**
+  Structured subjects are readable in every git UI, parseable by release tooling, and the length caps keep `git log --oneline` usable.
+
+- **Commit emojis:** `feat` → ✨, `fix` → 🐛, `docs` → 📝, `chore` → 🤖, `ci` → 👷, `test` → ✅, `refactor` → 🔄, `style` → 🎨, `perf` → ⚡️, `revert` → ⏪, `release` → 🚀.
+  Visual anchors for scanning log output; the mapping is fixed so commits stay consistent across projects.
+
+- **Do not commit directly to `main`. Branch first.**
+  Branches create a review surface and a revert point. Direct commits skip both.
+
+- **PRs: branch off `main`, title follows Conventional Commits, squash merge.**
+  One logical change per commit in history, and PR titles double as release notes when they follow the same format as commits.
