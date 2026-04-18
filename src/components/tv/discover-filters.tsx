@@ -3,7 +3,8 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
 
-import { DiscoverSchema } from "@/api/tv/discover.list";
+import { DiscoverSchema } from "@/data/tv/discover.list";
+import { hasKey } from "@/lib/predicates";
 
 const tvSortOptions = [
   { label: "Original Name (A-Z)", value: "original_name.asc" },
@@ -22,7 +23,7 @@ const tvSortOptions = [
 
 interface TvDiscoverFiltersOptions {
   genres: { id: number; name?: string }[];
-  providers: { provider_id: number; provider_name?: string }[];
+  providers: { provider_id?: number; provider_name?: string }[];
   regions: { english_name?: string; iso_3166_1?: string }[];
 }
 
@@ -102,7 +103,7 @@ export const TvDiscoverFilters = ({
               <option disabled value="">
                 Pick a Provider
               </option>
-              {providers.map((provider) => {
+              {providers.filter(hasKey("provider_id")).map((provider) => {
                 return (
                   <option
                     key={provider.provider_id}

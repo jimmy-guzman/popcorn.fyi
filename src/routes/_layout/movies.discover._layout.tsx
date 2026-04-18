@@ -1,13 +1,14 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-import { DiscoverSchema } from "@/api/movie/discover.list";
-import { movieGenresOptions } from "@/api/movie/genres.list";
-import { movieProvidersOptions } from "@/api/movie/providers.list";
-import { regionsOptions } from "@/api/regions.list";
 import { MovieDiscoverFilters } from "@/components/movie/discover-filters";
 import { Prose } from "@/components/shared/prose";
 import { site } from "@/config/site";
+import { DiscoverSchema } from "@/data/movie/discover.list";
+import { movieGenresOptions } from "@/data/movie/genres.list";
+import { movieProvidersOptions } from "@/data/movie/providers.list";
+import { regionsOptions } from "@/data/regions.list";
+import { hasId } from "@/lib/predicates";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/movies/discover/_layout")({
@@ -42,7 +43,7 @@ function RouteComponent() {
         <p>{site.pages.discover.movies.description}</p>
       </Prose>
       <MovieDiscoverFilters
-        genres={genres}
+        genres={genres.filter(hasId)}
         providers={providers}
         regions={regions}
       />

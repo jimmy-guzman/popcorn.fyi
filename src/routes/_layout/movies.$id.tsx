@@ -2,10 +2,10 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import * as v from "valibot";
 
-import { movieDetailsOptions } from "@/api/movie/details";
-import { movieExternalOptions } from "@/api/movie/details.external";
 import { MovieDetails } from "@/components/movie/movie-details";
 import { site } from "@/config/site";
+import { movieDetailsOptions } from "@/data/movie/details";
+import { movieExternalOptions } from "@/data/movie/details.external";
 import { seo } from "@/lib/seo";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 import { PathParamsSchema } from "@/schemas/path-params";

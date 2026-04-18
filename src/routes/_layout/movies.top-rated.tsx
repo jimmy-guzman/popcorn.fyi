@@ -1,10 +1,12 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { moviesTopRatedOptions } from "@/api/movie/top-rated.list";
 import { MovieList } from "@/components/movie/movie-list";
 import { ListPagination } from "@/components/shared/list-pagination";
 import { site } from "@/config/site";
+import { moviesTopRatedOptions } from "@/data/movie/top-rated.list";
+import { orEmpty } from "@/lib/array";
+import { hasId } from "@/lib/predicates";
 import { seo } from "@/lib/seo";
 import { PaginationSchema } from "@/schemas/pagination";
 
@@ -32,10 +34,12 @@ function RouteComponent() {
     <div className="flex flex-col gap-4">
       <MovieList
         description={site.pages.topRated.movies.description}
-        movies={movies.results ?? []}
+        movies={orEmpty(movies.results).filter(hasId)}
         title={site.pages.topRated.movies.title}
       />
-      <ListPagination page={movies.page} totalPages={movies.total_pages} />
+      {movies.page && movies.total_pages ? (
+        <ListPagination page={movies.page} totalPages={movies.total_pages} />
+      ) : null}
     </div>
   );
 }

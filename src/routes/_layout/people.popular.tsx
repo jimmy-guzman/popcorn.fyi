@@ -1,10 +1,12 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { peoplePopularOptions } from "@/api/people/popular.list";
 import { PeopleList } from "@/components/people/people-list";
 import { ListPagination } from "@/components/shared/list-pagination";
 import { site } from "@/config/site";
+import { peoplePopularOptions } from "@/data/people/popular.list";
+import { orEmpty } from "@/lib/array";
+import { hasId } from "@/lib/predicates";
 import { seo } from "@/lib/seo";
 import { PaginationSchema } from "@/schemas/pagination";
 
@@ -32,10 +34,12 @@ function RouteComponent() {
     <div className="flex flex-col gap-4">
       <PeopleList
         description={site.pages.popular.people.description}
-        people={people.results ?? []}
+        people={orEmpty(people.results).filter(hasId)}
         title={site.pages.popular.people.title}
       />
-      <ListPagination page={people.page} totalPages={people.total_pages} />
+      {people.page && people.total_pages ? (
+        <ListPagination page={people.page} totalPages={people.total_pages} />
+      ) : null}
     </div>
   );
 }

@@ -14,7 +14,7 @@
       },
       "lint": {
         "glob": "*.{js,cjs,ts,tsx}",
-        "run": "pnpm exec eslint --fix {staged_files}",
+        "run": "pnpm exec eslint --fix {staged_files} --no-warn-ignored",
         "stage_fixed": true
       }
     }

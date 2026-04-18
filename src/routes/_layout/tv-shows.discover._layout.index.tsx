@@ -1,8 +1,10 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { DiscoverSchema, discoverTvOptions } from "@/api/tv/discover.list";
 import { TvDiscoverList } from "@/components/tv/discover-list";
+import { DiscoverSchema, discoverTvOptions } from "@/data/tv/discover.list";
+import { orEmpty } from "@/lib/array";
+import { hasId } from "@/lib/predicates";
 
 export const Route = createFileRoute("/_layout/tv-shows/discover/_layout/")({
   component: RouteComponent,
@@ -21,7 +23,7 @@ function RouteComponent() {
     <TvDiscoverList
       page={tv.page}
       totalPages={tv.total_pages}
-      tv={tv.results ?? []}
+      tv={orEmpty(tv.results).filter(hasId)}
     />
   );
 }

@@ -1,11 +1,9 @@
 export const selectYoutubeTrailer = ({
   results,
 }: {
-  id: number;
   results?: {
-    key?: string;
     name?: string;
-    official: boolean;
+    official?: boolean;
     site?: string;
     type?: string;
   }[];

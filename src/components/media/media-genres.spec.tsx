@@ -10,13 +10,6 @@ describe("MediaGenres", () => {
     expect(screen.queryByText(/.+/)).not.toBeInTheDocument();
   });
 
-  it("should render an empty component when no genres are provided", async () => {
-    await render(<MediaGenres media="movies" />);
-
-    expect(screen.queryByRole("link")).not.toBeInTheDocument();
-    expect(screen.queryByText(/.+/)).not.toBeInTheDocument();
-  });
-
   it("should render genres correctly", async () => {
     await render(
       <MediaGenres genres={[{ id: 1, name: "Fantasy" }]} media="movies" />,

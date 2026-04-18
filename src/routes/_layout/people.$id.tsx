@@ -2,10 +2,10 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import * as v from "valibot";
 
-import { personDetailsOptions } from "@/api/people/details";
-import { personExternalOptions } from "@/api/people/details.external";
 import { PersonDetails } from "@/components/people/person-details";
 import { site } from "@/config/site";
+import { personDetailsOptions } from "@/data/people/details";
+import { personExternalOptions } from "@/data/people/details.external";
 import { seo } from "@/lib/seo";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 import { PathParamsSchema } from "@/schemas/path-params";

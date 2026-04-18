@@ -1,4 +1,4 @@
-import type { PersonCredits } from "@/api/people/details.credits";
+import type { PersonCredits } from "@/data/people/details.credits";
 
 import { limit, unique } from "./array";
 
@@ -10,8 +10,8 @@ const POPULARITY_WEIGHT = 0.1;
 
 interface NotabilityMetrics {
   popularity?: number;
-  vote_average: number;
-  vote_count: number;
+  vote_average?: number;
+  vote_count?: number;
 }
 
 interface RoleMetrics {
@@ -23,8 +23,8 @@ interface RoleMetrics {
 
 const calculateNotabilityScore = ({
   popularity = 0,
-  vote_average,
-  vote_count,
+  vote_average = 0,
+  vote_count = 0,
 }: NotabilityMetrics) => {
   const qualityScore = vote_average * (vote_count / VOTE_COUNT_DIVISOR);
   const trendingBonus = popularity * POPULARITY_WEIGHT;

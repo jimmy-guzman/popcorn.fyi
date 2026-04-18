@@ -1,9 +1,11 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { trendingMoviesOptions } from "@/api/movie/trending.list";
 import { MovieList } from "@/components/movie/movie-list";
 import { site } from "@/config/site";
+import { trendingMoviesOptions } from "@/data/movie/trending.list";
+import { orEmpty } from "@/lib/array";
+import { hasId } from "@/lib/predicates";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/trending/movies")({
@@ -27,7 +29,7 @@ function RouteComponent() {
   return (
     <MovieList
       description={site.pages.trending.movies.description}
-      movies={movies.results ?? []}
+      movies={orEmpty(movies.results).filter(hasId)}
       title={site.pages.trending.movies.title}
     />
   );

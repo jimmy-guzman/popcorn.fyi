@@ -1,11 +1,13 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { MovieDiscoverList } from "@/components/movie/movie-discover-list";
 import {
   discoverMoviesOptions,
   DiscoverSchema,
-} from "@/api/movie/discover.list";
-import { MovieDiscoverList } from "@/components/movie/movie-discover-list";
+} from "@/data/movie/discover.list";
+import { orEmpty } from "@/lib/array";
+import { hasId } from "@/lib/predicates";
 
 export const Route = createFileRoute("/_layout/movies/discover/_layout/")({
   component: RouteComponent,
@@ -22,7 +24,7 @@ function RouteComponent() {
 
   return (
     <MovieDiscoverList
-      movies={movies.results ?? []}
+      movies={orEmpty(movies.results).filter(hasId)}
       page={movies.page}
       totalPages={movies.total_pages}
     />

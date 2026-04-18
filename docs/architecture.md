@@ -1,4 +1,4 @@
-## **System Design**
+# System Design
 
 ```mermaid
 graph TD;
@@ -7,22 +7,16 @@ graph TD;
     B -->|Fetches Data via| C["API Layer"]
     C -->|Calls| D["TMDB API"]
     C -->|Calls| E["Wikidata API"]
-    C -->|Uses| F["OpenAPI-Fetch"]
-    F -->|Uses| N["Redis Middleware"]
-    N -->|Caches Responses| D
-    N -->|Caches Responses| E
-    N -->|Stores Data In| O["Upstash Redis"]
-    D -->|Respects| M["Cache-Control Headers"]
-    E -->|Uses| P["Static TTL (7 days)"]
+    C -->|Uses| F["hey-api generated clients"]
     B -->|Runs on| H["Vercel (CDN + Edge Functions)"]
     B -->|Manages State| I["TanStack Query"]
 ```
 
 ---
 
-## **Overview**
+## Overview
 
-`popcorn.fyi` is a read-only, server-rendered web app built with TanStack Start. It uses a thin API layer to fetch data from TMDB and Wikidata, with Redis-based server-side caching applied to both APIs. Client-side state is managed by TanStack Query, and all frontend UI is composed from `tailwindcss` and `daisyui`. The app is deployed via Vercel, with CI/CD powered by GitHub Actions.
+`popcorn.fyi` is a read-only, server-rendered web app built with TanStack Start. It uses a thin API layer to fetch data from TMDB and Wikidata using **hey-api**-generated OpenAPI clients. Client-side state is managed by TanStack Query, and all frontend UI is composed from `tailwindcss` and `daisyui`. The app is deployed via Vercel, with CI/CD powered by GitHub Actions.
 
 ---
 
@@ -30,33 +24,20 @@ graph TD;
 
 1. **Frontend:** Built with **TanStack Start**, **TailwindCSS**, and **DaisyUI**.
 2. **API Layer:** Unified functions for fetching data from **TMDB** and **Wikidata**.
-3. **HTTP Client:** **OpenAPI-Fetch** with custom Redis caching middleware for both **TMDB** and **Wikidata**.
+3. **HTTP Client:** **@hey-api/openapi-ts** clients (via **@hey-api/vite-plugin**), typed from each API’s OpenAPI spec.
 4. **State Management:**
    - **TanStack Query** for client-side state and caching
    - Handles query deduplication and revalidation on the client
 
-5. **Server-Side Caching:**
-   - Redis (Upstash) is used to cache both **TMDB** and **Wikidata** responses
-   - Different caching strategies per API based on data characteristics
-
-6. **CI/CD:** Handled via **GitHub Actions** with deployment on **Vercel**.
-7. **Testing:** Comprehensive coverage using **Vitest** (unit), **React Testing Library**, and **Playwright** (E2E).
+5. **CI/CD:** Handled via **GitHub Actions** with deployment on **Vercel**.
+6. **Testing:** Comprehensive coverage using **Vitest** (unit), **React Testing Library**, and **Playwright** (E2E).
 
 ---
 
 ## Caching Strategy
 
-### Two-Layer Caching:
+### Client-side (TanStack Query)
 
-1. **Client-Side (TanStack Query):**
-   - `staleTime: 5 minutes` – Prevents unnecessary refetches
-   - `refetchOnWindowFocus: false` – Reduces API calls
-   - Designed for smooth and responsive user experience
-
-2. **Server-Side (Redis via API Functions):**
-   - **TMDB** HTTP responses cached using Redis
-     - Respects `cache-control` headers (e.g., `max-age=21092` → ~6 hours)
-     - Falls back to 1-hour TTL if headers are missing
-   - **Wikidata** HTTP responses cached using Redis
-     - Static 7-day TTL for stable metadata (primarily Wikipedia URLs)
-     - Long cache duration appropriate for infrequently-changing enhancement data
+- `staleTime: 5 minutes` – Prevents unnecessary refetches
+- `refetchOnWindowFocus: false` – Reduces API calls
+- Designed for smooth and responsive user experience

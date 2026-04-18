@@ -1,4 +1,6 @@
 import { site } from "@/config/site";
+import { orEmpty } from "@/lib/array";
+import { hasId } from "@/lib/predicates";
 
 import { Prose } from "../shared/prose";
 import { CastList } from "./cast-list";
@@ -8,12 +10,12 @@ interface MediaCreditsProps {
   credits: {
     cast?: {
       character?: string;
-      id: number;
+      id?: number;
       name?: string;
       profile_path?: string;
     }[];
     crew?: {
-      id: number;
+      id?: number;
       job?: string;
       name?: string;
       profile_path?: string;
@@ -21,9 +23,10 @@ interface MediaCreditsProps {
   };
 }
 
-export const MediaCredits = ({
-  credits: { cast = [], crew = [] },
-}: MediaCreditsProps) => {
+export const MediaCredits = ({ credits }: MediaCreditsProps) => {
+  const cast = orEmpty(credits.cast).filter(hasId);
+  const crew = orEmpty(credits.crew).filter(hasId);
+
   return (
     <div className="flex w-full flex-col gap-4">
       <Prose>

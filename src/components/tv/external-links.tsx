@@ -1,6 +1,6 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { tvExternalOptions } from "@/api/tv/details.external";
+import { tvExternalOptions } from "@/data/tv/details.external";
 
 interface WikipediaButtonProps {
   id: number;

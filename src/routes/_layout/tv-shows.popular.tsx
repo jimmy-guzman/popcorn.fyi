@@ -1,10 +1,12 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { tvPopularOptions } from "@/api/tv/popular.list";
 import { ListPagination } from "@/components/shared/list-pagination";
 import { TVShowList } from "@/components/tv/tv-show-list";
 import { site } from "@/config/site";
+import { tvPopularOptions } from "@/data/tv/popular.list";
+import { orEmpty } from "@/lib/array";
+import { hasId } from "@/lib/predicates";
 import { seo } from "@/lib/seo";
 import { PaginationSchema } from "@/schemas/pagination";
 
@@ -33,9 +35,11 @@ function RouteComponent() {
       <TVShowList
         description={site.pages.popular.tvShows.description}
         title={site.pages.popular.tvShows.title}
-        tvShows={tvShows.results ?? []}
+        tvShows={orEmpty(tvShows.results).filter(hasId)}
       />
-      <ListPagination page={tvShows.page} totalPages={tvShows.total_pages} />
+      {tvShows.page && tvShows.total_pages ? (
+        <ListPagination page={tvShows.page} totalPages={tvShows.total_pages} />
+      ) : null}
     </div>
   );
 }

@@ -14,11 +14,11 @@ interface PersonDetailsProps {
   person: {
     biography?: string;
     birthday?: string;
-    id: number;
+    id?: number;
     known_for_department?: string;
     name?: string;
     place_of_birth?: string;
-    popularity: number;
+    popularity?: number;
     profile_path?: string;
   };
 }
@@ -63,11 +63,13 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
               )}
             </Prose>
             <div className="flex justify-center gap-2 md:justify-start">
-              <Suspense
-                fallback={<div className="h-10 w-10 dsy-skeleton md:w-32" />}
-              >
-                <WikipediaButton id={person.id} />
-              </Suspense>
+              {person.id ? (
+                <Suspense
+                  fallback={<div className="h-10 w-10 dsy-skeleton md:w-32" />}
+                >
+                  <WikipediaButton id={person.id} />
+                </Suspense>
+              ) : null}
               {person.name ? (
                 <ShareButton title={person.name} url={`/people/${person.id}`} />
               ) : null}
@@ -75,29 +77,31 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
           </div>
         </div>
       </div>
-      <div className="dsy-tabs-box dsy-tabs w-full md:w-auto" role="tablist">
-        <Link
-          activeOptions={{ exact: true }}
-          activeProps={{ className: "dsy-tab-active" }}
-          className="dsy-tab"
-          hash="known-for"
-          params={{ id: person.id }}
-          role="tab"
-          to="/people/$id"
-        >
-          Known For
-        </Link>
-        <Link
-          activeProps={{ className: "dsy-tab-active" }}
-          className="dsy-tab"
-          hash="credits"
-          params={{ id: person.id }}
-          role="tab"
-          to="/people/$id/credits"
-        >
-          Credits
-        </Link>
-      </div>
+      {person.id ? (
+        <div className="dsy-tabs-box dsy-tabs w-full md:w-auto" role="tablist">
+          <Link
+            activeOptions={{ exact: true }}
+            activeProps={{ className: "dsy-tab-active" }}
+            className="dsy-tab"
+            hash="known-for"
+            params={{ id: person.id }}
+            role="tab"
+            to="/people/$id"
+          >
+            Known For
+          </Link>
+          <Link
+            activeProps={{ className: "dsy-tab-active" }}
+            className="dsy-tab"
+            hash="credits"
+            params={{ id: person.id }}
+            role="tab"
+            to="/people/$id/credits"
+          >
+            Credits
+          </Link>
+        </div>
+      ) : null}
       <Outlet />
     </div>
   );

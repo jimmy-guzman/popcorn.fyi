@@ -1,12 +1,13 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { personDetailsOptions } from "@/api/people/details";
-import { personCreditsOptions } from "@/api/people/details.credits";
 import { MovieCard } from "@/components/movie/movie-card";
 import { ListContent } from "@/components/shared/list-content";
 import { Prose } from "@/components/shared/prose";
 import { TVShowCard } from "@/components/tv/tv-show-card";
+import { personDetailsOptions } from "@/data/people/details";
+import { personCreditsOptions } from "@/data/people/details.credits";
+import { hasId } from "@/lib/predicates";
 import { getKnownForHighlights } from "@/lib/tmdb-person";
 
 export const Route = createFileRoute("/_layout/people/$id/")({
@@ -34,7 +35,7 @@ function RouteComponent() {
       </Prose>
 
       <ListContent>
-        {knownForHighlights.map((result) => {
+        {knownForHighlights.filter(hasId).map((result) => {
           if (result.media_type === "movie") {
             return <MovieCard key={result.id} movie={result} />;
           }

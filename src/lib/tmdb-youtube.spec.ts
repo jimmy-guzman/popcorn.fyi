@@ -4,7 +4,6 @@ describe("selectYoutubeTrailer", () => {
   it("should return undefined when site is not YouTube", () => {
     expect(
       selectYoutubeTrailer({
-        id: 1,
         results: [{ official: true, site: "NotYouTube" }],
       }),
     ).toBeUndefined();
@@ -13,7 +12,6 @@ describe("selectYoutubeTrailer", () => {
   it("should return undefined when type is not Trailer", () => {
     expect(
       selectYoutubeTrailer({
-        id: 1,
         results: [{ official: true, site: "YouTube", type: "Featurette" }],
       }),
     ).toBeUndefined();
@@ -22,7 +20,6 @@ describe("selectYoutubeTrailer", () => {
   it("should return official trailer first", () => {
     expect(
       selectYoutubeTrailer({
-        id: 1,
         results: [
           {
             name: "Not Official",
@@ -49,7 +46,6 @@ describe("selectYoutubeTrailer", () => {
   it("should return trailer when no official", () => {
     expect(
       selectYoutubeTrailer({
-        id: 1,
         results: [
           {
             name: "Not Official",
@@ -76,7 +72,6 @@ describe("selectYoutubeTrailer", () => {
   it("should return trailer", () => {
     expect(
       selectYoutubeTrailer({
-        id: 1,
         results: [{ official: true, site: "YouTube", type: "Trailer" }],
       }),
     ).toStrictEqual({
