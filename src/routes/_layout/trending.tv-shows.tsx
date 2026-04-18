@@ -1,9 +1,11 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { trendingTVOptions } from "@/api/tv/trending.list";
 import { TVShowList } from "@/components/tv/tv-show-list";
 import { site } from "@/config/site";
+import { trendingTVOptions } from "@/data/tv/trending.list";
+import { orEmpty } from "@/lib/array";
+import { hasId } from "@/lib/predicates";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/trending/tv-shows")({
@@ -27,7 +29,7 @@ function RouteComponent() {
     <TVShowList
       description={site.pages.trending.tvShows.description}
       title={site.pages.trending.tvShows.title}
-      tvShows={tvShows.results ?? []}
+      tvShows={orEmpty(tvShows.results).filter(hasId)}
     />
   );
 }

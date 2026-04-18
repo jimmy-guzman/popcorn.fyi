@@ -1,10 +1,11 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { movieSimilarOptions } from "@/api/movie/details.similar";
 import { MovieCard } from "@/components/movie/movie-card";
 import { ListContent } from "@/components/shared/list-content";
 import { Prose } from "@/components/shared/prose";
+import { movieSimilarOptions } from "@/data/movie/details.similar";
+import { hasId } from "@/lib/predicates";
 
 export const Route = createFileRoute("/_layout/movies/$id/similar")({
   component: RouteComponent,
@@ -23,7 +24,7 @@ function RouteComponent() {
         <h2>Similar</h2>
       </Prose>
       <ListContent>
-        {similar.results?.map((movie) => {
+        {similar.results?.filter(hasId).map((movie) => {
           return <MovieCard key={movie.id} movie={movie} />;
         })}
       </ListContent>

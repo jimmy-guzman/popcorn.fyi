@@ -58,3 +58,7 @@ export const unique = <T>(array: T[], key: keyof T): T[] => {
 
   return result;
 };
+
+export const orEmpty = <T>(items: null | T[] | undefined): T[] => {
+  return items ?? [];
+};

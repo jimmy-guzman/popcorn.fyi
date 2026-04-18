@@ -1,13 +1,14 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-import { regionsOptions } from "@/api/regions.list";
-import { DiscoverSchema } from "@/api/tv/discover.list";
-import { tvGenresOptions } from "@/api/tv/genres.list";
-import { tvProvidersOptions } from "@/api/tv/providers.list";
 import { Prose } from "@/components/shared/prose";
 import { TvDiscoverFilters } from "@/components/tv/discover-filters";
 import { site } from "@/config/site";
+import { regionsOptions } from "@/data/regions.list";
+import { DiscoverSchema } from "@/data/tv/discover.list";
+import { tvGenresOptions } from "@/data/tv/genres.list";
+import { tvProvidersOptions } from "@/data/tv/providers.list";
+import { hasId } from "@/lib/predicates";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/_layout/tv-shows/discover/_layout")({
@@ -42,7 +43,7 @@ function RouteComponent() {
         <p>{site.pages.discover.tvShows.description}</p>
       </Prose>
       <TvDiscoverFilters
-        genres={genres}
+        genres={genres.filter(hasId)}
         providers={providers}
         regions={regions}
       />

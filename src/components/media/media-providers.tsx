@@ -1,9 +1,10 @@
+import { hasKey } from "@/lib/predicates";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
 interface MediaProvidersProps {
   providers: {
     logo_path?: string;
-    provider_id: number;
+    provider_id?: number;
     provider_name?: string;
   }[];
   title: "ads" | "buy" | "rent" | "stream";
@@ -20,7 +21,7 @@ export const MediaProviders = ({ providers, title }: MediaProvidersProps) => {
             </tr>
           </thead>
           <tbody>
-            {providers.map((provider) => {
+            {providers.filter(hasKey("provider_id")).map((provider) => {
               return provider.logo_path ? (
                 <tr key={provider.provider_id}>
                   <td>

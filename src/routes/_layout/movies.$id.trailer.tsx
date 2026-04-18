@@ -1,8 +1,8 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { movieVideosOptions } from "@/api/movie/details.videos";
 import { MediaTrailerDialog } from "@/components/media/media-trailer-dialog";
+import { movieVideosOptions } from "@/data/movie/details.videos";
 import { selectYoutubeTrailer } from "@/lib/tmdb-youtube";
 
 export const Route = createFileRoute("/_layout/movies/$id/trailer")({

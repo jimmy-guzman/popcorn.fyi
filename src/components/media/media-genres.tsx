@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 interface MediaGenresProps {
   /** List of genres with their IDs and optional names */
-  genres?: { id: number; name?: string }[];
+  genres: { id: number; name?: string }[];
   /** Type of media: "movies" or "tv-shows" */
   media: "movies" | "tv-shows";
 }
@@ -18,7 +18,7 @@ interface MediaGenresProps {
  *
  * @returns A list of badges linking to genre-specific discover pages
  */
-export const MediaGenres = ({ genres = [], media }: MediaGenresProps) => {
+export const MediaGenres = ({ genres, media }: MediaGenresProps) => {
   return genres.map((genre) => {
     return (
       <Link

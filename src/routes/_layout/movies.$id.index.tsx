@@ -1,9 +1,9 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 
-import { movieDetailsOptions } from "@/api/movie/details";
 import { MediaOverviewList } from "@/components/media/media-overview-list";
 import { Prose } from "@/components/shared/prose";
+import { movieDetailsOptions } from "@/data/movie/details";
 import { currency } from "@/lib/currency";
 import { date } from "@/lib/date";
 import { time } from "@/lib/time";
@@ -30,15 +30,15 @@ function RouteComponent() {
     },
     {
       title: "Runtime",
-      value: time(movie.runtime * ONE_MINUTE_MS),
+      value: movie.runtime ? time(movie.runtime * ONE_MINUTE_MS) : "N/A",
     },
     {
       title: "Budget",
-      value: currency(movie.budget),
+      value: movie.budget ? currency(movie.budget) : "N/A",
     },
     {
       title: "Revenue",
-      value: currency(movie.revenue),
+      value: movie.revenue ? currency(movie.revenue) : "N/A",
     },
     {
       title: "Language",

@@ -7,8 +7,6 @@ export const env = createEnv({
   emptyStringAsUndefined: true,
   runtimeEnv: process.env,
   server: {
-    KV_REST_API_TOKEN: v.string(),
-    KV_REST_API_URL: v.string(),
     TMDB_API_TOKEN: v.string(),
   },
   skipValidation: import.meta.env.MODE === "test",

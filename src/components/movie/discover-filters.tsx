@@ -3,7 +3,7 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
 
-import { DiscoverSchema } from "@/api/movie/discover.list";
+import { DiscoverSchema } from "@/data/movie/discover.list";
 
 const sortOptions = [
   { label: "Original Title (A-Z)", value: "original_title.asc" },
@@ -29,9 +29,9 @@ interface MovieDiscoverFiltersOptions {
   }[];
   providers: {
     display_priorities?: Record<string, number> | undefined;
-    display_priority: number;
+    display_priority?: number;
     logo_path?: string | undefined;
-    provider_id: number;
+    provider_id?: number;
     provider_name?: string | undefined;
   }[];
   regions: {

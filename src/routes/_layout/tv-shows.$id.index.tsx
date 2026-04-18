@@ -2,10 +2,12 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Fragment } from "react/jsx-runtime";
 
-import { tvDetailsOptions } from "@/api/tv/details";
 import { MediaOverviewList } from "@/components/media/media-overview-list";
 import { Prose } from "@/components/shared/prose";
+import { tvDetailsOptions } from "@/data/tv/details";
+import { orEmpty } from "@/lib/array";
 import { date } from "@/lib/date";
+import { hasId } from "@/lib/predicates";
 
 export const Route = createFileRoute("/_layout/tv-shows/$id/")({
   component: RouteComponent,
@@ -15,25 +17,28 @@ function RouteComponent() {
   const { id } = Route.useParams();
   const { data: tvShow } = useSuspenseQuery(tvDetailsOptions(id));
 
+  const createdBy = orEmpty(tvShow.created_by).filter(hasId);
+
   const overview = [
     {
       title: "Created By",
-      value: tvShow.created_by?.length
-        ? tvShow.created_by.map((creator, index, array) => {
-            return (
-              <Fragment key={creator.id}>
-                <Link
-                  className="dsy-link"
-                  params={{ id: creator.id }}
-                  to="/people/$id"
-                >
-                  {creator.name}
-                </Link>
-                {array.length - 1 === index ? " " : ", "}
-              </Fragment>
-            );
-          })
-        : "N/A",
+      value:
+        createdBy.length > 0
+          ? createdBy.map((creator, index, array) => {
+              return (
+                <Fragment key={creator.id}>
+                  <Link
+                    className="dsy-link"
+                    params={{ id: creator.id }}
+                    to="/people/$id"
+                  >
+                    {creator.name}
+                  </Link>
+                  {array.length - 1 === index ? " " : ", "}
+                </Fragment>
+              );
+            })
+          : "N/A",
     },
     {
       title: "Original Name",

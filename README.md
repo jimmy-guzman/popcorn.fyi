@@ -32,13 +32,12 @@
 
 - **Framework:** [React](https://react.dev) + [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com) + [daisyUI](https://daisyui.com)
-- **Data Layer:** [TanStack Query](https://tanstack.com/query/latest) + [openapi-fetch](https://www.npmjs.com/package/openapi-fetch)
+- **Data Layer:** [TanStack Query](https://tanstack.com/query/latest) + [hey-api](https://heyapi.dev) OpenAPI clients
 - **Testing:** [Vitest](https://vitest.dev), [React Testing Library](https://testing-library.com) and [Playwright](https://playwright.dev)
 
 ### **Backend**
 
 - **APIs:** [TMDB](https://developer.themoviedb.org/reference/intro/getting-started), [Wikidata](https://www.wikidata.org/w/api.php)
-- **Caching:** [Upstash Redis](https://upstash.com)
 
 ### **Dev & Infra**
 
@@ -66,11 +65,9 @@ pnpm dev
 
 ### 🔐 Environment Variables
 
-| Variable            | Description                                             |
-| ------------------- | ------------------------------------------------------- |
-| `TMDB_API_TOKEN`    | [TMDB API Key](https://www.themoviedb.org/settings/api) |
-| `KV_REST_API_URL`   | [Upstash Redis URL](https://upstash.com/docs/redis)     |
-| `KV_REST_API_TOKEN` | [Upstash Redis Token](https://upstash.com/docs/redis)   |
+| Variable         | Description                                             |
+| ---------------- | ------------------------------------------------------- |
+| `TMDB_API_TOKEN` | [TMDB API Key](https://www.themoviedb.org/settings/api) |
 
 ---
 

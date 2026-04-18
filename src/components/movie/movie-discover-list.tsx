@@ -7,13 +7,13 @@ interface Movie {
   poster_path?: string;
   release_date?: string;
   title?: string;
-  vote_average: number;
+  vote_average?: number;
 }
 
 interface MovieDiscoverListOptions {
   movies: Movie[];
-  page: number;
-  totalPages: number;
+  page?: number;
+  totalPages?: number;
 }
 
 export const MovieDiscoverList = ({
@@ -28,7 +28,9 @@ export const MovieDiscoverList = ({
           return <MovieCard key={movie.id} movie={movie} />;
         })}
       </ListContent>
-      {totalPages > 1 && <ListPagination page={page} totalPages={totalPages} />}
+      {page && totalPages && totalPages > 1 ? (
+        <ListPagination page={page} totalPages={totalPages} />
+      ) : null}
     </div>
   ) : (
     <div className="dsy-alert" role="alert">

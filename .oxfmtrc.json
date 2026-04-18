@@ -11,5 +11,10 @@
   "singleQuote": false,
   "trailingComma": "all",
   "experimentalSortPackageJson": {},
-  "ignorePatterns": ["**/pnpm-lock.yaml", "CHANGELOG.md", "*.gen.*"]
+  "ignorePatterns": [
+    "**/pnpm-lock.yaml",
+    "CHANGELOG.md",
+    "*.gen.*",
+    "**/gen/**/index.ts"
+  ]
 }

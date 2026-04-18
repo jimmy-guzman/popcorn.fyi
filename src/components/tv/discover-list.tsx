@@ -3,8 +3,8 @@ import { ListPagination } from "../shared/list-pagination";
 import { TVShowCard } from "./tv-show-card";
 
 interface TvDiscoverListProps {
-  page: number;
-  totalPages: number;
+  page?: number;
+  totalPages?: number;
   tv: {
     first_air_date?: string;
     id: number;
@@ -27,7 +27,9 @@ export const TvDiscoverList = ({
           return <TVShowCard key={tvSeries.id} tvShow={tvSeries} />;
         })}
       </ListContent>
-      {totalPages > 1 && <ListPagination page={page} totalPages={totalPages} />}
+      {page && totalPages && totalPages > 1 ? (
+        <ListPagination page={page} totalPages={totalPages} />
+      ) : null}
     </div>
   ) : (
     <div className="dsy-alert" role="alert">

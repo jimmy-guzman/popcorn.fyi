@@ -1,6 +1,8 @@
 import { Link, Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
 
+import { orEmpty } from "@/lib/array";
+import { hasId } from "@/lib/predicates";
 import { quote } from "@/lib/string";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
@@ -15,18 +17,20 @@ import { TvShowDetailsTabs } from "./tv-show-details-tabs";
 interface TVShowDetailsProps {
   tvShow: {
     backdrop_path?: string;
-    genres?: { id: number; name?: string }[];
-    id: number;
+    genres?: { id?: number; name?: string }[];
+    id?: number;
     name?: string;
     overview?: string;
     poster_path?: string;
     status?: string;
     tagline?: string;
-    vote_average: number;
+    vote_average?: number;
   };
 }
 
 export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
+  const genres = orEmpty(tvShow.genres).filter(hasId);
+
   return (
     <div className="flex min-h-screen flex-col items-center gap-4">
       <div className="hidden md:block">
@@ -51,7 +55,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
             <div className="flex flex-wrap gap-2 xl:flex-nowrap xl:justify-end">
               <MediaRating average={tvShow.vote_average} />
               <MediaStatus status={tvShow.status} />
-              <MediaGenres genres={tvShow.genres} media="tv-shows" />
+              <MediaGenres genres={genres} media="tv-shows" />
             </div>
             <Prose size="lg">
               <h1>{tvShow.name}</h1>
@@ -59,17 +63,21 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
               <p>{tvShow.overview}</p>
             </Prose>
             <div className="flex justify-center gap-2 md:justify-start">
-              <Link
-                className="dsy-btn dsy-btn-neutral"
-                params={{ id: tvShow.id }}
-                to="/tv-shows/$id/trailer"
-              >
-                <span className="sr-only md:not-sr-only">Watch Trailer</span>{" "}
-                <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
-              </Link>
-              <Suspense fallback={<ExternalLinksSkeleton />}>
-                <ExternalLinks id={tvShow.id} />
-              </Suspense>
+              {tvShow.id ? (
+                <Link
+                  className="dsy-btn dsy-btn-neutral"
+                  params={{ id: tvShow.id }}
+                  to="/tv-shows/$id/trailer"
+                >
+                  <span className="sr-only md:not-sr-only">Watch Trailer</span>{" "}
+                  <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
+                </Link>
+              ) : null}
+              {tvShow.id ? (
+                <Suspense fallback={<ExternalLinksSkeleton />}>
+                  <ExternalLinks id={tvShow.id} />
+                </Suspense>
+              ) : null}
               {tvShow.name ? (
                 <ShareButton
                   title={tvShow.name}
@@ -80,7 +88,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
           </div>
         </div>
       </div>
-      <TvShowDetailsTabs id={tvShow.id} />
+      {tvShow.id ? <TvShowDetailsTabs id={tvShow.id} /> : null}
       <Outlet />
     </div>
   );

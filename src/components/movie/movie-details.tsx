@@ -1,6 +1,8 @@
 import { Link, Outlet } from "@tanstack/react-router";
 import { Suspense } from "react";
 
+import { orEmpty } from "@/lib/array";
+import { hasId } from "@/lib/predicates";
 import { quote } from "@/lib/string";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
@@ -15,18 +17,20 @@ import { MovieDetailsTabs } from "./movie-details-tabs";
 interface MovieDetailsProps {
   movie: {
     backdrop_path?: string;
-    genres?: { id: number; name?: string }[];
-    id: number;
+    genres?: { id?: number; name?: string }[];
+    id?: number;
     overview?: string;
     poster_path?: string;
     status?: string;
     tagline?: string;
     title?: string;
-    vote_average: number;
+    vote_average?: number;
   };
 }
 
 export const MovieDetails = ({ movie }: MovieDetailsProps) => {
+  const genres = orEmpty(movie.genres).filter(hasId);
+
   return (
     <div className="flex min-h-screen flex-col items-center gap-4">
       <div className="hidden md:block">
@@ -51,7 +55,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
             <div className="flex flex-wrap gap-2 xl:flex-nowrap xl:justify-end">
               <MediaRating average={movie.vote_average} />
               <MediaStatus status={movie.status} />
-              <MediaGenres genres={movie.genres} media="movies" />
+              <MediaGenres genres={genres} media="movies" />
             </div>
             <Prose size="lg">
               <h1>{movie.title}</h1>
@@ -59,17 +63,21 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
               <p>{movie.overview}</p>
             </Prose>
             <div className="flex justify-center gap-2 md:justify-start">
-              <Link
-                className="dsy-btn dsy-btn-neutral"
-                params={{ id: movie.id }}
-                to="/movies/$id/trailer"
-              >
-                <span className="sr-only md:not-sr-only">Trailer</span>{" "}
-                <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
-              </Link>
-              <Suspense fallback={<ExternalLinksSkeleton />}>
-                <ExternalLinks id={movie.id} />
-              </Suspense>
+              {movie.id ? (
+                <Link
+                  className="dsy-btn dsy-btn-neutral"
+                  params={{ id: movie.id }}
+                  to="/movies/$id/trailer"
+                >
+                  <span className="sr-only md:not-sr-only">Trailer</span>{" "}
+                  <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
+                </Link>
+              ) : null}
+              {movie.id ? (
+                <Suspense fallback={<ExternalLinksSkeleton />}>
+                  <ExternalLinks id={movie.id} />
+                </Suspense>
+              ) : null}
               {movie.title ? (
                 <ShareButton title={movie.title} url={`/movies/${movie.id}`} />
               ) : null}
@@ -77,7 +85,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           </div>
         </div>
       </div>
-      <MovieDetailsTabs id={movie.id} />
+      {movie.id ? <MovieDetailsTabs id={movie.id} /> : null}
       <Outlet />
     </div>
   );

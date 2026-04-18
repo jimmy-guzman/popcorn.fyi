@@ -11,9 +11,6 @@ onlyBuiltDependencies:
   - oxc-resolver
   - unrs-resolver
 
-patchedDependencies:
-  openapi-fetch@0.14.0: patches/openapi-fetch@0.14.0.patch
-
 savePrefix: ""
 
 overrides:

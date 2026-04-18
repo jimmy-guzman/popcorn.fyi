@@ -1,6 +1,6 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { personExternalOptions } from "@/api/people/details.external";
+import { personExternalOptions } from "@/data/people/details.external";
 
 interface WikipediaButtonProps {
   id: number;

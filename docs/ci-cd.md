@@ -1,4 +1,4 @@
-## **CI/CD Design**
+# CI/CD
 
 ```mermaid
 flowchart LR
@@ -25,7 +25,7 @@ flowchart LR
 
 ---
 
-## **Overview**
+## Overview
 
 Popcorn.fyi uses **GitHub Actions** to manage continuous integration workflows and **Vercel** for automatic deployments. The pipeline is designed to catch issues early, automate routine tasks like dependency updates and PR labeling, and deploy only after all checks pass.
 

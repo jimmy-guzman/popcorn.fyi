@@ -1,9 +1,0 @@
-apis:
-  tmdb@v3:
-    root: https://developer.themoviedb.org/openapi/tmdb-api.json
-    x-openapi-ts:
-      output: ./src/api/clients/tmdb.gen.d.ts
-  wikidata@v1:
-    root: https://www.wikidata.org/w/rest.php/wikibase/v1/openapi.json
-    x-openapi-ts:
-      output: ./src/api/clients/wikidata.gen.d.ts
