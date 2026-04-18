@@ -1,6 +1,5 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["SERVER_PRESET"],
   "globalPassThroughEnv": [
     "TMDB_API_TOKEN",
     "KV_REST_API_TOKEN",
