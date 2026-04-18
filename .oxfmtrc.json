@@ -2,7 +2,7 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "arrowParens": "always",
   "jsxSingleQuote": false,
-  "experimentalTailwindcss": {
+  "sortTailwindcss": {
     "stylesheet": "./src/styles/global.css"
   },
   "printWidth": 80,
