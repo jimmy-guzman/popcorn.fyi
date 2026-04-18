@@ -2,6 +2,8 @@ import type { CellContext } from "@tanstack/react-table";
 
 import { Link } from "@tanstack/react-router";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { cn } from "@/lib/cn";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
 export const TitleNameTableCell = ({
@@ -12,21 +14,23 @@ export const TitleNameTableCell = ({
   string | undefined
 >) => {
   const credit = row.original;
+  const title = getValue();
 
   return (
     <Link
-      className="flex dsy-link items-center gap-3 dsy-link-hover"
+      className={cn(
+        "text-primary flex items-center gap-3 underline-offset-4 hover:underline",
+      )}
       params={{ id: credit.id }}
       to={credit.media_type === "movie" ? "/movies/$id" : "/tv-shows/$id"}
     >
       {credit.poster_path ? (
-        <div className="dsy-avatar hidden md:block">
-          <div className="h-12 w-12 rounded">
-            <img alt={getValue()} src={tmdbImageUrl(credit.poster_path)} />
-          </div>
-        </div>
+        <Avatar className="hidden size-12 rounded md:inline-flex">
+          <AvatarImage alt={title} src={tmdbImageUrl(credit.poster_path)} />
+          <AvatarFallback />
+        </Avatar>
       ) : null}
-      {getValue()}
+      {title}
     </Link>
   );
 };

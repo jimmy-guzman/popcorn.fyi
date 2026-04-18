@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
+import { Card, CardContent } from "@/components/ui/card";
 import { year } from "@/lib/date";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
@@ -20,8 +21,12 @@ interface TVShowCardProps {
 
 export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
   return (
-    <Link params={{ id: tvShow.id }} to="/tv-shows/$id">
-      <div className="md:dsy-card-normal dsy-card h-full shadow-xl dsy-card-sm">
+    <Link
+      aria-label={tvShow.name}
+      params={{ id: tvShow.id }}
+      to="/tv-shows/$id"
+    >
+      <Card className="h-full shadow-lg" size="sm">
         {tvShow.poster_path ? (
           <figure>
             <img
@@ -32,15 +37,15 @@ export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
         ) : (
           <CardImageFallback />
         )}
-        <div className="dsy-card-body">
+        <CardContent className="flex flex-col gap-2 pt-0">
           <div className="flex justify-end gap-2">
             <MediaRating average={tvShow.vote_average} />
             <MediaType mediaType={tvShow.media_type} />
           </div>
-          <h2 className="dsy-card-title">{tvShow.name}</h2>
+          <h2 className="font-heading text-base font-medium">{tvShow.name}</h2>
           {tvShow.first_air_date ? <p>{year(tvShow.first_air_date)}</p> : "N/A"}
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </Link>
   );
 };

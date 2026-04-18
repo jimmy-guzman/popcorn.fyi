@@ -2,18 +2,27 @@ import { Link } from "@tanstack/react-router";
 
 import type { SingleNavItem } from "@/config/nav";
 
-import { cn } from "@/lib/cn";
+import { Button } from "@/components/ui/button";
 
 export const SiteNavMenuItemLink = ({ item }: { item: SingleNavItem }) => {
+  const Icon = item.icon;
+
   return (
-    <Link
-      activeProps={{
-        className: "dsy-menu-active",
-      }}
-      className="text-nowrap"
-      to={item.to}
+    <Button
+      className="h-auto min-w-0 justify-start text-nowrap"
+      nativeButton={false}
+      render={
+        <Link
+          activeProps={{
+            className: "bg-accent text-accent-foreground",
+          }}
+          to={item.to}
+        />
+      }
+      size="default"
+      variant="ghost"
     >
-      <span className={cn(item.icon, "h-5 w-5")} /> {item.title}
-    </Link>
+      <Icon aria-hidden className="size-5 shrink-0" /> {item.title}
+    </Button>
   );
 };

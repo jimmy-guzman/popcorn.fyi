@@ -1,6 +1,12 @@
 import { Link } from "@tanstack/react-router";
 
+import { cn } from "@/lib/cn";
 import { composePageNumbers } from "@/lib/pagination";
+import {
+  paginationEllipsisClassName,
+  paginationLinkActiveClassName,
+  paginationLinkClassName,
+} from "@/lib/styles/route-ui";
 
 const MAX_TOTAL_PAGES = 500;
 
@@ -21,57 +27,58 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
       className="flex justify-center"
       role="navigation"
     >
-      <div className="dsy-join">
+      <div className="inline-flex overflow-hidden rounded border border-border shadow-sm">
         {page !== 1 && (
           <Link
             aria-label="Previous Page"
-            className="dsy-btn dsy-join-item hidden md:flex"
+            className={cn(paginationLinkClassName, "hidden md:flex")}
             search={(prev) => ({
               ...prev,
               page: (prev.page ?? 1) - 1,
             })}
             to="."
           >
-            <span className="icon-[lucide--chevron-left] h-4 w-4" />
+            <span className="icon-[lucide--chevron-left] size-4" />
           </Link>
         )}
-        {pageNumbers.map((page) => {
-          return page === "ellipsis-before" || page === "ellipsis-after" ? (
+        {pageNumbers.map((pageNum) => {
+          return pageNum === "ellipsis-before" ||
+            pageNum === "ellipsis-after" ? (
             <button
               aria-label="Ellipsis"
-              className="dsy-btn dsy-join-item hidden md:block"
+              className={cn(paginationEllipsisClassName, "hidden md:block")}
               disabled
-              key={page}
+              key={pageNum}
               type="button"
             >
-              <span className="icon-[lucide--ellipsis] h-4 w-4" />
+              <span className="icon-[lucide--ellipsis] size-4" />
             </button>
           ) : (
             <Link
-              activeProps={{ className: "dsy-btn-active" }}
-              className="dsy-btn dsy-join-item"
-              key={page}
+              activeProps={{ className: paginationLinkActiveClassName }}
+              className={paginationLinkClassName}
+              key={pageNum}
               search={(prev) => ({
                 ...prev,
-                page,
+                page: pageNum,
               })}
               to="."
             >
-              {page}
+              {pageNum}
             </Link>
           );
         })}
         {totalPages !== page && (
           <Link
             aria-label="Next Page"
-            className="dsy-btn dsy-join-item hidden md:flex"
+            className={cn(paginationLinkClassName, "hidden md:flex")}
             search={(prev) => ({
               ...prev,
               page: (prev.page ?? 1) + 1,
             })}
             to="."
           >
-            <span className="icon-[lucide--chevron-right] h-4 w-4" />
+            <span className="icon-[lucide--chevron-right] size-4" />
           </Link>
         )}
       </div>

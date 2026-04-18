@@ -1,7 +1,9 @@
+import { Badge } from "@/components/ui/badge";
+
 export const MediaType = ({ mediaType }: { mediaType?: string }) => {
   return mediaType ? (
-    <span className="dsy-badge dsy-badge-outline text-nowrap capitalize">
+    <Badge className="text-nowrap capitalize" variant="secondary">
       {mediaType === "tv" ? "TV Show" : mediaType}
-    </span>
+    </Badge>
   ) : null;
 };

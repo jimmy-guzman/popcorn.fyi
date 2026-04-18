@@ -28,7 +28,7 @@ function RouteComponent() {
               return (
                 <Fragment key={creator.id}>
                   <Link
-                    className="dsy-link"
+                    className="text-primary underline-offset-4 hover:underline"
                     params={{ id: creator.id }}
                     to="/people/$id"
                   >

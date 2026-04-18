@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
+import { ArrowRightIcon } from "lucide-react";
 
-import { tmdbImageUrl } from "@/lib/tmdb-images";
+import { Button } from "@/components/ui/button";
 
+import { MediaBackdropStrip } from "../media/media-backdrop-strip";
 import { MediaType } from "../media/media-type";
 
 interface PersonHeroProps {
@@ -16,35 +18,27 @@ interface PersonHeroProps {
 
 export const PersonHero = ({ person }: PersonHeroProps) => {
   return (
-    <div
+    <MediaBackdropStrip
       aria-label={person.name}
-      className="dsy-hero w-full"
+      backdropPath={person.backdrop_path}
       role="img"
-      style={{
-        backgroundImage: person.backdrop_path
-          ? `url(${tmdbImageUrl(person.backdrop_path)})`
-          : undefined,
-      }}
     >
-      <div className="bg-opacity-60 dsy-hero-overlay" />
-      <div className="dsy-hero-content text-center text-neutral-content">
-        <div className="flex flex-col items-center gap-5">
-          <div className="flex w-full justify-end gap-2">
-            <MediaType mediaType={person.media_type} />
-          </div>
-          <h1 className="text-5xl font-bold text-pretty lg:text-7xl">
-            {person.name}
-          </h1>
-          <p>Known for {person.known_for_department}</p>
-          <Link
-            className="dsy-btn dsy-btn-primary"
-            params={{ id: person.id }}
-            to="/tv-shows/$id"
-          >
-            Details <span className="icon-[lucide--arrow-right] h-6 w-6" />
-          </Link>
-        </div>
+      <div className="flex w-full justify-end gap-2">
+        <MediaType mediaType={person.media_type} />
       </div>
-    </div>
+      <h1 className="text-5xl font-bold text-pretty lg:text-7xl">
+        {person.name}
+      </h1>
+      <p>Known for {person.known_for_department}</p>
+      <Button
+        className="gap-2"
+        nativeButton={false}
+        render={
+          <Link params={{ id: person.id }} to="/people/$id">
+            Details <ArrowRightIcon className="size-4" />
+          </Link>
+        }
+      />
+    </MediaBackdropStrip>
   );
 };

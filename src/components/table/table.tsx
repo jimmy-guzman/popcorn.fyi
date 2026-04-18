@@ -15,7 +15,7 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 
-import { cn } from "@/lib/cn";
+import { Table as UITable } from "@/components/ui/table";
 import { fuzzyFilter } from "@/lib/fuzzy-filter";
 
 import { TableGlobalFilter } from "./table-global-filter";
@@ -60,39 +60,37 @@ export const Table = <TData,>({
           setGlobalFilter={setGlobalFilter}
         />
       </div>
-      <div className="overflow-x-auto">
-        <table className={cn("dsy-table", className)}>
-          <thead>
-            {table.getHeaderGroups().map((headerGroup) => {
-              return (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => {
-                    return <TableHeader header={header} key={header.id} />;
-                  })}
-                </tr>
-              );
-            })}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map((row) => {
-              return (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => {
-                    return (
-                      <td key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+      <UITable className={className}>
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => {
+            return (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  return <TableHeader header={header} key={header.id} />;
+                })}
+              </tr>
+            );
+          })}
+        </thead>
+        <tbody>
+          {table.getRowModel().rows.map((row) => {
+            return (
+              <tr key={row.id}>
+                {row.getVisibleCells().map((cell) => {
+                  return (
+                    <td key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </UITable>
     </div>
   );
 };

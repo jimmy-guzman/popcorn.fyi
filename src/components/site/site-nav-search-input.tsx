@@ -2,6 +2,12 @@ import { useMatch, useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+
 const DEBOUNCE_MS = 500;
 
 export const SiteNavSearchInput = () => {
@@ -27,16 +33,20 @@ export const SiteNavSearchInput = () => {
   return (
     <div
       aria-label="Site search"
-      className="w-full lg:w-1/2 xl:w-3/4"
+      className="w-[min(100%,18rem)] shrink md:w-56 lg:w-64"
       role="search"
     >
-      <label
-        aria-label="Search movies and TV shows"
-        className="dsy-input w-full"
-        htmlFor="site-search"
-      >
-        <span className="icon-[lucide--search] h-[1em] opacity-50" />
-        <input
+      <label className="sr-only" htmlFor="site-search">
+        Search movies and TV shows
+      </label>
+      <InputGroup className="w-full">
+        <InputGroupAddon align="inline-start">
+          <span
+            aria-hidden
+            className="icon-[lucide--search] size-4 text-muted-foreground"
+          />
+        </InputGroupAddon>
+        <InputGroupInput
           id="site-search"
           onChange={(event) => {
             setQuery(event.target.value);
@@ -50,7 +60,7 @@ export const SiteNavSearchInput = () => {
           type="search"
           value={query}
         />
-      </label>
+      </InputGroup>
     </div>
   );
 };
