@@ -1,5 +1,10 @@
-import { useEffect, useRef } from "react";
-
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { youtubeVideoUrl } from "@/lib/tmdb-youtube";
 
 interface MediaTrailerDialogProps {
@@ -14,40 +19,25 @@ export const MediaTrailerDialog = ({
   handleClose,
   trailer,
 }: MediaTrailerDialogProps) => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-  useEffect(() => {
-    dialogRef.current?.showModal();
-  }, []);
-
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        handleClose();
-      }
-    };
-
-    globalThis.addEventListener("keydown", handleEsc);
-
-    return () => {
-      globalThis.removeEventListener("keydown", handleEsc);
-    };
-  }, [handleClose]);
-
   return (
-    <dialog
-      className="dsy-modal dsy-modal-bottom sm:dsy-modal-middle"
-      id="my_modal_2"
-      ref={dialogRef}
+    <Dialog
+      defaultOpen
+      onOpenChange={(open) => {
+        if (!open) handleClose();
+      }}
     >
-      <div className="dsy-modal-box max-w-5xl!">
-        <h3 className="text-lg font-bold">{trailer ? trailer.name : "N/A"}</h3>
-        <p className="py-4">Press ESC key or click outside to close.</p>
+      <DialogContent className="max-w-5xl sm:max-w-5xl" showCloseButton>
+        <DialogHeader>
+          <DialogTitle>{trailer ? trailer.name : "N/A"}</DialogTitle>
+          <DialogDescription>
+            Press ESC key or click outside to close.
+          </DialogDescription>
+        </DialogHeader>
         {trailer?.key ? (
           <iframe
             allow="autoplay; encrypted-media"
             allowFullScreen
-            className="aspect-square size-full rounded-md sm:aspect-video"
+            className="aspect-square size-full rounded sm:aspect-video"
             // eslint-disable-next-line react-dom/no-unsafe-iframe-sandbox -- TODO: Remove this line when eslint config is fixed
             sandbox="allow-scripts allow-same-origin allow-presentation"
             src={youtubeVideoUrl(trailer.key, { autoplay: true })}
@@ -56,17 +46,7 @@ export const MediaTrailerDialog = ({
         ) : (
           <p>No trailer found.</p>
         )}
-      </div>
-      <form
-        className="dsy-modal-backdrop"
-        method="dialog"
-        onSubmit={(event) => {
-          event.preventDefault();
-          handleClose();
-        }}
-      >
-        <button type="submit">close</button>
-      </form>
-    </dialog>
+      </DialogContent>
+    </Dialog>
   );
 };

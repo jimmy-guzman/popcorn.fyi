@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
+import { Card, CardContent } from "@/components/ui/card";
 import { year } from "@/lib/date";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
@@ -20,8 +21,8 @@ interface MovieCardProps {
 
 export const MovieCard = ({ movie }: MovieCardProps) => {
   return (
-    <Link params={{ id: movie.id }} to="/movies/$id">
-      <div className="md:dsy-card-normal dsy-card h-full shadow-xl dsy-card-sm">
+    <Link aria-label={movie.title} params={{ id: movie.id }} to="/movies/$id">
+      <Card className="h-full shadow-lg" size="sm">
         {movie.poster_path ? (
           <figure>
             <img
@@ -32,15 +33,15 @@ export const MovieCard = ({ movie }: MovieCardProps) => {
         ) : (
           <CardImageFallback />
         )}
-        <div className="dsy-card-body">
+        <CardContent className="flex flex-col gap-2 pt-0">
           <div className="flex justify-end gap-2">
             <MediaRating average={movie.vote_average} />
             <MediaType mediaType={movie.media_type} />
           </div>
-          <h2 className="dsy-card-title">{movie.title}</h2>
+          <h2 className="font-heading text-base font-medium">{movie.title}</h2>
           {movie.release_date ? <p>{year(movie.release_date)}</p> : "N/A"}
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </Link>
   );
 };

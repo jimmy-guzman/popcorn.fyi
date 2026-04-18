@@ -1,5 +1,8 @@
 import { Link } from "@tanstack/react-router";
 
+import { badgeVariants } from "@/components/ui/badge";
+import { cn } from "@/lib/cn";
+
 interface MediaGenresProps {
   /** List of genres with their IDs and optional names */
   genres: { id: number; name?: string }[];
@@ -22,7 +25,7 @@ export const MediaGenres = ({ genres, media }: MediaGenresProps) => {
   return genres.map((genre) => {
     return (
       <Link
-        className="dsy-badge dsy-badge-neutral"
+        className={cn(badgeVariants({ variant: "secondary" }))}
         key={genre.id}
         search={{ with_genres: genre.id.toString() }}
         to={`/${media}/discover`}

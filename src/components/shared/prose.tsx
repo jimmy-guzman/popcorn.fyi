@@ -10,7 +10,7 @@ interface ProseProps {
 export const Prose = ({ children, size }: ProseProps) => {
   return (
     <article
-      className={cn("dsy-prose prose", {
+      className={cn("prose prose-neutral max-w-none dark:prose-invert", {
         "prose-lg": size === "lg",
         "prose-sm": size === "sm",
       })}

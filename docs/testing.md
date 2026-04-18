@@ -53,9 +53,9 @@ src/
   movie/
     movie-card.tsx
     movie-card.test.tsx
-  tv-show/
-    trending-carousel.tsx
-    trending-carousel.test.tsx
+  site/
+    site-nav.tsx
+    site-nav.spec.tsx
 libs/
   ui/
     button.tsx

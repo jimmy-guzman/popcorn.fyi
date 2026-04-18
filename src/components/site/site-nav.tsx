@@ -1,29 +1,32 @@
 import { Link } from "@tanstack/react-router";
+import { PopcornIcon } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { topNav } from "@/config/nav";
 import { site } from "@/config/site";
 
-import { SiteLogo } from "../icons/site-logo";
-import { SiteNavMenuItem } from "./site-nav-menu-item";
+import { SiteNavDesktop } from "./site-nav-desktop";
 import { SiteNavMobileMenu } from "./site-nav-mobile-menu";
 import { SiteNavSearchInput } from "./site-nav-search-input";
 
 export const SiteNav = () => {
   return (
-    <nav className="dsy-navbar sticky top-0 z-50 w-full bg-base-100">
-      <div className="dsy-navbar-center">
-        <Link className="dsy-btn dsy-btn-ghost" to="/">
-          <SiteLogo className="h-6 w-6" />
-          <span className="ml-2 hidden font-bold xl:block">{site.title}</span>
-        </Link>
-        <ul className="dsy-menu dsy-menu-horizontal hidden gap-1 px-2 xl:flex">
-          {topNav.map((item) => {
-            return <SiteNavMenuItem item={item} key={item.title} />;
-          })}
-        </ul>
+    <nav className="sticky top-0 z-50 flex w-full min-w-0 flex-nowrap items-center justify-between gap-3 border-b border-border px-3 py-2">
+      <div className="flex min-w-0 flex-1 items-center gap-2">
+        <Button
+          nativeButton={false}
+          render={<Link aria-label={site.title} to="/" />}
+          size="icon"
+          variant="ghost"
+        >
+          <PopcornIcon className="size-5 shrink-0" />
+        </Button>
+        <div className="min-w-0 flex-1">
+          <SiteNavDesktop items={topNav} />
+        </div>
       </div>
 
-      <div className="dsy-navbar-end w-full">
+      <div className="flex shrink-0 items-center gap-2">
         <SiteNavSearchInput />
         <SiteNavMobileMenu items={topNav} />
       </div>

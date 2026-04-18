@@ -1,5 +1,9 @@
+import { Badge } from "@/components/ui/badge";
+
 export const TrendingBadge = () => {
   return (
-    <span className="dsy-badge text-nowrap dsy-badge-accent">Trending</span>
+    <Badge className="text-nowrap" variant="default">
+      Trending
+    </Badge>
   );
 };

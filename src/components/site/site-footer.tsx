@@ -9,13 +9,13 @@ export const SiteFooter = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="dsy-footer p-10 text-base-content lg:dsy-footer-horizontal">
+    <footer className="grid grid-cols-1 gap-8 p-10 text-foreground lg:grid-cols-2">
       <aside>
         <SiteLogo className="h-12 w-12" />
         <p>
           © <time dateTime={currentYear.toString()}>{currentYear}</time>{" "}
           <a
-            className="dsy-link"
+            className="text-primary underline-offset-4 hover:underline"
             href={urls.author}
             rel="noreferrer"
             target="_blank"
@@ -28,7 +28,7 @@ export const SiteFooter = () => {
         <p>
           Built with{" "}
           <a
-            className="dsy-link"
+            className="text-primary underline-offset-4 hover:underline"
             href={urls.tanstackStart}
             rel="noreferrer"
             target="_blank"
@@ -37,16 +37,16 @@ export const SiteFooter = () => {
           </a>{" "}
           and{" "}
           <a
-            className="dsy-link"
-            href={urls.daisyUI}
+            className="text-primary underline-offset-4 hover:underline"
+            href={urls.shadcnUI}
             rel="noreferrer"
             target="_blank"
           >
-            daisyUI
+            shadcn/ui
           </a>
           . Powered by{" "}
           <a
-            className="dsy-link"
+            className="text-primary underline-offset-4 hover:underline"
             href={urls.vercel}
             rel="noreferrer"
             target="_blank"

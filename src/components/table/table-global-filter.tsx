@@ -1,3 +1,6 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
 interface TableGlobalFilterProps {
   globalFilter: string;
   resetGlobalFilter: (defaultState?: boolean) => void;
@@ -11,8 +14,8 @@ export const TableGlobalFilter = ({
 }: TableGlobalFilterProps) => {
   return (
     <div className="col-span-2 flex w-full items-center gap-2">
-      <input
-        className="dsy-input grow"
+      <Input
+        className="grow"
         onChange={(event) => {
           setGlobalFilter(event.target.value);
         }}
@@ -21,15 +24,16 @@ export const TableGlobalFilter = ({
         value={globalFilter}
       />
       {globalFilter ? (
-        <button
-          className="dsy-btn dsy-btn-sm dsy-btn-neutral"
+        <Button
           onClick={() => {
             resetGlobalFilter();
           }}
+          size="sm"
           type="button"
+          variant="outline"
         >
           Reset <span className="icon-[lucide--list-restart]" />
-        </button>
+        </Button>
       ) : null}
     </div>
   );

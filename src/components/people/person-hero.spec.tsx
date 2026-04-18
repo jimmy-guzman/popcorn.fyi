@@ -44,7 +44,7 @@ describe("<PersonHero />", () => {
     const button = screen.getByRole("link", { name: /details/i });
 
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute("href", "/tv-shows/300");
+    expect(button).toHaveAttribute("href", "/people/300");
   });
 
   it("should render with a backdrop image if provided", async () => {

@@ -1,3 +1,5 @@
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+
 import { ListContent } from "../shared/list-content";
 import { ListPagination } from "../shared/list-pagination";
 import { MovieCard } from "./movie-card";
@@ -33,9 +35,12 @@ export const MovieDiscoverList = ({
       ) : null}
     </div>
   ) : (
-    <div className="dsy-alert" role="alert">
-      <span className="icon-[lucide--alert-circle] h-6 w-6 text-error" />
-      <span>No results available based on your filters.</span>
-    </div>
+    <Alert variant="destructive">
+      <span className="icon-[lucide--alert-circle] size-6" />
+      <AlertTitle>No results</AlertTitle>
+      <AlertDescription>
+        No results available based on your filters.
+      </AlertDescription>
+    </Alert>
   );
 };

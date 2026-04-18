@@ -1,16 +1,22 @@
 import { Link } from "@tanstack/react-router";
 
+import {
+  routeTabLinkActiveClassName,
+  routeTabLinkClassName,
+  routeTabListClassName,
+} from "@/lib/styles/route-ui";
+
 interface TvShowDetailsTabsProps {
   id: number;
 }
 
 export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
   return (
-    <div className="dsy-tabs-box dsy-tabs w-full md:w-auto" role="tablist">
+    <div className={routeTabListClassName} role="tablist">
       <Link
         activeOptions={{ exact: true }}
-        activeProps={{ className: "dsy-tab-active" }}
-        className="dsy-tab"
+        activeProps={{ className: routeTabLinkActiveClassName }}
+        className={routeTabLinkClassName}
         hash="overview"
         params={{ id }}
         role="tab"
@@ -19,8 +25,8 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
         Overview
       </Link>
       <Link
-        activeProps={{ className: "dsy-tab-active" }}
-        className="dsy-tab"
+        activeProps={{ className: routeTabLinkActiveClassName }}
+        className={routeTabLinkClassName}
         hash="providers"
         params={{ id }}
         role="tab"
@@ -29,9 +35,9 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
         Providers
       </Link>
       <Link
-        activeProps={{ className: "dsy-tab-active" }}
-        className="dsy-tab"
-        hash="providers"
+        activeProps={{ className: routeTabLinkActiveClassName }}
+        className={routeTabLinkClassName}
+        hash="similar"
         params={{ id }}
         role="tab"
         to="/tv-shows/$id/similar"
@@ -39,8 +45,8 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
         Similar
       </Link>
       <Link
-        activeProps={{ className: "dsy-tab-active" }}
-        className="dsy-tab"
+        activeProps={{ className: routeTabLinkActiveClassName }}
+        className={routeTabLinkClassName}
         hash="cast"
         params={{ id }}
         role="tab"

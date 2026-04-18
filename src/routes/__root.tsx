@@ -13,8 +13,8 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import HolyLoader from "holy-loader";
-import { Toaster } from "sonner";
 
+import { Toaster } from "@/components/ui/sonner";
 import { site } from "@/config/site";
 import { seo } from "@/lib/seo";
 
@@ -30,12 +30,12 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en">
-      <HolyLoader color="var(--color-neutral-content)" ignoreSearchParams />
+    <html className="dark" lang="en">
+      <HolyLoader color="var(--primary)" ignoreSearchParams />
       <head>
         <HeadContent />
       </head>
-      <body className="bg-base-200">
+      <body className="bg-background">
         {children}
         <TanStackDevtools
           plugins={[
@@ -49,20 +49,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
             },
           ]}
         />
-        <Toaster
-          position="bottom-right"
-          toastOptions={{
-            classNames: {
-              error: "dsy-alert-error",
-              info: "dsy-alert-info",
-              loading: "dsy-alert-info",
-              success: "dsy-alert-success",
-              toast: "dsy-alert dsy-alert-vertical lg:dsy-alert-horizontal",
-              warning: "dsy-alert-warning",
-            },
-            unstyled: true,
-          }}
-        />
+        <Toaster position="bottom-right" />
         <Analytics />
         <SpeedInsights />
         <Scripts />

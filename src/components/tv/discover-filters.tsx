@@ -1,10 +1,20 @@
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { Controller, useForm, useWatch } from "react-hook-form";
 
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { DiscoverSchema } from "@/data/tv/discover.list";
 import { hasKey } from "@/lib/predicates";
+
+import { DiscoverFilterRow } from "../shared/discover-filter-row";
 
 const tvSortOptions = [
   { label: "Original Name (A-Z)", value: "original_name.asc" },
@@ -60,167 +70,200 @@ export const TvDiscoverFilters = ({
       })}
     >
       <div className="grid gap-2 md:grid-cols-3">
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>Genre</span>
-            <select
-              {...register("with_genres")}
-              className="dsy-select w-full"
-              defaultValue=""
-            >
-              <option disabled value="">
-                Pick a Genre
-              </option>
-              {genres.map((genre) => {
-                return (
-                  <option key={genre.id} value={genre.id}>
-                    {genre.name}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-          <button
-            aria-label="Reset Genre"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("with_genres", { defaultValue: "" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
+        <DiscoverFilterRow
+          label="Genre"
+          onReset={() => {
+            resetField("with_genres", { defaultValue: "" });
+          }}
+          resetLabel="Reset Genre"
+        >
+          {(id) => {
+            return (
+              <Controller
+                control={control}
+                name="with_genres"
+                render={({ field }) => {
+                  return (
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value ?? ""}
+                    >
+                      <SelectTrigger className="w-full" id={id} size="default">
+                        <SelectValue placeholder="Pick a Genre" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="">Pick a Genre</SelectItem>
+                        {genres.map((genre) => {
+                          return (
+                            <SelectItem key={genre.id} value={String(genre.id)}>
+                              {genre.name}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectContent>
+                    </Select>
+                  );
+                }}
+              />
+            );
+          }}
+        </DiscoverFilterRow>
 
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>Provider</span>
-            <select
-              {...register("with_watch_providers")}
-              className="dsy-select w-full"
-              defaultValue=""
-            >
-              <option disabled value="">
-                Pick a Provider
-              </option>
-              {providers.filter(hasKey("provider_id")).map((provider) => {
-                return (
-                  <option
-                    key={provider.provider_id}
-                    value={provider.provider_id}
-                  >
-                    {provider.provider_name}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-          <button
-            aria-label="Reset Provider"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("with_watch_providers", { defaultValue: "" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
+        <DiscoverFilterRow
+          label="Provider"
+          onReset={() => {
+            resetField("with_watch_providers", { defaultValue: "" });
+          }}
+          resetLabel="Reset Provider"
+        >
+          {(id) => {
+            return (
+              <Controller
+                control={control}
+                name="with_watch_providers"
+                render={({ field }) => {
+                  return (
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value ?? ""}
+                    >
+                      <SelectTrigger className="w-full" id={id} size="default">
+                        <SelectValue placeholder="Pick a Provider" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="">Pick a Provider</SelectItem>
+                        {providers
+                          .filter(hasKey("provider_id"))
+                          .map((provider) => {
+                            return (
+                              <SelectItem
+                                key={provider.provider_id}
+                                value={String(provider.provider_id)}
+                              >
+                                {provider.provider_name}
+                              </SelectItem>
+                            );
+                          })}
+                      </SelectContent>
+                    </Select>
+                  );
+                }}
+              />
+            );
+          }}
+        </DiscoverFilterRow>
 
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>Region</span>
-            <select {...register("watch_region")} className="dsy-select w-full">
-              {regions.map((region) => {
-                return (
-                  <option key={region.iso_3166_1} value={region.iso_3166_1}>
-                    {region.english_name}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-          <button
-            aria-label="Reset Region"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("watch_region", { defaultValue: "US" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
+        <DiscoverFilterRow
+          label="Region"
+          onReset={() => {
+            resetField("watch_region", { defaultValue: "US" });
+          }}
+          resetLabel="Reset Region"
+        >
+          {(id) => {
+            return (
+              <Controller
+                control={control}
+                name="watch_region"
+                render={({ field }) => {
+                  return (
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value ?? "US"}
+                    >
+                      <SelectTrigger className="w-full" id={id} size="default">
+                        <SelectValue placeholder="Region" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {regions.map((region) => {
+                          return (
+                            <SelectItem
+                              key={region.iso_3166_1}
+                              value={String(region.iso_3166_1)}
+                            >
+                              {region.english_name}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectContent>
+                    </Select>
+                  );
+                }}
+              />
+            );
+          }}
+        </DiscoverFilterRow>
       </div>
 
       <div className="grid gap-2 md:grid-cols-3">
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>From</span>
-            <input
-              {...register("first_air_date_gte")}
-              className="dsy-input w-full"
-              type="date"
-            />
-          </label>
-          <button
-            aria-label="Reset From"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("first_air_date_gte", { defaultValue: "" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
+        <DiscoverFilterRow
+          label="From"
+          onReset={() => {
+            resetField("first_air_date_gte", { defaultValue: "" });
+          }}
+          resetLabel="Reset From"
+        >
+          {(id) => {
+            return (
+              <Input id={id} type="date" {...register("first_air_date_gte")} />
+            );
+          }}
+        </DiscoverFilterRow>
 
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>To</span>
-            <input
-              {...register("first_air_date_lte")}
-              className="dsy-input w-full"
-              type="date"
-            />
-          </label>
-          <button
-            aria-label="Reset To"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("first_air_date_lte", { defaultValue: "" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
+        <DiscoverFilterRow
+          label="To"
+          onReset={() => {
+            resetField("first_air_date_lte", { defaultValue: "" });
+          }}
+          resetLabel="Reset To"
+        >
+          {(id) => {
+            return (
+              <Input id={id} type="date" {...register("first_air_date_lte")} />
+            );
+          }}
+        </DiscoverFilterRow>
 
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>Sort By</span>
-            <select {...register("sort_by")} className="dsy-select w-full">
-              <option value="" />
-              {tvSortOptions.map((sortOption) => {
-                return (
-                  <option key={sortOption.value} value={sortOption.value}>
-                    {sortOption.label}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-          <button
-            aria-label="Reset Sort By"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("sort_by", { defaultValue: "popularity.desc" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
+        <DiscoverFilterRow
+          label="Sort By"
+          onReset={() => {
+            resetField("sort_by", { defaultValue: "popularity.desc" });
+          }}
+          resetLabel="Reset Sort By"
+        >
+          {(id) => {
+            return (
+              <Controller
+                control={control}
+                name="sort_by"
+                render={({ field }) => {
+                  return (
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value ?? "popularity.desc"}
+                    >
+                      <SelectTrigger className="w-full" id={id} size="default">
+                        <SelectValue placeholder="Sort by" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {tvSortOptions.map((sortOption) => {
+                          return (
+                            <SelectItem
+                              key={sortOption.value}
+                              value={sortOption.value}
+                            >
+                              {sortOption.label}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectContent>
+                    </Select>
+                  );
+                }}
+              />
+            );
+          }}
+        </DiscoverFilterRow>
       </div>
     </form>
   );
