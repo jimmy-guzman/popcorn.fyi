@@ -5,14 +5,14 @@ import { useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 
-function safeErrorMessage(error: unknown): string {
-  if (error && typeof error === "object" && "status" in error) {
-    const { status } = error as { status?: number };
+function safeErrorMessage(error: unknown) {
+  if (error !== null && typeof error === "object" && "status" in error) {
+    const {status} = (error as { status?: unknown });
 
-    if (status === 404) return "Not found";
+    if (typeof status === "number") {
+      if (status === 404) return "Not found";
 
-    if (typeof status === "number" && status >= 500) {
-      return "Something went wrong";
+      if (status >= 500) return "Something went wrong";
     }
   }
 
