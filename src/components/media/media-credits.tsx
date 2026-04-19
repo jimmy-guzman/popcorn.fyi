@@ -31,7 +31,7 @@ export const MediaCredits = ({ credits }: MediaCreditsProps) => {
   return (
     <div className="flex w-full flex-col gap-4">
       <Prose>
-        <h2 id="cast">{site.pages.media.credits.cast.title}</h2>
+        <h2>{site.pages.media.credits.cast.title}</h2>
       </Prose>
       {cast.length > 0 ? (
         <CastList cast={cast} />
@@ -42,7 +42,7 @@ export const MediaCredits = ({ credits }: MediaCreditsProps) => {
       )}
       <Separator className="my-2" />
       <Prose>
-        <h2 id="crew">{site.pages.media.credits.crew.title}</h2>
+        <h2>{site.pages.media.credits.crew.title}</h2>
       </Prose>
       {crew.length > 0 ? (
         <CrewList crew={crew} />

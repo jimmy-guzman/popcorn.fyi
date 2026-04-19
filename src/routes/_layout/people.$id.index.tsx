@@ -31,7 +31,7 @@ function RouteComponent() {
   return (
     <div className="grid grid-cols-1 gap-8">
       <Prose>
-        <h2 id="known-for">Known For</h2>
+        <h2>Known For</h2>
       </Prose>
 
       <ListContent>
