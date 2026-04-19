@@ -8,6 +8,8 @@ interface MediaBackdropStripProps {
   "backdropPath"?: null | string;
   /** Break out of `main` horizontal padding (`p-4`). */
   "bleed"?: boolean;
+  /** Applied to the bleed wrapper when `bleed` is true (e.g. `hidden md:block` on detail pages). */
+  "bleedClassName"?: string;
   "children"?: ReactNode;
   "className"?: string;
   "innerClassName"?: string;
@@ -18,6 +20,7 @@ function MediaBackdropStrip({
   "aria-label": ariaLabel,
   backdropPath,
   bleed = false,
+  bleedClassName,
   children,
   className,
   innerClassName,
@@ -79,7 +82,13 @@ function MediaBackdropStrip({
   );
 
   if (bleed) {
-    return <div className="-mx-4 w-[calc(100%+2rem)] max-w-none">{inner}</div>;
+    return (
+      <div
+        className={cn("-mx-4 w-[calc(100%+2rem)] max-w-none", bleedClassName)}
+      >
+        {inner}
+      </div>
+    );
   }
 
   return inner;

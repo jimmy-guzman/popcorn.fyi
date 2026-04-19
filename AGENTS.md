@@ -86,6 +86,8 @@ When changing API client types or OpenAPI inputs, run `pnpm openapi-ts` and ensu
 
 ## Docs
 
+- **Layout and visual pairing with shadcn primitives:** see [DESIGN.md](DESIGN.md).
+
 - **After introducing a new pattern, feature, convention, or structural change, ask whether `AGENTS.md` and/or `README.md` should be updated, then apply the changes.**
   Docs rot the moment the code moves without them. Catching the update at the point of change is the only time it reliably happens.
 
