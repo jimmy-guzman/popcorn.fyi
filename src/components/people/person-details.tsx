@@ -78,14 +78,17 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
           <h1>{person.name}</h1>
           {person.birthday ? (
             <p>
-              {date(person.birthday)} - {person.place_of_birth}
+              {person.place_of_birth
+                ? `${date(person.birthday)} - ${person.place_of_birth}`
+                : date(person.birthday)}
             </p>
           ) : (
             <p>No birthday available.</p>
           )}
           {person.biography ? (
             <div
-              // eslint-disable-next-line react-dom/no-dangerously-set-innerhtml -- TODO: Remove this line when eslint config is fixed
+              // Biography HTML is sanitized in `tmdbContent` (DOMPurify).
+              // eslint-disable-next-line react-dom/no-dangerously-set-innerhtml -- sanitized HTML only
               dangerouslySetInnerHTML={{
                 __html: tmdbContent(person.biography),
               }}
@@ -103,7 +106,7 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
             <WikipediaButton id={person.id} />
           </Suspense>
         ) : null}
-        {person.name ? (
+        {person.name && person.id ? (
           <ShareButton title={person.name} url={`/people/${person.id}`} />
         ) : null}
       </CardFooter>

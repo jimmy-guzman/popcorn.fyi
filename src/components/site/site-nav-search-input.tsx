@@ -49,7 +49,7 @@ export const SiteNavSearchInput = () => {
           }}
           onKeyDown={async (event) => {
             if (event.key === "Enter") {
-              await navigate({ search: { q: value }, to: "/search" });
+              await navigate({ search: { q: query }, to: "/search" });
             }
           }}
           placeholder="Search..."

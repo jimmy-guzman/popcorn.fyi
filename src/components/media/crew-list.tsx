@@ -27,7 +27,7 @@ export const CrewList = ({ crew }: CrewListProps) => {
     >
       {crew.map((person) => {
         return (
-          <li key={person.id}>
+          <li key={`${person.id}-${person.job ?? ""}`}>
             <Link
               aria-label={person.name}
               params={{ id: person.id }}

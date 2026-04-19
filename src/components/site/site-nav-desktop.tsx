@@ -12,6 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/cn";
+import { isNavSectionActive } from "@/lib/is-nav-section-active";
 
 function NavTopLevelLink({ item }: { item: SingleNavItem }) {
   const Icon = item.icon;
@@ -43,7 +44,7 @@ function NavTopLevelLink({ item }: { item: SingleNavItem }) {
 
 function NavGroupedItem({ item }: { item: GroupedNavItem }) {
   const { pathname } = useLocation();
-  const isSectionActive = pathname.startsWith(item.to);
+  const isSectionActive = isNavSectionActive(pathname, item.to);
   const Icon = item.icon;
 
   return (
@@ -63,7 +64,7 @@ function NavGroupedItem({ item }: { item: GroupedNavItem }) {
             const SubIcon = sub.icon;
 
             return (
-              <li key={sub.title}>
+              <li key={sub.to}>
                 <NavigationMenuLink
                   render={
                     <Link
@@ -102,7 +103,7 @@ export const SiteNavDesktop = ({ items }: { items: NavItem[] }) => {
     <NavigationMenu className="hidden max-w-none min-w-0 flex-1 justify-start xl:flex">
       <NavigationMenuList className="flex-nowrap justify-start gap-2 overflow-x-auto [scrollbar-width:thin]">
         {items.map((item) => {
-          return <NavEntry item={item} key={item.title} />;
+          return <NavEntry item={item} key={item.to} />;
         })}
       </NavigationMenuList>
     </NavigationMenu>

@@ -29,19 +29,22 @@ export const MediaProviders = ({ providers, title }: MediaProvidersProps) => {
         </TableHeader>
         <TableBody>
           {providers.filter(hasKey("provider_id")).map((provider) => {
+            const trimmed = provider.provider_name?.trim() ?? "";
+            const label = trimmed === "" ? "Unknown Provider" : trimmed;
+
             return provider.logo_path ? (
               <TableRow key={provider.provider_id}>
                 <TableCell className="text-base">
                   <div className="flex items-center gap-3">
                     <div className="size-14 shrink-0 overflow-hidden rounded-xl border border-border">
                       <img
-                        alt={provider.provider_name}
+                        alt={label}
                         className="size-full object-cover"
                         src={tmdbImageUrl(provider.logo_path)}
                       />
                     </div>
                     <div>
-                      <div className="font-bold">{provider.provider_name}</div>
+                      <div className="font-bold">{label}</div>
                     </div>
                   </div>
                 </TableCell>

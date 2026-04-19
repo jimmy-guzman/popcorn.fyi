@@ -18,6 +18,7 @@ interface MovieCardProps {
   movie: {
     id: number;
     media_type?: string;
+    original_title?: string;
     poster_path?: string;
     release_date?: string;
     title?: string;
@@ -26,12 +27,17 @@ interface MovieCardProps {
 }
 
 export const MovieCard = ({ movie }: MovieCardProps) => {
+  const title =
+    [movie.title, movie.original_title]
+      .map((value) => value?.trim())
+      .find((value) => value !== undefined && value !== "") ?? "Untitled movie";
+
   return (
-    <Link aria-label={movie.title} params={{ id: movie.id }} to="/movies/$id">
+    <Link aria-label={title} params={{ id: movie.id }} to="/movies/$id">
       <Card className="h-full pt-0 shadow-lg" size="sm">
         {movie.poster_path ? (
           <img
-            alt={movie.title ?? ""}
+            alt={title}
             className="aspect-2/3 w-full shrink-0 object-cover"
             src={tmdbImageUrl(movie.poster_path, "w500")}
           />
@@ -39,7 +45,7 @@ export const MovieCard = ({ movie }: MovieCardProps) => {
           <CardImageFallback />
         )}
         <CardHeader className="gap-2">
-          <CardTitle className="text-base font-medium">{movie.title}</CardTitle>
+          <CardTitle className="text-base font-medium">{title}</CardTitle>
           <CardDescription>
             {movie.release_date ? year(movie.release_date) : "N/A"}
           </CardDescription>

@@ -11,13 +11,13 @@ export const MediaOverviewList = ({ items }: MediaOverviewListProps) => {
       {items.map(({ title, value }) => {
         return (
           <div
-            className="flex flex-col gap-1 px-4 py-3 even:bg-muted sm:grid sm:grid-cols-12 sm:gap-x-4"
+            className="group flex flex-col gap-1 px-4 py-3 even:bg-muted sm:grid sm:grid-cols-12 sm:gap-x-4"
             key={title}
           >
-            <dt className="text-sm font-semibold text-foreground even:text-muted-foreground sm:col-span-2">
+            <dt className="text-sm font-semibold text-foreground group-even:text-muted-foreground sm:col-span-2">
               {title}
             </dt>
-            <dd className="min-w-0 text-right text-sm font-medium wrap-break-word text-foreground even:text-muted-foreground sm:col-span-10 sm:text-left">
+            <dd className="min-w-0 text-right text-sm font-medium wrap-break-word text-foreground group-even:text-muted-foreground sm:col-span-10 sm:text-left">
               {value ?? "—"}
             </dd>
           </div>

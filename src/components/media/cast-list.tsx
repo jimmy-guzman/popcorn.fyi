@@ -26,18 +26,19 @@ export const CastList = ({ cast }: CastListProps) => {
       className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
     >
       {cast.map((person) => {
+        const name = person.name ?? "Unknown";
+        const character = person.character ?? "—";
+
         return (
           <li key={person.id}>
-            <Link
-              aria-label={person.name}
-              params={{ id: person.id }}
-              to="/people/$id"
-            >
+            <Link aria-label={name} params={{ id: person.id }} to="/people/$id">
               <Card className="h-full pt-0 shadow-lg" size="sm">
                 {person.profile_path ? (
                   <img
-                    alt={person.name ?? ""}
+                    alt={name}
                     className="aspect-2/3 w-full shrink-0 object-cover"
+                    decoding="async"
+                    loading="lazy"
                     src={tmdbImageUrl(person.profile_path, "w500")}
                   />
                 ) : (
@@ -45,9 +46,9 @@ export const CastList = ({ cast }: CastListProps) => {
                 )}
                 <CardHeader className="gap-2">
                   <CardTitle className="text-base font-medium">
-                    {person.name}
+                    {name}
                   </CardTitle>
-                  <CardDescription>{person.character}</CardDescription>
+                  <CardDescription>{character}</CardDescription>
                 </CardHeader>
               </Card>
             </Link>

@@ -18,6 +18,7 @@ export const TableGlobalFilter = ({
   return (
     <div className="flex w-full flex-wrap items-center gap-2">
       <Input
+        aria-label="Global search"
         className="max-w-sm"
         onChange={(event) => {
           setGlobalFilter(event.target.value);

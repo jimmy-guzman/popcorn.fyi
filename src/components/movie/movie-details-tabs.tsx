@@ -6,70 +6,61 @@ interface MovieDetailsTabsProps {
   id: number;
 }
 
+const movieDetailTabs = [
+  {
+    label: "Overview",
+    pathname: (movieId: number) => `/movies/${movieId}`,
+    to: "/movies/$id" as const,
+    value: "overview",
+  },
+  {
+    label: "Providers",
+    pathname: (movieId: number) => `/movies/${movieId}/watch`,
+    to: "/movies/$id/watch" as const,
+    value: "providers",
+  },
+  {
+    label: "Similar",
+    pathname: (movieId: number) => `/movies/${movieId}/similar`,
+    to: "/movies/$id/similar" as const,
+    value: "similar",
+  },
+  {
+    label: "Credits",
+    pathname: (movieId: number) => `/movies/${movieId}/credits`,
+    to: "/movies/$id/credits" as const,
+    value: "credits",
+  },
+] as const;
+
 export const MovieDetailsTabs = ({ id }: MovieDetailsTabsProps) => {
   const tabValue = useRouterState({
     select: (s) => {
       const pathname =
         s.location.pathname.replace(/\/$/, "") || s.location.pathname;
-      const base = `/movies/${id}`;
+      const match = movieDetailTabs.find(
+        (tab) => pathname === tab.pathname(id),
+      );
 
-      if (pathname === `${base}/credits`) return "credits";
-
-      if (pathname === `${base}/similar`) return "similar";
-
-      if (pathname === `${base}/watch`) return "providers";
-
-      if (pathname === base) return "overview";
-
-      return undefined;
+      return match?.value;
     },
   });
 
   return (
     <Tabs value={tabValue ?? null}>
       <TabsList className="w-full flex-wrap rounded border md:w-auto">
-        <TabsTrigger
-          nativeButton={false}
-          render={<Link params={{ id }} resetScroll={false} to="/movies/$id" />}
-          value="overview"
-        >
-          Overview
-        </TabsTrigger>
-        <TabsTrigger
-          nativeButton={false}
-          render={
-            <Link params={{ id }} resetScroll={false} to="/movies/$id/watch" />
-          }
-          value="providers"
-        >
-          Providers
-        </TabsTrigger>
-        <TabsTrigger
-          nativeButton={false}
-          render={
-            <Link
-              params={{ id }}
-              resetScroll={false}
-              to="/movies/$id/similar"
-            />
-          }
-          value="similar"
-        >
-          Similar
-        </TabsTrigger>
-        <TabsTrigger
-          nativeButton={false}
-          render={
-            <Link
-              params={{ id }}
-              resetScroll={false}
-              to="/movies/$id/credits"
-            />
-          }
-          value="credits"
-        >
-          Credits
-        </TabsTrigger>
+        {movieDetailTabs.map((tab) => {
+          return (
+            <TabsTrigger
+              key={tab.value}
+              nativeButton={false}
+              render={<Link params={{ id }} resetScroll={false} to={tab.to} />}
+              value={tab.value}
+            >
+              {tab.label}
+            </TabsTrigger>
+          );
+        })}
       </TabsList>
     </Tabs>
   );

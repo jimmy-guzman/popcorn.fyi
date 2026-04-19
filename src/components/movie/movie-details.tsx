@@ -35,6 +35,7 @@ interface MovieDetailsProps {
     backdrop_path?: string;
     genres?: { id?: number; name?: string }[];
     id?: number;
+    original_title?: string;
     overview?: string;
     poster_path?: string;
     status?: string;
@@ -86,7 +87,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
             <ExternalLinks id={movie.id} />
           </Suspense>
         ) : null}
-        {movie.title ? (
+        {movie.title && movie.id ? (
           <ShareButton title={movie.title} url={`/movies/${movie.id}`} />
         ) : null}
       </CardFooter>
@@ -109,7 +110,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           {movie.poster_path ? (
             <MediaDetailViewPoster overlap={Boolean(movie.backdrop_path)}>
               <img
-                alt={movie.title ?? ""}
+                alt={movie.title ?? movie.original_title ?? "Movie poster"}
                 className="size-full rounded-none object-cover shadow-2xl"
                 src={tmdbImageUrl(movie.poster_path, "w500")}
               />

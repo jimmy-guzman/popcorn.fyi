@@ -95,7 +95,7 @@ export const Table = <TData,>({
               <TableRow>
                 <TableCell
                   className="h-24 text-center"
-                  colSpan={columns.length}
+                  colSpan={table.getVisibleLeafColumns().length || 1}
                 >
                   No results.
                 </TableCell>
