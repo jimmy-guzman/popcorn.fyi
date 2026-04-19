@@ -7,15 +7,16 @@ interface TableGlobalFilterProps {
   setGlobalFilter: (value: string) => void;
 }
 
+/** Toolbar row aligned with shadcn Data Table “Filtering” example. */
 export const TableGlobalFilter = ({
   globalFilter,
   resetGlobalFilter,
   setGlobalFilter,
 }: TableGlobalFilterProps) => {
   return (
-    <div className="col-span-2 flex w-full items-center gap-2">
+    <div className="flex w-full flex-wrap items-center gap-2">
       <Input
-        className="grow"
+        className="max-w-sm"
         onChange={(event) => {
           setGlobalFilter(event.target.value);
         }}

@@ -1,15 +1,19 @@
 import type { Header } from "@tanstack/react-table";
 
-import { TableColumnFilter } from "./table-column-filter";
+import { TableHead } from "@/components/ui/table";
+
 import { TableHeaderContent } from "./table-header-content";
 
-export const TableHeader = <T,>({ header }: { header: Header<T, unknown> }) => {
+export const TableColumnHeader = <T,>({
+  header,
+}: {
+  header: Header<T, unknown>;
+}) => {
   return (
-    <th className="capitalize" colSpan={header.colSpan} key={header.id}>
-      <div className="flex flex-col items-start gap-2">
+    <TableHead className="capitalize" colSpan={header.colSpan}>
+      <div className="min-w-0">
         <TableHeaderContent header={header} />
-        <TableColumnFilter header={header} />
       </div>
-    </th>
+    </TableHead>
   );
 };
