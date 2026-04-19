@@ -1,4 +1,5 @@
 import { Link, Outlet } from "@tanstack/react-router";
+import { TvMinimalPlayIcon } from "lucide-react";
 import { Suspense } from "react";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -64,7 +65,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
                 to="/movies/$id/trailer"
               >
                 <span className="sr-only md:not-sr-only">Trailer</span>{" "}
-                <span className="icon-[lucide--tv-minimal-play] size-5" />
+                <TvMinimalPlayIcon className="size-5" />
               </Link>
             ) : null}
             {movie.id ? (

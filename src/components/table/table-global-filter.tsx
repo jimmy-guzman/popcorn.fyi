@@ -1,3 +1,5 @@
+import { ListRestartIcon } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -33,7 +35,7 @@ export const TableGlobalFilter = ({
           type="button"
           variant="outline"
         >
-          Reset <span className="icon-[lucide--list-restart]" />
+          Reset <ListRestartIcon />
         </Button>
       ) : null}
     </div>

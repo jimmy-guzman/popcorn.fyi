@@ -1,4 +1,5 @@
 import { useMatch, useNavigate, useSearch } from "@tanstack/react-router";
+import { SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
@@ -56,10 +57,7 @@ export const SiteNavSearchInput = () => {
           value={query}
         />
         <InputGroupAddon align="inline-start">
-          <span
-            aria-hidden
-            className="icon-[lucide--search] size-4 text-muted-foreground"
-          />
+          <SearchIcon aria-hidden className="size-4 text-muted-foreground" />
         </InputGroupAddon>
       </InputGroup>
     </div>

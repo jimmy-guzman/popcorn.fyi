@@ -1,6 +1,7 @@
 import type { Header } from "@tanstack/react-table";
 
 import { flexRender } from "@tanstack/react-table";
+import { ArrowUpDownIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -29,10 +30,7 @@ export const TableHeaderContent = <T,>({
       variant="ghost"
     >
       {headerContent}
-      <span
-        aria-hidden
-        className="ml-2 icon-[lucide--arrow-up-down] size-4 shrink-0"
-      />
+      <ArrowUpDownIcon aria-hidden className="ml-2 size-4 shrink-0" />
     </Button>
   ) : (
     <span className="capitalize">{headerContent}</span>

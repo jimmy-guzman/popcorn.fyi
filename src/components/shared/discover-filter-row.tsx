@@ -1,5 +1,6 @@
 import type { ReactElement, ReactNode } from "react";
 
+import { XIcon } from "lucide-react";
 import { useId } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -34,7 +35,7 @@ export const DiscoverFilterRow = ({
         type="button"
         variant="outline"
       >
-        <span className="icon-[lucide--x]" />
+        <XIcon />
       </Button>
     </div>
   );
