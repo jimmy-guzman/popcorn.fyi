@@ -129,7 +129,7 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
           {person.profile_path ? (
             <MediaDetailViewPoster overlap={Boolean(person.backdrop_path)}>
               <img
-                alt={person.name}
+                alt={person.name ?? "Person image"}
                 className="size-full rounded-none border object-cover shadow-2xl"
                 src={tmdbImageUrl(person.profile_path, "w500")}
               />

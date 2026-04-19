@@ -9,13 +9,13 @@ export const TableColumnHeader = <T,>({
 }: {
   header: Header<T, unknown>;
 }) => {
-  const ariaSort = header.column.getCanSort()
-    ? header.column.getIsSorted() === "asc"
+  const sorted = header.column.getIsSorted();
+  const ariaSort =
+    sorted === "asc"
       ? "ascending"
-      : header.column.getIsSorted() === "desc"
+      : sorted === "desc"
         ? "descending"
-        : "none"
-    : undefined;
+        : undefined;
 
   return (
     <TableHead
