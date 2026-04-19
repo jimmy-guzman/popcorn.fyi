@@ -1,35 +1,32 @@
-import { buttonVariants } from "@/components/ui/button";
 import { urls } from "@/config/urls";
-import { cn } from "@/lib/cn";
+
+const footerNavLinkClassName =
+  "inline-flex items-center gap-1.5 text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline";
 
 export const SiteFooterNav = () => {
   return (
-    <nav>
+    <nav aria-label="Social and feedback" className="shrink-0 lg:text-right">
       <h6 className="sr-only">Social</h6>
-      <div className="grid grid-flow-col gap-2">
+      <div className="flex flex-wrap items-center gap-5 text-sm">
         <a
           aria-label="Github"
-          className={cn(
-            buttonVariants({ variant: "outline", size: "default" }),
-          )}
+          className={footerNavLinkClassName}
           href={urls.github}
           rel="noreferrer"
           target="_blank"
         >
           <span className="sr-only md:not-sr-only">GitHub</span>
-          <span className="icon-[lucide--github] size-5" />
+          <span className="icon-[lucide--github] size-4" />
         </a>
         <a
           aria-label="Report a bug"
-          className={cn(
-            buttonVariants({ variant: "outline", size: "default" }),
-          )}
+          className={footerNavLinkClassName}
           href={`${urls.github}/issues`}
           rel="noreferrer"
           target="_blank"
         >
           <span className="sr-only md:not-sr-only">Report a bug</span>
-          <span className="icon-[lucide--bug] size-5" />
+          <span className="icon-[lucide--bug] size-4" />
         </a>
       </div>
     </nav>
