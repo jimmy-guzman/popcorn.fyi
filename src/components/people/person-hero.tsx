@@ -21,7 +21,7 @@ export const PersonHero = ({ person }: PersonHeroProps) => {
     <MediaBackdropStrip
       aria-label={person.name}
       backdropPath={person.backdrop_path}
-      role="img"
+      role={person.backdrop_path ? "img" : undefined}
     >
       <div className="flex w-full justify-end gap-2">
         <MediaType mediaType={person.media_type} />

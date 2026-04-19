@@ -38,7 +38,7 @@ export function SiteNavMobileMenu({ items }: { items: NavItem[] }) {
         </DrawerHeader>
         <ul className="flex w-full flex-col gap-1">
           {items.map((item) => {
-            return <SiteNavMenuItem item={item} key={item.title} />;
+            return <SiteNavMenuItem item={item} key={item.to} />;
           })}
         </ul>
       </DrawerContent>

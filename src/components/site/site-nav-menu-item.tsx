@@ -10,16 +10,17 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/cn";
+import { isNavSectionActive } from "@/lib/is-nav-section-active";
 
 import { SiteNavMenuItemLink } from "./site-nav-menu-item-link";
 
 const SiteNavCollapsibleMenuItem = ({ item }: { item: GroupedNavItem }) => {
   const { pathname } = useLocation();
-  const isActive = pathname.startsWith(item.to);
+  const isActive = isNavSectionActive(pathname, item.to);
   const Icon = item.icon;
 
   return (
-    <Collapsible className="w-full">
+    <Collapsible className="w-full" defaultOpen={isActive}>
       <CollapsibleTrigger
         className="group w-full"
         render={
@@ -45,7 +46,7 @@ const SiteNavCollapsibleMenuItem = ({ item }: { item: GroupedNavItem }) => {
         <ul className="flex flex-col gap-0.5 pt-1 pl-2">
           {item.items.map((sub) => {
             return (
-              <li key={sub.title}>
+              <li key={sub.to}>
                 <SiteNavMenuItemLink item={sub} />
               </li>
             );

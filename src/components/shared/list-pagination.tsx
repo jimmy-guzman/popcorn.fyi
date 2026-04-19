@@ -11,6 +11,10 @@ import { composePageNumbers } from "@/lib/pagination";
 
 const MAX_TOTAL_PAGES = 500;
 
+function clampPage(n: number, max: number) {
+  return Math.min(Math.max(n, 1), max);
+}
+
 interface PageSearch {
   page?: number;
 }
@@ -32,7 +36,9 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
             <PaginationPrevious
               aria-label="Previous Page"
               search={(prev: PageSearch) => {
-                return { ...prev, page: (prev.page ?? 1) - 1 };
+                const next = page - 1;
+
+                return { ...prev, page: clampPage(next, cappedTotalPages) };
               }}
               text=""
               to="."
@@ -66,7 +72,9 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
             <PaginationNext
               aria-label="Next Page"
               search={(prev: PageSearch) => {
-                return { ...prev, page: (prev.page ?? 1) + 1 };
+                const next = page + 1;
+
+                return { ...prev, page: clampPage(next, cappedTotalPages) };
               }}
               text=""
               to="."

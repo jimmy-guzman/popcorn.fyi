@@ -16,6 +16,9 @@ import { hasKey } from "@/lib/predicates";
 
 import { DiscoverFilterRow } from "../shared/discover-filter-row";
 
+/** Radix/Base UI Select reserves `""`; use a sentinel for “no filter” so the control stays controlled. */
+const FILTER_UNSET = "__filter_unset__";
+
 const tvSortOptions = [
   { label: "Original Name (A-Z)", value: "original_name.asc" },
   { label: "Original Name (Z-A)", value: "original_name.desc" },
@@ -46,6 +49,9 @@ export const TvDiscoverFilters = ({
   const navigate = useNavigate({ from: "/tv-shows/discover" });
 
   const { control, handleSubmit, register, resetField } = useForm({
+    defaultValues: {
+      watch_region: "US",
+    },
     resolver: valibotResolver(DiscoverSchema),
     values: search,
   });
@@ -73,7 +79,7 @@ export const TvDiscoverFilters = ({
         <DiscoverFilterRow
           label="Genre"
           onReset={() => {
-            resetField("with_genres", { defaultValue: "" });
+            resetField("with_genres", { defaultValue: undefined });
           }}
           resetLabel="Reset Genre"
         >
@@ -85,14 +91,30 @@ export const TvDiscoverFilters = ({
                 render={({ field }) => {
                   return (
                     <Select
-                      onValueChange={field.onChange}
-                      value={field.value ?? ""}
+                      onValueChange={(next) => {
+                        field.onChange(
+                          next === FILTER_UNSET ? undefined : next,
+                        );
+                      }}
+                      value={field.value ?? FILTER_UNSET}
                     >
                       <SelectTrigger className="w-full" id={id} size="default">
-                        <SelectValue placeholder="Pick a Genre" />
+                        <SelectValue placeholder="Pick a Genre">
+                          {(value: string) => {
+                            if (value === FILTER_UNSET) return "Pick a Genre";
+
+                            const genre = genres.find(
+                              (g) => String(g.id) === value,
+                            );
+
+                            return genre?.name ?? value;
+                          }}
+                        </SelectValue>
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">Pick a Genre</SelectItem>
+                        <SelectItem value={FILTER_UNSET}>
+                          Pick a Genre
+                        </SelectItem>
                         {genres.map((genre) => {
                           return (
                             <SelectItem key={genre.id} value={String(genre.id)}>
@@ -112,7 +134,7 @@ export const TvDiscoverFilters = ({
         <DiscoverFilterRow
           label="Provider"
           onReset={() => {
-            resetField("with_watch_providers", { defaultValue: "" });
+            resetField("with_watch_providers", { defaultValue: undefined });
           }}
           resetLabel="Reset Provider"
         >
@@ -124,14 +146,31 @@ export const TvDiscoverFilters = ({
                 render={({ field }) => {
                   return (
                     <Select
-                      onValueChange={field.onChange}
-                      value={field.value ?? ""}
+                      onValueChange={(next) => {
+                        field.onChange(
+                          next === FILTER_UNSET ? undefined : next,
+                        );
+                      }}
+                      value={field.value ?? FILTER_UNSET}
                     >
                       <SelectTrigger className="w-full" id={id} size="default">
-                        <SelectValue placeholder="Pick a Provider" />
+                        <SelectValue placeholder="Pick a Provider">
+                          {(value: string) => {
+                            if (value === FILTER_UNSET)
+                              return "Pick a Provider";
+
+                            const provider = providers.find(
+                              (p) => String(p.provider_id) === value,
+                            );
+
+                            return provider?.provider_name ?? value;
+                          }}
+                        </SelectValue>
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">Pick a Provider</SelectItem>
+                        <SelectItem value={FILTER_UNSET}>
+                          Pick a Provider
+                        </SelectItem>
                         {providers
                           .filter(hasKey("provider_id"))
                           .map((provider) => {
@@ -167,24 +206,23 @@ export const TvDiscoverFilters = ({
                 name="watch_region"
                 render={({ field }) => {
                   return (
-                    <Select
-                      onValueChange={field.onChange}
-                      value={field.value ?? "US"}
-                    >
+                    <Select onValueChange={field.onChange} value={field.value}>
                       <SelectTrigger className="w-full" id={id} size="default">
                         <SelectValue placeholder="Region" />
                       </SelectTrigger>
                       <SelectContent>
-                        {regions.map((region) => {
-                          return (
-                            <SelectItem
-                              key={region.iso_3166_1}
-                              value={String(region.iso_3166_1)}
-                            >
-                              {region.english_name}
-                            </SelectItem>
-                          );
-                        })}
+                        {regions
+                          .filter((region) => region.iso_3166_1)
+                          .map((region) => {
+                            return (
+                              <SelectItem
+                                key={region.iso_3166_1}
+                                value={String(region.iso_3166_1)}
+                              >
+                                {region.english_name}
+                              </SelectItem>
+                            );
+                          })}
                       </SelectContent>
                     </Select>
                   );

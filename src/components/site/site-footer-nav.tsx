@@ -11,7 +11,7 @@ export const SiteFooterNav = () => {
       <h6 className="sr-only">Social</h6>
       <div className="flex flex-wrap items-center gap-5 text-sm">
         <a
-          aria-label="Github"
+          aria-label="GitHub"
           className={footerNavLinkClassName}
           href={urls.github}
           rel="noreferrer"
@@ -28,7 +28,7 @@ export const SiteFooterNav = () => {
           target="_blank"
         >
           <span className="sr-only md:not-sr-only">Report a bug</span>
-          <BugIcon className="size-4" />
+          <BugIcon aria-hidden className="size-4" focusable="false" />
         </a>
       </div>
     </nav>

@@ -26,8 +26,7 @@ function MediaBackdropStrip({
   innerClassName,
   role,
 }: MediaBackdropStripProps) {
-  const path = backdropPath;
-  const hasBackdrop = Boolean(path);
+  const hasBackdrop = Boolean(backdropPath);
   const showShell = hasBackdrop || Boolean(children);
 
   if (!showShell) {
@@ -41,7 +40,7 @@ function MediaBackdropStrip({
       aria-label={ariaLabel}
       className={cn(
         "relative w-full overflow-hidden bg-muted bg-cover bg-center",
-        "min-h-[calc(100dvh-5rem)]",
+        isHeroContent && "min-h-[calc(100dvh-5rem)]",
         isHeroContent
           ? "flex flex-col items-center justify-center rounded px-4 py-12 text-center sm:px-8 sm:py-16"
           : "rounded",
@@ -50,8 +49,8 @@ function MediaBackdropStrip({
       )}
       role={role}
       style={
-        hasBackdrop && path
-          ? { backgroundImage: `url(${tmdbImageUrl(path)})` }
+        hasBackdrop && backdropPath
+          ? { backgroundImage: `url(${tmdbImageUrl(backdropPath)})` }
           : undefined
       }
     >
