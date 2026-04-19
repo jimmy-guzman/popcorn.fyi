@@ -64,11 +64,10 @@ describe("TVShowList", () => {
       />,
     );
 
-    const tvShowCard = screen.getByRole("heading", {
-      level: 2,
+    const tvShowCardLink = screen.getByRole("link", {
       name: tvShow.name,
     });
 
-    expect(tvShowCard).toBeInTheDocument();
+    expect(tvShowCardLink).toBeInTheDocument();
   });
 });

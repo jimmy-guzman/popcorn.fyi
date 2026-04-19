@@ -1,6 +1,11 @@
 import { Link } from "@tanstack/react-router";
 
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
 import { CardImageFallback } from "./card-image-fallback";
@@ -28,23 +33,22 @@ export const CrewList = ({ crew }: CrewListProps) => {
               params={{ id: person.id }}
               to="/people/$id"
             >
-              <Card className="h-full shadow-lg" size="sm">
+              <Card className="h-full pt-0 shadow-lg" size="sm">
                 {person.profile_path ? (
-                  <figure>
-                    <img
-                      alt={person.name}
-                      src={tmdbImageUrl(person.profile_path, "w500")}
-                    />
-                  </figure>
+                  <img
+                    alt={person.name ?? ""}
+                    className="aspect-2/3 w-full shrink-0 object-cover"
+                    src={tmdbImageUrl(person.profile_path, "w500")}
+                  />
                 ) : (
                   <CardImageFallback />
                 )}
-                <CardContent className="flex flex-col gap-2 pt-0">
-                  <h2 className="font-heading text-base font-medium">
+                <CardHeader className="gap-2">
+                  <CardTitle className="text-base font-medium">
                     {person.name}
-                  </h2>
-                  <p>{person.job}</p>
-                </CardContent>
+                  </CardTitle>
+                  <CardDescription>{person.job}</CardDescription>
+                </CardHeader>
               </Card>
             </Link>
           </li>
