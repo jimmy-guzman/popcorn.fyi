@@ -1,59 +1,76 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 
-import {
-  routeTabLinkActiveClassName,
-  routeTabLinkClassName,
-  routeTabListClassName,
-} from "@/lib/styles/route-ui";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 interface MovieDetailsTabsProps {
   id: number;
 }
 
 export const MovieDetailsTabs = ({ id }: MovieDetailsTabsProps) => {
+  const tabValue = useRouterState({
+    select: (s) => {
+      const pathname =
+        s.location.pathname.replace(/\/$/, "") || s.location.pathname;
+      const base = `/movies/${id}`;
+
+      if (pathname === `${base}/credits`) return "credits";
+
+      if (pathname === `${base}/similar`) return "similar";
+
+      if (pathname === `${base}/watch`) return "providers";
+
+      if (pathname === base) return "overview";
+
+      return undefined;
+    },
+  });
+
   return (
-    <div className={routeTabListClassName} role="tablist">
-      <Link
-        activeOptions={{ exact: true }}
-        activeProps={{ className: routeTabLinkActiveClassName }}
-        className={routeTabLinkClassName}
-        hash="overview"
-        params={{ id }}
-        role="tab"
-        to="/movies/$id"
-      >
-        Overview
-      </Link>
-      <Link
-        activeProps={{ className: routeTabLinkActiveClassName }}
-        className={routeTabLinkClassName}
-        hash="providers"
-        params={{ id }}
-        role="tab"
-        to="/movies/$id/watch"
-      >
-        Providers
-      </Link>
-      <Link
-        activeProps={{ className: routeTabLinkActiveClassName }}
-        className={routeTabLinkClassName}
-        hash="similar"
-        params={{ id }}
-        role="tab"
-        to="/movies/$id/similar"
-      >
-        Similar
-      </Link>
-      <Link
-        activeProps={{ className: routeTabLinkActiveClassName }}
-        className={routeTabLinkClassName}
-        hash="cast"
-        params={{ id }}
-        role="tab"
-        to="/movies/$id/credits"
-      >
-        Credits
-      </Link>
-    </div>
+    <Tabs value={tabValue ?? null}>
+      <TabsList className="w-full flex-wrap rounded border md:w-auto">
+        <TabsTrigger
+          nativeButton={false}
+          render={<Link params={{ id }} resetScroll={false} to="/movies/$id" />}
+          value="overview"
+        >
+          Overview
+        </TabsTrigger>
+        <TabsTrigger
+          nativeButton={false}
+          render={
+            <Link params={{ id }} resetScroll={false} to="/movies/$id/watch" />
+          }
+          value="providers"
+        >
+          Providers
+        </TabsTrigger>
+        <TabsTrigger
+          nativeButton={false}
+          render={
+            <Link
+              params={{ id }}
+              resetScroll={false}
+              to="/movies/$id/similar"
+            />
+          }
+          value="similar"
+        >
+          Similar
+        </TabsTrigger>
+        <TabsTrigger
+          nativeButton={false}
+          render={
+            <Link
+              params={{ id }}
+              resetScroll={false}
+              to="/movies/$id/credits"
+            />
+          }
+          value="credits"
+        >
+          Credits
+        </TabsTrigger>
+      </TabsList>
+    </Tabs>
   );
 };

@@ -22,7 +22,7 @@ function RouteComponent() {
   return (
     <section className="flex w-full flex-col gap-8">
       <Prose>
-        <h2 id="similar">Similar</h2>
+        <h2>Similar</h2>
       </Prose>
       <ListContent>
         {orEmpty(similar.results)

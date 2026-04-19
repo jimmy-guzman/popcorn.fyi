@@ -26,10 +26,10 @@ function RouteComponent() {
   return (
     <div className="flex w-full flex-col gap-4">
       <Prose>
-        <h2 id="credits">Credits</h2>
+        <h2>Credits</h2>
       </Prose>
       <Prose>
-        <h3 id="acting">Cast</h3>
+        <h3>Cast</h3>
       </Prose>
       {cast.length > 0 ? (
         <CastCreditsTable credits={cast} />
@@ -39,7 +39,7 @@ function RouteComponent() {
         </Prose>
       )}
       <Prose>
-        <h3 id="acting">Crew</h3>
+        <h3>Crew</h3>
       </Prose>
       {crew.length > 0 ? (
         <CrewCreditsTable credits={crew} />

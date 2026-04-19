@@ -117,7 +117,7 @@ export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
           ) : null}
           {card}
         </MediaDetailViewHero>
-        <MediaDetailViewContent className="flex flex-col gap-4">
+        <MediaDetailViewContent className="flex flex-col gap-8">
           {tvShow.id ? <TvShowDetailsTabs id={tvShow.id} /> : null}
           <Outlet />
         </MediaDetailViewContent>

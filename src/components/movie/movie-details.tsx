@@ -117,7 +117,7 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           ) : null}
           {card}
         </MediaDetailViewHero>
-        <MediaDetailViewContent className="flex flex-col gap-4">
+        <MediaDetailViewContent className="flex flex-col gap-8">
           {movie.id ? <MovieDetailsTabs id={movie.id} /> : null}
           <Outlet />
         </MediaDetailViewContent>

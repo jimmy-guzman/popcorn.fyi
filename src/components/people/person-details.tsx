@@ -1,4 +1,4 @@
-import { Link, Outlet } from "@tanstack/react-router";
+import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { Suspense } from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -9,13 +9,9 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/cn";
 import { date } from "@/lib/date";
-import {
-  routeTabLinkActiveClassName,
-  routeTabLinkClassName,
-  routeTabListClassName,
-} from "@/lib/styles/route-ui";
 import { tmdbContent } from "@/lib/tmdb-content";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
@@ -46,6 +42,22 @@ interface PersonDetailsProps {
 }
 
 export const PersonDetails = ({ person }: PersonDetailsProps) => {
+  const tabValue = useRouterState({
+    select: (s) => {
+      if (!person.id) return undefined;
+
+      const pathname =
+        s.location.pathname.replace(/\/$/, "") || s.location.pathname;
+      const base = `/people/${person.id}`;
+
+      if (pathname === `${base}/credits`) return "credits";
+
+      if (pathname === base) return "known-for";
+
+      return undefined;
+    },
+  });
+
   const card = (
     <Card
       className={cn("min-w-0 flex-1", !person.profile_path && "md:col-span-2")}
@@ -122,31 +134,38 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
           ) : null}
           {card}
         </MediaDetailViewHero>
-        <MediaDetailViewContent className="flex flex-col gap-4">
+        <MediaDetailViewContent className="flex flex-col gap-8">
           {person.id ? (
-            <div className={routeTabListClassName} role="tablist">
-              <Link
-                activeOptions={{ exact: true }}
-                activeProps={{ className: routeTabLinkActiveClassName }}
-                className={routeTabLinkClassName}
-                hash="known-for"
-                params={{ id: person.id }}
-                role="tab"
-                to="/people/$id"
-              >
-                Known For
-              </Link>
-              <Link
-                activeProps={{ className: routeTabLinkActiveClassName }}
-                className={routeTabLinkClassName}
-                hash="credits"
-                params={{ id: person.id }}
-                role="tab"
-                to="/people/$id/credits"
-              >
-                Credits
-              </Link>
-            </div>
+            <Tabs value={tabValue ?? null}>
+              <TabsList className="w-full flex-wrap rounded border md:w-auto">
+                <TabsTrigger
+                  nativeButton={false}
+                  render={
+                    <Link
+                      params={{ id: person.id }}
+                      resetScroll={false}
+                      to="/people/$id"
+                    />
+                  }
+                  value="known-for"
+                >
+                  Known For
+                </TabsTrigger>
+                <TabsTrigger
+                  nativeButton={false}
+                  render={
+                    <Link
+                      params={{ id: person.id }}
+                      resetScroll={false}
+                      to="/people/$id/credits"
+                    />
+                  }
+                  value="credits"
+                >
+                  Credits
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
           ) : null}
           <Outlet />
         </MediaDetailViewContent>
