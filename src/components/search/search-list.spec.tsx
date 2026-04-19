@@ -76,11 +76,10 @@ describe("SearchList", () => {
   it("should show person when media type is 'person'", async () => {
     await render(<SearchList query="Margaret Qualley" results={results} />);
 
-    const heading = screen.getByRole("heading", {
-      level: 2,
+    const personCardLink = screen.getByRole("link", {
       name: "Margaret Qualley",
     });
 
-    expect(heading).toBeInTheDocument();
+    expect(personCardLink).toBeInTheDocument();
   });
 });

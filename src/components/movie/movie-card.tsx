@@ -1,6 +1,12 @@
 import { Link } from "@tanstack/react-router";
 
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardAction,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { year } from "@/lib/date";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
@@ -22,25 +28,26 @@ interface MovieCardProps {
 export const MovieCard = ({ movie }: MovieCardProps) => {
   return (
     <Link aria-label={movie.title} params={{ id: movie.id }} to="/movies/$id">
-      <Card className="h-full shadow-lg" size="sm">
+      <Card className="h-full pt-0 shadow-lg" size="sm">
         {movie.poster_path ? (
-          <figure>
-            <img
-              alt={movie.title}
-              src={tmdbImageUrl(movie.poster_path, "w500")}
-            />
-          </figure>
+          <img
+            alt={movie.title ?? ""}
+            className="aspect-2/3 w-full shrink-0 object-cover"
+            src={tmdbImageUrl(movie.poster_path, "w500")}
+          />
         ) : (
           <CardImageFallback />
         )}
-        <CardContent className="flex flex-col gap-2 pt-0">
-          <div className="flex justify-end gap-2">
+        <CardHeader className="gap-2">
+          <CardTitle className="text-base font-medium">{movie.title}</CardTitle>
+          <CardDescription>
+            {movie.release_date ? year(movie.release_date) : "N/A"}
+          </CardDescription>
+          <CardAction className="flex gap-2">
             <MediaRating average={movie.vote_average} />
             <MediaType mediaType={movie.media_type} />
-          </div>
-          <h2 className="font-heading text-base font-medium">{movie.title}</h2>
-          {movie.release_date ? <p>{year(movie.release_date)}</p> : "N/A"}
-        </CardContent>
+          </CardAction>
+        </CardHeader>
       </Card>
     </Link>
   );

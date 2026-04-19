@@ -8,7 +8,7 @@ describe("SiteNav", () => {
   it("should render the site logo", async () => {
     await render(<SiteNav />);
 
-    const logo = screen.getByRole("link", { name: site.title });
+    const logo = screen.getByRole("button", { name: site.title });
 
     expect(logo).toBeInTheDocument();
   });
@@ -16,7 +16,7 @@ describe("SiteNav", () => {
   it("should link the logo to home", async () => {
     await render(<SiteNav />);
 
-    const homeLink = screen.getByRole("link", { name: site.title });
+    const homeLink = screen.getByRole("button", { name: site.title });
 
     expect(homeLink).toHaveAttribute("href", "/");
   });
@@ -24,10 +24,10 @@ describe("SiteNav", () => {
   it("should render each top-level nav section title", async () => {
     await render(<SiteNav />);
 
-    for (const [index, item] of topNav.entries()) {
-      const role = index === 0 ? "link" : "button";
-
-      expect(screen.getByRole(role, { name: item.title })).toBeInTheDocument();
+    for (const item of topNav) {
+      expect(
+        screen.getByRole("button", { name: item.title }),
+      ).toBeInTheDocument();
     }
   });
 
