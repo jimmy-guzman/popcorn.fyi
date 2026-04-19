@@ -2,7 +2,7 @@ import type { Header } from "@tanstack/react-table";
 
 import { flexRender } from "@tanstack/react-table";
 
-import { TableHeaderSortIcon } from "./table-header-sort-icon";
+import { Button } from "@/components/ui/button";
 
 export const TableHeaderContent = <T,>({
   header,
@@ -19,15 +19,22 @@ export const TableHeaderContent = <T,>({
   );
 
   return header.column.getCanSort() ? (
-    <button
-      className="cursor-pointer capitalize"
-      onClick={header.column.getToggleSortingHandler()}
+    <Button
+      className="-ml-3 h-8 gap-0 px-3 capitalize"
+      onClick={() => {
+        header.column.toggleSorting(header.column.getIsSorted() === "asc");
+      }}
+      size="sm"
       type="button"
+      variant="ghost"
     >
       {headerContent}
-      <TableHeaderSortIcon sortDirection={header.column.getIsSorted()} />
-    </button>
+      <span
+        aria-hidden
+        className="ml-2 icon-[lucide--arrow-up-down] size-4 shrink-0"
+      />
+    </Button>
   ) : (
-    <span>{headerContent}</span>
+    <span className="capitalize">{headerContent}</span>
   );
 };

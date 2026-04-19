@@ -29,7 +29,6 @@ const columns = [
     (originalRow) => originalRow.release_date ?? originalRow.first_air_date,
     {
       cell: YearTableCell,
-      enableColumnFilter: false,
       header: "Year",
       sortDescFirst: true,
       sortUndefined: "first",
@@ -39,13 +38,11 @@ const columns = [
     (originalRow) => originalRow.title ?? originalRow.name,
     {
       cell: TitleNameTableCell,
-      enableColumnFilter: false,
       id: "Title/Name",
     },
   ),
   columnHelper.accessor("job", {
     cell: (info) => info.getValue(),
-    enableColumnFilter: false,
   }),
   columnHelper.accessor("department", {
     cell: (info) => info.getValue(),

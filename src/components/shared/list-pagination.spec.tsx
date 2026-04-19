@@ -27,6 +27,6 @@ describe("ListPagination", () => {
   it("should render ellipsis when pagination is large", async () => {
     await render(<ListPagination page={10} totalPages={50} />);
 
-    expect(screen.getAllByLabelText("Ellipsis").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("More pages").length).toBeGreaterThan(0);
   });
 });

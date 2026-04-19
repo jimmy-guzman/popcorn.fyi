@@ -11,7 +11,7 @@ import { SiteNavSearchInput } from "./site-nav-search-input";
 
 export const SiteNav = () => {
   return (
-    <nav className="sticky top-0 z-50 flex w-full min-w-0 flex-nowrap items-center justify-between gap-3 border-b border-border px-3 py-2">
+    <nav className="sticky top-0 z-50 flex w-full min-w-0 flex-nowrap items-center justify-between gap-3 border-b border-border bg-background px-3 py-2">
       <div className="flex min-w-0 flex-1 items-center gap-2">
         <Button
           nativeButton={false}

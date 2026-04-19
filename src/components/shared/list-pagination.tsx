@@ -1,14 +1,19 @@
-import { Link } from "@tanstack/react-router";
-
-import { cn } from "@/lib/cn";
-import { composePageNumbers } from "@/lib/pagination";
 import {
-  paginationEllipsisClassName,
-  paginationLinkActiveClassName,
-  paginationLinkClassName,
-} from "@/lib/styles/route-ui";
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { composePageNumbers } from "@/lib/pagination";
 
 const MAX_TOTAL_PAGES = 500;
+
+interface PageSearch {
+  page?: number;
+}
 
 interface ListPaginationProps {
   page: number;
@@ -16,72 +21,59 @@ interface ListPaginationProps {
 }
 
 export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
-  const pageNumbers = composePageNumbers(
-    page,
-    Math.min(totalPages, MAX_TOTAL_PAGES),
-  );
+  const cappedTotalPages = Math.min(totalPages, MAX_TOTAL_PAGES);
+  const pageNumbers = composePageNumbers(page, cappedTotalPages);
 
   return (
-    <div
-      aria-label="Pagination Navigation"
-      className="flex justify-center"
-      role="navigation"
-    >
-      <div className="inline-flex overflow-hidden rounded border border-border shadow-sm">
-        {page !== 1 && (
-          <Link
-            aria-label="Previous Page"
-            className={cn(paginationLinkClassName, "hidden md:flex")}
-            search={(prev) => ({
-              ...prev,
-              page: (prev.page ?? 1) - 1,
-            })}
-            to="."
-          >
-            <span className="icon-[lucide--chevron-left] size-4" />
-          </Link>
+    <Pagination aria-label="Pagination Navigation">
+      <PaginationContent>
+        {page === 1 ? null : (
+          <PaginationItem>
+            <PaginationPrevious
+              aria-label="Previous Page"
+              search={(prev: PageSearch) => {
+                return { ...prev, page: (prev.page ?? 1) - 1 };
+              }}
+              text=""
+              to="."
+            />
+          </PaginationItem>
         )}
         {pageNumbers.map((pageNum) => {
           return pageNum === "ellipsis-before" ||
             pageNum === "ellipsis-after" ? (
-            <button
-              aria-label="Ellipsis"
-              className={cn(paginationEllipsisClassName, "hidden md:block")}
-              disabled
-              key={pageNum}
-              type="button"
-            >
-              <span className="icon-[lucide--ellipsis] size-4" />
-            </button>
+            <PaginationItem key={pageNum}>
+              <PaginationEllipsis />
+            </PaginationItem>
           ) : (
-            <Link
-              activeProps={{ className: paginationLinkActiveClassName }}
-              className={paginationLinkClassName}
-              key={pageNum}
-              search={(prev) => ({
-                ...prev,
-                page: pageNum,
-              })}
-              to="."
-            >
-              {pageNum}
-            </Link>
+            <PaginationItem key={pageNum}>
+              <PaginationLink
+                isActive={pageNum === page}
+                search={(prev: PageSearch) => ({
+                  ...prev,
+                  page: pageNum,
+                })}
+                size="default"
+                to="."
+              >
+                {pageNum}
+              </PaginationLink>
+            </PaginationItem>
           );
         })}
-        {totalPages !== page && (
-          <Link
-            aria-label="Next Page"
-            className={cn(paginationLinkClassName, "hidden md:flex")}
-            search={(prev) => ({
-              ...prev,
-              page: (prev.page ?? 1) + 1,
-            })}
-            to="."
-          >
-            <span className="icon-[lucide--chevron-right] size-4" />
-          </Link>
+        {page >= cappedTotalPages ? null : (
+          <PaginationItem>
+            <PaginationNext
+              aria-label="Next Page"
+              search={(prev: PageSearch) => {
+                return { ...prev, page: (prev.page ?? 1) + 1 };
+              }}
+              text=""
+              to="."
+            />
+          </PaginationItem>
         )}
-      </div>
-    </div>
+      </PaginationContent>
+    </Pagination>
   );
 };

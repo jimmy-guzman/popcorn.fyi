@@ -1,14 +1,13 @@
-import type {LucideIcon} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 import {
   AwardIcon,
   ClapperboardIcon,
   FlameIcon,
-  
   PersonStandingIcon,
   TelescopeIcon,
   ThumbsUpIcon,
-  TvIcon
+  TvIcon,
 } from "lucide-react";
 
 import type { FileRoutesByTo } from "@/routeTree.gen";

@@ -7,6 +7,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import { Label } from "@/components/ui/label";
 
 const DEBOUNCE_MS = 500;
 
@@ -36,16 +37,10 @@ export const SiteNavSearchInput = () => {
       className="w-[min(100%,18rem)] shrink md:w-56 lg:w-64"
       role="search"
     >
-      <label className="sr-only" htmlFor="site-search">
+      <Label className="sr-only" htmlFor="site-search">
         Search movies and TV shows
-      </label>
+      </Label>
       <InputGroup className="w-full">
-        <InputGroupAddon align="inline-start">
-          <span
-            aria-hidden
-            className="icon-[lucide--search] size-4 text-muted-foreground"
-          />
-        </InputGroupAddon>
         <InputGroupInput
           id="site-search"
           onChange={(event) => {
@@ -60,6 +55,12 @@ export const SiteNavSearchInput = () => {
           type="search"
           value={query}
         />
+        <InputGroupAddon align="inline-start">
+          <span
+            aria-hidden
+            className="icon-[lucide--search] size-4 text-muted-foreground"
+          />
+        </InputGroupAddon>
       </InputGroup>
     </div>
   );
