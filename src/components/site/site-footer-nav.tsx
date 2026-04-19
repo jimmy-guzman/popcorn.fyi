@@ -1,3 +1,5 @@
+import { BugIcon } from "lucide-react";
+
 import { urls } from "@/config/urls";
 
 const footerNavLinkClassName =
@@ -16,7 +18,7 @@ export const SiteFooterNav = () => {
           target="_blank"
         >
           <span className="sr-only md:not-sr-only">GitHub</span>
-          <span className="icon-[lucide--github] size-4" />
+          <span aria-hidden className="icon-[simple-icons--github] size-4" />
         </a>
         <a
           aria-label="Report a bug"
@@ -26,7 +28,7 @@ export const SiteFooterNav = () => {
           target="_blank"
         >
           <span className="sr-only md:not-sr-only">Report a bug</span>
-          <span className="icon-[lucide--bug] size-4" />
+          <BugIcon className="size-4" />
         </a>
       </div>
     </nav>

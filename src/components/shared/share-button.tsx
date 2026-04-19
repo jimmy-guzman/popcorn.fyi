@@ -1,3 +1,4 @@
+import { ShareIcon } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -31,8 +32,7 @@ export const ShareButton = ({ title, url }: ShareButtonProps) => {
 
   return (
     <Button onClick={handleShare} type="button" variant="outline">
-      <span className="sr-only md:not-sr-only">Share</span>{" "}
-      <span className="icon-[lucide--share]" />
+      <span className="sr-only md:not-sr-only">Share</span> <ShareIcon />
     </Button>
   );
 };

@@ -1,3 +1,5 @@
+import { AlertCircleIcon } from "lucide-react";
+
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 import { ListContent } from "../shared/list-content";
@@ -35,7 +37,7 @@ export const TvDiscoverList = ({
     </div>
   ) : (
     <Alert variant="destructive">
-      <span className="icon-[lucide--alert-circle] size-6" />
+      <AlertCircleIcon className="size-6" />
       <AlertTitle>No results</AlertTitle>
       <AlertDescription>
         No results available based on your filters.

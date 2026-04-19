@@ -1,3 +1,5 @@
+import { ImageOffIcon } from "lucide-react";
+
 export const CardImageFallback = () => {
   return (
     <div
@@ -5,7 +7,7 @@ export const CardImageFallback = () => {
       className="flex h-full w-full items-center justify-center rounded-t-lg bg-muted py-4 text-muted-foreground"
       role="img"
     >
-      <span aria-hidden="true" className="icon-[lucide--image-off] h-10 w-10" />
+      <ImageOffIcon aria-hidden className="h-10 w-10" />
     </div>
   );
 };
