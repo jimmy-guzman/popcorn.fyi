@@ -6,5 +6,11 @@
       "command": ["npx", "shadcn@latest", "mcp"],
       "enabled": true
     }
-  }
+  },
+  "instructions": [
+    ".agents/skills/**/*.md",
+    ".claude/skills/**/*.md",
+    ".cursor/rules/**/*.md",
+    ".cursor/rules/**/*.mdc"
+  ]
 }
