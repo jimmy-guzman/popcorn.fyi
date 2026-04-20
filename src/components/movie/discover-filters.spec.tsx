@@ -57,9 +57,10 @@ describe("MovieDiscoverFilters", () => {
 
     const genreSelect = screen.getByRole("combobox", { name: /genre/i });
 
-    await user.selectOptions(genreSelect, "1");
+    await user.click(genreSelect);
+    await user.click(await screen.findByRole("option", { name: "Action" }));
 
-    expect(genreSelect).toHaveValue("1");
+    expect(genreSelect).toHaveTextContent(/Action/);
   });
 
   it("should reset the genre when reset button is clicked", async () => {
@@ -75,13 +76,14 @@ describe("MovieDiscoverFilters", () => {
     const genreSelect = screen.getByRole("combobox", { name: /genre/i });
     const resetButton = screen.getByRole("button", { name: /reset genre/i });
 
-    await user.selectOptions(genreSelect, "1");
+    await user.click(genreSelect);
+    await user.click(await screen.findByRole("option", { name: "Action" }));
 
-    expect(genreSelect).toHaveValue("1");
+    expect(genreSelect).toHaveTextContent(/Action/);
 
     await user.click(resetButton);
 
-    expect(genreSelect).toHaveValue("");
+    expect(genreSelect).toHaveTextContent("Pick a Genre");
   });
 
   it("should call navigation when filters change", async () => {
@@ -94,11 +96,16 @@ describe("MovieDiscoverFilters", () => {
       { path: "/_layout/movies/discover/_layout" },
     );
 
+    mockNavigate.mockClear();
+
     const sortSelect = screen.getByRole("combobox", { name: /sort by/i });
 
-    await user.selectOptions(sortSelect, "popularity.asc");
+    await user.click(sortSelect);
+    await user.click(
+      await screen.findByRole("option", { name: "Popularity (Low to High)" }),
+    );
 
-    expect(mockNavigate).toHaveBeenNthCalledWith(1, {
+    expect(mockNavigate).toHaveBeenLastCalledWith({
       search: expect.any(Function),
       to: "/movies/discover",
     });

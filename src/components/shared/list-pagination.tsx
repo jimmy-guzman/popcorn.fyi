@@ -1,8 +1,23 @@
-import { Link } from "@tanstack/react-router";
-
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { composePageNumbers } from "@/lib/pagination";
 
 const MAX_TOTAL_PAGES = 500;
+
+function clampPage(n: number, max: number) {
+  return Math.min(Math.max(n, 1), max);
+}
+
+interface PageSearch {
+  page?: number;
+}
 
 interface ListPaginationProps {
   page: number;
@@ -10,71 +25,63 @@ interface ListPaginationProps {
 }
 
 export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
-  const pageNumbers = composePageNumbers(
-    page,
-    Math.min(totalPages, MAX_TOTAL_PAGES),
-  );
+  const cappedTotalPages = Math.min(totalPages, MAX_TOTAL_PAGES);
+  const pageNumbers = composePageNumbers(page, cappedTotalPages);
 
   return (
-    <div
-      aria-label="Pagination Navigation"
-      className="flex justify-center"
-      role="navigation"
-    >
-      <div className="dsy-join">
-        {page !== 1 && (
-          <Link
-            aria-label="Previous Page"
-            className="dsy-btn dsy-join-item hidden md:flex"
-            search={(prev) => ({
-              ...prev,
-              page: (prev.page ?? 1) - 1,
-            })}
-            to="."
-          >
-            <span className="icon-[lucide--chevron-left] h-4 w-4" />
-          </Link>
-        )}
-        {pageNumbers.map((page) => {
-          return page === "ellipsis-before" || page === "ellipsis-after" ? (
-            <button
-              aria-label="Ellipsis"
-              className="dsy-btn dsy-join-item hidden md:block"
-              disabled
-              key={page}
-              type="button"
-            >
-              <span className="icon-[lucide--ellipsis] h-4 w-4" />
-            </button>
-          ) : (
-            <Link
-              activeProps={{ className: "dsy-btn-active" }}
-              className="dsy-btn dsy-join-item"
-              key={page}
-              search={(prev) => ({
-                ...prev,
-                page,
-              })}
+    <Pagination aria-label="Pagination Navigation">
+      <PaginationContent>
+        {page === 1 ? null : (
+          <PaginationItem>
+            <PaginationPrevious
+              aria-label="Previous Page"
+              search={(prev: PageSearch) => {
+                const next = page - 1;
+
+                return { ...prev, page: clampPage(next, cappedTotalPages) };
+              }}
+              text=""
               to="."
-            >
-              {page}
-            </Link>
+            />
+          </PaginationItem>
+        )}
+        {pageNumbers.map((pageNum) => {
+          return pageNum === "ellipsis-before" ||
+            pageNum === "ellipsis-after" ? (
+            <PaginationItem key={pageNum}>
+              <PaginationEllipsis />
+            </PaginationItem>
+          ) : (
+            <PaginationItem key={pageNum}>
+              <PaginationLink
+                isActive={pageNum === page}
+                search={(prev: PageSearch) => ({
+                  ...prev,
+                  page: pageNum,
+                })}
+                size="default"
+                to="."
+              >
+                {pageNum}
+              </PaginationLink>
+            </PaginationItem>
           );
         })}
-        {totalPages !== page && (
-          <Link
-            aria-label="Next Page"
-            className="dsy-btn dsy-join-item hidden md:flex"
-            search={(prev) => ({
-              ...prev,
-              page: (prev.page ?? 1) + 1,
-            })}
-            to="."
-          >
-            <span className="icon-[lucide--chevron-right] h-4 w-4" />
-          </Link>
+        {page >= cappedTotalPages ? null : (
+          <PaginationItem>
+            <PaginationNext
+              aria-label="Next Page"
+              search={(prev: PageSearch) => {
+                const next = page + 1;
+
+                return { ...prev, page: clampPage(next, cappedTotalPages) };
+              }}
+              text=""
+              to="."
+            />
+          </PaginationItem>
         )}
-      </div>
-    </div>
+      </PaginationContent>
+    </Pagination>
   );
 };

@@ -62,11 +62,10 @@ describe("MovieList", () => {
       />,
     );
 
-    const tvShowCard = screen.getByRole("heading", {
-      level: 2,
+    const movieCardLink = screen.getByRole("link", {
       name: movie.title,
     });
 
-    expect(tvShowCard).toBeInTheDocument();
+    expect(movieCardLink).toBeInTheDocument();
   });
 });

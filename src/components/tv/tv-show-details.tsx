@@ -1,11 +1,27 @@
 import { Link, Outlet } from "@tanstack/react-router";
+import { TvMinimalPlayIcon } from "lucide-react";
 import { Suspense } from "react";
 
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import { orEmpty } from "@/lib/array";
+import { cn } from "@/lib/cn";
 import { hasId } from "@/lib/predicates";
 import { quote } from "@/lib/string";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
+import {
+  MediaDetailViewBackdrop,
+  MediaDetailViewContent,
+  MediaDetailViewHero,
+  MediaDetailViewPoster,
+  MediaDetailViewRoot,
+} from "../media/media-detail-view";
 import { MediaGenres } from "../media/media-genres";
 import { MediaRating } from "../media/media-rating";
 import { MediaStatus } from "../media/media-status";
@@ -30,66 +46,82 @@ interface TVShowDetailsProps {
 
 export const TVShowDetails = ({ tvShow }: TVShowDetailsProps) => {
   const genres = orEmpty(tvShow.genres).filter(hasId);
-
-  return (
-    <div className="flex min-h-screen flex-col items-center gap-4">
-      <div className="hidden md:block">
-        {tvShow.backdrop_path ? (
-          <img
-            alt={tvShow.name}
-            className="size-full rounded-md object-cover"
-            src={tmdbImageUrl(tvShow.backdrop_path)}
+  const card = (
+    <Card
+      className={cn("min-w-0 flex-1", !tvShow.poster_path && "md:col-span-2")}
+    >
+      <CardHeader
+        className={cn(
+          "flex flex-row flex-wrap gap-2 border-0 pb-2",
+          "xl:flex-nowrap xl:justify-end",
+        )}
+      >
+        <MediaRating average={tvShow.vote_average} />
+        <MediaStatus status={tvShow.status} />
+        <MediaGenres genres={genres} media="tv-shows" />
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4 pt-0">
+        <Prose size="lg">
+          <h1>{tvShow.name}</h1>
+          {tvShow.tagline ? <p>{quote(tvShow.tagline)}</p> : null}
+          <p>{tvShow.overview}</p>
+        </Prose>
+      </CardContent>
+      <CardFooter className="flex flex-wrap justify-center gap-2 border-0 pt-0 md:justify-start">
+        {tvShow.id ? (
+          <Button
+            className="gap-2"
+            nativeButton={false}
+            render={
+              <Link params={{ id: tvShow.id }} to="/tv-shows/$id/trailer">
+                <span className="sr-only md:not-sr-only">Watch Trailer</span>
+                <TvMinimalPlayIcon data-icon="inline-end" />
+              </Link>
+            }
+            variant="outline"
           />
         ) : null}
-      </div>
-      <div className="dsy-hero w-full">
-        <div className="dsy-hero-content flex-col gap-4 lg:flex-row">
+        {tvShow.id ? (
+          <Suspense fallback={<ExternalLinksSkeleton />}>
+            <ExternalLinks id={tvShow.id} />
+          </Suspense>
+        ) : null}
+        {tvShow.name ? (
+          <ShareButton title={tvShow.name} url={`/tv-shows/${tvShow.id}`} />
+        ) : null}
+      </CardFooter>
+    </Card>
+  );
+
+  return (
+    <div className="flex min-h-screen flex-col gap-0">
+      <MediaDetailViewBackdrop
+        aria-label={tvShow.name}
+        backdropPath={tvShow.backdrop_path}
+        role="img"
+      />
+      <MediaDetailViewRoot>
+        <MediaDetailViewHero
+          className={
+            tvShow.backdrop_path ? "md:-mt-32 xl:-mt-40" : "md:mt-8 xl:mt-12"
+          }
+        >
           {tvShow.poster_path ? (
-            <img
-              alt={tvShow.name}
-              className="w-full rounded-lg shadow-2xl md:hidden md:w-auto md:max-w-xs lg:block"
-              src={tmdbImageUrl(tvShow.poster_path, "w500")}
-            />
+            <MediaDetailViewPoster overlap={Boolean(tvShow.backdrop_path)}>
+              <img
+                alt={tvShow.name ?? ""}
+                className="size-full rounded-none object-cover shadow-2xl"
+                src={tmdbImageUrl(tvShow.poster_path, "w500")}
+              />
+            </MediaDetailViewPoster>
           ) : null}
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-wrap gap-2 xl:flex-nowrap xl:justify-end">
-              <MediaRating average={tvShow.vote_average} />
-              <MediaStatus status={tvShow.status} />
-              <MediaGenres genres={genres} media="tv-shows" />
-            </div>
-            <Prose size="lg">
-              <h1>{tvShow.name}</h1>
-              {tvShow.tagline ? <p>{quote(tvShow.tagline)}</p> : null}
-              <p>{tvShow.overview}</p>
-            </Prose>
-            <div className="flex justify-center gap-2 md:justify-start">
-              {tvShow.id ? (
-                <Link
-                  className="dsy-btn dsy-btn-neutral"
-                  params={{ id: tvShow.id }}
-                  to="/tv-shows/$id/trailer"
-                >
-                  <span className="sr-only md:not-sr-only">Watch Trailer</span>{" "}
-                  <span className="icon-[lucide--tv-minimal-play] h-5 w-5" />
-                </Link>
-              ) : null}
-              {tvShow.id ? (
-                <Suspense fallback={<ExternalLinksSkeleton />}>
-                  <ExternalLinks id={tvShow.id} />
-                </Suspense>
-              ) : null}
-              {tvShow.name ? (
-                <ShareButton
-                  title={tvShow.name}
-                  url={`/tv-shows/${tvShow.id}`}
-                />
-              ) : null}
-            </div>
-          </div>
-        </div>
-      </div>
-      {tvShow.id ? <TvShowDetailsTabs id={tvShow.id} /> : null}
-      <Outlet />
+          {card}
+        </MediaDetailViewHero>
+        <MediaDetailViewContent className="flex flex-col gap-8">
+          {tvShow.id ? <TvShowDetailsTabs id={tvShow.id} /> : null}
+          <Outlet />
+        </MediaDetailViewContent>
+      </MediaDetailViewRoot>
     </div>
   );
 };

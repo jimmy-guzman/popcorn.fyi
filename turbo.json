@@ -20,7 +20,7 @@
     },
     "e2e": {
       "dependsOn": ["build"],
-      "passThroughEnv": ["CI"],
+      "passThroughEnv": ["CI", "TMDB_API_TOKEN"],
       "outputs": ["playwright-report/**", "test-results/**"]
     },
     "e2e:ui": {

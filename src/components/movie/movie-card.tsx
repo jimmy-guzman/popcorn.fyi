@@ -1,5 +1,12 @@
 import { Link } from "@tanstack/react-router";
 
+import {
+  Card,
+  CardAction,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { year } from "@/lib/date";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
@@ -11,6 +18,7 @@ interface MovieCardProps {
   movie: {
     id: number;
     media_type?: string;
+    original_title?: string;
     poster_path?: string;
     release_date?: string;
     title?: string;
@@ -19,28 +27,34 @@ interface MovieCardProps {
 }
 
 export const MovieCard = ({ movie }: MovieCardProps) => {
+  const title =
+    [movie.title, movie.original_title]
+      .map((value) => value?.trim())
+      .find((value) => value !== undefined && value !== "") ?? "Untitled movie";
+
   return (
-    <Link params={{ id: movie.id }} to="/movies/$id">
-      <div className="md:dsy-card-normal dsy-card h-full shadow-xl dsy-card-sm">
+    <Link aria-label={title} params={{ id: movie.id }} to="/movies/$id">
+      <Card className="h-full pt-0 shadow-lg" size="sm">
         {movie.poster_path ? (
-          <figure>
-            <img
-              alt={movie.title}
-              src={tmdbImageUrl(movie.poster_path, "w500")}
-            />
-          </figure>
+          <img
+            alt={title}
+            className="aspect-2/3 w-full shrink-0 object-cover"
+            src={tmdbImageUrl(movie.poster_path, "w500")}
+          />
         ) : (
           <CardImageFallback />
         )}
-        <div className="dsy-card-body">
-          <div className="flex justify-end gap-2">
+        <CardHeader className="gap-2">
+          <CardTitle className="text-base font-medium">{title}</CardTitle>
+          <CardDescription>
+            {movie.release_date ? year(movie.release_date) : "N/A"}
+          </CardDescription>
+          <CardAction className="flex gap-2">
             <MediaRating average={movie.vote_average} />
             <MediaType mediaType={movie.media_type} />
-          </div>
-          <h2 className="dsy-card-title">{movie.title}</h2>
-          {movie.release_date ? <p>{year(movie.release_date)}</p> : "N/A"}
-        </div>
-      </div>
+          </CardAction>
+        </CardHeader>
+      </Card>
     </Link>
   );
 };

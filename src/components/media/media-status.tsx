@@ -1,9 +1,9 @@
+import { Badge } from "@/components/ui/badge";
+
 interface MediaStatusProps {
   status?: string;
 }
 
 export const MediaStatus = ({ status }: MediaStatusProps) => {
-  return status ? (
-    <span className="dsy-badge dsy-badge-secondary">{status}</span>
-  ) : null;
+  return status ? <Badge variant="secondary">{status}</Badge> : null;
 };

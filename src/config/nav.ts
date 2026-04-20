@@ -1,10 +1,22 @@
+import type { LucideIcon } from "lucide-react";
+
+import {
+  AwardIcon,
+  ClapperboardIcon,
+  FlameIcon,
+  PersonStandingIcon,
+  TelescopeIcon,
+  ThumbsUpIcon,
+  TvIcon,
+} from "lucide-react";
+
 import type { FileRoutesByTo } from "@/routeTree.gen";
 
 /**
  * Represents a single navigation item with an icon, title, and route.
  */
 export interface SingleNavItem {
-  icon: string;
+  icon: LucideIcon;
   title: string;
   to: keyof FileRoutesByTo;
 }
@@ -13,7 +25,7 @@ export interface SingleNavItem {
  * Represents a grouped navigation item that contains multiple sub-items.
  */
 export interface GroupedNavItem {
-  icon: string;
+  icon: LucideIcon;
   items: SingleNavItem[];
   title: string;
   to: string;
@@ -26,20 +38,15 @@ export type NavItem = GroupedNavItem | SingleNavItem;
 
 export const topNav = [
   {
-    icon: "icon-[lucide--home]",
-    title: "Home",
-    to: "/",
-  },
-  {
-    icon: "icon-[lucide--telescope]",
+    icon: TelescopeIcon,
     items: [
       {
-        icon: "icon-[lucide--clapperboard]",
+        icon: ClapperboardIcon,
         title: "Movies",
         to: "/movies/discover",
       },
       {
-        icon: "icon-[lucide--tv]",
+        icon: TvIcon,
         title: "TV Shows",
         to: "/tv-shows/discover",
       },
@@ -48,20 +55,20 @@ export const topNav = [
     to: "/discover",
   },
   {
-    icon: "icon-[lucide--flame]",
+    icon: FlameIcon,
     items: [
       {
-        icon: "icon-[lucide--clapperboard]",
+        icon: ClapperboardIcon,
         title: "Movies",
         to: "/trending/movies",
       },
       {
-        icon: "icon-[lucide--tv]",
+        icon: TvIcon,
         title: "TV Shows",
         to: "/trending/tv-shows",
       },
       {
-        icon: "icon-[lucide--person-standing]",
+        icon: PersonStandingIcon,
         title: "People",
         to: "/trending/people",
       },
@@ -70,25 +77,25 @@ export const topNav = [
     to: "/trending",
   },
   {
-    icon: "icon-[lucide--clapperboard]",
+    icon: ClapperboardIcon,
     items: [
       {
-        icon: "icon-[lucide--telescope]",
+        icon: TelescopeIcon,
         title: "Discover",
         to: "/movies/discover",
       },
       {
-        icon: "icon-[lucide--flame]",
+        icon: FlameIcon,
         title: "Trending",
         to: "/trending/movies",
       },
       {
-        icon: "icon-[lucide--thumbs-up]",
+        icon: ThumbsUpIcon,
         title: "Popular",
         to: "/movies/popular",
       },
       {
-        icon: "icon-[lucide--award]",
+        icon: AwardIcon,
         title: "Top Rated",
         to: "/movies/top-rated",
       },
@@ -97,25 +104,25 @@ export const topNav = [
     to: "/movies",
   },
   {
-    icon: "icon-[lucide--tv]",
+    icon: TvIcon,
     items: [
       {
-        icon: "icon-[lucide--telescope]",
+        icon: TelescopeIcon,
         title: "Discover",
         to: "/tv-shows/discover",
       },
       {
-        icon: "icon-[lucide--flame]",
+        icon: FlameIcon,
         title: "Trending",
         to: "/trending/tv-shows",
       },
       {
-        icon: "icon-[lucide--thumbs-up]",
+        icon: ThumbsUpIcon,
         title: "Popular",
         to: "/tv-shows/popular",
       },
       {
-        icon: "icon-[lucide--award]",
+        icon: AwardIcon,
         title: "Top Rated",
         to: "/tv-shows/top-rated",
       },
@@ -124,15 +131,15 @@ export const topNav = [
     to: "/tv-shows",
   },
   {
-    icon: "icon-[lucide--person-standing]",
+    icon: PersonStandingIcon,
     items: [
       {
-        icon: "icon-[lucide--flame]",
+        icon: FlameIcon,
         title: "Trending",
         to: "/trending/people",
       },
       {
-        icon: "icon-[lucide--thumbs-up]",
+        icon: ThumbsUpIcon,
         title: "Popular",
         to: "/people/popular",
       },

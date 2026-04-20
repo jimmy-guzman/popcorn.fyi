@@ -25,7 +25,7 @@ export const MediaWatch = ({ watchProviders }: MediaWatchProps) => {
   return (
     <div className="flex w-full flex-col items-start gap-4">
       <Prose>
-        <h2 id="providers">Providers</h2>
+        <h2>Providers</h2>
       </Prose>
 
       {watchProviders?.US ? (

@@ -1,45 +1,59 @@
 import { useLocation } from "@tanstack/react-router";
-import { useRef } from "react";
+import { ChevronDownIcon } from "lucide-react";
 
 import type { GroupedNavItem, NavItem } from "@/config/nav";
 
+import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { cn } from "@/lib/cn";
+import { isNavSectionActive } from "@/lib/is-nav-section-active";
 
 import { SiteNavMenuItemLink } from "./site-nav-menu-item-link";
 
 const SiteNavCollapsibleMenuItem = ({ item }: { item: GroupedNavItem }) => {
   const { pathname } = useLocation();
-  const detailsRef = useRef<HTMLDetailsElement>(null);
-
-  const isActive = pathname.startsWith(item.to);
+  const isActive = isNavSectionActive(pathname, item.to);
+  const Icon = item.icon;
 
   return (
-    <details
-      onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget)) {
-          e.currentTarget.removeAttribute("open");
+    <Collapsible className="w-full" defaultOpen={isActive}>
+      <CollapsibleTrigger
+        className="group w-full"
+        render={
+          <Button
+            className={cn(
+              "w-full justify-between gap-2 font-normal",
+              isActive && "bg-accent text-accent-foreground",
+            )}
+            variant="ghost"
+          />
         }
-      }}
-      ref={detailsRef}
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- safari does not work correctly w/ document.activeElement
-      tabIndex={0}
-    >
-      <summary
-        className={cn(isActive && "bg-(--dsy-menu-active-bg)")}
-        role="button"
       >
-        <span className={cn(item.icon, "h-5 w-5")} /> {item.title}
-      </summary>
-      <ul>
-        {item.items.map((item) => {
-          return (
-            <li key={item.title}>
-              <SiteNavMenuItemLink item={item} />
-            </li>
-          );
-        })}
-      </ul>
-    </details>
+        <span className="flex min-w-0 flex-1 items-center gap-2 text-left">
+          <Icon aria-hidden className="size-5 shrink-0" />
+          {item.title}
+        </span>
+        <ChevronDownIcon
+          aria-hidden
+          className="size-4 shrink-0 transition-transform group-data-panel-open:rotate-180"
+        />
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <ul className="flex flex-col gap-0.5 pt-1 pl-2">
+          {item.items.map((sub) => {
+            return (
+              <li key={sub.to}>
+                <SiteNavMenuItemLink item={sub} />
+              </li>
+            );
+          })}
+        </ul>
+      </CollapsibleContent>
+    </Collapsible>
   );
 };
 

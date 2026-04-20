@@ -29,7 +29,6 @@ const columns = [
     (originalRow) => originalRow.release_date ?? originalRow.first_air_date,
     {
       cell: YearTableCell,
-      enableColumnFilter: false,
       header: "Year",
       sortDescFirst: true,
       sortUndefined: "first",
@@ -39,17 +38,14 @@ const columns = [
     (originalRow) => originalRow.title ?? originalRow.name,
     {
       cell: TitleNameTableCell,
-      enableColumnFilter: false,
       header: "Title/Name",
     },
   ),
   columnHelper.accessor("character", {
     cell: (info) => info.getValue(),
-    enableColumnFilter: false,
   }),
   columnHelper.accessor("episode_count", {
     cell: (info) => info.getValue(),
-    enableColumnFilter: false,
     header: "Episodes",
     sortUndefined: "last",
   }),

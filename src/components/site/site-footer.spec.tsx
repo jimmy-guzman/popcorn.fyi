@@ -35,10 +35,10 @@ describe("SiteFooter", () => {
     expect(link).toBeInTheDocument();
   });
 
-  it("should render daisyUI Start link", async () => {
+  it("should render shadcn/ui link", async () => {
     await render(<SiteFooter />);
 
-    const link = screen.getByRole("link", { name: "daisyUI" });
+    const link = screen.getByRole("link", { name: "shadcn/ui" });
 
     expect(link).toBeInTheDocument();
   });

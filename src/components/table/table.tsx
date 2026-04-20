@@ -1,25 +1,25 @@
-import type {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-} from "@tanstack/react-table";
+import type { ColumnDef, SortingState } from "@tanstack/react-table";
 
 import {
   flexRender,
   getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
   getFilteredRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
 
-import { cn } from "@/lib/cn";
+import {
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableRow,
+  Table as UITable,
+} from "@/components/ui/table";
 import { fuzzyFilter } from "@/lib/fuzzy-filter";
 
 import { TableGlobalFilter } from "./table-global-filter";
-import { TableHeader } from "./table-header";
+import { TableColumnHeader } from "./table-header";
 
 export const Table = <TData,>({
   className,
@@ -33,65 +33,76 @@ export const Table = <TData,>({
 }) => {
   const [globalFilter, setGlobalFilter] = useState("");
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   // eslint-disable-next-line react-hooks/incompatible-library -- TODO: revisit once eslint rule is stable
   const table = useReactTable({
     columns,
     data,
     getCoreRowModel: getCoreRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
     globalFilterFn: fuzzyFilter,
-    onColumnFiltersChange: setColumnFilters,
     onGlobalFilterChange: setGlobalFilter,
     onSortingChange: setSorting,
-    state: { columnFilters, globalFilter, sorting },
+    state: { globalFilter, sorting },
   });
+
+  const { rows } = table.getRowModel();
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid w-full grid-cols-1 items-center md:w-3/4 lg:w-1/2">
+      <div className="flex items-center py-4">
         <TableGlobalFilter
           globalFilter={globalFilter}
           resetGlobalFilter={table.resetGlobalFilter}
           setGlobalFilter={setGlobalFilter}
         />
       </div>
-      <div className="overflow-x-auto">
-        <table className={cn("dsy-table", className)}>
-          <thead>
+      <div className="overflow-hidden rounded-md border">
+        <UITable className={className}>
+          <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => {
               return (
-                <tr key={headerGroup.id}>
+                <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
-                    return <TableHeader header={header} key={header.id} />;
-                  })}
-                </tr>
-              );
-            })}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map((row) => {
-              return (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => {
                     return (
-                      <td key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </td>
+                      <TableColumnHeader header={header} key={header.id} />
                     );
                   })}
-                </tr>
+                </TableRow>
               );
             })}
-          </tbody>
-        </table>
+          </TableHeader>
+          <TableBody>
+            {rows.length > 0 ? (
+              rows.map((row) => {
+                return (
+                  <TableRow key={row.id}>
+                    {row.getVisibleCells().map((cell) => {
+                      return (
+                        <TableCell key={cell.id}>
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext(),
+                          )}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })
+            ) : (
+              <TableRow>
+                <TableCell
+                  className="h-24 text-center"
+                  colSpan={table.getVisibleLeafColumns().length || 1}
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </UITable>
       </div>
     </div>
   );

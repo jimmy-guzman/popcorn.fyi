@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/separator";
 import { site } from "@/config/site";
 import { orEmpty } from "@/lib/array";
 import { hasId } from "@/lib/predicates";
@@ -39,7 +40,7 @@ export const MediaCredits = ({ credits }: MediaCreditsProps) => {
           <p>{site.pages.media.credits.cast.unavailable}</p>
         </Prose>
       )}
-      <div className="dsy-divider" />
+      <Separator className="my-2" />
       <Prose>
         <h2 id="crew">{site.pages.media.credits.crew.title}</h2>
       </Prose>
