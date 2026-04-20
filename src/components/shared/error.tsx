@@ -25,7 +25,9 @@ export const Error = ({ error }: ErrorComponentProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    globalThis.reportError(error);
+    if (typeof globalThis.reportError === "function") {
+      globalThis.reportError(error);
+    }
   }, [error]);
 
   return (
