@@ -5,15 +5,17 @@ import { useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 
+function isErrorWithStatus(e: unknown): e is { status?: unknown } {
+  return e !== null && typeof e === "object" && "status" in e;
+}
+
 function safeErrorMessage(error: unknown) {
-  if (error !== null && typeof error === "object" && "status" in error) {
-    const {status} = (error as { status?: unknown });
+  if (!isErrorWithStatus(error)) return "Something went wrong";
 
-    if (typeof status === "number") {
-      if (status === 404) return "Not found";
+  if (typeof error.status === "number") {
+    if (error.status === 404) return "Not found";
 
-      if (status >= 500) return "Something went wrong";
-    }
+    if (error.status >= 500) return "Something went wrong";
   }
 
   return "Something went wrong";
@@ -23,9 +25,7 @@ export const Error = ({ error }: ErrorComponentProps) => {
   const router = useRouter();
 
   useEffect(() => {
-    // Full error for debugging; UI shows only `safeErrorMessage(error)`.
-    // eslint-disable-next-line no-console -- intentional error logging
-    console.error(error);
+    globalThis.reportError(error);
   }, [error]);
 
   return (
