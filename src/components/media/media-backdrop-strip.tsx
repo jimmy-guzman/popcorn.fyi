@@ -40,7 +40,7 @@ function MediaBackdropStrip({
       aria-label={ariaLabel}
       className={cn(
         "relative w-full overflow-hidden bg-muted bg-cover bg-center",
-        isHeroContent && "min-h-[calc(100dvh-5rem)]",
+        (isHeroContent || hasBackdrop) && "min-h-[calc(100dvh-5rem)]",
         isHeroContent
           ? "flex flex-col items-center justify-center rounded px-4 py-12 text-center sm:px-8 sm:py-16"
           : "rounded",
