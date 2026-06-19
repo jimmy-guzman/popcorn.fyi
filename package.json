@@ -50,7 +50,7 @@
     "@iconify-json/lucide": "1.2.112",
     "@iconify-json/simple-icons": "1.2.86",
     "@iconify/tailwind4": "1.2.3",
-    "@jimmy.codes/eslint-config": "7.7.0",
+    "@jimmy.codes/eslint-config": "7.9.0",
     "@playwright/test": "1.61.0",
     "@rolldown/plugin-babel": "0.2.3",
     "@tailwindcss/typography": "0.5.20",
