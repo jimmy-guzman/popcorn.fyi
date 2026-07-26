@@ -22,7 +22,7 @@ importers:
         version: 5.2.8
       '@t3-oss/env-core':
         specifier: 0.13.11
-        version: 0.13.11(typescript@5.9.3)(valibot@1.4.1(typescript@5.9.3))(zod@4.4.3)
+        version: 0.13.11(typescript@5.9.3)(valibot@1.4.2(typescript@5.9.3))(zod@4.4.3)
       '@tanstack/match-sorter-utils':
         specifier: 8.19.4
         version: 8.19.4
@@ -93,8 +93,8 @@ importers:
         specifier: 10.1.1
         version: 10.1.1(react@19.2.7)
       valibot:
-        specifier: 1.4.1
-        version: 1.4.1(typescript@5.9.3)
+        specifier: 1.4.2
+        version: 1.4.2(typescript@5.9.3)
       vaul:
         specifier: 1.1.2
         version: 1.1.2(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -5682,8 +5682,8 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  valibot@1.4.1:
-    resolution: {integrity: sha512-klCmFTz2jeDluy9RwX+F884TCiogtdBJ/YaxSx1EOBYXa3NXNWj8kR1jjN8rzluwojJVWWaHJ4r1U5LfICnM3g==}
+  valibot@1.4.2:
+    resolution: {integrity: sha512-gjdCvJ6d3RyHAneqxMYMW9QMCwYMb3jpOO0IyHZV1bnRHFBHrX3VkIILt5XYR0WhwHiH7Mty8ovuPZ/O3gamrg==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -7366,10 +7366,10 @@ snapshots:
       estraverse: 5.3.0
       picomatch: 4.0.4
 
-  '@t3-oss/env-core@0.13.11(typescript@5.9.3)(valibot@1.4.1(typescript@5.9.3))(zod@4.4.3)':
+  '@t3-oss/env-core@0.13.11(typescript@5.9.3)(valibot@1.4.2(typescript@5.9.3))(zod@4.4.3)':
     optionalDependencies:
       typescript: 5.9.3
-      valibot: 1.4.1(typescript@5.9.3)
+      valibot: 1.4.2(typescript@5.9.3)
       zod: 4.4.3
 
   '@tabby_ai/hijri-converter@1.0.5': {}
@@ -11521,7 +11521,7 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  valibot@1.4.1(typescript@5.9.3):
+  valibot@1.4.2(typescript@5.9.3):
     optionalDependencies:
       typescript: 5.9.3
 
