@@ -31,14 +31,14 @@ Never put auth tokens in shell commands. Do not type `VERCEL_TOKEN=...`, `--toke
 
 The preflight reads `package.json` and sets expectations before metric fan-out.
 
-| Framework              | Status             | Notes                                                                     |
-| ---------------------- | ------------------ | ------------------------------------------------------------------------- |
-| Next.js App Router     | supported          | strongest route mapping, scanners, playbooks, citations                   |
-| Next.js Pages Router   | supported          | scoped to Pages Router idioms when detected                               |
-| SvelteKit              | supported          | route mapping for `src/routes` files and SvelteKit scanner                |
-| Nuxt                   | supported          | route mapping plus generic/platform checks; fewer framework-specific recs |
-| Astro                  | limited            | route mapping plus generic checks; fewer framework-specific recs          |
-| Hono / Remix / unknown | blocked by default | continue only if the user accepts a limited platform/code-only audit      |
+| Framework | Status | Notes |
+|---|---|---|
+| Next.js App Router | supported | strongest route mapping, scanners, playbooks, citations |
+| Next.js Pages Router | supported | scoped to Pages Router idioms when detected |
+| SvelteKit | supported | route mapping for `src/routes` files and SvelteKit scanner |
+| Nuxt | supported | route mapping plus generic/platform checks; fewer framework-specific recs |
+| Astro | limited | route mapping plus generic checks; fewer framework-specific recs |
+| Hono / Remix / unknown | blocked by default | continue only if the user accepts a limited platform/code-only audit |
 
 If unsupported, stop and ask before scanning or gating:
 

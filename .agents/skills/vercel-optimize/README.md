@@ -39,31 +39,31 @@ The agent should collect metrics first. If it starts by reading source files or 
 
 ## Roadmap
 
-| Attribute                                                                                         | Status    |
-| ------------------------------------------------------------------------------------------------- | --------- |
-| Route-level Vercel Function invocations, duration, TTFB, and cold starts                          | Supported |
-| Vercel Function CPU, memory, and GB-hours                                                         | Supported |
-| Request volume, cache hit rate, HTTP status, and method distribution                              | Supported |
-| Fast Data Transfer and bot traffic patterns                                                       | Supported |
-| ISR reads, writes, and over-revalidation                                                          | Supported |
-| Routing Middleware volume and duration                                                            | Supported |
-| External API latency, volume, and transfer bytes                                                  | Supported |
-| Core Web Vitals from Speed Insights                                                               | Supported |
-| Image Optimization usage, source hosts, and source bytes                                          | Supported |
-| Build Minutes fan-out                                                                             | Supported |
-| Usage spikes by billing service                                                                   | Supported |
-| Bot Protection and BotID configuration                                                            | Supported |
-| Fluid Compute configuration and compute signals                                                   | Supported |
-| Region pinning and project configuration mismatches                                               | Supported |
-| Observability Events cost attribution                                                             | Supported |
-| Route-to-file recommendations for Next.js and SvelteKit                                           | Supported |
-| Nuxt route mapping with generic/platform checks                                                   | Supported |
-| Generic route mapping and platform checks for Astro                                               | Supported |
-| Hono route-to-file mapping                                                                        | Planned   |
-| Remix route-to-file mapping                                                                       | Planned   |
-| AI Gateway usage and cost optimization                                                            | Planned   |
-| Sandbox usage and cost optimization                                                               | Planned   |
-| Blob, Edge Config, Runtime Cache, Workflows, Queues, Flags, and Microfrontends billing dimensions | Planned   |
+| Attribute | Status |
+|---|---|
+| Route-level Vercel Function invocations, duration, TTFB, and cold starts | Supported |
+| Vercel Function CPU, memory, and GB-hours | Supported |
+| Request volume, cache hit rate, HTTP status, and method distribution | Supported |
+| Fast Data Transfer and bot traffic patterns | Supported |
+| ISR reads, writes, and over-revalidation | Supported |
+| Routing Middleware volume and duration | Supported |
+| External API latency, volume, and transfer bytes | Supported |
+| Core Web Vitals from Speed Insights | Supported |
+| Image Optimization usage, source hosts, and source bytes | Supported |
+| Build Minutes fan-out | Supported |
+| Usage spikes by billing service | Supported |
+| Bot Protection and BotID configuration | Supported |
+| Fluid Compute configuration and compute signals | Supported |
+| Region pinning and project configuration mismatches | Supported |
+| Observability Events cost attribution | Supported |
+| Route-to-file recommendations for Next.js and SvelteKit | Supported |
+| Nuxt route mapping with generic/platform checks | Supported |
+| Generic route mapping and platform checks for Astro | Supported |
+| Hono route-to-file mapping | Planned |
+| Remix route-to-file mapping | Planned |
+| AI Gateway usage and cost optimization | Planned |
+| Sandbox usage and cost optimization | Planned |
+| Blob, Edge Config, Runtime Cache, Workflows, Queues, Flags, and Microfrontends billing dimensions | Planned |
 
 ## What You Get
 

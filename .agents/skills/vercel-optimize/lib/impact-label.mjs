@@ -1,4 +1,4 @@
-import { impactMagnitude } from "./impact-magnitude.mjs";
+import { impactMagnitude } from './impact-magnitude.mjs';
 
 const SLOW_ROUTE_P95_THRESHOLD_MS = 500;
 const CACHE_HIT_THRESHOLD_PCT = 50;
@@ -10,7 +10,7 @@ export function computeImpactLabel(rec, signals = {}) {
   if (il.performance) return il.performance;
   if (il.costPhrase) return il.costPhrase;
 
-  if (typeof rec?.estimatedSavingsUsd === "number" && rec.impactTier) {
+  if (typeof rec?.estimatedSavingsUsd === 'number' && rec.impactTier) {
     const magnitude = impactMagnitude({
       currentCost: rec.estimatedSavingsUsd,
       impactTier: rec.impactTier,
@@ -23,36 +23,35 @@ export function computeImpactLabel(rec, signals = {}) {
 
 export function synthesizeImpactFromSignal(rec, signals = {}) {
   const tier = rec?.impactTier;
-  const sig =
-    [rec?.o11ySignal, rec?.evidence?.o11ySignal, rec?.why, rec?.what]
-      .filter((v) => typeof v === "string" && v.trim())
-      .join("\n") || null;
+  const sig = [
+    rec?.o11ySignal,
+    rec?.evidence?.o11ySignal,
+    rec?.why,
+    rec?.what,
+  ].filter((v) => typeof v === 'string' && v.trim()).join('\n') || null;
   if (!sig || !tier) return null;
   const m = String(sig);
   const inv = parseSigNumber(m, /inv=([\d,]+)/);
   const p95 = parseSigNumber(m, /p95=([\d,]+)ms/);
   const cachePct = parseSigNumber(m, /cache=([\d.]+)%/);
   const coldPct = parseSigNumber(m, /cold=([\d.]+)%/);
-  const buildSharePct =
-    parseSigNumber(m, /build_minutes_share=([\d.]+)%/i) ??
+  const buildSharePct = parseSigNumber(m, /build_minutes_share=([\d.]+)%/i) ??
     parseSigNumber(m, /build(?: CPU)? minutes share:?\s*([\d.]+)%/i);
   const errors = parseSigNumber(m, /errs=([\d,]+)/);
   const errorRatePct = parseSigNumber(m, /rate=([\d.]+)%/);
   const writes = parseSigNumber(m, /writes=([\d,]+)/);
   const reads = parseSigNumber(m, /reads=([\d,]+)/);
   const cwvIssues = [
-    cwvIssue("LCP", parseSigNumber(m, /LCP=([\d.]+)ms/i), 2500, "ms"),
-    cwvIssue("INP", parseSigNumber(m, /INP=([\d.]+)ms/i), 200, "ms"),
-    cwvIssue("CLS", parseSigNumber(m, /CLS=([\d.]+)/i), 0.1, ""),
+    cwvIssue('LCP', parseSigNumber(m, /LCP=([\d.]+)ms/i), 2500, 'ms'),
+    cwvIssue('INP', parseSigNumber(m, /INP=([\d.]+)ms/i), 200, 'ms'),
+    cwvIssue('CLS', parseSigNumber(m, /CLS=([\d.]+)/i), 0.1, ''),
   ].filter(Boolean);
 
   if (cwvIssues.length > 0) {
     return `${tier} impact — bring ${joinEnglish(cwvIssues.map(formatCwvIssue))}.`;
   }
   if (errors != null && errorRatePct != null) {
-    const reductionPct = Math.ceil(
-      Math.max(0, (1 - RELIABILITY_TARGET_PCT / errorRatePct) * 100),
-    );
+    const reductionPct = Math.ceil(Math.max(0, (1 - (RELIABILITY_TARGET_PCT / errorRatePct)) * 100));
     return `${tier} impact — cut 5xx rate by ~${reductionPct}% to get below ${RELIABILITY_TARGET_PCT}% (current ${errorRatePct}%, ${formatInteger(errors)} errors in this window).`;
   }
   if (errors != null) {
@@ -79,10 +78,7 @@ export function synthesizeImpactFromSignal(rec, signals = {}) {
   if (coldPct != null) {
     return `${tier} impact — current cold-start share is ${coldPct}%; the gate fires above ${COLD_START_THRESHOLD_PCT}%.`;
   }
-  if (
-    rec?.candidateRef?.startsWith("build_minutes_fanout:") ||
-    rec?.kind === "build_minutes_fanout"
-  ) {
+  if (rec?.candidateRef?.startsWith('build_minutes_fanout:') || rec?.kind === 'build_minutes_fanout') {
     return buildSharePct != null
       ? `${tier} impact — Build CPU Minutes account for ${buildSharePct}% of observed billed cost in this window.`
       : `${tier} impact — Build CPU Minutes exceeded the gate threshold in this window.`;
@@ -96,23 +92,23 @@ function cwvIssue(metric, value, threshold, unit) {
 }
 
 function formatCwvIssue(i) {
-  const current = i.metric === "CLS" ? round2(i.value) : Math.round(i.value);
-  if (i.unit === "ms") {
+  const current = i.metric === 'CLS' ? round2(i.value) : Math.round(i.value);
+  if (i.unit === 'ms') {
     return `${i.metric} below ${formatInteger(i.threshold)}ms (current ${formatInteger(current)}ms)`;
   }
   return `${i.metric} below ${i.threshold}${i.unit} (current ${current}${i.unit})`;
 }
 
 function joinEnglish(parts) {
-  if (parts.length <= 1) return parts[0] ?? "";
+  if (parts.length <= 1) return parts[0] ?? '';
   if (parts.length === 2) return `${parts[0]} and ${parts[1]}`;
-  return `${parts.slice(0, -1).join(", ")}, and ${parts.at(-1)}`;
+  return `${parts.slice(0, -1).join(', ')}, and ${parts.at(-1)}`;
 }
 
 function parseSigNumber(s, re) {
   const m = re.exec(s);
   if (!m) return null;
-  const n = Number(String(m[1]).replace(/,/g, ""));
+  const n = Number(String(m[1]).replace(/,/g, ''));
   return Number.isFinite(n) ? n : null;
 }
 
@@ -126,5 +122,5 @@ function round2(n) {
 
 function formatInteger(n) {
   if (!Number.isFinite(n)) return String(n);
-  return Math.round(n).toLocaleString("en-US");
+  return Math.round(n).toLocaleString('en-US');
 }

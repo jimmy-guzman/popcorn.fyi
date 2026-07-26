@@ -32,12 +32,7 @@
     {
       "url": "https://vercel.com/docs/fluid-compute",
       "topic": "Fluid Compute — reduced cold starts, active CPU pricing, function instance reuse, memory right-sizing",
-      "appliesTo": [
-        "cold_start",
-        "platform_fluid_compute",
-        "slow_route",
-        "oversized_memory"
-      ],
+      "appliesTo": ["cold_start", "platform_fluid_compute", "slow_route", "oversized_memory"],
       "applicableFrameworks": ["*"]
     },
     {
@@ -85,11 +80,7 @@
     {
       "url": "https://vercel.com/docs/vercel-firewall/vercel-waf/custom-rules",
       "topic": "Vercel WAF custom rules — log, deny, challenge, bypass, redirect, and persistent actions",
-      "appliesTo": [
-        "platform_bot_protection",
-        "uncached_route",
-        "middleware_heavy"
-      ],
+      "appliesTo": ["platform_bot_protection", "uncached_route", "middleware_heavy"],
       "applicableFrameworks": ["*"]
     },
     {
@@ -107,12 +98,7 @@
     {
       "url": "https://vercel.com/docs/functions/functions-api-reference/vercel-functions-package",
       "topic": "@vercel/functions helpers — waitUntil for post-response work and attachDatabasePool for pool lifecycle",
-      "appliesTo": [
-        "slow_route",
-        "cold_start",
-        "external_api_slow",
-        "route_errors"
-      ],
+      "appliesTo": ["slow_route", "cold_start", "external_api_slow", "route_errors"],
       "applicableFrameworks": ["*"]
     },
     {
@@ -154,10 +140,7 @@
     {
       "url": "https://vercel.com/docs/observability/observability-plus",
       "topic": "Observability Plus — path-level metrics, p75 sort, and retention",
-      "appliesTo": [
-        "platform_fluid_compute",
-        "observability_events_attribution"
-      ],
+      "appliesTo": ["platform_fluid_compute", "observability_events_attribution"],
       "applicableFrameworks": ["*"]
     },
     {
@@ -343,11 +326,7 @@
     {
       "url": "https://nextjs.org/docs/app/api-reference/functions/fetch",
       "topic": "Next.js fetch — server-side cache and next.revalidate semantics for App Router data requests",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "cache_header_gap"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "cache_header_gap"],
       "applicableFrameworks": ["next@>=13.0.0"]
     },
     {
@@ -431,11 +410,7 @@
     {
       "url": "https://nextjs.org/docs/app/building-your-application/caching",
       "topic": "Next.js App Router caching model — full-route cache, data cache, request memoization",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "function-duration"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "function-duration"],
       "applicableFrameworks": ["next@>=13.0.0"]
     },
     {
@@ -459,11 +434,7 @@
     {
       "url": "https://nextjs.org/docs/app/building-your-application/routing/middleware",
       "topic": "Next.js middleware — matcher config, runtime, request modification",
-      "appliesTo": [
-        "middleware-broad-matcher",
-        "platform_bot_protection",
-        "middleware_heavy"
-      ],
+      "appliesTo": ["middleware-broad-matcher", "platform_bot_protection", "middleware_heavy"],
       "applicableFrameworks": ["next@>=12.0.0"]
     },
     {
@@ -481,33 +452,19 @@
     {
       "url": "https://vercel.com/docs/frameworks/full-stack/sveltekit",
       "topic": "SvelteKit on Vercel — adapter config, ISR, split function bundling, regions, and runtime settings",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "cold_start",
-        "slow_route"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "cold_start", "slow_route"],
       "applicableFrameworks": ["sveltekit@*"]
     },
     {
       "url": "https://svelte.dev/docs/kit/adapter-vercel",
       "topic": "SvelteKit adapter-vercel — ISR, split, regions, max duration, and image config",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "cold_start",
-        "slow_route"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "cold_start", "slow_route"],
       "applicableFrameworks": ["sveltekit@*"]
     },
     {
       "url": "https://svelte.dev/docs/kit/page-options",
       "topic": "SvelteKit page options — prerender, SSR, CSR, and server route prerendering",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "rendering_candidate"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "rendering_candidate"],
       "applicableFrameworks": ["sveltekit@*"]
     },
     {
@@ -567,36 +524,19 @@
     {
       "url": "https://docs.astro.build/en/guides/integrations-guide/vercel/",
       "topic": "Astro Vercel adapter — ISR, image services, edge middleware, runtime config",
-      "appliesTo": [
-        "slow_route",
-        "cold_start",
-        "uncached_route",
-        "isr_overrevalidation",
-        "rendering_candidate",
-        "middleware_heavy"
-      ],
+      "appliesTo": ["slow_route", "cold_start", "uncached_route", "isr_overrevalidation", "rendering_candidate", "middleware_heavy"],
       "applicableFrameworks": ["astro@*"]
     },
     {
       "url": "https://vercel.com/docs/frameworks/frontend/astro",
       "topic": "Astro on Vercel — output modes, ISR, edge middleware, and image optimization",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "rendering_candidate",
-        "middleware_heavy",
-        "image_optimization"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "rendering_candidate", "middleware_heavy", "image_optimization"],
       "applicableFrameworks": ["astro@*"]
     },
     {
       "url": "https://docs.astro.build/en/guides/on-demand-rendering/",
       "topic": "Astro on-demand rendering — output server mode and per-route prerender controls",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "rendering_candidate"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "rendering_candidate"],
       "applicableFrameworks": ["astro@*"]
     },
     {
@@ -620,12 +560,7 @@
     {
       "url": "https://vercel.com/docs/frameworks/full-stack/nuxt",
       "topic": "Nuxt on Vercel — routeRules ISR, Vercel cache integration, deployment, and runtime configuration",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "slow_route",
-        "cold_start"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "slow_route", "cold_start"],
       "applicableFrameworks": ["nuxt@>=3.0.0"]
     },
     {
@@ -637,31 +572,19 @@
     {
       "url": "https://nuxt.com/docs/4.x/api/utils/define-route-rules",
       "topic": "Nuxt defineRouteRules — per-route prerender, ISR, SWR, headers, and rendering controls",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "rendering_candidate"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "rendering_candidate"],
       "applicableFrameworks": ["nuxt@>=3.0.0"]
     },
     {
       "url": "https://nuxt.com/docs/4.x/guide/concepts/rendering",
       "topic": "Nuxt rendering modes — universal rendering, routeRules, prerendering, and hybrid rendering",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "rendering_candidate"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "rendering_candidate"],
       "applicableFrameworks": ["nuxt@>=3.0.0"]
     },
     {
       "url": "https://nuxt.com/docs/api/utils/define-route-rules",
       "topic": "Nuxt route rules — per-route SSR/SSG/ISR/swr/cache config in nuxt.config.ts",
-      "appliesTo": [
-        "uncached_route",
-        "isr_overrevalidation",
-        "rendering_candidate"
-      ],
+      "appliesTo": ["uncached_route", "isr_overrevalidation", "rendering_candidate"],
       "applicableFrameworks": ["nuxt@*"]
     },
     {

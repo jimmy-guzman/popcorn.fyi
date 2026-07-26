@@ -1,20 +1,18 @@
-export const CORE_SUPPORTED_FRAMEWORKS = ["next", "sveltekit", "nuxt"];
-export const LIMITED_FRAMEWORKS = ["astro"];
+export const CORE_SUPPORTED_FRAMEWORKS = ['next', 'sveltekit', 'nuxt'];
+export const LIMITED_FRAMEWORKS = ['astro'];
 
 const LABELS = {
-  next: "Next.js",
-  sveltekit: "SvelteKit",
-  nuxt: "Nuxt",
-  astro: "Astro",
-  hono: "Hono",
-  remix: "Remix",
-  unknown: "unknown framework",
+  next: 'Next.js',
+  sveltekit: 'SvelteKit',
+  nuxt: 'Nuxt',
+  astro: 'Astro',
+  hono: 'Hono',
+  remix: 'Remix',
+  unknown: 'unknown framework',
 };
 
 export function frameworkLabel(framework) {
-  return (
-    LABELS[normalizeFramework(framework)] ?? String(framework ?? "unknown")
-  );
+  return LABELS[normalizeFramework(framework)] ?? String(framework ?? 'unknown');
 }
 
 export function classifyFrameworkSupport(stack = {}) {
@@ -26,7 +24,7 @@ export function classifyFrameworkSupport(stack = {}) {
   if (CORE_SUPPORTED_FRAMEWORKS.includes(framework)) {
     return {
       ok: true,
-      status: "supported",
+      status: 'supported',
       blocker: null,
       framework,
       label,
@@ -39,7 +37,7 @@ export function classifyFrameworkSupport(stack = {}) {
   if (LIMITED_FRAMEWORKS.includes(framework)) {
     return {
       ok: true,
-      status: "limited",
+      status: 'limited',
       blocker: null,
       framework,
       label,
@@ -51,21 +49,19 @@ export function classifyFrameworkSupport(stack = {}) {
 
   return {
     ok: false,
-    status: "unsupported",
-    blocker: "unsupported_framework",
+    status: 'unsupported',
+    blocker: 'unsupported_framework',
     framework,
     label,
     supportedFrameworks: supportedLabels,
     limitedFrameworks: limitedLabels,
-    detail: `${label} is not supported for metric-backed route-to-file investigations. Supported frameworks: ${supportedLabels.join(", ")}. Limited support: ${limitedLabels.join(", ")}.`,
+    detail: `${label} is not supported for metric-backed route-to-file investigations. Supported frameworks: ${supportedLabels.join(', ')}. Limited support: ${limitedLabels.join(', ')}.`,
   };
 }
 
 function normalizeFramework(value) {
-  const raw = String(value ?? "unknown")
-    .trim()
-    .toLowerCase();
-  if (raw === "nextjs" || raw === "next.js") return "next";
-  if (raw === "svelte" || raw === "svelte-kit") return "sveltekit";
-  return raw || "unknown";
+  const raw = String(value ?? 'unknown').trim().toLowerCase();
+  if (raw === 'nextjs' || raw === 'next.js') return 'next';
+  if (raw === 'svelte' || raw === 'svelte-kit') return 'sveltekit';
+  return raw || 'unknown';
 }

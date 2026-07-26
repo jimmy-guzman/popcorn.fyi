@@ -2,13 +2,13 @@
 const MIN_CALL_COUNT = 500;
 
 export const metadata = {
-  id: "external_api_slow",
+  id: 'external_api_slow',
   threshold: `p75Ms > 2000 AND callCount >= ${MIN_CALL_COUNT}`,
-  billingDimension: "function-duration",
-  scope: "route",
-  sourceCitation: "vercel-optimize gate threshold",
+  billingDimension: 'function-duration',
+  scope: 'route',
+  sourceCitation: 'vercel-optimize gate threshold',
   description:
-    "External API hostnames with p75 latency above 2 seconds AND at least 500 calls in the window. External API latency is a primary driver of function duration cost when the upstream is on a hot path; a single slow stale call isn't worth recommending against.",
+    'External API hostnames with p75 latency above 2 seconds AND at least 500 calls in the window. External API latency is a primary driver of function duration cost when the upstream is on a hot path; a single slow stale call isn\'t worth recommending against.',
 };
 
 export function gate(signals) {
@@ -19,7 +19,7 @@ export function gate(signals) {
     .filter((a) => a.p75Ms > 2000 && a.callCount >= MIN_CALL_COUNT)
     .map((a) => ({
       kind: metadata.id,
-      scope: "route",
+      scope: 'route',
       route: null,
       files: [],
       hostname: a.hostname,
@@ -27,14 +27,9 @@ export function gate(signals) {
       priority: Math.round((a.p75Ms * a.callCount) / 1000),
       confidence: 0.88,
       o11ySignal: `host=${a.hostname},p75=${a.p75Ms}ms,calls=${a.callCount}`,
-      reason: "slow external dependency on hot path",
+      reason: 'slow external dependency on hot path',
       question: `Which routes call ${a.hostname} (p75=${a.p75Ms}ms across ${a.callCount} calls), and can the call be parallelized, cached, or moved off the critical path?`,
-      evidence: {
-        metric: "externalApiP75",
-        hostname: a.hostname,
-        p75Ms: a.p75Ms,
-        callCount: a.callCount,
-      },
+      evidence: { metric: 'externalApiP75', hostname: a.hostname, p75Ms: a.p75Ms, callCount: a.callCount },
     }));
 }
 

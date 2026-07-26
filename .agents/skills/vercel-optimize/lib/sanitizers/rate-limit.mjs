@@ -2,42 +2,20 @@
 // rec prescribes concurrency above a known provider rate limit.
 
 const PROVIDER_LIMITS = {
-  notion: {
-    rps: 3,
-    label: "Notion",
-    doc: "https://developers.notion.com/reference/request-limits",
-  },
-  openai: {
-    rps: 30,
-    label: "OpenAI",
-    doc: "https://platform.openai.com/docs/guides/rate-limits",
-  },
-  stripe: {
-    rps: 100,
-    label: "Stripe",
-    doc: "https://docs.stripe.com/rate-limits",
-  },
-  anthropic: {
-    rps: 10,
-    label: "Anthropic",
-    doc: "https://docs.anthropic.com/en/api/rate-limits",
-  },
+  notion: { rps: 3, label: 'Notion', doc: 'https://developers.notion.com/reference/request-limits' },
+  openai: { rps: 30, label: 'OpenAI', doc: 'https://platform.openai.com/docs/guides/rate-limits' },
+  stripe: { rps: 100, label: 'Stripe', doc: 'https://docs.stripe.com/rate-limits' },
+  anthropic: { rps: 10, label: 'Anthropic', doc: 'https://docs.anthropic.com/en/api/rate-limits' },
 };
 
 export const metadata = {
-  id: "rate-limit",
-  description:
-    "Prepend caveat when a rec prescribes concurrency above a known provider rate limit.",
+  id: 'rate-limit',
+  description: 'Prepend caveat when a rec prescribes concurrency above a known provider rate limit.',
 };
 
-const PROVIDER_RE = new RegExp(
-  `\\b(${Object.keys(PROVIDER_LIMITS).join("|")})\\b`,
-  "gi",
-);
-const CONCURRENCY_RE =
-  /\b(?:concurrency|parallel|in\s+parallel|simultaneous|simultaneously|fan[- ]?out|Promise\.all)\b[^\d]{0,40}(\d{1,4})\b/gi;
-const CONCURRENCY_RE_REVERSE =
-  /\b(\d{1,4})\s*(?:concurrent|parallel|simultaneous|in flight)\b/gi;
+const PROVIDER_RE = new RegExp(`\\b(${Object.keys(PROVIDER_LIMITS).join('|')})\\b`, 'gi');
+const CONCURRENCY_RE = /\b(?:concurrency|parallel|in\s+parallel|simultaneous|simultaneously|fan[- ]?out|Promise\.all)\b[^\d]{0,40}(\d{1,4})\b/gi;
+const CONCURRENCY_RE_REVERSE = /\b(\d{1,4})\s*(?:concurrent|parallel|simultaneous|in flight)\b/gi;
 
 export function apply(rec, _ctx = {}) {
   const text = collectText(rec);
@@ -47,7 +25,7 @@ export function apply(rec, _ctx = {}) {
   if (concurrency === null) return {};
 
   const tags = [];
-  let prepend = "";
+  let prepend = '';
   for (const key of providers) {
     const limit = PROVIDER_LIMITS[key];
     if (!limit) continue;
@@ -58,15 +36,15 @@ export function apply(rec, _ctx = {}) {
     }
   }
   if (tags.length === 0) return {};
-  if (typeof rec.fix === "string") rec.fix = prepend + rec.fix;
+  if (typeof rec.fix === 'string') rec.fix = prepend + rec.fix;
   else rec.fix = prepend.trim();
   return { tags, needsReview: true };
 }
 
 function collectText(rec) {
   return [rec.what, rec.why, rec.fix, rec.currentBehavior, rec.desiredBehavior]
-    .filter((s) => typeof s === "string")
-    .join("\n");
+    .filter((s) => typeof s === 'string')
+    .join('\n');
 }
 
 function matchProviders(text) {

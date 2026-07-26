@@ -12,28 +12,22 @@
 // project is rebuilding unchanged work.
 
 export const metadata = {
-  id: "turbo-force-bypass",
-  title: "Turborepo cache bypass on a monorepo",
-  severity: "high",
-  billingDimension: "build",
+  id: 'turbo-force-bypass',
+  title: 'Turborepo cache bypass on a monorepo',
+  severity: 'high',
+  billingDimension: 'build',
   trafficIndependent: true, // build-time, fires regardless of route traffic
   description:
     "Turborepo's per-task cache can be bypassed by an explicit force flag, a `cache: false` config, or missing build-skip configuration. Every commit can rebuild unchanged work; Build Minutes climb with project count.",
-  fix: "Remove `TURBO_FORCE=true` from build env/scripts unless intentional. Set `tasks.build.cache: true` in `turbo.json` (or remove the override), and include generated outputs in Turbo's cache contract. Prefer Vercel's skip-unaffected monorepo behavior when available; use `ignoreCommand` only when that setting cannot cover the project.",
+  fix:
+    "Remove `TURBO_FORCE=true` from build env/scripts unless intentional. Set `tasks.build.cache: true` in `turbo.json` (or remove the override), and include generated outputs in Turbo's cache contract. Prefer Vercel's skip-unaffected monorepo behavior when available; use `ignoreCommand` only when that setting cannot cover the project.",
   citations: [
-    "https://vercel.com/docs/monorepos",
-    "https://vercel.com/docs/builds",
-    "https://turborepo.dev/docs/crafting-your-repository/caching",
+    'https://vercel.com/docs/monorepos',
+    'https://vercel.com/docs/builds',
+    'https://turborepo.dev/docs/crafting-your-repository/caching',
   ],
-  excludeGlobs: ["node_modules/**", ".next/**", "dist/**"],
-  includeGlobs: [
-    "turbo.json",
-    "**/turbo.json",
-    "package.json",
-    "**/package.json",
-    "vercel.json",
-    "**/vercel.json",
-  ],
+  excludeGlobs: ['node_modules/**', '.next/**', 'dist/**'],
+  includeGlobs: ['turbo.json', '**/turbo.json', 'package.json', '**/package.json', 'vercel.json', '**/vercel.json'],
 };
 
 const FORCE_ENV_RE = /TURBO_FORCE\s*=\s*(?:true|1)\b/;
@@ -46,9 +40,9 @@ export function scan({ files }) {
   let vercelJsonContent = null;
 
   for (const { path, content } of files) {
-    const name = path.split("/").pop();
+    const name = path.split('/').pop();
 
-    if (name === "turbo.json") {
+    if (name === 'turbo.json') {
       hasTurboJson = true;
       const buildCacheDisabled = detectBuildCacheDisabled(content);
       if (buildCacheDisabled) {
@@ -56,15 +50,15 @@ export function scan({ files }) {
           pattern: metadata.id,
           file: path,
           line: buildCacheDisabled.line,
-          evidence: "turbo.json: tasks.build.cache = false",
+          evidence: 'turbo.json: tasks.build.cache = false',
           trafficIndependent: metadata.trafficIndependent,
-          subtype: "cache-disabled",
+          subtype: 'cache-disabled',
         });
       }
       continue;
     }
 
-    if (name === "package.json") {
+    if (name === 'package.json') {
       const scripts = safeScripts(content);
       for (const [scriptName, body] of Object.entries(scripts)) {
         if (FORCE_ENV_RE.test(body) || FORCE_FLAG_RE.test(body)) {
@@ -75,14 +69,14 @@ export function scan({ files }) {
             line,
             evidence: `package.json scripts.${scriptName}: ${truncate(body, 80)}`,
             trafficIndependent: metadata.trafficIndependent,
-            subtype: "force-flag",
+            subtype: 'force-flag',
           });
         }
       }
       continue;
     }
 
-    if (name === "vercel.json") {
+    if (name === 'vercel.json') {
       vercelJsonFile = path;
       vercelJsonContent = content;
     }
@@ -90,19 +84,14 @@ export function scan({ files }) {
 
   // No-ignore-step: repo has turbo.json AND vercel.json lacks an ignoreCommand.
   // This is an investigation prompt, not proof that the dashboard skip setting is off.
-  if (
-    hasTurboJson &&
-    vercelJsonFile &&
-    !/"ignoreCommand"\s*:/.test(vercelJsonContent ?? "")
-  ) {
+  if (hasTurboJson && vercelJsonFile && !/"ignoreCommand"\s*:/.test(vercelJsonContent ?? '')) {
     out.push({
       pattern: metadata.id,
       file: vercelJsonFile,
       line: 1,
-      evidence:
-        "turbo repo without ignoreCommand in vercel.json; verify Vercel skip-unaffected setting",
+      evidence: 'turbo repo without ignoreCommand in vercel.json; verify Vercel skip-unaffected setting',
       trafficIndependent: metadata.trafficIndependent,
-      subtype: "no-ignore-step",
+      subtype: 'no-ignore-step',
     });
   }
 
@@ -115,16 +104,14 @@ function detectBuildCacheDisabled(content) {
   const buildTask = /"build"\s*:\s*\{([\s\S]{0,400}?)\}/.exec(content);
   if (!buildTask) return null;
   if (!/"cache"\s*:\s*false/.test(buildTask[1])) return null;
-  const lineNum = content.slice(0, buildTask.index).split("\n").length;
+  const lineNum = content.slice(0, buildTask.index).split('\n').length;
   return { line: lineNum };
 }
 
 function safeScripts(content) {
   try {
     const parsed = JSON.parse(content);
-    return parsed?.scripts && typeof parsed.scripts === "object"
-      ? parsed.scripts
-      : {};
+    return parsed?.scripts && typeof parsed.scripts === 'object' ? parsed.scripts : {};
   } catch {
     return {};
   }
@@ -133,10 +120,10 @@ function safeScripts(content) {
 function lineOfMatch(haystack, needle) {
   const idx = haystack.indexOf(needle);
   if (idx < 0) return null;
-  return haystack.slice(0, idx).split("\n").length;
+  return haystack.slice(0, idx).split('\n').length;
 }
 
 function truncate(s, n) {
-  if (typeof s !== "string") return "";
-  return s.length > n ? s.slice(0, n - 1) + "…" : s;
+  if (typeof s !== 'string') return '';
+  return s.length > n ? s.slice(0, n - 1) + '…' : s;
 }
