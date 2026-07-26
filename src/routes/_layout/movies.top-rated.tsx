@@ -13,7 +13,9 @@ import { PaginationSchema } from "@/schemas/pagination";
 export const Route = createFileRoute("/_layout/movies/top-rated")({
   component: RouteComponent,
   validateSearch: PaginationSchema,
-  loaderDeps: ({ search: { page } }) => ({ page }),
+  loaderDeps: ({ search: { page } }) => {
+    return { page };
+  },
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(moviesTopRatedOptions(deps));
   },

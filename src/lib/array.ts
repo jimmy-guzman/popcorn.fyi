@@ -7,9 +7,15 @@
  */
 export const shuffle = <T>(arr: T[]): T[] => {
   return arr
-    .map((item) => ({ item, sort: Math.random() }))
-    .toSorted((a, b) => a.sort - b.sort)
-    .map(({ item }) => item);
+    .map((item) => {
+      return { item, sort: Math.random() };
+    })
+    .toSorted((a, b) => {
+      return a.sort - b.sort;
+    })
+    .map(({ item }) => {
+      return item;
+    });
 };
 
 /**

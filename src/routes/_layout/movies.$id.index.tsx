@@ -47,13 +47,17 @@ function RouteComponent() {
     {
       title: "Production Companies",
       value: movie.production_companies
-        ?.map((productionCompany) => productionCompany.name)
+        ?.map((productionCompany) => {
+          return productionCompany.name;
+        })
         .join(", "),
     },
     {
       title: "Production Countries",
       value: movie.production_countries
-        ?.map((country) => country.name)
+        ?.map((country) => {
+          return country.name;
+        })
         .join(", "),
     },
   ];

@@ -4,9 +4,11 @@ import { toast } from "sonner";
 
 import { ShareButton } from "./share-button";
 
-vi.mock("sonner", () => ({
-  toast: { success: vi.fn() },
-}));
+vi.mock("sonner", () => {
+  return {
+    toast: { success: vi.fn() },
+  };
+});
 
 describe("ShareButton", () => {
   const title = "Inception";
@@ -14,6 +16,7 @@ describe("ShareButton", () => {
 
   afterEach(() => {
     vi.restoreAllMocks();
+    vi.unstubAllGlobals();
   });
 
   it("should call navigator.share when available", async () => {
@@ -37,18 +40,17 @@ describe("ShareButton", () => {
   it("should fall back to clipboard when navigator.share is unavailable", async () => {
     vi.spyOn(navigator, "share").mockImplementation(undefined as never);
 
+    const writeTextMock = vi.fn().mockResolvedValue(undefined);
+
     vi.stubGlobal("navigator", {
-      clipboard: {
-        writeText: vi.fn().mockResolvedValue(undefined),
-      },
+      clipboard: { writeText: writeTextMock },
     });
 
     render(<ShareButton title={title} url={url} />);
 
     await userEvent.click(screen.getByRole("button", { name: /share/i }));
 
-    // eslint-disable-next-line @typescript-eslint/unbound-method -- it's ok due to stubGlobal
-    expect(navigator.clipboard.writeText).toHaveBeenCalledExactlyOnceWith(url);
+    expect(writeTextMock).toHaveBeenCalledExactlyOnceWith(url);
     expect(toast.success).toHaveBeenCalledExactlyOnceWith(
       "Link copied to clipboard!",
     );

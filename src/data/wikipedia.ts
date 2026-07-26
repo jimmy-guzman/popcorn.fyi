@@ -7,7 +7,7 @@ import { getSitelink } from "@/integrations/wikidata/gen/sdk.gen";
 const IdSchema = v.string();
 
 export const wikipediaFn = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => v.parse(IdSchema, data))
+  .validator(IdSchema)
   .handler(async (context) => {
     const { data } = await getSitelink({
       client: wikiDataClient,

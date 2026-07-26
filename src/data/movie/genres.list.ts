@@ -19,7 +19,9 @@ const movieGenresFn = createServerFn({ method: "GET" }).handler(
 
 export const movieGenresOptions = () => {
   return queryOptions({
-    queryFn: () => movieGenresFn(),
+    queryFn: () => {
+      return movieGenresFn();
+    },
     queryKey: ["movie", "genres", "list"],
   });
 };

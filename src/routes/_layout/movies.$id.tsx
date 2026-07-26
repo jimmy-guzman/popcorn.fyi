@@ -13,7 +13,9 @@ import { PathParamsSchema } from "@/schemas/path-params";
 export const Route = createFileRoute("/_layout/movies/$id")({
   component: RouteComponent,
   params: {
-    parse: (params) => v.parse(PathParamsSchema, params),
+    parse: (params) => {
+      return v.parse(PathParamsSchema, params);
+    },
   },
   loader: async ({ context, params: { id } }) => {
     const data = await context.queryClient.ensureQueryData(
@@ -31,9 +33,11 @@ export const Route = createFileRoute("/_layout/movies/$id")({
       },
     };
   },
-  head: ({ loaderData }) => ({
-    meta: loaderData ? seo(loaderData.seo) : undefined,
-  }),
+  head: ({ loaderData }) => {
+    return {
+      meta: loaderData ? seo(loaderData.seo) : undefined,
+    };
+  },
 });
 
 function RouteComponent() {

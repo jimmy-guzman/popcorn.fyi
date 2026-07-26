@@ -55,10 +55,14 @@ const Wrapper = ({
 
     const rootRoute = createRootRoute();
     const testingRoute = createRoute({
-      getParentRoute: () => rootRoute,
+      getParentRoute: () => {
+        return rootRoute;
+      },
       path,
       validateSearch,
-      component: () => children,
+      component: () => {
+        return children;
+      },
     });
 
     return {

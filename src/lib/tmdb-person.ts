@@ -33,9 +33,9 @@ const calculateNotabilityScore = ({
 };
 
 const sortByNotability = <T extends NotabilityMetrics>(items: T[]) => {
-  return items.toSorted(
-    (a, b) => calculateNotabilityScore(b) - calculateNotabilityScore(a),
-  );
+  return items.toSorted((a, b) => {
+    return calculateNotabilityScore(b) - calculateNotabilityScore(a);
+  });
 };
 
 const isSignificantRole = ({
@@ -65,9 +65,9 @@ export const getKnownForHighlights = (
     return limit(unique(rankedCastWork, "id"), count);
   }
 
-  const departmentCrewWork = crew.filter(
-    (work) => work.department === department,
-  );
+  const departmentCrewWork = crew.filter((work) => {
+    return work.department === department;
+  });
 
   const rankedCrewWork = sortByNotability(departmentCrewWork);
 

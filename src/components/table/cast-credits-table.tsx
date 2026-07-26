@@ -26,7 +26,9 @@ const columns = [
     header: "Media",
   }),
   columnHelper.accessor(
-    (originalRow) => originalRow.release_date ?? originalRow.first_air_date,
+    (originalRow) => {
+      return originalRow.release_date ?? originalRow.first_air_date;
+    },
     {
       cell: YearTableCell,
       header: "Year",
@@ -35,17 +37,23 @@ const columns = [
     },
   ),
   columnHelper.accessor(
-    (originalRow) => originalRow.title ?? originalRow.name,
+    (originalRow) => {
+      return originalRow.title ?? originalRow.name;
+    },
     {
       cell: TitleNameTableCell,
       header: "Title/Name",
     },
   ),
   columnHelper.accessor("character", {
-    cell: (info) => info.getValue(),
+    cell: (info) => {
+      return info.getValue();
+    },
   }),
   columnHelper.accessor("episode_count", {
-    cell: (info) => info.getValue(),
+    cell: (info) => {
+      return info.getValue();
+    },
     header: "Episodes",
     sortUndefined: "last",
   }),

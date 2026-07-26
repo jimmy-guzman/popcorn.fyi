@@ -16,7 +16,9 @@ const getTvProviders = createServerFn({ method: "GET" }).handler(async () => {
 
 export const tvProvidersOptions = () => {
   return queryOptions({
-    queryFn: () => getTvProviders(),
+    queryFn: () => {
+      return getTvProviders();
+    },
     queryKey: ["tv", "providers", "list"],
   });
 };

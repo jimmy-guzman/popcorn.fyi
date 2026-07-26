@@ -52,7 +52,12 @@ export function DiscoverFilterCombobox<TValue extends string>({
   value,
 }: DiscoverFilterComboboxProps<TValue>) {
   const rows = useMemo(() => {
-    if (value === null || options.some((option) => option.value === value)) {
+    if (
+      value === null ||
+      options.some((option) => {
+        return option.value === value;
+      })
+    ) {
       return options;
     }
 
@@ -60,17 +65,27 @@ export function DiscoverFilterCombobox<TValue extends string>({
   }, [options, value]);
 
   const labels = useMemo(() => {
-    return new Map<string, string>(rows.map((row) => [row.value, row.label]));
+    return new Map<string, string>(
+      rows.map((row) => {
+        return [row.value, row.label];
+      }),
+    );
   }, [rows]);
 
-  const items = useMemo(() => rows.map((row) => row.value), [rows]);
+  const items = useMemo(() => {
+    return rows.map((row) => {
+      return row.value;
+    });
+  }, [rows]);
 
   return (
     <Combobox
       autoComplete="list"
       autoHighlight
       items={items}
-      itemToStringLabel={(item) => labels.get(item) ?? item}
+      itemToStringLabel={(item) => {
+        return labels.get(item) ?? item;
+      }}
       onValueChange={onChange}
       value={value}
     >

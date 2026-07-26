@@ -13,7 +13,9 @@ import { PaginationSchema } from "@/schemas/pagination";
 export const Route = createFileRoute("/_layout/tv-shows/popular")({
   component: RouteComponent,
   validateSearch: PaginationSchema,
-  loaderDeps: ({ search: { page } }) => ({ page }),
+  loaderDeps: ({ search: { page } }) => {
+    return { page };
+  },
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(tvPopularOptions(deps));
   },

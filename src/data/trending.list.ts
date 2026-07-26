@@ -24,7 +24,9 @@ const trendingAllFn = createServerFn({ method: "GET" }).handler(async () => {
 
 export const trendingAllOptions = () => {
   return queryOptions({
-    queryFn: () => trendingAllFn(),
+    queryFn: () => {
+      return trendingAllFn();
+    },
     queryKey: ["trending", "list"],
   });
 };

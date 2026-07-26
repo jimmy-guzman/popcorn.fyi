@@ -29,8 +29,12 @@ interface MovieCardProps {
 export const MovieCard = ({ movie }: MovieCardProps) => {
   const title =
     [movie.title, movie.original_title]
-      .map((value) => value?.trim())
-      .find((value) => value !== undefined && value !== "") ?? "Untitled movie";
+      .map((value) => {
+        return value?.trim();
+      })
+      .find((value) => {
+        return value !== undefined && value !== "";
+      }) ?? "Untitled movie";
 
   return (
     <Link aria-label={title} params={{ id: movie.id }} to="/movies/$id">

@@ -44,7 +44,9 @@ export const TvDiscoverFilters = ({
 
   const setFilters = (patch: TvDiscoverPatch) => {
     void navigate({
-      search: (prev) => ({ ...prev, ...patch, page: undefined }),
+      search: (prev) => {
+        return { ...prev, ...patch, page: undefined };
+      },
       to: ".",
     });
   };
@@ -66,7 +68,9 @@ export const TvDiscoverFilters = ({
 
   const regionOptions = useMemo(() => {
     return regions
-      .filter((region) => region.iso_3166_1 !== undefined)
+      .filter((region) => {
+        return region.iso_3166_1 !== undefined;
+      })
       .map((region) => {
         return {
           label: region.english_name ?? String(region.iso_3166_1),

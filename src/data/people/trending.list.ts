@@ -16,7 +16,9 @@ const trendingPeopleFn = createServerFn({ method: "GET" }).handler(async () => {
 
 export const trendingPeopleOptions = () => {
   return queryOptions({
-    queryFn: () => trendingPeopleFn(),
+    queryFn: () => {
+      return trendingPeopleFn();
+    },
     queryKey: ["trending", "people"],
   });
 };

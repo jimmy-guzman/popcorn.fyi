@@ -1,6 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
@@ -9,7 +8,7 @@ import { tvSeriesDetails } from "@/integrations/tmdb/gen/sdk.gen";
 import { IdSchema } from "@/schemas/id";
 
 const tvDetailsFn = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => v.parse(IdSchema, data))
+  .validator(IdSchema)
   .handler(async (context) => {
     const {
       data: { next_episode_to_air, ...rest },
@@ -24,7 +23,9 @@ const tvDetailsFn = createServerFn({ method: "GET" })
 
 export const tvDetailsOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => tvDetailsFn({ data: id }),
+    queryFn: () => {
+      return tvDetailsFn({ data: id });
+    },
     queryKey: ["tv", "details", id],
   });
 };
