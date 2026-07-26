@@ -14,35 +14,28 @@ const DAILY_OBSERVABILITY_LIMIT_RE = /daily.*observability.*query limit/i;
 let dailyQuotaBlock = null;
 
 export function resolveConcurrency() {
-  return parsePositiveIntEnv(
-    "VERCEL_OPTIMIZE_METRIC_CONCURRENCY",
-    DEFAULT_CONCURRENCY,
-  );
+  return parsePositiveIntEnv('VERCEL_OPTIMIZE_METRIC_CONCURRENCY', DEFAULT_CONCURRENCY);
 }
 
 // Format: VERCEL_OPTIMIZE_METRIC_RATE=N or N/60s.
 export function resolveRateLimit() {
   const env = process.env.VERCEL_OPTIMIZE_METRIC_RATE;
-  if (env == null || env === "")
-    return { maxCalls: DEFAULT_RATE_LIMIT, windowMs: DEFAULT_RATE_WINDOW_MS };
-  const m = String(env)
-    .trim()
-    .match(/^(\d+)(?:\/(\d+)([sm])?)?$/);
-  if (!m)
-    return { maxCalls: DEFAULT_RATE_LIMIT, windowMs: DEFAULT_RATE_WINDOW_MS };
+  if (env == null || env === '') return { maxCalls: DEFAULT_RATE_LIMIT, windowMs: DEFAULT_RATE_WINDOW_MS };
+  const m = String(env).trim().match(/^(\d+)(?:\/(\d+)([sm])?)?$/);
+  if (!m) return { maxCalls: DEFAULT_RATE_LIMIT, windowMs: DEFAULT_RATE_WINDOW_MS };
   const maxCalls = Number(m[1]);
   if (!Number.isInteger(maxCalls) || maxCalls < 1) {
     return { maxCalls: DEFAULT_RATE_LIMIT, windowMs: DEFAULT_RATE_WINDOW_MS };
   }
   if (!m[2]) return { maxCalls, windowMs: DEFAULT_RATE_WINDOW_MS };
-  const unit = m[3] === "m" ? 60_000 : 1_000;
+  const unit = m[3] === 'm' ? 60_000 : 1_000;
   const windowMs = Number(m[2]) * unit;
   return { maxCalls, windowMs };
 }
 
 function parsePositiveIntEnv(name, defaultValue) {
   const env = process.env[name];
-  if (env == null || env === "") return defaultValue;
+  if (env == null || env === '') return defaultValue;
   const n = Number(env);
   if (!Number.isFinite(n) || n < 1 || !Number.isInteger(n)) return defaultValue;
   return n;
@@ -51,8 +44,8 @@ function parsePositiveIntEnv(name, defaultValue) {
 // FIFO semaphore. Caller MUST call returned release() exactly once.
 export class SemaphoreAbortError extends Error {
   constructor(result) {
-    super("Semaphore acquire aborted");
-    this.name = "SemaphoreAbortError";
+    super('Semaphore acquire aborted');
+    this.name = 'SemaphoreAbortError';
     this.result = result;
   }
 }
@@ -109,14 +102,10 @@ export class Semaphore {
 export class SlidingWindowRateLimiter {
   constructor(maxCalls, windowMs, opts = {}) {
     if (!Number.isInteger(maxCalls) || maxCalls < 1) {
-      throw new Error(
-        `SlidingWindowRateLimiter: maxCalls must be >=1 (got ${maxCalls})`,
-      );
+      throw new Error(`SlidingWindowRateLimiter: maxCalls must be >=1 (got ${maxCalls})`);
     }
     if (!Number.isFinite(windowMs) || windowMs < 1) {
-      throw new Error(
-        `SlidingWindowRateLimiter: windowMs must be >0 (got ${windowMs})`,
-      );
+      throw new Error(`SlidingWindowRateLimiter: windowMs must be >0 (got ${windowMs})`);
     }
     this.maxCalls = maxCalls;
     this.windowMs = windowMs;
@@ -164,12 +153,10 @@ export function getMetricThrottle() {
         if (cached) return dailyQuotaResult(cached);
         let release;
         try {
-          release = await semaphore.acquire({
-            abortIf: () => {
-              const block = getDailyQuotaBlock();
-              return block ? dailyQuotaResult(block) : null;
-            },
-          });
+          release = await semaphore.acquire({ abortIf: () => {
+            const block = getDailyQuotaBlock();
+            return block ? dailyQuotaResult(block) : null;
+          } });
         } catch (err) {
           if (err instanceof SemaphoreAbortError) return err.result;
           throw err;
@@ -225,14 +212,10 @@ export async function retryOnRateLimit(fn, opts = {}) {
 // Variants: code='RATE_LIMITED' (canonical), 'rate_limited', or 'EXIT_1' + stderr match.
 export function isRateLimited(result) {
   if (!result || result.ok !== false) return false;
-  const code = String(result.code ?? "").toLowerCase();
-  if (code === "rate_limited" || code === "429") return true;
-  const stderr = String(result.stderr ?? "").toLowerCase();
-  if (
-    stderr.includes("rate limit") ||
-    stderr.includes("rate_limited") ||
-    stderr.includes("too many requests")
-  ) {
+  const code = String(result.code ?? '').toLowerCase();
+  if (code === 'rate_limited' || code === '429') return true;
+  const stderr = String(result.stderr ?? '').toLowerCase();
+  if (stderr.includes('rate limit') || stderr.includes('rate_limited') || stderr.includes('too many requests')) {
     return true;
   }
   return false;
@@ -240,11 +223,14 @@ export function isRateLimited(result) {
 
 export function isDailyQuotaExceeded(result) {
   if (!result || result.ok !== false) return false;
-  const code = String(result.code ?? "");
-  if (code.toUpperCase() === "DAILY_QUOTA_EXCEEDED") return true;
-  const haystack = [result.message, result.stderr, result.stdout, result.detail]
-    .filter(Boolean)
-    .join("\n");
+  const code = String(result.code ?? '');
+  if (code.toUpperCase() === 'DAILY_QUOTA_EXCEEDED') return true;
+  const haystack = [
+    result.message,
+    result.stderr,
+    result.stdout,
+    result.detail,
+  ].filter(Boolean).join('\n');
   return DAILY_OBSERVABILITY_LIMIT_RE.test(haystack);
 }
 
@@ -252,10 +238,7 @@ export function setDailyQuotaBlocked(result, nowMs = Date.now()) {
   dailyQuotaBlock = {
     untilMs: utcMidnightAfter(nowMs),
     originalCode: result?.code ?? null,
-    message:
-      result?.message ||
-      result?.stderr ||
-      "Daily Observability query limit reached.",
+    message: result?.message || result?.stderr || 'Daily Observability query limit reached.',
   };
   return dailyQuotaBlock;
 }
@@ -276,16 +259,12 @@ export function utcMidnightAfter(nowMs) {
 
 function dailyQuotaResult(block, sourceResult = null) {
   return {
-    ...(sourceResult && typeof sourceResult === "object" ? sourceResult : {}),
+    ...(sourceResult && typeof sourceResult === 'object' ? sourceResult : {}),
     ok: false,
-    code: "DAILY_QUOTA_EXCEEDED",
+    code: 'DAILY_QUOTA_EXCEEDED',
     message: block.message,
     cachedUntil: new Date(block.untilMs).toISOString(),
-    originalCode:
-      sourceResult?.originalCode ??
-      sourceResult?.code ??
-      block.originalCode ??
-      undefined,
+    originalCode: sourceResult?.originalCode ?? sourceResult?.code ?? block.originalCode ?? undefined,
   };
 }
 

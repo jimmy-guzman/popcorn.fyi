@@ -1,14 +1,13 @@
 // Thresholds are Google's "Poor" band (https://web.dev/articles/vitals): LCP p75 > 2500ms, INP > 200ms, CLS > 0.1.
 // When Speed Insights isn't wired up the metrics come back empty and the gate is a no-op.
-import { withRouteShapeWarnings } from "../route-normalize.mjs";
+import { withRouteShapeWarnings } from '../route-normalize.mjs';
 
 export const metadata = {
-  id: "cwv_poor",
-  threshold:
-    "LCP p75>2500 OR INP p75>200 OR CLS p75>0.1, AND speed_insights count > 50",
-  billingDimension: "speed-insights",
-  scope: "route",
-  sourceCitation: "https://web.dev/articles/vitals",
+  id: 'cwv_poor',
+  threshold: 'LCP p75>2500 OR INP p75>200 OR CLS p75>0.1, AND speed_insights count > 50',
+  billingDimension: 'speed-insights',
+  scope: 'route',
+  sourceCitation: 'https://web.dev/articles/vitals',
   description:
     'Routes where Core Web Vitals fall into Google\'s "Poor" band on real-user traffic. LCP > 2500ms, INP > 200ms, or CLS > 0.1 each hurt SEO and conversion. Surfaces one candidate per (route, metric) pair to keep recommendations focused.',
 };
@@ -34,58 +33,33 @@ export function gate(signals) {
     const inp = inpBy.get(route);
     const cls = clsBy.get(route);
     const issues = [];
-    if (lcp != null && lcp > 2500)
-      issues.push({
-        metric: "LCP",
-        value: Math.round(lcp),
-        threshold: 2500,
-        unit: "ms",
-      });
-    if (inp != null && inp > 200)
-      issues.push({
-        metric: "INP",
-        value: Math.round(inp),
-        threshold: 200,
-        unit: "ms",
-      });
-    if (cls != null && cls > 0.1)
-      issues.push({
-        metric: "CLS",
-        value: round2(cls),
-        threshold: 0.1,
-        unit: "",
-      });
+    if (lcp != null && lcp > 2500) issues.push({ metric: 'LCP', value: Math.round(lcp), threshold: 2500, unit: 'ms' });
+    if (inp != null && inp > 200) issues.push({ metric: 'INP', value: Math.round(inp), threshold: 200, unit: 'ms' });
+    if (cls != null && cls > 0.1) issues.push({ metric: 'CLS', value: round2(cls), threshold: 0.1, unit: '' });
     if (issues.length === 0) continue;
 
-    const summary = issues
-      .map((i) => `${i.metric}=${i.value}${i.unit}`)
-      .join(",");
-    out.push(
-      withRouteShapeWarnings(
-        {
-          kind: metadata.id,
-          scope: "route",
-          route,
-          files: [],
-          priority: issues.reduce((s, i) => s + ratioOverThreshold(i), 0) * 10,
-          confidence: 0.82,
-          o11ySignal: summary,
-          reason: "real-user Core Web Vitals in poor band",
-          question: `On ${route}, ${summary}. Which client-side work (bundle weight, blocking scripts, layout shifts, hydration) is responsible, and which change would land first?`,
-          evidence: {
-            metric: "cwv",
-            route,
-            lcpMs: lcp != null ? Math.round(lcp) : null,
-            inpMs: inp != null ? Math.round(inp) : null,
-            cls: cls != null ? round2(cls) : null,
-            issues,
-            totalSpeedInsightsSamples: totalSamples,
-            routeSpeedInsightsSamples: routeSamples,
-          },
-        },
-        signals,
-      ),
-    );
+    const summary = issues.map((i) => `${i.metric}=${i.value}${i.unit}`).join(',');
+    out.push(withRouteShapeWarnings({
+      kind: metadata.id,
+      scope: 'route',
+      route,
+      files: [],
+      priority: issues.reduce((s, i) => s + ratioOverThreshold(i), 0) * 10,
+      confidence: 0.82,
+      o11ySignal: summary,
+      reason: 'real-user Core Web Vitals in poor band',
+      question: `On ${route}, ${summary}. Which client-side work (bundle weight, blocking scripts, layout shifts, hydration) is responsible, and which change would land first?`,
+      evidence: {
+        metric: 'cwv',
+        route,
+        lcpMs: lcp != null ? Math.round(lcp) : null,
+        inpMs: inp != null ? Math.round(inp) : null,
+        cls: cls != null ? round2(cls) : null,
+        issues,
+        totalSpeedInsightsSamples: totalSamples,
+        routeSpeedInsightsSamples: routeSamples,
+      },
+    }, signals));
   }
   return out;
 }

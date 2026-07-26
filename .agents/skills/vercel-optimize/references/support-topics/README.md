@@ -23,19 +23,15 @@ maxBriefChars: 900
 ---
 
 ## Investigation Brief
-
 ...
 
 ## Evidence To Check
-
 ...
 
 ## Do Not Recommend When
-
 ...
 
 ## Verification
-
 ...
 ```
 

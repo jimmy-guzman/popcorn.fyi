@@ -3,21 +3,12 @@
 // Attaches per-candidate evidence.deepDive to gate.toLaunch + gate.platform.
 // Byte-stable apart from totalWallMs; each CLI query is isolated.
 
-import { readFile } from "node:fs/promises";
-import {
-  queryMetric,
-  readProjectJson,
-  resolveCommandScope,
-} from "../lib/vercel.mjs";
-import {
-  specsForCandidate,
-  mergeIntoEvidence,
-  SCANNER_KINDS,
-  TIME_WINDOW,
-} from "../lib/deep-dive.mjs";
+import { readFile } from 'node:fs/promises';
+import { queryMetric, readProjectJson, resolveCommandScope } from '../lib/vercel.mjs';
+import { specsForCandidate, mergeIntoEvidence, SCANNER_KINDS, TIME_WINDOW } from '../lib/deep-dive.mjs';
 
-const SCHEMA_VERSION = "1.0";
-const log = (...a) => console.error("[deep-dive]", ...a);
+const SCHEMA_VERSION = '1.0';
+const log = (...a) => console.error('[deep-dive]', ...a);
 
 async function main() {
   // --cwd is load-bearing: the Vercel CLI resolves project/team from cwd's
@@ -27,10 +18,10 @@ async function main() {
   let explicitCwd = null;
   for (let i = 2; i < process.argv.length; i++) {
     const a = process.argv[i];
-    if (a === "--cwd" && i + 1 < process.argv.length) {
+    if (a === '--cwd' && i + 1 < process.argv.length) {
       explicitCwd = process.argv[++i];
-    } else if (a.startsWith("--cwd=")) {
-      explicitCwd = a.slice("--cwd=".length);
+    } else if (a.startsWith('--cwd=')) {
+      explicitCwd = a.slice('--cwd='.length);
     } else {
       positional.push(a);
     }
@@ -38,15 +29,13 @@ async function main() {
   const mergedPath = positional[0];
   const gatePath = positional[1];
   if (!mergedPath || !gatePath) {
-    console.error(
-      "usage: node scripts/deep-dive.mjs <merged.json> <gate.json> [--cwd <project-dir>]",
-    );
+    console.error('usage: node scripts/deep-dive.mjs <merged.json> <gate.json> [--cwd <project-dir>]');
     process.exit(1);
   }
 
   const [merged, gate] = await Promise.all([
-    readFile(mergedPath, "utf-8").then(JSON.parse),
-    readFile(gatePath, "utf-8").then(JSON.parse),
+    readFile(mergedPath, 'utf-8').then(JSON.parse),
+    readFile(gatePath, 'utf-8').then(JSON.parse),
   ]);
 
   if (explicitCwd) {
@@ -56,90 +45,55 @@ async function main() {
 
   const link = await readProjectJson(process.cwd());
   if (!link) {
-    console.error(
-      `[deep-dive] FATAL: cwd ${process.cwd()} has no .vercel/project.json or .vercel/repo.json.`,
-    );
-    console.error(
-      "         Re-run with --cwd <project-dir> pointing at the linked project, or cd into it first.",
-    );
-    console.error(
-      "         (The Vercel CLI resolves team/project from cwd; without a .vercel/ linkage every query returns empty rows for the wrong team.)",
-    );
+    console.error(`[deep-dive] FATAL: cwd ${process.cwd()} has no .vercel/project.json or .vercel/repo.json.`);
+    console.error('         Re-run with --cwd <project-dir> pointing at the linked project, or cd into it first.');
+    console.error('         (The Vercel CLI resolves team/project from cwd; without a .vercel/ linkage every query returns empty rows for the wrong team.)');
     process.exit(2);
   }
   if (merged.projectId && link.projectId !== merged.projectId) {
-    console.error(
-      "[deep-dive] FATAL: cwd .vercel/ links a different project than merged.json.",
-    );
-    console.error(
-      "         Re-run with --cwd <dir-linked-to-the-collected-project>.",
-    );
+    console.error('[deep-dive] FATAL: cwd .vercel/ links a different project than merged.json.');
+    console.error('         Re-run with --cwd <dir-linked-to-the-collected-project>.');
     process.exit(2);
   }
   if (merged.orgId && link.orgId && link.orgId !== merged.orgId) {
-    console.error(
-      "[deep-dive] FATAL: cwd .vercel/ links the project to a different Vercel scope than signals.json.",
-    );
-    console.error(
-      "         Re-run with --cwd <dir-linked-to-the-collected-project>, or rerun collect-signals.mjs from the intended app directory.",
-    );
+    console.error('[deep-dive] FATAL: cwd .vercel/ links the project to a different Vercel scope than signals.json.');
+    console.error('         Re-run with --cwd <dir-linked-to-the-collected-project>, or rerun collect-signals.mjs from the intended app directory.');
     process.exit(2);
   }
   log(`cwd link OK (source ${link.source})`);
 
   const commandScope = await resolveDeepDiveCommandScope(merged, link);
   if (!commandScope.ok) {
-    console.error(
-      `[deep-dive] FATAL: could not resolve a CLI-safe Vercel scope (${commandScope.detail ?? commandScope.error ?? "unknown"}).`,
-    );
-    console.error(
-      "         Re-run collect-signals.mjs with the current skill, run `vercel switch <team>`, or re-link with `vercel link --yes --project <project> --team <team-slug>`.",
-    );
+    console.error(`[deep-dive] FATAL: could not resolve a CLI-safe Vercel scope (${commandScope.detail ?? commandScope.error ?? 'unknown'}).`);
+    console.error('         Re-run collect-signals.mjs with the current skill, run `vercel switch <team>`, or re-link with `vercel link --yes --project <project> --team <team-slug>`.');
     process.exit(2);
   }
-  if (
-    typeof commandScope.cliScope === "string" &&
-    /^(team|usr)_/.test(commandScope.cliScope)
-  ) {
-    console.error(
-      "[deep-dive] FATAL: commandScope.cliScope is a raw account ID, not a CLI-safe scope.",
-    );
-    console.error(
-      "         Re-run collect-signals.mjs with the current skill so deep-dive queries use the same team as the broad pass.",
-    );
+  if (typeof commandScope.cliScope === 'string' && /^(team|usr)_/.test(commandScope.cliScope)) {
+    console.error('[deep-dive] FATAL: commandScope.cliScope is a raw account ID, not a CLI-safe scope.');
+    console.error('         Re-run collect-signals.mjs with the current skill so deep-dive queries use the same team as the broad pass.');
     process.exit(2);
   }
   const commandAccountId = commandScope.teamId ?? commandScope.userId ?? null;
   if (commandAccountId && link.orgId && link.orgId !== commandAccountId) {
-    console.error(
-      "[deep-dive] FATAL: cwd .vercel/ links the project to a different Vercel scope than commandScope.",
-    );
-    console.error(
-      "         Re-run with --cwd <dir-linked-to-the-collected-project>, or rerun collect-signals.mjs from the intended app directory.",
-    );
+    console.error('[deep-dive] FATAL: cwd .vercel/ links the project to a different Vercel scope than commandScope.');
+    console.error('         Re-run with --cwd <dir-linked-to-the-collected-project>, or rerun collect-signals.mjs from the intended app directory.');
     process.exit(2);
   }
   const scope = commandScope.cliScope || undefined;
-  log(
-    `command scope resolved (source=${commandScope.source}; scoped=${scope ? "yes" : "no"})`,
-  );
+  log(`command scope resolved (source=${commandScope.source}; scoped=${scope ? 'yes' : 'no'})`);
 
   const toLaunch = Array.isArray(gate.toLaunch) ? gate.toLaunch : [];
   const platform = Array.isArray(gate.platform) ? gate.platform : [];
 
-  log(
-    `enriching ${toLaunch.length} toLaunch + ${platform.length} platform candidate(s) (window=${TIME_WINDOW})`,
-  );
+  log(`enriching ${toLaunch.length} toLaunch + ${platform.length} platform candidate(s) (window=${TIME_WINDOW})`);
 
   const t0 = Date.now();
   const errors = [];
 
   // Flatten {candidate, spec}, fire all CLI calls in one Promise.all, re-group.
   // Avoids per-candidate sequentiality.
-  const allCandidates = [
-    ...toLaunch.map((c, i) => ({ c, group: "toLaunch", i })),
-    ...platform.map((c, i) => ({ c, group: "platform", i })),
-  ];
+  const allCandidates = [...toLaunch.map((c, i) => ({ c, group: 'toLaunch', i })),
+                        ...platform.map((c, i) => ({ c, group: 'platform', i }))];
 
   const flatJobs = [];
   const skipNotes = new Map();
@@ -148,20 +102,11 @@ async function main() {
     const specs = specsForCandidate(entry.c);
     if (specs.length === 0) {
       if (SCANNER_KINDS.has(entry.c.kind)) {
-        skipNotes.set(
-          `${entry.group}:${entry.i}`,
-          "scanner-driven (no deep-dive needed)",
-        );
-      } else if (entry.c.kind === "platform_fluid_compute") {
-        skipNotes.set(
-          `${entry.group}:${entry.i}`,
-          "reused from broad pass (fnStartTypeByRoute)",
-        );
+        skipNotes.set(`${entry.group}:${entry.i}`, 'scanner-driven (no deep-dive needed)');
+      } else if (entry.c.kind === 'platform_fluid_compute') {
+        skipNotes.set(`${entry.group}:${entry.i}`, 'reused from broad pass (fnStartTypeByRoute)');
       } else {
-        skipNotes.set(
-          `${entry.group}:${entry.i}`,
-          `no deep-dive spec for kind=${entry.c.kind}`,
-        );
+        skipNotes.set(`${entry.group}:${entry.i}`, `no deep-dive spec for kind=${entry.c.kind}`);
       }
       continue;
     }
@@ -180,12 +125,7 @@ async function main() {
   for (const job of flatJobs) {
     const extracted = tryExtractFromBroadPass(job.spec, merged);
     if (extracted) {
-      broadPassResults.push({
-        entry: job.entry,
-        spec: job.spec,
-        ok: true,
-        ...extracted,
-      });
+      broadPassResults.push({ entry: job.entry, spec: job.spec, ok: true, ...extracted });
       extractedFromBroadPass++;
     } else {
       remainingJobs.push(job);
@@ -204,23 +144,19 @@ async function main() {
   dedupedQueryHits = remainingJobs.length - queryGroups.size;
 
   const totalCliQueries = queryGroups.size;
-  log(
-    `${flatJobs.length} specs total: ${extractedFromBroadPass} extracted from broad-pass, ${dedupedQueryHits} deduped, ${totalCliQueries} CLI queries to run`,
-  );
+  log(`${flatJobs.length} specs total: ${extractedFromBroadPass} extracted from broad-pass, ${dedupedQueryHits} deduped, ${totalCliQueries} CLI queries to run`);
 
-  const groupResults = await Promise.all(
-    [...queryGroups.values()].map(async ({ spec, jobs }) => {
-      const r = await queryMetric(spec.metricId, {
-        aggregation: spec.aggregation,
-        groupBy: spec.groupBy,
-        filter: spec.filter,
-        since: spec.since,
-        limit: spec.limit,
-        scope,
-      });
-      return { spec, jobs, response: r };
-    }),
-  );
+  const groupResults = await Promise.all([...queryGroups.values()].map(async ({ spec, jobs }) => {
+    const r = await queryMetric(spec.metricId, {
+      aggregation: spec.aggregation,
+      groupBy: spec.groupBy,
+      filter: spec.filter,
+      since: spec.since,
+      limit: spec.limit,
+      scope,
+    });
+    return { spec, jobs, response: r };
+  }));
 
   const cliResults = [];
   for (const { spec, jobs, response: r } of groupResults) {
@@ -246,9 +182,7 @@ async function main() {
   const results = [...broadPassResults, ...cliResults];
 
   const wallMs = Date.now() - t0;
-  log(
-    `done in ${wallMs}ms (${totalCliQueries} CLI queries, ${extractedFromBroadPass} extracted from broad-pass, ${dedupedQueryHits} deduped, ${errors.length} errors)`,
-  );
+  log(`done in ${wallMs}ms (${totalCliQueries} CLI queries, ${extractedFromBroadPass} extracted from broad-pass, ${dedupedQueryHits} deduped, ${errors.length} errors)`);
 
   const byCandidate = new Map();
   for (const res of results) {
@@ -280,8 +214,8 @@ async function main() {
     };
   }
 
-  const enrichedToLaunch = toLaunch.map((c, i) => enrich(c, "toLaunch", i));
-  const enrichedPlatform = platform.map((c, i) => enrich(c, "platform", i));
+  const enrichedToLaunch = toLaunch.map((c, i) => enrich(c, 'toLaunch', i));
+  const enrichedPlatform = platform.map((c, i) => enrich(c, 'platform', i));
 
   const out = {
     schemaVersion: SCHEMA_VERSION,
@@ -297,19 +231,15 @@ async function main() {
     platform: enrichedPlatform,
   };
 
-  process.stdout.write(JSON.stringify(out, null, 2) + "\n");
+  process.stdout.write(JSON.stringify(out, null, 2) + '\n');
 }
 
 async function resolveDeepDiveCommandScope(merged, link) {
   const linkedOrgId = merged.orgId ?? link.orgId ?? null;
-  if (
-    merged.commandScope?.ok &&
-    (merged.commandScope.cliScope || !linkedOrgId)
-  ) {
+  if (merged.commandScope?.ok && (merged.commandScope.cliScope || !linkedOrgId)) {
     return merged.commandScope;
   }
-  if (merged.commandScope && merged.commandScope.ok === false)
-    return merged.commandScope;
+  if (merged.commandScope && merged.commandScope.ok === false) return merged.commandScope;
 
   return await resolveCommandScope({
     projectId: merged.projectId ?? link.projectId ?? null,
@@ -322,17 +252,15 @@ async function resolveDeepDiveCommandScope(merged, link) {
 // to `value` for compactness.
 function normalizeResponse(data, spec) {
   if (!data || !Array.isArray(data.summary)) return { value: null };
-  const field = `${spec.metricId.replace(/\./g, "_")}_${spec.aggregation}`;
+  const field = `${spec.metricId.replace(/\./g, '_')}_${spec.aggregation}`;
   if (spec.groupBy.length === 0) {
     const first = data.summary[0];
     if (!first) return { value: null };
     const v = first[field];
-    return { value: typeof v === "number" ? round4(v) : null };
+    return { value: typeof v === 'number' ? round4(v) : null };
   }
   const rows = data.summary.map((row) => {
-    const out = {
-      value: typeof row[field] === "number" ? round4(row[field]) : null,
-    };
+    const out = { value: typeof row[field] === 'number' ? round4(row[field]) : null };
     for (const dim of spec.groupBy) {
       if (row[dim] !== undefined) out[dim] = row[dim];
     }
@@ -357,8 +285,8 @@ function tryExtractFromBroadPass(spec, merged) {
   const rows = [];
   for (const row of broadRows) {
     if (row.route !== eq.routeFilter) continue;
-    const out = { value: typeof row.value === "number" ? row.value : null };
-    for (const dim of eq.projectDims ?? []) {
+    const out = { value: typeof row.value === 'number' ? row.value : null };
+    for (const dim of (eq.projectDims ?? [])) {
       if (row[dim] !== undefined) out[dim] = row[dim];
     }
     rows.push(out);
@@ -385,7 +313,7 @@ function queryKey(spec, scope) {
 }
 
 main().catch((err) => {
-  console.error("[deep-dive] FAILED:", err.message);
+  console.error('[deep-dive] FAILED:', err.message);
   console.error(err.stack);
   process.exit(1);
 });

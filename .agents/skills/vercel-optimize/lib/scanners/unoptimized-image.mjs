@@ -3,28 +3,21 @@
 // / image-svg-no-unoptimized so the recommender can frame each separately.
 
 export const metadata = {
-  id: "unoptimized-image",
-  title:
-    "Image optimization gap (raw <img>, global flag, missing sizes, or SVG mis-routed)",
-  severity: "high",
-  billingDimension: "image-optimization",
+  id: 'unoptimized-image',
+  title: 'Image optimization gap (raw <img>, global flag, missing sizes, or SVG mis-routed)',
+  severity: 'high',
+  billingDimension: 'image-optimization',
   trafficIndependent: false,
   description:
     'Four shapes of image-cost waste: raw <img> tags bypass the framework Image component; `images.unoptimized: true` disables Vercel image optimization globally; <Image fill> without `sizes` forces serving the largest source variant; <Image src=".svg"> without `unoptimized` routes vector data through the raster pipeline.',
-  fix: 'For raw <img>: switch to next/image, enhanced-img (SvelteKit), <Image /> (Astro), or NuxtImg. For global unoptimized:true: remove the flag unless the project is hosted outside Vercel. For fill without sizes: add `sizes="(max-width: 768px) 100vw, 50vw"` or whatever matches your layout. For SVG: add `unoptimized` so the raw SVG ships instead of rastering it.',
+  fix:
+    'For raw <img>: switch to next/image, enhanced-img (SvelteKit), <Image /> (Astro), or NuxtImg. For global unoptimized:true: remove the flag unless the project is hosted outside Vercel. For fill without sizes: add `sizes="(max-width: 768px) 100vw, 50vw"` or whatever matches your layout. For SVG: add `unoptimized` so the raw SVG ships instead of rastering it.',
   citations: [
-    "https://nextjs.org/docs/app/api-reference/components/image",
-    "https://vercel.com/docs/image-optimization",
+    'https://nextjs.org/docs/app/api-reference/components/image',
+    'https://vercel.com/docs/image-optimization',
   ],
-  excludeGlobs: [
-    "node_modules/**",
-    ".next/**",
-    "dist/**",
-    "__tests__/**",
-    "cypress/**",
-    "*.test.*",
-  ],
-  includeGlobs: ["**/*.{tsx,jsx,html,svelte,astro,vue,js,mjs,ts}"],
+  excludeGlobs: ['node_modules/**', '.next/**', 'dist/**', '__tests__/**', 'cypress/**', '*.test.*'],
+  includeGlobs: ['**/*.{tsx,jsx,html,svelte,astro,vue,js,mjs,ts}'],
 };
 
 const IMG_RE = /<img\s+[^>]*src\s*=\s*["'{`]/g;
@@ -41,7 +34,7 @@ export function scan({ files }) {
       while ((m = IMG_RE.exec(content)) !== null) {
         out.push({
           pattern: metadata.id,
-          subtype: "raw-img",
+          subtype: 'raw-img',
           file: path,
           line: lineOf(content, m.index),
           evidence: snippet(content, m.index),
@@ -55,11 +48,10 @@ export function scan({ files }) {
       if (match) {
         out.push({
           pattern: metadata.id,
-          subtype: "global-unoptimized",
+          subtype: 'global-unoptimized',
           file: path,
           line: lineOf(content, match.index),
-          evidence:
-            "images: { unoptimized: true } — disables Vercel image optimization for the entire project",
+          evidence: 'images: { unoptimized: true } — disables Vercel image optimization for the entire project',
           // Config-level flag affects every image regardless of route.
           trafficIndependent: true,
         });
@@ -78,7 +70,7 @@ export function scan({ files }) {
         if (hasFill && !hasSizes) {
           out.push({
             pattern: metadata.id,
-            subtype: "image-fill-no-sizes",
+            subtype: 'image-fill-no-sizes',
             file: path,
             line: lineOf(content, m.index),
             evidence: tag.slice(0, 200),
@@ -89,14 +81,10 @@ export function scan({ files }) {
         const srcMatch = /\bsrc\s*=\s*["']([^"']+)["']/.exec(tag);
         if (srcMatch) {
           const src = srcMatch[1];
-          if (
-            /\.svg(\?|$)/i.test(src) &&
-            !src.startsWith("data:") &&
-            !/\bunoptimized\b/.test(tag)
-          ) {
+          if (/\.svg(\?|$)/i.test(src) && !src.startsWith('data:') && !/\bunoptimized\b/.test(tag)) {
             out.push({
               pattern: metadata.id,
-              subtype: "image-svg-no-unoptimized",
+              subtype: 'image-svg-no-unoptimized',
               file: path,
               line: lineOf(content, m.index),
               evidence: tag.slice(0, 200),
@@ -110,7 +98,7 @@ export function scan({ files }) {
   return out;
 }
 
-import { lineOf } from "../util.mjs";
+import { lineOf } from '../util.mjs';
 
 function isJsxLike(path) {
   return /\.(tsx|jsx|html|svelte|astro|vue)$/.test(path);
@@ -119,10 +107,7 @@ function isNextConfig(path) {
   return /(?:^|\/)next\.config\.(js|mjs|ts|cjs)$/.test(path);
 }
 function snippet(text, idx) {
-  const start = text.lastIndexOf("\n", idx) + 1;
-  const end = text.indexOf("\n", idx);
-  return text
-    .slice(start, end === -1 ? text.length : end)
-    .trim()
-    .slice(0, 160);
+  const start = text.lastIndexOf('\n', idx) + 1;
+  const end = text.indexOf('\n', idx);
+  return text.slice(start, end === -1 ? text.length : end).trim().slice(0, 160);
 }

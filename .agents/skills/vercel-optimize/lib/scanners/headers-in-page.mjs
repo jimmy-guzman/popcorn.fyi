@@ -1,20 +1,21 @@
-import { lineOf } from "../util.mjs";
+import { lineOf } from '../util.mjs';
 
 export const metadata = {
-  id: "headers-in-page",
-  title: "Dynamic API call forcing dynamic rendering",
-  severity: "medium",
-  billingDimension: "function-duration",
+  id: 'headers-in-page',
+  title: 'Dynamic API call forcing dynamic rendering',
+  severity: 'medium',
+  billingDimension: 'function-duration',
   trafficIndependent: false,
   description:
-    "headers(), cookies(), and draftMode() are dynamic APIs. Reading them in a page/layout makes the entire segment dynamic — no ISR, no static generation, and a function invocation on every request.",
-  fix: "Move the dynamic API call into a child Server Component that lives inside a Suspense boundary. The parent can stay static; only the leaf re-renders dynamically.",
+    'headers(), cookies(), and draftMode() are dynamic APIs. Reading them in a page/layout makes the entire segment dynamic — no ISR, no static generation, and a function invocation on every request.',
+  fix:
+    'Move the dynamic API call into a child Server Component that lives inside a Suspense boundary. The parent can stay static; only the leaf re-renders dynamically.',
   citations: [
-    "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config",
-    "https://nextjs.org/docs/app/building-your-application/caching",
+    'https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config',
+    'https://nextjs.org/docs/app/building-your-application/caching',
   ],
-  excludeGlobs: ["node_modules/**", ".next/**", "dist/**", "__tests__/**"],
-  includeGlobs: ["**/{page,layout,template}.{tsx,jsx}"],
+  excludeGlobs: ['node_modules/**', '.next/**', 'dist/**', '__tests__/**'],
+  includeGlobs: ['**/{page,layout,template}.{tsx,jsx}'],
 };
 
 const RE = /\b(cookies|headers|draftMode)\s*\(\s*\)/g;
