@@ -39,6 +39,14 @@ const movieDetailTabs = [
     to: "/movies/$id/credits" as const,
     value: "credits",
   },
+  {
+    label: "Videos",
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}/videos`;
+    },
+    to: "/movies/$id/videos" as const,
+    value: "videos",
+  },
 ] as const;
 
 export const MovieDetailsTabs = ({ id }: MovieDetailsTabsProps) => {

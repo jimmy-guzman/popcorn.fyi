@@ -22,6 +22,7 @@ export const Route = createFileRoute("/_layout/tv-shows/on-the-air")({
   head: () => {
     return {
       meta: seo({
+        description: site.pages.onTheAir.tvShows.description,
         title: `${site.pages.onTheAir.tvShows.title} | ${site.title}`,
       }),
     };

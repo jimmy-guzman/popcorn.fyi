@@ -22,6 +22,7 @@ export const Route = createFileRoute("/_layout/movies/now-playing")({
   head: () => {
     return {
       meta: seo({
+        description: site.pages.nowPlaying.movies.description,
         title: `${site.pages.nowPlaying.movies.title} | ${site.title}`,
       }),
     };

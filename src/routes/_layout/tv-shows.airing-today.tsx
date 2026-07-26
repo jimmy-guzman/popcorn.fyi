@@ -22,6 +22,7 @@ export const Route = createFileRoute("/_layout/tv-shows/airing-today")({
   head: () => {
     return {
       meta: seo({
+        description: site.pages.airingToday.tvShows.description,
         title: `${site.pages.airingToday.tvShows.title} | ${site.title}`,
       }),
     };

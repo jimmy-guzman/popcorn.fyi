@@ -19,6 +19,8 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
 
       if (pathname === `${base}/watch`) return "providers";
 
+      if (pathname === `${base}/videos`) return "videos";
+
       if (pathname === base) return "overview";
 
       return undefined;
@@ -75,6 +77,19 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
           value="credits"
         >
           Credits
+        </TabsTrigger>
+        <TabsTrigger
+          nativeButton={false}
+          render={
+            <Link
+              params={{ id }}
+              resetScroll={false}
+              to="/tv-shows/$id/videos"
+            />
+          }
+          value="videos"
+        >
+          Videos
         </TabsTrigger>
       </TabsList>
     </Tabs>

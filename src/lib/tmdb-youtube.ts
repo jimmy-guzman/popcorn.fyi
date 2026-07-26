@@ -25,3 +25,11 @@ export const youtubeVideoUrl = (
     autoplay ? "&autoplay=1&mute=1" : "&autoplay=0"
   }`;
 };
+
+export const youtubeWatchUrl = (key: string) => {
+  return `https://www.youtube.com/watch?v=${key}`;
+};
+
+export const youtubeThumbnailUrl = (key: string) => {
+  return `https://i.ytimg.com/vi/${key}/hqdefault.jpg`;
+};
