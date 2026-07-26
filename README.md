@@ -31,7 +31,7 @@
 ### **Frontend**
 
 - **Framework:** [React](https://react.dev) + [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com) + [daisyUI](https://daisyui.com)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com)
 - **Data Layer:** [TanStack Query](https://tanstack.com/query/latest) + [hey-api](https://heyapi.dev) OpenAPI clients
 - **Testing:** [Vitest](https://vitest.dev), [React Testing Library](https://testing-library.com) and [Playwright](https://playwright.dev)
 

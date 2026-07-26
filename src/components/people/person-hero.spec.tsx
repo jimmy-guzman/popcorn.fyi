@@ -41,10 +41,10 @@ describe("<PersonHero />", () => {
   it("should render the details button with correct link", async () => {
     await render(<PersonHero person={person} />);
 
-    const button = screen.getByRole("link", { name: /details/i });
+    const button = screen.getByRole("button", { name: /details/i });
 
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute("href", "/tv-shows/300");
+    expect(button).toHaveAttribute("href", "/people/300");
   });
 
   it("should render with a backdrop image if provided", async () => {

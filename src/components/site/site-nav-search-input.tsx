@@ -1,6 +1,14 @@
 import { useMatch, useNavigate, useSearch } from "@tanstack/react-router";
+import { SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
+
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import { Label } from "@/components/ui/label";
 
 const DEBOUNCE_MS = 500;
 
@@ -27,30 +35,31 @@ export const SiteNavSearchInput = () => {
   return (
     <div
       aria-label="Site search"
-      className="w-full lg:w-1/2 xl:w-3/4"
+      className="w-[min(100%,18rem)] shrink md:w-56 lg:w-64"
       role="search"
     >
-      <label
-        aria-label="Search movies and TV shows"
-        className="dsy-input w-full"
-        htmlFor="site-search"
-      >
-        <span className="icon-[lucide--search] h-[1em] opacity-50" />
-        <input
+      <Label className="sr-only" htmlFor="site-search">
+        Search movies and TV shows
+      </Label>
+      <InputGroup className="w-full">
+        <InputGroupInput
           id="site-search"
           onChange={(event) => {
             setQuery(event.target.value);
           }}
           onKeyDown={async (event) => {
             if (event.key === "Enter") {
-              await navigate({ search: { q: value }, to: "/search" });
+              await navigate({ search: { q: query }, to: "/search" });
             }
           }}
           placeholder="Search..."
           type="search"
           value={query}
         />
-      </label>
+        <InputGroupAddon align="inline-start">
+          <SearchIcon aria-hidden className="size-4 text-muted-foreground" />
+        </InputGroupAddon>
+      </InputGroup>
     </div>
   );
 };

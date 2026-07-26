@@ -1,3 +1,4 @@
+import type { AnyValidator } from "@tanstack/react-router";
 import type { RenderOptions } from "@testing-library/react";
 import type { ReactElement, ReactNode } from "react";
 
@@ -25,6 +26,8 @@ interface WrapperProps {
   initialEntries: string[];
   path: keyof FileRoutesById;
   queryData?: [key: unknown[], data: unknown][];
+  /** Match production route `validateSearch` so `useSearch` / `navigate` behave like the app. */
+  validateSearch?: AnyValidator;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components -- this is only used in tests.
@@ -33,6 +36,7 @@ const Wrapper = ({
   initialEntries,
   path,
   queryData,
+  validateSearch,
 }: WrapperProps) => {
   const { queryClient, router } = useMemo(() => {
     const queryClient = new QueryClient({
@@ -51,9 +55,10 @@ const Wrapper = ({
 
     const rootRoute = createRootRoute();
     const testingRoute = createRoute({
-      component: () => children,
       getParentRoute: () => rootRoute,
       path,
+      validateSearch,
+      component: () => children,
     });
 
     return {
@@ -64,7 +69,7 @@ const Wrapper = ({
         routeTree: rootRoute.addChildren([testingRoute]),
       }),
     };
-  }, [children, initialEntries, path, queryData]);
+  }, [children, initialEntries, path, queryData, validateSearch]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -79,6 +84,7 @@ const customRender = async (
     path = "/_layout",
     initialEntries = [path],
     queryData = [],
+    validateSearch,
     ...options
   }: Omit<RenderOptions, "wrapper"> & Partial<WrapperProps> = {},
 ) => {
@@ -91,6 +97,7 @@ const customRender = async (
             initialEntries={initialEntries}
             path={path}
             queryData={queryData}
+            validateSearch={validateSearch}
           >
             {children}
           </Wrapper>
@@ -106,6 +113,6 @@ const customRender = async (
   };
 };
 
-export { screen } from "@testing-library/react";
+export { screen, waitFor } from "@testing-library/react";
 
 export { customRender as render };

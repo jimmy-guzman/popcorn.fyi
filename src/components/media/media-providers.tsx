@@ -1,3 +1,11 @@
+import {
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  Table as UITable,
+} from "@/components/ui/table";
 import { hasKey } from "@/lib/predicates";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
@@ -13,40 +21,38 @@ interface MediaProvidersProps {
 export const MediaProviders = ({ providers, title }: MediaProvidersProps) => {
   return (
     <div className="flex flex-wrap gap-2">
-      <div className="overflow-x-auto">
-        <table className="dsy-table dsy-table-lg">
-          <thead>
-            <tr>
-              <th className="uppercase">{title}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {providers.filter(hasKey("provider_id")).map((provider) => {
-              return provider.logo_path ? (
-                <tr key={provider.provider_id}>
-                  <td>
-                    <div className="flex items-center gap-3">
-                      <div className="dsy-avatar">
-                        <div className="w-14 rounded-xl">
-                          <img
-                            alt={provider.provider_name}
-                            src={tmdbImageUrl(provider.logo_path)}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-bold">
-                          {provider.provider_name}
-                        </div>
-                      </div>
+      <UITable>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="text-base uppercase">{title}</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {providers.filter(hasKey("provider_id")).map((provider) => {
+            const trimmed = provider.provider_name?.trim() ?? "";
+            const label = trimmed === "" ? "Unknown Provider" : trimmed;
+
+            return provider.logo_path ? (
+              <TableRow key={provider.provider_id}>
+                <TableCell className="text-base">
+                  <div className="flex items-center gap-3">
+                    <div className="size-14 shrink-0 overflow-hidden rounded-xl border border-border">
+                      <img
+                        alt={label}
+                        className="size-full object-cover"
+                        src={tmdbImageUrl(provider.logo_path)}
+                      />
                     </div>
-                  </td>
-                </tr>
-              ) : null;
-            })}
-          </tbody>
-        </table>
-      </div>
+                    <div>
+                      <div className="font-bold">{label}</div>
+                    </div>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ) : null;
+          })}
+        </TableBody>
+      </UITable>
     </div>
   );
 };

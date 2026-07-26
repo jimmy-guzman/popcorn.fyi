@@ -1,3 +1,7 @@
+import { AlertCircleIcon } from "lucide-react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+
 import { ListContent } from "../shared/list-content";
 import { ListPagination } from "../shared/list-pagination";
 import { TVShowCard } from "./tv-show-card";
@@ -32,9 +36,12 @@ export const TvDiscoverList = ({
       ) : null}
     </div>
   ) : (
-    <div className="dsy-alert" role="alert">
-      <span className="icon-[lucide--alert-circle] h-6 w-6 text-error" />
-      <span>No results available based on your filters.</span>
-    </div>
+    <Alert variant="destructive">
+      <AlertCircleIcon className="size-6" />
+      <AlertTitle>No results</AlertTitle>
+      <AlertDescription>
+        No results available based on your filters.
+      </AlertDescription>
+    </Alert>
   );
 };

@@ -4,6 +4,7 @@ import { routerWithQueryClient } from "@tanstack/react-router-with-query";
 
 import { Error } from "./components/shared/error";
 import { NotFound } from "./components/shared/not-found";
+import { Skeleton } from "./components/ui/skeleton";
 import { routeTree } from "./routeTree.gen";
 
 export function getRouter() {
@@ -24,7 +25,7 @@ export function getRouter() {
       defaultErrorComponent: Error,
       defaultNotFoundComponent: NotFound,
       defaultPendingComponent: () => {
-        return <div className="h-svh dsy-skeleton" />;
+        return <Skeleton className="h-svh w-full rounded" />;
       },
       defaultPendingMs: 0,
       defaultPreload: "intent",

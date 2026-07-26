@@ -111,11 +111,10 @@ describe("PeopleList", () => {
       />,
     );
 
-    const tvShowCard = screen.getByRole("heading", {
-      level: 2,
+    const personCardLink = screen.getByRole("link", {
       name: person.name,
     });
 
-    expect(tvShowCard).toBeInTheDocument();
+    expect(personCardLink).toBeInTheDocument();
   });
 });

@@ -1,4 +1,7 @@
+import { ShareIcon } from "lucide-react";
 import { toast } from "sonner";
+
+import { Button } from "@/components/ui/button";
 
 interface ShareButtonProps {
   /** The title of the content being shared */
@@ -28,13 +31,8 @@ export const ShareButton = ({ title, url }: ShareButtonProps) => {
   };
 
   return (
-    <button
-      className="dsy-btn dsy-btn-neutral"
-      onClick={handleShare}
-      type="button"
-    >
-      <span className="sr-only md:not-sr-only">Share</span>{" "}
-      <span className="icon-[lucide--share]" />
-    </button>
+    <Button onClick={handleShare} type="button" variant="outline">
+      <span className="sr-only md:not-sr-only">Share</span> <ShareIcon />
+    </Button>
   );
 };

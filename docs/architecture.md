@@ -3,7 +3,7 @@
 ```mermaid
 graph TD;
     A[User] -->|Interacts| B["Web App (TanStack Start)"]
-    B -->|Renders UI| J["daisyUI"]
+    B -->|Renders UI| J["shadcn/ui"]
     B -->|Fetches Data via| C["API Layer"]
     C -->|Calls| D["TMDB API"]
     C -->|Calls| E["Wikidata API"]
@@ -16,13 +16,13 @@ graph TD;
 
 ## Overview
 
-`popcorn.fyi` is a read-only, server-rendered web app built with TanStack Start. It uses a thin API layer to fetch data from TMDB and Wikidata using **hey-api**-generated OpenAPI clients. Client-side state is managed by TanStack Query, and all frontend UI is composed from `tailwindcss` and `daisyui`. The app is deployed via Vercel, with CI/CD powered by GitHub Actions.
+`popcorn.fyi` is a read-only, server-rendered web app built with TanStack Start. It uses a thin API layer to fetch data from TMDB and Wikidata using **hey-api**-generated OpenAPI clients. Client-side state is managed by TanStack Query, and all frontend UI is composed from `tailwindcss` and **shadcn/ui**. The app is deployed via Vercel, with CI/CD powered by GitHub Actions.
 
 ---
 
 ## Key Components
 
-1. **Frontend:** Built with **TanStack Start**, **TailwindCSS**, and **DaisyUI**.
+1. **Frontend:** Built with **TanStack Start**, **TailwindCSS**, and **shadcn/ui**.
 2. **API Layer:** Unified functions for fetching data from **TMDB** and **Wikidata**.
 3. **HTTP Client:** **@hey-api/openapi-ts** clients (via **@hey-api/vite-plugin**), typed from each API’s OpenAPI spec.
 4. **State Management:**

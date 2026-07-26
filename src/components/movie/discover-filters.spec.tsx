@@ -1,22 +1,18 @@
-import { render, screen } from "@/testing/utils";
+import { DiscoverSchema } from "@/data/movie/discover.list";
+import { render, screen, waitFor } from "@/testing/utils";
 
 import { MovieDiscoverFilters } from "./discover-filters";
-
-const mockNavigate = vi.fn();
-
-vi.mock("@tanstack/react-router", async () => {
-  return {
-    ...(await vi.importActual("@tanstack/react-router")),
-    useNavigate: vi.fn(() => mockNavigate),
-    useSearch: vi.fn(() => ({})),
-  };
-});
 
 const mockGenres = [{ id: 1, name: "Action" }];
 const mockProviders = [
   { display_priority: 1, provider_id: 2, provider_name: "Netflix" },
 ];
 const mockRegions = [{ english_name: "United States", iso_3166_1: "US" }];
+
+const discoverRenderOptions = {
+  path: "/_layout/movies/discover/_layout" as const,
+  validateSearch: DiscoverSchema,
+};
 
 describe("MovieDiscoverFilters", () => {
   it("should renders all filters correctly", async () => {
@@ -26,7 +22,7 @@ describe("MovieDiscoverFilters", () => {
         providers={mockProviders}
         regions={mockRegions}
       />,
-      { path: "/_layout/movies/discover/_layout" },
+      discoverRenderOptions,
     );
 
     expect(
@@ -52,14 +48,17 @@ describe("MovieDiscoverFilters", () => {
         providers={mockProviders}
         regions={mockRegions}
       />,
-      { path: "/_layout/movies/discover/_layout" },
+      discoverRenderOptions,
     );
 
     const genreSelect = screen.getByRole("combobox", { name: /genre/i });
 
-    await user.selectOptions(genreSelect, "1");
+    await user.click(genreSelect);
+    await user.click(await screen.findByRole("option", { name: "Action" }));
 
-    expect(genreSelect).toHaveValue("1");
+    await waitFor(() => {
+      expect(genreSelect).toHaveValue("Action");
+    });
   });
 
   it("should reset the genre when reset button is clicked", async () => {
@@ -69,38 +68,72 @@ describe("MovieDiscoverFilters", () => {
         providers={mockProviders}
         regions={mockRegions}
       />,
-      { path: "/_layout/movies/discover/_layout" },
+      discoverRenderOptions,
     );
 
     const genreSelect = screen.getByRole("combobox", { name: /genre/i });
-    const resetButton = screen.getByRole("button", { name: /reset genre/i });
 
-    await user.selectOptions(genreSelect, "1");
+    await user.click(genreSelect);
+    await user.click(await screen.findByRole("option", { name: "Action" }));
 
-    expect(genreSelect).toHaveValue("1");
+    await waitFor(() => {
+      expect(genreSelect).toHaveValue("Action");
+    });
 
-    await user.click(resetButton);
+    await user.click(screen.getByRole("button", { name: /reset genre/i }));
 
-    expect(genreSelect).toHaveValue("");
+    await waitFor(() => {
+      expect(screen.getByRole("combobox", { name: /genre/i })).toHaveValue("");
+    });
   });
 
-  it("should call navigation when filters change", async () => {
+  it("should update sort when a different option is chosen", async () => {
     const { user } = await render(
       <MovieDiscoverFilters
         genres={mockGenres}
         providers={mockProviders}
         regions={mockRegions}
       />,
-      { path: "/_layout/movies/discover/_layout" },
+      discoverRenderOptions,
     );
 
     const sortSelect = screen.getByRole("combobox", { name: /sort by/i });
 
-    await user.selectOptions(sortSelect, "popularity.asc");
+    await user.click(sortSelect);
+    await user.click(
+      await screen.findByRole("option", { name: "Popularity (Low to High)" }),
+    );
 
-    expect(mockNavigate).toHaveBeenNthCalledWith(1, {
-      search: expect.any(Function),
-      to: "/movies/discover",
+    await waitFor(() => {
+      expect(sortSelect).toHaveValue("Popularity (Low to High)");
+    });
+  });
+
+  it("should hydrate and keep selected values visible from URL search", async () => {
+    await render(
+      <MovieDiscoverFilters
+        genres={mockGenres}
+        providers={mockProviders}
+        regions={mockRegions}
+      />,
+      {
+        ...discoverRenderOptions,
+        initialEntries: [
+          '/_layout/movies/discover/_layout?sort_by=popularity.asc&with_genres="1"&watch_region=US',
+        ],
+      },
+    );
+
+    await waitFor(() => {
+      expect(screen.getByRole("combobox", { name: /genre/i })).toHaveValue(
+        "Action",
+      );
+      expect(screen.getByRole("combobox", { name: /sort by/i })).toHaveValue(
+        "Popularity (Low to High)",
+      );
+      expect(screen.getByRole("combobox", { name: /region/i })).toHaveValue(
+        "United States",
+      );
     });
   });
 });

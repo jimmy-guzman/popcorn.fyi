@@ -1,13 +1,15 @@
 import { expect, test } from "@playwright/test";
 
+import { site } from "../src/config/site";
+
 test.describe("Home", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
   });
 
   test("should navigate to Home", async ({ page }) => {
-    await page.getByRole("link", { name: "Home" }).click();
-    await expect(page).toHaveTitle("popcorn.fyi");
+    await page.getByRole("button", { name: site.title }).click();
+    await expect(page).toHaveTitle(site.title);
   });
 });
 

@@ -1,18 +1,25 @@
+import { ListRestartIcon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
 interface TableGlobalFilterProps {
   globalFilter: string;
   resetGlobalFilter: (defaultState?: boolean) => void;
   setGlobalFilter: (value: string) => void;
 }
 
+/** Toolbar row aligned with shadcn Data Table “Filtering” example. */
 export const TableGlobalFilter = ({
   globalFilter,
   resetGlobalFilter,
   setGlobalFilter,
 }: TableGlobalFilterProps) => {
   return (
-    <div className="col-span-2 flex w-full items-center gap-2">
-      <input
-        className="dsy-input grow"
+    <div className="flex w-full flex-wrap items-center gap-2">
+      <Input
+        aria-label="Global search"
+        className="max-w-sm"
         onChange={(event) => {
           setGlobalFilter(event.target.value);
         }}
@@ -21,15 +28,16 @@ export const TableGlobalFilter = ({
         value={globalFilter}
       />
       {globalFilter ? (
-        <button
-          className="dsy-btn dsy-btn-sm dsy-btn-neutral"
+        <Button
           onClick={() => {
             resetGlobalFilter();
           }}
+          size="sm"
           type="button"
+          variant="outline"
         >
-          Reset <span className="icon-[lucide--list-restart]" />
-        </button>
+          Reset <ListRestartIcon />
+        </Button>
       ) : null}
     </div>
   );

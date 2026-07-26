@@ -1,8 +1,16 @@
 import { Link } from "@tanstack/react-router";
 
+import {
+  Card,
+  CardAction,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
 import { CardImageFallback } from "../media/card-image-fallback";
+import { MediaRating } from "../media/media-rating";
 import { MediaType } from "../media/media-type";
 
 interface PersonCardProps {
@@ -11,32 +19,35 @@ interface PersonCardProps {
     known_for_department?: string;
     media_type?: string;
     name?: string;
+    popularity?: number;
     profile_path?: string;
   };
 }
 
 export const PersonCard = ({ person }: PersonCardProps) => {
   return (
-    <Link key={person.id} params={{ id: person.id }} to="/people/$id">
-      <div className="md:dsy-card-normal dsy-card h-full shadow-xl dsy-card-sm">
+    <Link aria-label={person.name} params={{ id: person.id }} to="/people/$id">
+      <Card className="h-full pt-0 shadow-lg" size="sm">
         {person.profile_path ? (
-          <figure>
-            <img
-              alt={person.name}
-              src={tmdbImageUrl(person.profile_path, "w500")}
-            />
-          </figure>
+          <img
+            alt={person.name ?? ""}
+            className="aspect-2/3 w-full shrink-0 object-cover"
+            src={tmdbImageUrl(person.profile_path, "w500")}
+          />
         ) : (
           <CardImageFallback />
         )}
-        <div className="dsy-card-body">
-          <div className="flex justify-end gap-2">
+        <CardHeader className="gap-2">
+          <CardTitle className="text-base font-medium">{person.name}</CardTitle>
+          <CardDescription>
+            Known for {person.known_for_department ?? "N/A"}
+          </CardDescription>
+          <CardAction className="flex gap-2">
+            <MediaRating average={person.popularity} />
             <MediaType mediaType={person.media_type} />
-          </div>
-          <h2 className="dsy-card-title">{person.name}</h2>
-          <p>Known for {person.known_for_department}</p>
-        </div>
-      </div>
+          </CardAction>
+        </CardHeader>
+      </Card>
     </Link>
   );
 };

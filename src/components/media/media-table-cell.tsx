@@ -1,5 +1,7 @@
 import type { CellContext } from "@tanstack/react-table";
 
+import { ClapperboardIcon, TvIcon } from "lucide-react";
+
 type MediaTableCellProps = CellContext<
   { id: number; media_type?: string },
   string | undefined
@@ -8,11 +10,11 @@ type MediaTableCellProps = CellContext<
 export const MediaTableCell = ({ getValue }: MediaTableCellProps) => {
   return getValue() === "tv" ? (
     <>
-      <span className="icon-[lucide--tv]" /> TV Show
+      <TvIcon className="inline size-4 align-text-bottom" /> TV Show
     </>
   ) : (
     <>
-      <span className="icon-[lucide--clapperboard]" /> Movie
+      <ClapperboardIcon className="inline size-4 align-text-bottom" /> Movie
     </>
   );
 };

@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+reviews:
+  poem: false
+  path_instructions:
+    - path: ".agents/skills/**"
+      instructions: |
+        Treat as reference context for project conventions. Do not generate review comments on these files.
+    - path: ".claude/skills/**"
+      instructions: |
+        Treat as reference context for project conventions. Do not generate review comments on these files.
+    - path: ".cursor/rules/**"
+      instructions: |
+        Treat as reference context for project conventions. Do not generate review comments on these files.

@@ -1,8 +1,13 @@
 import { Link } from "@tanstack/react-router";
 
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
 
-import { ListContent } from "../shared/list-content";
 import { CardImageFallback } from "./card-image-fallback";
 
 interface CrewListProps {
@@ -16,34 +21,39 @@ interface CrewListProps {
 
 export const CrewList = ({ crew }: CrewListProps) => {
   return (
-    <ListContent aria-labelledby="crew">
+    <ul
+      aria-labelledby="crew"
+      className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4"
+    >
       {crew.map((person) => {
         return (
-          <Link
-            aria-label={person.name}
-            key={person.job ? `${person.id}_${person.job}` : person.id}
-            params={{ id: person.id }}
-            to="/people/$id"
-          >
-            <div className="md:dsy-card-normal dsy-card h-full shadow-xl dsy-card-sm">
-              {person.profile_path ? (
-                <figure>
+          <li key={`${person.id}-${person.job ?? ""}`}>
+            <Link
+              aria-label={person.name}
+              params={{ id: person.id }}
+              to="/people/$id"
+            >
+              <Card className="h-full pt-0 shadow-lg" size="sm">
+                {person.profile_path ? (
                   <img
-                    alt={person.name}
+                    alt={person.name ?? ""}
+                    className="aspect-2/3 w-full shrink-0 object-cover"
                     src={tmdbImageUrl(person.profile_path, "w500")}
                   />
-                </figure>
-              ) : (
-                <CardImageFallback />
-              )}
-              <div className="dsy-card-body">
-                <h2 className="dsy-card-title">{person.name}</h2>
-                <p>{person.job}</p>
-              </div>
-            </div>
-          </Link>
+                ) : (
+                  <CardImageFallback />
+                )}
+                <CardHeader className="gap-2">
+                  <CardTitle className="text-base font-medium">
+                    {person.name}
+                  </CardTitle>
+                  <CardDescription>{person.job}</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
+          </li>
         );
       })}
-    </ListContent>
+    </ul>
   );
 };

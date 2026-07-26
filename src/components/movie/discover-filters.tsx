@@ -1,11 +1,18 @@
-import { valibotResolver } from "@hookform/resolvers/valibot";
+import type * as v from "valibot";
+
 import { useNavigate, useSearch } from "@tanstack/react-router";
-import { useEffect } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useMemo } from "react";
 
-import { DiscoverSchema } from "@/data/movie/discover.list";
+import type { DiscoverSchema } from "@/data/movie/discover.list";
 
-const sortOptions = [
+import { DiscoverDateField } from "@/components/shared/discover-date-field";
+import { DiscoverFilterCombobox } from "@/components/shared/discover-filter-combobox";
+import { DiscoverFilterRow } from "@/components/shared/discover-filter-row";
+
+type MovieDiscoverPatch = Partial<v.InferInput<typeof DiscoverSchema>>;
+type MovieSortBy = v.InferOutput<typeof DiscoverSchema>["sort_by"];
+
+const sortOptions: { label: string; value: MovieSortBy }[] = [
   { label: "Original Title (A-Z)", value: "original_title.asc" },
   { label: "Original Title (Z-A)", value: "original_title.desc" },
   { label: "Popularity (Low to High)", value: "popularity.asc" },
@@ -47,190 +54,173 @@ export const MovieDiscoverFilters = ({
   regions,
 }: MovieDiscoverFiltersOptions) => {
   const search = useSearch({ from: "/_layout/movies/discover/_layout" });
-  const navigate = useNavigate({ from: "/movies/discover" });
+  const navigate = useNavigate();
 
-  const { control, handleSubmit, register, resetField } = useForm({
-    resolver: valibotResolver(DiscoverSchema),
-    values: search,
-  });
-
-  const values = useWatch({ control });
-
-  useEffect(() => {
+  const setFilters = (patch: MovieDiscoverPatch) => {
     void navigate({
-      search: (prevSearch) => ({ ...prevSearch, ...values }),
-      to: "/movies/discover",
+      search: (prev) => ({ ...prev, ...patch, page: undefined }),
+      to: ".",
     });
-  }, [values, navigate]);
+  };
+
+  const genreOptions = useMemo(() => {
+    return genres.map((genre) => {
+      return { label: genre.name ?? String(genre.id), value: String(genre.id) };
+    });
+  }, [genres]);
+
+  const providerOptions = useMemo(() => {
+    return providers
+      .filter((provider) => provider.provider_id !== undefined)
+      .map((provider) => {
+        return {
+          label: provider.provider_name ?? String(provider.provider_id),
+          value: String(provider.provider_id),
+        };
+      });
+  }, [providers]);
+
+  const regionOptions = useMemo(() => {
+    return regions
+      .filter((region) => region.iso_3166_1 !== undefined)
+      .map((region) => {
+        return {
+          label: region.english_name ?? String(region.iso_3166_1),
+          value: String(region.iso_3166_1),
+        };
+      });
+  }, [regions]);
 
   return (
-    <form
-      className="grid grid-cols-1 gap-4"
-      onSubmit={handleSubmit(async (values) => {
-        await navigate({
-          search: (prevSearch) => ({ ...prevSearch, ...values }),
-          to: "/movies/discover",
-        });
-      })}
-    >
+    <div className="grid grid-cols-1 gap-4">
       <div className="grid gap-2 md:grid-cols-3">
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>Genre</span>
-            <select
-              {...register("with_genres")}
-              className="dsy-select w-full"
-              defaultValue=""
-            >
-              <option disabled value="">
-                Pick a Genre
-              </option>
-              {genres.map((genre) => {
-                return (
-                  <option key={genre.id} value={genre.id}>
-                    {genre.name}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-          <button
-            aria-label="Reset Genre"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("with_genres", { defaultValue: "" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>Provider</span>
-            <select
-              defaultValue=""
-              {...register("with_watch_providers")}
-              className="dsy-select w-full"
-            >
-              <option disabled value="">
-                Pick a Provider
-              </option>
-              {providers.map((provider) => {
-                return (
-                  <option
-                    key={provider.provider_id}
-                    value={provider.provider_id}
-                  >
-                    {provider.provider_name}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-          <button
-            aria-label="Reset Provider"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("with_watch_providers", { defaultValue: "" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>Region</span>
-            <select {...register("watch_region")} className="dsy-select w-full">
-              {regions.map((region) => {
-                return (
-                  <option key={region.iso_3166_1} value={region.iso_3166_1}>
-                    {region.english_name}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-          <button
-            aria-label="Reset Region"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("watch_region", { defaultValue: "US" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
+        <DiscoverFilterRow
+          label="Genre"
+          onReset={() => {
+            setFilters({ with_genres: undefined });
+          }}
+          resetLabel="Reset Genre"
+        >
+          {(id) => {
+            return (
+              <DiscoverFilterCombobox
+                id={id}
+                onChange={(next) => {
+                  setFilters({ with_genres: next ?? undefined });
+                }}
+                options={genreOptions}
+                placeholder="Pick a Genre"
+                value={search.with_genres ?? null}
+              />
+            );
+          }}
+        </DiscoverFilterRow>
+        <DiscoverFilterRow
+          label="Provider"
+          onReset={() => {
+            setFilters({ with_watch_providers: undefined });
+          }}
+          resetLabel="Reset Provider"
+        >
+          {(id) => {
+            return (
+              <DiscoverFilterCombobox
+                id={id}
+                onChange={(next) => {
+                  setFilters({ with_watch_providers: next ?? undefined });
+                }}
+                options={providerOptions}
+                placeholder="Pick a Provider"
+                value={search.with_watch_providers ?? null}
+              />
+            );
+          }}
+        </DiscoverFilterRow>
+        <DiscoverFilterRow
+          label="Region"
+          onReset={() => {
+            setFilters({ watch_region: undefined });
+          }}
+          resetLabel="Reset Region"
+        >
+          {(id) => {
+            return (
+              <DiscoverFilterCombobox
+                id={id}
+                onChange={(next) => {
+                  setFilters({ watch_region: next ?? undefined });
+                }}
+                options={regionOptions}
+                placeholder="Region"
+                value={search.watch_region}
+              />
+            );
+          }}
+        </DiscoverFilterRow>
       </div>
       <div className="grid gap-2 md:grid-cols-3">
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>From</span>
-            <input
-              {...register("primary_release_date_gte")}
-              className="dsy-input w-full"
-              type="date"
-            />
-          </label>
-          <button
-            aria-label="Reset From"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("primary_release_date_gte", { defaultValue: "" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>To</span>
-            <input
-              {...register("primary_release_date_lte")}
-              className="dsy-input w-full"
-              type="date"
-            />
-          </label>
-          <button
-            aria-label="Reset To"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("primary_release_date_lte", { defaultValue: "" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
-        <div className="dsy-join">
-          <label className="dsy-floating-label w-full">
-            <span>Sort By</span>
-            <select {...register("sort_by")} className="dsy-select w-full">
-              <option value="" />
-              {sortOptions.map((sortOption) => {
-                return (
-                  <option key={sortOption.value} value={sortOption.value}>
-                    {sortOption.label}
-                  </option>
-                );
-              })}
-            </select>
-          </label>
-          <button
-            aria-label="Reset Sort By"
-            className="dsy-btn dsy-join-item dsy-btn-neutral"
-            onClick={() => {
-              resetField("sort_by", { defaultValue: "popularity.desc" });
-            }}
-            type="button"
-          >
-            <span className="icon-[lucide--x]" />
-          </button>
-        </div>
+        <DiscoverFilterRow
+          label="From"
+          onReset={() => {
+            setFilters({ primary_release_date_gte: undefined });
+          }}
+          resetLabel="Reset From"
+        >
+          {(id) => {
+            return (
+              <DiscoverDateField
+                id={id}
+                onChange={(next) => {
+                  setFilters({ primary_release_date_gte: next });
+                }}
+                placeholder="Pick a start date"
+                value={search.primary_release_date_gte}
+              />
+            );
+          }}
+        </DiscoverFilterRow>
+        <DiscoverFilterRow
+          label="To"
+          onReset={() => {
+            setFilters({ primary_release_date_lte: undefined });
+          }}
+          resetLabel="Reset To"
+        >
+          {(id) => {
+            return (
+              <DiscoverDateField
+                id={id}
+                onChange={(next) => {
+                  setFilters({ primary_release_date_lte: next });
+                }}
+                placeholder="Pick an end date"
+                value={search.primary_release_date_lte}
+              />
+            );
+          }}
+        </DiscoverFilterRow>
+        <DiscoverFilterRow
+          label="Sort By"
+          onReset={() => {
+            setFilters({ sort_by: undefined });
+          }}
+          resetLabel="Reset Sort By"
+        >
+          {(id) => {
+            return (
+              <DiscoverFilterCombobox
+                id={id}
+                onChange={(next) => {
+                  setFilters({ sort_by: next ?? undefined });
+                }}
+                options={sortOptions}
+                placeholder="Sort by"
+                value={search.sort_by}
+              />
+            );
+          }}
+        </DiscoverFilterRow>
       </div>
-    </form>
+    </div>
   );
 };

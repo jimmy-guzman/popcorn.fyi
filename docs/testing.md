@@ -52,10 +52,10 @@ Popcorn.fyi uses a layered testing strategy focused on reliability, speed, and d
 src/
   movie/
     movie-card.tsx
-    movie-card.test.tsx
-  tv-show/
-    trending-carousel.tsx
-    trending-carousel.test.tsx
+    movie-card.spec.tsx
+  site/
+    site-nav.tsx
+    site-nav.spec.tsx
 libs/
   ui/
     button.tsx

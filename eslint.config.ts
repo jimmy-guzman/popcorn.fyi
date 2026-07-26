@@ -52,5 +52,10 @@ export default defineConfig({
   vitest: {
     globals: "implicit",
   },
-  ignores: ["**/gen/**/index.ts"],
+  ignores: [
+    "**/gen/**/index.ts",
+    "**/components/ui/**",
+    ".agents/**",
+    ".claude/**",
+  ],
 });
