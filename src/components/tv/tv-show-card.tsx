@@ -44,7 +44,7 @@ export const TVShowCard = ({ tvShow }: TVShowCardProps) => {
         )}
         <CardHeader className="gap-2">
           <CardTitle className="text-base font-medium">{tvShow.name}</CardTitle>
-          <CardDescription>
+          <CardDescription className="tabular-nums">
             {tvShow.first_air_date ? year(tvShow.first_air_date) : "N/A"}
           </CardDescription>
           <CardAction className="flex gap-2">

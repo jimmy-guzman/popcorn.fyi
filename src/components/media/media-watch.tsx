@@ -60,7 +60,7 @@ export const MediaWatch = ({ watchProviders }: MediaWatchProps) => {
             <a href={urls.JustWatch} rel="noreferrer" target="_blank">
               <img
                 alt="JustWatch"
-                className="inline h-[10px] w-[70px] align-middle"
+                className="inline h-2.5 w-[70px] align-middle"
                 src={urls.JustWatchLogo}
               />
             </a>

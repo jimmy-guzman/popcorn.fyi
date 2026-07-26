@@ -50,7 +50,7 @@ export const MovieCard = ({ movie }: MovieCardProps) => {
         )}
         <CardHeader className="gap-2">
           <CardTitle className="text-base font-medium">{title}</CardTitle>
-          <CardDescription>
+          <CardDescription className="tabular-nums">
             {movie.release_date ? year(movie.release_date) : "N/A"}
           </CardDescription>
           <CardAction className="flex gap-2">

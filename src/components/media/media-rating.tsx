@@ -6,7 +6,7 @@ interface MediaRatingProps {
 
 export const MediaRating = ({ average }: MediaRatingProps) => {
   return (
-    <Badge variant="default">
+    <Badge className="tabular-nums" variant="default">
       {typeof average === "number" ? average.toFixed(1) : "N/A"}
     </Badge>
   );
