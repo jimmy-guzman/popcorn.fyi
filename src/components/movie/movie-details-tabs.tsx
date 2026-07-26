@@ -9,25 +9,33 @@ interface MovieDetailsTabsProps {
 const movieDetailTabs = [
   {
     label: "Overview",
-    pathname: (movieId: number) => `/movies/${movieId}`,
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}`;
+    },
     to: "/movies/$id" as const,
     value: "overview",
   },
   {
     label: "Providers",
-    pathname: (movieId: number) => `/movies/${movieId}/watch`,
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}/watch`;
+    },
     to: "/movies/$id/watch" as const,
     value: "providers",
   },
   {
     label: "Similar",
-    pathname: (movieId: number) => `/movies/${movieId}/similar`,
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}/similar`;
+    },
     to: "/movies/$id/similar" as const,
     value: "similar",
   },
   {
     label: "Credits",
-    pathname: (movieId: number) => `/movies/${movieId}/credits`,
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}/credits`;
+    },
     to: "/movies/$id/credits" as const,
     value: "credits",
   },
@@ -38,9 +46,9 @@ export const MovieDetailsTabs = ({ id }: MovieDetailsTabsProps) => {
     select: (s) => {
       const pathname =
         s.location.pathname.replace(/\/$/, "") || s.location.pathname;
-      const match = movieDetailTabs.find(
-        (tab) => pathname === tab.pathname(id),
-      );
+      const match = movieDetailTabs.find((tab) => {
+        return pathname === tab.pathname(id);
+      });
 
       return match?.value;
     },

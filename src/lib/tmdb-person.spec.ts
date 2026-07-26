@@ -57,7 +57,11 @@ describe("getKnownForHighlights", () => {
 
     const result = getKnownForHighlights({ cast, id: 1 });
 
-    expect(result.map((r) => r.id)).toStrictEqual([3]);
+    expect(
+      result.map((r) => {
+        return r.id;
+      }),
+    ).toStrictEqual([3]);
   });
 
   it("should include only TV roles with sufficient episode count", () => {
@@ -78,13 +82,17 @@ describe("getKnownForHighlights", () => {
 
     const result = getKnownForHighlights({ cast, id: 1 });
 
-    expect(result.map((r) => r.id)).toStrictEqual([2]);
+    expect(
+      result.map((r) => {
+        return r.id;
+      }),
+    ).toStrictEqual([2]);
   });
 
   it("should limit results to the given count", () => {
-    const cast = Array.from({ length: 20 }, (_, i) =>
-      createCast({ id: i + 1 }),
-    );
+    const cast = Array.from({ length: 20 }, (_, i) => {
+      return createCast({ id: i + 1 });
+    });
 
     const result = getKnownForHighlights({ cast, id: 1 }, "Acting", 5);
 
@@ -99,7 +107,11 @@ describe("getKnownForHighlights", () => {
 
     const result = getKnownForHighlights({ crew, id: 1 }, "Directing");
 
-    expect(result.map((r) => r.id)).toStrictEqual([1, 2]);
+    expect(
+      result.map((r) => {
+        return r.id;
+      }),
+    ).toStrictEqual([1, 2]);
   });
 
   it("should ignore crew roles from other departments", () => {
@@ -110,7 +122,11 @@ describe("getKnownForHighlights", () => {
 
     const result = getKnownForHighlights({ crew, id: 1 }, "Directing");
 
-    expect(result.map((r) => r.id)).toStrictEqual([2]);
+    expect(
+      result.map((r) => {
+        return r.id;
+      }),
+    ).toStrictEqual([2]);
   });
 
   it("should de-duplicate by id", () => {

@@ -1,6 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import * as v from "valibot";
 
 import type { Pagination } from "@/schemas/pagination";
 
@@ -9,7 +8,7 @@ import { personPopularList } from "@/integrations/tmdb/gen/sdk.gen";
 import { PaginationSchema } from "@/schemas/pagination";
 
 const popularPeopleFn = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => v.parse(PaginationSchema, data))
+  .validator(PaginationSchema)
   .handler(async (context) => {
     const { data } = await personPopularList({
       client: tmdbClient,
@@ -22,7 +21,9 @@ const popularPeopleFn = createServerFn({ method: "GET" })
 
 export const peoplePopularOptions = (query: Pagination) => {
   return queryOptions({
-    queryFn: () => popularPeopleFn({ data: query }),
+    queryFn: () => {
+      return popularPeopleFn({ data: query });
+    },
     queryKey: ["people", "list", "popular", query],
   });
 };

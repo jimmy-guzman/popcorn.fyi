@@ -1,6 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
@@ -9,7 +8,7 @@ import { movieSimilar } from "@/integrations/tmdb/gen/sdk.gen";
 import { IdSchema } from "@/schemas/id";
 
 const movieSimilarFn = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => v.parse(IdSchema, data))
+  .validator(IdSchema)
   .handler(async (context) => {
     const { data } = await movieSimilar({
       client: tmdbClient,
@@ -22,7 +21,9 @@ const movieSimilarFn = createServerFn({ method: "GET" })
 
 export const movieSimilarOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => movieSimilarFn({ data: id }),
+    queryFn: () => {
+      return movieSimilarFn({ data: id });
+    },
     queryKey: ["movie", "details", id, "similar"],
   });
 };

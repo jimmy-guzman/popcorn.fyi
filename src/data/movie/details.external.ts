@@ -1,6 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
@@ -12,7 +11,7 @@ import { IdSchema } from "@/schemas/id";
 import { wikipediaFn } from "../wikipedia";
 
 const movieExternalFn = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => v.parse(IdSchema, data))
+  .validator(IdSchema)
   .handler(async (context) => {
     const { data } = await movieExternalIds({
       client: tmdbClient,
@@ -27,10 +26,14 @@ const movieExternalFn = createServerFn({ method: "GET" })
       wikipedia_url: null,
     };
 
+    if (!base.wikidata_id) {
+      return base;
+    }
+
     try {
       return {
         ...base,
-        wikipedia_url: await wikipediaFn({ data: data.wikidata_id }),
+        wikipedia_url: await wikipediaFn({ data: base.wikidata_id }),
       };
     } catch {
       return base;
@@ -39,7 +42,9 @@ const movieExternalFn = createServerFn({ method: "GET" })
 
 export const movieExternalOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => movieExternalFn({ data: id }),
+    queryFn: () => {
+      return movieExternalFn({ data: id });
+    },
     queryKey: ["movie", "details", id, "external"],
   });
 };

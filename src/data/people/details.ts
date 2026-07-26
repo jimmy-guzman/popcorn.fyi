@@ -1,6 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
@@ -9,7 +8,7 @@ import { personDetails } from "@/integrations/tmdb/gen/sdk.gen";
 import { IdSchema } from "@/schemas/id";
 
 const personDetailsFn = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => v.parse(IdSchema, data))
+  .validator(IdSchema)
   .handler(async (context) => {
     const {
       data: { deathday, homepage, ...rest },
@@ -24,7 +23,9 @@ const personDetailsFn = createServerFn({ method: "GET" })
 
 export const personDetailsOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => personDetailsFn({ data: id }),
+    queryFn: () => {
+      return personDetailsFn({ data: id });
+    },
     queryKey: ["person", "details", id],
   });
 };

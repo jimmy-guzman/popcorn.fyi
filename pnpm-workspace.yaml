@@ -1,19 +1,13 @@
 autoInstallPeers: false
 
-onlyBuiltDependencies:
-  - "@parcel/watcher"
-  - "@tailwindcss/oxide"
-  - "@vercel/speed-insights"
-  - bufferutil
-  - esbuild
-  - lefthook
-  - msw
-  - oxc-resolver
-  - unrs-resolver
-
-savePrefix: ""
-
-overrides:
-  vite: "8.0.8"
+saveExact: true
 
 cleanupUnusedCatalogs: true
+
+minimumReleaseAgeExclude:
+  - "@iconify-json/*"
+
+allowBuilds:
+  lefthook: true
+  msw: true
+  unrs-resolver: true

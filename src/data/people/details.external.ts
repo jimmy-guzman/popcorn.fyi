@@ -1,6 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
@@ -12,7 +11,7 @@ import { IdSchema } from "@/schemas/id";
 import { wikipediaFn } from "../wikipedia";
 
 const personExternalFn = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => v.parse(IdSchema, data))
+  .validator(IdSchema)
   .handler(async (context) => {
     const { data } = await personExternalIds({
       client: tmdbClient,
@@ -27,6 +26,10 @@ const personExternalFn = createServerFn({ method: "GET" })
       wikipedia_url: null,
     };
 
+    if (!base.wikidata_id) {
+      return base;
+    }
+
     try {
       return {
         ...base,
@@ -39,7 +42,9 @@ const personExternalFn = createServerFn({ method: "GET" })
 
 export const personExternalOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => personExternalFn({ data: id }),
+    queryFn: () => {
+      return personExternalFn({ data: id });
+    },
     queryKey: ["person", "details", id, "external"],
   });
 };

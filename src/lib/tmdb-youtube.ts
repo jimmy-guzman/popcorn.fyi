@@ -9,8 +9,12 @@ export const selectYoutubeTrailer = ({
   }[];
 }) => {
   return results
-    ?.toSorted((a) => (a.official ? -1 : 1))
-    .find((result) => result.type === "Trailer" && result.site === "YouTube");
+    ?.toSorted((a) => {
+      return a.official ? -1 : 1;
+    })
+    .find((result) => {
+      return result.type === "Trailer" && result.site === "YouTube";
+    });
 };
 
 export const youtubeVideoUrl = (

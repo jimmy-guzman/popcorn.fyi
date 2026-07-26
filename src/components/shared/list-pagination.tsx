@@ -55,10 +55,12 @@ export const ListPagination = ({ page, totalPages }: ListPaginationProps) => {
             <PaginationItem key={pageNum}>
               <PaginationLink
                 isActive={pageNum === page}
-                search={(prev: PageSearch) => ({
-                  ...prev,
-                  page: pageNum,
-                })}
+                search={(prev: PageSearch) => {
+                  return {
+                    ...prev,
+                    page: pageNum,
+                  };
+                }}
                 size="default"
                 to="."
               >

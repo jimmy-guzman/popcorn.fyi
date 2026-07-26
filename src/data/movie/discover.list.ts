@@ -43,9 +43,7 @@ export const DiscoverSchema = v.intersect([
 ]);
 
 const discoverMoviesFn = createServerFn({ method: "GET" })
-  .inputValidator((data: v.InferInput<typeof DiscoverSchema>) => {
-    return v.parse(DiscoverSchema, data);
-  })
+  .validator(DiscoverSchema)
   .handler(async (context) => {
     const { data } = await discoverMovie({
       client: tmdbClient,
@@ -64,7 +62,9 @@ export const discoverMoviesOptions = (
   query: v.InferInput<typeof DiscoverSchema>,
 ) => {
   return queryOptions({
-    queryFn: () => discoverMoviesFn({ data: query }),
+    queryFn: () => {
+      return discoverMoviesFn({ data: query });
+    },
     queryKey: ["movie", "list", "discover", query],
   });
 };

@@ -1,6 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import * as v from "valibot";
 
 import type { Pagination } from "@/schemas/pagination";
 
@@ -9,7 +8,7 @@ import { movieTopRatedList } from "@/integrations/tmdb/gen/sdk.gen";
 import { PaginationSchema } from "@/schemas/pagination";
 
 const topRatedMoviesFn = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => v.parse(PaginationSchema, data))
+  .validator(PaginationSchema)
   .handler(async (context) => {
     const { data } = await movieTopRatedList({
       client: tmdbClient,
@@ -22,7 +21,9 @@ const topRatedMoviesFn = createServerFn({ method: "GET" })
 
 export const moviesTopRatedOptions = (query: Pagination) => {
   return queryOptions({
-    queryFn: () => topRatedMoviesFn({ data: query }),
+    queryFn: () => {
+      return topRatedMoviesFn({ data: query });
+    },
     queryKey: ["movie", "list", "top-rated", query],
   });
 };

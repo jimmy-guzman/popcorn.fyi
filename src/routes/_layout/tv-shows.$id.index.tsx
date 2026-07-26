@@ -67,18 +67,26 @@ function RouteComponent() {
     {
       title: "Production Companies",
       value: tvShow.production_companies
-        ?.map((productionCompany) => productionCompany.name)
+        ?.map((productionCompany) => {
+          return productionCompany.name;
+        })
         .join(", "),
     },
     {
       title: "Production Countries",
       value: tvShow.production_countries
-        ?.map((country) => country.name)
+        ?.map((country) => {
+          return country.name;
+        })
         .join(", "),
     },
     {
       title: "Networks",
-      value: tvShow.networks?.map((network) => network.name).join(", "),
+      value: tvShow.networks
+        ?.map((network) => {
+          return network.name;
+        })
+        .join(", "),
     },
   ];
 

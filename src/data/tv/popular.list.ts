@@ -1,6 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import * as v from "valibot";
 
 import type { Pagination } from "@/schemas/pagination";
 
@@ -9,7 +8,7 @@ import { tvSeriesPopularList } from "@/integrations/tmdb/gen/sdk.gen";
 import { PaginationSchema } from "@/schemas/pagination";
 
 const tvPopularFn = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => v.parse(PaginationSchema, data))
+  .validator(PaginationSchema)
   .handler(async (context) => {
     const { data } = await tvSeriesPopularList({
       client: tmdbClient,
@@ -22,7 +21,9 @@ const tvPopularFn = createServerFn({ method: "GET" })
 
 export const tvPopularOptions = (query: Pagination) => {
   return queryOptions({
-    queryFn: () => tvPopularFn({ data: query }),
+    queryFn: () => {
+      return tvPopularFn({ data: query });
+    },
     queryKey: ["tv", "list", "popular", query],
   });
 };

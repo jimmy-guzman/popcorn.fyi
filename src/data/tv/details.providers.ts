@@ -1,6 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
 import { createServerFn } from "@tanstack/react-start";
-import * as v from "valibot";
 
 import type { Id } from "@/schemas/id";
 
@@ -9,7 +8,7 @@ import { tvSeriesWatchProviders } from "@/integrations/tmdb/gen/sdk.gen";
 import { IdSchema } from "@/schemas/id";
 
 const tvSeriesProvidersFn = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => v.parse(IdSchema, data))
+  .validator(IdSchema)
   .handler(async (context) => {
     const { data } = await tvSeriesWatchProviders({
       client: tmdbClient,
@@ -22,7 +21,9 @@ const tvSeriesProvidersFn = createServerFn({ method: "GET" })
 
 export const tvSeriesProvidersOptions = (id: Id) => {
   return queryOptions({
-    queryFn: () => tvSeriesProvidersFn({ data: id }),
+    queryFn: () => {
+      return tvSeriesProvidersFn({ data: id });
+    },
     queryKey: ["tv", "details", id, "providers"],
   });
 };
