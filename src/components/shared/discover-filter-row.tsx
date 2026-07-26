@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { XIcon } from "lucide-react";
 import { useId } from "react";
@@ -18,25 +18,23 @@ export const DiscoverFilterRow = ({
   label,
   onReset,
   resetLabel,
-}: DiscoverFilterRowProps): ReactElement => {
+}: DiscoverFilterRowProps) => {
   const controlId = useId();
 
   return (
-    <div className="flex w-full overflow-hidden rounded-lg border border-border bg-background shadow-sm">
-      <div className="flex min-w-0 flex-1 flex-col gap-1.5 px-3 py-2">
-        <Label htmlFor={controlId}>{label}</Label>
-        {children(controlId)}
+    <div className="flex w-full flex-col gap-1.5">
+      <Label htmlFor={controlId}>{label}</Label>
+      <div className="flex items-center gap-1">
+        <div className="min-w-0 flex-1">{children(controlId)}</div>
+        <Button
+          aria-label={resetLabel}
+          onClick={onReset}
+          size="icon-sm"
+          variant="ghost"
+        >
+          <XIcon />
+        </Button>
       </div>
-      <Button
-        aria-label={resetLabel}
-        className="shrink-0 rounded-none border-t-0 border-r-0 border-b-0 border-l"
-        onClick={onReset}
-        size="icon-sm"
-        type="button"
-        variant="outline"
-      >
-        <XIcon />
-      </Button>
     </div>
   );
 };

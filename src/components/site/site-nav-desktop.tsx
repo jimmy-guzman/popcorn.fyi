@@ -101,7 +101,7 @@ function NavEntry({ item }: { item: NavItem }) {
 export const SiteNavDesktop = ({ items }: { items: NavItem[] }) => {
   return (
     <NavigationMenu className="hidden max-w-none min-w-0 flex-1 justify-start xl:flex">
-      <NavigationMenuList className="flex-nowrap justify-start gap-2 overflow-x-auto [scrollbar-width:thin]">
+      <NavigationMenuList className="[scrollbar-width:thin] flex-nowrap justify-start gap-2 overflow-x-auto">
         {items.map((item) => {
           return <NavEntry item={item} key={item.to} />;
         })}

@@ -9,7 +9,7 @@ test.describe("Home", () => {
 
   test("should navigate to Home", async ({ page }) => {
     await page.getByRole("button", { name: site.title }).click();
-    await expect(page).toHaveTitle("popcorn.fyi");
+    await expect(page).toHaveTitle(site.title);
   });
 });
 

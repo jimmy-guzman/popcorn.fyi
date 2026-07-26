@@ -88,6 +88,20 @@ When changing API client types or OpenAPI inputs, run `pnpm openapi-ts` and ensu
 - **No comments other than JSDoc or `TODO`/`FIXME`.**
   Code should explain itself through naming and structure. Comments drift from the code they describe; the ones worth keeping have a specific purpose (API docs, known gaps).
 
+## Testing
+
+- **Test behavior, not implementation.**
+  Assert what a caller or user observes, not how the code achieves it. "Caller" and "user" scale with the unit under test: for a component it's the person clicking, for a function it's the code calling it. Tests that assert internals break on every refactor and prove nothing about whether the code works.
+
+- **Mock at the furthest boundary.**
+  When something must be faked, fake it as close to the external edge as possible: HTTP at the network layer (e.g. MSW), time with fake timers, randomness with a seeded source. Avoid mocking your own modules; a test that stubs the function next to the code under test exercises almost nothing and passes while real integration is broken.
+
+- **Prefer clarity over DRY in tests.**
+  Inline setup, repeat literals, skip shared fixtures when they'd obscure the case under test. A test's job is to be readable in isolation; the pull toward DRY that makes production code better usually makes tests worse.
+
+- **Test real behavior, not hypothetical behavior.**
+  Cover the cases the contract actually promises. Do not manufacture edge cases the code doesn't claim to handle just to pad coverage.
+
 ## Static analysis
 
 - **Resolve warnings and errors your changes introduce before finishing. Fix the root cause, not the symptom. Do not silence with rule overrides or type casts.**
