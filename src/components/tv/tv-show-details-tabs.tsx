@@ -15,6 +15,8 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
 
       if (pathname === `${base}/credits`) return "credits";
 
+      if (pathname === `${base}/recommendations`) return "recommendations";
+
       if (pathname === `${base}/similar`) return "similar";
 
       if (pathname === `${base}/watch`) return "providers";
@@ -58,12 +60,12 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
             <Link
               params={{ id }}
               resetScroll={false}
-              to="/tv-shows/$id/similar"
+              to="/tv-shows/$id/credits"
             />
           }
-          value="similar"
+          value="credits"
         >
-          Similar
+          Credits
         </TabsTrigger>
         <TabsTrigger
           nativeButton={false}
@@ -71,12 +73,25 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
             <Link
               params={{ id }}
               resetScroll={false}
-              to="/tv-shows/$id/credits"
+              to="/tv-shows/$id/recommendations"
             />
           }
-          value="credits"
+          value="recommendations"
         >
-          Credits
+          Recommendations
+        </TabsTrigger>
+        <TabsTrigger
+          nativeButton={false}
+          render={
+            <Link
+              params={{ id }}
+              resetScroll={false}
+              to="/tv-shows/$id/similar"
+            />
+          }
+          value="similar"
+        >
+          Similar
         </TabsTrigger>
         <TabsTrigger
           nativeButton={false}

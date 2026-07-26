@@ -24,20 +24,28 @@ const movieDetailTabs = [
     value: "providers",
   },
   {
-    label: "Similar",
-    pathname: (movieId: number) => {
-      return `/movies/${movieId}/similar`;
-    },
-    to: "/movies/$id/similar" as const,
-    value: "similar",
-  },
-  {
     label: "Credits",
     pathname: (movieId: number) => {
       return `/movies/${movieId}/credits`;
     },
     to: "/movies/$id/credits" as const,
     value: "credits",
+  },
+  {
+    label: "Recommendations",
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}/recommendations`;
+    },
+    to: "/movies/$id/recommendations" as const,
+    value: "recommendations",
+  },
+  {
+    label: "Similar",
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}/similar`;
+    },
+    to: "/movies/$id/similar" as const,
+    value: "similar",
   },
   {
     label: "Videos",

@@ -25,7 +25,9 @@ export const Route = createFileRoute("/_layout/tv-shows/$id/videos")({
 function RouteComponent() {
   const { id } = Route.useParams();
   const { data: videos } = useSuspenseQuery(tvVideosOptions(id));
-  const results = orEmpty(videos.results);
+  const results = orEmpty(videos.results).filter((video) => {
+    return video.site === "YouTube" && Boolean(video.key);
+  });
 
   return (
     <section className="flex w-full flex-col gap-8">
