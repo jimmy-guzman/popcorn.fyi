@@ -1,4 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -21,6 +22,8 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
 
       if (pathname === `${base}/watch`) return "providers";
 
+      if (pathname === `${base}/images`) return "images";
+
       if (pathname === `${base}/videos`) return "videos";
 
       if (pathname === base) return "overview";
@@ -29,9 +32,20 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
     },
   });
 
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    listRef.current
+      ?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]')
+      ?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [tabValue]);
+
   return (
     <Tabs value={tabValue ?? null}>
-      <TabsList className="w-full flex-wrap rounded border md:w-auto">
+      <TabsList
+        className="w-full justify-start overflow-x-auto rounded border md:w-auto md:justify-center"
+        ref={listRef}
+      >
         <TabsTrigger
           nativeButton={false}
           render={
@@ -92,6 +106,19 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
           value="similar"
         >
           Similar
+        </TabsTrigger>
+        <TabsTrigger
+          nativeButton={false}
+          render={
+            <Link
+              params={{ id }}
+              resetScroll={false}
+              to="/tv-shows/$id/images"
+            />
+          }
+          value="images"
+        >
+          Images
         </TabsTrigger>
         <TabsTrigger
           nativeButton={false}

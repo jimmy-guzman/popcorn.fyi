@@ -29,6 +29,7 @@ import { Route as LayoutTvShowsPopularRouteImport } from './routes/_layout/tv-sh
 import { Route as LayoutTvShowsTopRatedRouteImport } from './routes/_layout/tv-shows.top-rated'
 import { Route as LayoutMoviesIdIndexRouteImport } from './routes/_layout/movies.$id.index'
 import { Route as LayoutMoviesIdCreditsRouteImport } from './routes/_layout/movies.$id.credits'
+import { Route as LayoutMoviesIdImagesRouteImport } from './routes/_layout/movies.$id.images'
 import { Route as LayoutMoviesIdRecommendationsRouteImport } from './routes/_layout/movies.$id.recommendations'
 import { Route as LayoutMoviesIdSimilarRouteImport } from './routes/_layout/movies.$id.similar'
 import { Route as LayoutMoviesIdTrailerRouteImport } from './routes/_layout/movies.$id.trailer'
@@ -39,6 +40,7 @@ import { Route as LayoutPeopleIdIndexRouteImport } from './routes/_layout/people
 import { Route as LayoutPeopleIdCreditsRouteImport } from './routes/_layout/people.$id.credits'
 import { Route as LayoutTvShowsIdIndexRouteImport } from './routes/_layout/tv-shows.$id.index'
 import { Route as LayoutTvShowsIdCreditsRouteImport } from './routes/_layout/tv-shows.$id.credits'
+import { Route as LayoutTvShowsIdImagesRouteImport } from './routes/_layout/tv-shows.$id.images'
 import { Route as LayoutTvShowsIdRecommendationsRouteImport } from './routes/_layout/tv-shows.$id.recommendations'
 import { Route as LayoutTvShowsIdSimilarRouteImport } from './routes/_layout/tv-shows.$id.similar'
 import { Route as LayoutTvShowsIdTrailerRouteImport } from './routes/_layout/tv-shows.$id.trailer'
@@ -148,6 +150,11 @@ const LayoutMoviesIdCreditsRoute = LayoutMoviesIdCreditsRouteImport.update({
   path: '/credits',
   getParentRoute: () => LayoutMoviesIdRoute,
 } as any)
+const LayoutMoviesIdImagesRoute = LayoutMoviesIdImagesRouteImport.update({
+  id: '/images',
+  path: '/images',
+  getParentRoute: () => LayoutMoviesIdRoute,
+} as any)
 const LayoutMoviesIdRecommendationsRoute =
   LayoutMoviesIdRecommendationsRouteImport.update({
     id: '/recommendations',
@@ -198,6 +205,11 @@ const LayoutTvShowsIdIndexRoute = LayoutTvShowsIdIndexRouteImport.update({
 const LayoutTvShowsIdCreditsRoute = LayoutTvShowsIdCreditsRouteImport.update({
   id: '/credits',
   path: '/credits',
+  getParentRoute: () => LayoutTvShowsIdRoute,
+} as any)
+const LayoutTvShowsIdImagesRoute = LayoutTvShowsIdImagesRouteImport.update({
+  id: '/images',
+  path: '/images',
   getParentRoute: () => LayoutTvShowsIdRoute,
 } as any)
 const LayoutTvShowsIdRecommendationsRoute =
@@ -264,6 +276,7 @@ export interface FileRoutesByFullPath {
   '/tv-shows/popular': typeof LayoutTvShowsPopularRoute
   '/tv-shows/top-rated': typeof LayoutTvShowsTopRatedRoute
   '/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
+  '/movies/$id/images': typeof LayoutMoviesIdImagesRoute
   '/movies/$id/recommendations': typeof LayoutMoviesIdRecommendationsRoute
   '/movies/$id/similar': typeof LayoutMoviesIdSimilarRoute
   '/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
@@ -272,6 +285,7 @@ export interface FileRoutesByFullPath {
   '/movies/discover': typeof LayoutMoviesDiscoverLayoutRouteWithChildren
   '/people/$id/credits': typeof LayoutPeopleIdCreditsRoute
   '/tv-shows/$id/credits': typeof LayoutTvShowsIdCreditsRoute
+  '/tv-shows/$id/images': typeof LayoutTvShowsIdImagesRoute
   '/tv-shows/$id/recommendations': typeof LayoutTvShowsIdRecommendationsRoute
   '/tv-shows/$id/similar': typeof LayoutTvShowsIdSimilarRoute
   '/tv-shows/$id/trailer': typeof LayoutTvShowsIdTrailerRoute
@@ -300,6 +314,7 @@ export interface FileRoutesByTo {
   '/tv-shows/popular': typeof LayoutTvShowsPopularRoute
   '/tv-shows/top-rated': typeof LayoutTvShowsTopRatedRoute
   '/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
+  '/movies/$id/images': typeof LayoutMoviesIdImagesRoute
   '/movies/$id/recommendations': typeof LayoutMoviesIdRecommendationsRoute
   '/movies/$id/similar': typeof LayoutMoviesIdSimilarRoute
   '/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
@@ -307,6 +322,7 @@ export interface FileRoutesByTo {
   '/movies/$id/watch': typeof LayoutMoviesIdWatchRoute
   '/people/$id/credits': typeof LayoutPeopleIdCreditsRoute
   '/tv-shows/$id/credits': typeof LayoutTvShowsIdCreditsRoute
+  '/tv-shows/$id/images': typeof LayoutTvShowsIdImagesRoute
   '/tv-shows/$id/recommendations': typeof LayoutTvShowsIdRecommendationsRoute
   '/tv-shows/$id/similar': typeof LayoutTvShowsIdSimilarRoute
   '/tv-shows/$id/trailer': typeof LayoutTvShowsIdTrailerRoute
@@ -339,6 +355,7 @@ export interface FileRoutesById {
   '/_layout/tv-shows/popular': typeof LayoutTvShowsPopularRoute
   '/_layout/tv-shows/top-rated': typeof LayoutTvShowsTopRatedRoute
   '/_layout/movies/$id/credits': typeof LayoutMoviesIdCreditsRoute
+  '/_layout/movies/$id/images': typeof LayoutMoviesIdImagesRoute
   '/_layout/movies/$id/recommendations': typeof LayoutMoviesIdRecommendationsRoute
   '/_layout/movies/$id/similar': typeof LayoutMoviesIdSimilarRoute
   '/_layout/movies/$id/trailer': typeof LayoutMoviesIdTrailerRoute
@@ -347,6 +364,7 @@ export interface FileRoutesById {
   '/_layout/movies/discover/_layout': typeof LayoutMoviesDiscoverLayoutRouteWithChildren
   '/_layout/people/$id/credits': typeof LayoutPeopleIdCreditsRoute
   '/_layout/tv-shows/$id/credits': typeof LayoutTvShowsIdCreditsRoute
+  '/_layout/tv-shows/$id/images': typeof LayoutTvShowsIdImagesRoute
   '/_layout/tv-shows/$id/recommendations': typeof LayoutTvShowsIdRecommendationsRoute
   '/_layout/tv-shows/$id/similar': typeof LayoutTvShowsIdSimilarRoute
   '/_layout/tv-shows/$id/trailer': typeof LayoutTvShowsIdTrailerRoute
@@ -380,6 +398,7 @@ export interface FileRouteTypes {
     | '/tv-shows/popular'
     | '/tv-shows/top-rated'
     | '/movies/$id/credits'
+    | '/movies/$id/images'
     | '/movies/$id/recommendations'
     | '/movies/$id/similar'
     | '/movies/$id/trailer'
@@ -388,6 +407,7 @@ export interface FileRouteTypes {
     | '/movies/discover'
     | '/people/$id/credits'
     | '/tv-shows/$id/credits'
+    | '/tv-shows/$id/images'
     | '/tv-shows/$id/recommendations'
     | '/tv-shows/$id/similar'
     | '/tv-shows/$id/trailer'
@@ -416,6 +436,7 @@ export interface FileRouteTypes {
     | '/tv-shows/popular'
     | '/tv-shows/top-rated'
     | '/movies/$id/credits'
+    | '/movies/$id/images'
     | '/movies/$id/recommendations'
     | '/movies/$id/similar'
     | '/movies/$id/trailer'
@@ -423,6 +444,7 @@ export interface FileRouteTypes {
     | '/movies/$id/watch'
     | '/people/$id/credits'
     | '/tv-shows/$id/credits'
+    | '/tv-shows/$id/images'
     | '/tv-shows/$id/recommendations'
     | '/tv-shows/$id/similar'
     | '/tv-shows/$id/trailer'
@@ -454,6 +476,7 @@ export interface FileRouteTypes {
     | '/_layout/tv-shows/popular'
     | '/_layout/tv-shows/top-rated'
     | '/_layout/movies/$id/credits'
+    | '/_layout/movies/$id/images'
     | '/_layout/movies/$id/recommendations'
     | '/_layout/movies/$id/similar'
     | '/_layout/movies/$id/trailer'
@@ -462,6 +485,7 @@ export interface FileRouteTypes {
     | '/_layout/movies/discover/_layout'
     | '/_layout/people/$id/credits'
     | '/_layout/tv-shows/$id/credits'
+    | '/_layout/tv-shows/$id/images'
     | '/_layout/tv-shows/$id/recommendations'
     | '/_layout/tv-shows/$id/similar'
     | '/_layout/tv-shows/$id/trailer'
@@ -621,6 +645,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutMoviesIdCreditsRouteImport
       parentRoute: typeof LayoutMoviesIdRoute
     }
+    '/_layout/movies/$id/images': {
+      id: '/_layout/movies/$id/images'
+      path: '/images'
+      fullPath: '/movies/$id/images'
+      preLoaderRoute: typeof LayoutMoviesIdImagesRouteImport
+      parentRoute: typeof LayoutMoviesIdRoute
+    }
     '/_layout/movies/$id/recommendations': {
       id: '/_layout/movies/$id/recommendations'
       path: '/recommendations'
@@ -691,6 +722,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutTvShowsIdCreditsRouteImport
       parentRoute: typeof LayoutTvShowsIdRoute
     }
+    '/_layout/tv-shows/$id/images': {
+      id: '/_layout/tv-shows/$id/images'
+      path: '/images'
+      fullPath: '/tv-shows/$id/images'
+      preLoaderRoute: typeof LayoutTvShowsIdImagesRouteImport
+      parentRoute: typeof LayoutTvShowsIdRoute
+    }
     '/_layout/tv-shows/$id/recommendations': {
       id: '/_layout/tv-shows/$id/recommendations'
       path: '/recommendations'
@@ -752,6 +790,7 @@ declare module '@tanstack/react-router' {
 
 interface LayoutMoviesIdRouteChildren {
   LayoutMoviesIdCreditsRoute: typeof LayoutMoviesIdCreditsRoute
+  LayoutMoviesIdImagesRoute: typeof LayoutMoviesIdImagesRoute
   LayoutMoviesIdRecommendationsRoute: typeof LayoutMoviesIdRecommendationsRoute
   LayoutMoviesIdSimilarRoute: typeof LayoutMoviesIdSimilarRoute
   LayoutMoviesIdTrailerRoute: typeof LayoutMoviesIdTrailerRoute
@@ -762,6 +801,7 @@ interface LayoutMoviesIdRouteChildren {
 
 const LayoutMoviesIdRouteChildren: LayoutMoviesIdRouteChildren = {
   LayoutMoviesIdCreditsRoute: LayoutMoviesIdCreditsRoute,
+  LayoutMoviesIdImagesRoute: LayoutMoviesIdImagesRoute,
   LayoutMoviesIdRecommendationsRoute: LayoutMoviesIdRecommendationsRoute,
   LayoutMoviesIdSimilarRoute: LayoutMoviesIdSimilarRoute,
   LayoutMoviesIdTrailerRoute: LayoutMoviesIdTrailerRoute,
@@ -790,6 +830,7 @@ const LayoutPeopleIdRouteWithChildren = LayoutPeopleIdRoute._addFileChildren(
 
 interface LayoutTvShowsIdRouteChildren {
   LayoutTvShowsIdCreditsRoute: typeof LayoutTvShowsIdCreditsRoute
+  LayoutTvShowsIdImagesRoute: typeof LayoutTvShowsIdImagesRoute
   LayoutTvShowsIdRecommendationsRoute: typeof LayoutTvShowsIdRecommendationsRoute
   LayoutTvShowsIdSimilarRoute: typeof LayoutTvShowsIdSimilarRoute
   LayoutTvShowsIdTrailerRoute: typeof LayoutTvShowsIdTrailerRoute
@@ -800,6 +841,7 @@ interface LayoutTvShowsIdRouteChildren {
 
 const LayoutTvShowsIdRouteChildren: LayoutTvShowsIdRouteChildren = {
   LayoutTvShowsIdCreditsRoute: LayoutTvShowsIdCreditsRoute,
+  LayoutTvShowsIdImagesRoute: LayoutTvShowsIdImagesRoute,
   LayoutTvShowsIdRecommendationsRoute: LayoutTvShowsIdRecommendationsRoute,
   LayoutTvShowsIdSimilarRoute: LayoutTvShowsIdSimilarRoute,
   LayoutTvShowsIdTrailerRoute: LayoutTvShowsIdTrailerRoute,

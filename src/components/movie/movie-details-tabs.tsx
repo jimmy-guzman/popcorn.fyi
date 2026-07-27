@@ -1,4 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -48,6 +49,14 @@ const movieDetailTabs = [
     value: "similar",
   },
   {
+    label: "Images",
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}/images`;
+    },
+    to: "/movies/$id/images" as const,
+    value: "images",
+  },
+  {
     label: "Videos",
     pathname: (movieId: number) => {
       return `/movies/${movieId}/videos`;
@@ -70,9 +79,20 @@ export const MovieDetailsTabs = ({ id }: MovieDetailsTabsProps) => {
     },
   });
 
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    listRef.current
+      ?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]')
+      ?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [tabValue]);
+
   return (
     <Tabs value={tabValue ?? null}>
-      <TabsList className="w-full flex-wrap rounded border md:w-auto">
+      <TabsList
+        className="w-full justify-start overflow-x-auto rounded border md:w-auto md:justify-center"
+        ref={listRef}
+      >
         {movieDetailTabs.map((tab) => {
           return (
             <TabsTrigger

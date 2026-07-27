@@ -140,7 +140,7 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
         <MediaDetailViewContent className="flex flex-col gap-8">
           {person.id ? (
             <Tabs value={tabValue ?? null}>
-              <TabsList className="w-full flex-wrap rounded border md:w-auto">
+              <TabsList className="w-full justify-start overflow-x-auto rounded border md:w-auto md:justify-center">
                 <TabsTrigger
                   nativeButton={false}
                   render={
