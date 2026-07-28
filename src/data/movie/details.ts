@@ -10,15 +10,13 @@ import { IdSchema } from "@/schemas/id";
 const movieDetailsFn = createServerFn({ method: "GET" })
   .validator(IdSchema)
   .handler(async (context) => {
-    const {
-      data: { belongs_to_collection, ...rest },
-    } = await movieDetails({
+    const { data } = await movieDetails({
       client: tmdbClient,
       path: { movie_id: context.data },
       throwOnError: true,
     });
 
-    return rest;
+    return data;
   });
 
 export const movieDetailsOptions = (id: Id) => {

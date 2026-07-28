@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as LayoutRouteImport } from './routes/_layout'
 import { Route as LayoutIndexRouteImport } from './routes/_layout/index'
 import { Route as LayoutSearchRouteImport } from './routes/_layout/search'
+import { Route as LayoutCollectionsIdRouteImport } from './routes/_layout/collections.$id'
 import { Route as LayoutMoviesIdRouteImport } from './routes/_layout/movies.$id'
 import { Route as LayoutMoviesNowPlayingRouteImport } from './routes/_layout/movies.now-playing'
 import { Route as LayoutMoviesPopularRouteImport } from './routes/_layout/movies.popular'
@@ -65,6 +66,11 @@ const LayoutIndexRoute = LayoutIndexRouteImport.update({
 const LayoutSearchRoute = LayoutSearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => LayoutRoute,
+} as any)
+const LayoutCollectionsIdRoute = LayoutCollectionsIdRouteImport.update({
+  id: '/collections/$id',
+  path: '/collections/$id',
   getParentRoute: () => LayoutRoute,
 } as any)
 const LayoutMoviesIdRoute = LayoutMoviesIdRouteImport.update({
@@ -281,6 +287,7 @@ const LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRoute =
 export interface FileRoutesByFullPath {
   '/': typeof LayoutIndexRoute
   '/search': typeof LayoutSearchRoute
+  '/collections/$id': typeof LayoutCollectionsIdRoute
   '/movies/$id': typeof LayoutMoviesIdRouteWithChildren
   '/movies/now-playing': typeof LayoutMoviesNowPlayingRoute
   '/movies/popular': typeof LayoutMoviesPopularRoute
@@ -325,6 +332,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/search': typeof LayoutSearchRoute
   '/': typeof LayoutIndexRoute
+  '/collections/$id': typeof LayoutCollectionsIdRoute
   '/movies/now-playing': typeof LayoutMoviesNowPlayingRoute
   '/movies/popular': typeof LayoutMoviesPopularRoute
   '/movies/top-rated': typeof LayoutMoviesTopRatedRoute
@@ -366,6 +374,7 @@ export interface FileRoutesById {
   '/_layout': typeof LayoutRouteWithChildren
   '/_layout/search': typeof LayoutSearchRoute
   '/_layout/': typeof LayoutIndexRoute
+  '/_layout/collections/$id': typeof LayoutCollectionsIdRoute
   '/_layout/movies/$id': typeof LayoutMoviesIdRouteWithChildren
   '/_layout/movies/now-playing': typeof LayoutMoviesNowPlayingRoute
   '/_layout/movies/popular': typeof LayoutMoviesPopularRoute
@@ -412,6 +421,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/search'
+    | '/collections/$id'
     | '/movies/$id'
     | '/movies/now-playing'
     | '/movies/popular'
@@ -456,6 +466,7 @@ export interface FileRouteTypes {
   to:
     | '/search'
     | '/'
+    | '/collections/$id'
     | '/movies/now-playing'
     | '/movies/popular'
     | '/movies/top-rated'
@@ -496,6 +507,7 @@ export interface FileRouteTypes {
     | '/_layout'
     | '/_layout/search'
     | '/_layout/'
+    | '/_layout/collections/$id'
     | '/_layout/movies/$id'
     | '/_layout/movies/now-playing'
     | '/_layout/movies/popular'
@@ -563,6 +575,13 @@ declare module '@tanstack/react-router' {
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof LayoutSearchRouteImport
+      parentRoute: typeof LayoutRoute
+    }
+    '/_layout/collections/$id': {
+      id: '/_layout/collections/$id'
+      path: '/collections/$id'
+      fullPath: '/collections/$id'
+      preLoaderRoute: typeof LayoutCollectionsIdRouteImport
       parentRoute: typeof LayoutRoute
     }
     '/_layout/movies/$id': {
@@ -954,6 +973,7 @@ const LayoutTvShowsDiscoverLayoutRouteWithChildren =
 interface LayoutRouteChildren {
   LayoutSearchRoute: typeof LayoutSearchRoute
   LayoutIndexRoute: typeof LayoutIndexRoute
+  LayoutCollectionsIdRoute: typeof LayoutCollectionsIdRoute
   LayoutMoviesIdRoute: typeof LayoutMoviesIdRouteWithChildren
   LayoutMoviesNowPlayingRoute: typeof LayoutMoviesNowPlayingRoute
   LayoutMoviesPopularRoute: typeof LayoutMoviesPopularRoute
@@ -976,6 +996,7 @@ interface LayoutRouteChildren {
 const LayoutRouteChildren: LayoutRouteChildren = {
   LayoutSearchRoute: LayoutSearchRoute,
   LayoutIndexRoute: LayoutIndexRoute,
+  LayoutCollectionsIdRoute: LayoutCollectionsIdRoute,
   LayoutMoviesIdRoute: LayoutMoviesIdRouteWithChildren,
   LayoutMoviesNowPlayingRoute: LayoutMoviesNowPlayingRoute,
   LayoutMoviesPopularRoute: LayoutMoviesPopularRoute,

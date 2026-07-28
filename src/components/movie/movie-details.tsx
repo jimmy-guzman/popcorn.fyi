@@ -1,5 +1,5 @@
 import { Link, Outlet } from "@tanstack/react-router";
-import { TvMinimalPlayIcon } from "lucide-react";
+import { LayersIcon, TvMinimalPlayIcon } from "lucide-react";
 import { Suspense } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -33,6 +33,7 @@ import { MovieDetailsTabs } from "./movie-details-tabs";
 interface MovieDetailsProps {
   movie: {
     backdrop_path?: string;
+    belongs_to_collection?: { id?: number; name?: string };
     genres?: { id?: number; name?: string }[];
     id?: number;
     original_title?: string;
@@ -86,6 +87,22 @@ export const MovieDetails = ({ movie }: MovieDetailsProps) => {
           <Suspense fallback={<ExternalLinksSkeleton />}>
             <ExternalLinks id={movie.id} />
           </Suspense>
+        ) : null}
+        {movie.belongs_to_collection?.id ? (
+          <Button
+            className="gap-2"
+            nativeButton={false}
+            render={
+              <Link
+                params={{ id: movie.belongs_to_collection.id }}
+                to="/collections/$id"
+              >
+                <span className="sr-only md:not-sr-only">Collection</span>
+                <LayersIcon data-icon="inline-end" />
+              </Link>
+            }
+            variant="outline"
+          />
         ) : null}
         {movie.title && movie.id ? (
           <ShareButton title={movie.title} url={`/movies/${movie.id}`} />
