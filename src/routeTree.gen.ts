@@ -39,6 +39,7 @@ import { Route as LayoutMoviesIdWatchRouteImport } from './routes/_layout/movies
 import { Route as LayoutMoviesDiscoverLayoutRouteImport } from './routes/_layout/movies.discover._layout'
 import { Route as LayoutPeopleIdIndexRouteImport } from './routes/_layout/people.$id.index'
 import { Route as LayoutPeopleIdCreditsRouteImport } from './routes/_layout/people.$id.credits'
+import { Route as LayoutPeopleIdImagesRouteImport } from './routes/_layout/people.$id.images'
 import { Route as LayoutTvShowsIdIndexRouteImport } from './routes/_layout/tv-shows.$id.index'
 import { Route as LayoutTvShowsIdCreditsRouteImport } from './routes/_layout/tv-shows.$id.credits'
 import { Route as LayoutTvShowsIdImagesRouteImport } from './routes/_layout/tv-shows.$id.images'
@@ -206,6 +207,11 @@ const LayoutPeopleIdCreditsRoute = LayoutPeopleIdCreditsRouteImport.update({
   path: '/credits',
   getParentRoute: () => LayoutPeopleIdRoute,
 } as any)
+const LayoutPeopleIdImagesRoute = LayoutPeopleIdImagesRouteImport.update({
+  id: '/images',
+  path: '/images',
+  getParentRoute: () => LayoutPeopleIdRoute,
+} as any)
 const LayoutTvShowsIdIndexRoute = LayoutTvShowsIdIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -312,6 +318,7 @@ export interface FileRoutesByFullPath {
   '/movies/$id/watch': typeof LayoutMoviesIdWatchRoute
   '/movies/discover': typeof LayoutMoviesDiscoverLayoutRouteWithChildren
   '/people/$id/credits': typeof LayoutPeopleIdCreditsRoute
+  '/people/$id/images': typeof LayoutPeopleIdImagesRoute
   '/tv-shows/$id/credits': typeof LayoutTvShowsIdCreditsRoute
   '/tv-shows/$id/images': typeof LayoutTvShowsIdImagesRoute
   '/tv-shows/$id/recommendations': typeof LayoutTvShowsIdRecommendationsRoute
@@ -353,6 +360,7 @@ export interface FileRoutesByTo {
   '/movies/$id/videos': typeof LayoutMoviesIdVideosRoute
   '/movies/$id/watch': typeof LayoutMoviesIdWatchRoute
   '/people/$id/credits': typeof LayoutPeopleIdCreditsRoute
+  '/people/$id/images': typeof LayoutPeopleIdImagesRoute
   '/tv-shows/$id/credits': typeof LayoutTvShowsIdCreditsRoute
   '/tv-shows/$id/images': typeof LayoutTvShowsIdImagesRoute
   '/tv-shows/$id/recommendations': typeof LayoutTvShowsIdRecommendationsRoute
@@ -399,6 +407,7 @@ export interface FileRoutesById {
   '/_layout/movies/$id/watch': typeof LayoutMoviesIdWatchRoute
   '/_layout/movies/discover/_layout': typeof LayoutMoviesDiscoverLayoutRouteWithChildren
   '/_layout/people/$id/credits': typeof LayoutPeopleIdCreditsRoute
+  '/_layout/people/$id/images': typeof LayoutPeopleIdImagesRoute
   '/_layout/tv-shows/$id/credits': typeof LayoutTvShowsIdCreditsRoute
   '/_layout/tv-shows/$id/images': typeof LayoutTvShowsIdImagesRoute
   '/_layout/tv-shows/$id/recommendations': typeof LayoutTvShowsIdRecommendationsRoute
@@ -446,6 +455,7 @@ export interface FileRouteTypes {
     | '/movies/$id/watch'
     | '/movies/discover'
     | '/people/$id/credits'
+    | '/people/$id/images'
     | '/tv-shows/$id/credits'
     | '/tv-shows/$id/images'
     | '/tv-shows/$id/recommendations'
@@ -487,6 +497,7 @@ export interface FileRouteTypes {
     | '/movies/$id/videos'
     | '/movies/$id/watch'
     | '/people/$id/credits'
+    | '/people/$id/images'
     | '/tv-shows/$id/credits'
     | '/tv-shows/$id/images'
     | '/tv-shows/$id/recommendations'
@@ -532,6 +543,7 @@ export interface FileRouteTypes {
     | '/_layout/movies/$id/watch'
     | '/_layout/movies/discover/_layout'
     | '/_layout/people/$id/credits'
+    | '/_layout/people/$id/images'
     | '/_layout/tv-shows/$id/credits'
     | '/_layout/tv-shows/$id/images'
     | '/_layout/tv-shows/$id/recommendations'
@@ -766,6 +778,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutPeopleIdCreditsRouteImport
       parentRoute: typeof LayoutPeopleIdRoute
     }
+    '/_layout/people/$id/images': {
+      id: '/_layout/people/$id/images'
+      path: '/images'
+      fullPath: '/people/$id/images'
+      preLoaderRoute: typeof LayoutPeopleIdImagesRouteImport
+      parentRoute: typeof LayoutPeopleIdRoute
+    }
     '/_layout/tv-shows/$id/': {
       id: '/_layout/tv-shows/$id/'
       path: '/'
@@ -895,11 +914,13 @@ const LayoutMoviesIdRouteWithChildren = LayoutMoviesIdRoute._addFileChildren(
 
 interface LayoutPeopleIdRouteChildren {
   LayoutPeopleIdCreditsRoute: typeof LayoutPeopleIdCreditsRoute
+  LayoutPeopleIdImagesRoute: typeof LayoutPeopleIdImagesRoute
   LayoutPeopleIdIndexRoute: typeof LayoutPeopleIdIndexRoute
 }
 
 const LayoutPeopleIdRouteChildren: LayoutPeopleIdRouteChildren = {
   LayoutPeopleIdCreditsRoute: LayoutPeopleIdCreditsRoute,
+  LayoutPeopleIdImagesRoute: LayoutPeopleIdImagesRoute,
   LayoutPeopleIdIndexRoute: LayoutPeopleIdIndexRoute,
 }
 

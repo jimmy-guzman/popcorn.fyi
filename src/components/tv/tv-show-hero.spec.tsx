@@ -100,4 +100,40 @@ describe("TVShowHero", () => {
 
     expect(trendingBadge).not.toBeInTheDocument();
   });
+
+  it("should keep the name as the heading name when a logo is rendered", async () => {
+    const tvShow = {
+      backdrop_path: "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
+      id: 1,
+      name: "Venom: The Last Dance",
+    };
+
+    await render(
+      <TvShowHero logo={{ filePath: "/logo.png" }} tvShow={tvShow} />,
+    );
+
+    const title = screen.getByRole("heading", {
+      level: 1,
+      name: tvShow.name,
+    });
+
+    expect(title).toBeInTheDocument();
+    expect(screen.getAllByRole("img", { name: tvShow.name })).toHaveLength(1);
+  });
+
+  it("should render genres", async () => {
+    const tvShow = {
+      backdrop_path: "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
+      id: 1,
+      name: "Venom: The Last Dance",
+    };
+
+    await render(
+      <TvShowHero genres={[{ id: 18, name: "Drama" }]} tvShow={tvShow} />,
+    );
+
+    const genre = screen.getByText("Drama");
+
+    expect(genre).toBeInTheDocument();
+  });
 });

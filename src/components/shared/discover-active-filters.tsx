@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import { XIcon } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -7,7 +9,7 @@ export interface ActiveFilter {
   key: string;
   label: string;
   onClear: () => void;
-  value: string;
+  value: ReactNode;
 }
 
 interface DiscoverActiveFiltersProps {

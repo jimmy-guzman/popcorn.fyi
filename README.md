@@ -8,12 +8,13 @@
 
 ## 🏆 Features
 
-- Discover movies and TV shows by genre, provider, region, and release year
+- Discover movies and TV shows by genre, studio, provider, region, and release date
 - Browse what's Trending, Popular, or Top Rated across film, TV, and people
 - Dive into rich detail pages with overviews, trailers, cast, and more
+- Peek at a title's backdrop, overview, and details without leaving the grid
 - Explore similar titles and see where to watch them
-- Find people and explore their full acting and crew history
-- Preview what's hot on the homepage with a trending carousel
+- Find people, explore their credits, and browse their photos
+- Land on a trending hero with cover art and one-click genre jumps
 - Share pages or jump to Wikipedia with one click
 
 ---

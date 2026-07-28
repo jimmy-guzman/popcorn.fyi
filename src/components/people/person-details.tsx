@@ -52,6 +52,8 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
 
       if (pathname === `${base}/credits`) return "credits";
 
+      if (pathname === `${base}/images`) return "images";
+
       if (pathname === base) return "known-for";
 
       return undefined;
@@ -166,6 +168,19 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
                   value="credits"
                 >
                   Credits
+                </TabsTrigger>
+                <TabsTrigger
+                  nativeButton={false}
+                  render={
+                    <Link
+                      params={{ id: person.id }}
+                      resetScroll={false}
+                      to="/people/$id/images"
+                    />
+                  }
+                  value="images"
+                >
+                  Images
                 </TabsTrigger>
               </TabsList>
             </Tabs>

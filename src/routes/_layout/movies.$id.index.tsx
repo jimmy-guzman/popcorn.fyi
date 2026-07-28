@@ -1,11 +1,14 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Fragment } from "react/jsx-runtime";
 
 import { MediaOverviewList } from "@/components/media/media-overview-list";
 import { Prose } from "@/components/shared/prose";
 import { movieDetailsOptions } from "@/data/movie/details";
+import { orEmpty } from "@/lib/array";
 import { currency } from "@/lib/currency";
 import { date } from "@/lib/date";
+import { hasId } from "@/lib/predicates";
 import { time } from "@/lib/time";
 
 export const Route = createFileRoute("/_layout/movies/$id/")({
@@ -17,6 +20,8 @@ const ONE_MINUTE_MS = 60_000;
 function RouteComponent() {
   const { id } = Route.useParams();
   const { data: movie } = useSuspenseQuery(movieDetailsOptions(id));
+
+  const productionCompanies = orEmpty(movie.production_companies).filter(hasId);
 
   const overview = [
     {
@@ -46,11 +51,23 @@ function RouteComponent() {
     },
     {
       title: "Production Companies",
-      value: movie.production_companies
-        ?.map((productionCompany) => {
-          return productionCompany.name;
-        })
-        .join(", "),
+      value:
+        productionCompanies.length > 0
+          ? productionCompanies.map((productionCompany, index, array) => {
+              return (
+                <Fragment key={productionCompany.id}>
+                  <Link
+                    className="text-primary underline-offset-4 hover:underline"
+                    search={{ with_companies: String(productionCompany.id) }}
+                    to="/movies/discover"
+                  >
+                    {productionCompany.name}
+                  </Link>
+                  {array.length - 1 === index ? " " : ", "}
+                </Fragment>
+              );
+            })
+          : "N/A",
     },
     {
       title: "Production Countries",

@@ -9,8 +9,18 @@ import { hasId } from "@/lib/predicates";
 export const Route = createFileRoute("/_layout/tv-shows/discover/_layout/")({
   component: RouteComponent,
   validateSearch: DiscoverSchema,
-  loaderDeps: ({ search: { page, with_genres } }) => {
-    return { page, with_genres };
+  loaderDeps: ({ search }) => {
+    return {
+      first_air_date_gte: search.first_air_date_gte,
+      first_air_date_lte: search.first_air_date_lte,
+      page: search.page,
+      sort_by: search.sort_by,
+      watch_region: search.watch_region,
+      with_companies: search.with_companies,
+      with_genres: search.with_genres,
+      with_original_language: search.with_original_language,
+      with_watch_providers: search.with_watch_providers,
+    };
   },
   loader: async ({ context, deps }) => {
     await context.queryClient.ensureQueryData(discoverTvOptions(deps));

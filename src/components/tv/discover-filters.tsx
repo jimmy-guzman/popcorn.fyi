@@ -7,6 +7,8 @@ import type { ActiveFilter } from "@/components/shared/discover-active-filters";
 import type { DiscoverSchema } from "@/data/tv/discover.list";
 
 import { DiscoverActiveFilters } from "@/components/shared/discover-active-filters";
+import { DiscoverCompanyCombobox } from "@/components/shared/discover-company-combobox";
+import { DiscoverCompanyLabel } from "@/components/shared/discover-company-label";
 import { DiscoverDateField } from "@/components/shared/discover-date-field";
 import { DiscoverFilterCombobox } from "@/components/shared/discover-filter-combobox";
 import { DiscoverFiltersPanel } from "@/components/shared/discover-filters-panel";
@@ -163,6 +165,19 @@ export const TvDiscoverFilters = ({
     });
   }
 
+  if (search.with_companies) {
+    const withCompanies = search.with_companies;
+
+    activeFilters.push({
+      key: "with_companies",
+      label: "Company",
+      onClear: () => {
+        setFilters({ with_companies: undefined });
+      },
+      value: <DiscoverCompanyLabel id={withCompanies} />,
+    });
+  }
+
   if (search.first_air_date_gte) {
     activeFilters.push({
       key: "first_air_date_gte",
@@ -225,6 +240,16 @@ export const TvDiscoverFilters = ({
           />
         </Field>
         <Field>
+          <FieldLabel htmlFor="discover-company">Company</FieldLabel>
+          <DiscoverCompanyCombobox
+            id="discover-company"
+            onChange={(next) => {
+              setFilters({ with_companies: next ?? undefined });
+            }}
+            value={search.with_companies ?? null}
+          />
+        </Field>
+        <Field>
           <FieldLabel htmlFor="discover-region">Region</FieldLabel>
           <DiscoverFilterCombobox
             id="discover-region"
@@ -277,6 +302,7 @@ export const TvDiscoverFilters = ({
           setFilters({
             first_air_date_gte: undefined,
             first_air_date_lte: undefined,
+            with_companies: undefined,
             with_genres: undefined,
             with_original_language: undefined,
             with_watch_providers: undefined,

@@ -45,6 +45,9 @@ describe("TvDiscoverFilters", () => {
     expect(
       screen.getByRole("combobox", { name: /region/i }),
     ).toBeInTheDocument();
+    expect(
+      screen.getByRole("combobox", { name: /company/i }),
+    ).toBeInTheDocument();
     expect(screen.getByLabelText("From")).toBeInTheDocument();
     expect(screen.getByLabelText("To")).toBeInTheDocument();
     expect(
@@ -106,6 +109,40 @@ describe("TvDiscoverFilters", () => {
       expect(screen.getByRole("combobox", { name: /region/i })).toHaveValue(
         "United States",
       );
+    });
+  });
+
+  it("should name the company chip from a deep link", async () => {
+    await render(filters, {
+      ...discoverRenderOptions,
+      initialEntries: [
+        '/_layout/tv-shows/discover/_layout?with_companies="420"&watch_region=US',
+      ],
+      queryData: [[["company", "details", "420"], { name: "Marvel Studios" }]],
+    });
+
+    await expect(
+      screen.findByText("Marvel Studios"),
+    ).resolves.toBeInTheDocument();
+  });
+
+  it("should clear the company filter from its active chip", async () => {
+    const { user } = await render(filters, {
+      ...discoverRenderOptions,
+      initialEntries: [
+        '/_layout/tv-shows/discover/_layout?with_companies="420"&watch_region=US',
+      ],
+      queryData: [[["company", "details", "420"], { name: "Marvel Studios" }]],
+    });
+
+    await user.click(
+      await screen.findByRole("button", { name: /clear company/i }),
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.queryByRole("button", { name: /clear company/i }),
+      ).not.toBeInTheDocument();
     });
   });
 });
