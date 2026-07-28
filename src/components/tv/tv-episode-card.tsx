@@ -32,7 +32,10 @@ export const TvEpisodeCard = ({ episode, id, season }: TvEpisodeCardProps) => {
       params={{ episode: episode.episode_number, id, season }}
       to="/tv-shows/$id/seasons/$season/episodes/$episode"
     >
-      <Card className="h-full overflow-hidden shadow-lg md:flex-row" size="sm">
+      <Card
+        className="h-full overflow-hidden shadow-lg data-[size=sm]:py-0 md:flex-row"
+        size="sm"
+      >
         <div className="shrink-0 md:w-64">
           {episode.still_path ? (
             <img

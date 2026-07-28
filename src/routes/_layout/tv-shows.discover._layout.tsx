@@ -4,6 +4,7 @@ import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { Prose } from "@/components/shared/prose";
 import { TvDiscoverFilters } from "@/components/tv/discover-filters";
 import { site } from "@/config/site";
+import { languagesOptions } from "@/data/languages.list";
 import { regionsOptions } from "@/data/regions.list";
 import { DiscoverSchema } from "@/data/tv/discover.list";
 import { tvGenresOptions } from "@/data/tv/genres.list";
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/_layout/tv-shows/discover/_layout")({
       context.queryClient.ensureQueryData(tvGenresOptions()),
       context.queryClient.ensureQueryData(tvProvidersOptions()),
       context.queryClient.ensureQueryData(regionsOptions()),
+      context.queryClient.ensureQueryData(languagesOptions()),
     ]);
   },
   head: () => {
@@ -35,6 +37,7 @@ function RouteComponent() {
   const { data: genres } = useSuspenseQuery(tvGenresOptions());
   const { data: providers } = useSuspenseQuery(tvProvidersOptions());
   const { data: regions } = useSuspenseQuery(regionsOptions());
+  const { data: languages } = useSuspenseQuery(languagesOptions());
 
   return (
     <div className="flex flex-col gap-4">
@@ -44,6 +47,7 @@ function RouteComponent() {
       </Prose>
       <TvDiscoverFilters
         genres={genres.filter(hasId)}
+        languages={languages}
         providers={providers}
         regions={regions}
       />

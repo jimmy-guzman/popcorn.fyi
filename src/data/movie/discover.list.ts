@@ -38,6 +38,7 @@ export const DiscoverSchema = v.intersect([
     sort_by: SortSchema,
     watch_region: v.optional(v.fallback(v.string(), "US"), "US"),
     with_genres: Filter,
+    with_original_language: Filter,
     with_watch_providers: Filter,
   }),
 ]);
