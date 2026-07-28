@@ -48,7 +48,10 @@ import { Route as LayoutTvShowsIdVideosRouteImport } from './routes/_layout/tv-s
 import { Route as LayoutTvShowsIdWatchRouteImport } from './routes/_layout/tv-shows.$id.watch'
 import { Route as LayoutTvShowsDiscoverLayoutRouteImport } from './routes/_layout/tv-shows.discover._layout'
 import { Route as LayoutMoviesDiscoverLayoutIndexRouteImport } from './routes/_layout/movies.discover._layout.index'
+import { Route as LayoutTvShowsIdSeasonsIndexRouteImport } from './routes/_layout/tv-shows.$id.seasons.index'
 import { Route as LayoutTvShowsDiscoverLayoutIndexRouteImport } from './routes/_layout/tv-shows.discover._layout.index'
+import { Route as LayoutTvShowsIdSeasonsSeasonIndexRouteImport } from './routes/_layout/tv-shows.$id.seasons.$season.index'
+import { Route as LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRouteImport } from './routes/_layout/tv-shows.$id.seasons.$season.episodes.$episode'
 
 const LayoutRoute = LayoutRouteImport.update({
   id: '/_layout',
@@ -250,11 +253,29 @@ const LayoutMoviesDiscoverLayoutIndexRoute =
     path: '/',
     getParentRoute: () => LayoutMoviesDiscoverLayoutRoute,
   } as any)
+const LayoutTvShowsIdSeasonsIndexRoute =
+  LayoutTvShowsIdSeasonsIndexRouteImport.update({
+    id: '/seasons/',
+    path: '/seasons/',
+    getParentRoute: () => LayoutTvShowsIdRoute,
+  } as any)
 const LayoutTvShowsDiscoverLayoutIndexRoute =
   LayoutTvShowsDiscoverLayoutIndexRouteImport.update({
     id: '/',
     path: '/',
     getParentRoute: () => LayoutTvShowsDiscoverLayoutRoute,
+  } as any)
+const LayoutTvShowsIdSeasonsSeasonIndexRoute =
+  LayoutTvShowsIdSeasonsSeasonIndexRouteImport.update({
+    id: '/seasons/$season/',
+    path: '/seasons/$season/',
+    getParentRoute: () => LayoutTvShowsIdRoute,
+  } as any)
+const LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRoute =
+  LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRouteImport.update({
+    id: '/seasons/$season/episodes/$episode',
+    path: '/seasons/$season/episodes/$episode',
+    getParentRoute: () => LayoutTvShowsIdRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -296,7 +317,10 @@ export interface FileRoutesByFullPath {
   '/people/$id/': typeof LayoutPeopleIdIndexRoute
   '/tv-shows/$id/': typeof LayoutTvShowsIdIndexRoute
   '/movies/discover/': typeof LayoutMoviesDiscoverLayoutIndexRoute
+  '/tv-shows/$id/seasons/': typeof LayoutTvShowsIdSeasonsIndexRoute
   '/tv-shows/discover/': typeof LayoutTvShowsDiscoverLayoutIndexRoute
+  '/tv-shows/$id/seasons/$season/': typeof LayoutTvShowsIdSeasonsSeasonIndexRoute
+  '/tv-shows/$id/seasons/$season/episodes/$episode': typeof LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRoute
 }
 export interface FileRoutesByTo {
   '/search': typeof LayoutSearchRoute
@@ -332,7 +356,10 @@ export interface FileRoutesByTo {
   '/people/$id': typeof LayoutPeopleIdIndexRoute
   '/tv-shows/$id': typeof LayoutTvShowsIdIndexRoute
   '/movies/discover': typeof LayoutMoviesDiscoverLayoutIndexRoute
+  '/tv-shows/$id/seasons': typeof LayoutTvShowsIdSeasonsIndexRoute
   '/tv-shows/discover': typeof LayoutTvShowsDiscoverLayoutIndexRoute
+  '/tv-shows/$id/seasons/$season': typeof LayoutTvShowsIdSeasonsSeasonIndexRoute
+  '/tv-shows/$id/seasons/$season/episodes/$episode': typeof LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -375,7 +402,10 @@ export interface FileRoutesById {
   '/_layout/people/$id/': typeof LayoutPeopleIdIndexRoute
   '/_layout/tv-shows/$id/': typeof LayoutTvShowsIdIndexRoute
   '/_layout/movies/discover/_layout/': typeof LayoutMoviesDiscoverLayoutIndexRoute
+  '/_layout/tv-shows/$id/seasons/': typeof LayoutTvShowsIdSeasonsIndexRoute
   '/_layout/tv-shows/discover/_layout/': typeof LayoutTvShowsDiscoverLayoutIndexRoute
+  '/_layout/tv-shows/$id/seasons/$season/': typeof LayoutTvShowsIdSeasonsSeasonIndexRoute
+  '/_layout/tv-shows/$id/seasons/$season/episodes/$episode': typeof LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -418,7 +448,10 @@ export interface FileRouteTypes {
     | '/people/$id/'
     | '/tv-shows/$id/'
     | '/movies/discover/'
+    | '/tv-shows/$id/seasons/'
     | '/tv-shows/discover/'
+    | '/tv-shows/$id/seasons/$season/'
+    | '/tv-shows/$id/seasons/$season/episodes/$episode'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/search'
@@ -454,7 +487,10 @@ export interface FileRouteTypes {
     | '/people/$id'
     | '/tv-shows/$id'
     | '/movies/discover'
+    | '/tv-shows/$id/seasons'
     | '/tv-shows/discover'
+    | '/tv-shows/$id/seasons/$season'
+    | '/tv-shows/$id/seasons/$season/episodes/$episode'
   id:
     | '__root__'
     | '/_layout'
@@ -496,7 +532,10 @@ export interface FileRouteTypes {
     | '/_layout/people/$id/'
     | '/_layout/tv-shows/$id/'
     | '/_layout/movies/discover/_layout/'
+    | '/_layout/tv-shows/$id/seasons/'
     | '/_layout/tv-shows/discover/_layout/'
+    | '/_layout/tv-shows/$id/seasons/$season/'
+    | '/_layout/tv-shows/$id/seasons/$season/episodes/$episode'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -778,12 +817,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutMoviesDiscoverLayoutIndexRouteImport
       parentRoute: typeof LayoutMoviesDiscoverLayoutRoute
     }
+    '/_layout/tv-shows/$id/seasons/': {
+      id: '/_layout/tv-shows/$id/seasons/'
+      path: '/seasons'
+      fullPath: '/tv-shows/$id/seasons/'
+      preLoaderRoute: typeof LayoutTvShowsIdSeasonsIndexRouteImport
+      parentRoute: typeof LayoutTvShowsIdRoute
+    }
     '/_layout/tv-shows/discover/_layout/': {
       id: '/_layout/tv-shows/discover/_layout/'
       path: '/'
       fullPath: '/tv-shows/discover/'
       preLoaderRoute: typeof LayoutTvShowsDiscoverLayoutIndexRouteImport
       parentRoute: typeof LayoutTvShowsDiscoverLayoutRoute
+    }
+    '/_layout/tv-shows/$id/seasons/$season/': {
+      id: '/_layout/tv-shows/$id/seasons/$season/'
+      path: '/seasons/$season'
+      fullPath: '/tv-shows/$id/seasons/$season/'
+      preLoaderRoute: typeof LayoutTvShowsIdSeasonsSeasonIndexRouteImport
+      parentRoute: typeof LayoutTvShowsIdRoute
+    }
+    '/_layout/tv-shows/$id/seasons/$season/episodes/$episode': {
+      id: '/_layout/tv-shows/$id/seasons/$season/episodes/$episode'
+      path: '/seasons/$season/episodes/$episode'
+      fullPath: '/tv-shows/$id/seasons/$season/episodes/$episode'
+      preLoaderRoute: typeof LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRouteImport
+      parentRoute: typeof LayoutTvShowsIdRoute
     }
   }
 }
@@ -837,6 +897,9 @@ interface LayoutTvShowsIdRouteChildren {
   LayoutTvShowsIdVideosRoute: typeof LayoutTvShowsIdVideosRoute
   LayoutTvShowsIdWatchRoute: typeof LayoutTvShowsIdWatchRoute
   LayoutTvShowsIdIndexRoute: typeof LayoutTvShowsIdIndexRoute
+  LayoutTvShowsIdSeasonsIndexRoute: typeof LayoutTvShowsIdSeasonsIndexRoute
+  LayoutTvShowsIdSeasonsSeasonIndexRoute: typeof LayoutTvShowsIdSeasonsSeasonIndexRoute
+  LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRoute: typeof LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRoute
 }
 
 const LayoutTvShowsIdRouteChildren: LayoutTvShowsIdRouteChildren = {
@@ -848,6 +911,11 @@ const LayoutTvShowsIdRouteChildren: LayoutTvShowsIdRouteChildren = {
   LayoutTvShowsIdVideosRoute: LayoutTvShowsIdVideosRoute,
   LayoutTvShowsIdWatchRoute: LayoutTvShowsIdWatchRoute,
   LayoutTvShowsIdIndexRoute: LayoutTvShowsIdIndexRoute,
+  LayoutTvShowsIdSeasonsIndexRoute: LayoutTvShowsIdSeasonsIndexRoute,
+  LayoutTvShowsIdSeasonsSeasonIndexRoute:
+    LayoutTvShowsIdSeasonsSeasonIndexRoute,
+  LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRoute:
+    LayoutTvShowsIdSeasonsSeasonEpisodesEpisodeRoute,
 }
 
 const LayoutTvShowsIdRouteWithChildren = LayoutTvShowsIdRoute._addFileChildren(

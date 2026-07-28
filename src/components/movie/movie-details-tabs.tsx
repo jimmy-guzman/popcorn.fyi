@@ -90,7 +90,7 @@ export const MovieDetailsTabs = ({ id }: MovieDetailsTabsProps) => {
   return (
     <Tabs value={tabValue ?? null}>
       <TabsList
-        className="w-full justify-start overflow-x-auto rounded border md:w-auto md:justify-center"
+        className="w-full [scrollbar-width:none] justify-start overflow-x-auto overflow-y-hidden rounded border md:w-auto md:justify-center [&::-webkit-scrollbar]:hidden"
         ref={listRef}
       >
         {movieDetailTabs.map((tab) => {

@@ -13,5 +13,17 @@ describe("CardImageFallback", () => {
     });
 
     expect(fallback).toBeInTheDocument();
+    expect(fallback).toHaveClass("aspect-2/3");
+  });
+
+  it("should let the caller override the aspect ratio", async () => {
+    await render(<CardImageFallback className="aspect-video" />);
+
+    const fallback = screen.getByRole("img", {
+      name: /image unavailable/i,
+    });
+
+    expect(fallback).toHaveClass("aspect-video");
+    expect(fallback).not.toHaveClass("aspect-2/3");
   });
 });

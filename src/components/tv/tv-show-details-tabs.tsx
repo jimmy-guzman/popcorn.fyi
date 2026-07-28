@@ -22,6 +22,8 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
 
       if (pathname === `${base}/watch`) return "providers";
 
+      if (pathname.startsWith(`${base}/seasons`)) return "seasons";
+
       if (pathname === `${base}/images`) return "images";
 
       if (pathname === `${base}/videos`) return "videos";
@@ -43,7 +45,7 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
   return (
     <Tabs value={tabValue ?? null}>
       <TabsList
-        className="w-full justify-start overflow-x-auto rounded border md:w-auto md:justify-center"
+        className="w-full [scrollbar-width:none] justify-start overflow-x-auto overflow-y-hidden rounded border md:w-auto md:justify-center [&::-webkit-scrollbar]:hidden"
         ref={listRef}
       >
         <TabsTrigger
@@ -80,6 +82,19 @@ export const TvShowDetailsTabs = ({ id }: TvShowDetailsTabsProps) => {
           value="credits"
         >
           Credits
+        </TabsTrigger>
+        <TabsTrigger
+          nativeButton={false}
+          render={
+            <Link
+              params={{ id }}
+              resetScroll={false}
+              to="/tv-shows/$id/seasons"
+            />
+          }
+          value="seasons"
+        >
+          Seasons
         </TabsTrigger>
         <TabsTrigger
           nativeButton={false}
