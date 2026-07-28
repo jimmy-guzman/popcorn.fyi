@@ -1,4 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useRef } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -24,6 +25,22 @@ const movieDetailTabs = [
     value: "providers",
   },
   {
+    label: "Credits",
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}/credits`;
+    },
+    to: "/movies/$id/credits" as const,
+    value: "credits",
+  },
+  {
+    label: "Recommendations",
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}/recommendations`;
+    },
+    to: "/movies/$id/recommendations" as const,
+    value: "recommendations",
+  },
+  {
     label: "Similar",
     pathname: (movieId: number) => {
       return `/movies/${movieId}/similar`;
@@ -32,12 +49,20 @@ const movieDetailTabs = [
     value: "similar",
   },
   {
-    label: "Credits",
+    label: "Images",
     pathname: (movieId: number) => {
-      return `/movies/${movieId}/credits`;
+      return `/movies/${movieId}/images`;
     },
-    to: "/movies/$id/credits" as const,
-    value: "credits",
+    to: "/movies/$id/images" as const,
+    value: "images",
+  },
+  {
+    label: "Videos",
+    pathname: (movieId: number) => {
+      return `/movies/${movieId}/videos`;
+    },
+    to: "/movies/$id/videos" as const,
+    value: "videos",
   },
 ] as const;
 
@@ -54,9 +79,20 @@ export const MovieDetailsTabs = ({ id }: MovieDetailsTabsProps) => {
     },
   });
 
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    listRef.current
+      ?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]')
+      ?.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }, [tabValue]);
+
   return (
     <Tabs value={tabValue ?? null}>
-      <TabsList className="w-full flex-wrap rounded border md:w-auto">
+      <TabsList
+        className="w-full [scrollbar-width:none] justify-start overflow-x-auto overflow-y-hidden rounded border md:w-auto md:justify-center [&::-webkit-scrollbar]:hidden"
+        ref={listRef}
+      >
         {movieDetailTabs.map((tab) => {
           return (
             <TabsTrigger

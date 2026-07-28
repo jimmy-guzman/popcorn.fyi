@@ -18,6 +18,9 @@ function RouteComponent() {
   const { data: tvShow } = useSuspenseQuery(tvDetailsOptions(id));
 
   const createdBy = orEmpty(tvShow.created_by).filter(hasId);
+  const productionCompanies = orEmpty(tvShow.production_companies).filter(
+    hasId,
+  );
 
   const overview = [
     {
@@ -66,11 +69,23 @@ function RouteComponent() {
     },
     {
       title: "Production Companies",
-      value: tvShow.production_companies
-        ?.map((productionCompany) => {
-          return productionCompany.name;
-        })
-        .join(", "),
+      value:
+        productionCompanies.length > 0
+          ? productionCompanies.map((productionCompany, index, array) => {
+              return (
+                <Fragment key={productionCompany.id}>
+                  <Link
+                    className="text-primary underline-offset-4 hover:underline"
+                    search={{ with_companies: String(productionCompany.id) }}
+                    to="/tv-shows/discover"
+                  >
+                    {productionCompany.name}
+                  </Link>
+                  {array.length - 1 === index ? " " : ", "}
+                </Fragment>
+              );
+            })
+          : "N/A",
     },
     {
       title: "Production Countries",

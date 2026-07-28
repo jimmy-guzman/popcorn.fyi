@@ -52,6 +52,8 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
 
       if (pathname === `${base}/credits`) return "credits";
 
+      if (pathname === `${base}/images`) return "images";
+
       if (pathname === base) return "known-for";
 
       return undefined;
@@ -140,7 +142,7 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
         <MediaDetailViewContent className="flex flex-col gap-8">
           {person.id ? (
             <Tabs value={tabValue ?? null}>
-              <TabsList className="w-full flex-wrap rounded border md:w-auto">
+              <TabsList className="w-full [scrollbar-width:none] justify-start overflow-x-auto overflow-y-hidden rounded border md:w-auto md:justify-center [&::-webkit-scrollbar]:hidden">
                 <TabsTrigger
                   nativeButton={false}
                   render={
@@ -166,6 +168,19 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
                   value="credits"
                 >
                   Credits
+                </TabsTrigger>
+                <TabsTrigger
+                  nativeButton={false}
+                  render={
+                    <Link
+                      params={{ id: person.id }}
+                      resetScroll={false}
+                      to="/people/$id/images"
+                    />
+                  }
+                  value="images"
+                >
+                  Images
                 </TabsTrigger>
               </TabsList>
             </Tabs>

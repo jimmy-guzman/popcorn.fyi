@@ -100,4 +100,41 @@ describe("MovieHero", () => {
 
     expect(trendingBadge).not.toBeInTheDocument();
   });
+
+  it("should keep the title as the heading name when a logo is rendered", async () => {
+    const movie = {
+      backdrop_path: "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
+      id: 1,
+      title: "Venom: The Last Dance",
+    };
+
+    await render(<MovieHero logo={{ filePath: "/logo.png" }} movie={movie} />);
+
+    const title = screen.getByRole("heading", {
+      level: 1,
+      name: movie.title,
+    });
+
+    expect(title).toBeInTheDocument();
+    expect(screen.getAllByRole("img", { name: movie.title })).toHaveLength(1);
+  });
+
+  it("should render genres", async () => {
+    const movie = {
+      backdrop_path: "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
+      id: 1,
+      title: "Venom: The Last Dance",
+    };
+
+    await render(
+      <MovieHero
+        genres={[{ id: 878, name: "Science Fiction" }]}
+        movie={movie}
+      />,
+    );
+
+    const genre = screen.getByText("Science Fiction");
+
+    expect(genre).toBeInTheDocument();
+  });
 });

@@ -17,7 +17,7 @@ export const MediaOverviewList = ({ items }: MediaOverviewListProps) => {
             <dt className="text-sm font-semibold text-foreground group-even:text-muted-foreground sm:col-span-2">
               {title}
             </dt>
-            <dd className="min-w-0 text-right text-sm font-medium wrap-break-word text-foreground group-even:text-muted-foreground sm:col-span-10 sm:text-left">
+            <dd className="min-w-0 text-right text-sm font-medium wrap-break-word text-foreground tabular-nums group-even:text-muted-foreground sm:col-span-10 sm:text-left">
               {value ?? "—"}
             </dd>
           </div>

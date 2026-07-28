@@ -18,3 +18,23 @@ export const Filter = v.optional(
     undefined,
   ),
 );
+
+/**
+ * Optional TMDB metadata. TMDB sends an explicit `null` rather than omitting
+ * absent fields, which `v.optional` rejects, so accept it and normalize to
+ * `undefined` at the boundary to keep consumers on `string | undefined`.
+ */
+export const NullableString = v.pipe(
+  v.nullish(v.string()),
+  v.transform((value) => {
+    return value ?? undefined;
+  }),
+);
+
+/** Numeric counterpart to {@link NullableString}. */
+export const NullableNumber = v.pipe(
+  v.nullish(v.number()),
+  v.transform((value) => {
+    return value ?? undefined;
+  }),
+);

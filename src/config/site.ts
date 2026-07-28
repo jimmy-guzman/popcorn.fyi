@@ -1,6 +1,12 @@
 export const site = {
   description: "Explore and discover your favorite movies and TV shows.",
   pages: {
+    airingToday: {
+      tvShows: {
+        description: "Explore TV shows airing today.",
+        title: "TV Shows Airing Today",
+      },
+    },
     discover: {
       movies: {
         description:
@@ -39,6 +45,18 @@ export const site = {
         },
       },
     },
+    nowPlaying: {
+      movies: {
+        description: "Explore movies playing in theaters now.",
+        title: "Now Playing Movies",
+      },
+    },
+    onTheAir: {
+      tvShows: {
+        description: "Explore TV shows airing this week.",
+        title: "TV Shows On The Air",
+      },
+    },
     popular: {
       movies: {
         description: "Explore popular movies at the moment.",
@@ -75,6 +93,12 @@ export const site = {
       tvShows: {
         description: "Explore trending TV shows at the moment.",
         title: "Trending TV Shows",
+      },
+    },
+    upcoming: {
+      movies: {
+        description: "Explore movies coming to theaters soon.",
+        title: "Upcoming Movies",
       },
     },
     watchlist: {

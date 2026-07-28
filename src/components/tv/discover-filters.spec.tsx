@@ -4,6 +4,7 @@ import { render, screen, waitFor } from "@/testing/utils";
 import { TvDiscoverFilters } from "./discover-filters";
 
 const mockGenres = [{ id: 1, name: "Drama" }];
+const mockLanguages = [{ english_name: "English", iso_639_1: "en" }];
 const mockProviders = [{ provider_id: 2, provider_name: "Netflix" }];
 const mockRegions = [{ english_name: "United States", iso_3166_1: "US" }];
 
@@ -12,25 +13,40 @@ const discoverRenderOptions = {
   validateSearch: DiscoverSchema,
 };
 
+const filters = (
+  <TvDiscoverFilters
+    genres={mockGenres}
+    languages={mockLanguages}
+    providers={mockProviders}
+    regions={mockRegions}
+  />
+);
+
+/** Filters live behind a trigger, so every case opens the panel first. */
+const openFilters = async (user: { click: (el: Element) => Promise<void> }) => {
+  await user.click(screen.getByRole("button", { name: /filters/i }));
+};
+
 describe("TvDiscoverFilters", () => {
   it("should render all filters correctly", async () => {
-    await render(
-      <TvDiscoverFilters
-        genres={mockGenres}
-        providers={mockProviders}
-        regions={mockRegions}
-      />,
-      discoverRenderOptions,
-    );
+    const { user } = await render(filters, discoverRenderOptions);
 
+    await openFilters(user);
+
+    await expect(
+      screen.findByRole("combobox", { name: /genre/i }),
+    ).resolves.toBeInTheDocument();
     expect(
-      screen.getByRole("combobox", { name: /genre/i }),
+      screen.getByRole("combobox", { name: /language/i }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("combobox", { name: /provider/i }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("combobox", { name: /region/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("combobox", { name: /company/i }),
     ).toBeInTheDocument();
     expect(screen.getByLabelText("From")).toBeInTheDocument();
     expect(screen.getByLabelText("To")).toBeInTheDocument();
@@ -39,17 +55,12 @@ describe("TvDiscoverFilters", () => {
     ).toBeInTheDocument();
   });
 
-  it("should reset selected genre", async () => {
-    const { user } = await render(
-      <TvDiscoverFilters
-        genres={mockGenres}
-        providers={mockProviders}
-        regions={mockRegions}
-      />,
-      discoverRenderOptions,
-    );
+  it("should allow selecting a genre", async () => {
+    const { user } = await render(filters, discoverRenderOptions);
 
-    const genreSelect = screen.getByRole("combobox", { name: /genre/i });
+    await openFilters(user);
+
+    const genreSelect = await screen.findByRole("combobox", { name: /genre/i });
 
     await user.click(genreSelect);
     await user.click(await screen.findByRole("option", { name: "Drama" }));
@@ -57,39 +68,81 @@ describe("TvDiscoverFilters", () => {
     await waitFor(() => {
       expect(genreSelect).toHaveValue("Drama");
     });
+  });
 
-    await user.click(screen.getByRole("button", { name: /reset genre/i }));
+  it("should clear a filter from its active chip", async () => {
+    const { user } = await render(filters, {
+      ...discoverRenderOptions,
+      initialEntries: [
+        '/_layout/tv-shows/discover/_layout?with_genres="1"&watch_region=US',
+      ],
+    });
+
+    await user.click(
+      await screen.findByRole("button", { name: /clear genre/i }),
+    );
 
     await waitFor(() => {
-      expect(screen.getByRole("combobox", { name: /genre/i })).toHaveValue("");
+      expect(
+        screen.queryByRole("button", { name: /clear genre/i }),
+      ).not.toBeInTheDocument();
     });
   });
 
   it("should hydrate and keep selected values visible from URL search", async () => {
-    await render(
-      <TvDiscoverFilters
-        genres={mockGenres}
-        providers={mockProviders}
-        regions={mockRegions}
-      />,
-      {
-        ...discoverRenderOptions,
-        initialEntries: [
-          '/_layout/tv-shows/discover/_layout?sort_by=popularity.asc&with_genres="1"&watch_region=US',
-        ],
-      },
-    );
+    const { user } = await render(filters, {
+      ...discoverRenderOptions,
+      initialEntries: [
+        '/_layout/tv-shows/discover/_layout?sort_by=popularity.asc&with_genres="1"&watch_region=US',
+      ],
+    });
 
-    await waitFor(() => {
-      expect(screen.getByRole("combobox", { name: /genre/i })).toHaveValue(
-        "Drama",
-      );
+    await openFilters(user);
+
+    await waitFor(async () => {
+      await expect(
+        screen.findByRole("combobox", { name: /genre/i }),
+      ).resolves.toHaveValue("Drama");
       expect(screen.getByRole("combobox", { name: /sort by/i })).toHaveValue(
         "Popularity (Low to High)",
       );
       expect(screen.getByRole("combobox", { name: /region/i })).toHaveValue(
         "United States",
       );
+    });
+  });
+
+  it("should name the company chip from a deep link", async () => {
+    await render(filters, {
+      ...discoverRenderOptions,
+      initialEntries: [
+        '/_layout/tv-shows/discover/_layout?with_companies="420"&watch_region=US',
+      ],
+      queryData: [[["company", "details", "420"], { name: "Marvel Studios" }]],
+    });
+
+    await expect(
+      screen.findByText("Marvel Studios"),
+    ).resolves.toBeInTheDocument();
+  });
+
+  it("should clear the company filter from its active chip", async () => {
+    const { user } = await render(filters, {
+      ...discoverRenderOptions,
+      initialEntries: [
+        '/_layout/tv-shows/discover/_layout?with_companies="420"&watch_region=US',
+      ],
+      queryData: [[["company", "details", "420"], { name: "Marvel Studios" }]],
+    });
+
+    await user.click(
+      await screen.findByRole("button", { name: /clear company/i }),
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.queryByRole("button", { name: /clear company/i }),
+      ).not.toBeInTheDocument();
     });
   });
 });

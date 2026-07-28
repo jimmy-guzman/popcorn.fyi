@@ -2,11 +2,15 @@ import type { LucideIcon } from "lucide-react";
 
 import {
   AwardIcon,
+  CalendarClockIcon,
+  CalendarDaysIcon,
   ClapperboardIcon,
   FlameIcon,
   PersonStandingIcon,
+  RadioTowerIcon,
   TelescopeIcon,
   ThumbsUpIcon,
+  TicketIcon,
   TvIcon,
 } from "lucide-react";
 
@@ -99,6 +103,16 @@ export const topNav = [
         title: "Top Rated",
         to: "/movies/top-rated",
       },
+      {
+        icon: TicketIcon,
+        title: "Now Playing",
+        to: "/movies/now-playing",
+      },
+      {
+        icon: CalendarClockIcon,
+        title: "Upcoming",
+        to: "/movies/upcoming",
+      },
     ],
     title: "Movies",
     to: "/movies",
@@ -125,6 +139,16 @@ export const topNav = [
         icon: AwardIcon,
         title: "Top Rated",
         to: "/tv-shows/top-rated",
+      },
+      {
+        icon: CalendarDaysIcon,
+        title: "Airing Today",
+        to: "/tv-shows/airing-today",
+      },
+      {
+        icon: RadioTowerIcon,
+        title: "On The Air",
+        to: "/tv-shows/on-the-air",
       },
     ],
     title: "TV Shows",

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/inter";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -10,9 +10,9 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --font-heading: var(--font-mono);
+  --font-heading: var(--font-sans);
 
-  --font-mono: "JetBrains Mono Variable", monospace;
+  --font-sans: "Inter Variable", sans-serif;
 
   --color-sidebar-ring: var(--sidebar-ring);
 
@@ -229,6 +229,6 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-mono;
+    @apply font-sans;
   }
 }

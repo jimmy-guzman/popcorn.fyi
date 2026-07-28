@@ -80,7 +80,7 @@ export const Table = <TData,>({
                   <TableRow key={row.id}>
                     {row.getVisibleCells().map((cell) => {
                       return (
-                        <TableCell key={cell.id}>
+                        <TableCell className="tabular-nums" key={cell.id}>
                           {flexRender(
                             cell.column.columnDef.cell,
                             cell.getContext(),

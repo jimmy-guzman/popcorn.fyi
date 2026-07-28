@@ -1,5 +1,6 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
+import { ScrollTop } from "@/components/shared/scroll-top";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteNav } from "@/components/site/site-nav";
 
@@ -17,6 +18,7 @@ function LayoutComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <ScrollTop />
     </div>
   );
 }

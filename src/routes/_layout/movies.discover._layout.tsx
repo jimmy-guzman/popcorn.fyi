@@ -4,6 +4,7 @@ import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { MovieDiscoverFilters } from "@/components/movie/discover-filters";
 import { Prose } from "@/components/shared/prose";
 import { site } from "@/config/site";
+import { languagesOptions } from "@/data/languages.list";
 import { DiscoverSchema } from "@/data/movie/discover.list";
 import { movieGenresOptions } from "@/data/movie/genres.list";
 import { movieProvidersOptions } from "@/data/movie/providers.list";
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/_layout/movies/discover/_layout")({
       context.queryClient.ensureQueryData(movieGenresOptions()),
       context.queryClient.ensureQueryData(movieProvidersOptions()),
       context.queryClient.ensureQueryData(regionsOptions()),
+      context.queryClient.ensureQueryData(languagesOptions()),
     ]);
   },
   head: () => {
@@ -35,6 +37,7 @@ function RouteComponent() {
   const { data: genres } = useSuspenseQuery(movieGenresOptions());
   const { data: providers } = useSuspenseQuery(movieProvidersOptions());
   const { data: regions } = useSuspenseQuery(regionsOptions());
+  const { data: languages } = useSuspenseQuery(languagesOptions());
 
   return (
     <div className="flex flex-col gap-4">
@@ -44,6 +47,7 @@ function RouteComponent() {
       </Prose>
       <MovieDiscoverFilters
         genres={genres.filter(hasId)}
+        languages={languages}
         providers={providers}
         regions={regions}
       />

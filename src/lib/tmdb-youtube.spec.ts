@@ -1,4 +1,9 @@
-import { selectYoutubeTrailer, youtubeVideoUrl } from "./tmdb-youtube";
+import {
+  selectYoutubeTrailer,
+  youtubeThumbnailUrl,
+  youtubeVideoUrl,
+  youtubeWatchUrl,
+} from "./tmdb-youtube";
 
 describe("selectYoutubeTrailer", () => {
   it("should return undefined when site is not YouTube", () => {
@@ -98,6 +103,20 @@ describe("youtubeVideUrl", () => {
   it("should NOT enable autoplay by default", () => {
     expect(youtubeVideoUrl("123")).toBe(
       "https://www.youtube.com/embed/123?rel=0&showinfo=0&autoplay=0",
+    );
+  });
+});
+
+describe("youtubeWatchUrl", () => {
+  it("should build a watch url", () => {
+    expect(youtubeWatchUrl("123")).toBe("https://www.youtube.com/watch?v=123");
+  });
+});
+
+describe("youtubeThumbnailUrl", () => {
+  it("should build a thumbnail url", () => {
+    expect(youtubeThumbnailUrl("123")).toBe(
+      "https://i.ytimg.com/vi/123/hqdefault.jpg",
     );
   });
 });

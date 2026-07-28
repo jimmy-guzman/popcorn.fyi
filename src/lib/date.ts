@@ -9,7 +9,7 @@
  *
  * @throws {RangeError} If the date string is invalid.
  */
-const dateFormatter = new Intl.DateTimeFormat(undefined, {
+const dateFormatter = new Intl.DateTimeFormat("en", {
   dateStyle: "medium",
   timeZone: "UTC",
 });
