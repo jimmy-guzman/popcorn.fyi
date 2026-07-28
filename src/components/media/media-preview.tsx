@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { count } from "@/lib/count";
 import { date } from "@/lib/date";
 import { language } from "@/lib/language";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
@@ -45,9 +46,9 @@ export const MediaPreview = ({
     originalLanguage
       ? { label: "Language", value: language(originalLanguage) }
       : undefined,
-    voteCount
-      ? { label: "Votes", value: voteCount.toLocaleString() }
-      : undefined,
+    voteCount === undefined
+      ? undefined
+      : { label: "Votes", value: count(voteCount) },
   ].filter(Boolean);
 
   return (

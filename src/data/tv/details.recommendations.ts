@@ -7,6 +7,7 @@ import type { Id } from "@/schemas/id";
 import tmdbClient from "@/integrations/tmdb/client";
 import { tvSeriesRecommendations } from "@/integrations/tmdb/gen/sdk.gen";
 import { IdSchema } from "@/schemas/id";
+import { NullableNumber, NullableString } from "@/schemas/utils";
 
 /**
  * TMDB's OpenAPI spec types this response as an untyped index signature, so the
@@ -16,12 +17,12 @@ const RecommendationsSchema = v.object({
   results: v.optional(
     v.array(
       v.object({
-        first_air_date: v.optional(v.string()),
+        first_air_date: NullableString,
         id: v.number(),
-        media_type: v.optional(v.string()),
-        name: v.optional(v.string()),
-        poster_path: v.optional(v.string()),
-        vote_average: v.optional(v.number()),
+        media_type: NullableString,
+        name: NullableString,
+        poster_path: NullableString,
+        vote_average: NullableNumber,
       }),
     ),
   ),

@@ -83,6 +83,15 @@ describe("<MediaPreview />", () => {
     expect(screen.getByText("千と千尋の神隠し")).toBeInTheDocument();
   });
 
+  it("should keep the vote count when nothing has been rated yet", async () => {
+    await render(
+      <MediaPreview dateLabel="Released" title="Inception" voteCount={0} />,
+    );
+
+    expect(screen.getByText("Votes")).toBeInTheDocument();
+    expect(screen.getByText("0")).toBeInTheDocument();
+  });
+
   it("should render its call to action", async () => {
     await render(
       <MediaPreview

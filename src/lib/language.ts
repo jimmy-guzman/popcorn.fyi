@@ -1,4 +1,4 @@
-const languageNames = new Intl.DisplayNames(undefined, { type: "language" });
+const languageNames = new Intl.DisplayNames("en", { type: "language" });
 
 /**
  * Resolves an ISO 639-1 code into a human-readable language name.

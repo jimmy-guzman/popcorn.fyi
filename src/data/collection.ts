@@ -7,30 +7,31 @@ import type { Id } from "@/schemas/id";
 import tmdbClient from "@/integrations/tmdb/client";
 import { collectionDetails } from "@/integrations/tmdb/gen/sdk.gen";
 import { IdSchema } from "@/schemas/id";
+import { NullableNumber, NullableString } from "@/schemas/utils";
 
 /**
  * TMDB's OpenAPI spec declares collection parts with `name`/`original_name`,
  * but the API returns `title`/`original_title`. Validate the real shape.
  */
 const CollectionSchema = v.object({
-  backdrop_path: v.optional(v.string()),
-  id: v.optional(v.number()),
-  name: v.optional(v.string()),
-  overview: v.optional(v.string()),
+  backdrop_path: NullableString,
+  id: NullableNumber,
+  name: NullableString,
+  overview: NullableString,
   parts: v.optional(
     v.array(
       v.object({
         id: v.number(),
-        media_type: v.optional(v.string()),
-        original_title: v.optional(v.string()),
-        poster_path: v.optional(v.string()),
-        release_date: v.optional(v.string()),
-        title: v.optional(v.string()),
-        vote_average: v.optional(v.number()),
+        media_type: NullableString,
+        original_title: NullableString,
+        poster_path: NullableString,
+        release_date: NullableString,
+        title: NullableString,
+        vote_average: NullableNumber,
       }),
     ),
   ),
-  poster_path: v.optional(v.string()),
+  poster_path: NullableString,
 });
 
 const collectionFn = createServerFn({ method: "GET" })
