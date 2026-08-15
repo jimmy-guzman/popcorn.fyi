@@ -6,6 +6,7 @@ import type { Id } from "@/schemas/id";
 import tmdbClient from "@/integrations/tmdb/client";
 import { movieImages } from "@/integrations/tmdb/gen/sdk.gen";
 import { orEmpty } from "@/lib/array";
+import { cached } from "@/lib/cached";
 import { IdSchema } from "@/schemas/id";
 
 interface Logo {
@@ -31,6 +32,7 @@ const highestRated = (logos: Logo[]) => {
 };
 
 const movieLogoFn = createServerFn({ method: "GET" })
+  .middleware([cached("detail")])
   .validator(IdSchema)
   .handler(async (context) => {
     const { data } = await movieImages({

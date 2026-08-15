@@ -5,9 +5,11 @@ import * as v from "valibot";
 import tmdbClient from "@/integrations/tmdb/client";
 import { searchCompany } from "@/integrations/tmdb/gen/sdk.gen";
 import { orEmpty } from "@/lib/array";
+import { cached } from "@/lib/cached";
 import { hasId } from "@/lib/predicates";
 
 const searchCompaniesFn = createServerFn({ method: "GET" })
+  .middleware([cached("search")])
   .validator(v.string())
   .handler(async (context) => {
     const { data } = await searchCompany({

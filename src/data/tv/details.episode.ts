@@ -5,9 +5,11 @@ import { createServerFn } from "@tanstack/react-start";
 
 import tmdbClient from "@/integrations/tmdb/client";
 import { tvEpisodeDetails } from "@/integrations/tmdb/gen/sdk.gen";
+import { cached } from "@/lib/cached";
 import { EpisodePathParamsSchema } from "@/schemas/path-params";
 
 const tvEpisodeFn = createServerFn({ method: "GET" })
+  .middleware([cached("detail")])
   .validator(EpisodePathParamsSchema)
   .handler(async (context) => {
     const { data } = await tvEpisodeDetails({

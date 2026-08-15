@@ -3,16 +3,19 @@ import { createServerFn } from "@tanstack/react-start";
 
 import tmdbClient from "@/integrations/tmdb/client";
 import { trendingMovies } from "@/integrations/tmdb/gen/sdk.gen";
+import { cached } from "@/lib/cached";
 
-const trendingMovieFn = createServerFn({ method: "GET" }).handler(async () => {
-  const { data } = await trendingMovies({
-    client: tmdbClient,
-    path: { time_window: "day" },
-    throwOnError: true,
+const trendingMovieFn = createServerFn({ method: "GET" })
+  .middleware([cached("list")])
+  .handler(async () => {
+    const { data } = await trendingMovies({
+      client: tmdbClient,
+      path: { time_window: "day" },
+      throwOnError: true,
+    });
+
+    return data;
   });
-
-  return data;
-});
 
 export const trendingMoviesOptions = () => {
   return queryOptions({

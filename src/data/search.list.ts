@@ -5,9 +5,11 @@ import type { Search } from "@/schemas/search";
 
 import tmdbClient from "@/integrations/tmdb/client";
 import { searchMulti } from "@/integrations/tmdb/gen/sdk.gen";
+import { cached } from "@/lib/cached";
 import { SearchSchema } from "@/schemas/search";
 
 const searchFn = createServerFn({ method: "GET" })
+  .middleware([cached("search")])
   .validator(SearchSchema)
   .handler(async (context) => {
     const { data } = await searchMulti({

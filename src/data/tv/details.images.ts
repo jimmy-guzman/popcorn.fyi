@@ -5,6 +5,7 @@ import type { Id } from "@/schemas/id";
 
 import tmdbClient from "@/integrations/tmdb/client";
 import { tvSeriesImages } from "@/integrations/tmdb/gen/sdk.gen";
+import { cached } from "@/lib/cached";
 import { IdSchema } from "@/schemas/id";
 
 const toImage = (image: {
@@ -20,6 +21,7 @@ const toImage = (image: {
 };
 
 const tvImagesFn = createServerFn({ method: "GET" })
+  .middleware([cached("detail")])
   .validator(IdSchema)
   .handler(async (context) => {
     const { data } = await tvSeriesImages({
