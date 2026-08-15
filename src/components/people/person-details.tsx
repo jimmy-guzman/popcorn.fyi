@@ -12,8 +12,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/cn";
 import { date } from "@/lib/date";
-import { tmdbContent } from "@/lib/tmdb-content";
 import { tmdbImageUrl } from "@/lib/tmdb-images";
+import { tmdbParagraphs } from "@/lib/tmdb-paragraphs";
 
 import {
   MediaDetailViewBackdrop,
@@ -88,13 +88,11 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
             <p>No birthday available.</p>
           )}
           {person.biography ? (
-            <div
-              // Biography HTML is sanitized in `tmdbContent` (DOMPurify).
-              // eslint-disable-next-line react-dom/no-dangerously-set-innerhtml -- sanitized HTML only
-              dangerouslySetInnerHTML={{
-                __html: tmdbContent(person.biography),
-              }}
-            />
+            <div>
+              {tmdbParagraphs(person.biography).map((section) => {
+                return <p key={section}>{section}</p>;
+              })}
+            </div>
           ) : (
             <p>No biography available.</p>
           )}
