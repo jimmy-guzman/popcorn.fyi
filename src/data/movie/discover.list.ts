@@ -4,6 +4,7 @@ import * as v from "valibot";
 
 import tmdbClient from "@/integrations/tmdb/client";
 import { discoverMovie } from "@/integrations/tmdb/gen/sdk.gen";
+import { cached } from "@/lib/cached";
 import { PaginationSchema } from "@/schemas/pagination";
 import { Filter } from "@/schemas/utils";
 
@@ -45,6 +46,7 @@ export const DiscoverSchema = v.intersect([
 ]);
 
 const discoverMoviesFn = createServerFn({ method: "GET" })
+  .middleware([cached("list")])
   .validator(DiscoverSchema)
   .handler(async (context) => {
     const { data } = await discoverMovie({

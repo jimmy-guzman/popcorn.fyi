@@ -5,9 +5,11 @@ import type { Pagination } from "@/schemas/pagination";
 
 import tmdbClient from "@/integrations/tmdb/client";
 import { tvSeriesPopularList } from "@/integrations/tmdb/gen/sdk.gen";
+import { cached } from "@/lib/cached";
 import { PaginationSchema } from "@/schemas/pagination";
 
 const tvPopularFn = createServerFn({ method: "GET" })
+  .middleware([cached("list")])
   .validator(PaginationSchema)
   .handler(async (context) => {
     const { data } = await tvSeriesPopularList({

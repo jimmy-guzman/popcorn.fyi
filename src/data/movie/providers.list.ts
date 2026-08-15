@@ -4,9 +4,11 @@ import { createServerFn } from "@tanstack/react-start";
 import tmdbClient from "@/integrations/tmdb/client";
 import { watchProvidersMovieList } from "@/integrations/tmdb/gen/sdk.gen";
 import { orEmpty } from "@/lib/array";
+import { cached } from "@/lib/cached";
 
-const movieProvidersFn = createServerFn({ method: "GET" }).handler(
-  async (context) => {
+const movieProvidersFn = createServerFn({ method: "GET" })
+  .middleware([cached("reference")])
+  .handler(async (context) => {
     const { data } = await watchProvidersMovieList({
       client: tmdbClient,
       query: context.data,
@@ -14,8 +16,7 @@ const movieProvidersFn = createServerFn({ method: "GET" }).handler(
     });
 
     return orEmpty(data.results);
-  },
-);
+  });
 
 export const movieProvidersOptions = () => {
   return queryOptions({

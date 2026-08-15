@@ -4,9 +4,11 @@ import { createServerFn } from "@tanstack/react-start";
 import tmdbClient from "@/integrations/tmdb/client";
 import { genreTvList } from "@/integrations/tmdb/gen/sdk.gen";
 import { orEmpty } from "@/lib/array";
+import { cached } from "@/lib/cached";
 
-const tvGenresFn = createServerFn({ method: "GET" }).handler(
-  async (context) => {
+const tvGenresFn = createServerFn({ method: "GET" })
+  .middleware([cached("reference")])
+  .handler(async (context) => {
     const { data } = await genreTvList({
       client: tmdbClient,
       query: context.data,
@@ -14,8 +16,7 @@ const tvGenresFn = createServerFn({ method: "GET" }).handler(
     });
 
     return orEmpty(data.genres);
-  },
-);
+  });
 
 export const tvGenresOptions = () => {
   return queryOptions({
