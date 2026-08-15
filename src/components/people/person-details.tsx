@@ -60,6 +60,10 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
     },
   });
 
+  const biographySections = person.biography
+    ? tmdbParagraphs(person.biography)
+    : [];
+
   const card = (
     <Card
       className={cn("min-w-0 flex-1", !person.profile_path && "md:col-span-2")}
@@ -87,9 +91,9 @@ export const PersonDetails = ({ person }: PersonDetailsProps) => {
           ) : (
             <p>No birthday available.</p>
           )}
-          {person.biography ? (
+          {biographySections.length > 0 ? (
             <div>
-              {tmdbParagraphs(person.biography).map((section) => {
+              {biographySections.map((section) => {
                 return <p key={section}>{section}</p>;
               })}
             </div>

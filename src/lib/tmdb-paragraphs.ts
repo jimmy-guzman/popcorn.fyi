@@ -8,8 +8,8 @@
  *
  * @returns The non-empty sections, in order.
  */
-export const tmdbParagraphs = (content: string) => {
-  return content.split("\n").filter((section) => {
-    return section !== "";
+export const tmdbParagraphs = (content: string): string[] => {
+  return content.split(/\r?\n/).filter((section) => {
+    return section.trim() !== "";
   });
 };

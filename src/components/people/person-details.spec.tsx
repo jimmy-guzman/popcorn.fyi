@@ -74,4 +74,14 @@ describe("<PersonDetails />", () => {
 
     expect(missingBiography).toBeInTheDocument();
   });
+
+  it("should render 'No biography available.' when biography is only whitespace", async () => {
+    await render(<PersonDetails person={{ ...person, biography: "\n\n" }} />, {
+      queryData: [[["person", "details", 300, "external"], {}]],
+    });
+
+    const missingBiography = screen.getByText("No biography available.");
+
+    expect(missingBiography).toBeInTheDocument();
+  });
 });
